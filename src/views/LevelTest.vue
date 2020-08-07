@@ -6,7 +6,7 @@
           class="h4 font-weight-bold white--text mb-5"
           style="margin-top:200px"
         >
-          수강 신청
+          레벨테스트
         </div>
         <div class="h4 mb-5 font-weight-bold" style="color:#2564cb">
           “Anytime, Anywhere, Home Learn English.”
@@ -20,9 +20,12 @@
             elevation="7"
             width="100%"
             style="margin-bottom:500px"
+            color="#fafafa"
           >
-            <v-container class="px-0 py-0">
-              a
+            <v-container class="px-10">
+              <v-row>
+                <div>전화영어 무료 레벨테스트.</div>
+              </v-row>
             </v-container>
           </v-card>
         </v-container>
