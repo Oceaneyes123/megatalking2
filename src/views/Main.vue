@@ -3,7 +3,12 @@
     <v-container class="px-0 py-0 mx-0"></v-container>
     <v-card tile color="#344051" class="text-center">
       <v-img src="../assets/bg.jpg" width="100%" class="text-center pa-3">
-        <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">무조건 듣기만하는 영어 회화?</div>
+        <div
+          class="h3 font-weight-bold white--text mb-5"
+          style="margin-top:200px"
+        >
+          무조건 듣기만하는 영어 회화?
+        </div>
         <div class="white--text title mb-10">
           20대의 가장 큰 고민, 스펙과 영어! 값비싼 어학연수, 이젠 온라인으로
           즐기세요.
@@ -15,9 +20,11 @@
           <br />전화/화상영어로 함깨 학습할 수도 있고, 컨텐츠로 수강 할 수도
           있습니다.
         </div>
-        <v-btn class="rounded-xl pa-8 title" color="primary">뉴욕 스피킹 바로가기</v-btn>
+        <v-btn class="rounded-xl pa-8 title" color="primary"
+          >뉴욕 스피킹 바로가기</v-btn
+        >
         <v-container style="max-width:1000px;margin-top:90px">
-          <v-card class="rounded-xl" elevation="7" width="100%">
+          <v-card class="rounded-xl shadow" width="100%">
             <v-row class="px-10">
               <v-col cols="12" sm="4">
                 <v-card class="pt-10" flat color="#00000000">
@@ -61,7 +68,11 @@
               max-width="700"
               style="position:relative;margin-bottom:100px"
             >
-              <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="90%" color="#f1f1f1">
+              <v-card
+                class="pt-10 pl-10 text-left pb-5 rounded-xl"
+                width="90%"
+                color="#f1f1f1"
+              >
                 <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
                 <div style="color:#b7b7b7;max-width:250px">
                   <div class="mb-5">
@@ -97,15 +108,34 @@
               max-width="700"
               style="position:relative;margin-bottom:100px"
             >
-              <v-card class="pt-10 pr-10 ml-auto rounded-xl d-flex" width="100%" color="#f1f1f1">
-                <v-img class="rounded-xl" width="350" position="50%" src="../assets/girl.png"></v-img>
-                <div style="color:#b7b7b7;max-width:250px" class="ml-auto text-left">
-                  <div class="h4 font-weight-bold mb-7" style="color:#000">맞춤형 시간표</div>
+              <v-card
+                class="pt-10 pr-10 ml-auto rounded-xl d-flex"
+                width="100%"
+                color="#f1f1f1"
+              >
+                <v-img
+                  class="rounded-xl"
+                  width="350"
+                  position="50%"
+                  src="../assets/girl.png"
+                ></v-img>
+                <div
+                  style="color:#b7b7b7;max-width:250px"
+                  class="ml-auto text-left"
+                >
+                  <div class="h4 font-weight-bold mb-7" style="color:#000">
+                    맞춤형 시간표
+                  </div>
                   <div class="mb-5">
                     직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
                     레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
                   </div>
-                  <div class="title font-weight-bold font-italic" style="color:#b34013">레벨테스트 하러가기 ></div>
+                  <div
+                    class="title font-weight-bold font-italic"
+                    style="color:#b34013"
+                  >
+                    레벨테스트 하러가기 >
+                  </div>
                 </div>
               </v-card>
             </v-card>
@@ -117,7 +147,11 @@
               max-width="700"
               style="position:relative;margin-bottom:100px"
             >
-              <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="100%" color="#f1f1f1">
+              <v-card
+                class="pt-10 pl-10 text-left pb-5 rounded-xl"
+                width="100%"
+                color="#f1f1f1"
+              >
                 <div class="h4 font-weight-bold mb-7" style="color:#70689f">
                   35,000개
                   <br />품격있는 컨텐츠
@@ -127,7 +161,12 @@
                     프리토킹, 비지니스, 면접영어, 여행, 영자신문 등 35,000개의
                     콘텐츠로 즐겨요.
                   </div>
-                  <div class="title font-weight-bold font-italic" style="color:#b34013">커리큘럼 자세히보기 ></div>
+                  <div
+                    class="title font-weight-bold font-italic"
+                    style="color:#b34013"
+                  >
+                    커리큘럼 자세히보기 >
+                  </div>
                 </div>
               </v-card>
             </v-card>
@@ -136,7 +175,11 @@
             <v-container style="max-width:800px; ">
               <v-row style="margin-bottom:200px">
                 <v-col cols="4" class="px-0">
-                  <v-card max-width="200" class="rounded-xl mx-auto" style="position:relative">
+                  <v-card
+                    max-width="200"
+                    class="rounded-xl mx-auto"
+                    style="position:relative"
+                  >
                     <v-img
                       width="100%"
                       height="250"
@@ -149,13 +192,18 @@
                     >
                       <div class="title font-weight-bold">플립러닝 Push</div>
                       <div class="caption mb-3" style="color:#b7b7b7">
-                        <v-icon color="#00aff0" small>fab fa-skype</v-icon>화상영어 서비스
+                        <v-icon color="#00aff0" small>fab fa-skype</v-icon
+                        >화상영어 서비스
                       </div>
                       <div class="caption mb-5" style="color:#b7b7b7">
                         플립러닝 예습자료,
                         <br />카톡으로 보내드려요.
                       </div>
-                      <v-btn class="rounded-lg caption white--text" color="#5a55a1">수강신청 바로가기</v-btn>
+                      <v-btn
+                        class="rounded-lg caption white--text"
+                        color="#5a55a1"
+                        >수강신청 바로가기</v-btn
+                      >
                     </v-card>
                   </v-card>
                 </v-col>
@@ -170,12 +218,18 @@
                       style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
                       class="pa-2 text-center rounded-xl"
                     >
-                      <div class="font-weight-black subheading mb-3 mt-1">생생한 수강후기</div>
+                      <div class="font-weight-black subheading mb-3 mt-1">
+                        생생한 수강후기
+                      </div>
                       <div class="caption mb-5" style="color:#b7b7b7">
                         회원님이 작성한 후기를 보고 나에게 적합한 수업 유형과
                         난이도를 찾을 수 있어요.
                       </div>
-                      <v-btn class="rounded-lg caption white--text" color="#5a55a1">게시판 바로가기</v-btn>
+                      <v-btn
+                        class="rounded-lg caption white--text"
+                        color="#5a55a1"
+                        >게시판 바로가기</v-btn
+                      >
                     </v-card>
                   </v-card>
                 </v-col>
@@ -190,12 +244,18 @@
                       style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
                       class="pa-2 text-center rounded-xl"
                     >
-                      <div class="font-weight-bold title mb-3">영작 UPGRADE</div>
+                      <div class="font-weight-bold title mb-3">
+                        영작 UPGRADE
+                      </div>
                       <div class="caption mb-5" style="color:#b7b7b7">
                         수업 끝나고 바로 바로 더 나은 표현, 녹음파일 제공 쉽게
                         영어를 배울 수있습니다. !
                       </div>
-                      <v-btn class="rounded-lg caption white--text" color="#5a55a1">강의실 바로가기</v-btn>
+                      <v-btn
+                        class="rounded-lg caption white--text"
+                        color="#5a55a1"
+                        >강의실 바로가기</v-btn
+                      >
                     </v-card>
                   </v-card>
                 </v-col>
@@ -212,8 +272,8 @@
 export default {
   data() {
     return {
-      rating: 4.8
+      rating: 4.8,
     };
-  }
+  },
 };
 </script>

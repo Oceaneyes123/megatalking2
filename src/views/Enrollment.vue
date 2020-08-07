@@ -16,8 +16,7 @@
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card
-            class="rounded-xl"
-            elevation="7"
+            class="rounded-xl shadow"
             width="100%"
             style="margin-bottom:500px"
           >

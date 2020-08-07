@@ -16,8 +16,7 @@
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card
-            class="rounded-xl"
-            elevation="7"
+            class="rounded-xl shadow"
             width="100%"
             style="margin-bottom:500px"
             color="#fafafa"
@@ -29,15 +28,96 @@
               <v-row class="pl-10">
                 <div class="h5 font-weight-black">간편하게 신청해보세요.</div>
               </v-row>
-              <v-row class="px-10 d-flex align-center">
-                <div>
+              <v-row
+                class="px-10 mt-5 d-flex align-center"
+                style="margin-bottom:50px"
+              >
+                <div class="text-purple font-weight-black">
                   모든 레벨테스트는 전화로 진행됩니다.
                 </div>
                 <v-spacer></v-spacer>
                 <div>
-                  <v-btn color="#5a55a1" large class="white--text"
+                  <v-btn color="#5a55a1" large class="white--text rounded-lg"
                     >결과 확인하기</v-btn
                   >
+                </div>
+              </v-row>
+              <v-divider class="mx-10 mb-10"></v-divider>
+              <div class="text-dark-purple h6">
+                <span class="font-weight-black">나에게 맞춘 날짜와 시간</span>에
+                언제든지 진행 가능합니다.
+              </div>
+              <v-row class="px-10 my-10 d-flex  justify-center">
+                <div class="mx-2">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    far fa-file-alt
+                  </v-icon>
+                  <div class="mt-3 caption">신청서 작성</div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">
+                    fas fa-angle-right
+                  </v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    fas fa-calendar-plus
+                  </v-icon>
+                  <div class="mt-3 caption">예약 완료</div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">
+                    fas fa-angle-right
+                  </v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    fas fa-envelope
+                  </v-icon>
+                  <div class="mt-3 caption">
+                    문자메시지 발송 <br />
+                    (예약 확인, 테스트 안내 )
+                  </div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">
+                    fas fa-angle-right
+                  </v-icon>
+                </div>
+                <div class="mx-2 ">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    fas fa-desktop
+                  </v-icon>
+                  <div class="mt-3 caption">
+                    강사님과 1:1수업 <br />
+                    (간단 자기소개 등)
+                  </div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">
+                    fas fa-angle-right
+                  </v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    fas fa-chart-bar
+                  </v-icon>
+                  <div class="mt-3 caption">
+                    테스트 결과 받기
+                  </div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">
+                    fas fa-angle-right
+                  </v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-icon style="font-size:50px" color="#4185b3">
+                    far fa-smile-beam
+                  </v-icon>
+                  <div class="mt-3 caption">
+                    개별 맞춤 상담
+                  </div>
                 </div>
               </v-row>
             </v-container>

@@ -166,6 +166,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
+
+.text-purple {
+  color: #5a55a1;
+}
+
+.text-dark-purple {
+  color: #475ba4;
+}
+
+.icon-large {
+  font-size: 48px;
+}
+
+.shadow {
+  box-shadow: 0 4px 5px -2px rgba(179, 203, 240, 0.2),
+    0 7px 10px 1px rgba(0, 0, 0, -0.86), 0 2px 16px 1px rgba(0, 0, 0, 0.12) !important;
+}
+
 .h1 {
   font-weight: 300;
   font-size: 6rem;
