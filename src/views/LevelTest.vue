@@ -149,9 +149,51 @@
                   <v-text-field color="primary" dense outlined></v-text-field>
                 </v-col>
               </v-row>
-              <div class="mx-10 font-weight-black h6 text-left">
+              <div class="mx-10 mb-5 font-weight-black h6 text-left">
                 예약 일시
               </div>
+              <v-row class="mx-10">
+                <v-col cols="2">
+                  <v-tabs
+                    class="rounded-xl"
+                    vertical
+                    v-model="tab"
+                    icons-and-text
+                    background-color="#dcdcdc"
+                    slider-color="#00000000"
+                  >
+                    <v-tab
+                      active-class="active white--text"
+                      style="border-radius:30px 0 0 30px"
+                    >
+                      <v-icon style="font-size:50px;" class="mt-3"
+                        >fas fa-sun</v-icon
+                      >
+                      오전 AM
+                    </v-tab>
+
+                    <v-tab
+                      active-class="active white--text"
+                      style="border-radius:30px 0 0 30px"
+                    >
+                      <v-icon style="font-size:50px;" class="mt-3"
+                        >fas fa-moon</v-icon
+                      >
+                      오후 PM
+                    </v-tab>
+                  </v-tabs>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col cols="9">
+                  <v-card color="#fafafa" width="100%">
+                    <v-container>
+                      <v-row justify="center">
+                        <v-btn></v-btn>
+                      </v-row>
+                    </v-container>
+                  </v-card>
+                </v-col>
+              </v-row>
             </v-container>
           </v-card>
         </v-container>
@@ -159,3 +201,55 @@
     </v-container>
   </v-app>
 </template>
+
+<style scoped>
+.active {
+  background-color: #2564cb;
+}
+
+.v-tabs--vertical.v-tabs--icons-and-text > .v-tabs-bar .v-tab {
+  height: 100px;
+  border-radius: 30px 0 0 30px;
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      days: [],
+    };
+  },
+  mounted() {
+    for (var i = 1; i < 12; i++) {
+      var today = new Date();
+      var nextDates = new Date(today);
+      nextDates.setDate(nextDates.getDate() + i);
+      if (
+        nextDates.getDay() != 6 &&
+        nextDates.getDay() != 0 &&
+        this.days.length < 6
+      ) {
+        this.days.push(this.formatDate(nextDates));
+      }
+    }
+
+    console.log(this.days);
+  },
+
+  methods: {
+    formatDate(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+
+      month = month.length == 1 ? "0" + month : month;
+
+      if (day.length < 2) day = +day;
+
+      return [year, month, day].join("-");
+    },
+  },
+};
+</script>
