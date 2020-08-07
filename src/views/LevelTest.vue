@@ -201,7 +201,7 @@
                         </v-btn>
                       </v-row>
                       <v-row class="px-5">
-                        <v-textarea outlined> </v-textarea>
+                        <v-card flat color="#fff"></v-card>
                       </v-row>
                     </v-container>
                   </v-card>
