@@ -22,9 +22,23 @@
             style="margin-bottom:500px"
             color="#fafafa"
           >
-            <v-container class="px-10">
-              <v-row>
-                <div>전화영어 무료 레벨테스트.</div>
+            <v-container class="px-10 pt-10">
+              <v-row class="px-10">
+                <div class="h5">전화영어 무료 레벨테스트.</div>
+              </v-row>
+              <v-row class="pl-10">
+                <div class="h5 font-weight-black">간편하게 신청해보세요.</div>
+              </v-row>
+              <v-row class="px-10 d-flex align-center">
+                <div>
+                  모든 레벨테스트는 전화로 진행됩니다.
+                </div>
+                <v-spacer></v-spacer>
+                <div>
+                  <v-btn color="#5a55a1" large class="white--text"
+                    >결과 확인하기</v-btn
+                  >
+                </div>
               </v-row>
             </v-container>
           </v-card>
