@@ -18,7 +18,12 @@
             ></v-img>
           </v-card>
           <v-spacer></v-spacer>
-          <v-card flat class="d-flex align-center mr-5" color="#00000000">
+          <v-card
+            flat
+            class="d-flex align-center mr-5"
+            color="#00000000"
+            style="color:#a3a3a3"
+          >
             <div class="mr-6 subheading">커리큘럼</div>
             <div class="mr-6 subheading" @click="$router.push('/level-test')">
               레벨테스트
@@ -152,6 +157,10 @@
 </style>
 
 <style>
+#app {
+  /* font-family: "Nanum Gothic", sans-serif; */
+  font-family: "NanumSquare", sans-serif;
+}
 /* #app {
   font-family: "NanumSquare";
   -webkit-font-smoothing: antialiased;
@@ -186,5 +195,23 @@
   font-weight: 500;
   font-size: 1.25rem;
   letter-spacing: 0.009375rem;
+}
+
+@font-face {
+  font-family: "NanumSquareB";
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/npm/typeface-nanum-square@1.1.0/NanumSquareB.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/npm/typeface-nanum-square@1.1.0/NanumSquareB.woff2")
+      format("woff2");
+}
+
+@font-face {
+  font-family: "NanumSquare";
+  font-style: normal;
+  src: url("https://cdn.jsdelivr.net/npm/@kfonts/nanum-square@0.1.0/NanumSquareRegular.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/npm/@kfonts/nanum-square@0.1.0/NanumSquareRegular.woff2")
+      format("woff2");
 }
 </style>
