@@ -188,7 +188,17 @@
                   <v-card color="#fafafa" width="100%">
                     <v-container>
                       <v-row justify="center">
-                        <v-btn></v-btn>
+                        <v-btn
+                          v-for="(day, i) in days"
+                          :key="i"
+                          class="rounded-lg mr-3"
+                          large
+                          @click="daySelected = i"
+                          :color="daySelected == i ? 'primary' : ''"
+                          depressed
+                        >
+                          {{ day }}
+                        </v-btn>
                       </v-row>
                     </v-container>
                   </v-card>
@@ -218,6 +228,7 @@ export default {
   data() {
     return {
       days: [],
+      daySelected: -1,
     };
   },
   mounted() {
@@ -228,7 +239,7 @@ export default {
       if (
         nextDates.getDay() != 6 &&
         nextDates.getDay() != 0 &&
-        this.days.length < 6
+        this.days.length < 3
       ) {
         this.days.push(this.formatDate(nextDates));
       }
