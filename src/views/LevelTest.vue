@@ -120,6 +120,38 @@
                   </div>
                 </div>
               </v-row>
+              <div class="h6 font-weight-black text-left px-10">
+                과목 선택
+              </div>
+              <v-row class="mx-10 mb-10">
+                <v-checkbox
+                  v-model="checkbox1"
+                  color="primary"
+                  class="mr-10"
+                  label="메가토킹 전화영어"
+                >
+                </v-checkbox>
+                <v-checkbox
+                  v-model="checkbox1"
+                  color="primary"
+                  label="메가토킹 화상영어"
+                >
+                </v-checkbox>
+              </v-row>
+              <v-row class="d-flex align-center mx-10 mb-10">
+                <div class="pb-7 font-weight-black">이름</div>
+                <v-col cols="4" class="mr-5">
+                  <v-text-field color="primary" dense outlined></v-text-field>
+                </v-col>
+
+                <div class="pb-7 font-weight-black">연락처</div>
+                <v-col cols="4">
+                  <v-text-field color="primary" dense outlined></v-text-field>
+                </v-col>
+              </v-row>
+              <div class="mx-10 font-weight-black h6 text-left">
+                예약 일시
+              </div>
             </v-container>
           </v-card>
         </v-container>
