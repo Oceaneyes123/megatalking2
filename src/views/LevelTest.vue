@@ -184,10 +184,10 @@
                   </v-tabs>
                 </v-col>
                 <v-spacer></v-spacer>
-                <v-col cols="9">
-                  <v-card color="#fafafa" width="100%">
+                <v-col cols="10">
+                  <v-card color="#fafafa" width="100%" flat>
                     <v-container>
-                      <v-row justify="center">
+                      <v-row justify="center" class="mb-5">
                         <v-btn
                           v-for="(day, i) in days"
                           :key="i"
@@ -200,9 +200,35 @@
                           {{ day }}
                         </v-btn>
                       </v-row>
+                      <v-row class="px-5">
+                        <v-textarea outlined> </v-textarea>
+                      </v-row>
                     </v-container>
                   </v-card>
                 </v-col>
+              </v-row>
+              <v-row class="mx-10 mb-10 d-flex align-center">
+                <v-checkbox
+                  v-model="checkbox1"
+                  color="primary"
+                  class="mr-2"
+                  label="개인정보 수집이용에 동의합니다."
+                >
+                </v-checkbox>
+                <v-btn class="rounded-pill" small depressed disabled
+                  >내용보기</v-btn
+                >
+                <v-spacer></v-spacer>
+                <v-checkbox
+                  v-model="checkbox1"
+                  color="primary"
+                  class="mr-2"
+                  label="개인정보 취급위탁에 동의합니다."
+                >
+                </v-checkbox>
+                <v-btn class="rounded-pill" small depressed disabled
+                  >내용보기</v-btn
+                >
               </v-row>
             </v-container>
           </v-card>
@@ -218,7 +244,7 @@
 }
 
 .v-tabs--vertical.v-tabs--icons-and-text > .v-tabs-bar .v-tab {
-  height: 100px;
+  height: 130px;
   border-radius: 30px 0 0 30px;
 }
 </style>
