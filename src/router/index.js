@@ -22,6 +22,11 @@ const routes = [{
     path: "/level-test",
     name: "LevelTest",
     component: require("../views/LevelTest.vue").default
+  },
+  {
+    path: "/mypage",
+    name: "MyPage",
+    component: require("../views/MyPage.vue").default
   }
 ];
 
