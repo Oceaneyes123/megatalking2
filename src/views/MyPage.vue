@@ -56,13 +56,52 @@
             <v-container class="px-10">
               <v-row>
                 <v-col cols="12" md="4">
-                  <v-card class="rounded-xl">
+                  <v-card flat class="rounded-xl">
                     <v-img src="../assets/mypage1.png" width="auto" height="auto"></v-img>
                   </v-card>
                 </v-col>
                 <v-spacer></v-spacer>
                 <v-col cols="12" md="8">
-                  <v-card class="rounded-xl" color="#b9b9b9" width="100%" height="100%"></v-card>
+                  <v-card flat class="rounded-xl" color="#b9b9b9" width="100%" height="100%"></v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-row class="mx-1 my-10">
+              <div class="h6 font-weight-black">강의 피드백</div>
+            </v-row>
+            <v-container class="px-5 py-0">
+              <v-row class="mx-1">
+                <v-col cols="12" md="4">
+                  <div class="h5">문법 및 문장 교정</div>
+                  <div class="h6 font-weight-black">더 나은 표현을 알려드릴게요.</div>
+                  <div class="mt-10">
+                    <div class="mt-5" v-for="(item, i) in tests" :key="i">
+                      <div class="h5 font-weight-black">{{i + 1}}. {{item.test}}</div>
+                      <div class="font-weight-bold">{{item.detail}}</div>
+                    </div>
+                  </div>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col cols="12" md="7">
+                  <v-card
+                    class="d-flex align-center rounded-pill pa-3 mb-3"
+                    color="#dfdfdf"
+                    max-width="300"
+                  >
+                    <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
+                    <v-progress-linear v-model="progress" value="60" color="#5a55a1" class="mx-5"></v-progress-linear>
+                    <div class="text--secondary">0:40</div>
+                  </v-card>
+                  <div class="text--secondary font-weight-black ml-2">8월 21일 오후 10:13</div>
+                  <div class="h6 mt-10">발음 교정</div>
+                  <div class="h5 font-weight-bold">발음은 이렇게 해주세요.</div>
+                  <v-row class="mt-10 mx-1">
+                    <div
+                      v-for="(item, i) in tests"
+                      :key="i"
+                      class="mr-10 h5 font-weight-black"
+                    >{{ i + 1}}.{{ item.test }}</div>
+                  </v-row>
                 </v-col>
               </v-row>
             </v-container>
@@ -80,7 +119,21 @@ export default {
       selectItems: ["수업 회차순"],
       select: "수업 회차순",
       today: "",
-      date: new Date()
+      date: new Date(),
+      tests: [
+        {
+          test: "test",
+          detail: "더 나은 표현을 알려드릴게요."
+        },
+        {
+          test: "test",
+          detail: "더 나은 표현을 알려드릴게요."
+        },
+        {
+          test: "test",
+          detail: "더 나은 표현을 알려드릴게요."
+        }
+      ]
     };
   },
 
