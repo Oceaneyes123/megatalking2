@@ -2,6 +2,9 @@
   <v-app>
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#faae7d" class="text-center pa-3">
+        <div class="h4 font-weight-bold white--text mb-5" style="margin-top:200px">마이 페이지</div>
+        <div class="h4 mb-5 font-weight-bold white--text">“Anytime, Anywhere, Home Learn English.”</div>
+        <div class="h5 mb-5" style="color:#c8713a">메가토킹은 새벽부터 밤까지, 회원님만을 위한 맞춤 강의를 제공합니다.</div>
         <v-card
           class="rounded-xl mx-auto"
           elevation="7"
@@ -93,9 +96,7 @@
                     <div class="text--secondary">0:40</div>
                   </v-card>
                   <div class="text--secondary font-weight-black ml-2">8월 21일 오후 10:13</div>
-                  <div class="h6 mt-10">발음 교정</div>
-                  <div class="h5 font-weight-bold">발음은 이렇게 해주세요.</div>
-                  <v-row class="mt-10 mx-1">
+                  <v-row class="d-flex align-end mt-10 mx-1">
                     <div
                       v-for="(item, i) in tests"
                       :key="i"
@@ -105,6 +106,23 @@
                 </v-col>
               </v-row>
             </v-container>
+            <v-row class="mx-1 mt-10">
+              <v-col>
+                <div class="h6">오늘의 정리</div>
+                <div class="h5 font-weight-bold">선생님이 작성해주신 코멘트입니다.</div>
+              </v-col>
+            </v-row>
+            <v-row class="mx-4 mt-3">
+              <div class="text--secondary">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consec
+              </div>
+            </v-row>
           </v-container>
         </v-card>
       </v-card>
