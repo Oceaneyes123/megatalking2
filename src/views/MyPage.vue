@@ -25,13 +25,7 @@
                 <v-icon @click="$refs.calendar.prev()" x-large>fas fa-angle-left</v-icon>
               </v-col>
               <v-col cols="10">
-                <v-calendar
-                  v-model="value"
-                  ref="calendar"
-                  :now="today"
-                  color="#faae7d"
-                  type="weekly"
-                ></v-calendar>
+                <v-calendar ref="calendar" :now="today" color="#faae7d" type="week"></v-calendar>
               </v-col>
               <v-col cols="1" class="d-flex align-center justify-center">
                 <v-icon @click="$refs.calendar.next()" x-large>fas fa-angle-right</v-icon>
@@ -158,7 +152,6 @@ export default {
       select: "수업 회차순",
       today: "",
       date: new Date(),
-      value: "",
       month: "",
       tests: [
         {
