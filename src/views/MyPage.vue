@@ -18,9 +18,23 @@
                 <v-select v-model="select" :items="selectItems" outlined></v-select>
               </v-col>
             </v-row>
+            <div class="text-center font-weight-black h4">{{month}}</div>
+            <v-divider style="background-color:#5a55a1"></v-divider>
             <v-row>
-              <v-col cols="12">
-                <v-calendar ref="calendar" :now="today" color="primary" type="custom-weekly"></v-calendar>
+              <v-col cols="1" class="d-flex align-center justify-center">
+                <v-icon @click="$refs.calendar.prev()" x-large>fas fa-angle-left</v-icon>
+              </v-col>
+              <v-col cols="10">
+                <v-calendar
+                  v-model="value"
+                  ref="calendar"
+                  :now="today"
+                  color="#faae7d"
+                  type="weekly"
+                ></v-calendar>
+              </v-col>
+              <v-col cols="1" class="d-flex align-center justify-center">
+                <v-icon @click="$refs.calendar.next()" x-large>fas fa-angle-right</v-icon>
               </v-col>
             </v-row>
             <v-row class="mx-1">
@@ -144,6 +158,8 @@ export default {
       select: "수업 회차순",
       today: "",
       date: new Date(),
+      value: "",
+      month: "",
       tests: [
         {
           test: "test",
@@ -163,7 +179,7 @@ export default {
 
   mounted() {
     this.today = this.formatDate(this.date);
-    console.log(this.$refs);
+    this.month = this.date.getMonth() + 1;
   },
 
   methods: {

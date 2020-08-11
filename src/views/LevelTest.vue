@@ -100,8 +100,8 @@
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>
 
               <v-row justify="end" class="mb-5">
-                <v-col cols="9">
-                  <v-container>
+                <v-col cols="10" class="pb-0">
+                  <v-container class="pb-0">
                     <v-row justify="center">
                       <v-btn
                         v-for="(day, i) in days"
@@ -138,17 +138,33 @@
                 </v-col>
                 <v-spacer></v-spacer>
                 <v-col cols="10">
-                  <v-card color="#fafafa" width="100%" flat>
-                    <v-container class="px-0 py-0">
-                      <v-row no-gutters v-for="(hour, i) in 6" :key="i">
-                        <v-col
-                          class="py-2"
-                          cols="2"
-                          v-for="(minute, j) in 6"
-                          :key="j"
-                        >{{hour + 5}}:{{j}}0</v-col>
-                      </v-row>
-                    </v-container>
+                  <v-card max-height="230" color="#fafafa" width="100%" flat>
+                    <v-card flat v-if="tab==0">
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters v-for="(hour, i) in 6" :key="i">
+                          <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
+                            <span
+                              style="cursor:pointer"
+                              @click="selectTime($event)"
+                              :class="{'blue--text text--darken-3 font-weight-black': (hour + 5) + ':' + j + '0' == selectedTime}"
+                            >{{hour + 5}}:{{j}}0</span>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card flat max-height="230" style="overflowY: scroll" v-else>
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters v-for="(hour, i) in 12" :key="i">
+                          <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
+                            <span
+                              style="cursor:pointer"
+                              @click="selectTime($event)"
+                              :class="{'blue--text text--darken-3 font-weight-black': (hour + 11) + ':' + j + '0' == selectedTime}"
+                            >{{hour + 11}}:{{j}}0</span>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
                   </v-card>
                 </v-col>
               </v-row>
@@ -196,10 +212,11 @@ export default {
       daySelected: -1,
 
       dateTime: new Date(),
-      listOfTimes: [],
+      // listOfTimes: [],
 
       checkbox1: false,
-      tab: 0
+      tab: 0,
+      selectedTime: ""
     };
   },
   mounted() {
@@ -216,7 +233,7 @@ export default {
       }
     }
 
-    this.setListofTime();
+    // this.setListofTime();
   },
 
   methods: {
@@ -233,17 +250,21 @@ export default {
       return [year, month, day].join("-");
     },
 
-    setListofTime() {
-      var listOfTimes = [...Array(6)].map(() => new Array(6));
+    // setListofTime() {
+    //   var listOfTimes = [...Array(6)].map(() => new Array(6));
 
-      for (var i = 0; i < 6; i++) {
-        for (var j = 0; j < 6; j++) {
-          listOfTimes[i][j] = i + 6 + ":" + j + "0";
-        }
-      }
+    //   for (var i = 0; i < 6; i++) {
+    //     for (var j = 0; j < 6; j++) {
+    //       listOfTimes[i][j] = i + 6 + ":" + j + "0";
+    //     }
+    //   }
 
-      this.listOfTimes = listOfTimes;
-      console.log(this.listOfTimes);
+    //   this.listOfTimes = listOfTimes;
+
+    // },
+
+    selectTime(event) {
+      this.selectedTime = event.target.innerText;
     }
   }
 };
