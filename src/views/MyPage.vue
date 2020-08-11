@@ -9,7 +9,7 @@
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:200px;margin-bottom:500px"
+          style="margin-top:90px;margin-bottom:500px"
           max-width="1000px"
         >
           <v-container class="px-10 pt-10 text-left">
@@ -20,7 +20,7 @@
             </v-row>
             <v-row>
               <v-col cols="12">
-                <v-calendar ref="calendar" :now="today" color="primary" type="month"></v-calendar>
+                <v-calendar ref="calendar" :now="today" color="primary" type="custom-weekly"></v-calendar>
               </v-col>
             </v-row>
             <v-row class="mx-1">
@@ -130,6 +130,12 @@
   </v-app>
 </template>
 
+<style scoped>
+.v-calendar-daily__pane {
+  height: 0px !important;
+}
+</style>
+
 <script>
 export default {
   data() {
@@ -157,6 +163,7 @@ export default {
 
   mounted() {
     this.today = this.formatDate(this.date);
+    console.log(this.$refs);
   },
 
   methods: {
