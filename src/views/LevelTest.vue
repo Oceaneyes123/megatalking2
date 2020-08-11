@@ -139,9 +139,14 @@
                 <v-spacer></v-spacer>
                 <v-col cols="10">
                   <v-card color="#fafafa" width="100%" flat>
-                    <v-container>
-                      <v-row class="px-5">
-                        <v-card flat color="#fff"></v-card>
+                    <v-container class="px-0 py-0">
+                      <v-row no-gutters v-for="(hour, i) in 6" :key="i">
+                        <v-col
+                          class="py-2"
+                          cols="2"
+                          v-for="(minute, j) in 6"
+                          :key="j"
+                        >{{hour + 5}}:{{j}}0</v-col>
                       </v-row>
                     </v-container>
                   </v-card>
@@ -178,7 +183,7 @@
 }
 
 .v-tabs--vertical.v-tabs--icons-and-text > .v-tabs-bar .v-tab {
-  height: 130px;
+  height: 115px;
   border-radius: 30px 0 0 30px;
 }
 </style>
@@ -190,7 +195,11 @@ export default {
       days: [],
       daySelected: -1,
 
-      dateTime: new Date()
+      dateTime: new Date(),
+      listOfTimes: [],
+
+      checkbox1: false,
+      tab: 0
     };
   },
   mounted() {
@@ -206,6 +215,8 @@ export default {
         this.days.push(this.formatDate(nextDates));
       }
     }
+
+    this.setListofTime();
   },
 
   methods: {
@@ -231,7 +242,8 @@ export default {
         }
       }
 
-      console.log(listOfTimes);
+      this.listOfTimes = listOfTimes;
+      console.log(this.listOfTimes);
     }
   }
 };
