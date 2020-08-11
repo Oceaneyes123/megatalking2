@@ -98,6 +98,25 @@
                 </v-col>
               </v-row>
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>
+
+              <v-row justify="end" class="mb-5">
+                <v-col cols="9">
+                  <v-container>
+                    <v-row justify="center">
+                      <v-btn
+                        v-for="(day, i) in days"
+                        :key="i"
+                        class="rounded-lg mr-3"
+                        large
+                        @click="daySelected = i"
+                        :color="daySelected == i ? 'primary' : ''"
+                        depressed
+                      >{{ day }}</v-btn>
+                    </v-row>
+                  </v-container>
+                </v-col>
+              </v-row>
+
               <v-row class="mx-10">
                 <v-col cols="2">
                   <v-tabs
@@ -121,17 +140,6 @@
                 <v-col cols="10">
                   <v-card color="#fafafa" width="100%" flat>
                     <v-container>
-                      <v-row justify="center" class="mb-5">
-                        <v-btn
-                          v-for="(day, i) in days"
-                          :key="i"
-                          class="rounded-lg mr-3"
-                          large
-                          @click="daySelected = i"
-                          :color="daySelected == i ? 'primary' : ''"
-                          depressed
-                        >{{ day }}</v-btn>
-                      </v-row>
                       <v-row class="px-5">
                         <v-card flat color="#fff"></v-card>
                       </v-row>
@@ -180,7 +188,9 @@ export default {
   data() {
     return {
       days: [],
-      daySelected: -1
+      daySelected: -1,
+
+      dateTime: new Date()
     };
   },
   mounted() {
@@ -196,8 +206,6 @@ export default {
         this.days.push(this.formatDate(nextDates));
       }
     }
-
-    console.log(this.days);
   },
 
   methods: {
@@ -212,6 +220,18 @@ export default {
       if (day.length < 2) day = +day;
 
       return [year, month, day].join("-");
+    },
+
+    setListofTime() {
+      var listOfTimes = [...Array(6)].map(() => new Array(6));
+
+      for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 6; j++) {
+          listOfTimes[i][j] = i + 6 + ":" + j + "0";
+        }
+      }
+
+      console.log(listOfTimes);
     }
   }
 };
