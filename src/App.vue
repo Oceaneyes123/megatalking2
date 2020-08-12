@@ -14,7 +14,7 @@
           </v-card>
           <v-spacer></v-spacer>
           <v-card flat class="d-flex align-center mr-5" color="#00000000" style="color:#a3a3a3">
-            <div class="mr-6 subheading">커리큘럼</div>
+            <div class="mr-6 subheading" @click="$router.push('/curriculum')">커리큘럼</div>
             <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
             <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
             <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>

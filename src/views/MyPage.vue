@@ -25,7 +25,13 @@
                 <v-icon @click="$refs.calendar.prev()" x-large>fas fa-angle-left</v-icon>
               </v-col>
               <v-col cols="10">
-                <v-calendar ref="calendar" :now="today" color="#faae7d" type="week"></v-calendar>
+                <v-calendar
+                  class="calendar"
+                  ref="calendar"
+                  :now="today"
+                  color="#faae7d"
+                  type="week"
+                ></v-calendar>
               </v-col>
               <v-col cols="1" class="d-flex align-center justify-center">
                 <v-icon @click="$refs.calendar.next()" x-large>fas fa-angle-right</v-icon>
@@ -138,7 +144,7 @@
   </v-app>
 </template>
 
-<style scoped>
+<style>
 .v-calendar-daily__pane {
   height: 0px !important;
 }

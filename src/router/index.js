@@ -27,6 +27,11 @@ const routes = [{
     path: "/mypage",
     name: "MyPage",
     component: require("../views/MyPage.vue").default
+  },
+  {
+    path: "/curriculum",
+    name: "MyPage",
+    component: require("../views/Curriculum.vue").default
   }
 ];
 
