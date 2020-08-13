@@ -4,7 +4,7 @@
     <v-card tile color="#344051" class="text-center">
       <v-img src="../assets/bg.jpg" width="100%" class="text-center pa-3">
         <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">무조건 듣기만하는 영어 회화?</div>
-        <div class="white--text title mb-10">
+        <div class="white--text h6 mb-10">
           20대의 가장 큰 고민, 스펙과 영어! 값비싼 어학연수, 이젠 온라인으로
           즐기세요.
           <br />
@@ -39,7 +39,7 @@
                 <v-card class="pt-10" flat color="#00000000">
                   <div class="mb-5 font-weight-bold">강사 평가점수</div>
                   <div class="h6 mb-6">
-                    <span class="font-weight-bold h4 mr-2">4.8</span>
+                    <span class="font-weight-bold nanum h4 mr-2">4.8</span>
                     <span style="color:#7e7e7e">/5.0</span>
                   </div>
                   <v-rating

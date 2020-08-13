@@ -178,6 +178,12 @@
   letter-spacing: 0.009375rem;
 }
 
+.subtitle-text-1 {
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.009375rem;
+}
+
 .regular {
   font-weight: 400 !important;
 }
