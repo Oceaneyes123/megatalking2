@@ -144,6 +144,7 @@
                         <v-row no-gutters v-for="(hour, i) in 6" :key="i">
                           <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
                             <span
+                              class="regular"
                               style="cursor:pointer"
                               @click="selectTime($event)"
                               :class="{'blue--text text--darken-3 font-weight-black': (hour + 5) + ':' + j + '0' == selectedTime}"
@@ -157,6 +158,7 @@
                         <v-row no-gutters v-for="(hour, i) in 12" :key="i">
                           <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
                             <span
+                              class="regular"
                               style="cursor:pointer"
                               @click="selectTime($event)"
                               :class="{'blue--text text--darken-3 font-weight-black': (hour + 11) + ':' + j + '0' == selectedTime}"

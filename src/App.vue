@@ -127,7 +127,7 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
-.text-purple {
+ca .text-purple {
   color: #5a55a1;
 }
 
@@ -155,16 +155,19 @@
   letter-spacing: -0.03125rem;
 }
 .h3 {
+  font-family: "GmarketSansGmarketSansBoldLight", sans-serif;
   font-weight: 400;
   font-size: 3rem;
   letter-spacing: normal;
 }
 .h4 {
+  font-family: "GmarketSansBold", sans-serif;
   font-weight: 400;
   font-size: 2.125rem;
   letter-spacing: -0.015625remm;
 }
 .h5 {
+  font-family: "GmarketSansBold", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: normal;
@@ -175,7 +178,30 @@
   letter-spacing: 0.009375rem;
 }
 
+.regular {
+  font-weight: 400 !important;
+}
+
+.v-application .caption {
+  font-family: unset;
+}
+
+.caption-text {
+  font-family: "NanumSquare", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.025rem;
+}
+
 @font-face {
+  font-family: "GmarketSansBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
   font-family: "NanumSquareB";
   font-style: normal;
   src: url("https://cdn.jsdelivr.net/npm/typeface-nanum-square@1.1.0/NanumSquareB.woff")
@@ -191,5 +217,5 @@
       format("woff"),
     url("https://cdn.jsdelivr.net/npm/@kfonts/nanum-square@0.1.0/NanumSquareRegular.woff2")
       format("woff2");
-}
+} */
 </style>
