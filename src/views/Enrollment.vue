@@ -7,24 +7,24 @@
           class="h4 mb-5 font-weight-bold"
           style="color:#2564cb"
         >“Anytime, Anywhere, Home Learn English.”</div>
-        <div class="h5 mb-5" style="color:#5f8dd3">메가토킹은 새벽부터 밤까지, 회원님만을 위한 맞춤 강의를 제공합니다.</div>
+        <div class="h6 mb-5" style="color:#5f8dd3">메가토킹은 새벽부터 밤까지, 회원님만을 위한 맞춤 강의를 제공합니다.</div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card class="rounded-xl shadow" width="100%" style="margin-bottom:500px">
             <v-container class="px-0 py-0">
               <v-row no-gutters>
                 <v-col cols="12" md="8">
                   <v-card class="pl-10 pt-10 pr-8 rounded-xl" flat color="#fafafa">
-                    <div class="h5 font-weight-bold text-left">수강 종류</div>
+                    <div class="h6 font-weight-black text-left">수강 종류</div>
                     <v-container class="px-0 mt-7">
                       <v-row no-gutters class="mb-5">
                         <v-col cols="12" sm="6" class="text-left">
-                          <div class="h5 font-weight-bold">전화로 할래요</div>
+                          <div class="h6 font-weight-bold">전화로 할래요</div>
                           <div class="subheading">
                             <v-icon color="#5a55a1" style="font-size:20px">fas fa-phone-square-alt</v-icon>화성영어 서비스 제공
                           </div>
                         </v-col>
                         <v-col cols="12" sm="6" class="text-left">
-                          <div class="h5 font-weight-bold" style="color:#4242a3">화상으로 할래요.</div>
+                          <div class="h6 font-weight-bold" style="color:#4242a3">화상으로 할래요.</div>
                           <div class="subheading">
                             <v-icon color="#5a55a1" style="font-size:20px">fas fa-phone-square-alt</v-icon>스카이프 서비스 제공
                           </div>
@@ -34,7 +34,7 @@
 
                     <v-divider class="mr-10"></v-divider>
 
-                    <div class="h5 font-weight-bold text-left mt-10 mb-10">수업 선택</div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">수업 선택</div>
                     <v-tabs v-model="tab" vertical>
                       <v-tab v-for="(duration, i) in durations" :key="i">
                         {{
@@ -191,7 +191,7 @@
                       </v-tab-item>
                     </v-tabs>
 
-                    <div class="h5 font-weight-bold text-left mt-10 mb-10">수업 시간</div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">수업 시간</div>
 
                     <v-container class="pb-1">
                       <v-row no-gutters>
@@ -272,7 +272,7 @@
 
                 <v-col cols="12" md="4">
                   <v-card flat class="pt-10 rounded-xl">
-                    <div class="h5 font-weight-bold">수강선택 요약</div>
+                    <div class="h6 font-weight-black">수강선택 요약</div>
                     <v-container class="mt-3 px-7 text-left">
                       <v-row no-gutters class="px-2">
                         <v-col cols="4">수강코스</v-col>
@@ -296,7 +296,7 @@
 
                     <v-divider style="margin-top:100px; margin-bottom:100px" class="mx-7"></v-divider>
 
-                    <div class="h5 font-weight-bold mb-5">결제 예정금액</div>
+                    <div class="h6 font-weight-black mb-5">결제 예정금액</div>
 
                     <v-container class="mt-3 px-7 text-left">
                       <v-row no-gutters class="px-2">

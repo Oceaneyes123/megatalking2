@@ -169,7 +169,7 @@
                 >택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.</div>
               </v-col>
             </v-row>
-            <v-row justify="center" class="mt-10">
+            <v-row justify="center" class="my-10">
               <v-card flat class="rounded-xl">
                 <v-simple-table style="width:100%">
                   <template v-slot:default>
@@ -403,6 +403,24 @@
                 </v-simple-table>
               </v-card>
             </v-row>
+            <div class="mt-10 pt-10 h4 nanum text-purple font-weight-bold">
+              {{category}}
+              <span class="h6 text-purple font-weight-bold">기초발음교정 (level 1~3)</span>
+            </div>
+            <div class="d-flex justify-center">
+              <v-card
+                flat
+                color="#fafafa"
+                class="text-center mt-10"
+                style="color: #ada8a8; word-break:keep-all; line-break:strict"
+                max-width="500"
+              >
+                입문과정에서는 영어를 아주 처음 시작하는 왕초보와, 초심을 가지고
+                발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다.
+                1~2개월 완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐 수 있습니다.
+              </v-card>
+            </div>
+            <div></div>
           </v-container>
         </v-card>
       </v-card>
@@ -431,7 +449,22 @@ td:nth-child(n + 2) {
 export default {
   data() {
     return {
-      slide: null
+      slide: null,
+      category: "입문과정",
+
+      books: [
+        {
+          image: "../assets/curriculum/phonics.jpg",
+          title: "Phonics 1~6",
+          details:
+            "기본 알파벳과 기본 단어부터 차근차근 배우고자 하시는 분, 부담없이 시작 할 수 있는 왕기초 발음교정 과정입니다. 1권부터 6권까지 3개월완성! (빠른 진도시 한달만에도 완성가능)"
+        },
+        {
+          image: "",
+          title: "",
+          details: ""
+        }
+      ]
     };
   }
 };

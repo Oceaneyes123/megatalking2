@@ -127,7 +127,7 @@
   -moz-osx-font-smoothing: grayscale;
 } */
 
-ca .text-purple {
+.text-purple {
   color: #5a55a1;
 }
 
@@ -191,6 +191,14 @@ ca .text-purple {
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.025rem;
+}
+
+.nanum {
+  font-family: "NanumSquare", sans-serif !important;
+}
+
+.gmarket {
+  font-family: "GmarketSansBold", sans-serif !important;
 }
 
 @font-face {
