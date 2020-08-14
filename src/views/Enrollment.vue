@@ -2,12 +2,12 @@
   <v-app>
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f7" class="text-center pa-3">
-        <div class="h4 font-weight-bold white--text mb-5" style="margin-top:200px">수강 신청</div>
-        <div
-          class="h4 mb-5 font-weight-bold"
-          style="color:#2564cb"
-        >“Anytime, Anywhere, Home Learn English.”</div>
-        <div class="h6 mb-5" style="color:#5f8dd3">메가토킹은 새벽부터 밤까지, 회원님만을 위한 맞춤 강의를 제공합니다.</div>
+        <div class="h3 font-weight-bold white--text" style="margin-top:200px">수강 신청</div>
+        <div class="h6 nanum white--text">
+          <div class="my-10">왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.</div>
+          <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
+          <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
+        </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card class="rounded-xl shadow" width="100%" style="margin-bottom:500px">
             <v-container class="px-0 py-0">
@@ -20,13 +20,21 @@
                         <v-col cols="12" sm="6" class="text-left">
                           <div class="h6 font-weight-bold">전화로 할래요</div>
                           <div class="subheading">
-                            <v-icon color="#5a55a1" style="font-size:20px">fas fa-phone-square-alt</v-icon>화성영어 서비스 제공
+                            <v-icon
+                              color="#5a55a1"
+                              class="mr-2"
+                              style="font-size:20px"
+                            >fas fa-phone-square-alt</v-icon>화성영어 서비스 제공
                           </div>
                         </v-col>
                         <v-col cols="12" sm="6" class="text-left">
                           <div class="h6 font-weight-bold" style="color:#4242a3">화상으로 할래요.</div>
                           <div class="subheading">
-                            <v-icon color="#5a55a1" style="font-size:20px">fas fa-phone-square-alt</v-icon>스카이프 서비스 제공
+                            <v-icon
+                              color="#5a55a1"
+                              class="mr-2"
+                              style="font-size:20px"
+                            >fas fa-phone-square-alt</v-icon>스카이프 서비스 제공
                           </div>
                         </v-col>
                       </v-row>
@@ -267,6 +275,12 @@
                       class="caption mb-5"
                       style="color:#bdbdbd"
                     >시간표 전체보기 ></div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">결제 방식</div>
+                    <v-row>
+                      <v-col cols="4" v-for="(method, i) in paymentMethods" :key="i">
+                        <v-btn color="#5a55a1" outlined x-large class="rounded-lg">{{method.text}}</v-btn>
+                      </v-col>
+                    </v-row>
                   </v-card>
                 </v-col>
 
@@ -352,6 +366,11 @@ export default {
       timeList: [],
       seeMore: false,
       currentZone: 0,
+      paymentMethods: [
+        { text: "무통장 입금", color: "" },
+        { text: "카드 결제 ", color: "" },
+        { text: "정기 결제 ", color: "" }
+      ],
 
       frequencySelected: -1,
       daySelected: -1,
