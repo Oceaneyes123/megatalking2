@@ -2,12 +2,13 @@
   <v-app>
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f7" class="text-center pa-3">
-        <div class="h4 font-weight-bold white--text mb-5" style="margin-top:200px">레벨테스트</div>
-        <div
-          class="h4 mb-5 font-weight-bold"
-          style="color:#2564cb"
-        >“Anytime, Anywhere, Home Learn English.”</div>
-        <div class="h5 mb-5" style="color:#5f8dd3">레벨테스트를 통해 나의 영어 실력을 알고, 무료수업을 신청해보세요 .</div>
+        <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">레벨테스트</div>
+        <div class="h6 nanum white--text">
+          <div class="my-1">설레는 마음 반, 기대감이 반!</div>
+          <div class="my-2">누구나 시작은 레벨테스트</div>
+          <div class="my-2">걱정하지 마세요.</div>
+          <div class="my-1">메가토킹선생님이 편안하게 친구처럼 도와드려요</div>
+        </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card
             class="rounded-xl shadow"
@@ -37,21 +38,21 @@
               <v-row class="px-10 my-10 d-flex justify-center">
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon1.png" width="70"></v-img>
-                  <div class="mt-3 caption">신청서 작성</div>
+                  <div class="mt-3 caption-text">신청서 작성</div>
                 </div>
                 <div class="mx-2 mt-3">
                   <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-right</v-icon>
                 </div>
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon2.png" width="70"></v-img>
-                  <div class="mt-3 caption">예약 완료</div>
+                  <div class="mt-3 caption-text">예약 완료</div>
                 </div>
                 <div class="mx-2 mt-3">
                   <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-right</v-icon>
                 </div>
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon3.png" width="70"></v-img>
-                  <div class="mt-3 caption">
+                  <div class="mt-3 caption-text">
                     문자메시지 발송
                     <br />(예약 확인, 테스트 안내 )
                   </div>
@@ -61,7 +62,7 @@
                 </div>
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon4.png" width="70"></v-img>
-                  <div class="mt-3 caption">
+                  <div class="mt-3 caption-text">
                     강사님과 1:1수업
                     <br />(간단 자기소개 등)
                   </div>
@@ -71,14 +72,14 @@
                 </div>
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon5.png" width="70"></v-img>
-                  <div class="mt-3 caption">테스트 결과 받기</div>
+                  <div class="mt-3 caption-text">테스트 결과 받기</div>
                 </div>
                 <div class="mx-2 mt-3">
                   <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-right</v-icon>
                 </div>
                 <div class="mx-2">
                   <v-img class="mx-auto" src="../assets/icon6.png" width="70"></v-img>
-                  <div class="mt-3 caption">개별 맞춤 상담</div>
+                  <div class="mt-3 caption-text">개별 맞춤 상담</div>
                 </div>
               </v-row>
               <div class="h6 font-weight-black text-left px-10">과목 선택</div>
