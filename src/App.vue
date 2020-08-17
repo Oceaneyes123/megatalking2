@@ -30,7 +30,7 @@
       <v-img :src="currentImage" width="100%" class="text-center">
         <router-view></router-view>
 
-        <v-card max-width="1000" class="mx-auto" color="#00000000" flat>
+        <v-card max-width="1000" class="mx-auto mt-10" color="#00000000" flat>
           <v-container>
             <v-row no-gutters>
               <v-col cols="12" md="3">
@@ -129,11 +129,17 @@ export default {
   },
 
   mounted() {
-    this.currentImage = this.images.main;
+    this.loadBg();
   },
 
   watch: {
     $route: function() {
+      this.loadBg();
+    }
+  },
+
+  methods: {
+    loadBg() {
       this.currentRoute = this.$route.name.toLowerCase();
       this.currentImage = this.images[this.currentRoute];
     }

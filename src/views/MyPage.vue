@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#faae7d" class="text-center pa-3">
+      <v-card tile color="#faae7d00" flat class="text-center pa-3">
         <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">마이 페이지</div>
         <div class="h6 nanum white--text">
           <div class="my-1">재미있는 영어수다! 친구처럼 편한 영어!</div>
@@ -11,7 +11,7 @@
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:90px;margin-bottom:500px"
+          style="margin-top:90px"
           max-width="1000px"
         >
           <v-container class="px-10 pt-10 text-left">

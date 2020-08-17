@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#8bb6f7" class="text-center pa-3">
+      <v-card tile color="#8bb6f700" flat class="text-center pa-3">
         <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">레벨테스트</div>
         <div class="h6 nanum white--text">
           <div class="my-1">설레는 마음 반, 기대감이 반!</div>
@@ -10,12 +10,7 @@
           <div class="my-1">메가토킹선생님이 편안하게 친구처럼 도와드려요</div>
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
-          <v-card
-            class="rounded-xl shadow"
-            width="100%"
-            style="margin-bottom:500px"
-            color="#fafafa"
-          >
+          <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
             <v-container class="px-10 pt-10">
               <v-row class="px-10">
                 <div class="h5">전화영어 무료 레벨테스트.</div>
