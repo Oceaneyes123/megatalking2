@@ -30,7 +30,7 @@ const routes = [{
   },
   {
     path: "/curriculum",
-    name: "MyPage",
+    name: "Curriculum",
     component: require("../views/Curriculum.vue").default
   }
 ];

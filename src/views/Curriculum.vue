@@ -1,12 +1,12 @@
 <template>
-  <v-app>
+  <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#8bb6f7" class="text-center pa-3">
+      <v-card flat tile color="#8bb6f700" class="text-center pa-3">
         <v-card
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:200px;margin-bottom:500px"
+          style="margin-top:200px"
           max-width="1000px"
           color="#fafafa"
         >
