@@ -44,7 +44,7 @@
                       <v-img
                         @click="$router.push('/')"
                         contain
-                        src="../src/assets/logo.jpg"
+                        src="../src/assets/mega_blue.png"
                         width="150"
                         class="subheading"
                       ></v-img>

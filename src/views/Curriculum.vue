@@ -2,11 +2,18 @@
   <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
       <v-card flat tile color="#8bb6f700" class="text-center pa-3">
+        <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">커리큘럼</div>
+        <div
+          class="h4 nanum font-weight-bold"
+          style="color:#bfd384"
+        >“Anytime, Anywhere, Home Learn English.”</div>
+        <div class="mt-5 h5 nanum white--text">메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.</div>
+
         <v-card
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:200px"
+          style="margin-top:90px"
           max-width="1000px"
           color="#fafafa"
         >
