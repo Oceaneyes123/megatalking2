@@ -1,22 +1,22 @@
 <template>
   <v-app style="background-color:#00000000">
-    <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">무조건 듣기만하는 영어 회화?</div>
-    <div class="white--text h6 mb-10">
-      20대의 가장 큰 고민, 스펙과 영어! 값비싼 어학연수, 이젠 온라인으로
-      즐기세요.
-      <br />
-      <br />뉴욕의 각 명소를 여행하며 모은 인터뷰를 통해 현지표현을 그대로!
-      <br />총 20강좌로 이루어진 뉴욕라이브 잉글리쉬로 생생한
-      뉴욕을느껴보세요!
-      <br />
-      <br />전화/화상영어로 함깨 학습할 수도 있고, 컨텐츠로 수강 할 수도
-      있습니다.
-    </div>
-    <v-row justify="center">
-      <v-col cols="5">
+    <v-container>
+      <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">무조건 듣기만하는 영어 회화?</div>
+      <div class="white--text h6 mb-10">
+        20대의 가장 큰 고민, 스펙과 영어! 값비싼 어학연수, 이젠 온라인으로
+        즐기세요.
+        <br />
+        <br />뉴욕의 각 명소를 여행하며 모은 인터뷰를 통해 현지표현을 그대로!
+        <br />총 20강좌로 이루어진 뉴욕라이브 잉글리쉬로 생생한
+        뉴욕을느껴보세요!
+        <br />
+        <br />전화/화상영어로 함깨 학습할 수도 있고, 컨텐츠로 수강 할 수도
+        있습니다.
+      </div>
+      <v-row justify="center">
         <v-btn class="rounded-xl pa-8 title" color="primary">뉴욕 스피킹 바로가기</v-btn>
-      </v-col>
-    </v-row>
+      </v-row>
+    </v-container>
     <v-container style="max-width:1000px;margin-top:90px">
       <v-card class="rounded-xl shadow" width="100%">
         <v-row class="px-10">

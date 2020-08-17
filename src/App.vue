@@ -13,7 +13,13 @@
             ></v-img>
           </v-card>
           <v-spacer></v-spacer>
-          <v-card flat class="d-flex align-center mr-5" color="#00000000" style="color:#a3a3a3">
+          <v-card
+            v-if="screenWidth > 960"
+            flat
+            class="d-flex align-center mr-5"
+            color="#00000000"
+            style="color:#a3a3a3"
+          >
             <div class="mr-6 subheading" @click="$router.push('/curriculum')">커리큘럼</div>
             <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
             <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
@@ -24,6 +30,28 @@
               <a>로그인</a>
             </div>
           </v-card>
+
+          <v-menu
+            v-else
+            close-on-click
+            min-width="100%"
+            offset-y
+            bottom
+            class="mt-10"
+            transition="slide-y-transition"
+          >
+            <template v-slot:activator="{on: menu}">
+              <v-icon v-on="menu" x-large>menu</v-icon>
+            </template>
+            <v-card style="color:#a3a3a3" minz-width="100%" color="#fafafa" tile flat>
+              <v-list>
+                <v-list-item @click="$router.push('/curriculum')">커리큘럼</v-list-item>
+                <v-list-item @click="$router.push('/level-test')">레벨테스트</v-list-item>
+                <v-list-item @click="$router.push('/enrollment')">수강신청</v-list-item>
+                <v-list-item @click="$router.push('/mypage')">마이페이지</v-list-item>
+              </v-list>
+            </v-card>
+          </v-menu>
         </v-container>
       </v-card>
 
@@ -124,12 +152,21 @@ export default {
         enrollment: require("../src/assets/enrollment.jpg"),
         mypage: require("../src/assets/mypage.jpg")
       },
-      currentImage: ""
+      currentImage: "",
+      screenWidth: ""
     };
+  },
+
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
   },
 
   mounted() {
     this.loadBg();
+    this.screenWidth = screen.width;
   },
 
   watch: {
@@ -142,6 +179,10 @@ export default {
     loadBg() {
       this.currentRoute = this.$route.name.toLowerCase();
       this.currentImage = this.images[this.currentRoute];
+    },
+
+    onWindowResize() {
+      this.screenWidth = screen.width;
     }
   }
 };

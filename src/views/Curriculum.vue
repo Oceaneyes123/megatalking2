@@ -221,7 +221,7 @@
                         <td>중급회화</td>
                         <td colspan="6"></td>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <td>
                           정규
                           <br />회화과정
@@ -232,7 +232,7 @@
                         <td></td>
                         <td>정규회화</td>
                         <td colspan="5"></td>
-                      </tr>
+                      </tr>-->
                       <tr>
                         <td>
                           뉴욕라이브
