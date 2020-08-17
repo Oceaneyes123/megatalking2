@@ -9,7 +9,7 @@
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
-          <v-card class="rounded-xl shadow" width="100%" style="margin-bottom:500px">
+          <v-card class="rounded-xl shadow" width="100%">
             <v-container class="px-0 py-0">
               <v-row no-gutters>
                 <v-col cols="12" md="8">

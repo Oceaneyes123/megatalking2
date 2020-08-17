@@ -12,7 +12,11 @@
       <br />전화/화상영어로 함깨 학습할 수도 있고, 컨텐츠로 수강 할 수도
       있습니다.
     </div>
-    <v-btn class="rounded-xl pa-8 title" color="primary">뉴욕 스피킹 바로가기</v-btn>
+    <v-row justify="center">
+      <v-col cols="5">
+        <v-btn class="rounded-xl pa-8 title" color="primary">뉴욕 스피킹 바로가기</v-btn>
+      </v-col>
+    </v-row>
     <v-container style="max-width:1000px;margin-top:90px">
       <v-card class="rounded-xl shadow" width="100%">
         <v-row class="px-10">
