@@ -11,7 +11,7 @@
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
-            <v-container class="px-10 pt-10">
+            <v-container class="px-md-10 pt-10">
               <v-row class="px-10">
                 <div class="h5">전화영어 무료 레벨테스트.</div>
               </v-row>
@@ -26,7 +26,7 @@
                 </div>
               </v-row>
               <v-divider class="mx-10 mb-10"></v-divider>
-              <div class="text-dark-purple h6">
+              <div class="px-10 text-dark-purple h6">
                 <span class="font-weight-black">나에게 맞춘 날짜와 시간</span>에
                 언제든지 진행 가능합니다.
               </div>
@@ -77,20 +77,27 @@
                   <div class="mt-3 caption-text">개별 맞춤 상담</div>
                 </div>
               </v-row>
-              <div class="h6 font-weight-black text-left px-10">과목 선택</div>
+              <div class="px-5 px-md-10 h6 font-weight-black text-left">과목 선택</div>
               <v-row class="mx-10 mb-10">
-                <v-checkbox v-model="checkbox1" color="primary" class="mr-10" label="메가토킹 전화영어"></v-checkbox>
-                <v-checkbox v-model="checkbox1" color="primary" label="메가토킹 화상영어"></v-checkbox>
-              </v-row>
-              <v-row class="d-flex align-center mx-10 mb-10">
-                <div class="pb-7 font-weight-black">이름</div>
-                <v-col cols="4" class="mr-5">
-                  <v-text-field color="primary" dense outlined></v-text-field>
+                <v-col cols="12" md="6">
+                  <v-checkbox v-model="checkbox1" color="primary" class="mr-10" label="메가토킹 전화영어"></v-checkbox>
                 </v-col>
-
-                <div class="pb-7 font-weight-black">연락처</div>
-                <v-col cols="4">
-                  <v-text-field color="primary" dense outlined></v-text-field>
+                <v-col cols="12" md="6">
+                  <v-checkbox v-model="checkbox1" color="primary" label="메가토킹 화상영어"></v-checkbox>
+                </v-col>
+              </v-row>
+              <v-row class="align-center mx-10 mb-10">
+                <v-col class="d-flex flex-row align-center" cols="12" md="6">
+                  <div class="pb-7 mr-4 mr-md-0 font-weight-black">이름</div>
+                  <v-col cols="8">
+                    <v-text-field color="primary" dense outlined></v-text-field>
+                  </v-col>
+                </v-col>
+                <v-col class="d-flex flex-row align-center" cols="12" md="6">
+                  <div class="pb-7 font-weight-black">연락처</div>
+                  <v-col cols="8">
+                    <v-text-field color="primary" dense outlined></v-text-field>
+                  </v-col>
                 </v-col>
               </v-row>
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>

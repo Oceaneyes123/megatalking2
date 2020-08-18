@@ -43,12 +43,8 @@
                     <v-divider class="mr-10"></v-divider>
 
                     <div class="h6 font-weight-black text-left mt-10 mb-10">수업 선택</div>
-                    <v-tabs v-model="tab" vertical>
-                      <v-tab v-for="(duration, i) in durations" :key="i">
-                        {{
-                        duration
-                        }}
-                      </v-tab>
+                    <v-tabs v-model="tab" :vertical="!isMobile" :grow="isMobile">
+                      <v-tab v-for="(duration, i) in durations" :key="i">{{duration}}</v-tab>
                       <v-tab-item v-for="(index, i) in 3" :key="i">
                         <v-card flat color="#f5f4f6">
                           <v-container class="pa-5 pa-sm-10">
@@ -377,6 +373,9 @@ export default {
       periodSelected: -1,
       bookSelected: -1,
       timeSelected: -1,
+
+      isMobile: false,
+
       bookList10: [
         {
           status: "enabled",
@@ -604,6 +603,13 @@ export default {
     };
   },
 
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
   watch: {
     tab: function() {
       // this.frequencySelected = -1;
@@ -614,6 +620,9 @@ export default {
   },
 
   mounted() {
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
+
     for (var i = 1; i < 12; i++) {
       var today = new Date();
       var nextDates = new Date(today);
@@ -659,6 +668,11 @@ export default {
               : nextTime.getMinutes())
         );
       }
+    },
+
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
     }
   }
 };

@@ -151,24 +151,24 @@
               class="text--secondary mt-3 subheading font-weight-bold"
             >메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.</div>
             <v-row class="mt-10" justify="center">
-              <v-col cols="3" class="px-3">
-                <v-img src="../assets/c-icon1.png" width="200"></v-img>
+              <v-col cols="12" md="3" class="px-3">
+                <v-img src="../assets/c-icon1.png" width="200" class="mx-auto"></v-img>
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
                   class="h6 text--secondary mt-3"
                   style="letter-spacing:-1px !important"
                 >레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수 있습니다.</div>
               </v-col>
-              <v-col cols="3" class="px-3">
-                <v-img src="../assets/c-icon2.png" width="200"></v-img>
+              <v-col cols="12" md="3" class="px-3">
+                <v-img src="../assets/c-icon2.png" width="200" class="mx-auto"></v-img>
                 <div class="h5 font-weight-black">비즈니스 맞춤형</div>
                 <div
                   class="h6 text--secondary mt-3"
                   style="letter-spacing:-1px !important"
                 >비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.</div>
               </v-col>
-              <v-col cols="3" class="px-3">
-                <v-img src="../assets/c-icon3.png" width="200"></v-img>
+              <v-col cols="12" md="3" class="px-3">
+                <v-img src="../assets/c-icon3.png" width="200" class="mx-auto"></v-img>
                 <div class="h5 font-weight-black">폰에서 보는 교재</div>
                 <div
                   class="h6 text--secondary mt-3"
