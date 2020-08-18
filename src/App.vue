@@ -35,10 +35,12 @@
             v-else
             close-on-click
             min-width="100%"
+            nudge-bottom="12"
             offset-y
             bottom
             class="mt-10"
             transition="slide-y-transition"
+            tile
           >
             <template v-slot:activator="{on: menu}">
               <v-icon v-on="menu" x-large>menu</v-icon>

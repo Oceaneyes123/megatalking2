@@ -136,8 +136,17 @@
         <!-- grid -->
         <v-container style="max-width:800px; ">
           <v-row style="margin-bottom:200px">
-            <v-col cols="4" class="px-0">
-              <v-card max-width="200" class="rounded-xl mx-auto" style="position:relative">
+            <v-col
+              cols="12"
+              md="4"
+              class="px-0"
+              :style="{marginBottom: isMobile ? '100px' : '0px'}"
+            >
+              <v-card
+                :max-width="isMobile ? '95%': '200px'"
+                class="rounded-xl mx-auto"
+                style="position:relative"
+              >
                 <v-img
                   width="100%"
                   height="250"
@@ -160,8 +169,13 @@
                 </v-card>
               </v-card>
             </v-col>
-            <v-col cols="4" class="px-0">
-              <v-card max-width="200" class="rounded-xl mx-auto">
+            <v-col
+              cols="12"
+              md="4"
+              class="px-0"
+              :style="{marginBottom: isMobile ? '100px' : '0px'}"
+            >
+              <v-card :max-width="isMobile ? '95%': '200px'" class="rounded-xl mx-auto">
                 <v-img
                   width="100%"
                   height="250"
@@ -180,8 +194,13 @@
                 </v-card>
               </v-card>
             </v-col>
-            <v-col cols="4" class="px-0">
-              <v-card max-width="200" class="rounded-xl mx-auto">
+            <v-col
+              cols="12"
+              md="4"
+              class="px-0"
+              :style="{marginBottom: isMobile ? '100px' : '0px'}"
+            >
+              <v-card :max-width="isMobile ? '95%': '200px'" class="rounded-xl mx-auto">
                 <v-img
                   width="100%"
                   height="250"
@@ -211,8 +230,28 @@
 export default {
   data() {
     return {
-      rating: 4.8
+      rating: 4.8,
+      screenWidth: "",
+      isMobile: false
     };
+  },
+
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
+  mounted() {
+    this.onWindowResize();
+  },
+
+  methods: {
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
+    }
   }
 };
 </script>
