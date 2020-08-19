@@ -133,20 +133,57 @@
           </v-card>
         </v-card>
 
+        <!--list grid -->
+        <div class="font-weight-black h6">다양한 미디어 콘텐츠로 메가토킹을 즐기세요.</div>
+        <v-container>
+          <v-row justify="center">
+            <v-col cols="12" md="5">
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Emma Watson</div>
+                </v-container>
+              </v-card>
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">TED</div>
+                </v-container>
+              </v-card>
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Movie</div>
+                </v-container>
+              </v-card>
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Vogue</div>
+                </v-container>
+              </v-card>
+            </v-col>
+            <v-col cols="12" md="5">
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Maroon 5</div>
+                </v-container>
+              </v-card>
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">셀럽인터뷰</div>
+                </v-container>
+              </v-card>
+              <v-card color="brown lighten-3 mb-5">
+                <v-container>
+                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Singer</div>
+                </v-container>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+
         <!-- grid -->
         <v-container style="max-width:800px; ">
           <v-row style="margin-bottom:200px">
-            <v-col
-              cols="12"
-              md="4"
-              class="px-0"
-              :style="{marginBottom: isMobile ? '100px' : '0px'}"
-            >
-              <v-card
-                :max-width="isMobile ? '95%': '200px'"
-                class="rounded-xl mx-auto"
-                style="position:relative"
-              >
+            <v-col cols="12" class="px-0" style="margin-bottom:100px">
+              <v-card class="rounded-xl mx-auto" style="position:relative">
                 <v-img
                   width="100%"
                   height="250"
@@ -169,13 +206,8 @@
                 </v-card>
               </v-card>
             </v-col>
-            <v-col
-              cols="12"
-              md="4"
-              class="px-0"
-              :style="{marginBottom: isMobile ? '100px' : '0px'}"
-            >
-              <v-card :max-width="isMobile ? '95%': '200px'" class="rounded-xl mx-auto">
+            <v-col cols="12" class="px-0" style="margin-bottom:100px">
+              <v-card class="rounded-xl mx-auto">
                 <v-img
                   width="100%"
                   height="250"
@@ -194,13 +226,8 @@
                 </v-card>
               </v-card>
             </v-col>
-            <v-col
-              cols="12"
-              md="4"
-              class="px-0"
-              :style="{marginBottom: isMobile ? '100px' : '0px'}"
-            >
-              <v-card :max-width="isMobile ? '95%': '200px'" class="rounded-xl mx-auto">
+            <v-col cols="12" class="px-0" style="margin-bottom:100px">
+              <v-card class="rounded-xl mx-auto">
                 <v-img
                   width="100%"
                   height="250"
