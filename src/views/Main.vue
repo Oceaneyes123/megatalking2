@@ -57,6 +57,7 @@
         </v-row>
         <!--row 1 -->
         <v-card
+          v-if="!isMobile"
           flat
           class="mt-10 mx-auto"
           max-width="700"
@@ -89,6 +90,10 @@
               style="transform: scale(1.3);position: absolute;bottom:33px"
             ></v-img>
           </v-card>
+        </v-card>
+
+        <v-card v-else class="mx-auto mt-10" width="90%" color="#f1f1f1">
+          <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
         </v-card>
 
         <!--row 2-->
