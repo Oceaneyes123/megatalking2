@@ -256,12 +256,13 @@
         <v-sheet class="mt-5 mb-10">
           <v-slide-group>
             <v-slide-item v-for="(review, i) in classReview" :key="i">
-              <v-alert class="mx-2" outlined color="primary">
+              <v-alert class="mx-2" outlined color="#769de4">
                 <v-card flat width="350">
-                  <v-btn class="mb-5" color="primary">{{review.title}}</v-btn>
-                  <div style="color: #979797; line-break: strict; word-break:keep-all">
+                  <v-btn class="my-10 white--text rounded-lg" color="#769de4">{{review.title}}</v-btn>
+                  <div class="mb-5" style="color: #979797; line-break: strict; word-break:keep-all">
                     <span v-html="review.content"></span>
                   </div>
+                  <div style="color: #769de4" class="font-weight-bold">from, {{review.from}}</div>
                 </v-card>
               </v-alert>
             </v-slide-item>
@@ -291,7 +292,28 @@
           </v-card>
         </v-card>
 
-        <!-- grid -->
+        <v-container class="px-10 mx-10 mb-5">
+          <div class="h5 text-left">1:1 글쓰기.</div>
+          <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
+        </v-container>
+        <v-card flat class="rounded-xl mx-auto" :width="isMobile ? '95%' : '80%'">
+          <v-textarea height="300" outlined color="#769de4"></v-textarea>
+        </v-card>
+
+        <v-card flat class="rounded-xl mx-auto mb-10 px-10" :width="isMobile ? '95%' : '80%'">
+          <v-btn
+            class="white--text rounded-pill px-10"
+            style="background: linear-gradient(to right, #add6f5,  #85a5df);"
+          >수강신청 바로가기</v-btn>
+        </v-card>
+
+        <v-container class="px-10 mx-10 mb-5">
+          <div class="h5 text-left">1:1 글쓰기.</div>
+          <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
+        </v-container>
+        <v-card flat class="rounded-xl mx-auto" :width="isMobile ? '95%' : '80%'">
+          <v-textarea height="300" outlined color="#769de4"></v-textarea>
+        </v-card>
       </v-card>
     </v-container>
   </v-app>
