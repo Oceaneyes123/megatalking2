@@ -14,7 +14,7 @@
           style="margin-top:90px"
           max-width="1000px"
         >
-          <v-container class="px-10 pt-10 text-left">
+          <v-container class="px-md-10 pt-10 text-left">
             <v-row>
               <v-col cols="3">
                 <v-select v-model="select" :items="selectItems" outlined></v-select>
@@ -52,7 +52,7 @@
 
             <v-container class="px-10">
               <v-row class="mt-5 mx-1 mb-10">
-                <v-col cols="6">
+                <v-col cols="12" md="6">
                   <div class="h5 font-weight-bold">HAVE A NICE DAY!</div>
                   <div class="h5 font-weight-black">MARK 선생님과 수업중입니다.</div>
                 </v-col>
@@ -70,8 +70,68 @@
               <v-row class="mt-10 mx-1">
                 <div class="h6 font-weight-black">20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
               </v-row>
-              <v-container class="px-10">
-                <v-row>
+            </v-container>
+
+            <v-container fluid class="px-0">
+              <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
+                <v-carousel-item class="px-md-16 px-5">
+                  <v-row>
+                    <v-col cols="12" md="6">
+                      <div class="text-blue mb-5">영어 본문</div>
+                      <div
+                        class="text-grey mb-2"
+                        v-for="(text, i) in step3EnglishText"
+                        :key="i"
+                      >{{text}}</div>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <div class="text-blue mb-5">영어 본문</div>
+                      <div
+                        class="text-dark-blue mb-2"
+                        v-for="(text, i) in step3KoreanText"
+                        :key="i"
+                      >{{text}}</div>
+                    </v-col>
+                  </v-row>
+                </v-carousel-item>
+                <v-carousel-item class="px-md-16 px-5">
+                  <div class="h5 nanum">Today's Expression</div>
+                  <v-row>
+                    <v-col cols="12" v-for="(expression, i) in step3TodayExpression" :key="i">
+                      <v-container>
+                        <v-row>
+                          <v-col cols="12" md="6">
+                            <div class="mb-2 text-blue">{{expression.expression}}</div>
+                            <div class="text-grey" v-html="expression.definition"></div>
+                          </v-col>
+                          <v-col cols="12" md="6">
+                            <div class="mb-2" v-html="expression.question1"></div>
+                            <div class="mb-2" v-html="expression.question2"></div>
+                            <div class="text-blue" v-html="expression.question3"></div>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
+                </v-carousel-item>
+                <v-carousel-item class="px-md-16 px-5">
+                  <div class="h5 nanum text-blue mb-10">Today's Expression</div>
+                  <v-row>
+                    <v-col
+                      cols="12"
+                      md="6"
+                      v-for="(answer, i) in step3TodayExpressionAnswer"
+                      :key="i"
+                      :class="(i + 1) % 2 == 0 && isMobile ? 'mb-10' : 'mb-0'"
+                    >
+                      <div class="h6 nanum">{{answer.question}}</div>
+                      <div class="mb-2">{{answer.choice}}</div>
+                      <div class="text-grey">{{answer.answer}}</div>
+                    </v-col>
+                  </v-row>
+                </v-carousel-item>
+              </v-carousel>
+              <!-- <v-row>
                   <v-col cols="12" md="4">
                     <v-card flat class="rounded-xl">
                       <v-img src="../assets/mypage1.png" width="auto" height="auto"></v-img>
@@ -81,115 +141,9 @@
                   <v-col cols="12" md="8">
                     <v-card flat class="rounded-xl" color="#b9b9b9" width="100%" height="100%"></v-card>
                   </v-col>
-                </v-row>
-              </v-container>
-              <v-container class="h6">
-                <v-row>
-                  <v-col cols="4">
-                    <v-container>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">학습유형</v-col>
-                        <v-col cols="6 text--secondary">[Curriculum]</v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">수강과정</v-col>
-                        <v-col cols="6 text--secondary">[Material]</v-col>
-                      </v-row>
-                    </v-container>
-                  </v-col>
-                  <v-col cols="4">
-                    <v-container>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">수강코스</v-col>
-                        <v-col cols="6 text--secondary">[Class Type]</v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">수강횟수</v-col>
-                        <v-col cols="6 text--secondary">[period / freq / duration]</v-col>
-                      </v-row>
-                    </v-container>
-                  </v-col>
-                  <v-col cols="4">
-                    <v-container>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">수강 시작일</v-col>
-                        <v-col cols="6 text--secondary">[Start Date]</v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col cols="6 font-weight-black">수업 시간</v-col>
-                        <v-col cols="6 text--secondary">[Class Time]</v-col>
-                      </v-row>
-                    </v-container>
-                  </v-col>
-                </v-row>
-              </v-container>
-              <v-row class="mx-1 my-10">
-                <div class="h6 font-weight-black">강의 피드백</div>
-              </v-row>
-              <v-container class="px-5 py-0">
-                <v-row class="mx-1">
-                  <v-col cols="12" md="5">
-                    <div class="h6">문법 및 문장 교정</div>
-                    <div class="h5 font-weight-black">더 나은 표현을 알려드릴게요.</div>
-                    <div class="mt-10">
-                      <div class="mt-5" v-for="(item, i) in tests" :key="i">
-                        <div class="h5 font-weight-black nanum">{{i + 1}}. {{item.test}}</div>
-                        <div class="font-weight-bold">{{item.detail}}</div>
-                      </div>
-                    </div>
-                  </v-col>
-                  <v-spacer></v-spacer>
-                  <v-col cols="12" md="6">
-                    <v-card
-                      class="d-flex align-center rounded-pill pa-3 mb-3"
-                      color="#dfdfdf"
-                      max-width="300"
-                    >
-                      <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
-                      <v-progress-linear v-model="progress" value="60" color="#5a55a1" class="mx-5"></v-progress-linear>
-                      <div class="text--secondary">0:40</div>
-                    </v-card>
-                    <v-card flat max-width="300" class="mt-5">
-                      <v-alert outlined color="#5a55a1" class="text-purple rounded-xl">
-                        <v-row>
-                          <div>녹음파일 전체듣기</div>
-                          <v-spacer></v-spacer>
-                          <div>음성파일 다운로드</div>
-                        </v-row>
-                      </v-alert>
-                    </v-card>
-
-                    <div class="h6 mt-10">발음 교정</div>
-                    <div class="h5 font-weight-black">발음은 이렇게 해주세요.</div>
-
-                    <v-row class="d-flex align-end mt-10 mx-1">
-                      <div
-                        v-for="(item, i) in tests"
-                        :key="i"
-                        class="mr-10 h5 font-weight-black nanum"
-                      >{{ i + 1}}.{{ item.test }}</div>
-                    </v-row>
-                  </v-col>
-                </v-row>
-              </v-container>
-              <v-row class="mx-1 mt-10">
-                <v-col>
-                  <div class="h6">오늘의 정리</div>
-                  <div class="h5 font-weight-bold">선생님이 작성해주신 코멘트입니다.</div>
-                </v-col>
-              </v-row>
-              <v-row class="mx-4 mt-3">
-                <div class="text--secondary">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                  nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consec
-                </div>
-              </v-row>
+              </v-row>-->
             </v-container>
+            <v-card>test</v-card>
           </v-container>
         </v-card>
       </v-card>
@@ -200,6 +154,29 @@
 <style>
 .v-calendar-daily__pane {
   height: 0px !important;
+}
+
+.v-responsive__content {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+</style>
+
+<style scoped>
+.text-grey {
+  color: #a4a4a4;
+}
+
+.text-dark-blue {
+  color: #5d6687;
+}
+
+.text-blue {
+  color: #667fe3;
+}
+
+.text-black {
+  color: black;
 }
 </style>
 
@@ -212,6 +189,8 @@ export default {
       today: "",
       date: new Date(),
       month: "",
+      screenWidth: "",
+      isMobile: false,
       tests: [
         {
           test: "test",
@@ -225,11 +204,106 @@ export default {
           test: "test",
           detail: "더 나은 표현을 알려드릴게요."
         }
+      ],
+
+      step3EnglishText: [
+        "First thing always first thing always have a book.because if you're not reading, what are you doing?",
+        "I always have a pair of sunglasses. I just hate having stuff that you don't need.",
+        "I really try to just keep it to the things that I use every single day.",
+        "A model or actress,  I would say should always have something to keep them entertained in their bag",
+        "because we wait around a lot and there's only so many times we can scroll through Instagram and Twitter and all that."
+      ],
+
+      step3KoreanText: [
+        "가장 먼저 책이 꼭 있어야죠.왜냐하면 당신이 무엇을 읽고 있지 않다면 뭘 하겠어요?",
+        "선글라스는 꼭 가지고다녀요. 난 그냥 필요 없는 것들을 갖고 다니는 것을 싫어해요.",
+        "저는 정말 매일 사용하는 것에만 신경을 씁니다.",
+        "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다.",
+        "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠."
+      ],
+
+      step3TodayExpression: [
+        {
+          expression: "A pair of (한 쌍)",
+          definition:
+            "a pair of는 똑같은 두개, 한쌍을 의미해요.<br> 신발 한쌍, 양말 한켤레, 장갑 한켤레 등을 나타낼 때 사용해요.<br><br>다음 단어를 사용해서 문장을 만들어 보세요",
+          question1:
+            "그는 낡은 청바지에 운동화를 신고 있었다.  <br>  wear / old jeans / sneakers.<br>[ ___________________________ ]",
+          question2:
+            " 그것은 가위를 잡는 바른[제대로 된] 방식이 아니다.<br>right way / hold / scissors<br>[ ___________________________ ]",
+          question3:
+            "“A pair of”를 활용하여 문장을 만들어 보세요<br>____________________________"
+        },
+        {
+          expression: "Try to ( ~하려고 노력하다)",
+          definition:
+            "Try to 는 ~ 하려고 노력하다, ~하려고 시도하다를 의미해요.<br>행위의 어려움을 강조하고 결과에 상관없이 노력한다는 뜻입니다. <br>상황의 어려움을 강조하기 때문에 실패나 어려움의 결과가 나타납니다.",
+          question1:
+            "침착성을 잃지 않도록 해 봐.<br>remain/ calm<br>[ ___________________________ ]",
+          question2:
+            "있었던 일은 잊어버리도록 해.<br>forget / happen<br>[ ___________________________ ]",
+          question3:
+            "“Try to”를 활용하여 문장을 만들어 보세요.<br>___________________________ "
+        },
+        {
+          expression: " I would say~ ( 내 생각엔.. , ~ 인 것 같아.)",
+          definition:
+            "I would say = I’d say 는 확실하지 않을때 자신의 의견을 말하는 경우 사용하는 표현이예요. 내생각엔… 이라는 뜻으로 해석할 수 있어요. 확실하지 않은 생각이나 의견 표현에 쓰입니다. ",
+          question1:
+            "그거 좋은 아이디어라고 할 수 있겠네.<br>(내 생각엔 그거 좋은 아이디어인것 같아.)<br>Good / Idea<br>[ ___________________________ ]",
+          question2:
+            "내가 널 그리워한다고 할 수 있겠어.<br>(내 생각엔 내가 널 그리워하는 것 같아)<br>Miss / you<br>[  ___________________________ ]",
+          question3:
+            "“I would say”를 활용하여 문장을 만들어 보세요.<br>____________________________"
+        }
+      ],
+
+      step3TodayExpressionAnswer: [
+        {
+          question: "그는 낡은 청바지에 운동화를 신고 있었다. ",
+          choice: "wear / old jeans / sneakers. ",
+          answer: "He wore old jeans and a pair of sneakers."
+        },
+        {
+          question: "그것은 가위를 잡는 바른[제대로 된] 방식이 아니다.",
+          choice: "right way / hold / scissors",
+          answer: "That’s not the right way to hold a pair of scissors."
+        },
+        {
+          question: "침착성을 잃지 않도록 해 봐.",
+          choice: " remain/ calm",
+          answer: "Try to remain calm"
+        },
+        {
+          question: "있었던 일은 잊어버리도록 해.",
+          choice: "forget / happen",
+          answer: "Try to forget about "
+        },
+        {
+          question: "그거 좋은 아이디어라고 할 수 있겠네",
+          choice: "(내 생각엔 그거 좋은 아이디어인 것 같아.)",
+          answer: "I would say it's a good idea."
+        },
+        {
+          question: "내가 널 그리워한다고 할 수 있겠어.",
+          choice: "(내 생각엔 내가 널 그리워하는 것 같아)",
+          answer: "I would say I miss you"
+        }
       ]
     };
   },
 
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
   mounted() {
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
+
     this.today = this.formatDate(this.date);
     this.month = this.date.getMonth() + 1;
 
@@ -247,6 +321,11 @@ export default {
   },
 
   methods: {
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
+    },
+
     formatDate(date) {
       var d = new Date(date),
         month = "" + (d.getMonth() + 1),
