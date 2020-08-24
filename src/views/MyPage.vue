@@ -50,28 +50,6 @@
               <v-col cols="12" md="8">test</v-col>
             </v-row>
 
-            <v-container class="px-10">
-              <v-row class="mt-5 mx-1 mb-10">
-                <v-col cols="12" md="6">
-                  <div class="h5 font-weight-bold">HAVE A NICE DAY!</div>
-                  <div class="h5 font-weight-black">MARK 선생님과 수업중입니다.</div>
-                </v-col>
-                <v-spacer></v-spacer>
-                <v-col>
-                  <div>
-                    <v-btn
-                      color="#df7a30"
-                      class="rounded-lg font-weight-bold white--text"
-                      large
-                    >강사평가 바로가기</v-btn>
-                  </div>
-                </v-col>
-              </v-row>
-              <v-row class="mt-10 mx-1">
-                <div class="h6 font-weight-black">20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
-              </v-row>
-            </v-container>
-
             <v-container fluid class="px-0">
               <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
                 <v-carousel-item class="px-md-16 px-5">
@@ -112,6 +90,10 @@
                         </v-row>
                       </v-container>
                     </v-col>
+                    <v-btn
+                      style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                      class="mx-auto rounded-lg white--text mb-5"
+                    >Next</v-btn>
                   </v-row>
                 </v-carousel-item>
                 <v-carousel-item class="px-md-16 px-5">
@@ -143,7 +125,27 @@
                   </v-col>
               </v-row>-->
             </v-container>
-            <v-card>test</v-card>
+            <v-container class="px-10">
+              <v-row class="mt-5 mx-1 mb-10">
+                <v-col cols="12" md="6">
+                  <div class="h5 font-weight-bold">HAVE A NICE DAY!</div>
+                  <div class="h5 font-weight-black">MARK 선생님과 수업중입니다.</div>
+                </v-col>
+                <v-spacer></v-spacer>
+                <v-col>
+                  <div>
+                    <v-btn
+                      color="#df7a30"
+                      class="rounded-lg font-weight-bold white--text"
+                      large
+                    >강사평가 바로가기</v-btn>
+                  </div>
+                </v-col>
+              </v-row>
+              <v-row class="mt-10 mx-1">
+                <div class="h6 font-weight-black">20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
+              </v-row>
+            </v-container>
           </v-container>
         </v-card>
       </v-card>
@@ -220,6 +222,48 @@ export default {
         "저는 정말 매일 사용하는 것에만 신경을 씁니다.",
         "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다.",
         "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠."
+      ],
+
+      step3TodayExpressionWeb: [
+        {
+          expression: "A pair of (한 쌍)",
+          definition:
+            "a pair of는 똑같은 두개, 한쌍을 의미해요.<br> 신발 한쌍, 양말 한켤레, 장갑 한켤레 등을 나타낼 때 사용해요.<br><br>다음 단어를 사용해서 문장을 만들어 보세요",
+          question1: "그는 낡은 청바지에 운동화를 신고 있었다.",
+          question2: " 그것은 가위를 잡는 바른[제대로 된] 방식이 아니다",
+          question3:
+            "“A pair of”를 활용하여 문장을 만들어 보세요<br>____________________________",
+          choice1: "wear / old jeans / sneakers. ",
+          answer1: "He wore old jeans and a pair of sneakers.",
+          choice2: "right way / hold / scissors",
+          answer2: "That’s not the right way to hold a pair of scissors."
+        },
+        {
+          expression: "Try to ( ~하려고 노력하다)",
+          definition:
+            "Try to 는 ~ 하려고 노력하다, ~하려고 시도하다를 의미해요.<br>행위의 어려움을 강조하고 결과에 상관없이 노력한다는 뜻입니다. <br>상황의 어려움을 강조하기 때문에 실패나 어려움의 결과가 나타납니다.",
+          question1: "침착성을 잃지 않도록 해 봐.",
+          question2: "있었던 일은 잊어버리도록 해.",
+          question3:
+            "“Try to”를 활용하여 문장을 만들어 보세요.<br>____________________________",
+          choice1: " remain/ calm",
+          answer1: "Try to remain calm",
+          choice2: "forget / happen",
+          answer2: "Try to forget about "
+        },
+        {
+          expression: " I would say~ ( 내 생각엔.. , ~ 인 것 같아.)",
+          definition:
+            "I would say = I’d say 는 확실하지 않을때 자신의 의견을 말하는 경우 사용하는 표현이예요. 내생각엔… 이라는 뜻으로 해석할 수 있어요. 확실하지 않은 생각이나 의견 표현에 쓰입니다. ",
+          question1: "그거 좋은 아이디어라고 할 수 있겠네.",
+          question2: "내가 널 그리워한다고 할 수 있겠어.",
+          question3:
+            "“I would say”를 활용하여 문장을 만들어 보세요.<br>____________________________",
+          choice1: "(내 생각엔 그거 좋은 아이디어인 것 같아.)",
+          answer1: "I would say it's a good idea.",
+          choice2: "(내 생각엔 내가 널 그리워하는 것 같아)",
+          answer2: "I would say I miss you"
+        }
       ],
 
       step3TodayExpression: [
