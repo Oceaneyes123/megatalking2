@@ -48,7 +48,9 @@
                 v-model="rating"
                 color="yellow darken-3"
                 background-color="grey darken-1"
-                empty-icon="$ratingFull"
+                full-icon="fas fa-star"
+                empty-icon="far fa-star"
+                half-icon="fas fa-star-half-alt"
                 half-increments
                 hover
               ></v-rating>

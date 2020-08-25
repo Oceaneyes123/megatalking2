@@ -112,7 +112,112 @@
                     </v-col>
                   </v-row>
                 </v-carousel-item>
+                <v-carousel-item class="px-md-16 px-5">
+                  <v-container>
+                    <v-row class="align-md-center">
+                      <v-col cols="12">
+                        <div class="text-center mb-2">Annie 강사님 수업은 어떠셨나요?</div>
+                        <div class="text-center">
+                          <v-rating
+                            v-model="rating"
+                            half-increments
+                            color="yellow darken-2"
+                            hover
+                            x-large
+                            background-color="yellow darken-2"
+                            full-icon="fas fa-star"
+                            empty-icon="far fa-star"
+                            half-icon="fas fa-star-half-alt"
+                          ></v-rating>
+                        </div>
+                      </v-col>
+                      <v-col
+                        class="mx-auto"
+                        cols="12"
+                        sm="7"
+                        align-self="center"
+                        v-for="(suggestion, i) in step4Suggestions"
+                        :key="i"
+                      >
+                        <v-btn
+                          large
+                          outlined
+                          block
+                          @click="selectSuggestion(i)"
+                          :class=" selectedSuggestion.includes(i) ? 'primary--text': 'text-grey'"
+                        >{{suggestion}}</v-btn>
+                      </v-col>
+                      <v-col class="mx-auto" cols="12" sm="7">
+                        <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-carousel-item>
+                <v-carousel-item>
+                  <v-container class="pl-md-16">
+                    <v-row>
+                      <v-col cols="12" md="6">
+                        <v-card
+                          class="d-flex align-center rounded-pill pa-3 mb-4"
+                          color="#dfdfdf"
+                          max-width="300"
+                          flat
+                        >
+                          <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
+                          <v-progress-linear
+                            v-model="progress"
+                            value="60"
+                            color="#5a55a1"
+                            class="mx-5"
+                          ></v-progress-linear>
+                          <div class="text--secondary">0:40</div>
+                        </v-card>
+                        <v-card
+                          flat
+                          class="d-flex rounded-lg white--text py-3 px-2"
+                          color="#5D6687"
+                          max-width="300"
+                        >
+                          <span>녹음파일 전체듣기</span>
+                          <span class="mx-auto">|</span>
+                          <span>음원 다운로드</span>
+                        </v-card>
+                        <div class="mt-15 mb-5 h6">다음 발음을 연습해주세요.</div>
+                        <div
+                          class="mt-1"
+                          v-for="(pronunciation, i) in step4PracticePronunciation"
+                          :key="i"
+                        >{{i + 1}}. {{pronunciation}}</div>
+                      </v-col>
+                      <v-col cols="12" md="6">
+                        <div class="h6 mb-5">더 나은 표현을 알려드릴게요.</div>
+                        <div class="mb-2" v-for="(expression, i) in step4BetterExpression" :key="i">
+                          <div>{{i + 1}}. {{expression.original}}</div>
+                          <div class="text-blue">=> {{expression.better}}</div>
+                        </div>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="h6">강사님 코멘트</div>
+                        <v-col cols="12" md="10" class="mx-auto">
+                          <v-textarea class="rounded-xl" outlined color="#667fe3"></v-textarea>
+                        </v-col>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="text-center mb-4">오늘 수업을 한마디로 표현한다면,</div>
+                        <div class="d-flex justify-center">
+                          <v-icon
+                            class="mx-3"
+                            v-for="(icon, i) in step4Icons"
+                            :key="i"
+                            x-large
+                          >{{icon}}</v-icon>
+                        </div>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-carousel-item>
               </v-carousel>
+
               <!-- <v-row>
                   <v-col cols="12" md="4">
                     <v-card flat class="rounded-xl">
@@ -193,6 +298,9 @@ export default {
       month: "",
       screenWidth: "",
       isMobile: false,
+
+      selectedSuggestion: [],
+
       tests: [
         {
           test: "test",
@@ -333,6 +441,38 @@ export default {
           choice: "(내 생각엔 내가 널 그리워하는 것 같아)",
           answer: "I would say I miss you"
         }
+      ],
+
+      step4Suggestions: [
+        "조금 천천히 말해주세요.",
+        "활기찬 분위기를 원해요.",
+        "질문을 많이 해주세요.",
+        "틀린 부분을 바로바로 고쳐주세요.",
+        "많이 말하도록 유도해주세요."
+      ],
+
+      step4PracticePronunciation: ["Brother", "Skirt", "Change"],
+      step4BetterExpression: [
+        {
+          original: "I usually home shopping ",
+          better: "I usually do home shopping. "
+        },
+        {
+          original: "I buy my wallet.",
+          better: "I usually do home shopping. "
+        },
+        {
+          original: "The old one worn out",
+          better: "The old one was worn out."
+        }
+      ],
+
+      step4Icons: [
+        "fas fa-tired",
+        "fas fa-frown",
+        "fas fa-smile",
+        "far fa-grin",
+        "far fa-grin-beam"
       ]
     };
   },
@@ -381,6 +521,15 @@ export default {
       if (day.length < 2) day = +day;
 
       return [year, month, day].join("-");
+    },
+
+    selectSuggestion(index) {
+      if (this.selectedSuggestion.includes(index)) {
+        const num = this.selectedSuggestion.indexOf(index);
+        this.selectedSuggestion.splice(num, 1);
+      } else {
+        this.selectedSuggestion.push(index);
+      }
     }
   }
 };
