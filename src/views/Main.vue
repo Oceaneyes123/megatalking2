@@ -53,31 +53,35 @@
         <!--row 1 -->
         <v-card
           v-if="isMobile"
-          class="text-left pa-10"
-          color="orange lighten-4"
-          style="background: linear-gradient (to bottom, #FFFFFF, #e9c5b1);
-         "
+          class="text-left pt-10 rounded-xl mb-10 mx-auto"
+          style="background-image: linear-gradient(to bottom, #FFFFFF, #e9c5b1);"
           height="85vh"
+          width="95%"
         >
-          <v-img src="../assets/girl2.png" style="position:absolute;right:-15%;bottom:0"></v-img>
-          <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
-          <div style="color:#b7b7b7;max-width:250px">
-            <div class="mb-5">
-              레벨테스트 부터 꼼꼼하게, 1차 예습, 수업, 3차 복습, 4차 영작
-              체계적인 학습관리, 알림 서비스까지!
-            </div>
-            <div>
-              자 연 스 럽 게 스며드는 영어회화,
-              <span style="color:#df5d24">메가토킹</span>은다릅니다.
+          <div class="ml-10">
+            <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
+            <div style="color:#b7b7b7;max-width:250px">
+              <div class="mb-5">
+                레벨테스트 부터 꼼꼼하게, 1차 예습, 수업, 3차 복습, 4차 영작
+                체계적인 학습관리, 알림 서비스까지!
+              </div>
+              <div>
+                자 연 스 럽 게 스며드는 영어회화,
+                <span style="color:#df5d24">메가토킹</span>은다릅니다.
+              </div>
             </div>
           </div>
+          <v-card flat color="#00000000" style="position: absolute; bottom:0;right:0">
+            <v-img class="ml-auto" src="../assets/girl2-mobile.png" width="80%" position="90%"></v-img>
+          </v-card>
         </v-card>
+
         <v-card
           flat
           class="mt-10 mx-auto"
           max-width="700"
           style="position:relative;margin-bottom:100px"
-          v-else
+          v-if="!isMobile"
         >
           <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="90%" color="#f1f1f1">
             <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
@@ -109,11 +113,26 @@
         </v-card>
 
         <!--row 2-->
+        <v-card v-if="isMobile" height="80vh" class="pt-10 rounded-xl mx-auto" width="95%">
+          <div style="color:#b7b7b7;max-width:250px" class="text-left ml-10">
+            <div class="h4 font-weight-bold mb-7" style="color:#000">맞춤형 시간표</div>
+            <div class="mb-5">
+              직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
+              레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
+            </div>
+            <div class="title font-weight-bold font-italic" style="color:#b34013">레벨테스트 하러가기 ></div>
+          </div>
+          <v-card flat color="#00000000" style="position: absolute; bottom:0">
+            <v-img class="rounded-xl" width="100%" position="50%" src="../assets/girl.png"></v-img>
+          </v-card>
+        </v-card>
+
         <v-card
           flat
           class="mt-10 mx-auto"
           max-width="700"
           style="position:relative;margin-bottom:100px"
+          v-if="!isMobile"
         >
           <v-card class="pt-10 pr-10 ml-auto rounded-xl d-flex" width="100%" color="#f1f1f1">
             <v-img class="rounded-xl" width="350" position="50%" src="../assets/girl.png"></v-img>
@@ -155,42 +174,72 @@
         <v-container>
           <v-row justify="center">
             <v-col cols="12" md="5">
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Emma Watson</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/emma_watson.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      >Emma Watson</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">TED</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/emma_watson.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">TED</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Movie</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/movie.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Movie</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Vogue</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/vogue.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Vogue</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
             </v-col>
             <v-col cols="12" md="5">
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Maroon 5</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/maroon5.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Maroon 5</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">셀럽인터뷰</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/camera.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">셀럽인터뷰</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5">
-                <v-container>
-                  <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Singer</div>
-                </v-container>
+              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+                <v-img src="../assets/singer.jpg">
+                  <v-card height="100%" color="#000000AD">
+                    <v-container>
+                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Singer</div>
+                    </v-container>
+                  </v-card>
+                </v-img>
               </v-card>
             </v-col>
           </v-row>
