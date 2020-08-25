@@ -1,20 +1,13 @@
 <template>
   <v-app style="background-color:#00000000">
     <v-container>
-      <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">무조건 듣기만하는 영어 회화?</div>
+      <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">친구처럼 편한 영어</div>
       <div class="white--text h6 mb-10">
-        20대의 가장 큰 고민, 스펙과 영어! 값비싼 어학연수, 이젠 온라인으로
-        즐기세요.
-        <br />
-        <br />뉴욕의 각 명소를 여행하며 모은 인터뷰를 통해 현지표현을 그대로!
-        <br />총 20강좌로 이루어진 뉴욕라이브 잉글리쉬로 생생한
-        뉴욕을느껴보세요!
-        <br />
-        <br />전화/화상영어로 함깨 학습할 수도 있고, 컨텐츠로 수강 할 수도
-        있습니다.
+        외국인과 말하기 두려워도, 영어가 서툴러도,
+        <br />메가토킹 선생님이 친구처럼 도와드려요.
       </div>
       <v-row justify="center">
-        <v-btn class="rounded-xl pa-8 title" color="primary">뉴욕 스피킹 바로가기</v-btn>
+        <v-btn class="rounded-xl pa-8 title" color="primary">레벨테스트 하러가기</v-btn>
       </v-row>
     </v-container>
     <v-container style="max-width:1000px;margin-top:90px">
@@ -59,10 +52,32 @@
         </v-row>
         <!--row 1 -->
         <v-card
+          v-if="isMobile"
+          class="text-left pa-10"
+          color="orange lighten-4"
+          style="background: linear-gradient (to bottom, #FFFFFF, #e9c5b1);
+         "
+          height="85vh"
+        >
+          <v-img src="../assets/girl2.png" style="position:absolute;right:-15%;bottom:0"></v-img>
+          <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
+          <div style="color:#b7b7b7;max-width:250px">
+            <div class="mb-5">
+              레벨테스트 부터 꼼꼼하게, 1차 예습, 수업, 3차 복습, 4차 영작
+              체계적인 학습관리, 알림 서비스까지!
+            </div>
+            <div>
+              자 연 스 럽 게 스며드는 영어회화,
+              <span style="color:#df5d24">메가토킹</span>은다릅니다.
+            </div>
+          </div>
+        </v-card>
+        <v-card
           flat
           class="mt-10 mx-auto"
           max-width="700"
           style="position:relative;margin-bottom:100px"
+          v-else
         >
           <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="90%" color="#f1f1f1">
             <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
