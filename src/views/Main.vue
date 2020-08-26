@@ -52,12 +52,17 @@
         </v-row>
         <!--row 1 -->
         <v-card
+          class="text-left mb-10 mx-auto rounded-xl"
           v-if="isMobile"
-          class="text-left pt-10 rounded-xl mb-10 mx-auto"
-          style="background-image: linear-gradient(to bottom, #FFFFFF, #e9c5b1);"
           height="85vh"
           width="95%"
+          color="#f1f1f1"
+          flat
         >
+          <v-card color="#e9c5b1" flat class="mb-5">
+            <v-img class="ml-auto" src="../assets/girl2-mobile.png" width="80%" position="90%"></v-img>
+          </v-card>
+
           <div class="ml-10">
             <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
             <div style="color:#b7b7b7;max-width:250px">
@@ -71,9 +76,6 @@
               </div>
             </div>
           </div>
-          <v-card flat color="#00000000" style="position: absolute; bottom:0;right:0">
-            <v-img class="ml-auto" src="../assets/girl2-mobile.png" width="80%" position="90%"></v-img>
-          </v-card>
         </v-card>
 
         <v-card
@@ -113,7 +115,17 @@
         </v-card>
 
         <!--row 2-->
-        <v-card v-if="isMobile" height="80vh" class="pt-10 rounded-xl mx-auto" width="95%">
+        <v-card
+          v-if="isMobile"
+          flat
+          color="#f1f1f1"
+          height="80vh"
+          class="pt-10 rounded-xl mx-auto"
+          width="95%"
+        >
+          <v-card class="mb-5" flat color="#00000000">
+            <v-img width="100%" position="50%" src="../assets/girl.png"></v-img>
+          </v-card>
           <div style="color:#b7b7b7;max-width:250px" class="text-left ml-10">
             <div class="h4 font-weight-bold mb-7" style="color:#000">맞춤형 시간표</div>
             <div class="mb-5">
@@ -122,9 +134,6 @@
             </div>
             <div class="title font-weight-bold font-italic" style="color:#b34013">레벨테스트 하러가기 ></div>
           </div>
-          <v-card flat color="#00000000" style="position: absolute; bottom:0">
-            <v-img class="rounded-xl" width="100%" position="50%" src="../assets/girl.png"></v-img>
-          </v-card>
         </v-card>
 
         <v-card
@@ -150,11 +159,12 @@
         <!--row 3 -->
         <v-card
           flat
+          width="95%"
           class="mt-10 mx-auto"
           max-width="700"
           style="position:relative;margin-bottom:100px"
         >
-          <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="100%" color="#f1f1f1">
+          <v-card flat class="pt-10 pl-10 text-left pb-5 rounded-xl" width="100%" color="#f1f1f1">
             <div class="h4 font-weight-bold mb-7" style="color:#70689f">
               35,000개
               <br />품격있는 컨텐츠
@@ -199,6 +209,11 @@
                   <v-card height="100%" color="#000000AD">
                     <v-container>
                       <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Movie</div>
+                      <div
+                        class="white--text mb-2 text-left h6 nanum ml-3"
+                        v-for="(item,i) in subtext.movie"
+                        :key="i"
+                      >{{item}}</div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -207,7 +222,14 @@
                 <v-img src="../assets/vogue.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Vogue</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket mb-3"
+                      >Vogue</div>
+                      <div
+                        class="white--text mb-2 text-left h6 nanum ml-3"
+                        v-for="(item,i) in subtext.vogue"
+                        :key="i"
+                      >{{item}}</div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -226,8 +248,12 @@
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/camera.jpg">
                   <v-card height="100%" color="#000000AD">
-                    <v-container>
+                    <v-container class="white--text text-left h6 nanum">
                       <div class="font-weight-black h2 text-left mx-3 white--text gmarket">셀럽인터뷰</div>
+                      <div class="mb-2">베네딕트 컴버배치</div>
+                      <div class="mb-2">스칼렛 요한슨</div>
+                      <div class="mb-2">클로이 모레츠</div>
+                      <div>…</div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -236,7 +262,14 @@
                 <v-img src="../assets/singer.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Singer</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket mb-2"
+                      >Singer</div>
+                      <div
+                        class="white--text mb-2 text-left h6 nanum ml-3"
+                        v-for="(item,i) in subtext.singer"
+                        :key="i"
+                      >{{item}}</div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -392,6 +425,39 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
+      subtext: {
+        singer: [
+          "애드시런",
+          "아델",
+          "저스틴 비버",
+          "빌리 아일리시",
+          "비욘세",
+          "리한나",
+          "셀레나 고메즈",
+          "찰리푸스",
+          "카밀라 카베요",
+          "샤샤슬론",
+          "샘 헨쇼",
+          "줄리아 마이클스",
+          "제드 앤 켈라니",
+          "키아나 레데",
+          "리암 페인"
+        ],
+        vogue: [
+          "테일러 스위프트와 함께하는 73개의 질문들",
+          "빅토리아 베컴의 가방속",
+          "카이아 거버의 가방속",
+          "테일러 힐이 런웨이 준비하는 법",
+          "…"
+        ],
+        movie: [
+          "오션스 8",
+          "악마는 프라다를 입는다.",
+          "라라랜드",
+          "엠메스톤의 이지",
+          "…"
+        ]
+      },
       koreanTextGrey: [
         {
           title: "재미없는 수업 그만.",
