@@ -132,6 +132,49 @@
           </v-container>
         </v-card>
       </v-img>
+
+      <v-dialog v-model="signInDialog" max-width="1000">
+        <v-card flat class="rounded-xl" max-width="1000">
+          <v-card flat color="#8aace9">
+            <v-row>
+              <v-col cols="6" class="white--text">
+                <span class="ml-5 h5 nanum">회원 로그인</span>
+              </v-col>
+              <v-col cols="6" class="d-flex align-center white--text">
+                <span class="ml-5 h5 nanum">회원가입</span>
+                <v-spacer></v-spacer>
+                <span class="mr-5">
+                  <v-icon color="white">close</v-icon>
+                </span>
+              </v-col>
+            </v-row>
+            <v-card flat class="pa-5">
+              <v-container>
+                <v-row>
+                  <v-col cols="6">
+                    <v-row>
+                      <v-col>
+                        <v-text-field></v-text-field>
+                        <v-text-field></v-text-field>
+                        <v-checkbox label="로그인 상태 유지"></v-checkbox>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                  <v-divider vertical></v-divider>
+                  <v-col cols="6">
+                    <v-row>
+                      <v-col>
+                        <v-text-field></v-text-field>
+                        <v-text-field></v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-card>
+        </v-card>
+      </v-dialog>
     </v-app>
   </div>
 </template>
@@ -147,6 +190,7 @@ export default {
   data() {
     return {
       currentRoute: "main",
+      signInDialog: false,
       images: {
         main: require("../src/assets/main.jpg"),
         curriculum: require("../src/assets/curriculum.jpg"),
