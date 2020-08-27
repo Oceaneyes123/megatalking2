@@ -470,8 +470,8 @@
             </v-row>
 
             <v-row justify="center" class="my-10">
-              <v-card flat class="rounded-xl">
-                <v-simple-table style="width:100%">
+              <v-card flat class="rounded-xl" style="width:1000px !important">
+                <v-simple-table>
                   <template v-slot:default>
                     <thead class="rounded-xl">
                       <tr

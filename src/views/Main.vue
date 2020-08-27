@@ -356,7 +356,13 @@
           <v-slide-group>
             <v-slide-item v-for="(review, i) in classReview" :key="i">
               <v-alert class="mx-2" outlined color="#769de4">
-                <v-card flat width="350">
+                <v-card
+                  class="custom-scrollbar"
+                  flat
+                  width="350"
+                  max-height="500"
+                  style="overflow-x:hidden"
+                >
                   <v-btn class="my-10 white--text rounded-lg" color="#769de4">{{review.title}}</v-btn>
                   <div class="mb-5" style="color: #979797; line-break: strict; word-break:keep-all">
                     <span v-html="review.content"></span>
@@ -417,6 +423,24 @@
     </v-container>
   </v-app>
 </template>
+
+<style scoped>
+.custom-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  background-color: #f5f5f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #838181;
+}
+</style>
 
 <script>
 export default {
