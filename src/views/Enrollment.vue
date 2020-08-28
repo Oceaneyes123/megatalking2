@@ -43,8 +43,19 @@
                     <v-divider class="mr-10"></v-divider>
 
                     <div class="h6 font-weight-black text-left mt-10 mb-10">수업 선택</div>
-                    <v-tabs v-model="tab" :vertical="!isMobile" :grow="isMobile">
-                      <v-tab v-for="(duration, i) in durations" :key="i">{{duration}}</v-tab>
+                    <v-tabs
+                      v-model="tab"
+                      :vertical="!isMobile"
+                      :grow="isMobile"
+                      background-color="#fafafa"
+                      hide-slider
+                    >
+                      <v-tab
+                        active-class="active white--text"
+                        v-for="(duration, i) in durations"
+                        :key="i"
+                        style="border-radius: 30px 0 0 30px"
+                      >{{duration}}</v-tab>
                       <v-tab-item v-for="(index, i) in 3" :key="i">
                         <v-card flat color="#f5f4f6">
                           <v-container class="pa-5 pa-sm-10">
@@ -62,7 +73,7 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="frequencySelected = i"
+                                  @click="frequencySelected = i, frequencySummary = frequency"
                                   :color="
                                     frequencySelected == i
                                       ? 'primary'
@@ -88,7 +99,7 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="daySelected = i"
+                                  @click="daySelected = i, daySummary = day"
                                   :color="
                                     daySelected == i ? 'primary' : '#FFFFFF'
                                   "
@@ -110,7 +121,7 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="periodSelected = i"
+                                  @click="periodSelected = i, periodSummary = period"
                                   :color="
                                     periodSelected == i ? 'primary' : '#FFFFFF'
                                   "
@@ -133,7 +144,7 @@
                                   class="rounded-lg px-0"
                                   block
                                   depressed
-                                  @click="bookSelected = i"
+                                  @click="bookSelected = i, bookSummary = book.text"
                                   :color="
                                     bookSelected == i ? 'primary' : '#FFFFFF'
                                   "
@@ -287,19 +298,25 @@
                       <v-row no-gutters class="px-2">
                         <v-col cols="4">수강코스</v-col>
                         <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">비즈니스 과정</v-col>
+                        <v-col class="font-weight-bold">{{bookSummary}}</v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
                         <v-col>수강과정</v-col>
                         <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">주2 화목 / 12주</v-col>
+                        <v-col class="font-weight-bold">
+                          {{frequencySummary}}
+                          <span
+                            v-if="frequencySummary != '' && periodSummary != ''"
+                          >/</span>
+                          {{periodSummary}}
+                        </v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
                         <v-col>시작일</v-col>
                         <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">8/5</v-col>
+                        <v-col class="font-weight-bold">{{daySummary}}</v-col>
                       </v-row>
                       <v-divider class="mx-3"></v-divider>
                     </v-container>
@@ -349,6 +366,12 @@
   </v-app>
 </template>
 
+<style scoped>
+.active {
+  background-color: #2564cb;
+}
+</style>
+
 <script>
 export default {
   data() {
@@ -362,6 +385,12 @@ export default {
       timeList: [],
       seeMore: false,
       currentZone: 0,
+
+      bookSummary: "",
+      frequencySummary: "",
+      periodSummary: "",
+      daySummary: "",
+
       paymentMethods: [
         { text: "무통장 입금", color: "" },
         { text: "카드 결제 ", color: "" },
