@@ -13,11 +13,11 @@
             <v-container class="px-0 py-0">
               <v-row no-gutters>
                 <v-col cols="12" md="8">
-                  <v-card class="pl-10 pt-10 pr-8 rounded-xl" flat color="#fafafa">
+                  <v-card class="pl-md-10 px-5 pt-10 pr-md-8 rounded-xl" flat color="#fafafa">
                     <div class="h6 font-weight-black text-left">수강 종류</div>
                     <v-container class="px-0 mt-7">
                       <v-row no-gutters class="mb-5">
-                        <v-col cols="12" sm="6" class="text-left">
+                        <v-col cols="6" class="text-left">
                           <div class="h6 font-weight-bold">전화로 할래요</div>
                           <div class="subheading">
                             <v-icon
@@ -27,7 +27,7 @@
                             >fas fa-phone-square-alt</v-icon>화성영어 서비스 제공
                           </div>
                         </v-col>
-                        <v-col cols="12" sm="6" class="text-left">
+                        <v-col cols="6" class="text-left">
                           <div class="h6 font-weight-bold" style="color:#4242a3">화상으로 할래요.</div>
                           <div class="subheading">
                             <v-icon
@@ -54,7 +54,7 @@
                         active-class="active white--text"
                         v-for="(duration, i) in durations"
                         :key="i"
-                        style="border-radius: 30px 0 0 30px"
+                        :style="!isMobile ? 'border-radius: 30px 0 0 30px' : ''"
                       >{{duration}}</v-tab>
                       <v-tab-item v-for="(index, i) in 3" :key="i">
                         <v-card flat color="#f5f4f6">
@@ -66,7 +66,7 @@
                                 sm="4"
                                 v-for="(frequency, i) in frequncies"
                                 :key="i"
-                                class="px-2"
+                                class="px-2 mb-2 mb-md-0"
                                 active-class="font-weight-bold"
                               >
                                 <v-btn
@@ -89,7 +89,7 @@
                             <!-- days row-->
                             <v-row no-gutters justify="center" class="mt-10">
                               <v-col
-                                cols="12"
+                                cols="6"
                                 sm="4"
                                 v-for="(day, i) in days"
                                 :key="i"
@@ -111,11 +111,11 @@
                             <!-- period row-->
                             <v-row no-gutters justify="center" class="mb-3 mt-10">
                               <v-col
-                                cols="12"
+                                cols="6"
                                 sm="3"
                                 v-for="(period, i) in periods"
                                 :key="i"
-                                class="px-2"
+                                class="px-2 mb-2 mb-md-0"
                               >
                                 <v-btn
                                   class="rounded-lg"
@@ -133,7 +133,7 @@
                             <!-- book row-->
                             <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
                               <v-col
-                                cols="12"
+                                cols="6"
                                 sm="3"
                                 v-for="(book, i) in bookList10"
                                 :key="i"
@@ -216,7 +216,7 @@
                             @click="(currentZone = 0), setTime(6)"
                           >프라임</span>
                           <br />
-                          <span class="caption" @click="currentZone = 0">6:00 - 10:00</span>
+                          <span class="caption" @click="currentZone = 0">6:00 - 9:50</span>
                         </v-col>
                         <v-col class="text-left" style="cursor:pointer;">
                           <span
@@ -224,7 +224,7 @@
                             @click="(currentZone = 1), setTime(10)"
                           >이코노미</span>
                           <br />
-                          <span class="caption" @click="currentZone = 1">10:00 - 5:00</span>
+                          <span class="caption" @click="currentZone = 1">10:00 - 16:50</span>
                         </v-col>
                         <v-col class="text-left" style="cursor:pointer;">
                           <span
@@ -232,7 +232,7 @@
                             @click="(currentZone = 2), setTime(17)"
                           >프라임</span>
                           <br />
-                          <span class="caption" @click="currentZone = 2">5:00 - 0:00</span>
+                          <span class="caption" @click="currentZone = 2">17:00 - 23:50</span>
                         </v-col>
                       </v-row>
                     </v-container>
@@ -264,7 +264,13 @@
                       </v-tabs>
                       <v-container class="px-0">
                         <v-row no-gutters>
-                          <v-col cols="2" v-for="(time, i) in timeList" :key="i">
+                          <v-col
+                            cols="4"
+                            sm="2"
+                            class="mb-2 mb-md-0"
+                            v-for="(time, i) in timeList"
+                            :key="i"
+                          >
                             <v-btn
                               depressed
                               @click="timeSelected = i"
@@ -284,8 +290,14 @@
                     >시간표 전체보기 ></div>
                     <div class="h6 font-weight-black text-left mt-10 mb-10">결제 방식</div>
                     <v-row>
-                      <v-col cols="4" v-for="(method, i) in paymentMethods" :key="i">
-                        <v-btn color="#5a55a1" outlined x-large class="rounded-lg">{{method.text}}</v-btn>
+                      <v-col cols="12" sm="4" v-for="(method, i) in paymentMethods" :key="i">
+                        <v-btn
+                          color="#5a55a1"
+                          block
+                          outlined
+                          x-large
+                          class="rounded-lg"
+                        >{{method.text}}</v-btn>
                       </v-col>
                     </v-row>
                   </v-card>
