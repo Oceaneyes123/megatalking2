@@ -195,246 +195,336 @@
               </v-card>
             </div>
 
-            <v-sheet color="#fafafa">
-              <v-slide-group v-model="bookSlide0" v-if="slide == 0" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_1" :key="i">
+            <v-slide-group v-model="bookSlide0" v-if="slide == 0" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_1" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-
-              <v-slide-group v-model="bookSlide1" v-if="slide == 1" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_2" :key="i">
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
 
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
+            <v-slide-group v-model="bookSlide1" v-if="slide == 1" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_2" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
 
-              <v-slide-group v-model="bookSlide2" v-if="slide == 2" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_3" :key="i">
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-
-              <v-slide-group v-model="bookSlide3" v-if="slide == 3" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_4" :key="i">
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
 
-              <v-slide-group v-model="bookSlide4" v-if="slide == 4" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_5" :key="i">
+            <v-slide-group v-model="bookSlide2" v-if="slide == 2" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_3" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-
-              <v-slide-group v-model="bookSlide5" v-if="slide == 5" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_6" :key="i">
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
 
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
+            <v-slide-group v-model="bookSlide3" v-if="slide == 3" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_4" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
 
-              <v-slide-group v-model="bookSlide6" v-if="slide == 6" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_7" :key="i">
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
-                      max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-
-              <v-slide-group v-model="bookSlide7" v-if="slide == 7" show-arrows class="mb-3">
-                <v-slide-item v-for="(book, i) in allBooks.books_8" :key="i">
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
                   <v-card
                     flat
                     color="#fafafa"
-                    class="rounded-xl mx-2"
-                    max-height="500"
-                    style="border: 1px solid #325fc4"
-                  >
-                    <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
 
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 4"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_5" :key="i">
+                <v-row>
+                  <v-col cols="12" md="6">
                     <v-card
                       flat
                       color="#fafafa"
-                      width="80%"
-                      class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                    >{{book.title}}</v-card>
-                    <v-card
-                      flat
-                      color="#fafafa"
-                      width="80%"
+                      class="rounded-xl mx-2"
+                      :height="isMobile ? '500px' : '100%'"
+                      style="border: 1px solid #325fc4"
                       max-width="300"
-                      height="200"
-                      class="mx-auto mt-5 text-left caption-text"
-                      style="color:#325fc4"
-                    >{{book.details}}</v-card>
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-            </v-sheet>
+                      :class="!isMobile ? 'ml-auto' :'mx-auto'"
+                    >
+                      <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                      >{{book.title}}</v-card>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        max-width="300"
+                        class="mx-auto mt-5 text-left caption-text"
+                        style="color:#325fc4"
+                      >{{book.details}}</v-card>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-img
+                      v-if="book.mobile"
+                      :class="{'mx-auto':isMobile}"
+                      :src="book.mobile"
+                      width="300"
+                      height="400"
+                      contain
+                    ></v-img>
+                  </v-col>
+                </v-row>
+              </v-carousel-item>
+            </v-carousel>
+
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 5"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_6" :key="i">
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-card
+                      flat
+                      color="#fafafa"
+                      class="rounded-xl mx-2"
+                      :height="isMobile ? '500px' : '100%'"
+                      style="border: 1px solid #325fc4"
+                      max-width="300"
+                      :class="!isMobile ? 'ml-auto' :'mx-auto'"
+                    >
+                      <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                      >{{book.title}}</v-card>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        max-width="300"
+                        class="mx-auto mt-5 text-left caption-text"
+                        style="color:#325fc4"
+                      >{{book.details}}</v-card>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-img
+                      v-if="book.mobile"
+                      :class="{'mx-auto':isMobile}"
+                      :src="book.mobile"
+                      width="300"
+                      height="400"
+                      contain
+                    ></v-img>
+                  </v-col>
+                </v-row>
+              </v-carousel-item>
+            </v-carousel>
+
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 6"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_7" :key="i">
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-card
+                      flat
+                      color="#fafafa"
+                      class="rounded-xl mx-2"
+                      :height="isMobile ? '500px' : '100%'"
+                      style="border: 1px solid #325fc4"
+                      max-width="300"
+                      :class="!isMobile ? 'ml-auto' :'mx-auto'"
+                    >
+                      <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                      >{{book.title}}</v-card>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        max-width="300"
+                        class="mx-auto mt-5 text-left caption-text"
+                        style="color:#325fc4"
+                      >{{book.details}}</v-card>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-img
+                      v-if="book.mobile"
+                      :class="{'mx-auto':isMobile}"
+                      :src="book.mobile"
+                      width="300"
+                      height="400"
+                      contain
+                    ></v-img>
+                  </v-col>
+                </v-row>
+              </v-carousel-item>
+            </v-carousel>
+
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 7"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_8" :key="i">
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-card
+                      flat
+                      color="#fafafa"
+                      class="rounded-xl mx-2"
+                      :height="isMobile ? '500px' : '100%'"
+                      style="border: 1px solid #325fc4"
+                      max-width="300"
+                      :class="!isMobile ? 'ml-auto' :'mx-auto'"
+                    >
+                      <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                      >{{book.title}}</v-card>
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        width="80%"
+                        max-width="300"
+                        class="mx-auto mt-5 text-left caption-text"
+                        style="color:#325fc4"
+                      >{{book.details}}</v-card>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-img
+                      v-if="book.mobile"
+                      :class="{'mx-auto':isMobile}"
+                      :src="book.mobile"
+                      width="300"
+                      height="400"
+                      contain
+                    ></v-img>
+                  </v-col>
+                </v-row>
+              </v-carousel-item>
+            </v-carousel>
+
+            <v-row justify="center">
+              <v-btn
+                class="rounded-xl white--text font-weight-bold h5 nanum"
+                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+              >수강신청</v-btn>
+            </v-row>
 
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
@@ -729,6 +819,10 @@ td:nth-child(n + 2) {
 .text-dark-blue {
   color: #325fc4;
 }
+
+.text-black {
+  color: #000;
+}
 </style>
 
 <script>
@@ -745,6 +839,8 @@ export default {
       bookSlide6: 0,
       bookSlide7: 0,
       category: "입문과정",
+      screenWidth: "",
+      isMobile: false,
 
       allBooks: {
         books_1: [
@@ -815,16 +911,19 @@ export default {
 
         books_5: [
           {
+            mobile: require("../assets/mobile/speaking-patten-100.png"),
             image: require("../assets/curriculum/sp_1.jpg"),
             title: "스피킹 패턴과정",
             details: "자주 나오는 중요한 패턴 100개 연습하기"
           },
           {
+            mobile: require("../assets/mobile/grammar-in-patten-basic.png"),
             image: require("../assets/curriculum/dp_sp.webp"),
             title: "Grammar in Pattern 과정",
             details: "패턴속에 문법까지 짚어가며 정확한 표현배우기"
           },
           {
+            mobile: require("../assets/mobile/daily-dialogue.png"),
             image: require("../assets/curriculum/dd_1.jpg"),
             title: "일상 Dialogue 과정",
             details:
@@ -834,16 +933,19 @@ export default {
 
         books_6: [
           {
+            mobile: require("../assets/mobile/free-Q&A.png"),
             image: require("../assets/curriculum/ft_q_a1.webp"),
             title: "프리토킹 묻고 답하기",
             details: "미리 예정된 토픽에 대해 편안하게 대화하기"
           },
           {
+            mobile: require("../assets/mobile/free-opinion.png"),
             image: require("../assets/curriculum/ft_op1.webp"),
             title: "프리토킹 의견말하기",
             details: "일상에 자주 거론되는 이슈에 대한 나의 의견 영어로 말하기"
           },
           {
+            mobile: require("../assets/mobile/free-description.png"),
             image: require("../assets/curriculum/ft_ds1.webp"),
             title: "프리토킹 사진묘사",
             details: "일상에 자주 거론되는 이슈에 대한 나의 의견 영어로 말하기"
@@ -872,7 +974,8 @@ export default {
             image: require("../assets/curriculum/be_sd.jpg"),
             title: "Business English (Situational Dialogues)",
             details:
-              "전화응대, 프레젠테이션, 보고하기, 회의자료 준비 및 회의하기 등의 업무상 필요한 모든 회화전략을 담았습니다. 실용적으로 사용할 비즈니스 회화를 학습하고자 하는 수강생에게 적합합니다."
+              "전화응대, 프레젠테이션, 보고하기, 회의자료 준비 및 회의하기 등의 업무상 필요한 모든 회화전략을 담았습니다. 실용적으로 사용할 비즈니스 회화를 학습하고자 하는 수강생에게 적합합니다.",
+            mobile: require("../assets/mobile/business.png")
           },
           {
             image: require("../assets/curriculum/email.jpg"),
@@ -902,12 +1005,14 @@ export default {
             image: require("../assets/curriculum/be_sd.jpg"),
             title: "Business English (Discussion and Analysis)",
             details:
-              "마케팅적 토론, 광고, 금융, 사내조직 등의 여러 비즈니스상의 키워드들에 대한 심도있는 토론과정입니다. 다양한 비즈니스 용어들을 익힐 수 있으며, 지문과 질문에 대한 흥미로운 토론학습입니다."
+              "마케팅적 토론, 광고, 금융, 사내조직 등의 여러 비즈니스상의 키워드들에 대한 심도있는 토론과정입니다. 다양한 비즈니스 용어들을 익힐 수 있으며, 지문과 질문에 대한 흥미로운 토론학습입니다.",
+            mobile: require("../assets/mobile/business.png")
           }
         ],
 
         books_8: [
           {
+            mobile: require("../assets/mobile/interview-english.png"),
             image: require("../assets/curriculum/int_1.webp"),
             title: "Interview (영어 면접)과정",
             details:
@@ -948,7 +1053,24 @@ export default {
     };
   },
 
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
+  mounted() {
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
+  },
+
   methods: {
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
+    },
+
     selectCategory(event, current) {
       this.slide = current;
       this.category = event.target.innerText;

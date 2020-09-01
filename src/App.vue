@@ -26,7 +26,7 @@
             <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>
             <div class="mr-4 subheading orange--text text--lighten-1">KR</div>
             <div class="mr-6 subheading">EN</div>
-            <div class="mr-6 subheading">
+            <div class="mr-6 subheading" @click="signInDialog = true">
               <a>로그인</a>
             </div>
           </v-card>
@@ -133,40 +133,56 @@
         </v-card>
       </v-img>
 
-      <v-dialog v-model="signInDialog" max-width="1000">
+      <v-dialog v-model="signInDialog" max-width="1000" style="overflow-x:hidden">
         <v-card flat class="rounded-xl" max-width="1000">
           <v-card flat color="#8aace9">
-            <v-row>
-              <v-col cols="6" class="white--text">
-                <span class="ml-5 h5 nanum">회원 로그인</span>
-              </v-col>
-              <v-col cols="6" class="d-flex align-center white--text">
-                <span class="ml-5 h5 nanum">회원가입</span>
-                <v-spacer></v-spacer>
-                <span class="mr-5">
-                  <v-icon color="white">close</v-icon>
-                </span>
-              </v-col>
-            </v-row>
+            <v-container>
+              <v-row>
+                <v-col cols="6" class="white--text">
+                  <span class="ml-5 h5 nanum">회원 로그인</span>
+                </v-col>
+                <v-col cols="6" class="d-flex align-center white--text">
+                  <span class="ml-5 h5 nanum">회원가입</span>
+                  <v-spacer></v-spacer>
+                  <span class="mr-5">
+                    <v-icon color="white">close</v-icon>
+                  </span>
+                </v-col>
+              </v-row>
+            </v-container>
             <v-card flat class="pa-5">
               <v-container>
                 <v-row>
-                  <v-col cols="6">
+                  <v-col cols="5" class="mx-auto">
                     <v-row>
                       <v-col>
-                        <v-text-field></v-text-field>
-                        <v-text-field></v-text-field>
+                        <v-text-field outlined class="rounded-xl" label="아이디(이메일)"></v-text-field>
+                        <v-text-field outlined class="rounded-xl" label="비밀번호"></v-text-field>
                         <v-checkbox label="로그인 상태 유지"></v-checkbox>
                       </v-col>
                     </v-row>
                   </v-col>
                   <v-divider vertical></v-divider>
-                  <v-col cols="6">
+                  <v-col cols="5" class="mx-auto">
                     <v-row>
-                      <v-col>
-                        <v-text-field></v-text-field>
-                        <v-text-field></v-text-field>
+                      <v-col cols="12" md="6" class="py-0">
+                        <v-text-field outlined class="rounded-xl" label="이름 "></v-text-field>
                       </v-col>
+                      <v-col cols="12" md="6" class="py-0">
+                        <v-text-field outlined class="rounded-xl" label="연락처"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" class="py-0">
+                        <v-text-field outlined class="rounded-xl" label="이메일"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" md="6" class="py-0">
+                        <v-text-field outlined class="rounded-xl" label="비밀번호 "></v-text-field>
+                      </v-col>
+                      <v-col cols="12" md="6" class="py-0">
+                        <v-text-field outlined class="rounded-xl" label="비밀번호 확인"></v-text-field>
+                      </v-col>
+                      <v-checkbox label="아래 약관에 모두 동의합니다.s"></v-checkbox>
+                      <v-checkbox label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"></v-checkbox>
+                      <v-checkbox class="mt-0" label="할인/이벤트 안내 동의(선택)"></v-checkbox>
                     </v-row>
                   </v-col>
                 </v-row>
