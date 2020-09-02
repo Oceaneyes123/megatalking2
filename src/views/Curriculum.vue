@@ -374,7 +374,10 @@
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
                               >수강신청</v-btn>
-                              <div class="h5 nanum text-black text-left">{{title}}</div>
+                              <div
+                                class="h5 nanum text-black text-left"
+                                style="line-break:strict;word-break:keep-all"
+                              >{{title}}</div>
                             </div>
                           </v-col>
                         </v-row>

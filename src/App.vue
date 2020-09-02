@@ -305,6 +305,8 @@ export default {
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: normal;
+  line-break: strict;
+  word-break: keep-all;
 }
 .h6 {
   font-weight: 500;
