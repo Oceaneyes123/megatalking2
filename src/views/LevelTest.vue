@@ -80,10 +80,10 @@
               <div class="px-5 px-md-10 h6 font-weight-black text-left">과목 선택</div>
               <v-row class="mx-10 mb-10">
                 <v-col cols="12" md="6">
-                  <v-checkbox v-model="checkbox1" color="primary" class="mr-10" label="메가토킹 전화영어"></v-checkbox>
+                  <v-checkbox color="primary" class="mr-10" label="메가토킹 전화영어"></v-checkbox>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-checkbox v-model="checkbox1" color="primary" label="메가토킹 화상영어"></v-checkbox>
+                  <v-checkbox color="primary" label="메가토킹 화상영어"></v-checkbox>
                 </v-col>
               </v-row>
               <v-row class="align-center mx-10 mb-10">
