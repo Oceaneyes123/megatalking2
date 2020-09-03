@@ -30,7 +30,10 @@
                     :class="{'blue--text': active}"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
-                  >입문과정</v-btn>
+                  >
+                    유튜브
+                    <br />회화과정
+                  </v-btn>
                 </v-slide-item>
 
                 <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
@@ -41,10 +44,10 @@
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
-                    :outlined="active"
                     :color="active ? 'primary' : 'white'"
+                    :outlined="active"
                   >
-                    초/중급
+                    정규
                     <br />회화과정
                   </v-btn>
                 </v-slide-item>
@@ -57,62 +60,17 @@
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
-                    :color="active ? 'primary' : 'white'"
                     :outlined="active"
-                  >정규회화과정</v-btn>
+                    :color="active ? 'primary' : 'white'"
+                  >
+                    프리토킹
+                    <br />토론
+                  </v-btn>
                 </v-slide-item>
 
                 <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
                   <v-btn
                     @click="toggle, selectCategory($event, 3)"
-                    depressed
-                    class="py-2"
-                    width="97"
-                    min-height="80"
-                    :class="{'blue--text': active}"
-                    :color="active ? 'primary' : 'white'"
-                    :outlined="active"
-                  >
-                    뉴욕라이브
-                    <br />잉글리쉬
-                  </v-btn>
-                </v-slide-item>
-
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
-                  <v-btn
-                    @click="toggle, selectCategory($event, 4)"
-                    depressed
-                    class="py-2"
-                    width="97"
-                    min-height="80"
-                    :class="{'blue--text': active}"
-                    :color="active ? 'primary' : 'white'"
-                    :outlined="active"
-                  >
-                    문법
-                    <br />패턴과정
-                  </v-btn>
-                </v-slide-item>
-
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
-                  <v-btn
-                    @click="toggle, selectCategory($event, 5)"
-                    depressed
-                    class="py-2"
-                    width="97"
-                    min-height="80"
-                    :class="{'blue--text': active}"
-                    :color="active ? 'primary' : 'white'"
-                    :outlined="active"
-                  >
-                    토론/프리토킹
-                    <br />과정
-                  </v-btn>
-                </v-slide-item>
-
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
-                  <v-btn
-                    @click="toggle, selectCategory($event, 6)"
                     depressed
                     class="py-2"
                     width="97"
@@ -128,7 +86,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 7)"
+                    @click="toggle, selectCategory($event, 4)"
                     depressed
                     class="py-2"
                     width="97"
@@ -137,9 +95,54 @@
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
-                    특별전문과정/
-                    <br />취업준비과정
+                    문법/
+                    <br />패턴
                   </v-btn>
+                </v-slide-item>
+
+                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                  <v-btn
+                    @click="toggle, selectCategory($event, 5)"
+                    depressed
+                    class="py-2"
+                    width="97"
+                    min-height="80"
+                    :class="{'blue--text': active}"
+                    :color="active ? 'primary' : 'white'"
+                    :outlined="active"
+                  >
+                    취업준비/
+                    <br />특별 과정
+                  </v-btn>
+                </v-slide-item>
+
+                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                  <v-btn
+                    @click="toggle, selectCategory($event, 6)"
+                    depressed
+                    class="py-2"
+                    width="97"
+                    min-height="80"
+                    :class="{'blue--text': active}"
+                    :color="active ? 'primary' : 'white'"
+                    :outlined="active"
+                  >
+                    초/중급
+                    <br />회화과정
+                  </v-btn>
+                </v-slide-item>
+
+                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                  <v-btn
+                    @click="toggle, selectCategory($event, 7)"
+                    depressed
+                    class="py-2"
+                    width="97"
+                    min-height="80"
+                    :class="{'blue--text': active}"
+                    :color="active ? 'primary' : 'white'"
+                    :outlined="active"
+                  >입문과정</v-btn>
                 </v-slide-item>
               </v-slide-group>
             </v-sheet>
@@ -195,35 +198,84 @@
               </v-card>
             </div>
 
-            <v-slide-group v-model="bookSlide0" v-if="slide == 0" show-arrows class="mb-3">
-              <v-slide-item v-for="(book, i) in allBooks.books_1" :key="i">
-                <v-card
-                  flat
-                  color="#fafafa"
-                  class="rounded-xl mx-2"
-                  max-height="500"
-                  style="border: 1px solid #325fc4"
-                >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+            <!-- Carousel -->
 
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
-                    style="color:#325fc4"
-                  >{{book.details}}</v-card>
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 0"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+              @change="changeCarousel(allBooks.books_1, $event)"
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_1" :key="i">
+                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+                  <v-row>
+                    <v-col class="py-0" cols="12" md="5">
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        class="rounded-xl"
+                        :height="isMobile ? '500px' : '100%'"
+                        style="border: 1px solid #325fc4"
+                        max-width="300"
+                      >
+                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                        >{{book.title}}</v-card>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          max-width="300"
+                          class="mx-auto mt-5 text-left caption-text"
+                          style="color:#325fc4"
+                        >{{book.details}}</v-card>
+                      </v-card>
+                    </v-col>
+                    <v-col cols="12" md="7">
+                      <v-container fluid>
+                        <v-row class="h6 font-weight-bold" justify="center">
+                          <div class="text-center text-black">학습교재</div>
+                        </v-row>
+                        <v-row>
+                          <v-col cols="12">
+                            <v-img
+                              style=" transform: rotate(90deg)"
+                              v-if="book.tab && i % 2 != 1"
+                              :src="book.tab"
+                              width="250"
+                              height="300"
+                              class="mx-auto"
+                              contain
+                            ></v-img>
+                          </v-col>
+                        </v-row>
+                        <v-row>
+                          <v-col cols="12" class="d-flex align-end">
+                            <div class="d-flex flex-row align-start mx-auto">
+                              <div
+                                class="h5 nanum text-black text-left mr-5"
+                                style="line-break:strict;word-break:keep-all"
+                              >{{title}}</div>
+                              <v-btn
+                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                              >수강신청</v-btn>
+                            </div>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
                 </v-card>
-              </v-slide-item>
-            </v-slide-group>
+              </v-carousel-item>
+            </v-carousel>
 
             <v-slide-group v-model="bookSlide1" v-if="slide == 1" show-arrows class="mb-3">
               <v-slide-item v-for="(book, i) in allBooks.books_2" :key="i">
@@ -255,65 +307,151 @@
               </v-slide-item>
             </v-slide-group>
 
-            <v-slide-group v-model="bookSlide2" v-if="slide == 2" show-arrows class="mb-3">
-              <v-slide-item v-for="(book, i) in allBooks.books_3" :key="i">
-                <v-card
-                  flat
-                  color="#fafafa"
-                  class="rounded-xl mx-2"
-                  max-height="500"
-                  style="border: 1px solid #325fc4"
-                >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
-                    style="color:#325fc4"
-                  >{{book.details}}</v-card>
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 2"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+              @change="changeCarousel(allBooks.books_3, $event)"
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_3" :key="i">
+                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+                  <v-row>
+                    <v-col class="py-0" cols="12" md="5">
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        class="rounded-xl"
+                        :height="isMobile ? '500px' : '100%'"
+                        style="border: 1px solid #325fc4"
+                        max-width="300"
+                      >
+                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                        >{{book.title}}</v-card>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          max-width="300"
+                          class="mx-auto mt-5 text-left caption-text"
+                          style="color:#325fc4"
+                        >{{book.details}}</v-card>
+                      </v-card>
+                    </v-col>
+                    <v-col cols="12" md="7">
+                      <v-container fluid>
+                        <v-row class="h6 font-weight-bold" justify="center">
+                          <div class="text-center text-black">학습교재</div>
+                        </v-row>
+                        <v-row>
+                          <v-col cols="6">
+                            <v-img
+                              v-if="book.mobile"
+                              :src="book.mobile"
+                              width="250"
+                              height="300"
+                              contain
+                            ></v-img>
+                          </v-col>
+                          <v-col cols="6" class="d-flex align-end">
+                            <div class="d-flex flex-column align-start">
+                              <v-btn
+                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                              >수강신청</v-btn>
+                              <div
+                                class="h5 nanum text-black text-left"
+                                style="line-break:strict;word-break:keep-all"
+                              >{{title}}</div>
+                            </div>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
                 </v-card>
-              </v-slide-item>
-            </v-slide-group>
+              </v-carousel-item>
+            </v-carousel>
 
-            <v-slide-group v-model="bookSlide3" v-if="slide == 3" show-arrows class="mb-3">
-              <v-slide-item v-for="(book, i) in allBooks.books_4" :key="i">
-                <v-card
-                  flat
-                  color="#fafafa"
-                  class="rounded-xl mx-2"
-                  max-height="500"
-                  style="border: 1px solid #325fc4"
-                >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
-                  <v-card
-                    flat
-                    color="#fafafa"
-                    width="80%"
-                    max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
-                    style="color:#325fc4"
-                  >{{book.details}}</v-card>
+            <v-carousel
+              cycle
+              :height="isMobile ? '950' : '450'"
+              v-if="slide == 3"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+              @change="changeCarousel(allBooks.books_4, $event)"
+            >
+              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_4" :key="i">
+                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+                  <v-row>
+                    <v-col class="py-0" cols="12" md="5">
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        class="rounded-xl"
+                        :height="isMobile ? '500px' : '100%'"
+                        style="border: 1px solid #325fc4"
+                        max-width="300"
+                      >
+                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                        >{{book.title}}</v-card>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          max-width="300"
+                          class="mx-auto mt-5 text-left caption-text"
+                          style="color:#325fc4"
+                        >{{book.details}}</v-card>
+                      </v-card>
+                    </v-col>
+                    <v-col cols="12" md="7">
+                      <v-container fluid>
+                        <v-row class="h6 font-weight-bold" justify="center">
+                          <div class="text-center text-black">학습교재</div>
+                        </v-row>
+                        <v-row>
+                          <v-col cols="6">
+                            <v-img
+                              v-if="book.mobile"
+                              :src="book.mobile"
+                              width="250"
+                              height="300"
+                              contain
+                            ></v-img>
+                          </v-col>
+                          <v-col cols="6" class="d-flex align-end">
+                            <div class="d-flex flex-column align-start">
+                              <v-btn
+                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                              >수강신청</v-btn>
+                              <div
+                                class="h5 nanum text-black text-left"
+                                style="line-break:strict;word-break:keep-all"
+                              >{{title}}</div>
+                            </div>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
                 </v-card>
-              </v-slide-item>
-            </v-slide-group>
+              </v-carousel-item>
+            </v-carousel>
 
             <v-carousel
               cycle
@@ -461,151 +599,65 @@
               </v-carousel-item>
             </v-carousel>
 
-            <v-carousel
-              cycle
-              :height="isMobile ? '950' : '450'"
-              v-if="slide == 6"
-              hide-delimiter-background
-              show-arrows-on-hover
-              hide-delimiters
-              @change="changeCarousel(allBooks.books_7, $event)"
-            >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_7" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
-                  <v-row>
-                    <v-col class="py-0" cols="12" md="5">
-                      <v-card
-                        flat
-                        color="#fafafa"
-                        class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
-                        style="border: 1px solid #325fc4"
-                        max-width="300"
-                      >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-                        <v-card
-                          flat
-                          color="#fafafa"
-                          width="80%"
-                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
-                        <v-card
-                          flat
-                          color="#fafafa"
-                          width="80%"
-                          max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
-                          style="color:#325fc4"
-                        >{{book.details}}</v-card>
-                      </v-card>
-                    </v-col>
-                    <v-col cols="12" md="7">
-                      <v-container fluid>
-                        <v-row class="h6 font-weight-bold" justify="center">
-                          <div class="text-center text-black">학습교재</div>
-                        </v-row>
-                        <v-row>
-                          <v-col cols="6">
-                            <v-img
-                              v-if="book.mobile"
-                              :src="book.mobile"
-                              width="250"
-                              height="300"
-                              contain
-                            ></v-img>
-                          </v-col>
-                          <v-col cols="6" class="d-flex align-end">
-                            <div class="d-flex flex-column align-start">
-                              <v-btn
-                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
-                              <div
-                                class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
-                            </div>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-carousel-item>
-            </v-carousel>
+            <v-slide-group v-model="bookSlide6" v-if="slide == 6" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_7" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
 
-            <v-carousel
-              cycle
-              :height="isMobile ? '950' : '450'"
-              v-if="slide == 7"
-              hide-delimiter-background
-              show-arrows-on-hover
-              hide-delimiters
-              @change="changeCarousel(allBooks.books_8, $event)"
-            >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_8" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
-                  <v-row>
-                    <v-col class="py-0" cols="12" md="5">
-                      <v-card
-                        flat
-                        color="#fafafa"
-                        class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
-                        style="border: 1px solid #325fc4"
-                        max-width="300"
-                      >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
-                        <v-card
-                          flat
-                          color="#fafafa"
-                          width="80%"
-                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
-                        <v-card
-                          flat
-                          color="#fafafa"
-                          width="80%"
-                          max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
-                          style="color:#325fc4"
-                        >{{book.details}}</v-card>
-                      </v-card>
-                    </v-col>
-                    <v-col cols="12" md="7">
-                      <v-container fluid>
-                        <v-row class="h6 font-weight-bold" justify="center">
-                          <div class="text-center text-black">학습교재</div>
-                        </v-row>
-                        <v-row>
-                          <v-col cols="6">
-                            <v-img
-                              v-if="book.mobile"
-                              :src="book.mobile"
-                              width="250"
-                              height="300"
-                              contain
-                            ></v-img>
-                          </v-col>
-                          <v-col cols="6" class="d-flex align-end">
-                            <div class="d-flex flex-column align-start">
-                              <v-btn
-                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
-                              <div
-                                class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
-                            </div>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-col>
-                  </v-row>
+                  <v-card
+                    flat
+                    color="#fafafa"
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
+                  <v-card
+                    flat
+                    color="#fafafa"
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
                 </v-card>
-              </v-carousel-item>
-            </v-carousel>
+              </v-slide-item>
+            </v-slide-group>
+
+            <v-slide-group v-model="bookSlide7" v-if="slide == 7" show-arrows class="mb-3">
+              <v-slide-item v-for="(book, i) in allBooks.books_8" :key="i">
+                <v-card
+                  flat
+                  color="#fafafa"
+                  class="rounded-xl mx-2"
+                  max-height="500"
+                  style="border: 1px solid #325fc4"
+                >
+                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+
+                  <v-card
+                    flat
+                    color="#fafafa"
+                    width="80%"
+                    class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
+                  >{{book.title}}</v-card>
+                  <v-card
+                    flat
+                    color="#fafafa"
+                    width="80%"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto mt-5 text-left caption-text"
+                    style="color:#325fc4"
+                  >{{book.details}}</v-card>
+                </v-card>
+              </v-slide-item>
+            </v-slide-group>
 
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
@@ -926,49 +978,89 @@ export default {
       title: "",
 
       allBooks: {
+        // books_1: [
+        //   {
+        //     image: require("../assets/curriculum/nye.jpg"),
+        //     title: "New York Live English",
+        //     details:
+        //       "각 명소에 대한 설명이 흥미롭게 구성되어 있어 듣기능력과 회화능력 뿐만 아니라 뉴욕에 대한 풍부한 상식도 배울 수 있습니다. 독학과정을 신청할 수도 있으며, 전화영어와 세트로 학습하여, 공부한 내용을 실전처럼 활용해 볼 수도 있습니다. 본인에게 약한 부분을 집중적으로 학습할 수 있어, 정말 스마트한 학습이 될 것입니다."
+        //   }
+        // ],
+
         books_1: [
           {
-            image: require("../assets/curriculum/phonics.jpg"),
-            title: "Phonics 1~6",
+            tab: require("../assets/tab/vidtab1.png"),
+            image: require("../assets/tab/video1.jpg"),
+            title: "셀럽 토크쇼",
             details:
-              "기본 알파벳과 기본 단어부터 차근차근 배우고자 하시는 분, 부담없이 시작 할 수 있는 왕기초 발음교정 과정입니다. 1권부터 6권까지 3개월완성! (빠른 진도시 한달만에도 완성가능)"
+              "<엠마왓슨투나잇쇼>,<앤 헤서웨이 코난쇼> … 여러 셀럽들의 인터뷰를 통해 자주사용되는 표현과 다양한 구어체를 배울 수 있는 과정입니다."
           },
           {
-            image: require("../assets/curriculum/adv_phonics.jpg"),
-            title: "Advanced Phonics 1~6",
+            tab: require("../assets/tab/video1.jpg"),
+            image: require("../assets/tab/video1.jpg"),
+            title: "셀럽 토크쇼",
             details:
-              "각 Phonics의 발음들을 보다 심층적으로, 빠르게 배울 수 있는 퀵Phonics 커리큘럼입니다. Phonics를 전체적으로 복습하고자 하시는 분, 빠르게 Phonics를 익히고자 하시는분께 적합합니다."
+              "<엠마왓슨투나잇쇼>,<앤 헤서웨이 코난쇼> … 여러 셀럽들의 인터뷰를 통해 자주사용되는 표현과 다양한 구어체를 배울 수 있는 과정입니다."
           },
           {
-            image: require("../assets/curriculum/p_course_jr.jpg"),
-            title: "P-course Junior Basic~Advanced",
+            tab: require("../assets/tab/vidtab2.png"),
+            image: require("../assets/tab/video2.jpg"),
+            title: "TED Ed",
             details:
-              "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
+              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
           },
           {
-            image: require("../assets/curriculum//c-course_jr.jpg"),
-            title: "C-course Junior Basic~Advanced",
+            tab: require("../assets/tab/video2.jpg"),
+            image: require("../assets/tab/video2.jpg"),
+            title: "TED Ed",
             details:
-              "주위에서 흔히 볼 수 있는 사물들과 환경들로, 친숙한 회화표현들을 익혀보는 과정입니다. 그림과 함께 쉽게 회화를 익혀볼 수 있습니다."
+              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
+          },
+          {
+            tab: require("../assets/tab/vidtab3.png"),
+            image: require("../assets/tab/video3.jpg"),
+            title: "Movie",
+            details:
+              "영화속 대사를 통해 다양한 영어표현을 배워보세요. 영화의 재미와 함께 섬세한 감정표현, 영국식, 미국식 액센트도 덤으로 연습하실 수 있는 흥미진진한 수업이 되실거예요."
+          },
+          {
+            tab: require("../assets/tab/video3.jpg"),
+            image: require("../assets/tab/video3.jpg"),
+            title: "Movie",
+            details:
+              "영화속 대사를 통해 다양한 영어표현을 배워보세요. 영화의 재미와 함께 섬세한 감정표현, 영국식, 미국식 액센트도 덤으로 연습하실 수 있는 흥미진진한 수업이 되실거예요."
+          },
+          {
+            tab: require("../assets/tab/vidtab4.png"),
+            image: require("../assets/tab/video4.jpg"),
+            title: "셀럽과의 대화",
+            details:
+              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
+          },
+          {
+            tab: require("../assets/tab/video4.jpg"),
+            image: require("../assets/tab/video4.jpg"),
+            title: "셀럽과의 대화",
+            details:
+              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
+          },
+          {
+            tab: require("../assets/tab/vidtab5.png"),
+            image: require("../assets/tab/video5.jpg"),
+            title: "Pop Song",
+            details:
+              "애드시런, 아델, 빌리 아일리시, 마룬5, 리한나, 아리아나 그란데 등의 인기있는 팝송을 통해 좋아하는 노래도 듣고 노래가사에 담긴 영어표현을 배울 수 있는 과정입니다. "
+          },
+          {
+            tab: require("../assets/tab/video5.jpg"),
+            image: require("../assets/tab/video5.jpg"),
+            title: "Pop Song",
+            details:
+              "애드시런, 아델, 빌리 아일리시, 마룬5, 리한나, 아리아나 그란데 등의 인기있는 팝송을 통해 좋아하는 노래도 듣고 노래가사에 담긴 영어표현을 배울 수 있는 과정입니다. "
           }
         ],
 
         books_2: [
-          {
-            image: require("../assets/curriculum/milestones.jpg"),
-            title: "Milestones",
-            details:
-              "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
-          },
-          {
-            image: require("../assets/curriculum/1st_step.jpg"),
-            title: "First Step In Conversation Level 1~3",
-            details:
-              "다양한 상황과 단어들을 이용한 중급 회화 입니다. 그림과 함께한 중급용 회화교재입니다. 배운 숙어를 활용하여 응용연습을 함으로, 회화실력을 다져나갈 수 있습니다."
-          }
-        ],
-
-        books_3: [
           {
             image: require("../assets/curriculum/conv.jpg"),
             title: "Regular Conversation Step 1~3",
@@ -977,44 +1069,13 @@ export default {
           },
           {
             image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (Beginner~Advanced)",
+            title: `Interactive English Series (Beginner~Advanced)`,
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다."
           }
         ],
 
-        books_4: [
-          {
-            image: require("../assets/curriculum/nye.jpg"),
-            title: "New York Live English",
-            details:
-              "각 명소에 대한 설명이 흥미롭게 구성되어 있어 듣기능력과 회화능력 뿐만 아니라 뉴욕에 대한 풍부한 상식도 배울 수 있습니다. 독학과정을 신청할 수도 있으며, 전화영어와 세트로 학습하여, 공부한 내용을 실전처럼 활용해 볼 수도 있습니다. 본인에게 약한 부분을 집중적으로 학습할 수 있어, 정말 스마트한 학습이 될 것입니다."
-          }
-        ],
-
-        books_5: [
-          {
-            mobile: require("../assets/mobile/speaking-patten-100.png"),
-            image: require("../assets/curriculum/sp_1.jpg"),
-            title: "스피킹 패턴과정",
-            details: "자주 나오는 중요한 패턴 100개 연습하기"
-          },
-          {
-            mobile: require("../assets/mobile/grammar-in-patten-basic.png"),
-            image: require("../assets/curriculum/dp_sp.webp"),
-            title: "Grammar in Pattern 과정",
-            details: "패턴속에 문법까지 짚어가며 정확한 표현배우기"
-          },
-          {
-            mobile: require("../assets/mobile/daily-dialogue.png"),
-            image: require("../assets/curriculum/dd_1.jpg"),
-            title: "일상 Dialogue 과정",
-            details:
-              "현지인과 맞닥뜨리게되는 다양한 상황속에서 영어로 편하게 의사소통하기"
-          }
-        ],
-
-        books_6: [
+        books_3: [
           {
             mobile: require("../assets/mobile/free-Q&A.png"),
             image: require("../assets/curriculum/ft_q_a1.webp"),
@@ -1046,7 +1107,7 @@ export default {
           }
         ],
 
-        books_7: [
+        books_4: [
           {
             image: require("../assets/curriculum/bd_1.webp"),
             title: "비지니스 회화과정",
@@ -1093,7 +1154,29 @@ export default {
           }
         ],
 
-        books_8: [
+        books_5: [
+          {
+            mobile: require("../assets/mobile/speaking-patten-100.png"),
+            image: require("../assets/curriculum/sp_1.jpg"),
+            title: "스피킹 패턴과정",
+            details: "자주 나오는 중요한 패턴 100개 연습하기"
+          },
+          {
+            mobile: require("../assets/mobile/grammar-in-patten-basic.png"),
+            image: require("../assets/curriculum/dp_sp.webp"),
+            title: "Grammar in Pattern 과정",
+            details: "패턴속에 문법까지 짚어가며 정확한 표현배우기"
+          },
+          {
+            mobile: require("../assets/mobile/daily-dialogue.png"),
+            image: require("../assets/curriculum/dd_1.jpg"),
+            title: "일상 Dialogue 과정",
+            details:
+              "현지인과 맞닥뜨리게되는 다양한 상황속에서 영어로 편하게 의사소통하기"
+          }
+        ],
+
+        books_6: [
           {
             mobile: require("../assets/mobile/interview-english.png"),
             image: require("../assets/curriculum/int_1.webp"),
@@ -1130,6 +1213,48 @@ export default {
             title: "Medical English",
             details:
               "검진, 예약, 차트작성, 응급상황 시 대처방법 등 실무에 필요한 의학영어들을 담았습니다. 의학용어들이 등장하여 어휘에 난이도가 있긴 하지만 몇몇 난이도 있는 용어를 제외하면, 다양한 상황에서의 의학회화들을 실용적으로 학습해나갈 수 있는 과정입니다."
+          }
+        ],
+
+        books_7: [
+          {
+            image: require("../assets/curriculum/milestones.jpg"),
+            title: "Milestones",
+            details:
+              "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
+          },
+          {
+            image: require("../assets/curriculum/1st_step.jpg"),
+            title: "First Step In Conversation Level 1~3",
+            details:
+              "다양한 상황과 단어들을 이용한 중급 회화 입니다. 그림과 함께한 중급용 회화교재입니다. 배운 숙어를 활용하여 응용연습을 함으로, 회화실력을 다져나갈 수 있습니다."
+          }
+        ],
+
+        books_8: [
+          {
+            image: require("../assets/curriculum/phonics.jpg"),
+            title: "Phonics 1~6",
+            details:
+              "기본 알파벳과 기본 단어부터 차근차근 배우고자 하시는 분, 부담없이 시작 할 수 있는 왕기초 발음교정 과정입니다. 1권부터 6권까지 3개월완성! (빠른 진도시 한달만에도 완성가능)"
+          },
+          {
+            image: require("../assets/curriculum/adv_phonics.jpg"),
+            title: "Advanced Phonics 1~6",
+            details:
+              "각 Phonics의 발음들을 보다 심층적으로, 빠르게 배울 수 있는 퀵Phonics 커리큘럼입니다. Phonics를 전체적으로 복습하고자 하시는 분, 빠르게 Phonics를 익히고자 하시는분께 적합합니다."
+          },
+          {
+            image: require("../assets/curriculum/p_course_jr.jpg"),
+            title: "P-course Junior Basic~Advanced",
+            details:
+              "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
+          },
+          {
+            image: require("../assets/curriculum//c-course_jr.jpg"),
+            title: "C-course Junior Basic~Advanced",
+            details:
+              "주위에서 흔히 볼 수 있는 사물들과 환경들로, 친숙한 회화표현들을 익혀보는 과정입니다. 그림과 함께 쉽게 회화를 익혀볼 수 있습니다."
           }
         ]
       }
