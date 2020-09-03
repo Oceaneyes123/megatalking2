@@ -196,7 +196,7 @@
                 </v-img>
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
-                <v-img src="../assets/emma_watson.jpg">
+                <v-img src="../assets/ted_mainpage.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
                       <div class="font-weight-black h2 text-left mx-3 white--text gmarket">TED</div>
@@ -237,7 +237,7 @@
             </v-col>
             <v-col cols="12" md="5">
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
-                <v-img src="../assets/maroon5.jpg">
+                <v-img src="../assets/maroon5_mainpage.png">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
                       <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Maroon 5</div>
@@ -402,22 +402,23 @@
           <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
         </v-container>
         <v-card flat class="rounded-xl mx-auto" :width="isMobile ? '95%' : '80%'">
-          <v-textarea height="300" outlined color="#769de4"></v-textarea>
+          <v-textarea height="150" outlined color="#769de4"></v-textarea>
         </v-card>
 
         <v-card flat class="rounded-xl mx-auto mb-10 px-10" :width="isMobile ? '95%' : '80%'">
           <v-btn
+            block
             class="white--text rounded-pill px-10"
             style="background: linear-gradient(to right, #add6f5,  #85a5df);"
           >수강신청 바로가기</v-btn>
         </v-card>
 
         <v-container class="px-10 mx-10 mb-5">
-          <div class="h5 text-left">1:1 글쓰기.</div>
-          <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
+          <div class="h5 text-left">영작 피드백</div>
+          <div class="caption-text text-left">강사님이 직접 남겨주신 피드백입니다 .</div>
         </v-container>
         <v-card flat class="rounded-xl mx-auto" :width="isMobile ? '95%' : '80%'">
-          <v-textarea height="300" outlined color="#769de4"></v-textarea>
+          <v-textarea height="150" outlined color="#769de4"></v-textarea>
         </v-card>
       </v-card>
     </v-container>
