@@ -24,7 +24,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 0)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -40,7 +40,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 1)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -56,7 +56,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 2)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -72,7 +72,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 3)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -88,7 +88,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 4)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -104,7 +104,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 5)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -120,7 +120,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 6)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -136,7 +136,7 @@
                   <v-btn
                     @click="toggle, selectCategory($event, 7)"
                     depressed
-                    class="py-2"
+                    class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
                     :class="{'blue--text': active}"
@@ -202,7 +202,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '450'"
+              :height="isMobile ? '950' : '500'"
               v-if="slide == 0"
               hide-delimiter-background
               show-arrows-on-hover
@@ -260,12 +260,12 @@
                           <v-col cols="12" class="d-flex align-end">
                             <div class="d-flex flex-row align-start mx-auto">
                               <div
-                                class="h5 nanum text-black text-left mr-5"
-                                style="line-break:strict;word-break:keep-all"
+                                class="h5 nanum text-black text-left mr-5 font-weight-bold"
+                                style="line-break:strict;word-break:keep-all;color:#325fc4"
                               >{{title}}</div>
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
                               >수강신청</v-btn>
                             </div>
                           </v-col>
