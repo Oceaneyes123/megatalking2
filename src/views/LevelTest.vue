@@ -86,6 +86,55 @@
                   <div class="mt-3 caption-text">개별 맞춤 상담</div>
                 </div>
               </v-row>
+
+              <!-- <v-row class="px-10 my-10 d-flex flex-column justify-center" v-else>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon1.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">신청서 작성</div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-down</v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon2.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">예약 완료</div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-down</v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon3.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">
+                    문자메시지 발송
+                    <br />(예약 확인, 테스트 안내 )
+                  </div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-down</v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon4.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">
+                    강사님과 1:1수업
+                    <br />(간단 자기소개 등)
+                  </div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-down</v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon5.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">테스트 결과 받기</div>
+                </div>
+                <div class="mx-2 mt-3">
+                  <v-icon style="font-size:40px" color="#dee0e2">fas fa-angle-down</v-icon>
+                </div>
+                <div class="mx-2">
+                  <v-img class="mx-auto" src="../assets/icon6.png" width="70"></v-img>
+                  <div class="mt-3 caption-text">개별 맞춤 상담</div>
+                </div>
+              </v-row>-->
+
               <div class="px-5 px-md-10 h6 font-weight-black text-left mb-5">과목 선택</div>
               <v-row class="mx-sm-10 mx-4">
                 <v-col cols="12" sm="6" v-for="(type, i) in types" :key="i">
@@ -110,14 +159,14 @@
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>
 
               <v-row :justify="isMobile ? 'center' : 'end'" class="mb-5">
-                <v-col cols="10" class="pb-0">
+                <v-col cols="12" class="pb-0">
                   <v-container class="pb-0" fluid>
                     <v-row justify="center">
                       <v-btn
                         v-for="(day, i) in days"
                         :key="i"
                         class="rounded-lg mr-3"
-                        large
+                        :large="!isMobile"
                         @click="daySelected = i"
                         :color="daySelected == i ? 'primary' : ''"
                         depressed
@@ -127,57 +176,28 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mx-md-10">
-                <v-tabs :vertical="!isMobile" v-model="tab" icons-and-text slider-color="#00000000">
-                  <v-tab active-class="active white--text">
-                    <v-icon
-                      :style="!isMobile ? 'font-size:50px' : 'font-size:25px'"
-                      class="mt-3"
-                    >fas fa-sun</v-icon>
-                    <span>오전 AM</span>
-                  </v-tab>
-                  <v-tab active-class="active white--text">
-                    <v-icon
-                      :style="!isMobile ? 'font-size:50px' : 'font-size:25px'"
-                      class="mt-3"
-                    >fas fa-moon</v-icon>
-                    <span>오후 PM</span>
-                  </v-tab>
-
-                  <v-tab-item>
-                    <v-card flat v-if="tab==0">
-                      <v-container class="px-0 py-0">
-                        <v-row no-gutters v-for="(hour, i) in 6" :key="i">
-                          <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
-                            <span
-                              class="regular"
-                              style="cursor:pointer"
-                              @click="selectTime($event)"
-                              :class="{'blue--text text--darken-3 font-weight-black': (hour + 5) + ':' + j + '0' == selectedTime}"
-                            >{{hour + 5}}:{{j}}0</span>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-card>
-                  </v-tab-item>
-
-                  <v-tab-item>
-                    <v-card flat max-height="230" style="overflowY: scroll">
-                      <v-container class="px-0 py-0">
-                        <v-row no-gutters v-for="(hour, i) in 12" :key="i">
-                          <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
-                            <span
-                              class="regular"
-                              style="cursor:pointer"
-                              @click="selectTime($event)"
-                              :class="{'blue--text text--darken-3 font-weight-black': (hour + 11) + ':' + j + '0' == selectedTime}"
-                            >{{hour + 11}}:{{j}}0</span>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-card>
-                  </v-tab-item>
-                </v-tabs>
+              <v-row class="mx-auto mb-5">
+                <v-card flat max-height="230" style="overflowY: scroll" width="100%">
+                  <v-container class="px-0 py-0">
+                    <v-row no-gutters v-for="(hour, i) in 24 - dateTime.getHours()" :key="i">
+                      <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
+                        <span
+                          class="regular"
+                          style="cursor:pointer"
+                          :class="{'blue--text text--darken-3 font-weight-black': (dateTime.getHours() + i) + ':' + j + '0' == selectedTime}"
+                        >
+                          <strike
+                            v-if="dateTime.getMinutes() > Number(j + '0') && dateTime.getHours() + i == dateTime.getHours()"
+                          >{{dateTime.getHours() + i}}:{{j}}0</strike>
+                          <span
+                            @click="selectTime($event)"
+                            v-else
+                          >{{dateTime.getHours() + i}}:{{j}}0</span>
+                        </span>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card>
               </v-row>
 
               <v-row class="mx-sm-10 mx-4 mb-10">
@@ -244,7 +264,7 @@ export default {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
 
-    for (var i = 1; i < 12; i++) {
+    for (var i = 0; i < 12; i++) {
       var today = new Date();
       var nextDates = new Date(today);
       nextDates.setDate(nextDates.getDate() + i);
