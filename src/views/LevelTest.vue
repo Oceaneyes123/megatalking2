@@ -11,19 +11,28 @@
         </div>
         <v-container style="max-width:1000px;margin-top:90px">
           <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
-            <v-container class="px-md-10 pt-10">
+            <v-container class="px-md-10 pt-10 px-3">
               <v-row class="px-10">
-                <div class="h5">전화영어 무료 레벨테스트.</div>
+                <div class="h5 text-left">전화영어 무료 레벨테스트.</div>
               </v-row>
               <v-row class="pl-10">
-                <div class="h5 font-weight-black">간편하게 신청해보세요.</div>
+                <div class="h5 text-left font-weight-black">간편하게 신청해보세요.</div>
               </v-row>
-              <v-row class="px-10 mt-5 d-flex align-center" style="margin-bottom:50px">
-                <div class="text-purple font-weight-black">모든 레벨테스트는 전화로 진행됩니다.</div>
+              <v-row no-gutters class="px-10 mt-5 d-flex align-center" style="margin-bottom:50px">
+                <v-col
+                  cols="12"
+                  sm="6"
+                  class="text-purple font-weight-black text-left"
+                >모든 레벨테스트는 전화로 진행됩니다.</v-col>
                 <v-spacer></v-spacer>
-                <div>
-                  <v-btn color="#5a55a1" large class="white--text rounded-lg">결과 확인하기</v-btn>
-                </div>
+                <v-col cols="12" sm="6">
+                  <v-btn
+                    color="#5a55a1"
+                    large
+                    class="white--text rounded-lg"
+                    :block="isMobile"
+                  >결과 확인하기</v-btn>
+                </v-col>
               </v-row>
               <v-divider class="mx-10 mb-10"></v-divider>
               <div class="px-10 text-dark-purple h6">
@@ -77,34 +86,32 @@
                   <div class="mt-3 caption-text">개별 맞춤 상담</div>
                 </div>
               </v-row>
-              <div class="px-5 px-md-10 h6 font-weight-black text-left">과목 선택</div>
-              <v-row class="mx-10 mb-10">
-                <v-col cols="12" md="6">
-                  <v-checkbox color="primary" class="mr-10" label="메가토킹 전화영어"></v-checkbox>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-checkbox color="primary" label="메가토킹 화상영어"></v-checkbox>
+              <div class="px-5 px-md-10 h6 font-weight-black text-left mb-5">과목 선택</div>
+              <v-row class="mx-sm-10 mx-4">
+                <v-col cols="12" sm="6" v-for="(type, i) in types" :key="i">
+                  <v-btn
+                    @click="selectedType = i"
+                    class="rounded-pill"
+                    :color="selectedType ==  i ? 'primary' : 'grey'"
+                    :outlined="selectedType ==  i ? false : true"
+                    block
+                  >{{type}}</v-btn>
                 </v-col>
               </v-row>
-              <v-row class="align-center mx-10 mb-10">
-                <v-col class="d-flex flex-row align-center" cols="12" md="6">
-                  <div class="pb-7 mr-4 mr-md-0 font-weight-black">이름</div>
-                  <v-col cols="8">
-                    <v-text-field color="primary" dense outlined></v-text-field>
-                  </v-col>
+
+              <v-row class="align-center mx-4 mx-sm-10 mx-4 mb-10">
+                <v-col cols="12" sm="6" class="pb-0 pb-sm-3">
+                  <v-text-field color="primary" label="이름" dense outlined></v-text-field>
                 </v-col>
-                <v-col class="d-flex flex-row align-center" cols="12" md="6">
-                  <div class="pb-7 font-weight-black">연락처</div>
-                  <v-col cols="8">
-                    <v-text-field color="primary" dense outlined></v-text-field>
-                  </v-col>
+                <v-col cols="12" sm="6" class="pt-0 pt-sm-3">
+                  <v-text-field color="primary" label="연락처" dense outlined></v-text-field>
                 </v-col>
               </v-row>
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>
 
-              <v-row justify="end" class="mb-5">
+              <v-row :justify="isMobile ? 'center' : 'end'" class="mb-5">
                 <v-col cols="10" class="pb-0">
-                  <v-container class="pb-0">
+                  <v-container class="pb-0" fluid>
                     <v-row justify="center">
                       <v-btn
                         v-for="(day, i) in days"
@@ -120,28 +127,24 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mx-10">
-                <v-col cols="2">
-                  <v-tabs
-                    class="rounded-xl"
-                    vertical
-                    v-model="tab"
-                    icons-and-text
-                    background-color="#dcdcdc"
-                    slider-color="#00000000"
-                  >
-                    <v-tab active-class="active white--text" style="border-radius:30px 0 0 30px">
-                      <v-icon style="font-size:50px;" class="mt-3">fas fa-sun</v-icon>오전 AM
-                    </v-tab>
+              <v-row class="mx-md-10">
+                <v-tabs :vertical="!isMobile" v-model="tab" icons-and-text slider-color="#00000000">
+                  <v-tab active-class="active white--text">
+                    <v-icon
+                      :style="!isMobile ? 'font-size:50px' : 'font-size:25px'"
+                      class="mt-3"
+                    >fas fa-sun</v-icon>
+                    <span>오전 AM</span>
+                  </v-tab>
+                  <v-tab active-class="active white--text">
+                    <v-icon
+                      :style="!isMobile ? 'font-size:50px' : 'font-size:25px'"
+                      class="mt-3"
+                    >fas fa-moon</v-icon>
+                    <span>오후 PM</span>
+                  </v-tab>
 
-                    <v-tab active-class="active white--text" style="border-radius:30px 0 0 30px">
-                      <v-icon style="font-size:50px;" class="mt-3">fas fa-moon</v-icon>오후 PM
-                    </v-tab>
-                  </v-tabs>
-                </v-col>
-                <v-spacer></v-spacer>
-                <v-col cols="10">
-                  <v-card max-height="230" color="#fafafa" width="100%" flat>
+                  <v-tab-item>
                     <v-card flat v-if="tab==0">
                       <v-container class="px-0 py-0">
                         <v-row no-gutters v-for="(hour, i) in 6" :key="i">
@@ -156,7 +159,10 @@
                         </v-row>
                       </v-container>
                     </v-card>
-                    <v-card flat max-height="230" style="overflowY: scroll" v-else>
+                  </v-tab-item>
+
+                  <v-tab-item>
+                    <v-card flat max-height="230" style="overflowY: scroll">
                       <v-container class="px-0 py-0">
                         <v-row no-gutters v-for="(hour, i) in 12" :key="i">
                           <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
@@ -170,25 +176,22 @@
                         </v-row>
                       </v-container>
                     </v-card>
-                  </v-card>
-                </v-col>
+                  </v-tab-item>
+                </v-tabs>
               </v-row>
-              <v-row class="mx-10 mb-10 d-flex align-center">
-                <v-checkbox
-                  v-model="checkbox1"
-                  color="primary"
-                  class="mr-2"
-                  label="개인정보 수집이용에 동의합니다."
-                ></v-checkbox>
-                <v-btn class="rounded-pill" small depressed disabled>내용보기</v-btn>
-                <v-spacer></v-spacer>
-                <v-checkbox
-                  v-model="checkbox1"
-                  color="primary"
-                  class="mr-2"
-                  label="개인정보 취급위탁에 동의합니다."
-                ></v-checkbox>
-                <v-btn class="rounded-pill" small depressed disabled>내용보기</v-btn>
+
+              <v-row class="mx-sm-10 mx-4 mb-10">
+                <v-col cols="12" sm="4" class="d-flex align-center py-0 py-sm-3">
+                  <v-checkbox color="primary" class="mr-2" label="개인정보 수집이용에 동의합니다."></v-checkbox>
+                  <v-btn class="rounded-pill" small depressed disabled>내용보기</v-btn>
+                </v-col>
+                <v-col cols="12" sm="4" class="d-flex align-center py-0 py-sm-3">
+                  <v-checkbox color="primary" class="mr-2" label="개인정보 취급위탁에 동의합니다."></v-checkbox>
+                  <v-btn class="rounded-pill" small depressed disabled>내용보기</v-btn>
+                </v-col>
+                <v-col cols="12" sm="4" class="d-flex align-center py-0 py-sm-3">
+                  <v-checkbox color="primary" class="mr-2" label="상담 및 이벤트 안내 동의(선택)."></v-checkbox>
+                </v-col>
               </v-row>
             </v-container>
           </v-card>
@@ -221,10 +224,26 @@ export default {
 
       checkbox1: false,
       tab: 0,
-      selectedTime: ""
+      selectedTime: "",
+      selectedType: -1,
+      screenWidth: "",
+      isMobile: false,
+
+      types: ["메가토킹 화상영어", "메가토킹 화상영어"]
     };
   },
+
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
   mounted() {
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
+
     for (var i = 1; i < 12; i++) {
       var today = new Date();
       var nextDates = new Date(today);
@@ -232,7 +251,7 @@ export default {
       if (
         nextDates.getDay() != 6 &&
         nextDates.getDay() != 0 &&
-        this.days.length < 3
+        this.days.length < 2
       ) {
         this.days.push(this.formatDate(nextDates));
       }
@@ -249,6 +268,7 @@ export default {
         year = d.getFullYear();
 
       month = month.length == 1 ? "0" + month : month;
+      day = day.length == 1 ? "0" + day : day;
 
       if (day.length < 2) day = +day;
 
@@ -270,6 +290,11 @@ export default {
 
     selectTime(event) {
       this.selectedTime = event.target.innerText;
+    },
+
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
     }
   }
 };

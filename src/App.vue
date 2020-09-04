@@ -215,7 +215,8 @@ export default {
         mypage: require("../src/assets/mypage.jpg")
       },
       currentImage: "",
-      screenWidth: ""
+      screenWidth: "",
+      isMobile: false
     };
   },
 
@@ -229,6 +230,7 @@ export default {
   mounted() {
     this.loadBg();
     this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
   },
 
   watch: {
@@ -245,6 +247,7 @@ export default {
 
     onWindowResize() {
       this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
     }
   }
 };
