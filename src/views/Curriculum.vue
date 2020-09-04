@@ -20,9 +20,9 @@
           <v-container class="px-10 py-10">
             <v-sheet class="mx-auto px-4" color="rgba(0,0,0,0.0)">
               <v-slide-group mandatory class="mx-auto" v-model="slide" center-active>
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 0)"
+                    @click="selectCategory($event, 0)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -36,9 +36,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 1)"
+                    @click="selectCategory($event, 1)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -52,9 +52,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 2)"
+                    @click=" selectCategory($event, 2)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -68,9 +68,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 3)"
+                    @click=" selectCategory($event, 3)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -84,9 +84,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 4)"
+                    @click=" selectCategory($event, 4)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -100,9 +100,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 5)"
+                    @click=" selectCategory($event, 5)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -116,9 +116,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 6)"
+                    @click=" selectCategory($event, 6)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -132,9 +132,9 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active, toggle }">
+                <v-slide-item class="mx-1" v-slot:default="{ active  }">
                   <v-btn
-                    @click="toggle, selectCategory($event, 7)"
+                    @click=" selectCategory($event, 7)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -1069,7 +1069,7 @@ export default {
           },
           {
             image: require("../assets/curriculum/interactive.jpg"),
-            title: `Interactive English Series (Beginner~Advanced)`,
+            title: "Interactive English Series (BeginnerAdvance)",
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다."
           }
