@@ -24,7 +24,7 @@
             <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
             <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
             <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>
-            <div class="mr-8 subheading" @click="$router.push('/')">회원정보</div>
+            <div class="mr-8 subheading" @click="$router.push('/account')">회원정보</div>
             <div class="mr-6 subheading" @click="signInDialog = true">
               <a>로그인</a>
             </div>
@@ -44,7 +44,7 @@
             <template v-slot:activator="{on: menu}">
               <v-icon v-on="menu" x-large>menu</v-icon>
             </template>
-            <v-card style="color:#a3a3a3" minz-width="100%" color="#fafafa" tile flat>
+            <v-card style="color:#a3a3a3" min-width="100%" color="#fafafa" tile flat>
               <v-list>
                 <v-list-item @click="$router.push('/curriculum')">커리큘럼</v-list-item>
                 <v-list-item @click="$router.push('/level-test')">레벨테스트</v-list-item>

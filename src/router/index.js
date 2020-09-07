@@ -32,7 +32,12 @@ const routes = [{
     path: "/curriculum",
     name: "Curriculum",
     component: require("../views/Curriculum.vue").default
-  }
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: require("../views/Account.vue").default
+  },
 ];
 
 const router = new VueRouter({
