@@ -254,6 +254,14 @@
                               class="mx-auto"
                               contain
                             ></v-img>
+                            <v-img
+                              v-if="book.tab && i % 2 == 1"
+                              :src="book.tab"
+                              width="250"
+                              height="300"
+                              class="mx-auto"
+                              contain
+                            ></v-img>
                           </v-col>
                         </v-row>
                         <v-row>
@@ -996,7 +1004,7 @@ export default {
               "<엠마왓슨투나잇쇼>,<앤 헤서웨이 코난쇼> … 여러 셀럽들의 인터뷰를 통해 자주사용되는 표현과 다양한 구어체를 배울 수 있는 과정입니다."
           },
           {
-            tab: require("../assets/tab/video1.jpg"),
+            tab: require("../assets/tab/vid1.png"),
             image: require("../assets/tab/video1.jpg"),
             title: "셀럽 토크쇼",
             details:
@@ -1010,7 +1018,7 @@ export default {
               "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
           },
           {
-            tab: require("../assets/tab/video2.jpg"),
+            tab: require("../assets/tab/vid2.png"),
             image: require("../assets/tab/video2.jpg"),
             title: "TED Ed",
             details:
@@ -1024,7 +1032,7 @@ export default {
               "영화속 대사를 통해 다양한 영어표현을 배워보세요. 영화의 재미와 함께 섬세한 감정표현, 영국식, 미국식 액센트도 덤으로 연습하실 수 있는 흥미진진한 수업이 되실거예요."
           },
           {
-            tab: require("../assets/tab/video3.jpg"),
+            tab: require("../assets/tab/vid3.png"),
             image: require("../assets/tab/video3.jpg"),
             title: "Movie",
             details:
@@ -1038,7 +1046,7 @@ export default {
               "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
           },
           {
-            tab: require("../assets/tab/video4.jpg"),
+            tab: require("../assets/tab/vid4.png"),
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
@@ -1052,7 +1060,7 @@ export default {
               "애드시런, 아델, 빌리 아일리시, 마룬5, 리한나, 아리아나 그란데 등의 인기있는 팝송을 통해 좋아하는 노래도 듣고 노래가사에 담긴 영어표현을 배울 수 있는 과정입니다. "
           },
           {
-            tab: require("../assets/tab/video5.jpg"),
+            tab: require("../assets/tab/vid5.png"),
             image: require("../assets/tab/video5.jpg"),
             title: "Pop Song",
             details:

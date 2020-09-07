@@ -25,7 +25,7 @@
                   class="text-purple font-weight-black text-left"
                 >모든 레벨테스트는 전화로 진행됩니다.</v-col>
                 <v-spacer></v-spacer>
-                <v-col cols="12" sm="6">
+                <v-col cols="12" sm="6" class="mt-5 mt-sm-0">
                   <v-btn
                     color="#5a55a1"
                     large
@@ -156,6 +156,20 @@
                   <v-text-field color="primary" label="연락처" dense outlined></v-text-field>
                 </v-col>
               </v-row>
+
+              <div class="mx-10 mb-5 font-weight-black h6 text-left">수업 진행속도</div>
+              <v-row justify="center" class="mx-sm-10 mx-4 mb-10">
+                <v-col cols="12" sm="4" v-for="(speed, i) in class_speeds" :key="i">
+                  <v-btn
+                    @click="selectedSpeed = i"
+                    :color="selectedSpeed ==  i ? 'primary' : 'grey'"
+                    :outlined="selectedSpeed ==  i ? false : true"
+                    block
+                    class="rounded-xl"
+                  >{{speed}}</v-btn>
+                </v-col>
+              </v-row>
+
               <div class="mx-10 mb-5 font-weight-black h6 text-left">예약 일시</div>
 
               <v-row :justify="isMobile ? 'center' : 'end'" class="mb-5">
@@ -176,7 +190,7 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mx-auto mb-5">
+              <v-row class="mx-auto mb-5" v-if="daySelected == 0">
                 <v-card flat max-height="230" style="overflowY: scroll" width="100%">
                   <v-container class="px-0 py-0">
                     <v-row no-gutters v-for="(hour, i) in 24 - dateTime.getHours()" :key="i">
@@ -200,6 +214,23 @@
                 </v-card>
               </v-row>
 
+              <v-row class="mx-auto mb-5" v-else>
+                <v-card flat max-height="230" style="overflowY: scroll" width="100%">
+                  <v-container class="px-0 py-0">
+                    <v-row no-gutters v-for="(hour, i) in 18" :key="i">
+                      <v-col class="py-2" cols="2" v-for="(minute, j) in 6" :key="j">
+                        <span
+                          @click="selectTime($event)"
+                          class="regular"
+                          style="cursor:pointer"
+                          :class="{'blue--text text--darken-3 font-weight-black': (hour + 5) + ':' + j + '0' == selectedTime}"
+                        >{{hour + 5}}:{{j}}0</span>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card>
+              </v-row>
+
               <v-row class="mx-sm-10 mx-4 mb-10">
                 <v-col cols="12" sm="4" class="d-flex align-center py-0 py-sm-3">
                   <v-checkbox color="primary" class="mr-2" label="개인정보 수집이용에 동의합니다."></v-checkbox>
@@ -211,6 +242,16 @@
                 </v-col>
                 <v-col cols="12" sm="4" class="d-flex align-center py-0 py-sm-3">
                   <v-checkbox color="primary" class="mr-2" label="상담 및 이벤트 안내 동의(선택)."></v-checkbox>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-btn
+                    style="background: linear-gradient(to right, #a0b4ff, #4285ec)"
+                    class="rounded-pill white--text h5 nanum"
+                    depressed
+                    large
+                  >무료수업 신청하기</v-btn>
                 </v-col>
               </v-row>
             </v-container>
@@ -246,10 +287,16 @@ export default {
       tab: 0,
       selectedTime: "",
       selectedType: -1,
+      selectedSpeed: "",
       screenWidth: "",
       isMobile: false,
 
-      types: ["메가토킹 화상영어", "메가토킹 화상영어"]
+      types: ["메가토킹 화상영어", "메가토킹 화상영어"],
+      class_speeds: [
+        "천천히 발음해주세요.",
+        "보통 속도로 말해주세요.",
+        "빨리 말하셔도 괜찮아요."
+      ]
     };
   },
 
