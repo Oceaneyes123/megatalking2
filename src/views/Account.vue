@@ -10,7 +10,37 @@
         <v-tab class="white--text" v-for="(tab, i) in tabs" :key="i">{{tab}}</v-tab>
         <v-tab-item>
           <v-container style="max-width:1000px;margin-top:90px">
-            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">test</v-card>
+            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">
+              <v-simple-table>
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <td
+                        v-for="(header, i) in tab1Header"
+                        :key="i"
+                        style="border-bottom: solid 1px #6a9af2"
+                      >{{header}}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(item, i) in tab1Item" :key="i">
+                      <td>{{item.no}}</td>
+                      <td>{{item.date}}</td>
+                      <td>{{item.course}}</td>
+                      <td>{{item.amount}}</td>
+                      <td>{{item.method}}</td>
+                      <td>{{item.status}}</td>
+                      <td>
+                        <v-btn
+                          class="white--text rounded-pill"
+                          style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
+                        >영수증 | 수강증 | 출석증명서</v-btn>
+                      </td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-card>
           </v-container>
         </v-tab-item>
         <v-tab-item>
@@ -20,7 +50,37 @@
         </v-tab-item>
         <v-tab-item>
           <v-container style="max-width:1000px;margin-top:90px">
-            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">test</v-card>
+            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">
+              <v-simple-table>
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <td
+                        v-for="(header, i) in tab3Header"
+                        :key="i"
+                        style="border-bottom: solid 1px #6a9af2"
+                      >{{header}}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(item, i) in tab3Item" :key="i">
+                      <td>{{item.no}}</td>
+                      <td>{{item.couponName}}</td>
+                      <td>{{item.expirationDate}}</td>
+                      <td>{{item.dateUsed}}</td>
+                      <td v-if="item.status == '수강신청'">
+                        <v-btn
+                          flat
+                          class="rounded-pill white--text"
+                          style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
+                        >{{item.status}}</v-btn>
+                      </td>
+                      <td v-else>{{item.status}}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-card>
           </v-container>
         </v-tab-item>
         <v-tab-item>
@@ -105,7 +165,43 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
-      tabs: ["수강내역", "적립금", "할인쿠폰", "회원정보수정"]
+      tabs: ["수강내역", "적립금", "할인쿠폰", "회원정보수정"],
+      tab1Header: [
+        "No",
+        "주문일자",
+        "주문상품명",
+        "실 결제금액",
+        "결제방법",
+        "결제상태",
+        "내역 인쇄"
+      ],
+      tab1Item: [
+        {
+          no: "1",
+          date: "2020-05-25",
+          course: "정규회화과정 주2회 10분",
+          amount: "51,980원",
+          method: "네이버페이",
+          status: "입금완료"
+        }
+      ],
+      tab3Header: ["No.", "상품명 ", "사용가능기간 ", "사용일 ", "상태"],
+      tab3Item: [
+        {
+          no: "5",
+          couponName: "Coupon Name",
+          expirationDate: "2020-05-25",
+          dateUsed: "-",
+          status: "수강신청"
+        },
+        {
+          no: "4",
+          couponName: "Coupon Name",
+          expirationDate: "2020-05-25",
+          dateUsed: "-",
+          status: "기간만료"
+        }
+      ]
     };
   },
 
