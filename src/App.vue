@@ -24,7 +24,7 @@
             <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
             <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
             <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>
-            <div class="mr-8 subheading" @click="$router.push('/')">회원정보</div>
+            <div class="mr-8 subheading" @click="$router.push('/account')">회원정보</div>
             <div class="mr-6 subheading" @click="signInDialog = true">
               <a>로그인</a>
             </div>
