@@ -12,11 +12,11 @@
               class="subheading"
             ></v-img>
           </v-card>
-          <v-spacer></v-spacer>
+
           <v-card
-            v-if="screenWidth > 960"
+            v-if="screenWidth >= 960"
             flat
-            class="d-flex align-center mr-5"
+            class="d-flex align-center mx-auto"
             color="#00000000"
             style="color:#a3a3a3"
           >
@@ -24,6 +24,14 @@
             <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
             <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
             <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>
+          </v-card>
+          <v-card
+            v-if="screenWidth > 960"
+            flat
+            class="d-flex align-center mr-5"
+            color="#00000000"
+            style="color:#a3a3a3"
+          >
             <div class="mr-8 subheading" @click="$router.push('/account')">회원정보</div>
             <div class="mr-6 subheading" @click="signInDialog = true">
               <a>로그인</a>
@@ -31,7 +39,7 @@
           </v-card>
 
           <v-menu
-            v-else
+            v-if="screenWidth <= 960"
             close-on-click
             min-width="100%"
             nudge-bottom="12"

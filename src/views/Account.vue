@@ -45,7 +45,30 @@
         </v-tab-item>
         <v-tab-item>
           <v-container style="max-width:1000px;margin-top:90px">
-            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">test</v-card>
+            <v-card depressed class="mx-auto rounded-xl" style="border: solid 1px #6a9af2">
+              <v-simple-table>
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <td
+                        v-for="(header, i) in tab2Header"
+                        :key="i"
+                        style="border-bottom: solid 1px #6a9af2"
+                      >{{header}}</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(item, i) in tab2Item" :key="i">
+                      <td>{{item.no}}</td>
+                      <td>{{item.date}}</td>
+                      <td>{{item.explain}}</td>
+                      <td>{{item.point}}</td>
+                      <td>{{item.residualPoint}}</td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-card>
           </v-container>
         </v-tab-item>
         <v-tab-item>
@@ -148,8 +171,8 @@
               </v-container>
             </v-card>
             <v-row class="mt-5" justify="center">
-              <v-btn class="mr-3 rounded-pill" color="#6a9af2" large>확인</v-btn>
-              <v-btn color="grey" class="rounded-xl" large>새로입력하기</v-btn>
+              <v-btn class="mr-3 rounded-pill white--text" color="#6a9af2" large>확인</v-btn>
+              <v-btn color="grey white--text" class="rounded-xl" large>새로입력하기</v-btn>
             </v-row>
           </v-container>
         </v-tab-item>
@@ -183,6 +206,22 @@ export default {
           amount: "51,980원",
           method: "네이버페이",
           status: "입금완료"
+        }
+      ],
+      tab2Header: [
+        "No.",
+        "날짜",
+        "사용/ 적립 내용 ",
+        "적립금 내역",
+        "잔여 적립금"
+      ],
+      tab2Item: [
+        {
+          no: "10",
+          date: "2020-08-25",
+          explain: "재적립",
+          point: "+3000",
+          residualPoint: "8000원"
         }
       ],
       tab3Header: ["No.", "상품명 ", "사용가능기간 ", "사용일 ", "상태"],
