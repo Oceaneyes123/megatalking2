@@ -252,8 +252,35 @@
               </v-container>
             </v-tab-item>
           </v-tabs>
-          <v-card class="d-flex flex-row">
-            <div class="d-flex flex-column"></div>
+          <v-card>
+            <v-container>
+              <v-row justify="space-between" class="px-5">
+                <div class="d-flex flex-column mx-auto">
+                  <v-icon x-large>far fa-user</v-icon>
+                  <div class="mt-3">마이페이지</div>
+                </div>
+                <v-divider vertical></v-divider>
+                <div class="d-flex flex-column mx-auto">
+                  <v-icon x-large>far fa-bell</v-icon>
+                  <div class="mt-3">알림</div>
+                </div>
+                <v-divider vertical></v-divider>
+                <div class="d-flex flex-column mx-auto">
+                  <v-icon x-large>home</v-icon>
+                  <div class="mt-3">HOME</div>
+                </div>
+                <v-divider vertical></v-divider>
+                <div class="d-flex flex-column mx-auto">
+                  <v-icon x-large>fas fa-book-open</v-icon>
+                  <div class="mt-3">교재</div>
+                </div>
+                <v-divider vertical></v-divider>
+                <div class="d-flex flex-column mx-auto">
+                  <v-icon x-large>fas fa-ticket-alt</v-icon>
+                  <div class="mt-3">수강권 내역</div>
+                </div>
+              </v-row>
+            </v-container>
           </v-card>
         </v-container>
       </v-card>
