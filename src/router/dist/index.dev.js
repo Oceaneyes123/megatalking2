@@ -41,6 +41,10 @@ var routes = [{
   path: "/account",
   name: "Account",
   component: require("../views/Account.vue")["default"]
+}, {
+  path: "/material",
+  name: "Material",
+  component: require("../views/Material.vue")["default"]
 }];
 var router = new _vueRouter["default"]({
   routes: routes

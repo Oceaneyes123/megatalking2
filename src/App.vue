@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app>
-      <v-card tile height="75" width="100%" style="position:fixed;top:0;z-index:100">
+      <v-card tile height="75" width="100%" style="position:fixed;top:0;z-index:100" v-if="showNav">
         <v-container class="d-flex flex-row">
           <v-card flat tile color="#00000000">
             <v-img
@@ -64,7 +64,7 @@
         </v-container>
       </v-card>
 
-      <v-img :src="currentImage" width="100%" class="text-center">
+      <v-img :src="currentImage" width="showNav" class="text-center" v-if="showNav">
         <router-view></router-view>
 
         <v-card max-width="1000" class="mx-auto mt-10" color="#00000000" flat>
@@ -140,6 +140,8 @@
         </v-card>
       </v-img>
 
+      <router-view v-else></router-view>
+
       <v-dialog v-model="signInDialog" max-width="1000" style="overflow-x:hidden">
         <v-card flat class="rounded-xl" max-width="1000">
           <v-card flat color="#8aace9">
@@ -212,6 +214,7 @@
 export default {
   data() {
     return {
+      showNav: true,
       currentRoute: "main",
       signInDialog: false,
       images: {
@@ -235,14 +238,24 @@ export default {
   },
 
   mounted() {
-    this.loadBg();
+    if (this.$route.name.toLowerCase() == "material") {
+      this.showNav = false;
+    } else {
+      this.showNav = true;
+      this.loadBg();
+    }
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
   },
 
   watch: {
     $route: function() {
-      this.loadBg();
+      if (this.$route.name.toLowerCase() == "material") {
+        this.showNav = false;
+      } else {
+        this.showNav = true;
+        this.loadBg();
+      }
     }
   },
 
