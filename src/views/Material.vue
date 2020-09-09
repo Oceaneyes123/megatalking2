@@ -102,48 +102,159 @@
               </v-card>
             </v-tab-item>
             <v-tab-item class="text-left">
-              <v-container>
-                <v-row class="align-md-center">
-                  <v-col cols="12">
-                    <div class="text-center mb-2">Annie 강사님 수업은 어떠셨나요?</div>
-                    <div class="text-center">
-                      <v-rating
-                        v-model="rating"
-                        half-increments
-                        color="yellow darken-2"
-                        hover
-                        x-large
-                        background-color="yellow darken-2"
-                        full-icon="fas fa-star"
-                        empty-icon="far fa-star"
-                        half-icon="fas fa-star-half-alt"
-                      ></v-rating>
-                    </div>
-                  </v-col>
-                  <v-col
-                    class="mx-auto"
-                    cols="12"
-                    sm="7"
-                    align-self="center"
-                    v-for="(suggestion, i) in step4Suggestions"
-                    :key="i"
-                  >
-                    <v-btn
-                      large
-                      outlined
-                      block
-                      @click="selectSuggestion(i)"
-                      :class=" selectedSuggestion.includes(i) ? 'primary--text': 'text-grey'"
-                    >{{suggestion}}</v-btn>
-                  </v-col>
-                  <v-col class="mx-auto" cols="12" sm="7">
-                    <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
-                  </v-col>
+              <v-window v-model="window4">
+                <v-window-item>
+                  <v-container>
+                    <v-row class="align-md-center">
+                      <v-col cols="12">
+                        <div class="text-center mb-2">Annie 강사님 수업은 어떠셨나요?</div>
+                        <div class="text-center">
+                          <v-rating
+                            v-model="rating"
+                            half-increments
+                            color="yellow darken-2"
+                            hover
+                            x-large
+                            background-color="yellow darken-2"
+                            full-icon="fas fa-star"
+                            empty-icon="far fa-star"
+                            half-icon="fas fa-star-half-alt"
+                          ></v-rating>
+                        </div>
+                      </v-col>
+                      <v-col
+                        class="mx-auto"
+                        cols="12"
+                        sm="7"
+                        align-self="center"
+                        v-for="(suggestion, i) in step4Suggestions"
+                        :key="i"
+                      >
+                        <v-btn
+                          large
+                          outlined
+                          block
+                          @click="selectSuggestion(i)"
+                          :class=" selectedSuggestion.includes(i) ? 'primary--text': 'text-grey'"
+                        >{{suggestion}}</v-btn>
+                      </v-col>
+                      <v-col class="mx-auto" cols="12" sm="7">
+                        <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
+                      </v-col>
+                    </v-row>
+                    <v-row justify="center">
+                      <v-btn
+                        @click="window4 = window4 + 1"
+                        style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                        class="mx-auto rounded-lg white--text mb-5"
+                      >Next</v-btn>
+                    </v-row>
+                  </v-container>
+                </v-window-item>
+                <v-window-item>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12">
+                        <v-card
+                          class="d-flex align-center rounded-pill pa-3 mb-4"
+                          color="#dfdfdf"
+                          max-width="300"
+                          flat
+                        >
+                          <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
+                          <v-progress-linear
+                            v-model="progress"
+                            value="60"
+                            color="#5a55a1"
+                            class="mx-5"
+                          ></v-progress-linear>
+                          <div class="text--secondary">0:40</div>
+                        </v-card>
+                        <v-card
+                          flat
+                          class="d-flex rounded-lg white--text py-3 px-2"
+                          color="#5D6687"
+                          max-width="300"
+                        >
+                          <span>녹음파일 전체듣기</span>
+                          <span class="mx-auto">|</span>
+                          <span>음원 다운로드</span>
+                        </v-card>
+                        <div class="mt-15 mb-5 h6">다음 발음을 연습해주세요.</div>
+                        <div
+                          class="mt-1"
+                          v-for="(pronunciation, i) in step4PracticePronunciation"
+                          :key="i"
+                        >{{i + 1}}. {{pronunciation}}</div>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="h6 mb-5">더 나은 표현을 알려드릴게요.</div>
+                        <div class="mb-2" v-for="(expression, i) in step4BetterExpression" :key="i">
+                          <div>{{i + 1}}. {{expression.original}}</div>
+                          <div class="text-blue">=> {{expression.better}}</div>
+                        </div>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="h6">강사님 코멘트</div>
+                        <v-col cols="12" md="10" class="mx-auto">
+                          <v-textarea class="rounded-xl" outlined color="#667fe3"></v-textarea>
+                        </v-col>
+                      </v-col>
+                      <v-col cols="12">
+                        <div class="text-center mb-4">오늘 수업을 한마디로 표현한다면,</div>
+                        <div class="d-flex justify-center">
+                          <v-icon
+                            @click="selectedIcon = i"
+                            :color="selectedIcon == i ? 'yellow darken-3' : 'grey'"
+                            class="mx-3"
+                            v-for="(icon, i) in step4Icons"
+                            :key="i"
+                            x-large
+                          >{{icon}}</v-icon>
+                        </div>
+                      </v-col>
+                    </v-row>
+                    <v-row justify="center" class="mt-5">
+                      <v-btn
+                        @click="tabs = 4"
+                        style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                        class="mx-auto rounded-lg white--text mb-5"
+                      >Next</v-btn>
+                    </v-row>
+                  </v-container>
+                </v-window-item>
+              </v-window>
+            </v-tab-item>
+            <v-tab-item>
+              <v-container class="pa-5">
+                <div class="h5 text-left nanum">1:1 글쓰기.</div>
+                <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
+                <v-card flat class="rounded-xl mx-auto mt-8" width="90%">
+                  <v-textarea height="150" outlined color="#769de4"></v-textarea>
+                </v-card>
+                <v-row justify="center">
+                  <v-btn
+                    class="white--text rounded-pill px-10"
+                    style="background: linear-gradient(to right, #add6f5,  #85a5df);"
+                  >제출하기</v-btn>
+                </v-row>
+                <div class="h5 text-left nanum mt-10">영작 피드백</div>
+                <div class="caption-text text-left">강사님이 직접 남겨주신 피드백입니다 .</div>
+                <v-card flat class="rounded-xl mx-auto mt-8" width="90%">
+                  <v-textarea height="150" outlined color="#769de4"></v-textarea>
+                </v-card>
+                <v-row justify="center">
+                  <v-btn
+                    class="white--text rounded-pill px-10"
+                    style="background: linear-gradient(to right, #add6f5,  #85a5df);"
+                  >제출하기</v-btn>
                 </v-row>
               </v-container>
             </v-tab-item>
-            <v-tab-item></v-tab-item>
           </v-tabs>
+          <v-card class="d-flex flex-row">
+            <div class="d-flex flex-column"></div>
+          </v-card>
         </v-container>
       </v-card>
     </v-container>
@@ -186,7 +297,10 @@ export default {
       steps: ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"],
       selectedSuggestion: [],
 
+      selectedIcon: -1,
+
       window3: 0,
+      window4: 0,
 
       step3EnglishText: [
         "First thing always first thing always have a book.because if you're not reading, what are you doing?",
