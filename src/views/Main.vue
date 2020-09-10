@@ -446,7 +446,11 @@
           </v-card>
         </v-card>
 
-        <v-container class="px-10 mx-10 mb-5">
+        <v-card flat>
+          <span style="visibility:hidden">test</span>
+        </v-card>
+
+        <!-- <v-container class="px-10 mx-10 mb-5">
           <div class="h5 text-left">1:1 글쓰기.</div>
           <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
         </v-container>
@@ -468,7 +472,7 @@
         </v-container>
         <v-card flat class="rounded-xl mx-auto" :width="isMobile ? '95%' : '80%'">
           <v-textarea height="150" outlined color="#769de4"></v-textarea>
-        </v-card>
+        </v-card>-->
       </v-card>
     </v-container>
   </v-app>
