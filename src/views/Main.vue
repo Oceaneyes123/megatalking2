@@ -164,18 +164,67 @@
           max-width="700"
           style="position:relative;margin-bottom:100px"
         >
-          <v-card flat class="pt-10 pl-10 text-left pb-5 rounded-xl" width="100%" color="#f1f1f1">
-            <div class="h4 font-weight-bold mb-7" style="color:#70689f">
-              35,000개
-              <br />품격있는 컨텐츠
-            </div>
-            <div style="color:#b7b7b7;max-width:250px">
-              <div class="mb-5">
-                프리토킹, 비지니스, 면접영어, 여행, 영자신문 등 35,000개의
-                콘텐츠로 즐겨요.
-              </div>
-              <div class="title font-weight-bold font-italic" style="color:#b34013">커리큘럼 자세히보기 ></div>
-            </div>
+          <v-card flat class="text-left pb-5 rounded-xl" color="#f1f1f1">
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="6" class="px-10 px-md-5">
+                  <div class="mr-5">
+                    <div class="h4 font-weight-bold mb-7" style="color:#70689f">
+                      35,000개
+                      <br />품격있는 컨텐츠
+                    </div>
+                    <div style="color:#b7b7b7;max-width:250px">
+                      <div class="mb-5">
+                        프리토킹, 비지니스, 면접영어, 여행, 영자신문 등 35,000개의
+                        콘텐츠로 즐겨요.
+                      </div>
+                      <div
+                        class="title font-weight-bold font-italic"
+                        style="color:#b34013"
+                      >커리큘럼 자세히보기 ></div>
+                    </div>
+                  </div>
+                </v-col>
+
+                <v-col cols="12" sm="6" style="overflow-x:hidden" class="px-0 marquee-container">
+                  <div class="d-flex flex-column marquee-moving">
+                    <div class="d-flex flex-row">
+                      <v-card
+                        class="mx-1 my-1"
+                        v-for="(image, i) in marqueeImagesRow1"
+                        width="200"
+                        height="75"
+                        :key="i"
+                      >
+                        <v-img :src="image" width="200" height="75"></v-img>
+                      </v-card>
+                    </div>
+                    <div class="d-flex flex-row">
+                      <v-card
+                        class="mx-1 my-1"
+                        v-for="(image, i) in marqueeImagesRow2"
+                        width="200"
+                        height="75"
+                        :key="i"
+                      >
+                        <v-img :src="image" width="200" height="75"></v-img>
+                      </v-card>
+                    </div>
+                    <div class="d-flex flex-row">
+                      <v-card
+                        class="mx-1 my-1"
+                        v-for="(image, i) in marqueeImagesRow3"
+                        width="200"
+                        height="75"
+                        :key="i"
+                      >
+                        <v-img :src="image" width="200" height="75"></v-img>
+                      </v-card>
+                    </div>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-card>
         </v-card>
 
@@ -441,6 +490,55 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #838181;
 }
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-container .marquee-moving {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  -moz-transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -moz-animation: scroll-left 2s linear infinite;
+  -webkit-animation: scroll-left 2s linear infinite;
+  animation: scroll-left 20s linear infinite;
+}
+
+@-moz-keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(0%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+  }
+}
+
+@-webkit-keyframes scroll-left {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
 </style>
 
 <script>
@@ -450,6 +548,44 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
+
+      marqueeImagesRow1: [
+        require("../assets/curriculum/1st_step.jpg"),
+        require("../assets/curriculum/adv_phonics.jpg"),
+        require("../assets/curriculum/bd_1.webp"),
+        require("../assets/curriculum/be_sd.jpg"),
+        //   require("../assets/curriculum/c-course_jr.jpg"),
+        require("../assets/curriculum/cabin_crew.jpg"),
+        require("../assets/curriculum/conv.jpg"),
+        require("../assets/curriculum/dd_1.jpg"),
+        require("../assets/curriculum/debate.jpg")
+      ],
+
+      marqueeImagesRow2: [
+        require("../assets/curriculum/dp_sp.webp"),
+        require("../assets/curriculum/email.jpg"),
+        require("../assets/curriculum/ft_ds1.webp"),
+        require("../assets/curriculum/ft_op1.webp"),
+        require("../assets/curriculum/hotel.jpg"),
+        require("../assets/curriculum/ielts.jpg"),
+        require("../assets/curriculum/int_1.webp"),
+        require("../assets/curriculum/interactive.jpg"),
+        require("../assets/curriculum/it_1.jpg")
+      ],
+
+      marqueeImagesRow3: [
+        require("../assets/curriculum/medical_english.jpg"),
+        require("../assets/curriculum/meeting.jpg"),
+        require("../assets/curriculum/milestones.jpg"),
+        require("../assets/curriculum/negotiation.jpg"),
+        require("../assets/curriculum/news.jpg"),
+        require("../assets/curriculum/p_course_jr.jpg"),
+        require("../assets/curriculum/phonics.jpg"),
+        require("../assets/curriculum/presentation.jpg"),
+        require("../assets/curriculum/pr-1.webp"),
+        require("../assets/curriculum/sp_1.jpg")
+      ],
+
       subtext: {
         singer: [
           "애드시런",
@@ -607,6 +743,7 @@ export default {
   },
 
   mounted() {
+    console.log(this.marqueeImages.length);
     this.onWindowResize();
   },
 
