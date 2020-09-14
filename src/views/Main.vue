@@ -402,7 +402,13 @@
         <div class="h5 text-left mx-10 px-10">생생한 수강후기, 메가토킹이어야하는 이유.</div>
 
         <v-sheet class="mt-5 mb-10">
-          <v-slide-group>
+          <v-slide-group :show-arrows="false">
+            <template slot="next">
+              <v-icon style="font-size:70px">fas fa-angle-right</v-icon>
+            </template>
+            <template slot="prev">
+              <v-icon style="font-size:70px">fas fa-angle-left</v-icon>
+            </template>
             <v-slide-item v-for="(review, i) in classReview" :key="i">
               <v-alert class="mx-2" outlined color="#769de4">
                 <v-card
