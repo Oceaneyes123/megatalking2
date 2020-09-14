@@ -168,6 +168,13 @@
                         <v-text-field outlined class="rounded-xl" label="아이디(이메일)"></v-text-field>
                         <v-text-field outlined class="rounded-xl" label="비밀번호"></v-text-field>
                         <v-checkbox label="로그인 상태 유지"></v-checkbox>
+                        <v-btn
+                          style="background-image: linear-gradient(to right, #add5f5, #9ebbef)"
+                          block
+                          depressed
+                          class="white--text h5 nanum rounded-xl"
+                          large
+                        >로그인</v-btn>
                       </v-col>
                     </v-row>
                   </v-col>
@@ -192,6 +199,13 @@
                       <v-checkbox label="아래 약관에 모두 동의합니다.s"></v-checkbox>
                       <v-checkbox label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"></v-checkbox>
                       <v-checkbox class="mt-0" label="할인/이벤트 안내 동의(선택)"></v-checkbox>
+                      <v-btn
+                        style="background-image: linear-gradient(to right, #fc686f, #ff934d)"
+                        block
+                        depressed
+                        class="white--text h5 nanum rounded-xl"
+                        large
+                      >신규 회원가입</v-btn>
                     </v-row>
                   </v-col>
                 </v-row>
