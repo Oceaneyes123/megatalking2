@@ -16,8 +16,8 @@
         >
           <v-container class="px-md-10 pt-10 text-left">
             <v-row>
-              <v-col cols="3">
-                <v-select v-model="select" :items="selectItems" outlined></v-select>
+              <v-col cols="5" md="3">
+                <v-select v-model="select" :items="selectItems" outlined dense></v-select>
               </v-col>
             </v-row>
             <div class="text-center font-weight-black h4">{{month}}</div>
@@ -27,13 +27,15 @@
                 <v-icon @click="$refs.calendar.prev()" x-large>fas fa-angle-left</v-icon>
               </v-col>
               <v-col cols="10">
-                <v-calendar
-                  class="calendar"
-                  ref="calendar"
-                  :now="today"
-                  color="#faae7d"
-                  type="week"
-                ></v-calendar>
+                <v-sheet>
+                  <v-calendar
+                    class="calendar"
+                    ref="calendar"
+                    :now="today"
+                    color="#faae7d"
+                    type="week"
+                  ></v-calendar>
+                </v-sheet>
               </v-col>
               <v-col cols="1" class="d-flex align-center justify-center">
                 <v-icon @click="$refs.calendar.next()" x-large>fas fa-angle-right</v-icon>
@@ -274,6 +276,17 @@
 .v-responsive__content {
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.v-calendar-daily__intervals-head {
+  flex: none;
+  position: relative;
+  display: none;
+}
+
+.v-btn--fab.v-size--default {
+  height: 36px;
+  width: 36px;
 }
 </style>
 

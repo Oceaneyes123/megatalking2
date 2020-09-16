@@ -38,6 +38,8 @@
             </div>
           </v-card>
 
+          <v-spacer v-if="screenWidth <= 960"></v-spacer>
+
           <v-menu
             v-if="screenWidth <= 960"
             close-on-click
@@ -45,7 +47,7 @@
             nudge-bottom="12"
             offset-y
             bottom
-            class="mt-10"
+            class="mt-10 ml-auto"
             transition="slide-y-transition"
             tile
           >

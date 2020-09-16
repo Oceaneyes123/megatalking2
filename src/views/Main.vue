@@ -753,7 +753,8 @@ export default {
   },
 
   mounted() {
-    console.log(this.marqueeImages.length);
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
     this.onWindowResize();
   },
 
