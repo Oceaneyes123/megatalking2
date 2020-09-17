@@ -131,7 +131,7 @@
                             </v-row>
                             <div class="caption" style="color:#bdbdbd">수강기간</div>
                             <!-- book row-->
-                            <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
+                            <!-- <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
                               <v-col
                                 cols="6"
                                 sm="3"
@@ -199,7 +199,54 @@
                                   style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
                                 >{{ book.text }}</v-btn>
                               </v-col>
+                            </v-row>-->
+
+                            <v-row justify="start" class="mb-3 mt-10">
+                              <v-col
+                                cols="6"
+                                sm="4"
+                                v-for="(material, i) in materials"
+                                :key="i"
+                                class="px-2 mb-2 mb-md-0"
+                              >
+                                <v-btn
+                                  width="100%"
+                                  class="rounded-lg"
+                                  block
+                                  depressed
+                                  @click="materialSelected = i, materialSummary = material.course"
+                                  :color="
+                                    materialSelected == i ? 'primary' : '#FFFFFF'
+                                  "
+                                  :outlined="materialSelected == i ? true : false"
+                                >{{ material.course }}</v-btn>
+                              </v-col>
                             </v-row>
+
+                            <v-row justify="start" class="mb-3 mt-5">
+                              <v-col
+                                cols="6"
+                                sm="6"
+                                v-for="(item, i) in materials[materialSelected].series"
+                                :key="i"
+                                class="px-2 mb-2 mb-md-0"
+                              >
+                                <v-btn
+                                  width="100%"
+                                  height="50"
+                                  class="rounded-lg"
+                                  block
+                                  depressed
+                                  @click="seriesSelected = i, seriesSummary = item.text"
+                                  :color="
+                                   seriesSelected == i ? 'primary' : '#FFFFFF'
+                                  "
+                                  :outlined="seriesSelected == i ? true : false"
+                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                >{{ item.text }}</v-btn>
+                              </v-col>
+                            </v-row>
+
                             <div class="caption" style="color:#bdbdbd">수업 유형</div>
                           </v-container>
                         </v-card>
@@ -402,6 +449,8 @@ export default {
       frequencySummary: "",
       periodSummary: "",
       daySummary: "",
+      materialSummary: "",
+      seriesSummary: "",
 
       paymentMethods: [
         { text: "무통장 입금", color: "" },
@@ -414,8 +463,187 @@ export default {
       periodSelected: -1,
       bookSelected: -1,
       timeSelected: -1,
+      materialSelected: 0,
+      seriesSelected: -1,
+
+      materialIndex: 0,
 
       isMobile: false,
+
+      materials: [
+        {
+          course: "유튜브 회화과정",
+          series: [
+            {
+              text: "셀럽 토크쇼",
+              level: ""
+            },
+            {
+              text: "TED Ed",
+              level: ""
+            },
+            {
+              text: "Movie",
+              level: ""
+            },
+            {
+              text: "셀럽과의 대화",
+              level: ""
+            },
+            {
+              text: "Pop Song",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "정규 회화과정",
+          series: [
+            {
+              text: "Regular Conversation 1~3",
+              level: ""
+            },
+            {
+              text: "Interactive English Series",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "프리토킹 토론",
+          series: [
+            {
+              text: "묻고 답하기",
+              level: ""
+            },
+            {
+              text: "의견말하기",
+              level: ""
+            },
+            {
+              text: "사진묘사",
+              level: ""
+            },
+            {
+              text: "영자신문",
+              level: ""
+            },
+            {
+              text: "Debate",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "비즈니스 과정",
+          series: [
+            {
+              text: "Business English (Situational Dialogues)",
+              level: ""
+            },
+            {
+              text: "E-mail",
+              level: ""
+            },
+            {
+              text: "Meeting",
+              level: ""
+            },
+            {
+              text: "Negotiation",
+              level: ""
+            },
+            {
+              text: "Presentation",
+              level: ""
+            },
+            {
+              text: "비지니스 회화과정",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "문법/패턴",
+          series: [
+            {
+              text: "스피킹 패턴과정",
+              level: ""
+            },
+            {
+              text: "Grammar in Pattern 과정",
+              level: ""
+            },
+            {
+              text: "일상 Dialogue 과정",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "취업준비/특별 과정",
+          series: [
+            {
+              text: "Interview (영어 면접)과정",
+              level: ""
+            },
+            {
+              text: "Hotel Dialogues",
+              level: ""
+            },
+            {
+              text: "Cabin Crew",
+              level: ""
+            },
+            {
+              text: "IELTS",
+              level: ""
+            },
+            {
+              text: "IELTS",
+              level: ""
+            },
+            {
+              text: "Medical English",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "초/중급 회화과정",
+          series: [
+            {
+              text: "Milestones",
+              level: ""
+            },
+            {
+              text: "First Step In Conversation",
+              level: ""
+            }
+          ]
+        },
+        {
+          course: "입문과정",
+          series: [
+            {
+              text: "Phonics ",
+              level: ""
+            },
+            {
+              text: "Advanced Phonics ",
+              level: ""
+            },
+            {
+              text: "P-course Junior",
+              level: ""
+            },
+            {
+              text: "C-course Junior",
+              level: ""
+            }
+          ]
+        }
+      ],
 
       bookList10: [
         {
