@@ -20,10 +20,12 @@
             color="#00000000"
             style="color:#a3a3a3"
           >
-            <div class="mr-6 subheading" @click="$router.push('/curriculum')">커리큘럼</div>
-            <div class="mr-6 subheading" @click="$router.push('/level-test')">레벨테스트</div>
-            <div class="mr-6 subheading" @click="$router.push('/enrollment')">수강신청</div>
-            <div class="mr-8 subheading" @click="$router.push('/mypage')">마이페이지</div>
+            <div
+              class="mr-6 subheading"
+              v-for="(route, i) in routes"
+              :key="i"
+              @click="$router.push(`/${route.link}`)"
+            >{{route.text}}</div>
           </v-card>
           <v-card
             v-if="screenWidth > 960"
@@ -56,10 +58,11 @@
             </template>
             <v-card style="color:#a3a3a3" minz-width="100%" color="#fafafa" tile flat>
               <v-list>
-                <v-list-item @click="$router.push('/curriculum')">커리큘럼</v-list-item>
-                <v-list-item @click="$router.push('/level-test')">레벨테스트</v-list-item>
-                <v-list-item @click="$router.push('/enrollment')">수강신청</v-list-item>
-                <v-list-item @click="$router.push('/mypage')">마이페이지</v-list-item>
+                <v-list-item
+                  v-for="(route, i) in routes"
+                  :key="i"
+                  @click="$router.push(`/${route.link}`)"
+                >{{route.text}}</v-list-item>
               </v-list>
             </v-card>
           </v-menu>
@@ -233,12 +236,42 @@ export default {
       showNav: true,
       currentRoute: "main",
       signInDialog: false,
+
+      routes: [
+        {
+          text: "커리큘럼",
+          link: "curriculum"
+        },
+        {
+          text: "레벨테스트",
+          link: "level-test"
+        },
+        {
+          text: "수강신청",
+          link: "enrollment"
+        },
+        {
+          text: "마이페이지",
+          link: "mypage"
+        },
+        {
+          text: "수강후기",
+          link: "board"
+        },
+        {
+          text: "이벤트",
+          link: "event"
+        }
+      ],
+
       images: {
         main: require("../src/assets/main.jpg"),
         curriculum: require("../src/assets/curriculum.jpg"),
         leveltest: require("../src/assets/leveltest.jpg"),
         enrollment: require("../src/assets/enrollment.jpg"),
-        mypage: require("../src/assets/mypage.jpg")
+        mypage: require("../src/assets/mypage.jpg"),
+        board: require("../src/assets/bg_mega_review.png"),
+        event: require("../src/assets/bg_mega_event.png")
       },
       currentImage: "",
       screenWidth: "",
@@ -254,19 +287,22 @@ export default {
   },
 
   mounted() {
-    if (this.$route.name.toLowerCase() == "material") {
+    if (this.$route.path == "/material") {
       this.showNav = false;
     } else {
       this.showNav = true;
       this.loadBg();
     }
+
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+
+    console.log(this.isMobile);
   },
 
   watch: {
     $route: function() {
-      if (this.$route.name.toLowerCase() == "material") {
+      if (this.$route.path == "/material") {
         this.showNav = false;
       } else {
         this.showNav = true;
@@ -277,7 +313,8 @@ export default {
 
   methods: {
     loadBg() {
-      this.currentRoute = this.$route.name.toLowerCase();
+      this.currentRoute = this.$route.path.slice(1, this.$route.path.length);
+      console.log(this.currentRoute);
       this.currentImage = this.images[this.currentRoute];
     },
 

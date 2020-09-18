@@ -45,6 +45,14 @@ var routes = [{
   path: "/material",
   name: "Material",
   component: require("../views/Material.vue")["default"]
+}, {
+  path: "/board",
+  name: "Board",
+  component: require("../views/Board.vue")["default"]
+}, {
+  path: "/event",
+  name: "Event",
+  component: require("../views/Event.vue")["default"]
 }];
 var router = new _vueRouter["default"]({
   routes: routes
