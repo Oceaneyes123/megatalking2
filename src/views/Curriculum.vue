@@ -17,7 +17,7 @@
           max-width="1000px"
           color="#fafafa"
         >
-          <v-container class="px-10 py-10">
+          <v-container class="px-md-10 py-10">
             <v-sheet class="mx-auto px-4" color="rgba(0,0,0,0.0)">
               <v-slide-group mandatory class="mx-auto" v-model="slide" center-active>
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
@@ -202,7 +202,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '500'"
+              height="100%"
               v-if="slide == 0"
               hide-delimiter-background
               show-arrows-on-hover
@@ -212,16 +212,19 @@
               <v-carousel-item height="750" v-for="(book, i) in allBooks.books_1" :key="i">
                 <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
                   <v-row>
-                    <v-col class="py-0" cols="12" md="5">
+                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
                         color="#fafafa"
                         class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
+                        :height="isMobile ? '' : '100%'"
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-card class="mx-auto">
+                          <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        </v-card>
+
                         <v-card
                           flat
                           color="#fafafa"
@@ -233,7 +236,7 @@
                           color="#fafafa"
                           width="80%"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
                         >{{book.details}}</v-card>
                       </v-card>
@@ -285,13 +288,18 @@
               </v-carousel-item>
             </v-carousel>
 
-            <v-slide-group v-model="bookSlide1" v-if="slide == 1" show-arrows class="mb-3">
+            <v-slide-group
+              v-model="bookSlide1"
+              v-if="slide == 1"
+              :show-arrows="!isMobile"
+              class="mb-3"
+            >
               <v-slide-item v-for="(book, i) in allBooks.books_2" :key="i">
                 <v-card
                   flat
                   color="#fafafa"
                   class="rounded-xl mx-2"
-                  max-height="500"
+                  :height="isMobile ? '': '100%' "
                   style="border: 1px solid #325fc4"
                 >
                   <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
@@ -307,8 +315,7 @@
                     color="#fafafa"
                     width="80%"
                     max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
+                    class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
                   >{{book.details}}</v-card>
                 </v-card>
@@ -317,7 +324,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '450'"
+              height="100%"
               v-if="slide == 2"
               hide-delimiter-background
               show-arrows-on-hover
@@ -327,12 +334,12 @@
               <v-carousel-item height="750" v-for="(book, i) in allBooks.books_3" :key="i">
                 <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
                   <v-row>
-                    <v-col class="py-0" cols="12" md="5">
+                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
                         color="#fafafa"
                         class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
+                        :height="isMobile ? '' : '100%'"
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
@@ -348,7 +355,7 @@
                           color="#fafafa"
                           width="80%"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
                         >{{book.details}}</v-card>
                       </v-card>
@@ -390,7 +397,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '450'"
+              height="100%"
               v-if="slide == 3"
               hide-delimiter-background
               show-arrows-on-hover
@@ -400,12 +407,12 @@
               <v-carousel-item height="750" v-for="(book, i) in allBooks.books_4" :key="i">
                 <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
                   <v-row>
-                    <v-col class="py-0" cols="12" md="5">
+                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
                         color="#fafafa"
                         class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
+                        :height="isMobile ? '' : '100%'"
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
@@ -421,7 +428,7 @@
                           color="#fafafa"
                           width="80%"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
                         >{{book.details}}</v-card>
                       </v-card>
@@ -463,7 +470,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '450'"
+              height="100%"
               v-if="slide == 4"
               hide-delimiter-background
               show-arrows-on-hover
@@ -478,7 +485,7 @@
                         flat
                         color="#fafafa"
                         class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
+                        :height="isMobile ? '' : '100%'"
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
@@ -494,7 +501,7 @@
                           color="#fafafa"
                           width="80%"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
                         >{{book.details}}</v-card>
                       </v-card>
@@ -536,7 +543,7 @@
 
             <v-carousel
               cycle
-              :height="isMobile ? '950' : '450'"
+              height="100%"
               v-if="slide == 5"
               hide-delimiter-background
               show-arrows-on-hover
@@ -546,12 +553,12 @@
               <v-carousel-item height="750" v-for="(book, i) in allBooks.books_6" :key="i">
                 <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
                   <v-row>
-                    <v-col class="py-0" cols="12" md="5">
+                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
                         color="#fafafa"
                         class="rounded-xl"
-                        :height="isMobile ? '500px' : '100%'"
+                        :height="isMobile ? '' : '100%'"
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
@@ -567,7 +574,7 @@
                           color="#fafafa"
                           width="80%"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
                         >{{book.details}}</v-card>
                       </v-card>
@@ -607,7 +614,12 @@
               </v-carousel-item>
             </v-carousel>
 
-            <v-slide-group v-model="bookSlide6" v-if="slide == 6" show-arrows class="mb-3">
+            <v-slide-group
+              v-model="bookSlide6"
+              v-if="slide == 6"
+              :show-arrows="!isMobile"
+              class="mb-3"
+            >
               <v-slide-item v-for="(book, i) in allBooks.books_7" :key="i">
                 <v-card
                   flat
@@ -629,15 +641,19 @@
                     color="#fafafa"
                     width="80%"
                     max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
+                    class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
                   >{{book.details}}</v-card>
                 </v-card>
               </v-slide-item>
             </v-slide-group>
 
-            <v-slide-group v-model="bookSlide7" v-if="slide == 7" show-arrows class="mb-3">
+            <v-slide-group
+              v-model="bookSlide7"
+              v-if="slide == 7"
+              :show-arrows="!isMobile"
+              class="mb-3"
+            >
               <v-slide-item v-for="(book, i) in allBooks.books_8" :key="i">
                 <v-card
                   flat
@@ -659,8 +675,7 @@
                     color="#fafafa"
                     width="80%"
                     max-width="300"
-                    height="200"
-                    class="mx-auto mt-5 text-left caption-text"
+                    class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
                   >{{book.details}}</v-card>
                 </v-card>
@@ -1203,12 +1218,6 @@ export default {
             title: "Cabin Crew",
             details:
               "승무원의 역사, 의상, 기내상식과 기내방송등 승무원의 모든 스피킹을 담았습니다. 승무원을 준비하시는 수강생분들, 승무원영어과정으로 알차게 준비해보세요!"
-          },
-          {
-            image: require("../assets/curriculum/ielts.jpg"),
-            title: "IELTS",
-            details:
-              "IELTS란, 국제영어능력시험으로써, 영국, 오스트레일리아, 캐나다, 뉴질랜드 대학입학에 필요한 영어시험입니다. 대부분 대학입학성적으로 6.0점 이상을 요구하며, 화상및전화영어를 통하여는, 스피킹시험을 준비하실 수 있습니다. 수업을 통해 발음교정과 다양한 토픽에 맞는 스피킹을 준비하게 됩니다."
           },
           {
             image: require("../assets/curriculum/ielts.jpg"),

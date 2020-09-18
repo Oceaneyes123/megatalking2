@@ -211,6 +211,7 @@
                               >
                                 <v-btn
                                   width="100%"
+                                  height="50"
                                   class="rounded-lg"
                                   block
                                   depressed
@@ -223,29 +224,31 @@
                               </v-col>
                             </v-row>
 
-                            <v-row justify="start" class="mb-3 mt-5">
-                              <v-col
-                                cols="6"
-                                sm="6"
-                                v-for="(item, i) in materials[materialSelected].series"
-                                :key="i"
-                                class="px-2 mb-2 mb-md-0"
-                              >
-                                <v-btn
-                                  width="100%"
-                                  height="50"
-                                  class="rounded-lg"
-                                  block
-                                  depressed
-                                  @click="seriesSelected = i, seriesSummary = item.text"
-                                  :color="
-                                   seriesSelected == i ? 'primary' : '#FFFFFF'
+                            <v-container style="background-color:#ececec">
+                              <v-row justify="start" class="mb-3 mt-5">
+                                <v-col
+                                  cols="6"
+                                  sm="6"
+                                  v-for="(item, i) in materials[materialSelected].series"
+                                  :key="i"
+                                  class="px-2 mb-2 mb-md-0"
+                                >
+                                  <v-btn
+                                    width="100%"
+                                    height="50"
+                                    class="rounded-lg"
+                                    block
+                                    depressed
+                                    @click="seriesSelected = item.text, seriesSummary = item.text"
+                                    :color="
+                                   seriesSelected == item.text ? 'primary' : '#FFFFFF'
                                   "
-                                  :outlined="seriesSelected == i ? true : false"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ item.text }}</v-btn>
-                              </v-col>
-                            </v-row>
+                                    :outlined="seriesSelected == item.text ? true : false"
+                                    style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                  >{{ item.text }}</v-btn>
+                                </v-col>
+                              </v-row>
+                            </v-container>
 
                             <div class="caption" style="color:#bdbdbd">수업 유형</div>
                           </v-container>
@@ -593,10 +596,6 @@ export default {
             },
             {
               text: "Cabin Crew",
-              level: ""
-            },
-            {
-              text: "IELTS",
               level: ""
             },
             {
