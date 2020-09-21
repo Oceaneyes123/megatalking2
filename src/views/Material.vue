@@ -13,8 +13,26 @@
             v-model="tabs"
           >
             <v-tab class="white--text" v-for="(step, i) in steps" :key="i">{{step}}</v-tab>
-            <v-tab-item></v-tab-item>
-            <v-tab-item></v-tab-item>
+            <v-tab-item style="height:80vh">
+              <v-container style="height:100%">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style="border:0"
+                  src="https://secure-everglades-57290.herokuapp.com/curriculum/dashboard"
+                ></iframe>
+              </v-container>
+            </v-tab-item>
+            <v-tab-item style="height:80vh">
+              <v-container style="height:100%">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  style="border:0"
+                  src="https://secure-everglades-57290.herokuapp.com/curriculum/dashboard"
+                ></iframe>
+              </v-container>
+            </v-tab-item>
             <v-tab-item class="text-left">
               <v-card flat>
                 <v-window v-model="window3">
