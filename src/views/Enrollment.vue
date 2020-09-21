@@ -479,23 +479,33 @@ export default {
           series: [
             {
               text: "셀럽 토크쇼",
-              level: ""
+              level: "",
+              type: "video",
+              link: ""
             },
             {
               text: "TED Ed",
-              level: ""
+              level: "",
+              type: "video",
+              link: ""
             },
             {
               text: "Movie",
-              level: ""
+              level: "",
+              type: "video",
+              link: ""
             },
             {
               text: "셀럽과의 대화",
-              level: ""
+              level: "",
+              type: "video",
+              link: ""
             },
             {
               text: "Pop Song",
-              level: ""
+              level: "",
+              type: "video",
+              link: ""
             }
           ]
         },
@@ -504,11 +514,15 @@ export default {
           series: [
             {
               text: "Regular Conversation 1~3",
-              level: ""
+              level: "",
+              type: "",
+              link: ""
             },
             {
               text: "Interactive English Series",
-              level: ""
+              level: "",
+              type: "",
+              link: ""
             }
           ]
         },
@@ -517,23 +531,36 @@ export default {
           series: [
             {
               text: "묻고 답하기",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
             },
             {
               text: "의견말하기",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1"
             },
             {
               text: "사진묘사",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/JDEP-SR/JDEP-SR-Level1/chapter1"
             },
             {
               text: "영자신문",
-              level: ""
+              level: "",
+              type: "book",
+              link: ""
             },
             {
               text: "Debate",
-              level: ""
+              level: "",
+              type: "book",
+              link: ""
             }
           ]
         },
@@ -542,27 +569,45 @@ export default {
           series: [
             {
               text: "Business English (Situational Dialogues)",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
             },
             {
               text: "E-mail",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
             },
             {
               text: "Meeting",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1aExVOMJ6dI-J9oRn_Lg5oY4ElSD_afHt/view?usp=sharing"
             },
             {
               text: "Negotiation",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1RWOQTYIQGG--GD34gpUZmQjLcgK0T6HD/view?usp=sharing"
             },
             {
               text: "Presentation",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1zatMw-zyib5m5XdGawNPl9XEhc4NH1uO/view?usp=sharing"
             },
             {
               text: "비지니스 회화과정",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "https://drive.google.com/file/d/1JmYIrtdNWaJ-rft815Wyl7SPfbf4-QZJ/view?usp=sharing"
             }
           ]
         },
@@ -571,15 +616,23 @@ export default {
           series: [
             {
               text: "스피킹 패턴과정",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1"
             },
             {
               text: "Grammar in Pattern 과정",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1"
             },
             {
               text: "일상 Dialogue 과정",
-              level: ""
+              level: "",
+              type: "book",
+              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1"
             }
           ]
         },
@@ -588,23 +641,36 @@ export default {
           series: [
             {
               text: "Interview (영어 면접)과정",
-              level: ""
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/InterviewExample/InterviewExampleStep1/chapter1"
             },
             {
               text: "Hotel Dialogues",
-              level: ""
+              level: "",
+              type: "",
+              link: ""
             },
             {
               text: "Cabin Crew",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1N6zF_HAEiOgjW26rwXC_i30dHJ8TvxQe/view?usp=sharing"
             },
             {
               text: "IELTS",
-              level: ""
+              level: "",
+              type: "",
+              link: ""
             },
             {
               text: "Medical English",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/drive/folders/1OB_g7tNng4oVQekN8c5HxF7kkcnDZb9F?usp=sharing"
             }
           ]
         },
@@ -613,11 +679,17 @@ export default {
           series: [
             {
               text: "Milestones",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1YPFQMZgHL3Fm3qPJLbJTA49l0WNIE90O/view?usp=sharing"
             },
             {
               text: "First Step In Conversation",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1q7tc57t9CseKuRujiTvcUCjgomLrjSJq/view?usp=sharing"
             }
           ]
         },
@@ -626,19 +698,31 @@ export default {
           series: [
             {
               text: "Phonics ",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1Es3HQtk5Nd2QD_RlQoXnj9lmVmreCkaM/view?usp=sharing"
             },
             {
               text: "Advanced Phonics ",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1wHyXFBntIGgETbo42818tfIbytqLIsSE/view?usp=sharing"
             },
             {
               text: "P-course Junior",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/18DlCKPueud00P3hXc6DRsGqlllbCWiv4/view?usp=sharing"
             },
             {
               text: "C-course Junior",
-              level: ""
+              level: "",
+              type: "pdf",
+              link:
+                "https://drive.google.com/file/d/1QbFxqyGlx5CQ7j8A-Hcmo47bj1rML8kW/view?usp=sharing"
             }
           ]
         }
