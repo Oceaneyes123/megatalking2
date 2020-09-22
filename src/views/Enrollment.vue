@@ -18,7 +18,12 @@
                     <v-container class="px-0 mt-7">
                       <v-row no-gutters class="mb-5">
                         <v-col cols="6" class="text-left">
-                          <div class="h6 font-weight-bold">전화로 할래요</div>
+                          <div
+                            class="h6 font-weight-bold"
+                            @click="isPhone = true"
+                            :style="isPhone ? 'color:#4242a3' : 'color:#000'"
+                            style="cursor:pointer"
+                          >전화로 할래요</div>
                           <div class="subheading">
                             <v-icon
                               color="#5a55a1"
@@ -28,7 +33,12 @@
                           </div>
                         </v-col>
                         <v-col cols="6" class="text-left">
-                          <div class="h6 font-weight-bold" style="color:#4242a3">화상으로 할래요.</div>
+                          <div
+                            class="h6 font-weight-bold"
+                            @click="isPhone = false"
+                            :style="!isPhone ? 'color:#4242a3' : 'color:#000'"
+                            style="cursor:pointer"
+                          >화상으로 할래요.</div>
                           <div class="subheading">
                             <v-icon
                               color="#5a55a1"
@@ -447,6 +457,8 @@ export default {
       timeList: [],
       seeMore: false,
       currentZone: 0,
+
+      isPhone: false,
 
       bookSummary: "",
       frequencySummary: "",
