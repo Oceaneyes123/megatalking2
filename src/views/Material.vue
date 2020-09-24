@@ -1,7 +1,12 @@
 <template>
   <v-app>
     <v-container fluid class="py-0 px-0">
-      <v-card class="rounded-xl mx-auto" elevation="7" width="100%" max-width="700px">
+      <v-card
+        class="rounded-xl mx-auto"
+        elevation="7"
+        width="100%"
+        max-width="700px"
+      >
         <v-container class="px-0 py-0">
           <v-tabs
             grow
@@ -12,7 +17,9 @@
             slider-color="#FFF"
             v-model="tabs"
           >
-            <v-tab class="white--text" v-for="(step, i) in steps" :key="i">{{step}}</v-tab>
+            <v-tab class="white--text" v-for="(step, i) in steps" :key="i">{{
+              step
+            }}</v-tab>
             <v-tab-item style="height:80vh">
               <v-container style="height:100%">
                 <iframe
@@ -45,7 +52,9 @@
                             class="text-grey mb-2 mx-5"
                             v-for="(text, i) in step3EnglishText"
                             :key="i"
-                          >{{text}}</div>
+                          >
+                            {{ text }}
+                          </div>
                         </v-col>
                         <v-col cols="12">
                           <div class="text-blue mb-5">영어 본문</div>
@@ -53,7 +62,9 @@
                             class="text-dark-blue mb-2 mx-5"
                             v-for="(text, i) in step3KoreanText"
                             :key="i"
-                          >{{text}}</div>
+                          >
+                            {{ text }}
+                          </div>
                         </v-col>
                       </v-row>
                       <v-row justify="center">
@@ -61,7 +72,8 @@
                           @click="window3 = 1"
                           style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
                           class="mx-auto rounded-lg white--text mb-5"
-                        >Next</v-btn>
+                          >Next</v-btn
+                        >
                       </v-row>
                     </v-container>
                   </v-window-item>
@@ -69,50 +81,92 @@
                     <v-container class="px-5">
                       <div class="h5 nanum">Today's Expression</div>
                       <v-row>
-                        <v-col cols="12" v-for="(expression, i) in step3TodayExpression" :key="i">
+                        <v-col
+                          cols="12"
+                          v-for="(expression, i) in step3TodayExpression"
+                          :key="i"
+                        >
                           <v-container>
                             <v-row>
                               <v-col cols="12" md="6">
-                                <div class="mb-2 text-blue">{{expression.expression}}</div>
-                                <div class="text-grey" v-html="expression.definition"></div>
+                                <div class="mb-2 text-blue">
+                                  {{ expression.expression }}
+                                </div>
+                                <div
+                                  class="text-grey"
+                                  v-html="expression.definition"
+                                ></div>
                               </v-col>
                               <v-col cols="12" md="6">
-                                <div class="mb-2" v-html="expression.question1"></div>
-                                <div class="mb-2" v-html="expression.question2"></div>
-                                <div class="text-blue" v-html="expression.question3"></div>
+                                <div
+                                  class="mb-2"
+                                  v-html="expression.question1"
+                                ></div>
+                                <div
+                                  class="mb-2"
+                                  v-html="expression.question2"
+                                ></div>
+                                <div
+                                  class="text-blue"
+                                  v-html="expression.question3"
+                                ></div>
                               </v-col>
                             </v-row>
                           </v-container>
                         </v-col>
-                        <v-btn
-                          @click="window3 = window3 + 1"
-                          style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
-                          class="mx-auto rounded-lg white--text mb-5"
-                        >Next</v-btn>
+                        <div class="d-flex justify-center mx-auto">
+                          <v-btn
+                            @click="window3 = window3 - 1"
+                            style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                            class="mr-3 rounded-lg white--text mb-5"
+                            >Previous</v-btn
+                          >
+
+                          <v-btn
+                            @click="window3 = window3 + 1"
+                            style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                            class=" rounded-lg white--text mb-5"
+                            >Next</v-btn
+                          >
+                        </div>
                       </v-row>
                     </v-container>
                   </v-window-item>
                   <v-window-item>
                     <v-container class="px-5">
-                      <div class="h5 nanum text-blue mb-10">Today's Expression</div>
+                      <div class="h5 nanum text-blue mb-10">
+                        Today's Expression
+                      </div>
                       <v-row>
                         <v-col
                           cols="12"
                           v-for="(answer, i) in step3TodayExpressionAnswer"
                           :key="i"
-                          :class="(i + 1) % 2 == 0 && isMobile ? 'mb-10' : 'mb-0'"
+                          :class="
+                            (i + 1) % 2 == 0 && isMobile ? 'mb-10' : 'mb-0'
+                          "
                         >
-                          <div class="h6 nanum">{{answer.question}}</div>
-                          <div class="mb-2">{{answer.choice}}</div>
-                          <div class="text-grey">{{answer.answer}}</div>
+                          <div class="h6 nanum">{{ answer.question }}</div>
+                          <div class="mb-2">{{ answer.choice }}</div>
+                          <div class="text-grey">{{ answer.answer }}</div>
                         </v-col>
                       </v-row>
                       <v-row justify="center">
-                        <v-btn
-                          @click="tabs = 3"
-                          style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
-                          class="mx-auto rounded-lg white--text mb-5"
-                        >Next</v-btn>
+                        <div class="d-flex justify-center mx-auto">
+                          <v-btn
+                            @click="window3 = window3 - 1"
+                            style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                            class="mr-3 rounded-lg white--text mb-5"
+                            >Previous</v-btn
+                          >
+
+                          <v-btn
+                            @click="tabs = 3"
+                            style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                            class=" rounded-lg white--text mb-5"
+                            >Next</v-btn
+                          >
+                        </div>
                       </v-row>
                     </v-container>
                   </v-window-item>
@@ -125,7 +179,9 @@
                   <v-container>
                     <v-row class="align-md-center">
                       <v-col cols="12">
-                        <div class="text-center mb-2">Annie 강사님 수업은 어떠셨나요?</div>
+                        <div class="text-center mb-2">
+                          Annie 강사님 수업은 어떠셨나요?
+                        </div>
                         <div class="text-center">
                           <v-rating
                             v-model="rating"
@@ -153,11 +209,20 @@
                           outlined
                           block
                           @click="selectSuggestion(i)"
-                          :class=" selectedSuggestion.includes(i) ? 'primary--text': 'text-grey'"
-                        >{{suggestion}}</v-btn>
+                          :class="
+                            selectedSuggestion.includes(i)
+                              ? 'primary--text'
+                              : 'text-grey'
+                          "
+                          >{{ suggestion }}</v-btn
+                        >
                       </v-col>
                       <v-col class="mx-auto" cols="12" sm="7">
-                        <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
+                        <v-textarea
+                          outlined
+                          class="rounded-xl"
+                          height="20vh"
+                        ></v-textarea>
                       </v-col>
                     </v-row>
                     <v-row justify="center">
@@ -165,7 +230,8 @@
                         @click="window4 = window4 + 1"
                         style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
                         class="mx-auto rounded-lg white--text mb-5"
-                      >Next</v-btn>
+                        >Next</v-btn
+                      >
                     </v-row>
                   </v-container>
                 </v-window-item>
@@ -179,7 +245,9 @@
                           max-width="300"
                           flat
                         >
-                          <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
+                          <v-icon color="#5a55a1" x-large
+                            >far fa-play-circle</v-icon
+                          >
                           <v-progress-linear
                             v-model="progress"
                             value="60"
@@ -198,46 +266,75 @@
                           <span class="mx-auto">|</span>
                           <span>음원 다운로드</span>
                         </v-card>
-                        <div class="mt-15 mb-5 h6">다음 발음을 연습해주세요.</div>
+                        <div class="mt-15 mb-5 h6">
+                          다음 발음을 연습해주세요.
+                        </div>
                         <div
                           class="mt-1"
-                          v-for="(pronunciation, i) in step4PracticePronunciation"
+                          v-for="(pronunciation,
+                          i) in step4PracticePronunciation"
                           :key="i"
-                        >{{i + 1}}. {{pronunciation}}</div>
+                        >
+                          {{ i + 1 }}. {{ pronunciation }}
+                        </div>
                       </v-col>
                       <v-col cols="12">
                         <div class="h6 mb-5">더 나은 표현을 알려드릴게요.</div>
-                        <div class="mb-2" v-for="(expression, i) in step4BetterExpression" :key="i">
-                          <div>{{i + 1}}. {{expression.original}}</div>
-                          <div class="text-blue">=> {{expression.better}}</div>
+                        <div
+                          class="mb-2"
+                          v-for="(expression, i) in step4BetterExpression"
+                          :key="i"
+                        >
+                          <div>{{ i + 1 }}. {{ expression.original }}</div>
+                          <div class="text-blue">
+                            => {{ expression.better }}
+                          </div>
                         </div>
                       </v-col>
                       <v-col cols="12">
                         <div class="h6">강사님 코멘트</div>
                         <v-col cols="12" md="10" class="mx-auto">
-                          <v-textarea class="rounded-xl" outlined color="#667fe3"></v-textarea>
+                          <v-textarea
+                            class="rounded-xl"
+                            outlined
+                            color="#667fe3"
+                          ></v-textarea>
                         </v-col>
                       </v-col>
                       <v-col cols="12">
-                        <div class="text-center mb-4">오늘 수업을 한마디로 표현한다면,</div>
+                        <div class="text-center mb-4">
+                          오늘 수업을 한마디로 표현한다면,
+                        </div>
                         <div class="d-flex justify-center">
                           <v-icon
                             @click="selectedIcon = i"
-                            :color="selectedIcon == i ? 'yellow darken-3' : 'grey'"
+                            :color="
+                              selectedIcon == i ? 'yellow darken-3' : 'grey'
+                            "
                             class="mx-3"
                             v-for="(icon, i) in step4Icons"
                             :key="i"
                             x-large
-                          >{{icon}}</v-icon>
+                            >{{ icon }}</v-icon
+                          >
                         </div>
                       </v-col>
                     </v-row>
                     <v-row justify="center" class="mt-5">
-                      <v-btn
-                        @click="tabs = 4"
-                        style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
-                        class="mx-auto rounded-lg white--text mb-5"
-                      >Next</v-btn>
+                      <div class="d-flex mx-auto">
+                        <v-btn
+                          @click="window4 = window4 - 1"
+                          style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                          class="mr-3 rounded-lg white--text mb-5"
+                          >Previous</v-btn
+                        >
+                        <v-btn
+                          @click="tabs = 4"
+                          style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
+                          class="mx-auto rounded-lg white--text mb-5"
+                          >Next</v-btn
+                        >
+                      </div>
                     </v-row>
                   </v-container>
                 </v-window-item>
@@ -246,26 +343,40 @@
             <v-tab-item>
               <v-container class="pa-5">
                 <div class="h5 text-left nanum">1:1 글쓰기.</div>
-                <div class="caption-text text-left">오늘 연습한 표현을 활용하여 영작해주세요.</div>
+                <div class="caption-text text-left">
+                  오늘 연습한 표현을 활용하여 영작해주세요.
+                </div>
                 <v-card flat class="rounded-xl mx-auto mt-8" width="90%">
-                  <v-textarea height="150" outlined color="#769de4"></v-textarea>
+                  <v-textarea
+                    height="150"
+                    outlined
+                    color="#769de4"
+                  ></v-textarea>
                 </v-card>
                 <v-row justify="center">
                   <v-btn
                     class="white--text rounded-pill px-10"
                     style="background: linear-gradient(to right, #add6f5,  #85a5df);"
-                  >제출하기</v-btn>
+                    >제출하기</v-btn
+                  >
                 </v-row>
                 <div class="h5 text-left nanum mt-10">영작 피드백</div>
-                <div class="caption-text text-left">강사님이 직접 남겨주신 피드백입니다 .</div>
+                <div class="caption-text text-left">
+                  강사님이 직접 남겨주신 피드백입니다 .
+                </div>
                 <v-card flat class="rounded-xl mx-auto mt-8" width="90%">
-                  <v-textarea height="150" outlined color="#769de4"></v-textarea>
+                  <v-textarea
+                    height="150"
+                    outlined
+                    color="#769de4"
+                  ></v-textarea>
                 </v-card>
                 <v-row justify="center">
                   <v-btn
                     class="white--text rounded-pill px-10"
                     style="background: linear-gradient(to right, #add6f5,  #85a5df);"
-                  >제출하기</v-btn>
+                    >제출하기</v-btn
+                  >
                 </v-row>
               </v-container>
             </v-tab-item>
