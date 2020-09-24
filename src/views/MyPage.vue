@@ -49,7 +49,73 @@
                 <div class="text-purple mt-5">프라임</div>
                 <div>6:00 - 10:00</div>
               </v-col>
-              <v-col cols="12" md="8">test</v-col>
+              <v-col cols="12" md="8">
+                <v-sheet>
+                  <v-slide-group :show-arrows="!isMobile">
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #df7a30"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption mb-3" style="color:#df7a30">[주2회 화,목] 프리토킹</div>
+                        <div class="h6 nanum" style="color:#df7a30">
+                          10%
+                          <span class="subtitle-text-1">수강 중</span>
+                        </div>
+                        <div class="caption grey--text">수강종료일: 2020.09.30</div>
+                        <v-card
+                          color="#df7a30"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
+                        >
+                          <div>수업 홀드</div>
+                          <div class="mx-auto">|</div>
+                          <div>수강신청 연장</div>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #5e75cf"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption mb-3" style="color:#5e75cf">[주2회 화,목] 비즈니스 과정</div>
+                        <div class="h6 nanum" style="color:#5e75cf">
+                          40%
+                          <span class="subtitle-text-1">수강 중</span>
+                        </div>
+                        <div class="caption grey--text">수강종료일: 2020.09.30</div>
+                        <v-card
+                          color="#5e75cf"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
+                        >
+                          <div>수업 홀드</div>
+                          <div class="mx-auto">|</div>
+                          <div>수강신청 연장</div>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #bbbbbb"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption" style="color:#5e75cf">보강 쿠폰현황</div>
+                        <div class="h6 nanum">강의1, 강의26</div>
+                        <div class="d-flex">
+                          <v-icon color="bbbbbb" class="text-center mx-auto" x-large>add</v-icon>
+                        </div>
+                        <v-card
+                          color="#bbbbbb"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
+                        >보강 시간 설정</v-card>
+                      </v-card>
+                    </v-slide-item>
+                  </v-slide-group>
+                </v-sheet>
+              </v-col>
             </v-row>
 
             <v-container fluid class="px-0">

@@ -715,7 +715,20 @@
               </v-col>
             </v-row>
 
-            <v-row justify="center" class="my-10">
+            <v-row v-if="isMobile">
+              <v-tabs grow>
+                <v-tab v-for="(tab, i) in booksInLevels" :key="i">Level {{tab.level}}</v-tab>
+                <v-tab-item v-for="(item, i) in booksInLevels" :key="i">
+                  <v-carousel hide>
+                    <v-carousel-item v-for="(book, j) in booksInLevels[i].books" :key="j">
+                      <v-card>{{book}}</v-card>
+                    </v-carousel-item>
+                  </v-carousel>
+                </v-tab-item>
+              </v-tabs>
+            </v-row>
+
+            <v-row justify="center" class="my-10" v-if="!isMobile">
               <v-card flat class="rounded-xl" style="width:1000px !important">
                 <v-simple-table>
                   <template v-slot:default>
@@ -999,6 +1012,65 @@ export default {
       screenWidth: "",
       isMobile: false,
       title: "",
+
+      booksInLevels: [
+        {
+          level: "1 - 3",
+          books: [
+            "기초 발음교정",
+            "기초 문장연습",
+            "기초 회화연습",
+            "초급회화",
+            "기초 패턴회화",
+            "초급 토론과정",
+            "패턴 연습편1",
+            "패턴 연습편2",
+            "패턴연습편3  동사연습편1  상황별연습1"
+          ]
+        },
+        {
+          level: "4 - 5",
+          books: [
+            "중급회화",
+            "중급  토론과정",
+            "심화토론 과정고급",
+            "주니어 조선 초급",
+            "주니어 조선 중급",
+            "비즈니스 회화",
+            "동사연습편2 상황별연습2 비즈니스전화",
+            "동사연습편3 상황별연습3 비즈니스회의"
+          ]
+        },
+        {
+          level: "6 - 7",
+          books: [
+            "뉴욕라이브 잉글리쉬",
+            "문법 패턴회화",
+            "시사 토론과정",
+            "주니어 조선 고급",
+            "전문조선 초급",
+            "비즈니스 맞춤",
+            "비즈니스 이메일",
+            "비즈니스 프리젠테이션",
+            "취업 인터뷰",
+            "호텔영어 승무원영어"
+          ]
+        },
+        {
+          level: "8 - 9",
+          books: [
+            "전문조선 고급",
+            "전문조선 고급",
+            "비즈니스 토론",
+            "IELTS 오픽",
+            "토익스피킹 심화토익스피킹"
+          ]
+        },
+        {
+          level: "10",
+          books: ["의학영어"]
+        }
+      ],
 
       allBooks: {
         // books_1: [
