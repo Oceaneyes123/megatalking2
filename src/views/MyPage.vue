@@ -160,7 +160,17 @@
                 src="../assets/curriculum/sp_1.jpg"
                 width="100%"
                 height="auto"
-              ></v-img>
+              >
+                <v-card height="100%" color="#000000AD">
+                  <v-container>
+                    <div
+                      class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                    >
+                      Maroon 5
+                    </div>
+                  </v-container>
+                </v-card>
+              </v-img>
 
               <!-- <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
                 <v-carousel-item class="px-md-16 px-5">

@@ -42,7 +42,17 @@
             </v-tab-item>
             <v-tab-item class="text-left">
               <v-card flat>
-                <v-window v-model="window3">
+                <v-container style="height:80vh">
+                  <iframe
+                    v-if="isBook || isPDF"
+                    height="100%"
+                    width="100%"
+                    style="border:0"
+                    src="http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                  ></iframe>
+                </v-container>
+
+                <v-window v-model="window3" v-if="isVideo">
                   <v-window-item>
                     <v-container class="px-5">
                       <v-row>
@@ -454,6 +464,9 @@ export default {
       selectedSuggestion: [],
 
       selectedIcon: -1,
+
+      isBook: true,
+      isVideo: false,
 
       window3: 0,
       window4: 0,
