@@ -2,7 +2,12 @@
   <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#faae7d00" flat class="text-center pa-3">
-        <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">마이 페이지</div>
+        <div
+          class="h3 font-weight-bold white--text mb-5"
+          style="margin-top:200px"
+        >
+          마이 페이지
+        </div>
         <div class="h6 nanum white--text">
           <div class="my-1">재미있는 영어수다! 친구처럼 편한 영어!</div>
           <div class="my-2">매일 매일 영어습관, 메가토킹.</div>
@@ -17,14 +22,21 @@
           <v-container class="px-md-10 pt-10 text-left">
             <v-row>
               <v-col cols="5" md="3">
-                <v-select v-model="select" :items="selectItems" outlined dense></v-select>
+                <v-select
+                  v-model="select"
+                  :items="selectItems"
+                  outlined
+                  dense
+                ></v-select>
               </v-col>
             </v-row>
-            <div class="text-center font-weight-black h4">{{month}}</div>
+            <div class="text-center font-weight-black h4">{{ month }}</div>
             <v-divider style="background-color:#5a55a1"></v-divider>
             <v-row>
               <v-col cols="1" class="d-flex align-center justify-center">
-                <v-icon @click="$refs.calendar.prev()" x-large>fas fa-angle-left</v-icon>
+                <v-icon @click="$refs.calendar.prev()" x-large
+                  >fas fa-angle-left</v-icon
+                >
               </v-col>
               <v-col cols="10">
                 <v-sheet>
@@ -38,18 +50,14 @@
                 </v-sheet>
               </v-col>
               <v-col cols="1" class="d-flex align-center justify-center">
-                <v-icon @click="$refs.calendar.next()" x-large>fas fa-angle-right</v-icon>
+                <v-icon @click="$refs.calendar.next()" x-large
+                  >fas fa-angle-right</v-icon
+                >
               </v-col>
             </v-row>
-            <v-row class="mx-1">
-              <div class="h6 font-weight-black mt-5">수강 신청내역</div>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="3">
-                <div class="text-purple mt-5">프라임</div>
-                <div>6:00 - 10:00</div>
-              </v-col>
-              <v-col cols="12" md="8">
+
+            <v-row class="my-10">
+              <v-col cols="12">
                 <v-sheet>
                   <v-slide-group :show-arrows="!isMobile">
                     <v-slide-item class="mx-3">
@@ -58,12 +66,16 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color:#df7a30">[주2회 화,목] 프리토킹</div>
+                        <div class="caption mb-3" style="color:#df7a30">
+                          [주2회 화,목] 프리토킹
+                        </div>
                         <div class="h6 nanum" style="color:#df7a30">
                           10%
                           <span class="subtitle-text-1">수강 중</span>
                         </div>
-                        <div class="caption grey--text">수강종료일: 2020.09.30</div>
+                        <div class="caption grey--text">
+                          수강종료일: 2020.09.30
+                        </div>
                         <v-card
                           color="#df7a30"
                           class="d-flex white--text rounded-xl mt-3 px-5 py-2"
@@ -80,12 +92,16 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color:#5e75cf">[주2회 화,목] 비즈니스 과정</div>
+                        <div class="caption mb-3" style="color:#5e75cf">
+                          [주2회 화,목] 비즈니스 과정
+                        </div>
                         <div class="h6 nanum" style="color:#5e75cf">
                           40%
                           <span class="subtitle-text-1">수강 중</span>
                         </div>
-                        <div class="caption grey--text">수강종료일: 2020.09.30</div>
+                        <div class="caption grey--text">
+                          수강종료일: 2020.09.30
+                        </div>
                         <v-card
                           color="#5e75cf"
                           class="d-flex white--text rounded-xl mt-3 px-5 py-2"
@@ -102,15 +118,23 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption" style="color:#5e75cf">보강 쿠폰현황</div>
+                        <div class="caption" style="color:#5e75cf">
+                          보강 쿠폰현황
+                        </div>
                         <div class="h6 nanum">강의1, 강의26</div>
                         <div class="d-flex">
-                          <v-icon color="bbbbbb" class="text-center mx-auto" x-large>add</v-icon>
+                          <v-icon
+                            color="bbbbbb"
+                            class="text-center mx-auto"
+                            x-large
+                            >add</v-icon
+                          >
                         </div>
                         <v-card
                           color="#bbbbbb"
                           class="d-flex white--text rounded-xl mt-3 px-5 py-2"
-                        >보강 시간 설정</v-card>
+                          >보강 시간 설정</v-card
+                        >
                       </v-card>
                     </v-slide-item>
                   </v-slide-group>
@@ -118,7 +142,18 @@
               </v-col>
             </v-row>
 
-            <v-container fluid class="px-0">
+            <v-row no-gutters>
+              <v-col cols="12" md="6">
+                <div class="h5 gmarket">수강 종류</div>
+              </v-col>
+              <v-col cols="12" md="6">
+                <div class="h6 font-weight-black">
+                  20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기
+                </div></v-col
+              >
+            </v-row>
+
+            <v-container fluid class="px-0" v-if="isBook">
               <v-img
                 @click="$router.push('/material')"
                 class="rounded-xl"
@@ -306,25 +341,53 @@
                   </v-col>
               </v-row>-->
             </v-container>
-            <v-container class="px-10">
-              <v-row class="mt-5 mx-1 mb-10">
-                <v-col cols="12" md="6">
-                  <div class="h5 font-weight-bold">HAVE A NICE DAY!</div>
-                  <div class="h5 font-weight-black">MARK 선생님과 수업중입니다.</div>
+            <v-container fluid>
+              <v-row class="mt-5 mx-1 mb-10" justify="center">
+                <v-col cols="6" md="4" class="pl-0">
+                  <v-card
+                    class="pa-3 white--text"
+                    color="#df7a30"
+                    height="100%"
+                  >
+                    <div class="mb-2">
+                      <v-icon color="white">report</v-icon>
+                    </div>
+                    <div class="mb-2">
+                      교재 or 수업 중 불편사항이 있으셨나요?
+                    </div>
+                    <v-divider></v-divider>
+                    <div class="text-center mt-2">
+                      불편사항 신고
+                    </div>
+                  </v-card>
                 </v-col>
-                <v-spacer></v-spacer>
-                <v-col>
-                  <div>
-                    <v-btn
-                      color="#df7a30"
-                      class="rounded-lg font-weight-bold white--text"
-                      large
-                    >강사평가 바로가기</v-btn>
-                  </div>
+
+                <v-col cols="6" md="4" class="pr-0">
+                  <v-card class="pa-3 white--text" color="grey">
+                    <div class="mb-2">
+                      <v-icon color="white">thumb_up_alt</v-icon>
+                    </div>
+                    <div class="mb-2">
+                      오늘 수업은 어땠나요?
+                    </div>
+                    <div>
+                      <v-rating
+                        :small="isMobile"
+                        value="4"
+                        readonly
+                        color="yellow"
+                        half-increments
+                        empty-icon="far fa-star"
+                        full-icon="fas fa-star"
+                        half-icon="fas fa-star-half-alt"
+                        background-color="grey lighten-2"
+                        :dense="isMobile"
+                      ></v-rating>
+                    </div>
+                    <v-divider></v-divider>
+                    <div class="text-center mt-2">강사평가 하기</div>
+                  </v-card>
                 </v-col>
-              </v-row>
-              <v-row class="mt-10 mx-1">
-                <div class="h6 font-weight-black">20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
               </v-row>
             </v-container>
           </v-container>
@@ -385,6 +448,10 @@ export default {
       month: "",
       screenWidth: "",
       isMobile: false,
+
+      isBook: true,
+      isVideo: false,
+      isPDF: false,
 
       selectedSuggestion: [],
 

@@ -1,7 +1,13 @@
 <template>
   <div id="app">
     <v-app>
-      <v-card tile height="75" width="100%" style="position:fixed;top:0;z-index:100" v-if="showNav">
+      <v-card
+        tile
+        height="75"
+        width="100%"
+        style="position:fixed;top:0;z-index:100"
+        v-if="showNav"
+      >
         <v-container class="d-flex flex-row">
           <v-card flat tile color="#00000000">
             <v-img
@@ -25,7 +31,9 @@
               v-for="(route, i) in routes"
               :key="i"
               @click="$router.push(`/${route.link}`)"
-            >{{route.text}}</div>
+            >
+              {{ route.text }}
+            </div>
           </v-card>
           <v-card
             v-if="screenWidth > 960"
@@ -34,7 +42,9 @@
             color="#00000000"
             style="color:#a3a3a3"
           >
-            <div class="mr-8 subheading" @click="$router.push('/account')">회원정보</div>
+            <div class="mr-8 subheading" @click="$router.push('/account')">
+              회원정보
+            </div>
             <div class="mr-6 subheading" @click="signInDialog = true">
               <a>로그인</a>
             </div>
@@ -53,23 +63,35 @@
             transition="slide-y-transition"
             tile
           >
-            <template v-slot:activator="{on: menu}">
+            <template v-slot:activator="{ on: menu }">
               <v-icon v-on="menu" x-large>menu</v-icon>
             </template>
-            <v-card style="color:#a3a3a3" minz-width="100%" color="#fafafa" tile flat>
+            <v-card
+              style="color:#a3a3a3"
+              minz-width="100%"
+              color="#fafafa"
+              tile
+              flat
+            >
               <v-list>
                 <v-list-item
                   v-for="(route, i) in routes"
                   :key="i"
                   @click="$router.push(`/${route.link}`)"
-                >{{route.text}}</v-list-item>
+                  >{{ route.text }}</v-list-item
+                >
               </v-list>
             </v-card>
           </v-menu>
         </v-container>
       </v-card>
 
-      <v-img :src="currentImage" width="showNav" class="text-center" v-if="showNav">
+      <v-img
+        :src="currentImage"
+        width="showNav"
+        class="text-center"
+        v-if="showNav"
+      >
         <router-view></router-view>
 
         <v-card max-width="1000" class="mx-auto mt-10" color="#00000000" flat>
@@ -79,7 +101,9 @@
                 <v-container>
                   <v-row>
                     <div class="mb-4">고객센터 1688-5705</div>
-                    <div class="caption text--secondary">(평일 오전 9시~18시)</div>
+                    <div class="caption text--secondary">
+                      (평일 오전 9시~18시)
+                    </div>
                   </v-row>
                   <v-row style="margin-top:150px">
                     <v-card color="#00000000" flat>
@@ -100,22 +124,34 @@
                     <div class="mb-4">계좌번호 안내</div>
                   </v-row>
                   <v-row>
-                    <div style="color:#cb5413" class="caption">예금주 (주)유에듀케이션</div>
+                    <div style="color:#cb5413" class="caption">
+                      예금주 (주)유에듀케이션
+                    </div>
                   </v-row>
                   <v-row class="mt-5">
-                    <div class="caption text--secondary">국민은행 466490-60-194511</div>
+                    <div class="caption text--secondary">
+                      국민은행 466490-60-194511
+                    </div>
                   </v-row>
                   <v-row>
-                    <div class="caption text--secondary">우리은행 605-747180-18892</div>
+                    <div class="caption text--secondary">
+                      우리은행 605-747180-18892
+                    </div>
                   </v-row>
                   <v-row>
-                    <div class="caption text--secondary">신한은행 562-01572-559672</div>
+                    <div class="caption text--secondary">
+                      신한은행 562-01572-559672
+                    </div>
                   </v-row>
                   <v-row>
-                    <div class="caption text--secondary">씨티은행 750-10229-91401</div>
+                    <div class="caption text--secondary">
+                      씨티은행 750-10229-91401
+                    </div>
                   </v-row>
                   <v-row>
-                    <div class="caption text--secondary">농협 790007-52-578681</div>
+                    <div class="caption text--secondary">
+                      농협 790007-52-578681
+                    </div>
                   </v-row>
                   <v-row class="caption mt-10 text--secondary">
                     <div class="mr-3">(주)유에듀케이션</div>
@@ -132,9 +168,21 @@
                   </v-row>
                   <v-row>
                     <v-card class="d-flex flex-row mt-5" color="#00000000" flat>
-                      <v-img src="../src/assets/fkor.png" width="50" class="mr-5"></v-img>
-                      <v-img src="../src/assets/fa.png" width="50" class="mr-5"></v-img>
-                      <v-img src="../src/assets/inst.png" width="50" class="mr-5"></v-img>
+                      <v-img
+                        src="../src/assets/fkor.png"
+                        width="50"
+                        class="mr-5"
+                      ></v-img>
+                      <v-img
+                        src="../src/assets/fa.png"
+                        width="50"
+                        class="mr-5"
+                      ></v-img>
+                      <v-img
+                        src="../src/assets/inst.png"
+                        width="50"
+                        class="mr-5"
+                      ></v-img>
                       <v-img src="../src/assets/tw.png" width="50"></v-img>
                     </v-card>
                   </v-row>
@@ -147,7 +195,11 @@
 
       <router-view v-else></router-view>
 
-      <v-dialog v-model="signInDialog" max-width="1000" style="overflow-x:hidden">
+      <v-dialog
+        v-model="signInDialog"
+        max-width="1000"
+        style="overflow-x:hidden"
+      >
         <v-card flat class="rounded-xl" max-width="1000">
           <v-card flat color="#8aace9">
             <v-container>
@@ -170,8 +222,16 @@
                   <v-col cols="5" class="mx-auto">
                     <v-row>
                       <v-col>
-                        <v-text-field outlined class="rounded-xl" label="아이디(이메일)"></v-text-field>
-                        <v-text-field outlined class="rounded-xl" label="비밀번호"></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="아이디(이메일)"
+                        ></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="비밀번호"
+                        ></v-text-field>
                         <v-checkbox label="로그인 상태 유지"></v-checkbox>
                         <v-btn
                           style="background-image: linear-gradient(to right, #add5f5, #9ebbef)"
@@ -179,7 +239,8 @@
                           depressed
                           class="white--text h5 nanum rounded-xl"
                           large
-                        >로그인</v-btn>
+                          >로그인</v-btn
+                        >
                       </v-col>
                     </v-row>
                   </v-col>
@@ -187,30 +248,58 @@
                   <v-col cols="5" class="mx-auto">
                     <v-row>
                       <v-col cols="12" md="6" class="py-0">
-                        <v-text-field outlined class="rounded-xl" label="이름 "></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="이름 "
+                        ></v-text-field>
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
-                        <v-text-field outlined class="rounded-xl" label="연락처"></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="연락처"
+                        ></v-text-field>
                       </v-col>
                       <v-col cols="12" class="py-0">
-                        <v-text-field outlined class="rounded-xl" label="이메일"></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="이메일"
+                        ></v-text-field>
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
-                        <v-text-field outlined class="rounded-xl" label="비밀번호 "></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="비밀번호 "
+                        ></v-text-field>
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
-                        <v-text-field outlined class="rounded-xl" label="비밀번호 확인"></v-text-field>
+                        <v-text-field
+                          outlined
+                          class="rounded-xl"
+                          label="비밀번호 확인"
+                        ></v-text-field>
                       </v-col>
-                      <v-checkbox label="아래 약관에 모두 동의합니다.s"></v-checkbox>
-                      <v-checkbox label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"></v-checkbox>
-                      <v-checkbox class="mt-0" label="할인/이벤트 안내 동의(선택)"></v-checkbox>
+                      <v-checkbox
+                        label="아래 약관에 모두 동의합니다.s"
+                      ></v-checkbox>
+                      <v-checkbox
+                        label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"
+                      ></v-checkbox>
+                      <v-checkbox
+                        class="mt-0"
+                        label="할인/이벤트 안내 동의(선택)"
+                      ></v-checkbox>
                       <v-btn
                         style="background-image: linear-gradient(to right, #fc686f, #ff934d)"
                         block
                         depressed
                         class="white--text h5 nanum rounded-xl"
                         large
-                      >신규 회원가입</v-btn>
+                        >신규 회원가입</v-btn
+                      >
                     </v-row>
                   </v-col>
                 </v-row>
@@ -269,7 +358,7 @@ export default {
         curriculum: require("../src/assets/curriculum.jpg"),
         leveltest: require("../src/assets/leveltest.jpg"),
         enrollment: require("../src/assets/enrollment.jpg"),
-        mypage: require("../src/assets/mypage.jpg"),
+        mypage: require("../src/assets/bg_mega_review.png"),
         board: require("../src/assets/bg_mega_review.png"),
         event: require("../src/assets/bg_mega_event.png")
       },
