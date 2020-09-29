@@ -1,13 +1,20 @@
 <template>
   <v-app style="background-color:#00000000">
     <v-container>
-      <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">친구처럼 편한 영어</div>
+      <div
+        class="h3 font-weight-bold white--text mb-5"
+        style="margin-top:200px"
+      >
+        친구처럼 편한 영어
+      </div>
       <div class="white--text h6 mb-10">
         외국인과 말하기 두려워도, 영어가 서툴러도,
         <br />메가토킹 선생님이 친구처럼 도와드려요.
       </div>
       <v-row justify="center">
-        <v-btn class="rounded-xl pa-8 title" color="primary">레벨테스트 하러가기</v-btn>
+        <v-btn class="rounded-xl pa-8 title" color="primary"
+          >레벨테스트 하러가기</v-btn
+        >
       </v-row>
     </v-container>
     <v-container style="max-width:1000px;margin-top:90px">
@@ -60,7 +67,12 @@
           flat
         >
           <v-card color="#e9c5b1" flat class="mb-5">
-            <v-img class="ml-auto" src="../assets/girl2-mobile.png" width="80%" position="90%"></v-img>
+            <v-img
+              class="ml-auto"
+              src="../assets/girl2-mobile.png"
+              width="80%"
+              position="90%"
+            ></v-img>
           </v-card>
 
           <div class="ml-10">
@@ -85,7 +97,12 @@
           style="position:relative;margin-bottom:100px"
           v-if="!isMobile"
         >
-          <v-card class="pt-10 pl-10 text-left pb-5 rounded-xl" width="90%" color="#f1f1f1">
+          <v-card
+            class="pt-10 pl-10 text-left pb-5 rounded-xl"
+            width="90%"
+            color="#f1f1f1"
+            flat
+          >
             <div class="h4 font-weight-bold mb-7">나를 아는 영어</div>
             <div style="color:#b7b7b7;max-width:250px">
               <div class="mb-5">
@@ -104,7 +121,7 @@
             color="#e9c5b1"
             style="position:absolute;right:25px;bottom:-70px"
             class="rounded-xl"
-            elevation="5"
+            flat
           >
             <v-img
               src="../assets/girl2.png"
@@ -127,12 +144,19 @@
             <v-img width="100%" position="50%" src="../assets/girl.png"></v-img>
           </v-card>
           <div style="color:#b7b7b7;max-width:250px" class="text-left ml-10">
-            <div class="h4 font-weight-bold mb-7" style="color:#000">맞춤형 시간표</div>
+            <div class="h4 font-weight-bold mb-7" style="color:#000">
+              맞춤형 시간표
+            </div>
             <div class="mb-5">
               직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
               레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
             </div>
-            <div class="title font-weight-bold font-italic" style="color:#b34013">레벨테스트 하러가기 ></div>
+            <div
+              class="title font-weight-bold font-italic"
+              style="color:#b34013"
+            >
+              레벨테스트 하러가기 >
+            </div>
           </div>
         </v-card>
 
@@ -143,15 +167,36 @@
           style="position:relative;margin-bottom:100px"
           v-if="!isMobile"
         >
-          <v-card class="pt-10 pr-10 ml-auto rounded-xl d-flex" width="100%" color="#f1f1f1">
-            <v-img class="rounded-xl" width="350" position="50%" src="../assets/girl.png"></v-img>
-            <div style="color:#b7b7b7;max-width:250px" class="ml-auto text-left">
-              <div class="h4 font-weight-bold mb-7" style="color:#000">맞춤형 시간표</div>
+          <v-card
+            flat
+            class="pt-10 pr-10 ml-auto  d-flex"
+            width="100%"
+            color="#f1f1f1"
+            style="border-radius:24px 24px 24px 0"
+          >
+            <v-img
+              style="border-radius:24px 24px 24px 0"
+              width="350"
+              position="50%"
+              src="../assets/girl.png"
+            ></v-img>
+            <div
+              style="color:#b7b7b7;max-width:250px"
+              class="ml-auto text-left"
+            >
+              <div class="h4 font-weight-bold mb-7" style="color:#000">
+                맞춤형 시간표
+              </div>
               <div class="mb-5">
                 직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
                 레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
               </div>
-              <div class="title font-weight-bold font-italic" style="color:#b34013">레벨테스트 하러가기 ></div>
+              <div
+                class="title font-weight-bold font-italic"
+                style="color:#b34013"
+              >
+                레벨테스트 하러가기 >
+              </div>
             </div>
           </v-card>
         </v-card>
@@ -175,18 +220,25 @@
                     </div>
                     <div style="color:#b7b7b7;max-width:250px">
                       <div class="mb-5">
-                        프리토킹, 비지니스, 면접영어, 여행, 영자신문 등 35,000개의
-                        콘텐츠로 즐겨요.
+                        프리토킹, 비지니스, 면접영어, 여행, 영자신문 등
+                        35,000개의 콘텐츠로 즐겨요.
                       </div>
                       <div
                         class="title font-weight-bold font-italic"
                         style="color:#b34013"
-                      >커리큘럼 자세히보기 ></div>
+                      >
+                        커리큘럼 자세히보기 >
+                      </div>
                     </div>
                   </div>
                 </v-col>
 
-                <v-col cols="12" sm="6" style="overflow-x:hidden" class="px-0 marquee-container">
+                <v-col
+                  cols="12"
+                  sm="6"
+                  style="overflow-x:hidden"
+                  class="px-0 marquee-container"
+                >
                   <div class="d-flex flex-column marquee-moving">
                     <div class="d-flex flex-row">
                       <v-card
@@ -239,7 +291,9 @@
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
-                      >Emma Watson</div>
+                      >
+                        Emma Watson
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -248,7 +302,11 @@
                 <v-img src="../assets/ted_mainpage.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">TED</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      >
+                        TED
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -257,12 +315,18 @@
                 <v-img src="../assets/movie.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Movie</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      >
+                        Movie
+                      </div>
                       <div
                         class="white--text mb-2 text-left h6 nanum ml-3"
-                        v-for="(item,i) in subtext.movie"
+                        v-for="(item, i) in subtext.movie"
                         :key="i"
-                      >{{item}}</div>
+                      >
+                        {{ item }}
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -273,12 +337,16 @@
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket mb-3"
-                      >Vogue</div>
+                      >
+                        Vogue
+                      </div>
                       <div
                         class="white--text mb-2 text-left h6 nanum ml-3"
-                        v-for="(item,i) in subtext.vogue"
+                        v-for="(item, i) in subtext.vogue"
                         :key="i"
-                      >{{item}}</div>
+                      >
+                        {{ item }}
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -289,7 +357,11 @@
                 <v-img src="../assets/maroon5_mainpage.png">
                   <v-card height="100%" color="#000000AD">
                     <v-container>
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">Maroon 5</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      >
+                        Maroon 5
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -298,7 +370,11 @@
                 <v-img src="../assets/camera.jpg">
                   <v-card height="100%" color="#000000AD">
                     <v-container class="white--text text-left h6 nanum">
-                      <div class="font-weight-black h2 text-left mx-3 white--text gmarket">셀럽인터뷰</div>
+                      <div
+                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      >
+                        셀럽인터뷰
+                      </div>
                       <div class="mb-2">베네딕트 컴버배치</div>
                       <div class="mb-2">스칼렛 요한슨</div>
                       <div class="mb-2">클로이 모레츠</div>
@@ -313,12 +389,16 @@
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket mb-2"
-                      >Singer</div>
+                      >
+                        Singer
+                      </div>
                       <div
                         class="white--text mb-2 text-left h6 nanum ml-3"
-                        v-for="(item,i) in subtext.singer"
+                        v-for="(item, i) in subtext.singer"
                         :key="i"
-                      >{{item}}</div>
+                      >
+                        {{ item }}
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -333,6 +413,7 @@
           style="margin-bottom:150px"
         >
           <v-img
+            class="rounded-xl"
             width="100%"
             height="250"
             eager
@@ -350,7 +431,9 @@
               플립러닝 예습자료,
               <br />카톡으로 보내드려요.
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1">수강신청 바로가기</v-btn>
+            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
+              >수강신청 바로가기</v-btn
+            >
           </v-card>
         </v-card>
 
@@ -360,14 +443,22 @@
             <v-col cols="12" md="5">
               <div class="h4 mb-7">항상 제자리인 내 영어,</div>
               <div class="mb-7" v-for="(item, i) in koreanTextGrey" :key="i">
-                <div class="h6 font-weight-black mb-1" style="color:#5f5f5f">{{item.title}}</div>
-                <div class="subtitle-text-1" style="color:#979797">{{item.text}}</div>
+                <div class="h6 font-weight-black mb-1" style="color:#5f5f5f">
+                  {{ item.title }}
+                </div>
+                <div class="subtitle-text-1" style="color:#979797">
+                  {{ item.text }}
+                </div>
               </div>
             </v-col>
             <v-col cols="12" md="5">
-              <div class="h4 mb-7" style="color: #4065db">이제는 말할 수 있어요.</div>
+              <div class="h4 mb-7" style="color: #4065db">
+                이제는 말할 수 있어요.
+              </div>
               <div class="mb-7" v-for="(item, i) in koreanTextBlue" :key="i">
-                <div class="h6 font-weight-black mb-1" style="color:#4065db">{{item.title}}</div>
+                <div class="h6 font-weight-black mb-1" style="color:#4065db">
+                  {{ item.title }}
+                </div>
                 <div class="subtitle-text-1" style="color:#979797">
                   <span v-html="item.text"></span>
                 </div>
@@ -382,6 +473,7 @@
           style="margin-bottom:150px"
         >
           <v-img
+            class="rounded-xl"
             width="100%"
             height="250"
             src="https://marketplace.canva.com/1rlcg/MADyRR1rlcg/1/s2/canva-man-and-woman-sitting-facing-book-MADyRR1rlcg.jpg"
@@ -390,16 +482,22 @@
             style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
             class="pa-2 text-center rounded-xl"
           >
-            <div class="font-weight-black subheading mb-3 mt-1">생생한 수강후기</div>
-            <div class="caption-text mb-5" style="color:#b7b7b7">
-              회원님이 작성한 후기를 보고 나에게 적합한 수업 유형과
-              난이도를 찾을 수 있어요.
+            <div class="font-weight-black subheading mb-3 mt-1">
+              생생한 수강후기
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1">게시판 바로가기</v-btn>
+            <div class="caption-text mb-5" style="color:#b7b7b7">
+              회원님이 작성한 후기를 보고 나에게 적합한 수업 유형과 난이도를
+              찾을 수 있어요.
+            </div>
+            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
+              >게시판 바로가기</v-btn
+            >
           </v-card>
         </v-card>
 
-        <div class="h5 text-left mx-10 px-10">생생한 수강후기, 메가토킹이어야하는 이유.</div>
+        <div class="h5 text-left mx-10 px-10">
+          생생한 수강후기, 메가토킹이어야하는 이유.
+        </div>
 
         <v-sheet class="mt-5 mb-10">
           <v-slide-group :show-arrows="false">
@@ -418,11 +516,18 @@
                   max-height="500"
                   style="overflow-x:hidden"
                 >
-                  <v-btn class="my-10 white--text rounded-lg" color="#769de4">{{review.title}}</v-btn>
-                  <div class="mb-5" style="color: #979797; line-break: strict; word-break:keep-all">
+                  <v-btn class="my-10 white--text rounded-lg" color="#769de4">{{
+                    review.title
+                  }}</v-btn>
+                  <div
+                    class="mb-5"
+                    style="color: #979797; line-break: strict; word-break:keep-all"
+                  >
                     <span v-html="review.content"></span>
                   </div>
-                  <div style="color: #769de4" class="font-weight-bold">from, {{review.from}}</div>
+                  <div style="color: #769de4" class="font-weight-bold">
+                    from, {{ review.from }}
+                  </div>
                 </v-card>
               </v-alert>
             </v-slide-item>
@@ -435,6 +540,7 @@
           style="margin-bottom:150px"
         >
           <v-img
+            class="rounded-xl"
             width="100%"
             height="250"
             src="https://marketplace.canva.com/MADGyejemqw/4/screen_2x/canva-imac-turned-on-MADGyejemqw.jpg"
@@ -445,10 +551,12 @@
           >
             <div class="font-weight-bold title mb-3">영작 UPGRADE</div>
             <div class="caption-text mb-5" style="color:#b7b7b7">
-              수업 끝나고 바로 바로 더 나은 표현, 녹음파일 제공 쉽게
-              영어를 배울 수있습니다. !
+              수업 끝나고 바로 바로 더 나은 표현, 녹음파일 제공 쉽게 영어를 배울
+              수있습니다. !
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1">강의실 바로가기</v-btn>
+            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
+              >강의실 바로가기</v-btn
+            >
           </v-card>
         </v-card>
 
