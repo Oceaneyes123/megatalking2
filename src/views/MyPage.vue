@@ -153,24 +153,74 @@
               >
             </v-row>
 
-            <v-container fluid class="px-0" v-if="isBook">
+            <v-container fluid class="px-0">
+              <!-- Book -->
               <v-img
                 @click="$router.push('/material')"
                 class="rounded-xl"
                 src="../assets/curriculum/sp_1.jpg"
                 width="100%"
                 height="auto"
+                v-if="isBook"
               >
                 <v-card height="100%" color="#000000AD">
                   <v-container>
                     <div
-                      class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                      class="font-weight-black text-left mx-3 white--text gmarket"
+                      :class="isMobile ? 'h4' : 'h2'"
                     >
-                      Maroon 5
+                      Speaking Pattern 100 Course
+                    </div>
+                    <div
+                      :class="isMobile ? '' : 'h4'"
+                      class="font-weight-black text-right white--text gmarket"
+                      style="position:absolute;bottom:20px;right:20px"
+                    >
+                      Next >
                     </div>
                   </v-container>
                 </v-card>
               </v-img>
+
+              <!-- Video -->
+              <v-card
+                class="rounded-xl"
+                style="border: 1px solid #5e75cf"
+                v-if="isVideo"
+                @click="$router.push('/material')"
+                flat
+              >
+                <v-img src="../assets/tab/video4.jpg"></v-img>
+                <div :class="isMobile ? 'h5 nanum' : 'h3'" class="text-center">
+                  유튜브 미디어과정:: 셀럽과의 대화
+                </div>
+                <v-divider></v-divider>
+                <div
+                  :class="isMobile ? 'h5 nanum' : 'h3'"
+                  class="text-center"
+                  style="color:#5e75cf;line-break:strict;word-break:keep-all"
+                >
+                  오늘의 강의
+                </div>
+              </v-card>
+
+              <v-card class="rounded-xl pa-5" color="#fafafa" v-if="isPDF" flat>
+                <v-card color="#333333" class="pa-10 rounded-xl" flat>
+                  <div class="text-center white--text">Image Here</div>
+                </v-card>
+                <div class="d-flex mx-auto justify-center">
+                  <v-btn
+                    class=" white--text rounded-pill mt-5 pa-7"
+                    style="background:linear-gradient(to right, #ff9351, #f96a70)"
+                  >
+                    <span class="h5 nanum">PDF 교재 다운로드</span>
+                  </v-btn>
+                </div>
+
+                <div class="mt-5 grey--text caption">
+                  * 다운로드 버튼을 통해 교재를 확인해주세요.
+                </div>
+              </v-card>
 
               <!-- <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
                 <v-carousel-item class="px-md-16 px-5">
@@ -459,9 +509,9 @@ export default {
       screenWidth: "",
       isMobile: false,
 
-      isBook: true,
+      isBook: false,
       isVideo: false,
-      isPDF: false,
+      isPDF: true,
 
       selectedSuggestion: [],
 

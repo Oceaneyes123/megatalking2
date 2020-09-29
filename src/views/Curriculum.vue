@@ -2,12 +2,18 @@
   <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
       <v-card flat tile color="#8bb6f700" class="text-center pa-3">
-        <div class="h3 font-weight-bold white--text mb-5" style="margin-top:200px">커리큘럼</div>
         <div
-          class="h4 nanum font-weight-bold"
-          style="color:#bfd384"
-        >“Anytime, Anywhere, Home Learn English.”</div>
-        <div class="mt-5 h5 nanum white--text">메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.</div>
+          class="h3 font-weight-bold white--text mb-5"
+          style="margin-top:200px"
+        >
+          커리큘럼
+        </div>
+        <div class="h4 nanum font-weight-bold" style="color:#bfd384">
+          “Anytime, Anywhere, Home Learn English.”
+        </div>
+        <div class="mt-5 h5 nanum white--text">
+          메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
+        </div>
 
         <v-card
           class="rounded-xl mx-auto"
@@ -19,7 +25,12 @@
         >
           <v-container class="px-md-10 py-10">
             <v-sheet class="mx-auto px-4" color="rgba(0,0,0,0.0)">
-              <v-slide-group mandatory class="mx-auto" v-model="slide" center-active>
+              <v-slide-group
+                mandatory
+                class="mx-auto"
+                v-model="slide"
+                center-active
+              >
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
                     @click="selectCategory($event, 0)"
@@ -27,7 +38,7 @@
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -36,14 +47,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
                     @click="selectCategory($event, 1)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -52,14 +63,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 2)"
+                    @click="selectCategory($event, 2)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :outlined="active"
                     :color="active ? 'primary' : 'white'"
                   >
@@ -68,14 +79,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 3)"
+                    @click="selectCategory($event, 3)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -84,14 +95,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 4)"
+                    @click="selectCategory($event, 4)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -100,14 +111,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 5)"
+                    @click="selectCategory($event, 5)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -116,14 +127,14 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 6)"
+                    @click="selectCategory($event, 6)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
@@ -132,17 +143,18 @@
                   </v-btn>
                 </v-slide-item>
 
-                <v-slide-item class="mx-1" v-slot:default="{ active  }">
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click=" selectCategory($event, 7)"
+                    @click="selectCategory($event, 7)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
                     min-height="80"
-                    :class="{'blue--text': active}"
+                    :class="{ 'blue--text': active }"
                     :color="active ? 'primary' : 'white'"
                     :outlined="active"
-                  >입문과정</v-btn>
+                    >입문과정</v-btn
+                  >
                 </v-slide-item>
               </v-slide-group>
             </v-sheet>
@@ -181,7 +193,7 @@
             </v-row>-->
 
             <div class="mt-10 pt-10 h4 nanum text-purple font-weight-bold">
-              {{category}}
+              {{ category }}
               <!-- <span class="h6 text-purple font-weight-bold">기초발음교정 (level 1~3)</span> -->
             </div>
             <div class="d-flex justify-center mb-10">
@@ -193,8 +205,9 @@
                 max-width="500"
               >
                 입문과정에서는 영어를 아주 처음 시작하는 왕초보와, 초심을 가지고
-                발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다.
-                1~2개월 완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐 수 있습니다.
+                발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다. 1~2개월
+                완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐
+                수 있습니다.
               </v-card>
             </div>
 
@@ -209,8 +222,17 @@
               hide-delimiters
               @change="changeCarousel(allBooks.books_1, $event)"
             >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_1" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+              <v-carousel-item
+                height="750"
+                v-for="(book, i) in allBooks.books_1"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
                   <v-row>
                     <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
@@ -222,7 +244,12 @@
                         max-width="300"
                       >
                         <v-card class="mx-auto">
-                          <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                          <v-img
+                            :src="book.image"
+                            max-width="300"
+                            height="200"
+                            class="mx-auto"
+                          ></v-img>
                         </v-card>
 
                         <v-card
@@ -230,7 +257,8 @@
                           color="#fafafa"
                           width="80%"
                           class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
+                          >{{ book.title }}</v-card
+                        >
                         <v-card
                           flat
                           color="#fafafa"
@@ -238,7 +266,8 @@
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
-                        >{{book.details}}</v-card>
+                          >{{ book.details }}</v-card
+                        >
                       </v-card>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -273,11 +302,14 @@
                               <div
                                 class="h5 nanum text-black text-left mr-5 font-weight-bold"
                                 style="line-break:strict;word-break:keep-all;color:#325fc4"
-                              >{{title}}</div>
+                              >
+                                {{ title }}
+                              </div>
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
-                              >수강신청</v-btn>
+                                >수강신청</v-btn
+                              >
                             </div>
                           </v-col>
                         </v-row>
@@ -299,17 +331,23 @@
                   flat
                   color="#fafafa"
                   class="rounded-xl mx-2"
-                  :height="isMobile ? '': '100%' "
+                  :height="isMobile ? '' : '100%'"
                   style="border: 1px solid #325fc4"
                 >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                  <v-img
+                    :src="book.image"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto"
+                  ></v-img>
 
                   <v-card
                     flat
                     color="#fafafa"
                     width="80%"
                     class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
+                    >{{ book.title }}</v-card
+                  >
                   <v-card
                     flat
                     color="#fafafa"
@@ -317,7 +355,8 @@
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
-                  >{{book.details}}</v-card>
+                    >{{ book.details }}</v-card
+                  >
                 </v-card>
               </v-slide-item>
             </v-slide-group>
@@ -331,8 +370,17 @@
               hide-delimiters
               @change="changeCarousel(allBooks.books_3, $event)"
             >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_3" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+              <v-carousel-item
+                height="750"
+                v-for="(book, i) in allBooks.books_3"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
                   <v-row>
                     <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
@@ -343,13 +391,19 @@
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-img
+                          :src="book.image"
+                          max-width="300"
+                          height="200"
+                          class="mx-auto"
+                        ></v-img>
                         <v-card
                           flat
                           color="#fafafa"
                           width="80%"
                           class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
+                          >{{ book.title }}</v-card
+                        >
                         <v-card
                           flat
                           color="#fafafa"
@@ -357,7 +411,8 @@
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
-                        >{{book.details}}</v-card>
+                          >{{ book.details }}</v-card
+                        >
                       </v-card>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -380,11 +435,14 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
+                                >수강신청</v-btn
+                              >
                               <div
                                 class="h5 nanum text-black text-left"
                                 style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
+                              >
+                                {{ title }}
+                              </div>
                             </div>
                           </v-col>
                         </v-row>
@@ -404,8 +462,17 @@
               hide-delimiters
               @change="changeCarousel(allBooks.books_4, $event)"
             >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_4" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+              <v-carousel-item
+                height="750"
+                v-for="(book, i) in allBooks.books_4"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
                   <v-row>
                     <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
@@ -416,13 +483,19 @@
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-img
+                          :src="book.image"
+                          max-width="300"
+                          height="200"
+                          class="mx-auto"
+                        ></v-img>
                         <v-card
                           flat
                           color="#fafafa"
                           width="80%"
                           class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
+                          >{{ book.title }}</v-card
+                        >
                         <v-card
                           flat
                           color="#fafafa"
@@ -430,7 +503,8 @@
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
-                        >{{book.details}}</v-card>
+                          >{{ book.details }}</v-card
+                        >
                       </v-card>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -453,11 +527,14 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
+                                >수강신청</v-btn
+                              >
                               <div
                                 class="h5 nanum text-black text-left"
                                 style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
+                              >
+                                {{ title }}
+                              </div>
                             </div>
                           </v-col>
                         </v-row>
@@ -477,8 +554,17 @@
               hide-delimiters
               @change="changeCarousel(allBooks.books_5, $event)"
             >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_5" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+              <v-carousel-item
+                height="750"
+                v-for="(book, i) in allBooks.books_5"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
                   <v-row>
                     <v-col class="py-0" cols="12" md="5">
                       <v-card
@@ -489,13 +575,19 @@
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-img
+                          :src="book.image"
+                          max-width="300"
+                          height="200"
+                          class="mx-auto"
+                        ></v-img>
                         <v-card
                           flat
                           color="#fafafa"
                           width="80%"
                           class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
+                          >{{ book.title }}</v-card
+                        >
                         <v-card
                           flat
                           color="#fafafa"
@@ -503,7 +595,8 @@
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
-                        >{{book.details}}</v-card>
+                          >{{ book.details }}</v-card
+                        >
                       </v-card>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -526,11 +619,14 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
+                                >수강신청</v-btn
+                              >
                               <div
                                 class="h5 nanum text-black text-left"
                                 style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
+                              >
+                                {{ title }}
+                              </div>
                             </div>
                           </v-col>
                         </v-row>
@@ -550,8 +646,17 @@
               hide-delimiters
               @change="changeCarousel(allBooks.books_6, $event)"
             >
-              <v-carousel-item height="750" v-for="(book, i) in allBooks.books_6" :key="i">
-                <v-card class="mx-auto rounded-xl" flat max-width="700" color="#dee3ee">
+              <v-carousel-item
+                height="750"
+                v-for="(book, i) in allBooks.books_6"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
                   <v-row>
                     <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
@@ -562,13 +667,19 @@
                         style="border: 1px solid #325fc4"
                         max-width="300"
                       >
-                        <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                        <v-img
+                          :src="book.image"
+                          max-width="300"
+                          height="200"
+                          class="mx-auto"
+                        ></v-img>
                         <v-card
                           flat
                           color="#fafafa"
                           width="80%"
                           class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                        >{{book.title}}</v-card>
+                          >{{ book.title }}</v-card
+                        >
                         <v-card
                           flat
                           color="#fafafa"
@@ -576,7 +687,8 @@
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
                           style="color:#325fc4"
-                        >{{book.details}}</v-card>
+                          >{{ book.details }}</v-card
+                        >
                       </v-card>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -599,11 +711,14 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
-                              >수강신청</v-btn>
+                                >수강신청</v-btn
+                              >
                               <div
                                 class="h5 nanum text-black text-left"
                                 style="line-break:strict;word-break:keep-all"
-                              >{{title}}</div>
+                              >
+                                {{ title }}
+                              </div>
                             </div>
                           </v-col>
                         </v-row>
@@ -628,14 +743,20 @@
                   max-height="500"
                   style="border: 1px solid #325fc4"
                 >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                  <v-img
+                    :src="book.image"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto"
+                  ></v-img>
 
                   <v-card
                     flat
                     color="#fafafa"
                     width="80%"
                     class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
+                    >{{ book.title }}</v-card
+                  >
                   <v-card
                     flat
                     color="#fafafa"
@@ -643,7 +764,8 @@
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
-                  >{{book.details}}</v-card>
+                    >{{ book.details }}</v-card
+                  >
                 </v-card>
               </v-slide-item>
             </v-slide-group>
@@ -662,14 +784,20 @@
                   max-height="500"
                   style="border: 1px solid #325fc4"
                 >
-                  <v-img :src="book.image" max-width="300" height="200" class="mx-auto"></v-img>
+                  <v-img
+                    :src="book.image"
+                    max-width="300"
+                    height="200"
+                    class="mx-auto"
+                  ></v-img>
 
                   <v-card
                     flat
                     color="#fafafa"
                     width="80%"
                     class="subtitle-text-1 mx-auto text-center font-weight-black mt-3"
-                  >{{book.title}}</v-card>
+                    >{{ book.title }}</v-card
+                  >
                   <v-card
                     flat
                     color="#fafafa"
@@ -677,57 +805,90 @@
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
                     style="color:#325fc4"
-                  >{{book.details}}</v-card>
+                    >{{ book.details }}</v-card
+                  >
                 </v-card>
               </v-slide-item>
             </v-slide-group>
 
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
-            >“짜임새 있는, 기초부터 탄탄한영어를 만듭니다.”</div>
-            <div
-              class="text--secondary mt-3 subheading font-weight-bold"
-            >메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.</div>
+            >
+              “짜임새 있는, 기초부터 탄탄한영어를 만듭니다.”
+            </div>
+            <div class="text--secondary mt-3 subheading font-weight-bold">
+              메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
+            </div>
             <v-row class="mt-10" justify="center">
               <v-col cols="12" md="3" class="px-3">
-                <v-img src="../assets/c-icon1.png" width="200" class="mx-auto"></v-img>
+                <v-img
+                  src="../assets/c-icon1.png"
+                  width="200"
+                  class="mx-auto"
+                ></v-img>
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
                   class="h6 text--secondary mt-3"
                   style="letter-spacing:-1px !important"
-                >레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수 있습니다.</div>
+                >
+                  레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수
+                  있습니다.
+                </div>
               </v-col>
               <v-col cols="12" md="3" class="px-3">
-                <v-img src="../assets/c-icon2.png" width="200" class="mx-auto"></v-img>
+                <v-img
+                  src="../assets/c-icon2.png"
+                  width="200"
+                  class="mx-auto"
+                ></v-img>
                 <div class="h5 font-weight-black">비즈니스 맞춤형</div>
                 <div
                   class="h6 text--secondary mt-3"
                   style="letter-spacing:-1px !important"
-                >비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.</div>
+                >
+                  비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.
+                </div>
               </v-col>
               <v-col cols="12" md="3" class="px-3">
-                <v-img src="../assets/c-icon3.png" width="200" class="mx-auto"></v-img>
+                <v-img
+                  src="../assets/c-icon3.png"
+                  width="200"
+                  class="mx-auto"
+                ></v-img>
                 <div class="h5 font-weight-black">폰에서 보는 교재</div>
                 <div
                   class="h6 text--secondary mt-3"
                   style="letter-spacing:-1px !important"
-                >택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.</div>
+                >
+                  택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
+                </div>
               </v-col>
             </v-row>
 
-            <v-row v-if="isMobile">
+            <!-- <v-row v-if="isMobile">
               <v-tabs grow>
-                <v-tab v-for="(tab, i) in booksInLevels" :key="i">Level {{tab.level}}</v-tab>
+                <v-tab v-for="(tab, i) in booksInLevels" :key="i"
+                  >Level {{ tab.level }}</v-tab
+                >
                 <v-tab-item v-for="(item, i) in booksInLevels" :key="i">
                   <v-carousel hide>
-                    <v-carousel-item v-for="(book, j) in booksInLevels[i].books" :key="j">
-                      <v-card>{{book}}</v-card>
+                    <v-carousel-item
+                      v-for="(book, j) in booksInLevels[i].books"
+                      :key="j"
+                    >
+                      <v-card>{{ book }}</v-card>
                     </v-carousel-item>
                   </v-carousel>
                 </v-tab-item>
               </v-tabs>
-            </v-row>
+            </v-row> -->
 
+            <v-row>
+              <v-card flat>
+                <v-img src="../assets/level-diagram.png" width="100%"></v-img>
+              </v-card>
+            </v-row>
+            <!--
             <v-row justify="center" class="my-10" v-if="!isMobile">
               <v-card flat class="rounded-xl" style="width:1000px !important">
                 <v-simple-table>
@@ -773,7 +934,7 @@
                         <td>중급회화</td>
                         <td colspan="6"></td>
                       </tr>
-                      <!-- <tr>
+                      -------------------- <tr>
                         <td>
                           정규
                           <br />회화과정
@@ -784,7 +945,7 @@
                         <td></td>
                         <td>정규회화</td>
                         <td colspan="5"></td>
-                      </tr>-->
+                      </tr> --------------------
                       <tr>
                         <td>
                           뉴욕라이브
@@ -961,7 +1122,7 @@
                   </template>
                 </v-simple-table>
               </v-card>
-            </v-row>
+            </v-row> -->
           </v-container>
         </v-card>
       </v-card>
