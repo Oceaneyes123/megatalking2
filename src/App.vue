@@ -402,9 +402,15 @@ export default {
 
   methods: {
     loadBg() {
-      this.currentRoute = this.$route.path.slice(1, this.$route.path.length);
-      console.log(this.currentRoute);
-      this.currentImage = this.images[this.currentRoute];
+      if (this.$route.path == "/") {
+        this.currentImage = this.images.main;
+      } else if (this.$route.path == "/level-test") {
+        this.currentImage = this.images.leveltest;
+      } else {
+        this.currentRoute = this.$route.path.slice(1, this.$route.path.length);
+        console.log(this.currentRoute);
+        this.currentImage = this.images[this.currentRoute];
+      }
     },
 
     onWindowResize() {
