@@ -23,17 +23,20 @@
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat color="#00000000">
               <div class="mb-5 font-weight-bold">플립러닝 Push</div>
-              <v-icon class="mb-3" size="80">contact_mail</v-icon>
-              <div class="caption-text">
-                <v-icon color="#00aff0">fab fa-skype</v-icon>화상영어 서비스
+              <v-img class="mx-auto" src="../assets/11.png" width="200"></v-img>
+              <div class="caption-text grey--text">
+                <v-icon color="#00aff0" class="mr-2">fab fa-skype</v-icon
+                >화상영어 서비스
               </div>
             </v-card>
           </v-col>
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat>
               <div class="mb-5 font-weight-bold">수업 녹음파일 전송</div>
-              <v-icon class="mb-3" size="80">video_label</v-icon>
-              <div class="caption-text">수업 피드백 및 복습 자료</div>
+              <v-img src="../assets/22.png" width="200" class="mx-auto"></v-img>
+              <div class="caption-text grey--text">
+                수업 피드백 및 복습 자료
+              </div>
             </v-card>
           </v-col>
           <v-col cols="12" sm="4">
