@@ -2,7 +2,7 @@
   <v-app style="background-color:#00000000">
     <v-container>
       <div
-        class="h3 font-weight-bold white--text mb-5"
+        class="h3 font-weight-bold gmarket white--text mb-5"
         style="margin-top:200px"
       >
         친구처럼 편한 영어
@@ -12,7 +12,7 @@
         <br />메가토킹 선생님이 친구처럼 도와드려요.
       </div>
       <v-row justify="center">
-        <v-btn class="rounded-xl pa-8 title" color="primary"
+        <v-btn class="rounded-xl py-8 px-16 title" color="primary"
           >레벨테스트 하러가기</v-btn
         >
       </v-row>
@@ -22,7 +22,7 @@
         <v-row class="px-10">
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat color="#00000000">
-              <div class="mb-5 font-weight-bold">플립러닝 Push</div>
+              <div class="mb-5 font-weight-bold">플립러닝 PUSH</div>
               <v-img class="mx-auto" src="../assets/11.png" width="200"></v-img>
               <div class="caption-text grey--text">
                 <v-icon color="#00aff0" class="mr-2">fab fa-skype</v-icon
@@ -87,6 +87,7 @@
               </div>
               <div>
                 자 연 스 럽 게 스며드는 영어회화,
+                <br />
                 <span style="color:#df5d24">메가토킹</span>은다릅니다.
               </div>
             </div>
@@ -114,6 +115,7 @@
               </div>
               <div>
                 자 연 스 럽 게 스며드는 영어회화,
+                <br />
                 <span style="color:#df5d24">메가토킹</span>은다릅니다.
               </div>
             </div>
@@ -317,7 +319,7 @@
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/movie.jpg">
                   <v-card height="100%" color="#000000AD">
-                    <v-container>
+                    <v-container style="positon:relative">
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
                       >
@@ -330,6 +332,14 @@
                       >
                         {{ item }}
                       </div>
+                      <v-btn
+                        class="pa-7 rounded-xl white--text"
+                        style="background-color:#E3E3E344;position:absolute;bottom:20px;left:33%"
+                      >
+                        <span class="h6">
+                          콘텐츠 바로가기
+                        </span>
+                      </v-btn>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -350,6 +360,14 @@
                       >
                         {{ item }}
                       </div>
+                      <v-btn
+                        class="pa-7 rounded-xl white--text mx-auto"
+                        style="background-color:#0066ff44;"
+                      >
+                        <span class="h6">
+                          콘텐츠 바로가기
+                        </span>
+                      </v-btn>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -382,6 +400,16 @@
                       <div class="mb-2">스칼렛 요한슨</div>
                       <div class="mb-2">클로이 모레츠</div>
                       <div>…</div>
+                      <div class="d-flex justify-center">
+                        <v-btn
+                          class="pa-7 rounded-xl white--text "
+                          style="background-color:#0066ff44;"
+                        >
+                          <span class="h6">
+                            콘텐츠 바로가기
+                          </span>
+                        </v-btn>
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
@@ -402,6 +430,14 @@
                       >
                         {{ item }}
                       </div>
+                      <v-btn
+                        class="pa-7 rounded-xl white--text mx-auto"
+                        style="background-color:#E3E3E344;"
+                      >
+                        <span class="h6">
+                          콘텐츠 바로가기
+                        </span>
+                      </v-btn>
                     </v-container>
                   </v-card>
                 </v-img>
