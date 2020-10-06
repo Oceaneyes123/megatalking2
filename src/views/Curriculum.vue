@@ -3,7 +3,7 @@
     <v-container fluid class="py-0 px-0">
       <v-card flat tile color="#8bb6f700" class="text-center pa-3">
         <div
-          class="h3 font-weight-bold white--text mb-5"
+          class="h3 font-weight-bold white--text mb-5 gmarket"
           style="margin-top:200px"
         >
           커리큘럼

@@ -1,8 +1,13 @@
 <template>
   <v-app style="background-color:#00000000">
-    <div class="h3 font-weight-bold white--text" style="margin-top:200px">수강후기</div>
+    <div
+      class="h3 font-weight-bold white--text gmarket"
+      style="margin-top:200px"
+    >
+      수강후기
+    </div>
     <div class="h6 nanum white--text">
-      <div class="my-10">재미있는 영어수다! 친구처럼 편한 영어!</div>
+      <div class="my-5">재미있는 영어수다! 친구처럼 편한 영어!</div>
       <div class="my-2">매일 매일 영어습관, 메가토킹.</div>
     </div>
     <v-container fluid class="py-0 px-0">
@@ -10,7 +15,7 @@
         class="rounded-xl mx-auto"
         elevation="7"
         width="100%"
-        style="margin-top:200px;margin-bottom:500px"
+        style="margin-top:100px;margin-bottom:500px"
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">

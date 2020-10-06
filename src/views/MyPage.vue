@@ -3,7 +3,7 @@
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#faae7d00" flat class="text-center pa-3">
         <div
-          class="h3 font-weight-bold white--text mb-5"
+          class="h3 font-weight-bold white--text mb-5 gmarket"
           style="margin-top:200px"
         >
           마이 페이지

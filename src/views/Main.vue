@@ -18,7 +18,7 @@
       </v-row>
     </v-container>
     <v-container style="max-width:1000px;margin-top:90px">
-      <v-card class="rounded-xl shadow" width="100%">
+      <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
         <v-row class="px-10">
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat color="#00000000">
@@ -141,7 +141,6 @@
           v-if="isMobile"
           flat
           color="#f1f1f1"
-          height="80vh"
           class="pt-10 rounded-xl mx-auto"
           width="95%"
         >
@@ -214,10 +213,10 @@
           max-width="700"
           style="position:relative;margin-bottom:100px"
         >
-          <v-card flat class="text-left pb-5 rounded-xl" color="#f1f1f1">
-            <v-container>
-              <v-row>
-                <v-col cols="12" sm="6" class="px-10 px-md-5">
+          <v-card flat class="text-left  rounded-xl" color="#f1f1f1">
+            <v-container class="px-0 py-0">
+              <v-row no-gutters>
+                <v-col cols="12" sm="6" class="pl-10 px-md-5 py-5">
                   <div class="mr-5">
                     <div class="h4 font-weight-bold mb-7" style="color:#70689f">
                       35,000개
@@ -241,42 +240,88 @@
                 <v-col
                   cols="12"
                   sm="6"
-                  style="overflow-x:hidden"
-                  class="px-0 marquee-container"
+                  style="overflow-y:hidden;overflow-x:hidden;height:300px;position:relative;border-radius: 0 25px 25px 0"
+                  class="px-0 "
                 >
-                  <div class="d-flex flex-column marquee-moving">
-                    <div class="d-flex flex-row">
-                      <v-card
-                        class="mx-1 my-1"
-                        v-for="(image, i) in marqueeImagesRow1"
-                        width="200"
-                        height="75"
-                        :key="i"
-                      >
-                        <v-img :src="image" width="200" height="75"></v-img>
-                      </v-card>
-                    </div>
-                    <div class="d-flex flex-row">
-                      <v-card
-                        class="mx-1 my-1"
-                        v-for="(image, i) in marqueeImagesRow2"
-                        width="200"
-                        height="75"
-                        :key="i"
-                      >
-                        <v-img :src="image" width="200" height="75"></v-img>
-                      </v-card>
-                    </div>
-                    <div class="d-flex flex-row">
-                      <v-card
-                        class="mx-1 my-1"
-                        v-for="(image, i) in marqueeImagesRow3"
-                        width="200"
-                        height="75"
-                        :key="i"
-                      >
-                        <v-img :src="image" width="200" height="75"></v-img>
-                      </v-card>
+                  <div style="position:absolute;top:-200px;left:-100px;">
+                    <div class="marquee-container" style="width:800px;">
+                      <div class="d-flex flex-column marquee-moving">
+                        <div class="d-flex flex-row">
+                          <v-card
+                            class="mx-1 my-1"
+                            v-for="(image, i) in marqueeImagesRow3"
+                            width="200"
+                            height="100"
+                            :key="i"
+                          >
+                            <v-img
+                              :src="image"
+                              width="200"
+                              height="100"
+                            ></v-img>
+                          </v-card>
+                        </div>
+                        <div class="d-flex flex-row">
+                          <v-card
+                            class="mx-1 my-1"
+                            v-for="(image, i) in marqueeImagesRow1"
+                            width="200"
+                            height="100"
+                            :key="i"
+                          >
+                            <v-img
+                              :src="image"
+                              width="200"
+                              height="100"
+                            ></v-img>
+                          </v-card>
+                        </div>
+                        <div class="d-flex flex-row">
+                          <v-card
+                            class="mx-1 my-1"
+                            v-for="(image, i) in marqueeImagesRow2"
+                            width="200"
+                            height="100"
+                            :key="i"
+                          >
+                            <v-img
+                              :src="image"
+                              width="200"
+                              height="100"
+                            ></v-img>
+                          </v-card>
+                        </div>
+                        <div class="d-flex flex-row">
+                          <v-card
+                            class="mx-1 my-1"
+                            v-for="(image, i) in marqueeImagesRow3"
+                            width="200"
+                            height="100"
+                            :key="i"
+                          >
+                            <v-img
+                              :src="image"
+                              width="200"
+                              height="100"
+                            ></v-img>
+                          </v-card>
+                        </div>
+                        <div class="d-flex flex-row">
+                          <v-card
+                            class="mx-1 my-1"
+                            v-for="(image, i) in marqueeImagesRow1"
+                            width="200"
+                            height="100"
+                            :key="i"
+                          >
+                            <v-img
+                              :src="image"
+                              width="200"
+                              height="100"
+                            ></v-img>
+                          </v-card>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </v-col>
@@ -452,6 +497,7 @@
           class="rounded-xl mx-auto"
           :width="isMobile ? '95%' : '80%'"
           style="margin-bottom:150px"
+          flat
         >
           <v-img
             class="rounded-xl"
@@ -463,8 +509,9 @@
           <v-card
             style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
             class="pa-2 text-center rounded-xl"
+            flat
           >
-            <div class="title font-weight-bold">플립러닝 Push</div>
+            <div class="title font-weight-bold">플립러닝 PUSH</div>
             <div class="caption-text mb-3" style="color:#b7b7b7">
               <v-icon color="#00aff0" small>fab fa-skype</v-icon>화상영어 서비스
             </div>
@@ -472,9 +519,13 @@
               플립러닝 예습자료,
               <br />카톡으로 보내드려요.
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
-              >수강신청 바로가기</v-btn
+            <v-btn
+              class="rounded-lg caption-text white--text"
+              color="#6089d4"
+              depressed
             >
+              수강신청 바로가기
+            </v-btn>
           </v-card>
         </v-card>
 
@@ -512,6 +563,7 @@
           class="rounded-xl mx-auto"
           :width="isMobile ? '95%' : '80%'"
           style="margin-bottom:150px"
+          flat
         >
           <v-img
             class="rounded-xl"
@@ -520,6 +572,7 @@
             src="https://marketplace.canva.com/1rlcg/MADyRR1rlcg/1/s2/canva-man-and-woman-sitting-facing-book-MADyRR1rlcg.jpg"
           ></v-img>
           <v-card
+            flat
             style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
             class="pa-2 text-center rounded-xl"
           >
@@ -530,9 +583,13 @@
               회원님이 작성한 후기를 보고 나에게 적합한 수업 유형과 난이도를
               찾을 수 있어요.
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
-              >게시판 바로가기</v-btn
+            <v-btn
+              class="rounded-lg caption-text white--text"
+              color="#6089d4"
+              depressed
             >
+              게시판 바로가기
+            </v-btn>
           </v-card>
         </v-card>
 
@@ -557,9 +614,13 @@
                   max-height="500"
                   style="overflow-x:hidden"
                 >
-                  <v-btn class="my-10 white--text rounded-lg" color="#769de4">{{
-                    review.title
-                  }}</v-btn>
+                  <v-btn
+                    depressed
+                    class="my-10 white--text rounded-lg"
+                    color="#769de4"
+                  >
+                    {{ review.title }}
+                  </v-btn>
                   <div
                     class="mb-5"
                     style="color: #979797; line-break: strict; word-break:keep-all"
@@ -579,6 +640,7 @@
           class="rounded-xl mx-auto"
           :width="isMobile ? '95%' : '80%'"
           style="margin-bottom:150px"
+          flat
         >
           <v-img
             class="rounded-xl"
@@ -587,6 +649,7 @@
             src="https://marketplace.canva.com/MADGyejemqw/4/screen_2x/canva-imac-turned-on-MADGyejemqw.jpg"
           ></v-img>
           <v-card
+            flat
             style="position:absolute;bottom:-100px;width:80%;left: 50%; transform: translateX(-50%)"
             class="pa-2 text-center rounded-xl"
           >
@@ -595,13 +658,17 @@
               수업 끝나고 바로 바로 더 나은 표현, 녹음파일 제공 쉽게 영어를 배울
               수있습니다. !
             </div>
-            <v-btn class="rounded-lg caption-text white--text" color="#5a55a1"
-              >강의실 바로가기</v-btn
+            <v-btn
+              class="rounded-lg caption-text white--text"
+              color="#6089d4"
+              depressed
             >
+              강의실 바로가기
+            </v-btn>
           </v-card>
         </v-card>
 
-        <v-card flat>
+        <v-card flat color="#fafafa">
           <span style="visibility:hidden">test</span>
         </v-card>
 
@@ -653,6 +720,8 @@
 .marquee-container {
   overflow: hidden;
   position: relative;
+  transform: rotate(-25deg);
+  opacity: 1;
 }
 
 .marquee-container .marquee-moving {

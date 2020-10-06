@@ -2,7 +2,7 @@
   <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f700" flat class="text-center pa-3">
-        <div class="h3 font-weight-bold white--text" style="margin-top:200px">수강 신청</div>
+        <div class="h3 font-weight-bold white--text gmarket" style="margin-top:200px">수강 신청</div>
         <div class="h6 nanum white--text">
           <div class="my-10">왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.</div>
           <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>

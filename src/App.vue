@@ -198,11 +198,11 @@
       <v-dialog
         v-model="signInDialog"
         max-width="1000"
-        style="overflow-x:hidden"
+        style="overflow-x:hidden;lborder-radius: 25px 25px 25px 25px !important"
       >
         <v-card flat class="rounded-xl" max-width="1000">
-          <v-card flat color="#8aace9">
-            <v-container>
+          <v-card flat color="#8aace9" class="rounded-xl">
+            <v-container class="py-0">
               <v-row>
                 <v-col cols="6" class="white--text">
                   <span class="ml-5 h5 nanum">회원 로그인</span>
@@ -211,7 +211,9 @@
                   <span class="ml-5 h5 nanum">회원가입</span>
                   <v-spacer></v-spacer>
                   <span class="mr-5">
-                    <v-icon color="white">close</v-icon>
+                    <v-icon color="white" @click="signInDialog = false">
+                      close
+                    </v-icon>
                   </span>
                 </v-col>
               </v-row>
@@ -223,11 +225,13 @@
                     <v-row>
                       <v-col>
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="아이디(이메일)"
                         ></v-text-field>
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="비밀번호"
@@ -249,6 +253,7 @@
                     <v-row>
                       <v-col cols="12" md="6" class="py-0">
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="이름 "
@@ -256,6 +261,7 @@
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="연락처"
@@ -263,6 +269,7 @@
                       </v-col>
                       <v-col cols="12" class="py-0">
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="이메일"
@@ -270,6 +277,7 @@
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="비밀번호 "
@@ -277,6 +285,7 @@
                       </v-col>
                       <v-col cols="12" md="6" class="py-0">
                         <v-text-field
+                          dense
                           outlined
                           class="rounded-xl"
                           label="비밀번호 확인"
