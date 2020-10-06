@@ -332,14 +332,16 @@
                       >
                         {{ item }}
                       </div>
-                      <v-btn
-                        class="pa-7 rounded-xl white--text"
-                        style="background-color:#E3E3E344;position:absolute;bottom:20px;left:33%"
-                      >
-                        <span class="h6">
-                          콘텐츠 바로가기
-                        </span>
-                      </v-btn>
+                      <div style="position:absolute;bottom:20px;width:100%">
+                        <v-btn
+                          class="pa-7 rounded-xl white--text mx-auto"
+                          style="background-color:#E3E3E344;"
+                        >
+                          <span class="h6">
+                            콘텐츠 바로가기
+                          </span>
+                        </v-btn>
+                      </div>
                     </v-container>
                   </v-card>
                 </v-img>
