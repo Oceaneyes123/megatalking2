@@ -13,7 +13,7 @@
       </div>
       <v-row justify="center">
         <v-btn class="rounded-xl py-8 px-16 title" color="primary"
-          >레벨테스트 하러가기</v-btn
+          >무료수업신청</v-btn
         >
       </v-row>
     </v-container>

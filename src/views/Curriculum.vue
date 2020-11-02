@@ -223,6 +223,7 @@
               @change="changeCarousel(allBooks.books_1, $event)"
             >
               <v-carousel-item
+                eager
                 height="750"
                 v-for="(book, i) in allBooks.books_1"
                 :key="i"
@@ -371,6 +372,7 @@
               @change="changeCarousel(allBooks.books_3, $event)"
             >
               <v-carousel-item
+                eager
                 height="750"
                 v-for="(book, i) in allBooks.books_3"
                 :key="i"
@@ -463,6 +465,7 @@
               @change="changeCarousel(allBooks.books_4, $event)"
             >
               <v-carousel-item
+                eager
                 height="750"
                 v-for="(book, i) in allBooks.books_4"
                 :key="i"
@@ -555,6 +558,7 @@
               @change="changeCarousel(allBooks.books_5, $event)"
             >
               <v-carousel-item
+                eager
                 height="750"
                 v-for="(book, i) in allBooks.books_5"
                 :key="i"
@@ -647,6 +651,7 @@
               @change="changeCarousel(allBooks.books_6, $event)"
             >
               <v-carousel-item
+                eager
                 height="750"
                 v-for="(book, i) in allBooks.books_6"
                 :key="i"
@@ -735,7 +740,11 @@
               :show-arrows="!isMobile"
               class="mb-3"
             >
-              <v-slide-item v-for="(book, i) in allBooks.books_7" :key="i">
+              <v-slide-item
+                v-for="(book, i) in allBooks.books_7"
+                :key="i"
+                :class="i == 1 ? 'mr-auto' : 'ml-auto'"
+              >
                 <v-card
                   flat
                   color="#fafafa"
@@ -872,7 +881,7 @@
                 >
                 <v-tab-item v-for="(item, i) in booksInLevels" :key="i">
                   <v-carousel hide>
-                    <v-carousel-item
+                   <v-carousel-item eager
                       v-for="(book, j) in booksInLevels[i].books"
                       :key="j"
                     >
