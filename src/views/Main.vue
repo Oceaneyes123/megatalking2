@@ -2,7 +2,7 @@
   <v-app style="background-color:#00000000">
     <v-container>
       <div
-        class="h3 font-weight-bold gmarket white--text mb-5"
+        class="h3 font-weight-bold gmarket white--text mb-5 korean-text"
         style="margin-top:200px"
       >
         친구처럼 편한 영어
@@ -766,6 +766,11 @@
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
   }
+}
+
+.korean-text {
+  word-break: keep-all;
+  line-break: strict;
 }
 </style>
 
