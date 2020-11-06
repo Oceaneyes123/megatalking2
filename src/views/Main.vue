@@ -12,7 +12,10 @@
         <br />메가토킹 선생님이 친구처럼 도와드려요.
       </div>
       <v-row justify="center">
-        <v-btn class="rounded-xl py-8 px-16 title" color="primary"
+        <v-btn
+          class="rounded-xl py-8 px-16 title"
+          color="primary"
+          @click="$router.push('/level-test')"
           >무료수업신청</v-btn
         >
       </v-row>
