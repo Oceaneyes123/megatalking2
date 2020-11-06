@@ -395,6 +395,7 @@
                     class="rounded-pill white--text h5 nanum"
                     depressed
                     large
+                    @click="confirmDialog = true"
                     >무료수업 신청하기</v-btn
                   >
                 </v-col>
@@ -404,6 +405,43 @@
         </v-container>
       </v-card>
     </v-container>
+
+    <v-dialog v-model="confirmDialog" max-width="500">
+      <v-card max-width="500" class=" pb-5 rounded-xl">
+        <div class="h4 text-center pa-3 mb-5" style="background-color:#85c9e8">
+          요약
+        </div>
+        <div class="px-5">
+          <div class="h5 gmarket" style="color:#85c9e8">과목 선택</div>
+          <div class="px-3 mb-5 h6">
+            <div>메가토킹 화상영어</div>
+            <div>이름</div>
+            <div>연락처</div>
+          </div>
+          <v-divider></v-divider>
+          <div class="h5 gmarket mt-5" style="color:#85c9e8">
+            수업 진행속도
+          </div>
+          <div class="px-3 mb-5 h6">보통 속도로 말해주세요.</div>
+          <v-divider></v-divider>
+          <div class="h5 gmarket mt-5" style="color:#85c9e8">예약 일시</div>
+          <div class="px-3 h6 mb-10">
+            <div>2020-11-06</div>
+            <div>17:00</div>
+          </div>
+          <div class="d-flex">
+            <v-btn class="mx-auto rounded-xl" depressed>
+              <span class="pa-3  h6" @click="confirmDialog = false"
+                >취소하다</span
+              >
+            </v-btn>
+            <v-btn color="#2572a8" class="mx-auto rounded-xl" depressed>
+              <span class="pa-3 white--text h6 ">확인하다</span>
+            </v-btn>
+          </div>
+        </div>
+      </v-card>
+    </v-dialog>
 
     <v-dialog
       v-model="termsDialog"
@@ -584,9 +622,10 @@ export default {
   data() {
     return {
       days: [],
-      daySelected: -1,
+      daySelected: 0,
 
       termsDialog: false,
+      confirmDialog: false,
 
       dateTime: new Date(),
       // listOfTimes: [],
