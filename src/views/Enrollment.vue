@@ -2,9 +2,16 @@
   <v-app style="background-color:#00000000">
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f700" flat class="text-center pa-3">
-        <div class="h3 font-weight-bold white--text gmarket" style="margin-top:200px">수강 신청</div>
+        <div
+          class="h3 font-weight-bold white--text gmarket"
+          style="margin-top:200px"
+        >
+          수강 신청
+        </div>
         <div class="h6 nanum white--text">
-          <div class="my-10">왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.</div>
+          <div class="my-10">
+            왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.
+          </div>
           <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
@@ -13,7 +20,11 @@
             <v-container class="px-0 py-0">
               <v-row no-gutters>
                 <v-col cols="12" md="8">
-                  <v-card class="pl-md-10 px-5 pt-10 pr-md-8 rounded-xl" flat color="#fafafa">
+                  <v-card
+                    class="pl-md-10 px-5 pt-10 pr-md-8 rounded-xl"
+                    flat
+                    color="#fafafa"
+                  >
                     <div class="h6 font-weight-black text-left">수강 종류</div>
                     <v-container class="px-0 mt-7">
                       <v-row no-gutters class="mb-5">
@@ -23,13 +34,16 @@
                             @click="isPhone = true"
                             :style="isPhone ? 'color:#4242a3' : 'color:#000'"
                             style="cursor:pointer"
-                          >전화로 할래요</div>
+                          >
+                            전화로 할래요
+                          </div>
                           <div class="subheading">
                             <v-icon
                               color="#5a55a1"
                               class="mr-2"
                               style="font-size:20px"
-                            >fas fa-phone-square-alt</v-icon>화성영어 서비스 제공
+                              >fas fa-phone-square-alt</v-icon
+                            >화성영어 서비스 제공
                           </div>
                         </v-col>
                         <v-col cols="6" class="text-left">
@@ -38,13 +52,16 @@
                             @click="isPhone = false"
                             :style="!isPhone ? 'color:#4242a3' : 'color:#000'"
                             style="cursor:pointer"
-                          >화상으로 할래요.</div>
+                          >
+                            화상으로 할래요.
+                          </div>
                           <div class="subheading">
                             <v-icon
                               color="#5a55a1"
                               class="mr-2"
                               style="font-size:20px"
-                            >fas fa-phone-square-alt</v-icon>스카이프 서비스 제공
+                              >fas fa-phone-square-alt</v-icon
+                            >스카이프 서비스 제공
                           </div>
                         </v-col>
                       </v-row>
@@ -52,7 +69,9 @@
 
                     <v-divider class="mr-10"></v-divider>
 
-                    <div class="h6 font-weight-black text-left mt-10 mb-10">수업 선택</div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">
+                      수업 선택
+                    </div>
                     <v-tabs
                       v-model="tab"
                       :vertical="!isMobile"
@@ -65,7 +84,8 @@
                         v-for="(duration, i) in durations"
                         :key="i"
                         :style="!isMobile ? 'border-radius: 30px 0 0 30px' : ''"
-                      >{{duration}}</v-tab>
+                        >{{ duration }}</v-tab
+                      >
                       <v-tab-item v-for="(index, i) in 3" :key="i">
                         <v-card flat color="#f5f4f6">
                           <v-container class="pa-5 pa-sm-10">
@@ -83,7 +103,10 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="frequencySelected = i, frequencySummary = frequency"
+                                  @click="
+                                    (frequencySelected = i),
+                                      (frequencySummary = frequency)
+                                  "
                                   :color="
                                     frequencySelected == i
                                       ? 'primary'
@@ -92,10 +115,13 @@
                                   :outlined="
                                     frequencySelected == i ? true : false
                                   "
-                                >{{ frequency }}</v-btn>
+                                  >{{ frequency }}</v-btn
+                                >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">수업 횟수</div>
+                            <div class="caption" style="color:#bdbdbd">
+                              수업 횟수
+                            </div>
                             <!-- days row-->
                             <v-row no-gutters justify="center" class="mt-10">
                               <v-col
@@ -109,17 +135,24 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="daySelected = i, daySummary = day"
+                                  @click="(daySelected = i), (daySummary = day)"
                                   :color="
                                     daySelected == i ? 'primary' : '#FFFFFF'
                                   "
                                   :outlined="daySelected == i ? true : false"
-                                >{{ day }}</v-btn>
+                                  >{{ day }}</v-btn
+                                >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">수업 날짜</div>
+                            <div class="caption" style="color:#bdbdbd">
+                              수업 날짜
+                            </div>
                             <!-- period row-->
-                            <v-row no-gutters justify="center" class="mb-3 mt-10">
+                            <v-row
+                              no-gutters
+                              justify="center"
+                              class="mb-3 mt-10"
+                            >
                               <v-col
                                 cols="6"
                                 sm="3"
@@ -131,15 +164,21 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="periodSelected = i, periodSummary = period"
+                                  @click="
+                                    (periodSelected = i),
+                                      (periodSummary = period)
+                                  "
                                   :color="
                                     periodSelected == i ? 'primary' : '#FFFFFF'
                                   "
                                   :outlined="periodSelected == i ? true : false"
-                                >{{ period }}</v-btn>
+                                  >{{ period }}</v-btn
+                                >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">수강기간</div>
+                            <div class="caption" style="color:#bdbdbd">
+                              수강기간
+                            </div>
                             <!-- book row-->
                             <!-- <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
                               <v-col
@@ -225,12 +264,20 @@
                                   class="rounded-lg"
                                   block
                                   depressed
-                                  @click="materialSelected = i, materialSummary = material.course"
-                                  :color="
-                                    materialSelected == i ? 'primary' : '#FFFFFF'
+                                  @click="
+                                    (materialSelected = i),
+                                      (materialSummary = material.course)
                                   "
-                                  :outlined="materialSelected == i ? true : false"
-                                >{{ material.course }}</v-btn>
+                                  :color="
+                                    materialSelected == i
+                                      ? 'primary'
+                                      : '#FFFFFF'
+                                  "
+                                  :outlined="
+                                    materialSelected == i ? true : false
+                                  "
+                                  >{{ material.course }}</v-btn
+                                >
                               </v-col>
                             </v-row>
 
@@ -239,7 +286,9 @@
                                 <v-col
                                   cols="6"
                                   sm="6"
-                                  v-for="(item, i) in materials[materialSelected].series"
+                                  v-for="(item, i) in materials[
+                                    materialSelected
+                                  ].series"
                                   :key="i"
                                   class="px-2 mb-2 mb-md-0"
                                 >
@@ -249,24 +298,36 @@
                                     class="rounded-lg"
                                     block
                                     depressed
-                                    @click="seriesSelected = item.text, seriesSummary = item.text"
+                                    @click="
+                                      (seriesSelected = item.text),
+                                        (seriesSummary = item.text)
+                                    "
                                     :color="
-                                   seriesSelected == item.text ? 'primary' : '#FFFFFF'
-                                  "
-                                    :outlined="seriesSelected == item.text ? true : false"
+                                      seriesSelected == item.text
+                                        ? 'primary'
+                                        : '#FFFFFF'
+                                    "
+                                    :outlined="
+                                      seriesSelected == item.text ? true : false
+                                    "
                                     style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                  >{{ item.text }}</v-btn>
+                                    >{{ item.text }}</v-btn
+                                  >
                                 </v-col>
                               </v-row>
                             </v-container>
 
-                            <div class="caption" style="color:#bdbdbd">수업 유형</div>
+                            <div class="caption" style="color:#bdbdbd">
+                              수업 유형
+                            </div>
                           </v-container>
                         </v-card>
                       </v-tab-item>
                     </v-tabs>
 
-                    <div class="h6 font-weight-black text-left mt-10 mb-10">수업 시간</div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">
+                      수업 시간
+                    </div>
 
                     <v-container class="pb-1">
                       <v-row no-gutters>
@@ -274,29 +335,41 @@
                           <span
                             style="cursor:pointer;color:#5a55a1"
                             @click="(currentZone = 0), setTime(6)"
-                          >프라임</span>
+                            >프라임</span
+                          >
                           <br />
-                          <span class="caption" @click="currentZone = 0">6:00 - 9:50</span>
+                          <span class="caption" @click="currentZone = 0"
+                            >6:00 - 9:50</span
+                          >
                         </v-col>
                         <v-col class="text-left" style="cursor:pointer;">
                           <span
                             style="cursor:pointer;color:#5a55a1"
                             @click="(currentZone = 1), setTime(10)"
-                          >이코노미</span>
+                            >이코노미</span
+                          >
                           <br />
-                          <span class="caption" @click="currentZone = 1">10:00 - 16:50</span>
+                          <span class="caption" @click="currentZone = 1"
+                            >10:00 - 16:50</span
+                          >
                         </v-col>
                         <v-col class="text-left" style="cursor:pointer;">
                           <span
                             style="cursor:pointer;color:#5a55a1"
                             @click="(currentZone = 2), setTime(17)"
-                          >프라임</span>
+                            >프라임</span
+                          >
                           <br />
-                          <span class="caption" @click="currentZone = 2">17:00 - 23:50</span>
+                          <span class="caption" @click="currentZone = 2"
+                            >17:00 - 23:50</span
+                          >
                         </v-col>
                       </v-row>
                     </v-container>
-                    <v-divider class="mt-0" style="background-color: #222dc05F"></v-divider>
+                    <v-divider
+                      class="mt-0"
+                      style="background-color: #222dc05F"
+                    ></v-divider>
                     <v-card flat color="#f5f4f6" class="mb-5">
                       <v-tabs
                         grow
@@ -304,7 +377,12 @@
                         show-arrows
                         slider-color="#5a55a1"
                       >
-                        <v-tab v-for="n in 4" :key="n" @click="setTime(n + 5)">{{ n + 5 }}</v-tab>
+                        <v-tab
+                          v-for="n in 4"
+                          :key="n"
+                          @click="setTime(n + 5)"
+                          >{{ n + 5 }}</v-tab
+                        >
                       </v-tabs>
                       <v-tabs
                         grow
@@ -312,7 +390,12 @@
                         show-arrows
                         slider-color="#5a55a1"
                       >
-                        <v-tab v-for="n in 7" :key="n" @click="setTime(n + 9)">{{ n + 9 }}</v-tab>
+                        <v-tab
+                          v-for="n in 7"
+                          :key="n"
+                          @click="setTime(n + 9)"
+                          >{{ n + 9 }}</v-tab
+                        >
                       </v-tabs>
                       <v-tabs
                         grow
@@ -320,7 +403,12 @@
                         show-arrows
                         slider-color="#5a55a1"
                       >
-                        <v-tab v-for="n in 7" :key="n" @click="setTime(n + 16)">{{ n + 16 }}</v-tab>
+                        <v-tab
+                          v-for="n in 7"
+                          :key="n"
+                          @click="setTime(n + 16)"
+                          >{{ n + 16 }}</v-tab
+                        >
                       </v-tabs>
                       <v-container class="px-0">
                         <v-row no-gutters>
@@ -337,7 +425,8 @@
                               :color="timeSelected == i ? 'primary' : '#FFFFFF'"
                               :outlined="timeSelected == i ? true : false"
                               class="rounded-lg"
-                            >{{ time }}</v-btn>
+                              >{{ time }}</v-btn
+                            >
                           </v-col>
                         </v-row>
                       </v-container>
@@ -347,17 +436,27 @@
                       @click="seeMore = true"
                       class="caption mb-5"
                       style="color:#bdbdbd"
-                    >시간표 전체보기 ></div>
-                    <div class="h6 font-weight-black text-left mt-10 mb-10">결제 방식</div>
+                    >
+                      시간표 전체보기 >
+                    </div>
+                    <div class="h6 font-weight-black text-left mt-10 mb-10">
+                      결제 방식
+                    </div>
                     <v-row>
-                      <v-col cols="12" sm="4" v-for="(method, i) in paymentMethods" :key="i">
+                      <v-col
+                        cols="12"
+                        sm="4"
+                        v-for="(method, i) in paymentMethods"
+                        :key="i"
+                      >
                         <v-btn
                           color="#5a55a1"
                           block
                           outlined
                           x-large
                           class="rounded-lg"
-                        >{{method.text}}</v-btn>
+                          >{{ method.text }}</v-btn
+                        >
                       </v-col>
                     </v-row>
                   </v-card>
@@ -370,30 +469,36 @@
                       <v-row no-gutters class="px-2">
                         <v-col cols="4">수강코스</v-col>
                         <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">{{bookSummary}}</v-col>
+                        <v-col class="font-weight-bold">{{
+                          bookSummary
+                        }}</v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
                         <v-col>수강과정</v-col>
                         <v-spacer></v-spacer>
                         <v-col class="font-weight-bold">
-                          {{frequencySummary}}
+                          {{ frequencySummary }}
                           <span
                             v-if="frequencySummary != '' && periodSummary != ''"
-                          >/</span>
-                          {{periodSummary}}
+                            >/</span
+                          >
+                          {{ periodSummary }}
                         </v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
                         <v-col>시작일</v-col>
                         <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">{{daySummary}}</v-col>
+                        <v-col class="font-weight-bold">{{ daySummary }}</v-col>
                       </v-row>
                       <v-divider class="mx-3"></v-divider>
                     </v-container>
 
-                    <v-divider style="margin-top:100px; margin-bottom:100px" class="mx-7"></v-divider>
+                    <v-divider
+                      style="margin-top:100px; margin-bottom:100px"
+                      class="mx-7"
+                    ></v-divider>
 
                     <div class="h6 font-weight-black mb-5">결제 예정금액</div>
 
@@ -426,7 +531,9 @@
                       color="#5a55a1"
                       class="rounded-lg white--text font-weight-bold"
                       style="margin-top:150px"
-                    >수업 신청하기</v-btn>
+                      @click="confirmDialog = true"
+                      >수업 신청하기</v-btn
+                    >
                   </v-card>
                 </v-col>
               </v-row>
@@ -435,6 +542,66 @@
         </v-container>
       </v-card>
     </v-container>
+
+    <v-dialog v-model="confirmDialog" max-width="500">
+      <v-card max-width="500" class=" pb-5 rounded-xl">
+        <div class="h4 text-center pa-3 mb-5" style="background-color:#85c9e8">
+          요약
+        </div>
+        <div class="px-5">
+          <div class="h5 gmarket" style="color:#85c9e8">수강선택 요약</div>
+          <div class="px-3 mb-5 h6">
+            <v-container>
+              <v-row no-gutters>
+                <v-col>수강코스</v-col>
+                <v-col></v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col>수강과정</v-col>
+                <v-col>주3회 화목 / 1년</v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col>시작일</v-col>
+                <v-col>11/12</v-col>
+              </v-row>
+            </v-container>
+          </div>
+          <v-divider></v-divider>
+          <div class="h5 gmarket mt-5" style="color:#85c9e8">
+            결제 예정금액
+          </div>
+          <v-container>
+            <v-row no-gutters>
+              <v-col>결제금액</v-col>
+              <v-col>0</v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col>할인금액</v-col>
+              <v-col>0</v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col>교재비</v-col>
+              <v-col>0</v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col>총 할인금액</v-col>
+              <v-col>0</v-col>
+            </v-row>
+          </v-container>
+
+          <div class="d-flex">
+            <v-btn class="mx-auto rounded-xl" depressed>
+              <span class="pa-3  h6" @click="confirmDialog = false"
+                >취소하다</span
+              >
+            </v-btn>
+            <v-btn color="#2572a8" class="mx-auto rounded-xl" depressed>
+              <span class="pa-3 white--text h6 ">확인하다</span>
+            </v-btn>
+          </div>
+        </div>
+      </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -457,6 +624,8 @@ export default {
       timeList: [],
       seeMore: false,
       currentZone: 0,
+
+      confirmDialog: false,
 
       isPhone: false,
 
