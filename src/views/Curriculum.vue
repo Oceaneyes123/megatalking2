@@ -286,6 +286,7 @@
                               height="300"
                               class="mx-auto"
                               contain
+                              eager
                             ></v-img>
                             <v-img
                               v-if="book.tab && i % 2 == 1"
