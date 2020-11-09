@@ -295,6 +295,7 @@
                               height="300"
                               class="mx-auto"
                               contain
+                              eager
                             ></v-img>
                           </v-col>
                         </v-row>
