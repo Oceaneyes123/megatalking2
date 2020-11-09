@@ -10,7 +10,7 @@
       <div class="my-5">재미있는 영어수다! 친구처럼 편한 영어!</div>
       <div class="my-2">매일 매일 영어습관, 메가토킹.</div>
     </div>
-    <v-container fluid class="py-0 px-0">
+    <v-container fluid class="py-0 px-5 px-md-0">
       <v-card
         class="rounded-xl mx-auto"
         elevation="7"
@@ -33,38 +33,11 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-simple-table style="width:100%">
-              <template slot:default>
-                <thead>
-                  <tr>
-                    <th class="text-center">No.</th>
-                    <th class="text-center">날짜</th>
-                    <th class="text-center">수강종류</th>
-                    <th class="text-center">제목</th>
-                    <th class="text-center">회원명</th>
-                    <th class="text-center">조회수</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="grey--text">2</td>
-                    <td class="grey--text">2020-04-15</td>
-                    <td class="blue--text">입문과정</td>
-                    <td class="grey--text">작품 활동을 위해 수강했습니다.</td>
-                    <td class="grey--text">강동원</td>
-                    <td class="grey--text">2</td>
-                  </tr>
-                  <tr>
-                    <td class="grey--text">1</td>
-                    <td class="grey--text">2020-04-12</td>
-                    <td class="blue--text">승무원영어</td>
-                    <td class="grey--text">리얼해서 활용도 높은 영어네요^^!</td>
-                    <td class="grey--text">이유리</td>
-                    <td class="grey--text">28</td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table>
+            <v-data-table
+              style="width:100%"
+              :headers="header"
+              :items="content"
+            ></v-data-table>
           </v-row>
         </v-container>
       </v-card>
@@ -80,7 +53,53 @@ export default {
       screenWidth: "",
       isMobile: false,
 
-      items: ["최신순"]
+      items: ["최신순"],
+
+      header: [
+        {
+          text: "No.",
+          value: "no"
+        },
+        {
+          text: "날짜",
+          value: "date"
+        },
+        {
+          text: "수강종류",
+          value: "course"
+        },
+        {
+          text: "제목",
+          value: "title"
+        },
+        {
+          text: "회원명",
+          value: "name"
+        },
+        {
+          text: "조회수",
+          value: "views"
+        }
+      ],
+
+      content: [
+        {
+          no: "2",
+          date: "2020-04-15",
+          course: "입문과정",
+          title: "작품 활동을 위해 수강했습니다.",
+          name: "강동원",
+          views: "2"
+        },
+        {
+          no: "1",
+          date: "2020-04-12",
+          course: "승무원영어",
+          title: "리얼해서 활용도 높은",
+          name: "이유리",
+          views: "28"
+        }
+      ]
     };
   },
 
