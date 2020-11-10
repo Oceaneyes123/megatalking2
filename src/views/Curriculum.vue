@@ -400,6 +400,7 @@
                           max-width="300"
                           height="200"
                           class="mx-auto"
+                          eager
                         ></v-img>
                         <v-card
                           flat
@@ -432,6 +433,7 @@
                               width="250"
                               height="300"
                               contain
+                              eager
                             ></v-img>
                           </v-col>
                           <v-col cols="6" class="d-flex align-end">
@@ -493,6 +495,7 @@
                           max-width="300"
                           height="200"
                           class="mx-auto"
+                          eager
                         ></v-img>
                         <v-card
                           flat
@@ -525,6 +528,7 @@
                               width="250"
                               height="300"
                               contain
+                              eager
                             ></v-img>
                           </v-col>
                           <v-col cols="6" class="d-flex align-end">
@@ -586,6 +590,7 @@
                           max-width="300"
                           height="200"
                           class="mx-auto"
+                          eager
                         ></v-img>
                         <v-card
                           flat
@@ -618,6 +623,7 @@
                               width="250"
                               height="300"
                               contain
+                              eager
                             ></v-img>
                           </v-col>
                           <v-col cols="6" class="d-flex align-end">
@@ -679,6 +685,7 @@
                           max-width="300"
                           height="200"
                           class="mx-auto"
+                          eager
                         ></v-img>
                         <v-card
                           flat
@@ -711,6 +718,7 @@
                               width="250"
                               height="300"
                               contain
+                              eager
                             ></v-img>
                           </v-col>
                           <v-col cols="6" class="d-flex align-end">

@@ -168,22 +168,36 @@
                   </v-row>
                   <v-row>
                     <v-card class="d-flex flex-row mt-5" color="#00000000" flat>
-                      <v-img
-                        src="../src/assets/fkor.png"
-                        width="50"
-                        class="mr-5"
-                      ></v-img>
-                      <v-img
-                        src="../src/assets/fa.png"
-                        width="50"
-                        class="mr-5"
-                      ></v-img>
-                      <v-img
-                        src="../src/assets/inst.png"
-                        width="50"
-                        class="mr-5"
-                      ></v-img>
-                      <v-img src="../src/assets/tw.png" width="50"></v-img>
+                      <a href="" target="_blank">
+                        <v-img
+                          src="../src/assets/fkor.png"
+                          width="50"
+                          class="mr-5"
+                        ></v-img>
+                      </a>
+                      <a
+                        href="https://www.facebook.com/megatalking"
+                        target="_blank"
+                      >
+                        <v-img
+                          src="../src/assets/fa.png"
+                          width="50"
+                          class="mr-5"
+                        ></v-img>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/megatalking_english/"
+                        target="_blank"
+                      >
+                        <v-img
+                          src="../src/assets/inst.png"
+                          width="50"
+                          class="mr-5"
+                        ></v-img>
+                      </a>
+                      <a href="" target="_blank">
+                        <v-img src="../src/assets/tw.png" width="50"></v-img>
+                      </a>
                     </v-card>
                   </v-row>
                 </v-container>
