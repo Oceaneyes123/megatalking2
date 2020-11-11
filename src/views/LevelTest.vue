@@ -636,7 +636,7 @@ export default {
       screenWidth: "",
       isMobile: false,
 
-      types: ["메가토킹 화상영어", "메가토킹 화상영어"],
+      types: ["메가토킹 전화영어", "메가토킹 화상영어"],
       class_speeds: [
         "천천히 발음해주세요.",
         "보통 속도로 말해주세요.",

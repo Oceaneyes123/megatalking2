@@ -43,7 +43,7 @@
                               class="mr-2"
                               style="font-size:20px"
                               >fas fa-phone-square-alt</v-icon
-                            >화성영어 서비스 제공
+                            >전화영어 서비스 제공
                           </div>
                         </v-col>
                         <v-col cols="6" class="text-left">
@@ -591,9 +591,7 @@
 
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3  h6" @click="confirmDialog = false"
-                >취소</span
-              >
+              <span class="pa-3  h6" @click="confirmDialog = false">취소</span>
             </v-btn>
             <v-btn color="#2572a8" class="mx-auto rounded-xl" depressed>
               <span class="pa-3 white--text h6 ">확인</span>

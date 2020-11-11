@@ -1375,6 +1375,7 @@ export default {
             details: "최신 뉴스기사를 영어로 접하면서 대화하기"
           },
           {
+            mobile: require("../assets/mobile/debate.png"),
             image: require("../assets/curriculum/debate.jpg"),
             title: "Debate",
             details:
@@ -1384,6 +1385,7 @@ export default {
 
         books_4: [
           {
+            mobile: require("../assets/mobile/be_situational_dialogues.png"),
             image: require("../assets/curriculum/bd_1.webp"),
             title: "비지니스 회화과정",
             details:
@@ -1409,6 +1411,7 @@ export default {
               "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다."
           },
           {
+            mobile: require("../assets/mobile/negotiations.png"),
             image: require("../assets/curriculum/negotiation.jpg"),
             title: "Negotiation",
             details:
@@ -1466,6 +1469,7 @@ export default {
               "방 예약부터 전화응대, 체크인 등 호텔에서 일어날 수 있는 다양하고 고급스러운 서비스표현들을 담고 있습니다. 호텔리어를 준비하시는 수강생, 또는 여행을 자주 가시거나 여행을 계획중이신 수강생들에게 좋은 과정입니다."
           },
           {
+            mobile: require("../assets/mobile/cabin_crew.png"),
             image: require("../assets/curriculum/cabin_crew.jpg"),
             title: "Cabin Crew",
             details:
@@ -1478,6 +1482,7 @@ export default {
               "IELTS란, 국제영어능력시험으로써, 영국, 오스트레일리아, 캐나다, 뉴질랜드 대학입학에 필요한 영어시험입니다. 대부분 대학입학성적으로 6.0점 이상을 요구하며, 화상및전화영어를 통하여는, 스피킹시험을 준비하실 수 있습니다. 수업을 통해 발음교정과 다양한 토픽에 맞는 스피킹을 준비하게 됩니다."
           },
           {
+            mobile: require("../assets/mobile/medical_english.png"),
             image: require("../assets/curriculum/medical_english.jpg"),
             title: "Medical English",
             details:
