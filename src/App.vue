@@ -96,7 +96,7 @@
 
         <v-card max-width="1000" class="mx-auto mt-10" color="#00000000" flat>
           <v-container>
-            <v-row no-gutters>
+            <v-row no-gutters class="d-flex flex-column-reverse flex-md-row">
               <v-col cols="12" md="3">
                 <v-container>
                   <v-row>

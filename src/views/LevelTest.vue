@@ -431,11 +431,10 @@
           </div>
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3  h6" @click="confirmDialog = false"
-                >취소하다</span>
+              <span class="pa-3  h6" @click="confirmDialog = false">취소</span>
             </v-btn>
             <v-btn color="#2572a8" class="mx-auto rounded-xl" depressed>
-              <span class="pa-3 white--text h6 ">확인하다</span>
+              <span class="pa-3 white--text h6 ">확인</span>
             </v-btn>
           </div>
         </div>

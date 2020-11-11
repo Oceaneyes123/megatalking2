@@ -340,7 +340,7 @@
             <v-col cols="12" md="5">
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/emma_watson.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -353,7 +353,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/ted_mainpage.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -366,7 +366,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/movie.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container style="positon:relative">
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -396,7 +396,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/vogue.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket mb-3"
@@ -426,7 +426,7 @@
             <v-col cols="12" md="5">
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/maroon5_mainpage.png">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -439,7 +439,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/camera.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container class="white--text text-left h6 nanum">
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -466,7 +466,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/singer.jpg">
-                  <v-card height="100%" color="#0000008D">
+                  <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket mb-2"
