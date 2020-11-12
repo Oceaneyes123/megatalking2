@@ -30,7 +30,23 @@
                 ></v-select>
               </v-col>
             </v-row>
-            <div class="text-center font-weight-black h4">{{ month }}</div>
+            <div class="d-flex">
+              <div>
+                {{ month }}/{{ prevSunday }}
+
+                -
+
+                {{ month }}/{{ prevSaturday }}
+              </div>
+              <div class="mx-auto font-weight-black h4">{{ month }}</div>
+              <div>
+                {{ month }}/{{ nextSunday }}
+
+                -
+
+                {{ month }}/{{ nextSaturday }}
+              </div>
+            </div>
             <v-divider style="background-color:#5a55a1"></v-divider>
             <v-row>
               <v-col cols="1" class="d-flex align-center justify-center">
@@ -507,6 +523,10 @@ export default {
       date: new Date(),
       month: "",
       screenWidth: "",
+      nextSaturday: "",
+      nextSunday: "",
+      preveSaturday: "",
+      prevSunday: "",
       isMobile: false,
 
       isBook: false,
@@ -546,6 +566,15 @@ export default {
     this.today = this.formatDate(this.date);
     this.month = this.date.getMonth() + 1;
 
+    var prevSun = new Date();
+    prevSun.setDate(prevSun.getDate() - prevSun.getDay());
+
+    this.nextSunday = prevSun.getDate() + 7;
+    this.nextSaturday = prevSun.getDate() + 13;
+
+    this.prevSunday = prevSun.getDate() - 7;
+    this.prevSaturday = prevSun.getDate() - 1;
+
     // for (var i = 1; i <= 40; i++) {
     //   for (var j = 1; j <= 3; j++) {
     //     if (i != 14 && i != 18 && i != 11 && i != 24 && i != 26 && i != 27) {
@@ -560,6 +589,14 @@ export default {
   },
 
   methods: {
+    nextDate(dayIndex) {
+      var today = new Date();
+      today.setDate(
+        today.getDate() + ((dayIndex - 1 - today.getDay() + 7) % 7) + 1
+      );
+      return today;
+    },
+
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
