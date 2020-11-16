@@ -1,10 +1,10 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f700" flat class="text-center pa-3">
         <div
           class="h3 font-weight-bold white--text gmarket"
-          style="margin-top:200px"
+          style="margin-top: 200px"
         >
           수강 신청
         </div>
@@ -15,7 +15,7 @@
           <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
-        <v-container style="max-width:1000px;margin-top:90px">
+        <v-container style="max-width: 1000px; margin-top: 90px">
           <v-card class="rounded-xl shadow" width="100%">
             <v-container class="px-0 py-0">
               <v-row no-gutters>
@@ -33,7 +33,7 @@
                             class="h6 font-weight-bold"
                             @click="isPhone = true"
                             :style="isPhone ? 'color:#4242a3' : 'color:#000'"
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                           >
                             전화로 할래요
                           </div>
@@ -41,7 +41,7 @@
                             <v-icon
                               color="#5a55a1"
                               class="mr-2"
-                              style="font-size:20px"
+                              style="font-size: 20px"
                               >fas fa-phone-square-alt</v-icon
                             >전화영어 서비스 제공
                           </div>
@@ -51,7 +51,7 @@
                             class="h6 font-weight-bold"
                             @click="isPhone = false"
                             :style="!isPhone ? 'color:#4242a3' : 'color:#000'"
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                           >
                             화상으로 할래요.
                           </div>
@@ -59,7 +59,7 @@
                             <v-icon
                               color="#5a55a1"
                               class="mr-2"
-                              style="font-size:20px"
+                              style="font-size: 20px"
                               >fas fa-phone-square-alt</v-icon
                             >스카이프 서비스 제공
                           </div>
@@ -119,7 +119,7 @@
                                 >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">
+                            <div class="caption" style="color: #bdbdbd">
                               수업 횟수
                             </div>
                             <!-- days row-->
@@ -144,7 +144,7 @@
                                 >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">
+                            <div class="caption" style="color: #bdbdbd">
                               수업 날짜
                             </div>
                             <!-- period row-->
@@ -176,7 +176,7 @@
                                 >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">
+                            <div class="caption" style="color: #bdbdbd">
                               수강기간
                             </div>
                             <!-- book row-->
@@ -281,7 +281,7 @@
                               </v-col>
                             </v-row>
 
-                            <v-container style="background-color:#ececec">
+                            <v-container style="background-color: #ececec">
                               <v-row justify="start" class="mb-3 mt-5">
                                 <v-col
                                   cols="6"
@@ -310,14 +310,19 @@
                                     :outlined="
                                       seriesSelected == item.text ? true : false
                                     "
-                                    style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                    style="
+                                      display: unset;
+                                      white-space: unset;
+                                      line-break: strict;
+                                      word-break: keep-all;
+                                    "
                                     >{{ item.text }}</v-btn
                                   >
                                 </v-col>
                               </v-row>
                             </v-container>
 
-                            <div class="caption" style="color:#bdbdbd">
+                            <div class="caption" style="color: #bdbdbd">
                               수업 유형
                             </div>
                           </v-container>
@@ -331,9 +336,9 @@
 
                     <v-container class="pb-1">
                       <v-row no-gutters>
-                        <v-col class="text-left" style="cursor:pointer;">
+                        <v-col class="text-left" style="cursor: pointer">
                           <span
-                            style="cursor:pointer;color:#5a55a1"
+                            style="cursor: pointer; color: #5a55a1"
                             @click="(currentZone = 0), setTime(6)"
                             >프라임</span
                           >
@@ -342,9 +347,9 @@
                             >6:00 - 9:50</span
                           >
                         </v-col>
-                        <v-col class="text-left" style="cursor:pointer;">
+                        <v-col class="text-left" style="cursor: pointer">
                           <span
-                            style="cursor:pointer;color:#5a55a1"
+                            style="cursor: pointer; color: #5a55a1"
                             @click="(currentZone = 1), setTime(10)"
                             >이코노미</span
                           >
@@ -353,9 +358,9 @@
                             >10:00 - 16:50</span
                           >
                         </v-col>
-                        <v-col class="text-left" style="cursor:pointer;">
+                        <v-col class="text-left" style="cursor: pointer">
                           <span
-                            style="cursor:pointer;color:#5a55a1"
+                            style="cursor: pointer; color: #5a55a1"
                             @click="(currentZone = 2), setTime(17)"
                             >프라임</span
                           >
@@ -435,7 +440,7 @@
                       v-if="!seeMore"
                       @click="seeMore = true"
                       class="caption mb-5"
-                      style="color:#bdbdbd"
+                      style="color: #bdbdbd"
                     >
                       시간표 전체보기 >
                     </div>
@@ -496,7 +501,7 @@
                     </v-container>
 
                     <v-divider
-                      style="margin-top:100px; margin-bottom:100px"
+                      style="margin-top: 100px; margin-bottom: 100px"
                       class="mx-7"
                     ></v-divider>
 
@@ -530,7 +535,7 @@
                     <v-btn
                       color="#5a55a1"
                       class="rounded-lg white--text font-weight-bold"
-                      style="margin-top:150px"
+                      style="margin-top: 150px"
                       @click="confirmDialog = true"
                       >수업 신청하기</v-btn
                     >
@@ -544,12 +549,12 @@
     </v-container>
 
     <v-dialog v-model="confirmDialog" max-width="500">
-      <v-card max-width="500" class=" pb-5 rounded-xl">
-        <div class="h4 text-center pa-3 mb-5" style="background-color:#85c9e8">
+      <v-card max-width="500" class="pb-5 rounded-xl">
+        <div class="h4 text-center pa-3 mb-5" style="background-color: #85c9e8">
           요약
         </div>
         <div class="px-5">
-          <div class="h5 gmarket" style="color:#85c9e8">수강선택 요약</div>
+          <div class="h5 gmarket" style="color: #85c9e8">수강선택 요약</div>
           <div class="px-3 mb-5 h6">
             <v-container>
               <v-row no-gutters>
@@ -567,7 +572,7 @@
             </v-container>
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color:#85c9e8">
+          <div class="h5 gmarket mt-5" style="color: #85c9e8">
             결제 예정금액
           </div>
           <v-container>
@@ -591,10 +596,10 @@
 
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3  h6" @click="confirmDialog = false">취소</span>
+              <span class="pa-3 h6" @click="confirmDialog = false">취소</span>
             </v-btn>
             <v-btn color="#2572a8" class="mx-auto rounded-xl" depressed>
-              <span class="pa-3 white--text h6 ">확인</span>
+              <span class="pa-3 white--text h6">확인</span>
             </v-btn>
           </div>
         </div>
@@ -637,7 +642,7 @@ export default {
       paymentMethods: [
         { text: "무통장 입금", color: "" },
         { text: "카드 결제 ", color: "" },
-        { text: "정기 결제 ", color: "" }
+        { text: "정기 결제 ", color: "" },
       ],
 
       frequencySelected: -1,
@@ -660,33 +665,33 @@ export default {
               text: "셀럽 토크쇼",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "TED Ed",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Movie",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "셀럽과의 대화",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Pop Song",
               level: "",
               type: "video",
-              link: ""
-            }
-          ]
+              link: "",
+            },
+          ],
         },
         {
           course: "정규 회화과정",
@@ -695,15 +700,15 @@ export default {
               text: "Regular Conversation 1~3",
               level: "",
               type: "",
-              link: ""
+              link: "",
             },
             {
               text: "Interactive English Series",
               level: "",
               type: "",
-              link: ""
-            }
-          ]
+              link: "",
+            },
+          ],
         },
         {
           course: "프리토킹 토론",
@@ -713,35 +718,35 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1",
             },
             {
               text: "의견말하기",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1"
+                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1",
             },
             {
               text: "사진묘사",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/JDEP-SR/JDEP-SR-Level1/chapter1"
+                "http://178.128.213.14/book#/JDEP-SR/JDEP-SR-Level1/chapter1",
             },
             {
               text: "영자신문",
               level: "",
               type: "book",
-              link: ""
+              link: "",
             },
             {
               text: "Debate",
               level: "",
               type: "book",
-              link: ""
-            }
-          ]
+              link: "",
+            },
+          ],
         },
         {
           course: "비즈니스 과정",
@@ -751,44 +756,44 @@ export default {
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
+                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing",
             },
             {
               text: "E-mail",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
+                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing",
             },
             {
               text: "Meeting",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1aExVOMJ6dI-J9oRn_Lg5oY4ElSD_afHt/view?usp=sharing"
+                "https://drive.google.com/file/d/1aExVOMJ6dI-J9oRn_Lg5oY4ElSD_afHt/view?usp=sharing",
             },
             {
               text: "Negotiation",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1RWOQTYIQGG--GD34gpUZmQjLcgK0T6HD/view?usp=sharing"
+                "https://drive.google.com/file/d/1RWOQTYIQGG--GD34gpUZmQjLcgK0T6HD/view?usp=sharing",
             },
             {
               text: "Presentation",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1zatMw-zyib5m5XdGawNPl9XEhc4NH1uO/view?usp=sharing"
+                "https://drive.google.com/file/d/1zatMw-zyib5m5XdGawNPl9XEhc4NH1uO/view?usp=sharing",
             },
             {
               text: "비지니스 회화과정",
               level: "",
               type: "book",
               link:
-                "https://drive.google.com/file/d/1JmYIrtdNWaJ-rft815Wyl7SPfbf4-QZJ/view?usp=sharing"
-            }
-          ]
+                "https://drive.google.com/file/d/1JmYIrtdNWaJ-rft815Wyl7SPfbf4-QZJ/view?usp=sharing",
+            },
+          ],
         },
         {
           course: "문법/패턴",
@@ -798,22 +803,22 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1",
             },
             {
               text: "Grammar in Pattern 과정",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/adultbasic/chapter1",
             },
             {
               text: "일상 Dialogue 과정",
               level: "",
               type: "book",
-              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1"
-            }
-          ]
+              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1",
+            },
+          ],
         },
         {
           course: "취업준비/특별 과정",
@@ -823,35 +828,35 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/InterviewExample/InterviewExampleStep1/chapter1"
+                "http://178.128.213.14/book#/InterviewExample/InterviewExampleStep1/chapter1",
             },
             {
               text: "Hotel Dialogues",
               level: "",
               type: "",
-              link: ""
+              link: "",
             },
             {
               text: "Cabin Crew",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1N6zF_HAEiOgjW26rwXC_i30dHJ8TvxQe/view?usp=sharing"
+                "https://drive.google.com/file/d/1N6zF_HAEiOgjW26rwXC_i30dHJ8TvxQe/view?usp=sharing",
             },
             {
               text: "IELTS",
               level: "",
               type: "",
-              link: ""
+              link: "",
             },
             {
               text: "Medical English",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/drive/folders/1OB_g7tNng4oVQekN8c5HxF7kkcnDZb9F?usp=sharing"
-            }
-          ]
+                "https://drive.google.com/drive/folders/1OB_g7tNng4oVQekN8c5HxF7kkcnDZb9F?usp=sharing",
+            },
+          ],
         },
         {
           course: "초/중급 회화과정",
@@ -861,16 +866,16 @@ export default {
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1YPFQMZgHL3Fm3qPJLbJTA49l0WNIE90O/view?usp=sharing"
+                "https://drive.google.com/file/d/1YPFQMZgHL3Fm3qPJLbJTA49l0WNIE90O/view?usp=sharing",
             },
             {
               text: "First Step In Conversation",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1q7tc57t9CseKuRujiTvcUCjgomLrjSJq/view?usp=sharing"
-            }
-          ]
+                "https://drive.google.com/file/d/1q7tc57t9CseKuRujiTvcUCjgomLrjSJq/view?usp=sharing",
+            },
+          ],
         },
         {
           course: "입문과정",
@@ -880,31 +885,31 @@ export default {
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1Es3HQtk5Nd2QD_RlQoXnj9lmVmreCkaM/view?usp=sharing"
+                "https://drive.google.com/file/d/1Es3HQtk5Nd2QD_RlQoXnj9lmVmreCkaM/view?usp=sharing",
             },
             {
               text: "Advanced Phonics ",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1wHyXFBntIGgETbo42818tfIbytqLIsSE/view?usp=sharing"
+                "https://drive.google.com/file/d/1wHyXFBntIGgETbo42818tfIbytqLIsSE/view?usp=sharing",
             },
             {
               text: "P-course Junior",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/18DlCKPueud00P3hXc6DRsGqlllbCWiv4/view?usp=sharing"
+                "https://drive.google.com/file/d/18DlCKPueud00P3hXc6DRsGqlllbCWiv4/view?usp=sharing",
             },
             {
               text: "C-course Junior",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1QbFxqyGlx5CQ7j8A-Hcmo47bj1rML8kW/view?usp=sharing"
-            }
-          ]
-        }
+                "https://drive.google.com/file/d/1QbFxqyGlx5CQ7j8A-Hcmo47bj1rML8kW/view?usp=sharing",
+            },
+          ],
+        },
       ],
 
       bookList10: [
@@ -912,74 +917,74 @@ export default {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "disabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
 
       bookList20: [
@@ -987,74 +992,74 @@ export default {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
 
       bookList30: [
@@ -1062,75 +1067,75 @@ export default {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
-      ]
+          material: "여행영어",
+        },
+      ],
     };
   },
 
@@ -1142,19 +1147,19 @@ export default {
   },
 
   watch: {
-    tab: function() {
+    tab: function () {
       // this.frequencySelected = -1;
       // this.daySelected = -1;
       // this.periodSelected = -1;
       this.bookSelected = -1;
-    }
+    },
   },
 
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
 
-    for (var i = 1; i < 12; i++) {
+    for (var i = 0; i < 12; i++) {
       var today = new Date();
       var nextDates = new Date(today);
       nextDates.setDate(nextDates.getDate() + i);
@@ -1204,7 +1209,7 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    }
-  }
+    },
+  },
 };
 </script>
