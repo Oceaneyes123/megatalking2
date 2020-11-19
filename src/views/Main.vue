@@ -362,7 +362,7 @@
               </v-card>
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/ted_mainpage.jpg">
-                  <v-card height="100%">
+                  <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
@@ -433,7 +433,7 @@
             <v-col cols="12" md="5">
               <v-card color="brown lighten-3 mb-5" class="rounded-xl">
                 <v-img src="../assets/maroon5_mainpage.png">
-                  <v-card height="100%">
+                  <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
                         class="font-weight-black h2 text-left mx-3 white--text gmarket"
