@@ -42,7 +42,7 @@
                       <td>
                         <div>
                           <v-btn
-                            class="white--text rounded-pill"
+                            class="white--text rounded-tl-xl rounded-bl-xl"
                             depressed
                             style="
                               background: linear-gradient(
@@ -51,9 +51,44 @@
                                 #4d94e9
                               ) !important;
                             "
-                            @click="certificateDialog = true"
-                            >영수증 | 수강증 | 출석증명서</v-btn
+                            color="blue"
+                            tile
+                            @click="receiptDialog = true"
                           >
+                            영수증
+                          </v-btn>
+                          <v-btn
+                            class="white--text"
+                            depressed
+                            style="
+                              background: linear-gradient(
+                                to right,
+                                #8fa1fe,
+                                #4d94e9
+                              ) !important;
+                            "
+                            color="blue"
+                            tile
+                            @click="courseDialog = true"
+                          >
+                            수강증
+                          </v-btn>
+                          <v-btn
+                            class="white--text rounded-tr-xl rounded-br-xl"
+                            depressed
+                            style="
+                              background: linear-gradient(
+                                to right,
+                                #8fa1fe,
+                                #4d94e9
+                              ) !important;
+                            "
+                            color="blue"
+                            tile
+                            @click="certificateDialog = true"
+                          >
+                            출석증명서
+                          </v-btn>
                         </div>
                       </td>
                     </tr>
@@ -64,7 +99,7 @@
 
             <v-dialog
               max-width="500"
-              v-model="certificateDialog"
+              v-model="receiptDialog"
               class="rounded-xl"
             >
               <v-card max-width="500" class="rounded-xl">
@@ -125,6 +160,194 @@
                         Cancel
                       </v-btn>
                       <v-btn color="#6a9af2" class="white--text"> Print </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-dialog>
+
+            <v-dialog max-width="700" v-model="courseDialog" class="rounded-xl">
+              <v-card max-width="700" class="rounded-xl">
+                <v-card
+                  color="#6a9af2"
+                  class="pa-3 white--text font-weight-bold h6 rounded-tr-xl rounded-tl-xl"
+                  tile
+                >
+                  Course Certificate
+                </v-card>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" md="6" class="pb-0 pb-md-3">
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Company</v-col
+                          >
+                          <v-col cols="6">[Company]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Address</v-col
+                          >
+                          <v-col cols="6">[Address]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Registration #</v-col
+                          >
+                          <v-col cols="6">[Registration #]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Nature of Business</v-col
+                          >
+                          <v-col cols="6">[Nature of Business]</v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                    <v-col cols="12" md="6" class="pt-0 pt-md-3">
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Representative</v-col
+                          >
+                          <v-col cols="6">[Representative]</v-col>
+                        </v-row>
+
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold">Type</v-col>
+                          <v-col cols="6">[Type]</v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <v-divider></v-divider>
+                <v-container>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Name</v-col>
+                    <v-col cols="9">[Name]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Course</v-col>
+                    <v-col cols="9">[Course]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Contract</v-col>
+                    <v-col cols="9">[Contract]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Period</v-col>
+                    <v-col cols="9">[Period]</v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="caption-text">
+                      This certification is a proof that the student studied in
+                      this academy. <br />
+                      [today_date]
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="d-flex justify-end">
+                      <v-btn class="mr-3" outlined color="#6a9af2">
+                        Close
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-dialog>
+
+            <v-dialog
+              max-width="700"
+              v-model="certificateDialog"
+              class="rounded-xl"
+            >
+              <v-card max-width="700" class="rounded-xl">
+                <v-card
+                  color="#6a9af2"
+                  class="pa-3 white--text font-weight-bold h6 rounded-tr-xl rounded-tl-xl"
+                  tile
+                >
+                  Certificate of Attendance
+                </v-card>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12" md="6" class="pb-0 pb-md-3">
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Company</v-col
+                          >
+                          <v-col cols="6">[Company]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Address</v-col
+                          >
+                          <v-col cols="6">[Address]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Registration #</v-col
+                          >
+                          <v-col cols="6">[Registration #]</v-col>
+                        </v-row>
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Nature of Business</v-col
+                          >
+                          <v-col cols="6">[Nature of Business]</v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                    <v-col cols="12" md="6" class="pt-0 pt-md-3">
+                      <v-container class="px-0 py-0">
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold"
+                            >Representative</v-col
+                          >
+                          <v-col cols="6">[Representative]</v-col>
+                        </v-row>
+
+                        <v-row no-gutters class="mb-2">
+                          <v-col cols="6" class="font-weight-bold">Type</v-col>
+                          <v-col cols="6">[Type]</v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
+                </v-container>
+                <v-divider></v-divider>
+                <v-container>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Name</v-col>
+                    <v-col cols="9">[Name]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Course</v-col>
+                    <v-col cols="9">[Course]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Contract</v-col>
+                    <v-col cols="9">[Contract]</v-col>
+                  </v-row>
+                  <v-row no-gutters class="mb-2">
+                    <v-col cols="3" class="font-weight-bold">Period</v-col>
+                    <v-col cols="9">[Period]</v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="caption-text">
+                      This certification is a proof that the student studied in
+                      this academy. <br />
+                      [today_date]
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-col class="d-flex justify-end">
+                      <v-btn class="mr-3" outlined color="#6a9af2">
+                        Close
+                      </v-btn>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -339,6 +562,8 @@ export default {
       screenWidth: "",
       isMobile: false,
       certificateDialog: false,
+      receiptDialog: false,
+      courseDialog: false,
       tabs: ["수강내역", "적립금", "할인쿠폰", "회원정보수정"],
       tab1Header: [
         "No",
