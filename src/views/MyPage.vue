@@ -4,7 +4,7 @@
       <v-card tile color="#faae7d00" flat class="text-center pa-3">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
-          style="margin-top:200px"
+          style="margin-top: 200px"
         >
           마이 페이지
         </div>
@@ -16,7 +16,7 @@
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:90px"
+          style="margin-top: 90px"
           max-width="1000px"
         >
           <v-container class="px-md-10 pt-10 text-left">
@@ -30,45 +30,19 @@
                 ></v-select>
               </v-col>
             </v-row>
-            <div class="d-flex">
-              <div>
-                {{ month }}/{{ prevSunday }}
 
-                -
-
-                {{ month }}/{{ prevSaturday }}
-              </div>
-              <div class="mx-auto font-weight-black h4">{{ month }}</div>
-              <div>
-                {{ month }}/{{ nextSunday }}
-
-                -
-
-                {{ month }}/{{ nextSaturday }}
-              </div>
-            </div>
-            <v-divider style="background-color:#5a55a1"></v-divider>
             <v-row>
-              <v-col cols="1" class="d-flex align-center justify-center">
-                <v-icon @click="$refs.calendar.prev()" x-large
-                  >fas fa-angle-left</v-icon
-                >
-              </v-col>
-              <v-col cols="10">
-                <v-sheet>
-                  <v-calendar
-                    class="calendar"
-                    ref="calendar"
-                    :now="today"
-                    color="#faae7d"
-                    type="week"
-                  ></v-calendar>
-                </v-sheet>
-              </v-col>
-              <v-col cols="1" class="d-flex align-center justify-center">
-                <v-icon @click="$refs.calendar.next()" x-large
-                  >fas fa-angle-right</v-icon
-                >
+              <v-col>
+                <v-card class="rounded-xl fadeInUp">
+                  <v-date-picker
+                    v-model="date2"
+                    color="#df7a30"
+                    width="100%"
+                    data-aos="zoom-in"
+                    :event-color="(date) => (date[9] % 2 ? 'red' : 'yellow')"
+                    :events="functionEvents"
+                  ></v-date-picker>
+                </v-card>
               </v-col>
             </v-row>
 
@@ -82,10 +56,10 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color:#df7a30">
+                        <div class="caption mb-3" style="color: #df7a30">
                           [주2회 화,목] 프리토킹
                         </div>
-                        <div class="h6 nanum" style="color:#df7a30">
+                        <div class="h6 nanum" style="color: #df7a30">
                           10%
                           <span class="subtitle-text-1">수강 중</span>
                         </div>
@@ -108,10 +82,10 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color:#5e75cf">
+                        <div class="caption mb-3" style="color: #5e75cf">
                           [주2회 화,목] 비즈니스 과정
                         </div>
-                        <div class="h6 nanum" style="color:#5e75cf">
+                        <div class="h6 nanum" style="color: #5e75cf">
                           40%
                           <span class="subtitle-text-1">수강 중</span>
                         </div>
@@ -134,7 +108,7 @@
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption" style="color:#5e75cf">
+                        <div class="caption" style="color: #5e75cf">
                           보강 쿠폰현황
                         </div>
                         <div class="h6 nanum">강의1, 강의26</div>
@@ -160,10 +134,10 @@
 
             <v-row no-gutters>
               <v-col cols="12" md="6">
-                <div class="h5 gmarket">수강 종류</div>
+                <div class="h5 gmarket" data-aos="fade-right">수강 종류</div>
               </v-col>
               <v-col cols="12" md="6">
-                <div class="h6 font-weight-black">
+                <div class="h6 font-weight-black" data-aos="fade-left">
                   20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기
                 </div></v-col
               >
@@ -174,6 +148,7 @@
               <v-img
                 @click="$router.push('/material')"
                 class="rounded-xl"
+                data-aos="fade-up"
                 src="../assets/curriculum/sp_1.jpg"
                 width="100%"
                 height="auto"
@@ -190,7 +165,7 @@
                     <div
                       :class="isMobile ? '' : 'h4'"
                       class="font-weight-black text-right white--text gmarket"
-                      style="position:absolute;bottom:20px;right:20px"
+                      style="position: absolute; bottom: 20px; right: 20px"
                     >
                       Next >
                     </div>
@@ -214,7 +189,11 @@
                 <div
                   :class="isMobile ? 'h5 nanum' : 'h3'"
                   class="text-center"
-                  style="color:#5e75cf;line-break:strict;word-break:keep-all"
+                  style="
+                    color: #5e75cf;
+                    line-break: strict;
+                    word-break: keep-all;
+                  "
                 >
                   오늘의 강의
                 </div>
@@ -226,8 +205,10 @@
                 </v-card>
                 <div class="d-flex mx-auto justify-center">
                   <v-btn
-                    class=" white--text rounded-pill mt-5 pa-7"
-                    style="background:linear-gradient(to right, #ff9351, #f96a70)"
+                    class="white--text rounded-pill mt-5 pa-7"
+                    style="
+                      background: linear-gradient(to right, #ff9351, #f96a70);
+                    "
                   >
                     <span class="h5 nanum">PDF 교재 다운로드</span>
                   </v-btn>
@@ -432,9 +413,7 @@
                       교재 or 수업 중 불편사항이 있으셨나요?
                     </div>
                     <v-divider></v-divider>
-                    <div class="text-center mt-2">
-                      불편사항 신고
-                    </div>
+                    <div class="text-center mt-2">불편사항 신고</div>
                   </v-card>
                 </v-col>
 
@@ -443,9 +422,7 @@
                     <div class="mb-2">
                       <v-icon color="white">thumb_up_alt</v-icon>
                     </div>
-                    <div class="mb-2">
-                      오늘 수업은 어땠나요?
-                    </div>
+                    <div class="mb-2">오늘 수업은 어땠나요?</div>
                     <div>
                       <v-rating
                         :small="isMobile"
@@ -514,6 +491,9 @@
 </style>
 
 <script>
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default {
   data() {
     return {
@@ -529,31 +509,35 @@ export default {
       prevSunday: "",
       isMobile: false,
 
-      isBook: false,
+      date2: new Date().toISOString().substr(0, 10),
+      arrayEvents: null,
+
+      isBook: true,
       isVideo: false,
-      isPDF: true,
+      isPDF: false,
 
       selectedSuggestion: [],
 
       tests: [
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요."
+          detail: "더 나은 표현을 알려드릴게요.",
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요."
+          detail: "더 나은 표현을 알려드릴게요.",
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요."
-        }
-      ]
+          detail: "더 나은 표현을 알려드릴게요.",
+        },
+      ],
     };
   },
 
   created() {
     window.addEventListener("resize", this.onWindowResize);
+    AOS.init();
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
@@ -575,6 +559,13 @@ export default {
     this.prevSunday = prevSun.getDate() - 7;
     this.prevSaturday = prevSun.getDate() - 1;
 
+    this.arrayEvents = [...Array(6)].map(() => {
+      const day = Math.floor(Math.random() * 30);
+      const d = new Date();
+      d.setDate(day);
+      return d.toISOString().substr(0, 10);
+    });
+
     // for (var i = 1; i <= 40; i++) {
     //   for (var j = 1; j <= 3; j++) {
     //     if (i != 14 && i != 18 && i != 11 && i != 24 && i != 26 && i != 27) {
@@ -595,6 +586,13 @@ export default {
         today.getDate() + ((dayIndex - 1 - today.getDay() + 7) % 7) + 1
       );
       return today;
+    },
+
+    functionEvents(date) {
+      const [, , day] = date.split("-");
+      if ([12, 17, 28].includes(parseInt(day, 10))) return true;
+      if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
+      return false;
     },
 
     onWindowResize() {
@@ -622,7 +620,7 @@ export default {
       } else {
         this.selectedSuggestion.push(index);
       }
-    }
-  }
+    },
+  },
 };
 </script>
