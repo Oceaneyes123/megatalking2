@@ -21,13 +21,65 @@
               step
             }}</v-tab>
             <v-tab-item style="height: 80vh">
-              <v-container style="height: 100%">
-                <iframe
+              <v-container style="height: 100%; overflow-y: scroll">
+                <!-- <iframe
                   width="100%"
                   height="100%"
                   style="border: 0"
                   src="https://secure-everglades-57290.herokuapp.com/curriculum/dashboard"
+                ></iframe> -->
+                <iframe
+                  width="100%"
+                  height="315"
+                  src="https://www.youtube.com/embed/TkAku5DS4fY"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
                 ></iframe>
+                <v-container>
+                  <v-row>
+                    <v-btn
+                      depressed
+                      class="rounded-pill mr-2"
+                      style="background: linear-gradient()"
+                      >EN</v-btn
+                    >
+                    <v-btn
+                      depressed
+                      class="rounded-pill white--text"
+                      style="
+                        background: linear-gradient(to right, #8fa1fe, #4993e8);
+                      "
+                      >KR</v-btn
+                    >
+                  </v-row>
+                  <v-row>
+                    <v-container>
+                      <v-row
+                        class="mb-7"
+                        no-gutters
+                        v-for="(item, i) in step1Items"
+                        :key="i"
+                      >
+                        <v-col cols="9">
+                          <div class="text--secondary">
+                            {{ item.english }}
+                          </div>
+                          <div v-html="item.korean"></div>
+                        </v-col>
+                        <v-col cols="3" class="d-flex flex-column flex-md-row">
+                          <v-icon :large="!isMobile" class="mx-2">loop</v-icon>
+                          <v-icon :large="!isMobile" class="mx-2"
+                            >check_box_outline_blank</v-icon
+                          >
+                          <v-icon :large="!isMobile" class="mx-2"
+                            >far fa-lightbulb</v-icon
+                          >
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-row>
+                </v-container>
               </v-container>
             </v-tab-item>
             <v-tab-item style="height: 80vh">
@@ -546,6 +598,38 @@ export default {
 
       window3: 0,
       window4: 0,
+
+      step1Items: [
+        {
+          english:
+            "First thing always first thing always have a book. because if you're not reading, what are you doing?",
+          korean:
+            "가장 먼저 책이 꼭 있어야죠. <br> 왜냐하면 당신이 무엇을 읽고 있지 않다면 뭘 하겠어요?",
+        },
+        {
+          english:
+            "I always have a pair of sunglasses. I just hate having stuff that you don't need.",
+          korean:
+            "선글라스는 꼭 가지고다녀요. <br> 난 그냥 필요 없는 것들을 갖고 다니는 것을 싫어해요.",
+        },
+        {
+          english:
+            " I really try to just keep it to the things that I use every single day.",
+          korean: "저는 정말 매일 사용하는 것에만 신경을 씁니다.",
+        },
+        {
+          english:
+            "A model or actress,  I would say should always have something to keep them entertained in their bag",
+          korean:
+            "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다.",
+        },
+        {
+          english:
+            "because we wait around a lot and there's only so many times we can scroll through Instagram and Twitter and all that.",
+          korean:
+            "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. <br> 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠.",
+        },
+      ],
 
       step3EnglishText: [
         "First thing always first thing always have a book.because if you're not reading, what are you doing?",

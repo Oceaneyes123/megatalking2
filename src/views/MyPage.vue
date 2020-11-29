@@ -133,14 +133,18 @@
             </v-row>
 
             <v-row no-gutters>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="5">
                 <div class="h5 gmarket" data-aos="fade-right">수강 종류</div>
               </v-col>
-              <v-col cols="12" md="6">
-                <div class="h6 font-weight-black" data-aos="fade-left">
-                  20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기
-                </div></v-col
-              >
+              <v-col cols="12" md="7">
+                <v-card
+                  color="#df7a30"
+                  class="h6 font-weight-black white--text pa-3 text-center"
+                  data-aos="fade-left"
+                >
+                  <div>20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
+                </v-card>
+              </v-col>
             </v-row>
 
             <v-container fluid class="px-0">

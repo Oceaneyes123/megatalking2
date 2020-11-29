@@ -32,7 +32,11 @@
                           <div
                             class="h6 font-weight-bold"
                             @click="isPhone = true"
-                            :style="isPhone ? 'color:#4242a3' : 'color:#000'"
+                            :style="
+                              isPhone
+                                ? 'color:#4242a3;font-size: x-large'
+                                : 'color:#000'
+                            "
                             style="cursor: pointer"
                           >
                             전화로 할래요
@@ -50,7 +54,11 @@
                           <div
                             class="h6 font-weight-bold"
                             @click="isPhone = false"
-                            :style="!isPhone ? 'color:#4242a3' : 'color:#000'"
+                            :style="
+                              !isPhone
+                                ? 'color:#4242a3;font-size: x-large'
+                                : 'color:#000;'
+                            "
                             style="cursor: pointer"
                           >
                             화상으로 할래요.
@@ -373,7 +381,7 @@
                     </v-container>
                     <v-divider
                       class="mt-0"
-                      style="background-color: #222dc05F"
+                      style="background-color: #222dc05f"
                     ></v-divider>
                     <v-card flat color="#f5f4f6" class="mb-5">
                       <v-tabs
