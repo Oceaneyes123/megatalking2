@@ -734,13 +734,7 @@
                   >
                   <div class="mt-3">알림</div>
                 </div>
-                <v-divider vertical></v-divider>
-                <div class="d-flex flex-column mx-auto">
-                  <v-icon color="white" x-large @click="$router.push('/main')"
-                    >home</v-icon
-                  >
-                  <div class="mt-3">HOME</div>
-                </div>
+
                 <v-divider vertical></v-divider>
                 <div class="d-flex flex-column mx-auto">
                   <v-icon
