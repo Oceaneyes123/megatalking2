@@ -21,110 +21,106 @@
               step
             }}</v-tab>
             <v-tab-item style="height: 80vh">
-              <v-window
-                v-model="window1"
-                style="height: 100%; overflow-y: scroll"
-              >
-                <v-window-item>
-                  <v-app>
-                    <v-container>
-                      <!-- <iframe
-                  width="100%"
-                  height="100%"
-                  style="border: 0"
-                  src="https://secure-everglades-57290.herokuapp.com/curriculum/dashboard"
-                ></iframe> -->
-                      <iframe
-                        width="100%"
-                        height="315"
-                        src="https://www.youtube.com/embed/TkAku5DS4fY"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                      ></iframe>
-                      <v-container>
-                        <v-row>
-                          <v-btn
-                            depressed
-                            class="rounded-pill mr-2"
-                            style="background: linear-gradient()"
-                            >EN</v-btn
-                          >
-                          <v-btn
-                            depressed
-                            class="rounded-pill white--text"
-                            style="
-                              background: linear-gradient(
-                                to right,
-                                #8fa1fe,
-                                #4993e8
-                              );
-                            "
-                            color="#667fe3"
-                            >KR</v-btn
-                          >
-                        </v-row>
-                        <v-row>
-                          <v-container>
-                            <v-row
-                              class="mb-7"
-                              no-gutters
-                              v-for="(item, i) in step1Items"
-                              :key="i"
-                            >
-                              <v-col cols="9">
-                                <div class="text--secondary">
-                                  {{ item.english }}
-                                </div>
-                                <div v-html="item.korean"></div>
-                              </v-col>
-                              <v-col
-                                cols="3"
-                                class="d-flex flex-column flex-md-row"
-                              >
-                                <v-icon :large="!isMobile" class="mx-2"
-                                  >loop</v-icon
-                                >
-                                <v-icon :large="!isMobile" class="mx-2"
-                                  >check_box_outline_blank</v-icon
-                                >
-                                <v-icon :large="!isMobile" class="mx-2"
-                                  >far fa-lightbulb</v-icon
-                                >
-                              </v-col>
-                            </v-row>
-                            <v-row justify="center">
-                              <v-btn
-                                @click="window1 = window1 + 1"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4993e8
-                                  );
-                                "
-                                color="#667fe3"
-                                class="mx-auto rounded-lg white--text mb-5 rounded-pill"
-                                >Next</v-btn
-                              >
-                            </v-row>
-                          </v-container>
-                        </v-row>
-                      </v-container>
-                    </v-container>
-                  </v-app>
-                </v-window-item>
-                <v-window-item>
-                  <v-container>
+              <v-window v-model="window1" style="height: 100%">
+                <v-window-item style="height: 100%">
+                  <div style="height: 100%" class="d-flex flex-column">
                     <iframe
                       width="100%"
                       height="315"
-                      src="https://www.youtube.com/embed/TkAku5DS4fY"
+                      src="https://www.youtube.com/embed/KvYh1e93BII"
                       frameborder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></iframe>
-                    <v-container>
+                    <div style="height: 100%; overflow-y: scroll">
+                      <div>
+                        <v-container>
+                          <v-row>
+                            <v-btn
+                              depressed
+                              class="rounded-pill mr-2"
+                              style="background: linear-gradient()"
+                              >EN</v-btn
+                            >
+                            <v-btn
+                              depressed
+                              class="rounded-pill white--text"
+                              style="
+                                background: linear-gradient(
+                                  to right,
+                                  #8fa1fe,
+                                  #4993e8
+                                );
+                              "
+                              color="#667fe3"
+                              >KR</v-btn
+                            >
+                          </v-row>
+                          <v-row>
+                            <v-col>
+                              <v-container>
+                                <v-row
+                                  class="mb-7"
+                                  no-gutters
+                                  v-for="(item, i) in step1Items"
+                                  :key="i"
+                                >
+                                  <v-col cols="9">
+                                    <div class="text--secondary">
+                                      {{ item.english }}
+                                    </div>
+                                    <div v-html="item.korean"></div>
+                                  </v-col>
+                                  <v-col
+                                    cols="3"
+                                    class="d-flex flex-column flex-md-row"
+                                  >
+                                    <v-icon :large="!isMobile" class="mx-2"
+                                      >loop</v-icon
+                                    >
+                                    <v-icon :large="!isMobile" class="mx-2"
+                                      >check_box_outline_blank</v-icon
+                                    >
+                                    <v-icon :large="!isMobile" class="mx-2"
+                                      >far fa-lightbulb</v-icon
+                                    >
+                                  </v-col>
+                                </v-row>
+                              </v-container>
+                            </v-col>
+                          </v-row>
+                          <v-row justify="center">
+                            <v-btn
+                              @click="window1 = window1 + 1"
+                              style="
+                                background: linear-gradient(
+                                  to right,
+                                  #8fa1fe,
+                                  #4993e8
+                                );
+                              "
+                              color="#667fe3"
+                              class="mx-auto rounded-lg white--text mb-5 rounded-pill"
+                              >Next</v-btn
+                            >
+                          </v-row>
+                        </v-container>
+                      </div>
+                    </div>
+                  </div>
+                </v-window-item>
+                <v-window-item style="height: 100%">
+                  <div style="height: 100%" class="d-flex flex-column">
+                    <iframe
+                      width="100%"
+                      height="315"
+                      src="https://www.youtube.com/embed/KvYh1e93BII"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
+
+                    <v-container style="height: 100%; overflow-y: scroll">
                       <v-row>
                         <v-btn
                           depressed
@@ -215,7 +211,7 @@
                         </v-col>
                       </v-row>
                     </v-container>
-                  </v-container>
+                  </div>
                 </v-window-item>
                 <v-window-item>
                   <v-container>
@@ -275,11 +271,6 @@
                               only so many <br />
                               only so much <br />
                               "한계가 있다" 입니다.
-                            </div>
-
-                            <div class="text--secondary">
-                              한계가 있어. 인생에 기회는 얼마 없어(한계가 있어).
-                              등의 표현에 쓸 수 있어요.
                             </div>
                           </div>
 
