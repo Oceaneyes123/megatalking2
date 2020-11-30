@@ -21,66 +21,294 @@
               step
             }}</v-tab>
             <v-tab-item style="height: 80vh">
-              <v-container style="height: 100%; overflow-y: scroll">
-                <!-- <iframe
+              <v-window
+                v-model="window1"
+                style="height: 100%; overflow-y: scroll"
+              >
+                <v-window-item>
+                  <v-app>
+                    <v-container>
+                      <!-- <iframe
                   width="100%"
                   height="100%"
                   style="border: 0"
                   src="https://secure-everglades-57290.herokuapp.com/curriculum/dashboard"
                 ></iframe> -->
-                <iframe
-                  width="100%"
-                  height="315"
-                  src="https://www.youtube.com/embed/TkAku5DS4fY"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-                <v-container>
-                  <v-row>
-                    <v-btn
-                      depressed
-                      class="rounded-pill mr-2"
-                      style="background: linear-gradient()"
-                      >EN</v-btn
-                    >
-                    <v-btn
-                      depressed
-                      class="rounded-pill white--text"
-                      style="
-                        background: linear-gradient(to right, #8fa1fe, #4993e8);
-                      "
-                      >KR</v-btn
-                    >
-                  </v-row>
-                  <v-row>
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src="https://www.youtube.com/embed/TkAku5DS4fY"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
+                      <v-container>
+                        <v-row>
+                          <v-btn
+                            depressed
+                            class="rounded-pill mr-2"
+                            style="background: linear-gradient()"
+                            >EN</v-btn
+                          >
+                          <v-btn
+                            depressed
+                            class="rounded-pill white--text"
+                            style="
+                              background: linear-gradient(
+                                to right,
+                                #8fa1fe,
+                                #4993e8
+                              );
+                            "
+                            color="#667fe3"
+                            >KR</v-btn
+                          >
+                        </v-row>
+                        <v-row>
+                          <v-container>
+                            <v-row
+                              class="mb-7"
+                              no-gutters
+                              v-for="(item, i) in step1Items"
+                              :key="i"
+                            >
+                              <v-col cols="9">
+                                <div class="text--secondary">
+                                  {{ item.english }}
+                                </div>
+                                <div v-html="item.korean"></div>
+                              </v-col>
+                              <v-col
+                                cols="3"
+                                class="d-flex flex-column flex-md-row"
+                              >
+                                <v-icon :large="!isMobile" class="mx-2"
+                                  >loop</v-icon
+                                >
+                                <v-icon :large="!isMobile" class="mx-2"
+                                  >check_box_outline_blank</v-icon
+                                >
+                                <v-icon :large="!isMobile" class="mx-2"
+                                  >far fa-lightbulb</v-icon
+                                >
+                              </v-col>
+                            </v-row>
+                            <v-row justify="center">
+                              <v-btn
+                                @click="window1 = window1 + 1"
+                                style="
+                                  background: linear-gradient(
+                                    to right,
+                                    #8fa1fe,
+                                    #4993e8
+                                  );
+                                "
+                                color="#667fe3"
+                                class="mx-auto rounded-lg white--text mb-5 rounded-pill"
+                                >Next</v-btn
+                              >
+                            </v-row>
+                          </v-container>
+                        </v-row>
+                      </v-container>
+                    </v-container>
+                  </v-app>
+                </v-window-item>
+                <v-window-item>
+                  <v-container>
+                    <iframe
+                      width="100%"
+                      height="315"
+                      src="https://www.youtube.com/embed/TkAku5DS4fY"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    ></iframe>
                     <v-container>
-                      <v-row
-                        class="mb-7"
-                        no-gutters
-                        v-for="(item, i) in step1Items"
-                        :key="i"
-                      >
-                        <v-col cols="9">
+                      <v-row>
+                        <v-btn
+                          depressed
+                          class="rounded-pill mr-2"
+                          style="background: linear-gradient()"
+                          >EN</v-btn
+                        >
+                        <v-btn
+                          depressed
+                          class="rounded-pill white--text"
+                          style="
+                            background: linear-gradient(
+                              to right,
+                              #8fa1fe,
+                              #4993e8
+                            );
+                          "
+                          color="#667fe3"
+                          >KR</v-btn
+                        >
+                      </v-row>
+                      <v-row>
+                        <v-col>
                           <div class="text--secondary">
-                            {{ item.english }}
+                            A model or actress, I would say should always have
+                            something to keep them entertained in their bag
                           </div>
-                          <div v-html="item.korean"></div>
+                          <div>
+                            모델이나 여배우라면, 항상 가방에 즐겁게 해줄
+                            무언가가 있어야한다고 말하고 싶습니다.
+                          </div>
                         </v-col>
-                        <v-col cols="3" class="d-flex flex-column flex-md-row">
-                          <v-icon :large="!isMobile" class="mx-2">loop</v-icon>
-                          <v-icon :large="!isMobile" class="mx-2"
-                            >check_box_outline_blank</v-icon
-                          >
-                          <v-icon :large="!isMobile" class="mx-2"
-                            >far fa-lightbulb</v-icon
-                          >
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <div class="text--secondary d-flex">
+                            <div class="mr-5">
+                              <v-icon color="yellow">fas fa-lightbulb</v-icon>
+                            </div>
+                            <div class="text-blue">
+                              I would say~ ( 내 생각엔.. , ~ 인 것 같아.)
+                            </div>
+                          </div>
+                          <div class="ml-8 text--secondary mb-10">
+                            I would say = I’ d say 는 확실하지 않을때 자신의
+                            의견을 말하는 경우 사용하는 표현이예요. 내생각엔…
+                            이라는 뜻으로 해석할 수 있어요. 확실하지 않은
+                            생각이나 의견 표현에 쓰입니다.
+                          </div>
+
+                          <div class="ml-8 mb-10">
+                            <div class="text-blue">
+                              I would say it's a good idea.
+                            </div>
+                            <div class="text--secondary">
+                              그거 좋은 아이디어라고 할 수 있겠네. (내 생각엔
+                              그거 좋은 아이디어인것 같아.)
+                            </div>
+                          </div>
+
+                          <div class="ml-8">
+                            <div class="text-blue">I would say I miss you</div>
+                            <div class="text--secondary">
+                              내가 널 그리워한다고 할 수 있겠어. (내 생각엔 내가
+                              널 그리워하는 것 같아)
+                            </div>
+                          </div>
+                          <v-row justify="center" class="mt-5">
+                            <v-btn
+                              @click="window1 = window1 - 1"
+                              class="mr-3 rounded-lg mb-5 rounded-pill"
+                              >Previous</v-btn
+                            >
+                            <v-btn
+                              @click="window1 = window1 + 1"
+                              style="
+                                background: linear-gradient(
+                                  to right,
+                                  #8fa1fe,
+                                  #4993e8
+                                );
+                              "
+                              color="#667fe3"
+                              class="rounded-lg white--text mb-5 rounded-pill"
+                              >Next</v-btn
+                            >
+                          </v-row>
                         </v-col>
                       </v-row>
                     </v-container>
-                  </v-row>
-                </v-container>
-              </v-container>
+                  </v-container>
+                </v-window-item>
+                <v-window-item>
+                  <v-container>
+                    <v-container>
+                      <v-row>
+                        <v-col> Lesson Review </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <div class="text--secondary d-flex">
+                            <div class="mr-5">
+                              <v-icon color="yellow">fas fa-lightbulb</v-icon>
+                            </div>
+                            <div class="text-blue">
+                              I would say~ ( 내 생각엔.. , ~ 인 것 같아.)
+                            </div>
+                          </div>
+                          <div class="ml-8 text--secondary mb-10">
+                            I would say = I’ d say 는 확실하지 않을때 자신의
+                            의견을 말하는 경우 사용하는 표현이예요. 내생각엔…
+                            이라는 뜻으로 해석할 수 있어요. 확실하지 않은
+                            생각이나 의견 표현에 쓰입니다.
+                          </div>
+
+                          <div class="ml-8 mb-10">
+                            <div class="text-blue">
+                              I would say it's a good idea.
+                            </div>
+                            <div class="text--secondary">
+                              그거 좋은 아이디어라고 할 수 있겠네. (내 생각엔
+                              그거 좋은 아이디어인것 같아.)
+                            </div>
+                          </div>
+
+                          <div class="ml-8 mb-10">
+                            <div class="text-blue">I would say I miss you</div>
+                            <div class="text--secondary">
+                              내가 널 그리워한다고 할 수 있겠어. (내 생각엔 내가
+                              널 그리워하는 것 같아)
+                            </div>
+                          </div>
+
+                          <div class="text--secondary d-flex">
+                            <div class="mr-5">
+                              <v-icon color="yellow">fas fa-lightbulb</v-icon>
+                            </div>
+                            <div class="text-blue">
+                              only so many ( 한계가 있는 )
+                            </div>
+                          </div>
+                          <div class="ml-8 text--secondary mb-5">
+                            only so many only so much "한계가 있다" 입니다.
+                          </div>
+
+                          <div class="ml-8">
+                            <div class="text--secondary">
+                              only so many <br />
+                              only so much <br />
+                              "한계가 있다" 입니다.
+                            </div>
+
+                            <div class="text--secondary">
+                              한계가 있어. 인생에 기회는 얼마 없어(한계가 있어).
+                              등의 표현에 쓸 수 있어요.
+                            </div>
+                          </div>
+
+                          <v-row justify="center" class="mt-5">
+                            <v-btn
+                              @click="window1 = window1 - 1"
+                              class="mr-3 rounded-lg mb-5 rounded-pill"
+                              >Previous</v-btn
+                            >
+                            <v-btn
+                              @click="window1 = window1 + 1"
+                              style="
+                                background: linear-gradient(
+                                  to right,
+                                  #8fa1fe,
+                                  #4993e8
+                                );
+                              "
+                              color="#667fe3"
+                              class="rounded-lg white--text mb-5 rounded-pill"
+                              >Next</v-btn
+                            >
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-container>
+                </v-window-item>
+              </v-window>
             </v-tab-item>
             <v-tab-item style="height: 80vh">
               <v-container style="height: 100%">
@@ -596,6 +824,7 @@ export default {
       isBook: false,
       isVideo: true,
 
+      window1: 0,
       window3: 0,
       window4: 0,
 
