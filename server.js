@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+
 
 // Where we will keep books
 let books = [];
@@ -22,4 +22,6 @@ app.post('/api/next',(req, res) => {
     res.send(isNext);
 });
 
+
+const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`));
