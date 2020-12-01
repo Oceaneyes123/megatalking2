@@ -413,8 +413,6 @@ export default {
 
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
-
-    console.log(this.isMobile);
   },
 
   watch: {

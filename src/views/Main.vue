@@ -71,6 +71,7 @@
           width="95%"
           color="#f1f1f1"
           flat
+          data-aos="zoom-in"
         >
           <v-card color="#e9c5b1" flat class="mb-5">
             <v-img
@@ -103,6 +104,7 @@
           max-width="700"
           style="position: relative; margin-bottom: 100px"
           v-if="!isMobile"
+          data-aos="fade-right"
         >
           <v-card
             class="pt-10 pl-10 text-left pb-5 rounded-xl"
@@ -146,6 +148,7 @@
           color="#f1f1f1"
           class="pt-10 rounded-xl mx-auto"
           width="95%"
+          data-aos="fade-left"
         >
           <v-card class="mb-5" flat color="#00000000">
             <v-img width="100%" position="50%" src="../assets/girl.png"></v-img>
@@ -173,6 +176,7 @@
           max-width="700"
           style="position: relative; margin-bottom: 100px"
           v-if="!isMobile"
+          data-aos="fade-left"
         >
           <v-card
             flat
@@ -215,6 +219,7 @@
           class="mt-10 mx-auto"
           max-width="700"
           style="position: relative; margin-bottom: 100px"
+          data-aos="fade-right"
         >
           <v-card flat class="text-left rounded-xl" color="#f1f1f1">
             <v-container class="px-0 py-0">
@@ -347,7 +352,11 @@
         <v-container>
           <v-row justify="center">
             <v-col cols="12" md="5">
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/emma_watson.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>
@@ -360,7 +369,11 @@
                   </v-card>
                 </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/ted_mainpage.jpg">
                   <v-card height="100%" color="#00000000">
                     <v-container>
@@ -373,7 +386,11 @@
                   </v-card>
                 </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/movie.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container style="positon: relative">
@@ -403,7 +420,11 @@
                   </v-card>
                 </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/vogue.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>
@@ -431,7 +452,11 @@
               </v-card>
             </v-col>
             <v-col cols="12" md="5">
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/maroon5_mainpage.png">
                   <v-card height="100%" color="#00000000">
                     <v-container>
@@ -444,7 +469,11 @@
                   </v-card>
                 </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/camera.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container class="white--text text-left h6 nanum">
@@ -469,7 +498,11 @@
                   </v-card>
                 </v-img>
               </v-card>
-              <v-card color="brown lighten-3 mb-5" class="rounded-xl">
+              <v-card
+                color="brown lighten-3 mb-5"
+                class="rounded-xl"
+                data-aos="fade-up"
+              >
                 <v-img src="../assets/singer.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>

@@ -53,6 +53,7 @@
                                 );
                               "
                               color="#667fe3"
+                              @click="send('hello')"
                               >KR</v-btn
                             >
                           </v-row>
@@ -813,6 +814,8 @@ export default {
       window3: 0,
       window4: 0,
 
+      connection: null,
+
       step1Items: [
         {
           english:
@@ -1008,6 +1011,16 @@ export default {
 
   created() {
     window.addEventListener("resize", this.onWindowResize);
+
+    this.connection = new WebSocket("wss://echo.websocket.org");
+
+    this.connection.onopen = function (event) {
+      console.log(event);
+    };
+
+    this.connection.onmessage = function (event) {
+      console.log(event);
+    };
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
@@ -1020,6 +1033,11 @@ export default {
   },
 
   methods: {
+    send(message) {
+      console.log("sending");
+      this.connection.send(message);
+    },
+
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
