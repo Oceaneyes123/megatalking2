@@ -5,7 +5,7 @@
         tile
         height="75"
         width="100%"
-        style="position:fixed;top:0;z-index:100"
+        style="position: fixed; top: 0; z-index: 100"
         v-if="showNav"
       >
         <v-container class="d-flex flex-row">
@@ -24,7 +24,7 @@
             flat
             class="d-flex align-center mx-auto"
             color="#00000000"
-            style="color:#a3a3a3"
+            style="color: #a3a3a3"
           >
             <div
               class="mr-6 subheading"
@@ -40,7 +40,7 @@
             flat
             class="d-flex align-center mr-5"
             color="#00000000"
-            style="color:#a3a3a3"
+            style="color: #a3a3a3"
           >
             <div class="mr-8 subheading" @click="$router.push('/account')">
               회원정보
@@ -67,7 +67,7 @@
               <v-icon v-on="menu" x-large>menu</v-icon>
             </template>
             <v-card
-              style="color:#a3a3a3"
+              style="color: #a3a3a3"
               minz-width="100%"
               color="#fafafa"
               tile
@@ -105,7 +105,7 @@
                       (평일 오전 9시~18시)
                     </div>
                   </v-row>
-                  <v-row style="margin-top:150px">
+                  <v-row style="margin-top: 150px">
                     <v-card color="#00000000" flat>
                       <v-img
                         @click="$router.push('/')"
@@ -124,7 +124,7 @@
                     <div class="mb-4">계좌번호 안내</div>
                   </v-row>
                   <v-row>
-                    <div style="color:#cb5413" class="caption">
+                    <div style="color: #cb5413" class="caption">
                       예금주 (주)유에듀케이션
                     </div>
                   </v-row>
@@ -164,17 +164,10 @@
               <v-col>
                 <v-container class="text--secondary">
                   <v-row>
-                    <div style="letter-spacing:5px">FOLLOW US</div>
+                    <div style="letter-spacing: 5px">FOLLOW US</div>
                   </v-row>
                   <v-row>
                     <v-card class="d-flex flex-row mt-5" color="#00000000" flat>
-                      <a href="" target="_blank">
-                        <v-img
-                          src="../src/assets/fkor.png"
-                          width="50"
-                          class="mr-5"
-                        ></v-img>
-                      </a>
                       <a
                         href="https://www.facebook.com/megatalking"
                         target="_blank"
@@ -195,9 +188,6 @@
                           class="mr-5"
                         ></v-img>
                       </a>
-                      <a href="" target="_blank">
-                        <v-img src="../src/assets/tw.png" width="50"></v-img>
-                      </a>
                     </v-card>
                   </v-row>
                 </v-container>
@@ -212,7 +202,10 @@
       <v-dialog
         v-model="signInDialog"
         max-width="1000"
-        style="overflow-x:hidden;lborder-radius: 25px 25px 25px 25px !important"
+        style="
+          overflow-x: hidden;
+          lborder-radius: 25px 25px 25px 25px !important;
+        "
       >
         <v-card flat class="rounded-xl" max-width="1000">
           <v-card flat color="#8aace9" class="rounded-xl">
@@ -252,7 +245,13 @@
                         ></v-text-field>
                         <v-checkbox label="로그인 상태 유지"></v-checkbox>
                         <v-btn
-                          style="background-image: linear-gradient(to right, #add5f5, #9ebbef)"
+                          style="
+                            background-image: linear-gradient(
+                              to right,
+                              #add5f5,
+                              #9ebbef
+                            );
+                          "
                           block
                           depressed
                           class="white--text h5 nanum rounded-xl"
@@ -316,7 +315,13 @@
                         label="할인/이벤트 안내 동의(선택)"
                       ></v-checkbox>
                       <v-btn
-                        style="background-image: linear-gradient(to right, #fc686f, #ff934d)"
+                        style="
+                          background-image: linear-gradient(
+                            to right,
+                            #fc686f,
+                            #ff934d
+                          );
+                        "
                         block
                         depressed
                         class="white--text h5 nanum rounded-xl"
@@ -352,28 +357,28 @@ export default {
       routes: [
         {
           text: "커리큘럼",
-          link: "curriculum"
+          link: "curriculum",
         },
         {
           text: "레벨테스트",
-          link: "level-test"
+          link: "level-test",
         },
         {
           text: "수강신청",
-          link: "enrollment"
+          link: "enrollment",
         },
         {
           text: "마이페이지",
-          link: "mypage"
+          link: "mypage",
         },
         {
           text: "수강후기",
-          link: "board"
+          link: "board",
         },
         {
           text: "이벤트",
-          link: "event"
-        }
+          link: "event",
+        },
       ],
 
       images: {
@@ -383,11 +388,11 @@ export default {
         enrollment: require("../src/assets/enrollment.jpg"),
         mypage: require("../src/assets/bg_mega_review.png"),
         board: require("../src/assets/bg_mega_review.png"),
-        event: require("../src/assets/bg_mega_event.png")
+        event: require("../src/assets/bg_mega_event.png"),
       },
       currentImage: "",
       screenWidth: "",
-      isMobile: false
+      isMobile: false,
     };
   },
 
@@ -413,14 +418,14 @@ export default {
   },
 
   watch: {
-    $route: function() {
+    $route: function () {
       if (this.$route.path == "/material") {
         this.showNav = false;
       } else {
         this.showNav = true;
         this.loadBg();
       }
-    }
+    },
   },
 
   methods: {
@@ -439,8 +444,8 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    }
-  }
+    },
+  },
 };
 </script>
 

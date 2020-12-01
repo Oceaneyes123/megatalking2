@@ -628,7 +628,7 @@ export default {
     return {
       tab: 0,
       durations: ["하루 10분", "하루 20분", "하루 30분"],
-      frequncies: ["주2회 화목", "주3회 화목", "주5회 화목"],
+      frequncies: ["주2회 화목", "주3회 월수금", "주5회 월~금"],
       days: [],
       periods: ["4주", "12주", "6개월", "1년"],
       dateTime: new Date(),

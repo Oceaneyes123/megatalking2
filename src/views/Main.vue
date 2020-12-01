@@ -803,6 +803,9 @@
 </style>
 
 <script>
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default {
   data() {
     return {
@@ -998,6 +1001,7 @@ export default {
 
   created() {
     window.addEventListener("resize", this.onWindowResize);
+    AOS.init();
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
