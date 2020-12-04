@@ -17,13 +17,23 @@
             slider-color="#FFF"
             v-model="tabs"
           >
-            <v-tab class="white--text" v-for="(step, i) in steps" :key="i">{{
-              step
-            }}</v-tab>
+            <v-tab
+              class="white--text"
+              v-for="(step, i) in steps"
+              :key="i"
+              @click="i == 2 ? check() : ''"
+              >{{ step }}</v-tab
+            >
             <v-tab-item style="height: 80vh">
               <v-window v-model="window1" style="height: 100%">
                 <v-window-item style="height: 100%">
-                  <div style="height: 100%" class="d-flex flex-column">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://rocky-reef-33555.herokuapp.com/player?sub=teded&unit=1"
+                    frameborder="0"
+                  ></iframe>
+                  <!-- <div style="height: 100%" class="d-flex flex-column">
                     <iframe
                       width="100%"
                       height="315"
@@ -108,7 +118,7 @@
                         </v-container>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </v-window-item>
                 <v-window-item style="height: 100%">
                   <div style="height: 100%" class="d-flex flex-column">
@@ -807,6 +817,8 @@ export default {
 
       selectedIcon: -1,
 
+      status: false,
+
       isBook: false,
       isVideo: true,
 
@@ -1012,27 +1024,55 @@ export default {
   created() {
     window.addEventListener("resize", this.onWindowResize);
 
-    this.connection = new WebSocket("wss://echo.websocket.org");
+    // this.connection = new WebSocket("wss://megatalking-api.vercel.app");
 
-    this.connection.onopen = function (event) {
-      console.log(event);
-    };
+    // this.connection.onopen = function (event) {
+    //   console.log(event);
+    // };
 
-    this.connection.onmessage = function (event) {
-      console.log(event);
-    };
+    // this.connection.onmessage = function (event) {
+    //   console.log(event);
+    // };
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
   },
 
   mounted() {
-    window.reload();
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+
+    window.addEventListener("message", receiveMessage, false);
+
+    var vm = this;
+    function receiveMessage(evt) {
+      if (
+        evt.origin == "https://rocky-reef-33555.herokuapp.com" &&
+        evt.data == "status=true"
+      ) {
+        vm.proceed();
+      }
+    }
   },
 
   methods: {
+    proceed() {
+      console.log(this.status, "test");
+      this.tabs = 1;
+    },
+    // getData() {
+    //   var proxy = "https://cors-anywhere.herokuapp.com/";
+    //   var data = {
+    //     status: true,
+    //   };
+    //   axios
+    //     .post(proxy + "https://megatalking-api.vercel.app/api/next", data)
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       return res.json(res.data);
+    //     });
+    // },
+
     send(message) {
       console.log("sending");
       this.connection.send(message);
