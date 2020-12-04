@@ -1175,6 +1175,8 @@ td:nth-child(n + 2) {
 </style>
 
 <script>
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default {
   data() {
     return {
@@ -1545,6 +1547,7 @@ export default {
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+    AOS.init()
   },
 
   methods: {
