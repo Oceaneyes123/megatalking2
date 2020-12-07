@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color:#00000000">
-    <v-container fluid class="py-0 px-0">
-      <v-card flat tile color="#8bb6f700" class="text-center pa-3">
+    <v-container fluid class="py-0 px-0 mx-0">
+      <v-card flat tile color="#8bb6f700" class="text-center pa-3 px-0">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
           style="margin-top:200px"
@@ -23,7 +23,7 @@
           max-width="1000px"
           color="#fafafa"
         >
-          <v-container class="px-md-10 py-10">
+          <v-container class="px-md-10 py-10 mx-0">
             <v-sheet class="mx-auto px-4" color="rgba(0,0,0,0.0)">
               <v-slide-group
                 mandatory
@@ -1547,7 +1547,7 @@ export default {
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
-    AOS.init()
+    AOS.init();
   },
 
   methods: {
@@ -1567,4 +1567,3 @@ export default {
   }
 };
 </script>
-

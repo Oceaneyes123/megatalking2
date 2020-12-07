@@ -1,9 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "@/store";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/index",
     name: "Index",
     component: require("../views/Index.vue").default
@@ -53,11 +55,15 @@ const routes = [{
     name: "Event",
     component: require("../views/Event.vue").default
   }
-
 ];
 
 const router = new VueRouter({
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  store.commit("loadBg", to.path.slice(1, to.path.length));
+  next();
 });
 
 export default router;
