@@ -29,7 +29,7 @@
             class="mr-6 subheading"
             v-for="(route, i) in routes"
             :key="i"
-            @click="$router.push(`/${route.link}`)"
+            @click="attachedLink(route.link)"
           >
             {{ route.text }}
           </div>
@@ -41,11 +41,14 @@
           color="#00000000"
           style="color: #a3a3a3"
         >
-          <div class="mr-8 subheading" @click="$router.push('/account')">
+          <div class="mr-8 subheading" @click="attachedLink('account')">
             회원정보
           </div>
-          <div class="mr-6 subheading" @click="signInDialog = true">
-            <a>로그인</a>
+          <div
+            class="mr-6 subheading"
+            @click="isLogin ? logoutDialogToggle() : sighDialogToggle()"
+          >
+            <a>{{ isLogin ? "로그아웃" : "로그인" }}</a>
           </div>
         </v-card>
 
@@ -76,7 +79,7 @@
               <v-list-item
                 v-for="(route, i) in routes"
                 :key="i"
-                @click="$router.push(`/${route.link}`)"
+                @click="attachedLink(route.link)"
                 >{{ route.text }}</v-list-item
               >
             </v-list>
@@ -88,20 +91,27 @@
       :signInDialog="signInDialog"
       @sighDialogToggle="sighDialogToggle"
     ></SignUpInDialog>
+    <LogoutDialog
+      :logoutDialog="logoutDialog"
+      @logoutDialogToggle="logoutDialogToggle"
+    ></LogoutDialog>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import SignUpInDialog from "@/components/SignUpInDialog.vue";
+import LogoutDialog from "@/components/LogoutDialog.vue";
 export default {
   name: "Header",
   components: {
-    SignUpInDialog
+    SignUpInDialog,
+    LogoutDialog
   },
   data() {
     return {
       signInDialog: false,
+      logoutDialog: false,
       routes: [
         {
           text: "커리큘럼",
@@ -131,12 +141,27 @@ export default {
     };
   },
   computed: {
-    ...mapState(["showNav", "screenWidth", "isMobile"])
+    ...mapState(["showNav", "screenWidth", "isMobile", "isLogin"])
   },
   mounted() {},
   methods: {
     sighDialogToggle() {
-      this.signInDialog = false;
+      this.signInDialog = !this.signInDialog;
+    },
+    logoutDialogToggle() {
+      this.logoutDialog = !this.logoutDialog;
+    },
+    attachedLink(link) {
+      if (link == "mypage" || link == "account") {
+        //로그인
+        if (this.$store.state.isLogin) {
+          this.$router.push(`/${link}`);
+        } else {
+          this.sighDialogToggle();
+        }
+      } else {
+        this.$router.push(`/${link}`);
+      }
     }
   }
 };
