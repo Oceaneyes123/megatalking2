@@ -21,7 +21,14 @@
         <v-container class="px-5 px-md-10 py-10">
           <v-row>
             <v-col cols="5" md="3">
-              <v-select :items="items" outlined dense></v-select>
+              <v-select
+                :items="items"
+                item-text="text"
+                item-value="key"
+                v-model="defaultSelected"
+                outlined
+                dense
+              ></v-select>
             </v-col>
             <v-spacer></v-spacer>
             <v-col cols="5" md="3">
@@ -52,8 +59,20 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
-
-      items: ["최신순"],
+      defaultSelected: {
+        key: "new",
+        text: "최신순"
+      },
+      items: [
+        {
+          key: "new",
+          text: "최신순"
+        },
+        {
+          key: "name",
+          text: "이름순"
+        }
+      ],
 
       header: [
         {

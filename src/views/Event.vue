@@ -21,7 +21,14 @@
         <v-container class="px-5 px-md-10 py-10">
           <v-row>
             <v-col cols="5" md="3">
-              <v-select :items="items" outlined dense></v-select>
+              <v-select
+                :items="items"
+                item-text="text"
+                item-value="key"
+                outlined
+                dense
+                v-model="defaultSelected"
+              ></v-select>
             </v-col>
             <v-spacer></v-spacer>
             <v-col cols="5" md="3">
@@ -68,8 +75,20 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
-
-      items: ["진행중인 이벤트"]
+      defaultSelected: {
+        key: "progress",
+        text: "진행중인 이벤트"
+      },
+      items: [
+        {
+          key: "progress",
+          text: "진행중인 이벤트"
+        },
+        {
+          key: "end",
+          text: "종료된 이벤트"
+        }
+      ]
     };
   },
 

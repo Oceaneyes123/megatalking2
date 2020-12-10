@@ -29,37 +29,48 @@
         <v-card flat class="pa-5">
           <v-container>
             <v-row>
-              <v-col cols="5" class="mx-auto">
-                <v-row>
-                  <v-col>
-                    <v-text-field
-                      dense
-                      outlined
-                      class="rounded-xl"
-                      label="아이디(이메일)"
-                    ></v-text-field>
-                    <v-text-field
-                      dense
-                      outlined
-                      class="rounded-xl"
-                      label="비밀번호"
-                      type="password"
-                      style="font-family: auto;"
-                    ></v-text-field>
-                    <v-checkbox label="로그인 상태 유지"></v-checkbox>
-                    <v-btn
-                      style="background-image: linear-gradient(to right, #add5f5, #9ebbef);"
-                      block
-                      depressed
-                      class="white--text h5 nanum rounded-xl"
-                      large
-                      >로그인</v-btn
-                    >
-                  </v-col>
-                </v-row>
+              <v-col cols="12" md="5" class="mx-auto">
+                <v-alert dense border="left" type="warning" v-if="loginErr">
+                  {{ loginErrMsg }}
+                </v-alert>
+                <v-form ref="loginform" v-model="loginValid">
+                  <v-row>
+                    <v-col>
+                      <v-text-field
+                        dense
+                        outlined
+                        class="rounded-xl"
+                        label="아이디(이메일)"
+                        :rules="loginEmailRules"
+                        v-model="loginId"
+                      ></v-text-field>
+                      <v-text-field
+                        dense
+                        outlined
+                        class="rounded-xl"
+                        label="비밀번호"
+                        type="password"
+                        style="font-family: auto;"
+                        :rules="loginPwRules"
+                        v-model="loginPw"
+                      ></v-text-field>
+                      <v-checkbox label="로그인 상태 유지"></v-checkbox>
+                      <v-btn
+                        style="background-image: linear-gradient(to right, #add5f5, #9ebbef);"
+                        block
+                        depressed
+                        class="white--text h5 nanum rounded-xl"
+                        large
+                        :loading="btnLoading"
+                        @click="login()"
+                        >로그인</v-btn
+                      >
+                    </v-col>
+                  </v-row>
+                </v-form>
               </v-col>
               <v-divider vertical></v-divider>
-              <v-col cols="5" class="mx-auto">
+              <v-col cols="12" md="5" class="mx-auto">
                 <v-row>
                   <v-col cols="12" md="6" class="py-0">
                     <v-text-field
@@ -133,14 +144,45 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   data() {
-    return {};
+    return {
+      loginValid: false,
+      loginEmailRules: [v => !!v || "아이디를 입력해주세요"],
+      loginPwRules: [v => !!v || "비밀번호를 입력해주세요"],
+      loginId: "",
+      loginPw: "",
+      btnLoading: false
+    };
+  },
+  computed: {
+    ...mapState(["isLogin", "loginErr", "loginErrMsg"])
   },
   props: ["signInDialog"],
   methods: {
     close() {
       this.$emit("sighDialogToggle", false);
+    },
+    login() {
+      if (this.$refs.loginform.validate()) {
+        //로그인 필드를 다 입력했다면
+
+        this.btnLoading = true;
+        this.$store
+          .dispatch("login", {
+            id: this.loginId,
+            pw: this.loginPw
+          })
+          .then(() => {
+            if (this.isLogin) {
+              this.$refs.loginform.reset();
+              this.close();
+            }
+            this.btnLoading = false;
+          });
+      }
     }
   }
 };

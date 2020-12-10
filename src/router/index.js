@@ -4,6 +4,15 @@ import store from "@/store";
 
 Vue.use(VueRouter);
 
+const onlyAuthUser = (to, from, next) => {
+  if (store.state.isLogin === true) {
+    //로그인이 안되어있는 친구
+    return next();
+  }
+  //로그인이 되어있는 친구
+  next("/");
+};
+
 const routes = [
   {
     path: "/index",
@@ -28,7 +37,8 @@ const routes = [
   {
     path: "/mypage",
     name: "MyPage",
-    component: require("../views/MyPage.vue").default
+    component: require("../views/MyPage.vue").default,
+    beforeEnter: onlyAuthUser
   },
   {
     path: "/curriculum",
@@ -38,7 +48,8 @@ const routes = [
   {
     path: "/account",
     name: "Account",
-    component: require("../views/Account.vue").default
+    component: require("../views/Account.vue").default,
+    beforeEnter: onlyAuthUser
   },
   {
     path: "/material",
@@ -62,7 +73,14 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  store.commit("loadBg", to.path.slice(1, to.path.length));
+  let pageName = to.path.slice(1, to.path.length);
+  if (pageName == "mypage" || pageName == "account") {
+    if (store.state.isLogin === false) {
+      return next({ name: "Main" });
+    }
+  }
+
+  store.commit("loadBg", pageName);
   next();
 });
 
