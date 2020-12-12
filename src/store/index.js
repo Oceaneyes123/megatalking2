@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    loginToken: localStorage.getItem("access-token"),
     loginErr: false,
     loginErrMsg: "",
     isLogin: false,
@@ -88,12 +89,12 @@ export default new Vuex.Store({
           }
         });
     },
-    async isLogin({ commit, state }) {
+    async isLogin({ state }) {
       //토큰 가져오기
       let token = localStorage.getItem("access-token");
       //토큰이 있다면 아래 로스 실행
       if (token) {
-        console.log(token, commit, state);
+        //console.log(token, commit, state);
         state.isLogin = true;
         state.loginErr = false;
       } else {

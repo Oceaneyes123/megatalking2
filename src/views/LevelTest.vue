@@ -43,6 +43,7 @@
                     large
                     class="white--text rounded-lg ml-auto"
                     :block="isMobile"
+                    @click="searchEvaluationDialog = true"
                     >결과 확인하기</v-btn
                   >
                 </v-col>
@@ -137,7 +138,6 @@
               <div class="px-5 px-md-10 h6 font-weight-black text-left mb-5">
                 학생 정보
               </div>
-
               <v-row class="align-center mx-4 mx-sm-10 mx-4 mb-10">
                 <v-col cols="12" sm="6" class="pb-0 pb-sm-3">
                   <v-text-field
@@ -145,6 +145,10 @@
                     label="이름"
                     dense
                     outlined
+                    ref="name"
+                    v-model="name"
+                    :rules="[() => !!name || '필수 입력값입니다.']"
+                    required
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" class="pt-0 pt-sm-3">
@@ -153,6 +157,15 @@
                     label="연락처"
                     dense
                     outlined
+                    counter="13"
+                    maxlength="13"
+                    v-model="number"
+                    ref="number"
+                    :rules="[
+                      () => !!number || '필수 입력값입니다.',
+                      v => v.length <= 13 || '연락처는 13자리 입니다.'
+                    ]"
+                    required
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -193,6 +206,7 @@
                         :large="!isMobile"
                         @click="daySelected = i"
                         :color="daySelected == i ? 'primary' : ''"
+                        :loading="day === 'loading'"
                         depressed
                         >{{ day }}</v-btn
                       >
@@ -211,13 +225,13 @@
                   <v-container class="px-0 py-0">
                     <v-row
                       no-gutters
-                      v-for="(hour, i) in 24 - dateTime.getHours()"
+                      v-for="(time, i) in dateTimes[days[0]]"
                       :key="i"
                     >
                       <v-col
                         class="py-2"
                         cols="2"
-                        v-for="(minute, j) in 6"
+                        v-for="(unit, j) in time"
                         :key="j"
                       >
                         <span
@@ -225,20 +239,15 @@
                           style="cursor:pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              dateTime.getHours() + i + ':' + j + '0' ==
-                              selectedTime
+                              unit.time == selectedTime[0]
                           }"
                         >
-                          <strike
-                            v-if="
-                              dateTime.getMinutes() > Number(j + '0') &&
-                                dateTime.getHours() + i == dateTime.getHours()
-                            "
-                            >{{ dateTime.getHours() + i }}:{{ j }}0</strike
-                          >
-                          <span @click="selectTime($event)" v-else
-                            >{{ dateTime.getHours() + i }}:{{ j }}0</span
-                          >
+                          <strike v-if="!unit.status">
+                            {{ unit.time }}
+                          </strike>
+                          <span @click="selectTime($event, 0)" v-else>
+                            {{ unit.time }}
+                          </span>
                         </span>
                       </v-col>
                     </v-row>
@@ -254,23 +263,32 @@
                   width="100%"
                 >
                   <v-container class="px-0 py-0">
-                    <v-row no-gutters v-for="(hour, i) in 18" :key="i">
+                    <v-row
+                      no-gutters
+                      v-for="(time, i) in dateTimes[days[1]]"
+                      :key="i"
+                    >
                       <v-col
                         class="py-2"
                         cols="2"
-                        v-for="(minute, j) in 6"
+                        v-for="(unit, j) in time"
                         :key="j"
                       >
                         <span
-                          @click="selectTime($event)"
                           class="regular"
                           style="cursor:pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              hour + 5 + ':' + j + '0' == selectedTime
+                              unit.time == selectedTime[1]
                           }"
-                          >{{ hour + 5 }}:{{ j }}0</span
                         >
+                          <strike v-if="!unit.status">
+                            {{ unit.time }}
+                          </strike>
+                          <span @click="selectTime($event, 1)" v-else>
+                            {{ unit.time }}
+                          </span>
+                        </span>
                       </v-col>
                     </v-row>
                   </v-container>
@@ -308,6 +326,9 @@
                     class="mr-2"
                     label="개인정보 수집 및 이용에 동의합니다."
                     v-model="ppCheck"
+                    ref="ppCheck"
+                    :rules="[v => !!v || '필수 입력값입니다.']"
+                    required
                   ></v-checkbox>
                 </v-col>
                 <v-col
@@ -338,7 +359,7 @@
                     class="rounded-pill white--text h5 nanum"
                     depressed
                     large
-                    @click="confirmDialog = true"
+                    @click="submit()"
                     >무료수업 신청하기</v-btn
                   >
                 </v-col>
@@ -358,19 +379,27 @@
           <div class="h5 gmarket" style="color:#85c9e8">과목 선택</div>
           <div class="px-3 mb-5 h6">
             <div>메가토킹 전화영어</div>
-            <div>이름</div>
-            <div>연락처</div>
+            <div>이름: {{ this.name }}</div>
+            <div>연락처: {{ this.number }}</div>
           </div>
           <v-divider></v-divider>
           <div class="h5 gmarket mt-5" style="color:#85c9e8">
             수업 진행속도
           </div>
-          <div class="px-3 mb-5 h6">보통 속도로 말해주세요.</div>
+          <div class="px-3 mb-5 h6">
+            {{ this.class_speeds[this.selectedSpeed] }}
+          </div>
           <v-divider></v-divider>
           <div class="h5 gmarket mt-5" style="color:#85c9e8">예약 일시</div>
           <div class="px-3 h6 mb-10">
-            <div>2020-11-06</div>
-            <div>17:00</div>
+            <div>{{ this.days[this.daySelected] }}</div>
+            <div>
+              {{
+                this.selectedTime[this.daySelected].length > 0
+                  ? this.selectedTime[this.daySelected]
+                  : "시간을 선택해 주세요."
+              }}
+            </div>
           </div>
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
@@ -380,7 +409,7 @@
               color="#2572a8"
               class="mx-auto rounded-xl"
               depressed
-              @click="applyLevelTest()"
+              @click="confirm()"
             >
               <span class="pa-3 white--text h6 ">확인</span>
             </v-btn>
@@ -388,8 +417,280 @@
         </div>
       </v-card>
     </v-dialog>
+
+    <v-dialog
+      v-model="searchEvaluationDialog"
+      max-width="750"
+      style="border-radius: 25px 25px 25px 25px !important;overflow-x:hidden"
+      height="700"
+      class="border-xl"
+    >
+      <v-card flat class="tile">
+        <v-card flat color="#A9A7F3" class="tile">
+          <v-container class="py-0">
+            <v-row>
+              <v-col cols="6" class="white--text">
+                <span class="ml-5 h5 nanum">Evaluation Search</span>
+              </v-col>
+              <v-col cols="6" class="d-flex justify-end">
+                <v-icon
+                  color="white"
+                  large
+                  @click="searchEvaluationDialog = false"
+                  >close</v-icon
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+        <v-card>
+          <v-container>
+            <v-text-field
+              color="primary"
+              v-model="searchNumber"
+              label="Phone number"
+              dense
+              outlined
+              maxlength="13"
+              onkeypress="return event.key === 'Enter'
+    || Number(event.key) >= 0
+    && Number(event.key) <= 9"
+            ></v-text-field>
+
+            <p v-if="evaluationErr.length">{{ evaluationErr }}</p>
+            <v-row class="align-center justify-end  fill-height">
+              <v-btn
+                class="ma-2"
+                @click="searchEvaluation()"
+                style="color:#5C5C5C"
+                >Submit</v-btn
+              >
+              <v-btn
+                class="ma-2"
+                @click="searchEvaluationDialog = false"
+                style="color:#5C5C5C"
+                >Close</v-btn
+              >
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog
+      v-model="showEvaluationDialog"
+      max-width="750"
+      style="border-radius: 25px 25px 25px 25px !important;overflow-x:hidden"
+      height="700"
+      class="border-xl"
+    >
+      <v-card flat class="tile">
+        <v-card flat color="#A9A7F3" class="tile">
+          <v-container class="py-0">
+            <v-row>
+              <v-col cols="6" class="white--text">
+                <span class="ml-5 h5 nanum">레벨 테스트 결과</span>
+              </v-col>
+              <v-col cols="6" class="d-flex justify-end">
+                <v-icon
+                  color="white"
+                  large
+                  @click="showEvaluationDialog = false"
+                  >close</v-icon
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+
+        <v-card>
+          <v-container style="max-width: 700px;">
+            <v-row>
+              <v-col cols="12">
+                <span style="color:#7D79FF;">{{ classEvaluation["name"] }}</span
+                >의 테스트 결과를준비하였습니다.
+              </v-col>
+
+              <v-col cols="12">
+                수고하셨습니다. 강사님이 준비한 테스트 결과에 따라 학습
+                컨설턴트가 회원님에 맞는수업을 추천해 드립니다.
+              </v-col>
+
+              <v-col cols="12">
+                <span style="color:#7D79FF;">발음</span>
+              </v-col>
+
+              <v-col cols="12">
+                {{ classEvaluation["pronunciation"] }}
+              </v-col>
+
+              <v-col cols="12">
+                <span style="color:#7D79FF;">문법</span>
+              </v-col>
+
+              <v-col cols="12">
+                {{ classEvaluation["grammar"] }}
+              </v-col>
+
+              <v-col cols="12">
+                <span style="color:#7D79FF;">이해도</span>
+              </v-col>
+
+              <v-col cols="12">
+                {{ classEvaluation["comprehension"] }}
+              </v-col>
+
+              <v-col cols="12">
+                <span style="color:#7D79FF;">유창성</span>
+              </v-col>
+
+              <v-col cols="12">
+                {{ classEvaluation["confidence"] }}
+              </v-col>
+
+              <v-col cols="12">
+                <v-card
+                  min-width="500"
+                  style="border: 1px solid black"
+                  min-height="200"
+                >
+                  <v-list>
+                    <v-list-item>
+                      <v-list-item-title>Total Score</v-list-item-title>
+
+                      <v-list-item-action
+                        >{{
+                          classEvaluation["level_score"]
+                        }}/1000</v-list-item-action
+                      >
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-title>Area</v-list-item-title>
+                      <v-list-item-action>Score</v-list-item-action>
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-title>Pronunciation</v-list-item-title>
+                      <v-list-item-action>
+                        {{
+                          classEvaluation["score_pronunciation"]
+                        }}</v-list-item-action
+                      >
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-title>Grammar</v-list-item-title>
+                      <v-list-item-action>
+                        {{
+                          classEvaluation["score_grammar"]
+                        }}</v-list-item-action
+                      >
+                    </v-list-item>
+
+                    <v-list-item>
+                      <v-list-item-title>Comprehension</v-list-item-title>
+                      <v-list-item-action>
+                        {{
+                          classEvaluation["score_comprehension"]
+                        }}</v-list-item-action
+                      >
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-title>Fluency</v-list-item-title>
+                      <v-list-item-action>
+                        {{
+                          classEvaluation["score_fluency"]
+                        }}</v-list-item-action
+                      >
+                    </v-list-item>
+                  </v-list>
+                </v-card>
+              </v-col>
+
+              <v-col cols="12">
+                <div style="position:relative">
+                  <div style="position:absolute;width:48%;z-index:5;">
+                    <p class="text-right mb-0 pt-2" style="color:#7c868e">
+                      Pronunciation
+                    </p>
+                    <p class="text-right mb-0 pt-2" style="color:#7c868e">
+                      Grammar
+                    </p>
+                    <p class="text-right mb-0 pt-2" style="color:#7c868e">
+                      Comprehension
+                    </p>
+                    <p class="text-right mb-0 pt-2" style="color:#7c868e">
+                      Fluency
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <v-progress-circular
+                      :value="classEvaluation['score_pronunciation'] * 10"
+                      width="25"
+                      size="350"
+                      color="#64b5f6"
+                      rotate="-90"
+                    >
+                      <v-progress-circular
+                        :value="classEvaluation['score_grammar'] * 10"
+                        width="25"
+                        size="290"
+                        color="#1976d2"
+                        rotate="-90"
+                      >
+                        <v-progress-circular
+                          :value="classEvaluation['score_comprehension'] * 10"
+                          width="25"
+                          size="230"
+                          color="#ef6c00"
+                          rotate="-90"
+                        >
+                          <v-progress-circular
+                            :value="classEvaluation['score_fluency'] * 10"
+                            width="25"
+                            size="170"
+                            color="#ffd54f"
+                            rotate="-90"
+                          >
+                          </v-progress-circular>
+                        </v-progress-circular>
+                      </v-progress-circular>
+                    </v-progress-circular>
+                  </div>
+                </div>
+              </v-col>
+            </v-row>
+
+            <v-row class="align-center justify-center  fill-height">
+              <v-btn
+                class="ma-2 mt-5 white--text"
+                @click="$router.push('/enrollment')"
+                color="#7D79FF"
+                >수강신청</v-btn
+              >
+              <v-btn
+                class="ma-2 mt-5"
+                @click="showEvaluationDialog = false"
+                style="color:#5C5C5C"
+                >Close</v-btn
+              >
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-card>
+    </v-dialog>
+
     <EventAgreementDialog ref="eaDialog"></EventAgreementDialog>
     <PrivacyPolicyDialog ref="ppDialog"></PrivacyPolicyDialog>
+    <div class="">
+      <v-snackbar color="success" outlined v-model="snackbar">
+        "필수 입력값"을 확인해주세요.
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </div>
   </v-app>
 </template>
 
@@ -417,109 +718,159 @@ export default {
   },
   data() {
     return {
+      showEvaluationDialog: false,
+      searchEvaluationDialog: false,
+      snackbar: false,
+      name: "",
+      number: "",
+      searchNumber: "",
+      mail: "",
       dateTimes: [],
-      days: [],
+      days: ["loading", "loading"],
       daySelected: 0,
       confirmDialog: false,
-      dateTime: new Date(),
-      // listOfTimes: [],
       allCheck: false,
       ppCheck: false,
       eaCheck: false,
-      checkbox1: false,
-      tab: 0,
       selectedDate: "",
-      selectedTime: "",
+      selectedTime: [[], []],
       selectedType: "phone",
-      selectedSpeed: "",
+      selectedSpeed: 0,
       class_speeds: [
         "천천히 발음해주세요.",
         "보통 속도로 말해주세요.",
         "빨리 말하셔도 괜찮아요."
-      ]
+      ],
+      classEvaluation: [],
+      evaluationErr: {}
     };
   },
   computed: {
-    ...mapState(["screenWidth", "isMobile"])
-  },
-  created() {},
-  mounted() {
-    //날짜 검색 기능
-    for (var i = 0; i < 12; i++) {
-      var nextDates = new Date();
-      nextDates.setDate(nextDates.getDate() + i);
-      if (
-        nextDates.getDay() != 6 &&
-        nextDates.getDay() != 0 &&
-        this.days.length < 2
-      ) {
-        this.days.push(this.formatDate(nextDates));
-      }
+    ...mapState(["screenWidth", "isMobile", "loginToken"]),
+    form() {
+      return {
+        name: this.name,
+        number: this.number,
+        speed: this.selectedSpeed,
+        date: this.days[this.daySelected],
+        time: this.selectedTime[this.daySelected],
+        ppCheck: this.ppCheck,
+        eaCheck: this.eaCheck
+      };
     }
-
+  },
+  created() {
+    let headers = {
+      Authorization: this.loginToken
+    };
+    //날짜 검색 기능
     axios
       .get("//mega02.cafe24.com/origin/api/leveltest.php", {
         params: {
           action: "getTimes"
-        }
+        },
+        headers
       })
       .then(rs => {
         this.dateTimes = rs.data.dates;
+        this.days = Object.keys(this.dateTimes);
+
+        //회원이라면 이름초기화
+        if (rs.data.member) {
+          let member = rs.data.member;
+          this.name = member.name;
+          this.mail = member.mail;
+          this.number = `${member.aHp}-${member.bHp}-${member.cHp}`;
+        }
       })
       .catch(err => {
-        console.log(err.response);
+        console.log("error", err.response);
       });
   },
+  mounted() {},
   watch: {
     allCheck() {
       this.ppCheck = this.allCheck;
       this.eaCheck = this.allCheck;
+    },
+    number(val) {
+      this.number = val
+        .replace(/[^0-9]/g, "")
+        .replace(
+          /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+          "$1-$2-$3"
+        )
+        .replace("--", "-");
+    },
+    searchNumber(val) {
+      this.searchNumber = val
+        .replace(/[^0-9]/g, "")
+        .replace(
+          /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+          "$1-$2-$3"
+        )
+        .replace("--", "-");
     }
   },
   methods: {
-    formatDate(date) {
-      var d = new Date(date),
-        month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate(),
-        year = d.getFullYear();
-
-      month = month.length == 1 ? "0" + month : month;
-      day = day.length == 1 ? "0" + day : day;
-
-      if (day.length < 2) day = +day;
-
-      return [year, month, day].join("-");
+    selectTime(event, index) {
+      this.selectedTime = [[], []];
+      this.selectedTime[index] = event.target.innerText;
     },
+    resetForm() {},
+    submit() {
+      let noValidate = ["speed", "date", "time", "eaCheck"];
+      Object.keys(this.form).forEach(f => {
+        if ("time" == f && this.form[f].length == 0) this.snackbar = true;
 
-    // setListofTime() {
-    //   var listOfTimes = [...Array(6)].map(() => new Array(6));
-
-    //   for (var i = 0; i < 6; i++) {
-    //     for (var j = 0; j < 6; j++) {
-    //       listOfTimes[i][j] = i + 6 + ":" + j + "0";
-    //     }
-    //   }
-
-    //   this.listOfTimes = listOfTimes;
-
-    // },
-
-    selectTime(event) {
-      this.selectedTime = event.target.innerText;
+        if (noValidate.indexOf(f) !== -1) return;
+        if (!this.form[f]) this.snackbar = true;
+        if (!this.$refs[f].validate(true)) this.snackbar = true;
+      });
+      if (!this.snackbar) {
+        this.confirmDialog = true;
+      }
     },
-    applyLevelTest() {
+    confirm() {
+      const config = {
+        headers: { Authorization: this.loginToken }
+      };
       axios
-        .get("//mega02.cafe24.com/origin/api/leveltest.php", {
-          params: {
-            action: "getTimes"
-          }
-        })
+        .post("//mega02.cafe24.com/origin/api/leveltest.php", this.form, config)
         .then(rs => {
           console.log(rs);
         })
         .catch(err => {
-          console.log(err.response);
+          console.log(err);
         });
+    },
+    searchEvaluation() {
+      this.evaluationErr = {};
+      this.classEvaluation = [];
+      this.searchEvaluationDialog = false;
+      this.showEvaluationDialog = true;
+      //확인해봐야할것
+      if (this.phone_number) {
+        const form = new FormData();
+        form.append("phone_number", this.phone_number);
+        axios
+          .post("http://localhost/lms2/Evaluation/get_leveltest_result", form)
+          .then(res => {
+            if (res.data) {
+              const evaluation = res.data;
+              this.$set(this.$data, "classEvaluation", evaluation);
+              if (this.classEvaluation) {
+                this.searchEvaluationDialog = false;
+                this.showEvaluationDialog = true;
+              }
+            } else {
+              this.evaluationErr = "Evaluation not found! Please try again";
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
     }
   }
 };
