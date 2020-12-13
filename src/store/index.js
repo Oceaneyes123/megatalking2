@@ -105,6 +105,19 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logoutProcess");
       router.push("/");
+    },
+    async signup({ commit }, payload) {
+      console.log(commit);
+      axios
+        .post("//mega02.cafe24.com/origin/api/signup.php", {
+          ...payload
+        })
+        .then(rs => {
+          console.log(rs);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   modules: {}

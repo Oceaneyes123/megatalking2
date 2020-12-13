@@ -71,69 +71,145 @@
               </v-col>
               <v-divider vertical></v-divider>
               <v-col cols="12" md="5" class="mx-auto">
-                <v-row>
-                  <v-col cols="12" md="6" class="py-0">
-                    <v-text-field
-                      dense
-                      outlined
-                      class="rounded-xl"
-                      label="이름 "
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="6" class="py-0">
-                    <v-text-field
-                      dense
-                      outlined
-                      class="rounded-xl"
-                      label="연락처"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" class="py-0">
-                    <v-text-field
-                      dense
-                      outlined
-                      class="rounded-xl"
-                      label="이메일"
-                      append-icon="email"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="6" class="py-0">
-                    <v-text-field
-                      dense
-                      outlined
-                      type="password"
-                      class="rounded-xl"
-                      label="비밀번호 "
-                      style="font-family: auto;"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" md="6" class="py-0">
-                    <v-text-field
-                      dense
-                      outlined
-                      type="password"
-                      class="rounded-xl"
-                      label="비밀번호 확인"
-                      style="font-family: auto;"
-                    ></v-text-field>
-                  </v-col>
-                  <v-checkbox label="아래 약관에 모두 동의합니다."></v-checkbox>
-                  <v-checkbox
-                    label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"
-                  ></v-checkbox>
-                  <v-checkbox
-                    class="mt-0"
-                    label="할인/이벤트 안내 동의(선택)"
-                  ></v-checkbox>
-                  <v-btn
-                    style="background-image: linear-gradient(to right, #fc686f, #ff934d);"
-                    block
-                    depressed
-                    class="white--text h5 nanum rounded-xl"
-                    large
-                    >신규 회원가입</v-btn
-                  >
-                </v-row>
+                <v-form ref="signupform" v-model="signupValid">
+                  <v-row>
+                    <v-col cols="12" md="6" class="py-0">
+                      <v-text-field
+                        dense
+                        outlined
+                        class="rounded-xl"
+                        label="이름 "
+                        v-model="signupName"
+                        :rules="signupNameRules"
+                        required
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" class="py-0">
+                      <v-text-field
+                        dense
+                        outlined
+                        class="rounded-xl"
+                        label="연락처"
+                        counter="13"
+                        maxlength="13"
+                        v-model="signupNumber"
+                        :rules="signupNumberRules"
+                        required
+                        type="tel"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" class="py-0">
+                      <v-text-field
+                        dense
+                        outlined
+                        class="rounded-xl"
+                        label="이메일"
+                        v-model="signupId"
+                        :rules="signupIdRules"
+                        required
+                      >
+                        <template
+                          slot="append"
+                          v-if="verify_email_status === false"
+                        >
+                          <v-icon color="#aab7c9">
+                            email
+                          </v-icon>
+                        </template>
+                        <template
+                          slot="append"
+                          v-if="verify_email_status === 'loading'"
+                        >
+                          <v-progress-circular
+                            class="mb-1"
+                            indeterminate
+                            color="grey"
+                            :size="25"
+                          ></v-progress-circular>
+                        </template>
+                        <template
+                          slot="append"
+                          v-if="verify_email_status === 'close'"
+                        >
+                          <v-btn
+                            depressed
+                            color="red"
+                            class="mb-1 ml-1 white--text"
+                            x-small
+                            fab
+                            style="pointer-events:none;"
+                          >
+                            <v-icon dark>close</v-icon>
+                          </v-btn>
+                        </template>
+                        <template
+                          slot="append"
+                          v-if="verify_email_status === 'check'"
+                        >
+                          <v-btn
+                            depressed
+                            color="green"
+                            class="mb-1 ml-1 white--text"
+                            x-small
+                            fab
+                            style="pointer-events:none;"
+                          >
+                            <v-icon dark>check</v-icon>
+                          </v-btn>
+                        </template>
+                      </v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" class="py-0">
+                      <v-text-field
+                        dense
+                        outlined
+                        type="password"
+                        class="rounded-xl"
+                        label="비밀번호 "
+                        style="font-family: auto;"
+                        v-model="signupPw"
+                        :rules="signupPwRules"
+                        required
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6" class="py-0">
+                      <v-text-field
+                        dense
+                        outlined
+                        type="password"
+                        class="rounded-xl"
+                        label="비밀번호 확인"
+                        style="font-family: auto;"
+                        v-model="signupPwCheck"
+                        :rules="signupPwCheckRules"
+                      ></v-text-field>
+                    </v-col>
+                    <v-checkbox
+                      label="아래 약관에 모두 동의합니다."
+                      v-model="signupAp"
+                    ></v-checkbox>
+                    <v-checkbox
+                      label="만 14세 이상이며, 전화영어 이용약관, 개인정보 수집 및 이용에 동의"
+                      v-model="signupPp"
+                      :rules="signupPpRules"
+                      required
+                    ></v-checkbox>
+                    <v-checkbox
+                      class="mt-0"
+                      label="할인/이벤트 안내 동의(선택)"
+                      v-model="signupEa"
+                    ></v-checkbox>
+                    <v-btn
+                      style="background-image: linear-gradient(to right, #fc686f, #ff934d);"
+                      block
+                      depressed
+                      class="white--text h5 nanum rounded-xl"
+                      large
+                      @click="signup()"
+                      >신규 회원가입</v-btn
+                    >
+                  </v-row>
+                </v-form>
               </v-col>
             </v-row>
           </v-container>
@@ -150,17 +226,55 @@ export default {
   data() {
     return {
       loginValid: false,
+      signupValid: false,
       loginEmailRules: [v => !!v || "아이디를 입력해주세요"],
       loginPwRules: [v => !!v || "비밀번호를 입력해주세요"],
+      signupNameRules: [v => !!v || "이름을 입력해주세요"],
+      signupNumberRules: [v => !!v || "번호를 입력해주세요"],
+      signupIdRules: [v => !!v || "이메일을 입력해주세요"],
+      signupPwRules: [v => !!v || "비밀번호를 입력해주세요"],
+      signupPwCheckRules: [
+        v => !!v || "비밀번호를 체크해주세요",
+        v => v == this.signupPw || "비밀번호가 일치하지 않습니다"
+      ],
+      signupPpRules: [v => !!v || "비밀번호를 입력해주세요"],
       loginId: "",
       loginPw: "",
-      btnLoading: false
+      signupId: "",
+      signupNumber: "",
+      signupName: "",
+      signupPw: "",
+      signupPwCheck: "",
+      signupAp: false,
+      signupPp: false,
+      signupEa: false,
+      btnLoading: false,
+      verify_email_status: false
     };
   },
   computed: {
     ...mapState(["isLogin", "loginErr", "loginErrMsg"])
   },
   props: ["signInDialog"],
+  watch: {
+    signupAp() {
+      this.signupPp = this.signupAp;
+      this.signupEa = this.signupAp;
+    },
+    signupId() {
+      //이메일 유무 검증
+      this.verify_email_status = "loading";
+    },
+    signupNumber(val) {
+      this.signupNumber = val
+        .replace(/[^0-9]/g, "")
+        .replace(
+          /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+          "$1-$2-$3"
+        )
+        .replace("--", "-");
+    }
+  },
   methods: {
     close() {
       this.$emit("sighDialogToggle", false);
@@ -182,6 +296,19 @@ export default {
             }
             this.btnLoading = false;
           });
+      }
+    },
+    signup() {
+      if (this.$refs.signupform.validate()) {
+        let params = {
+          id: this.signupId,
+          number: this.signupNumber,
+          name: this.signupName,
+          password: this.signupPw,
+          privacyPolicy: this.signupPp,
+          eventAgreement: this.signupEa
+        };
+        this.$store.dispatch("signup", params);
       }
     }
   }
