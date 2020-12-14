@@ -249,7 +249,8 @@ export default {
       signupPp: false,
       signupEa: false,
       btnLoading: false,
-      verify_email_status: false
+      verify_email_status: false,
+      timeoutId: ""
     };
   },
   computed: {
@@ -261,9 +262,12 @@ export default {
       this.signupPp = this.signupAp;
       this.signupEa = this.signupAp;
     },
-    signupId() {
+    async signupId() {
       //이메일 유무 검증
       this.verify_email_status = "loading";
+      await this.timeout(2000);
+      console.log("test!!");
+      this.verify_email_status = "check";
     },
     signupNumber(val) {
       this.signupNumber = val
@@ -276,6 +280,16 @@ export default {
     }
   },
   methods: {
+    timeout(ms) {
+      return new Promise(res => {
+        if (!this.timeoutId) {
+          this.timeoutId = setTimeout(res, ms);
+        } else {
+          clearTimeout(this.id);
+          this.id = setTimeout(res, ms);
+        }
+      });
+    },
     close() {
       this.$emit("sighDialogToggle", false);
     },

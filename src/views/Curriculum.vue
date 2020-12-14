@@ -311,6 +311,7 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                             </div>
@@ -441,6 +442,7 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                               <div
@@ -536,6 +538,7 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                               <div
@@ -631,6 +634,7 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                               <div
@@ -726,6 +730,7 @@
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
                                 style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                               <div

@@ -39,8 +39,9 @@
                     color="#df7a30"
                     width="100%"
                     data-aos="zoom-in"
-                    :event-color="(date) => (date[9] % 2 ? 'red' : 'yellow')"
+                    :event-color="date => (date[9] % 2 ? 'red' : 'yellow')"
                     :events="functionEvents"
+                    locale="ko"
                   ></v-date-picker>
                 </v-card>
               </v-col>
@@ -525,17 +526,17 @@ export default {
       tests: [
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
+          detail: "더 나은 표현을 알려드릴게요."
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
+          detail: "더 나은 표현을 알려드릴게요."
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
-        },
-      ],
+          detail: "더 나은 표현을 알려드릴게요."
+        }
+      ]
     };
   },
 
@@ -593,6 +594,7 @@ export default {
     },
 
     functionEvents(date) {
+      console.log(date);
       const [, , day] = date.split("-");
       if ([12, 17, 28].includes(parseInt(day, 10))) return true;
       if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
@@ -624,7 +626,7 @@ export default {
       } else {
         this.selectedSuggestion.push(index);
       }
-    },
-  },
+    }
+  }
 };
 </script>
