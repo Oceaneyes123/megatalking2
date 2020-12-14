@@ -17,6 +17,8 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
     "nl2br": "0.0.3",
     "v-wow": "git+https://github.com/guisoares2011/vue-wow.git",
     "vue": "^2.6.11",
