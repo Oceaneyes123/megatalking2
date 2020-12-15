@@ -4,7 +4,7 @@
       <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#8bb6f700" flat class="text-center pa-3">
+      <v-card tile color="#8bb6f700" flat class="text-center pa-1">
         <div class="h3 font-weight-bold white--text" style="margin-top:200px">
           수강 신청
         </div>
@@ -15,7 +15,7 @@
           <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
-        <v-container style="max-width:1000px;margin-top:90px">
+        <v-container style="max-width:1000px;margin-top:90px" class="px-0 mx-0">
           <v-card class="rounded-xl shadow" width="100%">
             <v-container class="px-0 py-0">
               <v-row no-gutters>
@@ -613,8 +613,10 @@
                     </v-container>
                     <v-btn
                       color="#5a55a1"
-                      class="rounded-lg white--text font-weight-bold"
+                      class="rounded-lg white--text font-weight-bold mb-15"
                       style="margin-top:150px"
+                      large
+                      block
                       @click="enroll_check_data()"
                       >수업 신청하기</v-btn
                     >

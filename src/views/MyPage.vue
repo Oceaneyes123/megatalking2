@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#faae7d00" flat class="text-center pa-3">
+      <v-card tile color="#faae7d00" flat class="text-center pa-1">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
           style="margin-top: 200px"
@@ -42,33 +42,49 @@
                     :events="functionEvents"
                     locale="ko"
                     :picker-date.sync="pickerDate"
+                    @click:date="pickDate"
                   ></v-date-picker>
                 </v-card>
               </v-col>
             </v-row>
-
+            <!--`-->
             <v-row class="my-10">
               <v-col cols="12">
                 <v-sheet>
                   <v-slide-group :show-arrows="!isMobile">
-                    <v-slide-item class="mx-3">
+                    <v-slide-item
+                      class="mx-3"
+                      v-for="(classes, index) in pickDateClasses"
+                      :key="index"
+                    >
                       <v-card
-                        style="border: 3px solid #df7a30"
+                        :style="`border: 3px solid ${classColor[classes.jong]}`"
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color: #df7a30">
-                          [주2회 화,목] 프리토킹
+                        <div
+                          class="caption mb-3"
+                          :style="`color: ${classColor[classes.jong]}`"
+                        >
+                          {{ getClassDate() }} {{ getTitle(classes) }}
                         </div>
-                        <div class="h6 nanum" style="color: #df7a30">
-                          10%
-                          <span class="subtitle-text-1">수강 중</span>
+                        <div
+                          class="h6 nanum"
+                          :style="`color: ${classColor[classes.jong]}`"
+                        >
+                          {{ getProgress(classes) }}
+                          <span class="subtitle-text-1">{{
+                            classes.state == "yes" ? "수강중" : "수강 대기"
+                          }}</span>
+                          <span class="subtitle-text-1">
+                            {{ getStatus(classes) }}</span
+                          >
                         </div>
                         <div class="caption grey--text">
-                          수강종료일: 2020.09.30
+                          {{ getEndDay(classes) }}
                         </div>
                         <v-card
-                          color="#df7a30"
+                          :color="classColor[classes.jong]"
                           class="d-flex white--text rounded-xl mt-3 px-5 py-2"
                         >
                           <div>수업 홀드</div>
@@ -77,6 +93,7 @@
                         </v-card>
                       </v-card>
                     </v-slide-item>
+                    <!--
                     <v-slide-item class="mx-3">
                       <v-card
                         style="border: 3px solid #5e75cf"
@@ -103,6 +120,7 @@
                         </v-card>
                       </v-card>
                     </v-slide-item>
+                    -->
                     <v-slide-item class="mx-3">
                       <v-card
                         style="border: 3px solid #bbbbbb"
@@ -112,7 +130,7 @@
                         <div class="caption" style="color: #5e75cf">
                           보강 쿠폰현황
                         </div>
-                        <div class="h6 nanum">강의1, 강의26</div>
+                        <div class="h6 nanum">보강 설정하기</div>
                         <div class="d-flex">
                           <v-icon
                             color="bbbbbb"
@@ -500,12 +518,19 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import { mapState } from "vuex";
+import moment from "moment";
 
 export default {
   data() {
     return {
+      classColor: {
+        1: "#df7a30",
+        2: "#5e75cf"
+      },
       schedule: [],
       holdDatas: [],
+      pickDateClasses: [],
+      pickDay: "",
       selectItems: ["수업 회차순"],
       select: "수업 회차순",
       today: "",
@@ -523,7 +548,6 @@ export default {
       isPDF: false,
       selectedSuggestion: [],
       pickerDate: null,
-
       tests: [
         {
           test: "test",
@@ -544,9 +568,8 @@ export default {
     ...mapState(["screenWidth", "isMobile"])
   },
   watch: {
-    pickerDate(val) {
+    async pickerDate(val) {
       let [year, month] = val.split("-");
-      console.log(val);
       this.getSchedule(year, month);
     }
   },
@@ -558,7 +581,6 @@ export default {
     this.today = this.formatDate(this.date);
     this.month = this.date.getMonth() + 1;
     this.year = this.date.getFullYear();
-
     axios.defaults.headers.common["Authorization"] = localStorage.getItem(
       "access-token"
     );
@@ -566,7 +588,63 @@ export default {
   },
 
   methods: {
-    getSchedule(year, month) {
+    getClassDate() {
+      let [, , day] = this.date2.split("-");
+      return day + "일";
+    },
+    getTitle(obj) {
+      let countDaysOfWeek = 0;
+      let daysOfweek = [];
+      for (var i = 1; i <= 5; i++) {
+        if (obj["ck" + i]) {
+          countDaysOfWeek++;
+          if (i == 1) daysOfweek.push("월");
+          else if (i == 2) daysOfweek.push("화");
+          else if (i == 3) daysOfweek.push("수");
+          else if (i == 4) daysOfweek.push("목");
+          else if (i == 5) daysOfweek.push("금");
+        }
+      }
+
+      return `[주${countDaysOfWeek}회 ${daysOfweek}] 프리토킹 ${obj.lec_name}`;
+    },
+    getStatus(obj) {
+      let rsStatus = {};
+      let [, , day] = this.date2.split("-");
+      let existHoldA = Object.keys({ ...this.schedule[day] }).includes("holdA");
+      if (existHoldA) {
+        return "학원휴강";
+      }
+      if (this.holdDatas["hold"][obj.s_id]) {
+        rsStatus = this.holdDatas["hold"][obj.s_id][day];
+      }
+      if (
+        this.holdDatas["cancel"][obj.s_id] &&
+        Object.keys({ ...rsStatus }).length == 0
+      ) {
+        rsStatus = this.holdDatas["cancel"][obj.s_id][day];
+      }
+      return Object.keys({ ...rsStatus }).length !== 0 ? "홀드" : "";
+    },
+    getEndDay(obj) {
+      return (
+        "수강 종료일: " +
+        moment(new Date(obj.end_day * 1000)).format("YYYY.MM.DD")
+      );
+    },
+    getProgress(obj) {
+      return obj.jong + "65%";
+    },
+    pickDate(val) {
+      let [, , day] = val.split("-");
+      let pickDateClasses = [];
+      this.pickDay = day;
+      if (Object.keys(this.schedule).includes(day)) {
+        pickDateClasses = this.schedule[day].class;
+      }
+      this.$set(this.$data, "pickDateClasses", pickDateClasses);
+    },
+    async getSchedule(year, month) {
       let config = {
         params: {
           action: "schedule",
@@ -575,7 +653,7 @@ export default {
         }
       };
 
-      axios
+      await axios
         .get("//mega02.cafe24.com/origin/api/mypage.php", config)
         .then(rs => {
           console.log(rs);
@@ -587,6 +665,7 @@ export default {
             };
             this.$set(this.$data, "schedule", schedule);
             this.$set(this.$data, "holdDatas", holdDatas);
+            if (this.pickDateClasses.length === 0) this.pickDate(this.today);
           }
         })
         .catch(err => {
@@ -596,8 +675,6 @@ export default {
 
     functionEvents(date) {
       const [, , day] = date.split("-");
-      // if ([12, 17, 28].includes(parseInt(day, 10))) return true;
-      // if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
       let mark = [];
       let existClass = Object.keys({ ...this.schedule[day] }).includes("class");
       let existHoldA = Object.keys({ ...this.schedule[day] }).includes("holdA");
@@ -607,19 +684,37 @@ export default {
       );
       let todayClass = false;
       if (existHoldA) {
-        //code...
         mark.push("red");
       } else if (existClass) {
         // let holded = false;
+        // 보완해야할 부분
         this.schedule[day].class.forEach(item => {
           if (Object.keys({ ...this.schedule[day] }).includes("hold")) {
             //홀드가 있을때만
-            // console.log(this.holdDatas['hold'][item.s_id][day] === undefined ,item.s_id,day);
-            console.log(this.holdDatas["hold"][item.s_id][day]);
-            if (this.holdDatas["hold"][item.s_id][day] === undefined) {
-              todayClass = true; //홀드가 없다면
+            if (this.holdDatas["hold"][item.s_id] !== undefined) {
+              if (this.holdDatas["hold"][item.s_id][day] !== undefined) {
+                todayClass = false; //홀드가 없다면
+              } else {
+                todayClass = true;
+                return;
+              }
             } else {
-              todayClass = false;
+              todayClass = true;
+              return;
+            }
+          } else if (
+            Object.keys({ ...this.schedule[day] }).includes("cancel")
+          ) {
+            //수업취소가 있을때만
+            if (this.holdDatas["cancel"][item.s_id] !== undefined) {
+              if (this.holdDatas["cancel"][item.s_id][day] !== undefined) {
+                todayClass = false; //홀드가 없다면
+              } else {
+                todayClass = true;
+                return;
+              }
+            } else {
+              todayClass = true;
               return;
             }
           } else {
