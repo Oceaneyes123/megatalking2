@@ -33,15 +33,15 @@
 
             <v-row>
               <v-col>
-                <v-card class="rounded-xl fadeInUp">
+                <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
                     v-model="date2"
-                    color="#df7a30"
+                    color="#859ec9"
                     width="100%"
                     data-aos="zoom-in"
-                    :event-color="date => (date[9] % 2 ? 'red' : 'yellow')"
                     :events="functionEvents"
                     locale="ko"
+                    :picker-date.sync="pickerDate"
                   ></v-date-picker>
                 </v-card>
               </v-col>
@@ -431,7 +431,7 @@
                     <div>
                       <v-rating
                         :small="isMobile"
-                        value="4"
+                        :value="4"
                         readonly
                         color="yellow"
                         half-increments
@@ -498,30 +498,31 @@
 <script>
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
+      schedule: [],
+      holdDatas: [],
       selectItems: ["수업 회차순"],
       select: "수업 회차순",
       today: "",
       date: new Date(),
+      year: "",
       month: "",
-      screenWidth: "",
       nextSaturday: "",
       nextSunday: "",
       preveSaturday: "",
       prevSunday: "",
-      isMobile: false,
-
       date2: new Date().toISOString().substr(0, 10),
       arrayEvents: null,
-
       isBook: true,
       isVideo: false,
       isPDF: false,
-
       selectedSuggestion: [],
+      pickerDate: null,
 
       tests: [
         {
@@ -539,71 +540,103 @@ export default {
       ]
     };
   },
-
+  computed: {
+    ...mapState(["screenWidth", "isMobile"])
+  },
+  watch: {
+    pickerDate(val) {
+      let [year, month] = val.split("-");
+      console.log(val);
+      this.getSchedule(year, month);
+    }
+  },
   created() {
-    window.addEventListener("resize", this.onWindowResize);
     AOS.init();
   },
-  destroyed() {
-    window.removeEventListener("resize", this.onWindowResize);
-  },
-
+  destroyed() {},
   mounted() {
-    this.screenWidth = screen.width;
-    this.isMobile = this.screenWidth <= 960 ? true : false;
-
     this.today = this.formatDate(this.date);
     this.month = this.date.getMonth() + 1;
+    this.year = this.date.getFullYear();
 
-    var prevSun = new Date();
-    prevSun.setDate(prevSun.getDate() - prevSun.getDay());
-
-    this.nextSunday = prevSun.getDate() + 7;
-    this.nextSaturday = prevSun.getDate() + 13;
-
-    this.prevSunday = prevSun.getDate() - 7;
-    this.prevSaturday = prevSun.getDate() - 1;
-
-    this.arrayEvents = [...Array(6)].map(() => {
-      const day = Math.floor(Math.random() * 30);
-      const d = new Date();
-      d.setDate(day);
-      return d.toISOString().substr(0, 10);
-    });
-
-    // for (var i = 1; i <= 40; i++) {
-    //   for (var j = 1; j <= 3; j++) {
-    //     if (i != 14 && i != 18 && i != 11 && i != 24 && i != 26 && i != 27) {
-    //       console.log("Unit" + i + "_" + j);
-    //     } else {
-    //       if (j < 3) {
-    //         console.log("Unit" + i + "_" + j);
-    //       }
-    //     }
-    //   }
-    // }
+    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+      "access-token"
+    );
+    // this.getSchedule(this.year,this.month);
   },
 
   methods: {
-    nextDate(dayIndex) {
-      var today = new Date();
-      today.setDate(
-        today.getDate() + ((dayIndex - 1 - today.getDay() + 7) % 7) + 1
-      );
-      return today;
+    getSchedule(year, month) {
+      let config = {
+        params: {
+          action: "schedule",
+          year,
+          month
+        }
+      };
+
+      axios
+        .get("//mega02.cafe24.com/origin/api/mypage.php", config)
+        .then(rs => {
+          console.log(rs);
+          if (rs.data.result == true) {
+            let schedule = rs.data.schedule;
+            let holdDatas = {
+              hold: rs.data.hold,
+              cancel: rs.data.cancel
+            };
+            this.$set(this.$data, "schedule", schedule);
+            this.$set(this.$data, "holdDatas", holdDatas);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
 
     functionEvents(date) {
-      console.log(date);
       const [, , day] = date.split("-");
-      if ([12, 17, 28].includes(parseInt(day, 10))) return true;
-      if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
-      return false;
-    },
+      // if ([12, 17, 28].includes(parseInt(day, 10))) return true;
+      // if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
+      let mark = [];
+      let existClass = Object.keys({ ...this.schedule[day] }).includes("class");
+      let existHoldA = Object.keys({ ...this.schedule[day] }).includes("holdA");
+      let existHold = Object.keys({ ...this.schedule[day] }).includes("hold");
+      let existCancel = Object.keys({ ...this.schedule[day] }).includes(
+        "cancel"
+      );
+      let todayClass = false;
+      if (existHoldA) {
+        //code...
+        mark.push("red");
+      } else if (existClass) {
+        // let holded = false;
+        this.schedule[day].class.forEach(item => {
+          if (Object.keys({ ...this.schedule[day] }).includes("hold")) {
+            //홀드가 있을때만
+            // console.log(this.holdDatas['hold'][item.s_id][day] === undefined ,item.s_id,day);
+            console.log(this.holdDatas["hold"][item.s_id][day]);
+            if (this.holdDatas["hold"][item.s_id][day] === undefined) {
+              todayClass = true; //홀드가 없다면
+            } else {
+              todayClass = false;
+              return;
+            }
+          } else {
+            todayClass = true; //홀드가 없다면
+          }
+        }); //end foreach
 
-    onWindowResize() {
-      this.screenWidth = screen.width;
-      this.isMobile = this.screenWidth <= 960 ? true : false;
+        if (todayClass) mark.push("green");
+      }
+
+      if (existHold || existCancel) {
+        //code...
+        mark.push("blue");
+      }
+
+      // console.log(Object.keys( {...this.schedule[day]} ).includes('class'));
+      return mark;
     },
 
     formatDate(date) {
