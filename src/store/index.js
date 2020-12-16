@@ -107,7 +107,7 @@ export default new Vuex.Store({
       router.push("/");
     },
     async signup({ commit }, payload) {
-      console.log(commit);
+      console.log(commit, payload);
       axios
         .post("//mega02.cafe24.com/origin/api/signup.php", {
           ...payload
@@ -118,6 +118,9 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err);
         });
+    },
+    async hold({ commit }, payload) {
+      console.log(commit, payload);
     }
   },
   modules: {}

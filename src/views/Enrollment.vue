@@ -15,7 +15,10 @@
           <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
-        <v-container style="max-width:1000px;margin-top:90px" class="px-0 mx-0">
+        <v-container
+          style="max-width:1000px;margin-top:90px"
+          class="px-0 mx-auto"
+        >
           <v-card class="rounded-xl shadow" width="100%">
             <v-container class="px-0 py-0">
               <v-row no-gutters>
@@ -47,7 +50,7 @@
                               class="mr-2"
                               style="font-size:20px"
                               >fas fa-phone-square-alt</v-icon
-                            >화성영어 서비스 제공
+                            >전화 서비스 제공
                           </div>
                         </v-col>
                         <v-col cols="6" class="text-left">
@@ -732,7 +735,7 @@ export default {
       classType: "Video",
       overlay: false,
       durations: ["하루 10분", "하루 20분", "하루 30분", "하루 40분"],
-      frequncies: ["주2회 화목", "주3회 화목", "주5회 화목"],
+      frequncies: ["주2회 화,목", "주3회 월,수,금", "주5회 월~금"],
       days: [],
       periods: ["4주", "12주", "6개월", "1년"],
       dateTime: new Date(),

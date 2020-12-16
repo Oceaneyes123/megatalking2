@@ -16,7 +16,10 @@
             메가토킹선생님이 편안하게<br v-if="isMobile" />친구처럼 도와드려요
           </div>
         </div>
-        <v-container style="max-width:1000px;margin-top:90px" class="mx-0 px-0">
+        <v-container
+          style="max-width:1000px;margin-top:90px"
+          class="mx-auto px-0"
+        >
           <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
             <v-container class="px-md-10 pt-10 px-3">
               <v-row class="px-10">

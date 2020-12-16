@@ -21,17 +21,6 @@
         >
           <v-container class="px-md-10 pt-10 text-left">
             <v-row>
-              <v-col cols="5" md="3">
-                <v-select
-                  v-model="select"
-                  :items="selectItems"
-                  outlined
-                  dense
-                ></v-select>
-              </v-col>
-            </v-row>
-
-            <v-row>
               <v-col>
                 <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
@@ -58,24 +47,26 @@
                       :key="index"
                     >
                       <v-card
-                        :style="`border: 3px solid ${classColor[classes.jong]}`"
+                        :style="
+                          `border: 3px solid ${getClassColor(classes)}; ${
+                            classes.no_class ? 'background:#f6e5e5' : ''
+                          }`
+                        "
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
                         <div
                           class="caption mb-3"
-                          :style="`color: ${classColor[classes.jong]}`"
+                          :style="`color: ${getClassColor(classes)}`"
                         >
-                          {{ getClassDate() }} {{ getTitle(classes) }}
+                          {{ getClassDate() }} {{ getTitle(classes) }} <br />
+                          {{ getBookName(classes) }}
                         </div>
                         <div
                           class="h6 nanum"
-                          :style="`color: ${classColor[classes.jong]}`"
+                          :style="`color: ${getClassColor(classes)}`"
                         >
-                          {{ getProgress(classes) }}
-                          <span class="subtitle-text-1">{{
-                            classes.state == "yes" ? "수강중" : "수강 대기"
-                          }}</span>
+                          {{ getTimes(classes) }}
                           <span class="subtitle-text-1">
                             {{ getStatus(classes) }}</span
                           >
@@ -84,43 +75,47 @@
                           {{ getEndDay(classes) }}
                         </div>
                         <v-card
-                          :color="classColor[classes.jong]"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
+                          :color="getClassColor(classes)"
+                          class="rounded-xl mt-3 px-5 py-2"
+                          :elevation="classes.no_class == 1 ? '0' : '2'"
                         >
-                          <div>수업 홀드</div>
-                          <div class="mx-auto">|</div>
-                          <div>수강신청 연장</div>
+                          <div
+                            class="d-flex mx-4 white--text my-0 py-0"
+                            v-if="!classes.no_class"
+                          >
+                            <div>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                @click="openHoldDialog(classes)"
+                              >
+                                수업 홀드
+                              </v-btn>
+                            </div>
+                            <div class="mx-auto">|</div>
+                            <div>
+                              <v-btn
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                text
+                                small
+                                block
+                                @click="selectClass(classes)"
+                              >
+                                수강 보기
+                              </v-btn>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-center white--text" v-else>
+                            <div>수업 홀드 완료</div>
+                          </div>
                         </v-card>
                       </v-card>
                     </v-slide-item>
                     <!--
-                    <v-slide-item class="mx-3">
-                      <v-card
-                        style="border: 3px solid #5e75cf"
-                        width="300"
-                        class="rounded-xl py-3 px-5"
-                      >
-                        <div class="caption mb-3" style="color: #5e75cf">
-                          [주2회 화,목] 비즈니스 과정
-                        </div>
-                        <div class="h6 nanum" style="color: #5e75cf">
-                          40%
-                          <span class="subtitle-text-1">수강 중</span>
-                        </div>
-                        <div class="caption grey--text">
-                          수강종료일: 2020.09.30
-                        </div>
-                        <v-card
-                          color="#5e75cf"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
-                        >
-                          <div>수업 홀드</div>
-                          <div class="mx-auto">|</div>
-                          <div>수강신청 연장</div>
-                        </v-card>
-                      </v-card>
-                    </v-slide-item>
-                    -->
                     <v-slide-item class="mx-3">
                       <v-card
                         style="border: 3px solid #bbbbbb"
@@ -141,11 +136,15 @@
                         </div>
                         <v-card
                           color="#bbbbbb"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
-                          >보강 시간 설정</v-card
-                        >
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                          >
+                          <v-btn text class="white--text"  style="font-size:16px" block>
+                            보강 시간 설정
+                          </v-btn>
+                        </v-card>
                       </v-card>
                     </v-slide-item>
+                    -->
                   </v-slide-group>
                 </v-sheet>
               </v-col>
@@ -161,18 +160,18 @@
                   class="h6 font-weight-black white--text pa-3 text-center"
                   data-aos="fade-left"
                 >
-                  <div>20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
+                  <div>{{ selectedClassInfo }}</div>
                 </v-card>
               </v-col>
             </v-row>
 
-            <v-container fluid class="px-0">
+            <v-container fluid class="px-0 pb-15 mb-15 mt-2">
               <!-- Book -->
               <v-img
                 @click="$router.push('/material')"
                 class="rounded-xl"
                 data-aos="fade-up"
-                src="../assets/curriculum/sp_1.jpg"
+                :src="selectedClassImg"
                 width="100%"
                 height="auto"
                 v-if="isBook"
@@ -180,15 +179,15 @@
                 <v-card height="100%" color="#000000AD">
                   <v-container>
                     <div
-                      class="font-weight-black text-left mx-3 white--text gmarket"
+                      class="font-weight-black text-left ml-5 mt-5 white--text gmarket"
                       :class="isMobile ? 'h4' : 'h2'"
                     >
-                      Speaking Pattern 100 Course
+                      {{ selectedClassTitle }}
                     </div>
                     <div
                       :class="isMobile ? '' : 'h4'"
-                      class="font-weight-black text-right white--text gmarket"
-                      style="position: absolute; bottom: 20px; right: 20px"
+                      class="font-weight-black text-right white--text gmarket mr-5"
+                      style="position: absolute; bottom: 20px; right: 20px;cursor:pointer"
                     >
                       Next >
                     </div>
@@ -204,7 +203,7 @@
                 @click="$router.push('/material')"
                 flat
               >
-                <v-img src="../assets/tab/video4.jpg"></v-img>
+                <v-img src="@/assets/tab/video4.jpg"></v-img>
                 <div :class="isMobile ? 'h5 nanum' : 'h3'" class="text-center">
                   유튜브 미디어과정:: 셀럽과의 대화
                 </div>
@@ -421,7 +420,7 @@
                   </v-col>
               </v-row>-->
             </v-container>
-            <v-container fluid>
+            <v-container fluid v-if="false">
               <v-row class="mt-5 mx-1 mb-10" justify="center">
                 <v-col cols="6" md="4" class="pl-0">
                   <v-card
@@ -470,6 +469,7 @@
         </v-card>
       </v-card>
     </v-container>
+    <HoldDialog ref="HoldDialog"></HoldDialog>
   </v-app>
 </template>
 
@@ -519,14 +519,17 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import { mapState } from "vuex";
 import moment from "moment";
+import HoldDialog from "@/components/HoldDialog";
 
 export default {
+  components: {
+    HoldDialog
+  },
   data() {
     return {
-      classColor: {
-        1: "#df7a30",
-        2: "#5e75cf"
-      },
+      memberName: "",
+      selectedClassImg: require("@/assets/curriculum/sp_1.jpg"),
+      showClass: [],
       schedule: [],
       holdDatas: [],
       pickDateClasses: [],
@@ -565,7 +568,31 @@ export default {
     };
   },
   computed: {
-    ...mapState(["screenWidth", "isMobile"])
+    ...mapState(["screenWidth", "isMobile"]),
+    selectedClassInfo() {
+      let [year, month, day] = this.date2.split("-");
+      let deVal = `안녕하세요. ${this.memberName} 회원님:)`;
+      if (this.showClass.length !== 0) {
+        let hour, min, duration, cate_name;
+        hour = this.showClass.s_hour;
+        min = this.showClass.s_min * 10 - 10;
+        min = min === 0 ? "0" + min : min;
+        duration = this.showClass.times * 10;
+        cate_name = this.showClass.cate_id === 1 ? "전화영어" : "화상영어";
+        deVal = `${year}.${month}.${day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
+      }
+      return deVal;
+    },
+    selectedClassTitle() {
+      let deVal = "수업을 선택해주세요.";
+      if (this.showClass.length !== 0) deVal = this.showClass.book_name;
+      return deVal;
+    }
+    // selectedClassImg(){
+    //   let deVal = "../assets/curriculum/sp_1.jpg";
+    //   console.log(deVal)
+    //   return deVal;
+    // },
   },
   watch: {
     async pickerDate(val) {
@@ -579,18 +606,58 @@ export default {
   destroyed() {},
   mounted() {
     this.today = this.formatDate(this.date);
-    this.month = this.date.getMonth() + 1;
-    this.year = this.date.getFullYear();
     axios.defaults.headers.common["Authorization"] = localStorage.getItem(
       "access-token"
     );
-    // this.getSchedule(this.year,this.month);
   },
-
   methods: {
+    openHoldDialog(classObj) {
+      let date = this.date2;
+      this.$refs.HoldDialog.open(date, classObj);
+    },
+    getBookName(obj) {
+      return obj.book_name;
+    },
+    selectClass(classObj) {
+      //let path = "@/assets/curriculum/";
+      let books = [
+        require("@/assets/curriculum/1st_step.jpg"),
+        require("@/assets/curriculum/adv_phonics.jpg"),
+        require("@/assets/curriculum/be_sd.jpg"),
+        require("@/assets/curriculum/cabin_crew.jpg"),
+        require("@/assets/curriculum/conv.jpg"),
+        require("@/assets/curriculum/dd_1.jpg"),
+        require("@/assets/curriculum/debate.jpg"),
+        require("@/assets/curriculum/email.jpg"),
+        require("@/assets/curriculum/hotel.jpg"),
+        require("@/assets/curriculum/ielts.jpg"),
+        require("@/assets/curriculum/interactive.jpg"),
+        require("@/assets/curriculum/it_1.jpg"),
+        require("@/assets/curriculum/medical_english.jpg"),
+        require("@/assets/curriculum/meeting.jpg"),
+        require("@/assets/curriculum/negotiation.jpg"),
+        require("@/assets/curriculum/nye.jpg"),
+        require("@/assets/curriculum/presentation.jpg")
+      ];
+
+      let randomItem = books[Math.floor(Math.random() * books.length)];
+
+      this.$set(this.$data, "showClass", classObj);
+      this.selectedClassImg = randomItem;
+    },
+    getClassColor(classObj) {
+      let color = "";
+      let jong = ["", "#df7a30", "#5e75cf"];
+      if (classObj.no_class) {
+        color = "grey";
+      } else {
+        color = jong[classObj.jong];
+      }
+      return color;
+    },
     getClassDate() {
-      let [, , day] = this.date2.split("-");
-      return day + "일";
+      let [, month, day] = this.date2.split("-");
+      return `${month}월${day}일`;
     },
     getTitle(obj) {
       let countDaysOfWeek = 0;
@@ -606,25 +673,18 @@ export default {
         }
       }
 
-      return `[주${countDaysOfWeek}회 ${daysOfweek}] 프리토킹 ${obj.lec_name}`;
+      return `[주${countDaysOfWeek}회 ${daysOfweek}] ${obj.lec_name}`;
     },
     getStatus(obj) {
-      let rsStatus = {};
-      let [, , day] = this.date2.split("-");
-      let existHoldA = Object.keys({ ...this.schedule[day] }).includes("holdA");
-      if (existHoldA) {
-        return "학원휴강";
+      let status = "";
+      if (obj.no_class) {
+        status = "수업 홀드";
+      } else if (obj.state == "yes") {
+        status = "수강중";
+      } else if (obj.state == "no") {
+        status = "수업 대기중";
       }
-      if (this.holdDatas["hold"][obj.s_id]) {
-        rsStatus = this.holdDatas["hold"][obj.s_id][day];
-      }
-      if (
-        this.holdDatas["cancel"][obj.s_id] &&
-        Object.keys({ ...rsStatus }).length == 0
-      ) {
-        rsStatus = this.holdDatas["cancel"][obj.s_id][day];
-      }
-      return Object.keys({ ...rsStatus }).length !== 0 ? "홀드" : "";
+      return status;
     },
     getEndDay(obj) {
       return (
@@ -632,8 +692,11 @@ export default {
         moment(new Date(obj.end_day * 1000)).format("YYYY.MM.DD")
       );
     },
-    getProgress(obj) {
-      return obj.jong + "65%";
+    getTimes(obj) {
+      let duration = obj.times * 10;
+      let min = obj.s_min * 10 - 10;
+      min = min == 0 ? "0" + min : min;
+      return `${obj.s_hour}:${min}+${duration}`;
     },
     pickDate(val) {
       let [, , day] = val.split("-");
@@ -663,6 +726,7 @@ export default {
               hold: rs.data.hold,
               cancel: rs.data.cancel
             };
+            this.memberName = rs.data.memberInfo.data.name;
             this.$set(this.$data, "schedule", schedule);
             this.$set(this.$data, "holdDatas", holdDatas);
             if (this.pickDateClasses.length === 0) this.pickDate(this.today);
@@ -686,50 +750,15 @@ export default {
       if (existHoldA) {
         mark.push("red");
       } else if (existClass) {
-        // let holded = false;
-        // 보완해야할 부분
         this.schedule[day].class.forEach(item => {
-          if (Object.keys({ ...this.schedule[day] }).includes("hold")) {
-            //홀드가 있을때만
-            if (this.holdDatas["hold"][item.s_id] !== undefined) {
-              if (this.holdDatas["hold"][item.s_id][day] !== undefined) {
-                todayClass = false; //홀드가 없다면
-              } else {
-                todayClass = true;
-                return;
-              }
-            } else {
-              todayClass = true;
-              return;
-            }
-          } else if (
-            Object.keys({ ...this.schedule[day] }).includes("cancel")
-          ) {
-            //수업취소가 있을때만
-            if (this.holdDatas["cancel"][item.s_id] !== undefined) {
-              if (this.holdDatas["cancel"][item.s_id][day] !== undefined) {
-                todayClass = false; //홀드가 없다면
-              } else {
-                todayClass = true;
-                return;
-              }
-            } else {
-              todayClass = true;
-              return;
-            }
-          } else {
-            todayClass = true; //홀드가 없다면
-          }
+          if (!item.no_class) todayClass = true;
+          return true;
         }); //end foreach
-
         if (todayClass) mark.push("green");
       }
-
       if (existHold || existCancel) {
-        //code...
         mark.push("blue");
       }
-
       // console.log(Object.keys( {...this.schedule[day]} ).includes('class'));
       return mark;
     },
