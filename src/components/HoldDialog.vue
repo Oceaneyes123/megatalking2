@@ -3,11 +3,12 @@
     <v-dialog v-model="dialog" max-width="290">
       <v-card>
         <v-card-title class="headline">
-          정말 홀드하시겠습니까?
+          홀드 하시겠습니까?
         </v-card-title>
 
         <v-card-text>
-          정말 홀드하시겠습니까? 한번 홀드한 수업은 되돌릴 수 없습니다.
+          정말 홀드하시겠습니까?<br />
+          한번 홀드한 수업은 되돌릴 수 없습니다.
         </v-card-text>
 
         <v-card-actions>

@@ -19,9 +19,12 @@
           style="margin-top: 90px"
           max-width="1000px"
         >
-          <v-container class="px-md-10 pt-10 text-left">
+          <v-container class="px-md-10 pt-4 pt-md-10 text-left">
             <v-row>
               <v-col>
+                <div class="ml-3 mb-3 h5">
+                  나의 스케줄
+                </div>
                 <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
                     v-model="date2"
@@ -40,7 +43,10 @@
             <v-row class="my-10">
               <v-col cols="12">
                 <v-sheet>
-                  <v-slide-group :show-arrows="!isMobile">
+                  <v-slide-group
+                    :show-arrows="!isMobile"
+                    v-if="hasClassPickDay"
+                  >
                     <v-slide-item
                       class="mx-3"
                       v-for="(classes, index) in pickDateClasses"
@@ -146,13 +152,55 @@
                     </v-slide-item>
                     -->
                   </v-slide-group>
+                  <v-slide-group v-else>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #bbbbbb"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption" style="color: #5e75cf">
+                          {{
+                            date2.split("-")[1] +
+                              "월" +
+                              date2.split("-")[2] +
+                              "일"
+                          }}
+                        </div>
+                        <div class="h6 nanum">수업이 없습니다.</div>
+                        <div class="d-flex">
+                          <v-icon
+                            color="bbbbbb"
+                            class="text-center mx-auto"
+                            x-large
+                            >close</v-icon
+                          >
+                        </div>
+                        <v-card
+                          color="#bbbbbb"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                        >
+                          <v-btn
+                            text
+                            class="white--text"
+                            style="font-size:16px"
+                            block
+                          >
+                            수강 신청 하기
+                          </v-btn>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
+                  </v-slide-group>
                 </v-sheet>
               </v-col>
             </v-row>
 
             <v-row no-gutters>
               <v-col cols="12" md="5">
-                <div class="h5 gmarket" data-aos="fade-right">수강 종류</div>
+                <div class="h5 gmarket ml-3" data-aos="fade-right">
+                  수강 종류
+                </div>
               </v-col>
               <v-col cols="12" md="7">
                 <v-card
@@ -570,7 +618,6 @@ export default {
   computed: {
     ...mapState(["screenWidth", "isMobile"]),
     selectedClassInfo() {
-      let [year, month, day] = this.date2.split("-");
       let deVal = `안녕하세요. ${this.memberName} 회원님:)`;
       if (this.showClass.length !== 0) {
         let hour, min, duration, cate_name;
@@ -579,7 +626,7 @@ export default {
         min = min === 0 ? "0" + min : min;
         duration = this.showClass.times * 10;
         cate_name = this.showClass.cate_id === 1 ? "전화영어" : "화상영어";
-        deVal = `${year}.${month}.${day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
+        deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
       }
       return deVal;
     },
@@ -587,6 +634,9 @@ export default {
       let deVal = "수업을 선택해주세요.";
       if (this.showClass.length !== 0) deVal = this.showClass.book_name;
       return deVal;
+    },
+    hasClassPickDay() {
+      return this.pickDateClasses.length === 0 ? false : true;
     }
     // selectedClassImg(){
     //   let deVal = "../assets/curriculum/sp_1.jpg";
@@ -640,8 +690,11 @@ export default {
         require("@/assets/curriculum/presentation.jpg")
       ];
 
+      let [year, month, day] = this.date2.split("-");
       let randomItem = books[Math.floor(Math.random() * books.length)];
-
+      classObj.year = year;
+      classObj.month = month;
+      classObj.day = day;
       this.$set(this.$data, "showClass", classObj);
       this.selectedClassImg = randomItem;
     },
@@ -746,18 +799,18 @@ export default {
       let existCancel = Object.keys({ ...this.schedule[day] }).includes(
         "cancel"
       );
-      let todayClass = false;
+      let todayClass = true;
       if (existHoldA) {
         mark.push("red");
       } else if (existClass) {
-        this.schedule[day].class.forEach(item => {
-          if (!item.no_class) todayClass = true;
-          return true;
-        }); //end foreach
-        if (todayClass) mark.push("green");
+        // this.schedule[day].class.forEach(item => {
+        //   if (!item.no_class) todayClass = true;
+        //   return true;
+        // }); //end foreach
+        if (todayClass) mark.push("blue");
       }
       if (existHold || existCancel) {
-        mark.push("blue");
+        //mark.push("blue");
       }
       // console.log(Object.keys( {...this.schedule[day]} ).includes('class'));
       return mark;
