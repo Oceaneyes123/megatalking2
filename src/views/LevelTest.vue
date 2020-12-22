@@ -497,6 +497,24 @@
           </v-btn>
         </template>
       </v-snackbar>
+
+      <v-snackbar color="success" outlined v-model="successSnackbar">
+        레벨테스트 신청에 성공하셨습니다.
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+
+      <v-snackbar color="red" outlined v-model="errorSnackbar">
+        레벨테스트 신청에 실패하였습니다. 잠시 후 다시 이용해주세요.
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </div>
   </v-app>
 </template>
@@ -530,6 +548,8 @@ export default {
       showEvaluationDialog: false,
       searchEvaluationDialog: false,
       snackbar: false,
+      successSnackbar: false,
+      errorSnackbar: false,
       name: "",
       number: "",
       searchNumber: "",
@@ -574,7 +594,7 @@ export default {
     };
     //날짜 검색 기능
     axios
-      .get("//mega02.cafe24.com/origin/api/leveltest.php", {
+      .get("//phone.megatalking.com/origin/api/leveltest.php", {
         params: {
           action: "getTimes"
         },
@@ -644,9 +664,22 @@ export default {
         headers: { Authorization: this.loginToken }
       };
       axios
-        .post("//mega02.cafe24.com/origin/api/leveltest.php", this.form, config)
+        .post(
+          "//phone.megatalking.com/origin/api/leveltest.php",
+          this.form,
+          config
+        )
         .then(rs => {
           console.log(rs);
+          if (rs.data.result) {
+            //code
+            this.confirmDialog = false;
+            this.successSnackbar = true;
+          } else {
+            //code
+            this.confirmDialog = false;
+            this.errorSnackbar = true;
+          }
         })
         .catch(err => {
           console.log(err);
@@ -658,7 +691,7 @@ export default {
       //확인해봐야할것
       if (this.searchNumber) {
         axios
-          .get("//mega02.cafe24.com/origin/api/leveltest.php", {
+          .get("//phone.megatalking.com/origin/api/leveltest.php", {
             params: {
               action: "getEval",
               searchNumber: this.searchNumber

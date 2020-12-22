@@ -490,19 +490,25 @@
                     <v-col cols="6" sm="2">비밀번호</v-col>
                     <v-col cols="6" sm="3">
                       <v-text-field
+                        v-model="password"
                         outlined
                         class="rounded-lg"
                         dense
-                        required
+                        type="password"
+                        style="font-family: auto;"
+                        :rules="passwordRules"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="6" sm="2">비밀번호 확인</v-col>
                     <v-col cols="6" sm="3">
                       <v-text-field
+                        v-model="passwordCheck"
                         outlined
                         class="rounded-lg"
+                        type="password"
                         dense
-                        required
+                        style="font-family: auto;"
+                        :rules="passwordCheckRules"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -515,6 +521,7 @@
                         class="rounded-lg"
                         dense
                         v-model="name_kr"
+                        :rules="name_krRules"
                         required
                       ></v-text-field>
                     </v-col>
@@ -525,6 +532,7 @@
                         class="rounded-lg"
                         dense
                         v-model="name_en"
+                        :rules="name_enRules"
                         required
                       ></v-text-field>
                     </v-col>
@@ -537,7 +545,10 @@
                         class="rounded-lg"
                         dense
                         v-model="tel"
+                        :rules="telRules"
                         required
+                        counter="13"
+                        maxlength="13"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="6" sm="2">휴대전화</v-col>
@@ -547,7 +558,10 @@
                         class="rounded-lg"
                         dense
                         v-model="phone"
+                        :rules="phoneRules"
                         required
+                        counter="13"
+                        maxlength="13"
                       ></v-text-field>
                     </v-col>
                   </v-row>
@@ -560,6 +574,7 @@
                         class="rounded-lg"
                         dense
                         v-model="mail"
+                        :rules="mailRules"
                         required
                       ></v-text-field>
                     </v-col>
@@ -591,11 +606,17 @@
                   class="mr-3 rounded-pill white--text"
                   color="#6a9af2"
                   large
-                  >확인</v-btn
+                  @click="submitModify()"
+                  >내정보 수정하기</v-btn
                 >
-                <v-btn color="grey white--text" class="rounded-xl" large
-                  >새로입력하기</v-btn
+                <v-btn
+                  color="grey white--text"
+                  class="rounded-xl"
+                  large
+                  @click="$refs.modifyForm.reset()"
                 >
+                  새로입력하기
+                </v-btn>
               </v-row>
             </v-form>
           </v-container>
@@ -676,14 +697,41 @@ export default {
       memberId: "",
       name_kr: "",
       name_en: "",
-      passworld: "",
-      passworldCheck: "",
+      password: "",
+      passwordCheck: "",
       tel: "",
       phone: "",
       receipt: "",
       mail: "",
       raCheck: "",
       rcCheck: "",
+      name_krRules: [
+        v => !!v || "이름을 입력해주세요",
+        v => (v && v.length >= 2) || "2글자 이상 입력해주세요."
+      ],
+      name_enRules: [
+        v => !!v || "영어 이름을 입력해주세요",
+        v => /^[a-zA-Z ]*$/.test(v) || "영어이름은 영어만 가능합니다.",
+        v => (v && v.length >= 3) || "3글자 이상 입력해주세요."
+      ],
+      passwordRules: [v => (v && v.length >= 4) || "4글자 입력해주세요"],
+      passwordCheckRules: [
+        v => v == this.password || "비밀번호가 일치하지 않습니다."
+      ],
+
+      telRules: [
+        v => !!v || "전화번호를 입력해주세요.",
+        v => /^[0-9-]*$/.test(v) || "번호만 입력 가능합니다.",
+        v => (v && v.length >= 11) || "9자리 이상 입력해주세요"
+      ],
+      phoneRules: [
+        v => !!v || "휴대전화번호를 입력해주세요.",
+        v => (v && v.length >= 11) || "9자리 이상 입력해주세요"
+      ],
+      mailRules: [
+        v => !!v || "이메일을 입력해주세요.",
+        v => /.+@.+/.test(v) || "이메일 형식이 아닙니다."
+      ],
       token: localStorage.getItem("access-token")
     };
   },
@@ -694,11 +742,35 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
   },
-  watch: {},
+  watch: {
+    tel(val) {
+      if (val) {
+        this.tel = val
+          .replace(/[^0-9]/g, "")
+          .replace(
+            /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+            "$1-$2-$3"
+          )
+          .replace("--", "-");
+      }
+    },
+    phone(val) {
+      if (val) {
+        this.phone = val
+          .replace(/[^0-9]/g, "")
+          .replace(
+            /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+            "$1-$2-$3"
+          )
+          .replace("--", "-");
+      }
+    }
+  },
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
     axios.defaults.headers.common["Authorization"] = this.token;
+    this.getHistory();
   },
 
   methods: {
@@ -725,7 +797,7 @@ export default {
         }
       };
       axios
-        .get("//mega02.cafe24.com/origin/api/account.php", config)
+        .get("//phone.megatalking.com/origin/api/account.php", config)
         .then(rs => {
           if (rs.data.result) {
             /*
@@ -764,7 +836,7 @@ export default {
         }
       };
       axios
-        .get("//mega02.cafe24.com/origin/api/account.php", config)
+        .get("//phone.megatalking.com/origin/api/account.php", config)
         .then(rs => {
           console.log(rs.data);
           if (rs.data.result) {
@@ -784,8 +856,18 @@ export default {
         });
     },
     submitModify() {
+      console.log(this.password);
+      if (!this.password) {
+        this.passwordRules = [];
+        this.passwordCheckRules = [];
+      } else {
+        this.passwordRules = [
+          v => (v && v.length >= 4) || "4글자 입력해주세요"
+        ];
+      }
       if (this.$refs.modifyForm.validate()) {
         // code...
+        console.log("test");
       }
     },
     modify() {

@@ -6,6 +6,7 @@
       width="100%"
       style="position: fixed; top: 0; z-index: 100"
       v-if="showNav"
+      color="#fafafa"
     >
       <v-container class="d-flex flex-row">
         <v-card flat tile color="#00000000">

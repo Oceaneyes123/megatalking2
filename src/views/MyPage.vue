@@ -97,8 +97,33 @@
                                 small
                                 block
                                 @click="openHoldDialog(classes)"
+                                v-if="classes.attend == 'ready'"
                               >
                                 수업 홀드
+                              </v-btn>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                v-else-if="
+                                  classes.attend == 'absent' ||
+                                    classes.attend == 'passed'
+                                "
+                              >
+                                수업 결석
+                              </v-btn>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                v-else
+                                @click="openEval(classes)"
+                              >
+                                평가서 보기
                               </v-btn>
                             </div>
                             <div class="mx-auto">|</div>
@@ -109,7 +134,19 @@
                                 text
                                 small
                                 block
+                                @click="openRecoding(classes)"
+                                v-if="classes.attend == 'atten'"
+                              >
+                                녹취 듣기
+                              </v-btn>
+                              <v-btn
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                text
+                                small
+                                block
                                 @click="selectClass(classes)"
+                                v-else
                               >
                                 수강 보기
                               </v-btn>
@@ -518,6 +555,7 @@
       </v-card>
     </v-container>
     <HoldDialog ref="HoldDialog"></HoldDialog>
+    <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
   </v-app>
 </template>
 
@@ -568,10 +606,13 @@ import axios from "axios";
 import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
+import HoldSnackbar from "@/components/Snackbar";
+import { bus } from "@/main";
 
 export default {
   components: {
-    HoldDialog
+    HoldDialog,
+    HoldSnackbar
   },
   data() {
     return {
@@ -624,8 +665,8 @@ export default {
         hour = this.showClass.s_hour;
         min = this.showClass.s_min * 10 - 10;
         min = min === 0 ? "0" + min : min;
-        duration = this.showClass.times * 10;
-        cate_name = this.showClass.cate_id === 1 ? "전화영어" : "화상영어";
+        duration = this.showClass.duration;
+        cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
         deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
       }
       return deVal;
@@ -659,11 +700,29 @@ export default {
     axios.defaults.headers.common["Authorization"] = localStorage.getItem(
       "access-token"
     );
+    bus.$on("HoldSnackbar", ({ text, state }) => {
+      this.$refs.HoldSnackbar.show(text, state);
+    });
+    bus.$on("refreshSchedule", () => {
+      // console.log(this.date2);
+      let [year, month, day] = this.date2.split("-");
+      this.getSchedule(year, month, day);
+    });
   },
   methods: {
-    openHoldDialog(classObj) {
+    openRecoding(classObj) {
+      let tel = classObj.aTel + classObj.bTel + classObj.cTel;
+      let hp = classObj.aHp + classObj.bHp + classObj.cHp;
+      let path = `http://phone.megatalking.com/my_phone1.htm?call_date=${classObj.Ymd}&tel001=${tel}&tel002=${hp}&company_code=ueducation`;
+      window.open(path, "PopupWin", "width=380,height=350");
+    },
+    openEval(classObj) {
+      let path = `http://phone.megatalking.com/firmsugang_view.htm?s_id=${classObj.s_id}&todate=${classObj.todate}`;
+      window.open(path, "PopupWin", "width=700,height=600");
+    },
+    async openHoldDialog(classObj) {
       let date = this.date2;
-      this.$refs.HoldDialog.open(date, classObj);
+      await this.$refs.HoldDialog.open(date, classObj);
     },
     getBookName(obj) {
       return obj.book_name;
@@ -699,10 +758,15 @@ export default {
       this.selectedClassImg = randomItem;
     },
     getClassColor(classObj) {
+      //console.log(classObj);
       let color = "";
       let jong = ["", "#df7a30", "#5e75cf"];
       if (classObj.no_class) {
         color = "grey";
+      } else if (classObj.attend == "atten") {
+        color = "#4caf50";
+      } else if (classObj.attend == "passed" || classObj.attend == "absent") {
+        color = "#ff5722";
       } else {
         color = jong[classObj.jong];
       }
@@ -746,7 +810,7 @@ export default {
       );
     },
     getTimes(obj) {
-      let duration = obj.times * 10;
+      let duration = obj.duration;
       let min = obj.s_min * 10 - 10;
       min = min == 0 ? "0" + min : min;
       return `${obj.s_hour}:${min}+${duration}`;
@@ -754,13 +818,12 @@ export default {
     pickDate(val) {
       let [, , day] = val.split("-");
       let pickDateClasses = [];
-      this.pickDay = day;
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
       }
       this.$set(this.$data, "pickDateClasses", pickDateClasses);
     },
-    async getSchedule(year, month) {
+    async getSchedule(year, month, day = "") {
       let config = {
         params: {
           action: "schedule",
@@ -770,9 +833,9 @@ export default {
       };
 
       await axios
-        .get("//mega02.cafe24.com/origin/api/mypage.php", config)
+        .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
-          console.log(rs);
+          //console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {
@@ -787,6 +850,11 @@ export default {
         })
         .catch(err => {
           console.log(err);
+        })
+        .then(() => {
+          if (day !== "") {
+            this.pickDate(this.date2);
+          }
         });
     },
 

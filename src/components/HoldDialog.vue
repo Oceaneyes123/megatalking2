@@ -24,10 +24,14 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-overlay :value="holdOverlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
   </v-row>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -35,6 +39,9 @@ export default {
       date: "",
       s_id: ""
     };
+  },
+  computed: {
+    ...mapState(["holdOverlay"])
   },
   methods: {
     open(date, classObj) {
@@ -45,6 +52,7 @@ export default {
     },
     submit() {
       let playload = {
+        action: "hold",
         date: this.date,
         s_id: this.s_id
       };

@@ -908,7 +908,7 @@
             </v-row> -->
 
             <v-row>
-              <v-card flat>
+              <v-card flat color="#00000000">
                 <v-img src="../assets/level-diagram.png" width="100%"></v-img>
               </v-card>
             </v-row>

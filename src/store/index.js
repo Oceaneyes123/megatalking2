@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
+import { bus } from "@/main";
 
 Vue.use(Vuex);
 
@@ -25,7 +26,8 @@ export default new Vuex.Store({
     },
     showNav: true,
     screenWidth: "",
-    isMobile: false
+    isMobile: false,
+    holdOverlay: false
   },
   mutations: {
     loadBg(state, payload) {
@@ -68,8 +70,9 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { id, pw }) {
       await axios
-        .post("//mega02.cafe24.com/origin/api/signin.php", { id, pw })
+        .post("//phone.megatalking.com/origin/api/signin.php", { id, pw })
         .then(rs => {
+          console.log(rs);
           if (rs.status === 200) {
             if (rs.data.result === true) {
               commit("loginProcess", { token: rs.data.token });
@@ -106,10 +109,10 @@ export default new Vuex.Store({
       commit("logoutProcess");
       router.push("/");
     },
-    async signup({ commit }, payload) {
-      console.log(commit, payload);
+    async signup(context, payload) {
+      //console.log(commit, payload);
       axios
-        .post("//mega02.cafe24.com/origin/api/signup.php", {
+        .post("//phone.megatalking.com/origin/api/signup.php", {
           ...payload
         })
         .then(rs => {
@@ -119,8 +122,33 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    async hold({ commit }, payload) {
-      console.log(commit, payload);
+    async hold({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/mypage.php", payload)
+        .then(rs => {
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "홀드가 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          console.log(err);
+          state.holdOverlay = false;
+        });
     }
   },
   modules: {}
