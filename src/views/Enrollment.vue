@@ -822,16 +822,10 @@ export default {
           course: "정규 회화과정",
           series: [
             {
-              text: "Regular Conversation 1~3",
-              level: "",
-              type: "",
-              link: ""
-            },
-            {
               text: "Interactive English Series",
               level: "",
               type: "",
-              link: ""
+              link: "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf"
             }
           ]
         },
@@ -868,7 +862,8 @@ export default {
             {
               text: "Debate",
               level: "",
-              type: "pdf",
+
+              type: "book",
               link: "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf"
             }
           ]
@@ -880,43 +875,37 @@ export default {
               text: "Business English (Situational Dialogues)",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf"
             },
             {
               text: "E-mail",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1MhMQVyKcnMSmB82iqvdVuC4NSrUGJu9o/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf"
             },
             {
               text: "Meeting",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1aExVOMJ6dI-J9oRn_Lg5oY4ElSD_afHt/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf"
             },
             {
               text: "Negotiation",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1RWOQTYIQGG--GD34gpUZmQjLcgK0T6HD/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf"
             },
             {
               text: "Presentation",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1zatMw-zyib5m5XdGawNPl9XEhc4NH1uO/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf"
             },
             {
               text: "비지니스 회화과정",
               level: "",
               type: "book",
-              link:
-                "https://drive.google.com/file/d/1JmYIrtdNWaJ-rft815Wyl7SPfbf4-QZJ/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf"
             }
           ]
         },
@@ -959,27 +948,25 @@ export default {
               text: "Hotel Dialogues",
               level: "",
               type: "",
-              link: ""
+              link: "http://ols.jkn.co.kr/html/books.php?code=55"
             },
             {
               text: "Cabin Crew",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1N6zF_HAEiOgjW26rwXC_i30dHJ8TvxQe/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf"
             },
             {
               text: "IELTS",
               level: "",
-              type: "book",
+              type: "",
               link: "http://ols.jkn.co.kr/html/books.php?code=40"
             },
             {
               text: "Medical English",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/drive/folders/1OB_g7tNng4oVQekN8c5HxF7kkcnDZb9F?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf"
             }
           ]
         },
@@ -990,15 +977,15 @@ export default {
               text: "Milestones",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1YPFQMZgHL3Fm3qPJLbJTA49l0WNIE90O/view?usp=sharing"
+
+              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf"
             },
             {
               text: "First Step In Conversation",
               level: "",
               type: "pdf",
               link:
-                "https://drive.google.com/file/d/1q7tc57t9CseKuRujiTvcUCjgomLrjSJq/view?usp=sharing"
+                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf"
             }
           ]
         },
@@ -1009,29 +996,26 @@ export default {
               text: "Phonics ",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1Es3HQtk5Nd2QD_RlQoXnj9lmVmreCkaM/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf"
             },
-            {
-              text: "Advanced Phonics ",
-              level: "",
-              type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1wHyXFBntIGgETbo42818tfIbytqLIsSE/view?usp=sharing"
-            },
+            // {
+            //   text: "Advanced Phonics ",
+            //   level: "",
+            //   type: "pdf",
+            //   link:
+            //     "https://drive.google.com/file/d/1wHyXFBntIGgETbo42818tfIbytqLIsSE/view?usp=sharing",
+            // },
             {
               text: "P-course Junior",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/18DlCKPueud00P3hXc6DRsGqlllbCWiv4/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf"
             },
             {
               text: "C-course Junior",
               level: "",
               type: "pdf",
-              link:
-                "https://drive.google.com/file/d/1QbFxqyGlx5CQ7j8A-Hcmo47bj1rML8kW/view?usp=sharing"
+              link: "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf"
             }
           ]
         }

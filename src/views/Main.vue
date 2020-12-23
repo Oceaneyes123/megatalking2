@@ -649,13 +649,13 @@
         </div>
 
         <v-sheet class="mt-5 mb-10">
-          <v-slide-group :show-arrows="false">
-            <template slot="next">
+          <v-slide-group show-arrows>
+            <!-- <template slot="next">
               <v-icon style="font-size: 70px">fas fa-angle-right</v-icon>
             </template>
             <template slot="prev">
               <v-icon style="font-size: 70px">fas fa-angle-left</v-icon>
-            </template>
+            </template> -->
             <v-slide-item v-for="(review, i) in classReview" :key="i">
               <v-alert class="mx-2" outlined color="#769de4">
                 <v-card
@@ -1044,13 +1044,30 @@ export default {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
     this.onWindowResize();
-    //window.fbq('track','Purchase', {currency: "USD", value: 30.00});
+
+    console.log(this.detectBrowser());
   },
 
   methods: {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
+    },
+
+    detectBrowser() {
+      const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+      ];
+
+      return toMatch.some(toMatchItem => {
+        return navigator.userAgent.match(toMatchItem);
+      });
     }
   }
 };

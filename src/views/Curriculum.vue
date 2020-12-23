@@ -1,14 +1,14 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0 mx-0">
       <v-card flat tile color="#8bb6f700" class="text-center pa-3 px-0">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
-          style="margin-top:200px"
+          style="margin-top: 200px"
         >
           커리큘럼
         </div>
-        <div class="h4 nanum font-weight-bold" style="color:#bfd384">
+        <div class="h4 nanum font-weight-bold" style="color: #bfd384">
           “Anytime, Anywhere, Home Learn English.”
         </div>
         <div class="mt-5 h5 nanum white--text">
@@ -19,7 +19,7 @@
           class="rounded-xl mx-auto"
           elevation="7"
           width="100%"
-          style="margin-top:90px"
+          style="margin-top: 90px"
           max-width="1000px"
           color="#fafafa"
         >
@@ -201,7 +201,7 @@
                 flat
                 color="#fafafa"
                 class="text-center mt-10"
-                style="color: #ada8a8; word-break:keep-all; line-break:strict"
+                style="color: #ada8a8; word-break: keep-all; line-break: strict"
                 max-width="500"
               >
                 입문과정에서는 영어를 아주 처음 시작하는 왕초보와, 초심을 가지고
@@ -266,7 +266,7 @@
                           width="80%"
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color:#325fc4"
+                          style="color: #325fc4"
                           >{{ book.details }}</v-card
                         >
                       </v-card>
@@ -279,7 +279,7 @@
                         <v-row>
                           <v-col cols="12">
                             <v-img
-                              style=" transform: rotate(90deg)"
+                              style="transform: rotate(90deg)"
                               v-if="book.tab && i % 2 != 1"
                               :src="book.tab"
                               width="250"
@@ -304,7 +304,11 @@
                             <div class="d-flex flex-row align-start mx-auto">
                               <div
                                 class="h5 nanum text-black text-left mr-5 font-weight-bold"
-                                style="line-break:strict;word-break:keep-all;color:#325fc4"
+                                style="
+                                  line-break: strict;
+                                  word-break: keep-all;
+                                  color: #325fc4;
+                                "
                               >
                                 {{ title }}
                               </div>
@@ -358,7 +362,7 @@
                     width="80%"
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
-                    style="color:#325fc4"
+                    style="color: #325fc4"
                     >{{ book.details }}</v-card
                   >
                 </v-card>
@@ -416,7 +420,7 @@
                           width="80%"
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color:#325fc4"
+                          style="color: #325fc4"
                           >{{ book.details }}</v-card
                         >
                       </v-card>
@@ -447,7 +451,7 @@
                               >
                               <div
                                 class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
+                                style="line-break: strict; word-break: keep-all"
                               >
                                 {{ title }}
                               </div>
@@ -512,7 +516,7 @@
                           width="80%"
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color:#325fc4"
+                          style="color: #325fc4"
                           >{{ book.details }}</v-card
                         >
                       </v-card>
@@ -543,7 +547,7 @@
                               >
                               <div
                                 class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
+                                style="line-break: strict; word-break: keep-all"
                               >
                                 {{ title }}
                               </div>
@@ -608,7 +612,7 @@
                           width="80%"
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color:#325fc4"
+                          style="color: #325fc4"
                           >{{ book.details }}</v-card
                         >
                       </v-card>
@@ -639,7 +643,7 @@
                               >
                               <div
                                 class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
+                                style="line-break: strict; word-break: keep-all"
                               >
                                 {{ title }}
                               </div>
@@ -704,7 +708,7 @@
                           width="80%"
                           max-width="300"
                           class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color:#325fc4"
+                          style="color: #325fc4"
                           >{{ book.details }}</v-card
                         >
                       </v-card>
@@ -735,7 +739,7 @@
                               >
                               <div
                                 class="h5 nanum text-black text-left"
-                                style="line-break:strict;word-break:keep-all"
+                                style="line-break: strict; word-break: keep-all"
                               >
                                 {{ title }}
                               </div>
@@ -787,7 +791,7 @@
                     width="80%"
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
-                    style="color:#325fc4"
+                    style="color: #325fc4"
                     >{{ book.details }}</v-card
                   >
                 </v-card>
@@ -828,7 +832,7 @@
                     width="80%"
                     max-width="300"
                     class="mx-auto mt-5 text-left caption-text mb-5"
-                    style="color:#325fc4"
+                    style="color: #325fc4"
                     >{{ book.details }}</v-card
                   >
                 </v-card>
@@ -853,7 +857,7 @@
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
                   class="h6 text--secondary mt-3"
-                  style="letter-spacing:-1px !important"
+                  style="letter-spacing: -1px !important"
                 >
                   레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수
                   있습니다.
@@ -868,7 +872,7 @@
                 <div class="h5 font-weight-black">비즈니스 맞춤형</div>
                 <div
                   class="h6 text--secondary mt-3"
-                  style="letter-spacing:-1px !important"
+                  style="letter-spacing: -1px !important"
                 >
                   비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.
                 </div>
@@ -882,7 +886,7 @@
                 <div class="h5 font-weight-black">폰에서 보는 교재</div>
                 <div
                   class="h6 text--secondary mt-3"
-                  style="letter-spacing:-1px !important"
+                  style="letter-spacing: -1px !important"
                 >
                   택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
                 </div>
@@ -1343,12 +1347,12 @@ export default {
         ],
 
         books_2: [
-          {
-            image: require("../assets/curriculum/conv.jpg"),
-            title: "Regular Conversation Step 1~3",
-            details:
-              "짧은 회화 다이얼로그 학습입니다. 부담스럽지 않게 그날그날의 주제 표현들을 학습할 수 있습니다. 레벨별로 보다 더 다양한 주제들이 등장하며, 레벨이 올라감에 따라 본문의 양이 조금씩 많아집니다."
-          },
+          // {
+          //   image: require("../assets/curriculum/conv.jpg"),
+          //   title: "Regular Conversation Step 1~3",
+          //   details:
+          //     "짧은 회화 다이얼로그 학습입니다. 부담스럽지 않게 그날그날의 주제 표현들을 학습할 수 있습니다. 레벨별로 보다 더 다양한 주제들이 등장하며, 레벨이 올라감에 따라 본문의 양이 조금씩 많아집니다."
+          // },
           {
             image: require("../assets/curriculum/interactive.jpg"),
             title: "Interactive English Series (BeginnerAdvance)",
