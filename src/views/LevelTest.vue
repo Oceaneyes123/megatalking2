@@ -679,7 +679,10 @@ export default {
             this.confirmDialog = false;
             this.successSnackbar = true;
             window.fbq("track", "CompleteRegistration", {
-              content_name: "무료 레벨 테스트 등록"
+              content_name: "무료 레벨 테스트 등록",
+              currency: "KRW",
+              status: "",
+              value: ""
             });
           } else {
             //code
