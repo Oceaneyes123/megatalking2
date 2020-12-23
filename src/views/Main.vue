@@ -661,7 +661,7 @@
                 <v-card
                   class="custom-scrollbar"
                   flat
-                  width="385"
+                  :width="isMobile ? '280' : '395'"
                   max-height="500"
                   style="overflow-x: hidden"
                 >
