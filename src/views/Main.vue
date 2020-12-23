@@ -1044,6 +1044,7 @@ export default {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
     this.onWindowResize();
+    //window.fbq('track','Purchase', {currency: "USD", value: 30.00});
   },
 
   methods: {
