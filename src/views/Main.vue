@@ -34,7 +34,7 @@
             </v-card>
           </v-col>
           <v-col cols="12" sm="4">
-            <v-card class="pt-10" flat>
+            <v-card class="pt-10" flat color="#00000000">
               <div class="mb-5 font-weight-bold">수업 녹음파일 전송</div>
               <v-img src="../assets/22.png" width="200" class="mx-auto"></v-img>
               <div class="caption-text grey--text">

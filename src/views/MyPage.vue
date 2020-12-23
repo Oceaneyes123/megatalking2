@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
-      <v-card tile color="#faae7d00" flat class="text-center pa-3">
+      <v-card tile color="#faae7d00" flat class="text-center pa-1">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
           style="margin-top: 200px"
@@ -19,89 +19,146 @@
           style="margin-top: 90px"
           max-width="1000px"
         >
-          <v-container class="px-md-10 pt-10 text-left">
-            <v-row>
-              <v-col cols="5" md="3">
-                <v-select
-                  v-model="select"
-                  :items="selectItems"
-                  outlined
-                  dense
-                ></v-select>
-              </v-col>
-            </v-row>
-
+          <v-container class="px-md-10 pt-4 pt-md-10 text-left">
             <v-row>
               <v-col>
-                <v-card class="rounded-xl fadeInUp">
+                <div class="ml-3 mb-3 h5">
+                  나의 스케줄
+                </div>
+                <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
                     v-model="date2"
-                    color="#df7a30"
+                    color="#859ec9"
                     width="100%"
                     data-aos="zoom-in"
-                    :event-color="(date) => (date[9] % 2 ? 'red' : 'yellow')"
                     :events="functionEvents"
+                    locale="ko"
+                    :picker-date.sync="pickerDate"
+                    @click:date="pickDate"
                   ></v-date-picker>
                 </v-card>
               </v-col>
             </v-row>
-
+            <!--`-->
             <v-row class="my-10">
               <v-col cols="12">
                 <v-sheet>
-                  <v-slide-group :show-arrows="!isMobile">
-                    <v-slide-item class="mx-3">
+                  <v-slide-group
+                    :show-arrows="!isMobile"
+                    v-if="hasClassPickDay"
+                  >
+                    <v-slide-item
+                      class="mx-3"
+                      v-for="(classes, index) in pickDateClasses"
+                      :key="index"
+                    >
                       <v-card
-                        style="border: 3px solid #df7a30"
+                        :style="
+                          `border: 3px solid ${getClassColor(classes)}; ${
+                            classes.no_class ? 'background:#f6e5e5' : ''
+                          }`
+                        "
                         width="300"
                         class="rounded-xl py-3 px-5"
                       >
-                        <div class="caption mb-3" style="color: #df7a30">
-                          [주2회 화,목] 프리토킹
+                        <div
+                          class="caption mb-3"
+                          :style="`color: ${getClassColor(classes)}`"
+                        >
+                          {{ getClassDate() }} {{ getTitle(classes) }} <br />
+                          {{ getBookName(classes) }}
                         </div>
-                        <div class="h6 nanum" style="color: #df7a30">
-                          10%
-                          <span class="subtitle-text-1">수강 중</span>
+                        <div
+                          class="h6 nanum"
+                          :style="`color: ${getClassColor(classes)}`"
+                        >
+                          {{ getTimes(classes) }}
+                          <span class="subtitle-text-1">
+                            {{ getStatus(classes) }}</span
+                          >
                         </div>
                         <div class="caption grey--text">
-                          수강종료일: 2020.09.30
+                          {{ getEndDay(classes) }}
                         </div>
                         <v-card
-                          color="#df7a30"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
+                          :color="getClassColor(classes)"
+                          class="rounded-xl mt-3 px-5 py-2"
+                          :elevation="classes.no_class == 1 ? '0' : '2'"
                         >
-                          <div>수업 홀드</div>
-                          <div class="mx-auto">|</div>
-                          <div>수강신청 연장</div>
+                          <div
+                            class="d-flex mx-4 white--text my-0 py-0"
+                            v-if="!classes.no_class"
+                          >
+                            <div>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                @click="openHoldDialog(classes)"
+                                v-if="classes.attend == 'ready'"
+                              >
+                                수업 홀드
+                              </v-btn>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                v-else-if="
+                                  classes.attend == 'absent' ||
+                                    classes.attend == 'passed'
+                                "
+                              >
+                                수업 결석
+                              </v-btn>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                small
+                                block
+                                v-else
+                                @click="openEval(classes)"
+                              >
+                                평가서 보기
+                              </v-btn>
+                            </div>
+                            <div class="mx-auto">|</div>
+                            <div>
+                              <v-btn
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                text
+                                small
+                                block
+                                @click="openRecoding(classes)"
+                                v-if="classes.attend == 'atten'"
+                              >
+                                녹취 듣기
+                              </v-btn>
+                              <v-btn
+                                class="white--text pa-0 my-0"
+                                style="font-size:16px"
+                                text
+                                small
+                                block
+                                @click="selectClass(classes)"
+                                v-else
+                              >
+                                수강 보기
+                              </v-btn>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-center white--text" v-else>
+                            <div>수업 홀드 완료</div>
+                          </div>
                         </v-card>
                       </v-card>
                     </v-slide-item>
-                    <v-slide-item class="mx-3">
-                      <v-card
-                        style="border: 3px solid #5e75cf"
-                        width="300"
-                        class="rounded-xl py-3 px-5"
-                      >
-                        <div class="caption mb-3" style="color: #5e75cf">
-                          [주2회 화,목] 비즈니스 과정
-                        </div>
-                        <div class="h6 nanum" style="color: #5e75cf">
-                          40%
-                          <span class="subtitle-text-1">수강 중</span>
-                        </div>
-                        <div class="caption grey--text">
-                          수강종료일: 2020.09.30
-                        </div>
-                        <v-card
-                          color="#5e75cf"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
-                        >
-                          <div>수업 홀드</div>
-                          <div class="mx-auto">|</div>
-                          <div>수강신청 연장</div>
-                        </v-card>
-                      </v-card>
-                    </v-slide-item>
+                    <!--
                     <v-slide-item class="mx-3">
                       <v-card
                         style="border: 3px solid #bbbbbb"
@@ -111,7 +168,7 @@
                         <div class="caption" style="color: #5e75cf">
                           보강 쿠폰현황
                         </div>
-                        <div class="h6 nanum">강의1, 강의26</div>
+                        <div class="h6 nanum">보강 설정하기</div>
                         <div class="d-flex">
                           <v-icon
                             color="bbbbbb"
@@ -122,9 +179,53 @@
                         </div>
                         <v-card
                           color="#bbbbbb"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-2"
-                          >보강 시간 설정</v-card
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                          >
+                          <v-btn text class="white--text"  style="font-size:16px" block>
+                            보강 시간 설정
+                          </v-btn>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
+                    -->
+                  </v-slide-group>
+                  <v-slide-group v-else>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #bbbbbb"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption" style="color: #5e75cf">
+                          {{
+                            date2.split("-")[1] +
+                              "월" +
+                              date2.split("-")[2] +
+                              "일"
+                          }}
+                        </div>
+                        <div class="h6 nanum">수업이 없습니다.</div>
+                        <div class="d-flex">
+                          <v-icon
+                            color="bbbbbb"
+                            class="text-center mx-auto"
+                            x-large
+                            >close</v-icon
+                          >
+                        </div>
+                        <v-card
+                          color="#bbbbbb"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
                         >
+                          <v-btn
+                            text
+                            class="white--text"
+                            style="font-size:16px"
+                            block
+                          >
+                            수강 신청 하기
+                          </v-btn>
+                        </v-card>
                       </v-card>
                     </v-slide-item>
                   </v-slide-group>
@@ -134,7 +235,9 @@
 
             <v-row no-gutters>
               <v-col cols="12" md="5">
-                <div class="h5 gmarket" data-aos="fade-right">수강 종류</div>
+                <div class="h5 gmarket ml-3" data-aos="fade-right">
+                  수강 종류
+                </div>
               </v-col>
               <v-col cols="12" md="7">
                 <v-card
@@ -142,18 +245,18 @@
                   class="h6 font-weight-black white--text pa-3 text-center"
                   data-aos="fade-left"
                 >
-                  <div>20.07.15 6:40+ 10 Annie / 프리토킹 묻고 답하기</div>
+                  <div>{{ selectedClassInfo }}</div>
                 </v-card>
               </v-col>
             </v-row>
 
-            <v-container fluid class="px-0">
+            <v-container fluid class="px-0 pb-15 mb-15 mt-2">
               <!-- Book -->
               <v-img
                 @click="$router.push('/material')"
                 class="rounded-xl"
                 data-aos="fade-up"
-                src="../assets/curriculum/sp_1.jpg"
+                :src="selectedClassImg"
                 width="100%"
                 height="auto"
                 v-if="isBook"
@@ -161,15 +264,15 @@
                 <v-card height="100%" color="#000000AD">
                   <v-container>
                     <div
-                      class="font-weight-black text-left mx-3 white--text gmarket"
+                      class="font-weight-black text-left ml-5 mt-5 white--text gmarket"
                       :class="isMobile ? 'h4' : 'h2'"
                     >
-                      Speaking Pattern 100 Course
+                      {{ selectedClassTitle }}
                     </div>
                     <div
                       :class="isMobile ? '' : 'h4'"
-                      class="font-weight-black text-right white--text gmarket"
-                      style="position: absolute; bottom: 20px; right: 20px"
+                      class="font-weight-black text-right white--text gmarket mr-5"
+                      style="position: absolute; bottom: 20px; right: 20px;cursor:pointer"
                     >
                       Next >
                     </div>
@@ -185,7 +288,7 @@
                 @click="$router.push('/material')"
                 flat
               >
-                <v-img src="../assets/tab/video4.jpg"></v-img>
+                <v-img src="@/assets/tab/video4.jpg"></v-img>
                 <div :class="isMobile ? 'h5 nanum' : 'h3'" class="text-center">
                   유튜브 미디어과정:: 셀럽과의 대화
                 </div>
@@ -402,7 +505,7 @@
                   </v-col>
               </v-row>-->
             </v-container>
-            <v-container fluid>
+            <v-container fluid v-if="false">
               <v-row class="mt-5 mx-1 mb-10" justify="center">
                 <v-col cols="6" md="4" class="pl-0">
                   <v-card
@@ -430,7 +533,7 @@
                     <div>
                       <v-rating
                         :small="isMobile"
-                        value="4"
+                        :value="4"
                         readonly
                         color="yellow"
                         half-increments
@@ -451,6 +554,8 @@
         </v-card>
       </v-card>
     </v-container>
+    <HoldDialog ref="HoldDialog"></HoldDialog>
+    <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
   </v-app>
 </template>
 
@@ -497,111 +602,286 @@
 <script>
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
+import { mapState } from "vuex";
+import moment from "moment";
+import HoldDialog from "@/components/HoldDialog";
+import HoldSnackbar from "@/components/Snackbar";
+import { bus } from "@/main";
 
 export default {
+  components: {
+    HoldDialog,
+    HoldSnackbar
+  },
   data() {
     return {
+      memberName: "",
+      selectedClassImg: require("@/assets/curriculum/sp_1.jpg"),
+      showClass: [],
+      schedule: [],
+      holdDatas: [],
+      pickDateClasses: [],
+      pickDay: "",
       selectItems: ["수업 회차순"],
       select: "수업 회차순",
       today: "",
       date: new Date(),
+      year: "",
       month: "",
-      screenWidth: "",
       nextSaturday: "",
       nextSunday: "",
       preveSaturday: "",
       prevSunday: "",
-      isMobile: false,
-
       date2: new Date().toISOString().substr(0, 10),
       arrayEvents: null,
-
       isBook: true,
       isVideo: false,
       isPDF: false,
-
       selectedSuggestion: [],
-
+      pickerDate: null,
       tests: [
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
+          detail: "더 나은 표현을 알려드릴게요."
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
+          detail: "더 나은 표현을 알려드릴게요."
         },
         {
           test: "test",
-          detail: "더 나은 표현을 알려드릴게요.",
-        },
-      ],
+          detail: "더 나은 표현을 알려드릴게요."
+        }
+      ]
     };
   },
-
+  computed: {
+    ...mapState(["screenWidth", "isMobile"]),
+    selectedClassInfo() {
+      let deVal = `안녕하세요. ${this.memberName} 회원님:)`;
+      if (this.showClass.length !== 0) {
+        let hour, min, duration, cate_name;
+        hour = this.showClass.s_hour;
+        min = this.showClass.s_min * 10 - 10;
+        min = min === 0 ? "0" + min : min;
+        duration = this.showClass.duration;
+        cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
+        deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
+      }
+      return deVal;
+    },
+    selectedClassTitle() {
+      let deVal = "수업을 선택해주세요.";
+      if (this.showClass.length !== 0) deVal = this.showClass.book_name;
+      return deVal;
+    },
+    hasClassPickDay() {
+      return this.pickDateClasses.length === 0 ? false : true;
+    }
+    // selectedClassImg(){
+    //   let deVal = "../assets/curriculum/sp_1.jpg";
+    //   console.log(deVal)
+    //   return deVal;
+    // },
+  },
+  watch: {
+    async pickerDate(val) {
+      let [year, month] = val.split("-");
+      this.getSchedule(year, month);
+    }
+  },
   created() {
-    window.addEventListener("resize", this.onWindowResize);
     AOS.init();
   },
-  destroyed() {
-    window.removeEventListener("resize", this.onWindowResize);
-  },
-
+  destroyed() {},
   mounted() {
-    this.screenWidth = screen.width;
-    this.isMobile = this.screenWidth <= 960 ? true : false;
-
     this.today = this.formatDate(this.date);
-    this.month = this.date.getMonth() + 1;
-
-    var prevSun = new Date();
-    prevSun.setDate(prevSun.getDate() - prevSun.getDay());
-
-    this.nextSunday = prevSun.getDate() + 7;
-    this.nextSaturday = prevSun.getDate() + 13;
-
-    this.prevSunday = prevSun.getDate() - 7;
-    this.prevSaturday = prevSun.getDate() - 1;
-
-    this.arrayEvents = [...Array(6)].map(() => {
-      const day = Math.floor(Math.random() * 30);
-      const d = new Date();
-      d.setDate(day);
-      return d.toISOString().substr(0, 10);
+    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+      "access-token"
+    );
+    bus.$on("HoldSnackbar", ({ text, state }) => {
+      this.$refs.HoldSnackbar.show(text, state);
     });
-
-    // for (var i = 1; i <= 40; i++) {
-    //   for (var j = 1; j <= 3; j++) {
-    //     if (i != 14 && i != 18 && i != 11 && i != 24 && i != 26 && i != 27) {
-    //       console.log("Unit" + i + "_" + j);
-    //     } else {
-    //       if (j < 3) {
-    //         console.log("Unit" + i + "_" + j);
-    //       }
-    //     }
-    //   }
-    // }
+    bus.$on("refreshSchedule", () => {
+      // console.log(this.date2);
+      let [year, month, day] = this.date2.split("-");
+      this.getSchedule(year, month, day);
+    });
   },
-
   methods: {
-    nextDate(dayIndex) {
-      var today = new Date();
-      today.setDate(
-        today.getDate() + ((dayIndex - 1 - today.getDay() + 7) % 7) + 1
+    openRecoding(classObj) {
+      let tel = classObj.aTel + classObj.bTel + classObj.cTel;
+      let hp = classObj.aHp + classObj.bHp + classObj.cHp;
+      let path = `http://phone.megatalking.com/my_phone1.htm?call_date=${classObj.Ymd}&tel001=${tel}&tel002=${hp}&company_code=ueducation`;
+      window.open(path, "PopupWin", "width=380,height=350");
+    },
+    openEval(classObj) {
+      let path = `http://phone.megatalking.com/firmsugang_view.htm?s_id=${classObj.s_id}&todate=${classObj.todate}`;
+      window.open(path, "PopupWin", "width=700,height=600");
+    },
+    async openHoldDialog(classObj) {
+      let date = this.date2;
+      await this.$refs.HoldDialog.open(date, classObj);
+    },
+    getBookName(obj) {
+      return obj.book_name;
+    },
+    selectClass(classObj) {
+      //let path = "@/assets/curriculum/";
+      let books = [
+        require("@/assets/curriculum/1st_step.jpg"),
+        require("@/assets/curriculum/adv_phonics.jpg"),
+        require("@/assets/curriculum/be_sd.jpg"),
+        require("@/assets/curriculum/cabin_crew.jpg"),
+        require("@/assets/curriculum/conv.jpg"),
+        require("@/assets/curriculum/dd_1.jpg"),
+        require("@/assets/curriculum/debate.jpg"),
+        require("@/assets/curriculum/email.jpg"),
+        require("@/assets/curriculum/hotel.jpg"),
+        require("@/assets/curriculum/ielts.jpg"),
+        require("@/assets/curriculum/interactive.jpg"),
+        require("@/assets/curriculum/it_1.jpg"),
+        require("@/assets/curriculum/medical_english.jpg"),
+        require("@/assets/curriculum/meeting.jpg"),
+        require("@/assets/curriculum/negotiation.jpg"),
+        require("@/assets/curriculum/nye.jpg"),
+        require("@/assets/curriculum/presentation.jpg")
+      ];
+
+      let [year, month, day] = this.date2.split("-");
+      let randomItem = books[Math.floor(Math.random() * books.length)];
+      classObj.year = year;
+      classObj.month = month;
+      classObj.day = day;
+      this.$set(this.$data, "showClass", classObj);
+      this.selectedClassImg = randomItem;
+    },
+    getClassColor(classObj) {
+      //console.log(classObj);
+      let color = "";
+      let jong = ["", "#df7a30", "#5e75cf"];
+      if (classObj.no_class) {
+        color = "grey";
+      } else if (classObj.attend == "atten") {
+        color = "#4caf50";
+      } else if (classObj.attend == "passed" || classObj.attend == "absent") {
+        color = "#ff5722";
+      } else {
+        color = jong[classObj.jong];
+      }
+      return color;
+    },
+    getClassDate() {
+      let [, month, day] = this.date2.split("-");
+      return `${month}월${day}일`;
+    },
+    getTitle(obj) {
+      let countDaysOfWeek = 0;
+      let daysOfweek = [];
+      for (var i = 1; i <= 5; i++) {
+        if (obj["ck" + i]) {
+          countDaysOfWeek++;
+          if (i == 1) daysOfweek.push("월");
+          else if (i == 2) daysOfweek.push("화");
+          else if (i == 3) daysOfweek.push("수");
+          else if (i == 4) daysOfweek.push("목");
+          else if (i == 5) daysOfweek.push("금");
+        }
+      }
+
+      return `[주${countDaysOfWeek}회 ${daysOfweek}] ${obj.lec_name}`;
+    },
+    getStatus(obj) {
+      let status = "";
+      if (obj.no_class) {
+        status = "수업 홀드";
+      } else if (obj.state == "yes") {
+        status = "수강중";
+      } else if (obj.state == "no") {
+        status = "수업 대기중";
+      }
+      return status;
+    },
+    getEndDay(obj) {
+      return (
+        "수강 종료일: " +
+        moment(new Date(obj.end_day * 1000)).format("YYYY.MM.DD")
       );
-      return today;
+    },
+    getTimes(obj) {
+      let duration = obj.duration;
+      let min = obj.s_min * 10 - 10;
+      min = min == 0 ? "0" + min : min;
+      return `${obj.s_hour}:${min}+${duration}`;
+    },
+    pickDate(val) {
+      let [, , day] = val.split("-");
+      let pickDateClasses = [];
+      if (Object.keys(this.schedule).includes(day)) {
+        pickDateClasses = this.schedule[day].class;
+      }
+      this.$set(this.$data, "pickDateClasses", pickDateClasses);
+    },
+    async getSchedule(year, month, day = "") {
+      let config = {
+        params: {
+          action: "schedule",
+          year,
+          month
+        }
+      };
+
+      await axios
+        .get("//phone.megatalking.com/origin/api/mypage.php", config)
+        .then(rs => {
+          //console.log(rs);
+          if (rs.data.result == true) {
+            let schedule = rs.data.schedule;
+            let holdDatas = {
+              hold: rs.data.hold,
+              cancel: rs.data.cancel
+            };
+            this.memberName = rs.data.memberInfo.data.name;
+            this.$set(this.$data, "schedule", schedule);
+            this.$set(this.$data, "holdDatas", holdDatas);
+            if (this.pickDateClasses.length === 0) this.pickDate(this.today);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .then(() => {
+          if (day !== "") {
+            this.pickDate(this.date2);
+          }
+        });
     },
 
     functionEvents(date) {
       const [, , day] = date.split("-");
-      if ([12, 17, 28].includes(parseInt(day, 10))) return true;
-      if ([1, 19, 22].includes(parseInt(day, 10))) return ["red", "#00f"];
-      return false;
-    },
-
-    onWindowResize() {
-      this.screenWidth = screen.width;
-      this.isMobile = this.screenWidth <= 960 ? true : false;
+      let mark = [];
+      let existClass = Object.keys({ ...this.schedule[day] }).includes("class");
+      let existHoldA = Object.keys({ ...this.schedule[day] }).includes("holdA");
+      let existHold = Object.keys({ ...this.schedule[day] }).includes("hold");
+      let existCancel = Object.keys({ ...this.schedule[day] }).includes(
+        "cancel"
+      );
+      let todayClass = true;
+      if (existHoldA) {
+        mark.push("red");
+      } else if (existClass) {
+        // this.schedule[day].class.forEach(item => {
+        //   if (!item.no_class) todayClass = true;
+        //   return true;
+        // }); //end foreach
+        if (todayClass) mark.push("blue");
+      }
+      if (existHold || existCancel) {
+        //mark.push("blue");
+      }
+      // console.log(Object.keys( {...this.schedule[day]} ).includes('class'));
+      return mark;
     },
 
     formatDate(date) {
@@ -624,7 +904,7 @@ export default {
       } else {
         this.selectedSuggestion.push(index);
       }
-    },
-  },
+    }
+  }
 };
 </script>

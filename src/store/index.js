@@ -2,11 +2,13 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
+import { bus } from "@/main";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    loginToken: localStorage.getItem("access-token"),
     loginErr: false,
     loginErrMsg: "",
     isLogin: false,
@@ -24,7 +26,8 @@ export default new Vuex.Store({
     },
     showNav: true,
     screenWidth: "",
-    isMobile: false
+    isMobile: false,
+    holdOverlay: false
   },
   mutations: {
     loadBg(state, payload) {
@@ -67,8 +70,9 @@ export default new Vuex.Store({
   actions: {
     async login({ commit }, { id, pw }) {
       await axios
-        .post("//mega02.cafe24.com/origin/api/signin.php", { id, pw })
+        .post("//phone.megatalking.com/origin/api/signin.php", { id, pw })
         .then(rs => {
+          console.log(rs);
           if (rs.status === 200) {
             if (rs.data.result === true) {
               commit("loginProcess", { token: rs.data.token });
@@ -88,12 +92,12 @@ export default new Vuex.Store({
           }
         });
     },
-    async isLogin({ commit, state }) {
+    async isLogin({ state }) {
       //토큰 가져오기
       let token = localStorage.getItem("access-token");
       //토큰이 있다면 아래 로스 실행
       if (token) {
-        console.log(token, commit, state);
+        //console.log(token, commit, state);
         state.isLogin = true;
         state.loginErr = false;
       } else {
@@ -104,6 +108,47 @@ export default new Vuex.Store({
     logout({ commit }) {
       commit("logoutProcess");
       router.push("/");
+    },
+    async signup(context, payload) {
+      //console.log(commit, payload);
+      axios
+        .post("//phone.megatalking.com/origin/api/signup.php", {
+          ...payload
+        })
+        .then(rs => {
+          console.log(rs);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    async hold({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/mypage.php", payload)
+        .then(rs => {
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "홀드가 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          console.log(err);
+          state.holdOverlay = false;
+        });
     }
   },
   modules: {}

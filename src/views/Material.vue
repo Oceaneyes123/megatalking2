@@ -602,9 +602,8 @@
                         </div>
                         <div
                           class="mt-1"
-                          v-for="(
-                            pronunciation, i
-                          ) in step4PracticePronunciation"
+                          v-for="(pronunciation,
+                          i) in step4PracticePronunciation"
                           :key="i"
                         >
                           {{ i + 1 }}. {{ pronunciation }}
@@ -775,7 +774,7 @@
   </v-app>
 </template>
 
-<style  >
+<style>
 .v-tabs:not(.v-tabs--vertical):not(.v-tabs--right)
   > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes)
   .v-slide-group__prev {
@@ -805,6 +804,7 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -833,31 +833,31 @@ export default {
           english:
             "First thing always first thing always have a book. because if you're not reading, what are you doing?",
           korean:
-            "가장 먼저 책이 꼭 있어야죠. <br> 왜냐하면 당신이 무엇을 읽고 있지 않다면 뭘 하겠어요?",
+            "가장 먼저 책이 꼭 있어야죠. <br> 왜냐하면 당신이 무엇을 읽고 있지 않다면 뭘 하겠어요?"
         },
         {
           english:
             "I always have a pair of sunglasses. I just hate having stuff that you don't need.",
           korean:
-            "선글라스는 꼭 가지고다녀요. <br> 난 그냥 필요 없는 것들을 갖고 다니는 것을 싫어해요.",
+            "선글라스는 꼭 가지고다녀요. <br> 난 그냥 필요 없는 것들을 갖고 다니는 것을 싫어해요."
         },
         {
           english:
             " I really try to just keep it to the things that I use every single day.",
-          korean: "저는 정말 매일 사용하는 것에만 신경을 씁니다.",
+          korean: "저는 정말 매일 사용하는 것에만 신경을 씁니다."
         },
         {
           english:
             "A model or actress,  I would say should always have something to keep them entertained in their bag",
           korean:
-            "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다.",
+            "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다."
         },
         {
           english:
             "because we wait around a lot and there's only so many times we can scroll through Instagram and Twitter and all that.",
           korean:
-            "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. <br> 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠.",
-        },
+            "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. <br> 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠."
+        }
       ],
 
       step3EnglishText: [
@@ -865,7 +865,7 @@ export default {
         "I always have a pair of sunglasses. I just hate having stuff that you don't need.",
         "I really try to just keep it to the things that I use every single day.",
         "A model or actress,  I would say should always have something to keep them entertained in their bag",
-        "because we wait around a lot and there's only so many times we can scroll through Instagram and Twitter and all that.",
+        "because we wait around a lot and there's only so many times we can scroll through Instagram and Twitter and all that."
       ],
 
       step3KoreanText: [
@@ -873,7 +873,7 @@ export default {
         "선글라스는 꼭 가지고다녀요. 난 그냥 필요 없는 것들을 갖고 다니는 것을 싫어해요.",
         "저는 정말 매일 사용하는 것에만 신경을 씁니다.",
         "모델이나 여배우라면, 항상 가방에 즐겁게 해줄 무언가가 있어야한다고 말하고 싶습니다.",
-        "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠.",
+        "왜냐하면 우리는 많은 시간을 기다리기 때문입니다. 인스타그램과 트위터를 보는데도 한계가 있기 때문이죠."
       ],
 
       step3TodayExpressionWeb: [
@@ -888,7 +888,7 @@ export default {
           choice1: "wear / old jeans / sneakers. ",
           answer1: "He wore old jeans and a pair of sneakers.",
           choice2: "right way / hold / scissors",
-          answer2: "That’s not the right way to hold a pair of scissors.",
+          answer2: "That’s not the right way to hold a pair of scissors."
         },
         {
           expression: "Try to ( ~하려고 노력하다)",
@@ -901,7 +901,7 @@ export default {
           choice1: " remain/ calm",
           answer1: "Try to remain calm",
           choice2: "forget / happen",
-          answer2: "Try to forget about ",
+          answer2: "Try to forget about "
         },
         {
           expression: " I would say~ ( 내 생각엔.. , ~ 인 것 같아.)",
@@ -914,8 +914,8 @@ export default {
           choice1: "(내 생각엔 그거 좋은 아이디어인 것 같아.)",
           answer1: "I would say it's a good idea.",
           choice2: "(내 생각엔 내가 널 그리워하는 것 같아)",
-          answer2: "I would say I miss you",
-        },
+          answer2: "I would say I miss you"
+        }
       ],
 
       step3TodayExpression: [
@@ -928,7 +928,7 @@ export default {
           question2:
             " 그것은 가위를 잡는 바른[제대로 된] 방식이 아니다.<br>right way / hold / scissors<br>[ ___________________________ ]",
           question3:
-            "“A pair of”를 활용하여 문장을 만들어 보세요<br>____________________________",
+            "“A pair of”를 활용하여 문장을 만들어 보세요<br>____________________________"
         },
         {
           expression: "Try to ( ~하려고 노력하다)",
@@ -939,7 +939,7 @@ export default {
           question2:
             "있었던 일은 잊어버리도록 해.<br>forget / happen<br>[ ___________________________ ]",
           question3:
-            "“Try to”를 활용하여 문장을 만들어 보세요.<br>___________________________ ",
+            "“Try to”를 활용하여 문장을 만들어 보세요.<br>___________________________ "
         },
         {
           expression: " I would say~ ( 내 생각엔.. , ~ 인 것 같아.)",
@@ -950,41 +950,41 @@ export default {
           question2:
             "내가 널 그리워한다고 할 수 있겠어.<br>(내 생각엔 내가 널 그리워하는 것 같아)<br>Miss / you<br>[  ___________________________ ]",
           question3:
-            "“I would say”를 활용하여 문장을 만들어 보세요.<br>____________________________",
-        },
+            "“I would say”를 활용하여 문장을 만들어 보세요.<br>____________________________"
+        }
       ],
 
       step3TodayExpressionAnswer: [
         {
           question: "그는 낡은 청바지에 운동화를 신고 있었다. ",
           choice: "wear / old jeans / sneakers. ",
-          answer: "He wore old jeans and a pair of sneakers.",
+          answer: "He wore old jeans and a pair of sneakers."
         },
         {
           question: "그것은 가위를 잡는 바른[제대로 된] 방식이 아니다.",
           choice: "right way / hold / scissors",
-          answer: "That’s not the right way to hold a pair of scissors.",
+          answer: "That’s not the right way to hold a pair of scissors."
         },
         {
           question: "침착성을 잃지 않도록 해 봐.",
           choice: " remain/ calm",
-          answer: "Try to remain calm",
+          answer: "Try to remain calm"
         },
         {
           question: "있었던 일은 잊어버리도록 해.",
           choice: "forget / happen",
-          answer: "Try to forget about ",
+          answer: "Try to forget about "
         },
         {
           question: "그거 좋은 아이디어라고 할 수 있겠네",
           choice: "(내 생각엔 그거 좋은 아이디어인 것 같아.)",
-          answer: "I would say it's a good idea.",
+          answer: "I would say it's a good idea."
         },
         {
           question: "내가 널 그리워한다고 할 수 있겠어.",
           choice: "(내 생각엔 내가 널 그리워하는 것 같아)",
-          answer: "I would say I miss you",
-        },
+          answer: "I would say I miss you"
+        }
       ],
 
       step4Suggestions: [
@@ -992,23 +992,23 @@ export default {
         "활기찬 분위기를 원해요.",
         "질문을 많이 해주세요.",
         "틀린 부분을 바로바로 고쳐주세요.",
-        "많이 말하도록 유도해주세요.",
+        "많이 말하도록 유도해주세요."
       ],
 
       step4PracticePronunciation: ["Brother", "Skirt", "Change"],
       step4BetterExpression: [
         {
           original: "I usually home shopping ",
-          better: "I usually do home shopping. ",
+          better: "I usually do home shopping. "
         },
         {
           original: "I buy my wallet.",
-          better: "I usually do home shopping. ",
+          better: "I usually do home shopping. "
         },
         {
           original: "The old one worn out",
-          better: "The old one was worn out.",
-        },
+          better: "The old one was worn out."
+        }
       ],
 
       step4Icons: [
@@ -1016,8 +1016,8 @@ export default {
         "fas fa-frown",
         "fas fa-smile",
         "far fa-grin",
-        "far fa-grin-beam",
-      ],
+        "far fa-grin-beam"
+      ]
     };
   },
 
@@ -1033,6 +1033,13 @@ export default {
     // this.connection.onmessage = function (event) {
     //   console.log(event);
     // };
+
+    let url =
+      "http://178.128.213.14/content-utilities/api/students/videoandcontents/1";
+    axios
+      .get(url)
+      .then(response => console.log(response.data))
+      .catch(err => console.log(err));
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
@@ -1090,7 +1097,7 @@ export default {
       } else {
         this.selectedSuggestion.push(index);
       }
-    },
-  },
+    }
+  }
 };
 </script>

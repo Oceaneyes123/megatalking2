@@ -6,6 +6,7 @@
       width="100%"
       style="position: fixed; top: 0; z-index: 100"
       v-if="showNav"
+      color="#fafafa"
     >
       <v-container class="d-flex flex-row">
         <v-card flat tile color="#00000000">
@@ -30,6 +31,7 @@
             v-for="(route, i) in routes"
             :key="i"
             @click="attachedLink(route.link)"
+            v-show="route.show"
           >
             {{ route.text }}
           </div>
@@ -80,6 +82,7 @@
                 v-for="(route, i) in routes"
                 :key="i"
                 @click="attachedLink(route.link)"
+                v-show="route.show"
                 >{{ route.text }}</v-list-item
               >
             </v-list>
@@ -102,6 +105,7 @@
 import { mapState } from "vuex";
 import SignUpInDialog from "@/components/SignUpInDialog.vue";
 import LogoutDialog from "@/components/LogoutDialog.vue";
+import { bus } from "@/main";
 export default {
   name: "Header",
   components: {
@@ -115,27 +119,33 @@ export default {
       routes: [
         {
           text: "커리큘럼",
-          link: "curriculum"
+          link: "curriculum",
+          show: true
         },
         {
           text: "레벨테스트",
-          link: "level-test"
+          link: "level-test",
+          show: true
         },
         {
           text: "수강신청",
-          link: "enrollment"
+          link: "enrollment",
+          show: true
         },
         {
           text: "마이페이지",
-          link: "mypage"
+          link: "mypage",
+          show: true
         },
         {
           text: "수강후기",
-          link: "board"
+          link: "board",
+          show: false
         },
         {
           text: "이벤트",
-          link: "event"
+          link: "event",
+          show: false
         }
       ]
     };
@@ -143,7 +153,11 @@ export default {
   computed: {
     ...mapState(["showNav", "screenWidth", "isMobile", "isLogin"])
   },
-  mounted() {},
+  mounted() {
+    bus.$on("openAuth", data => {
+      this.signInDialog = data;
+    });
+  },
   methods: {
     sighDialogToggle() {
       this.signInDialog = !this.signInDialog;

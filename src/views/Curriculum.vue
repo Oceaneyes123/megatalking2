@@ -314,13 +314,8 @@
                               </div>
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9);"
+                                @click="$router.push('/enrollment')"
                                 >수강신청</v-btn
                               >
                             </div>
@@ -450,13 +445,9 @@
                             <div class="d-flex flex-column align-start">
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
+
                                 >수강신청</v-btn
                               >
                               <div
@@ -551,13 +542,9 @@
                             <div class="d-flex flex-column align-start">
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
+
                                 >수강신청</v-btn
                               >
                               <div
@@ -652,13 +639,10 @@
                             <div class="d-flex flex-column align-start">
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
+
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
+
                                 >수강신청</v-btn
                               >
                               <div
@@ -753,13 +737,9 @@
                             <div class="d-flex flex-column align-start">
                               <v-btn
                                 class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
+                                style="background:linear-gradient(to right, #8fa1fe, #4d94e9)"
+                                @click="$router.push('/enrollment')"
+
                                 >수강신청</v-btn
                               >
                               <div
@@ -937,7 +917,7 @@
             </v-row> -->
 
             <v-row>
-              <v-card flat>
+              <v-card flat color="#00000000">
                 <v-img src="../assets/level-diagram.png" width="100%"></v-img>
               </v-card>
             </v-row>
