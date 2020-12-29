@@ -13,10 +13,14 @@
         <v-container class="py-0">
           <v-row>
             <v-col cols="6" class="white--text">
-              <span class="ml-5 h5 nanum">회원 로그인</span>
+              <span class="ml-5 h5 nanum">{{
+                isMobile ? "메가토킹" : "로그인"
+              }}</span>
             </v-col>
             <v-col cols="6" class="d-flex align-center white--text">
-              <span class="ml-5 h5 nanum">회원가입</span>
+              <span class="ml-5 h5 nanum">{{
+                isMobile ? "" : "회원가입"
+              }}</span>
               <v-spacer></v-spacer>
               <span class="mr-5">
                 <v-icon color="white" @click="close()">
@@ -30,6 +34,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" md="5" class="mx-auto">
+                <h2 v-show="isMobile">로그인</h2>
                 <v-alert dense border="left" type="warning" v-if="loginErr">
                   {{ loginErrMsg }}
                 </v-alert>
@@ -69,8 +74,11 @@
                   </v-row>
                 </v-form>
               </v-col>
-              <v-divider vertical></v-divider>
+              <v-col class="text-center" cols="12" md="1">
+                <v-divider :vertical="!isMobile"></v-divider>
+              </v-col>
               <v-col cols="12" md="5" class="mx-auto">
+                <h2 class="mb-2" v-show="isMobile">회원가입</h2>
                 <v-form ref="signupform" v-model="signupValid">
                   <v-row>
                     <v-col cols="12" md="6" class="py-0">
@@ -221,7 +229,7 @@
 
 <script>
 import { mapState } from "vuex";
-
+import axios from "axios";
 export default {
   data() {
     return {
@@ -230,8 +238,15 @@ export default {
       loginEmailRules: [v => !!v || "아이디를 입력해주세요"],
       loginPwRules: [v => !!v || "비밀번호를 입력해주세요"],
       signupNameRules: [v => !!v || "이름을 입력해주세요"],
-      signupNumberRules: [v => !!v || "번호를 입력해주세요"],
-      signupIdRules: [v => !!v || "이메일을 입력해주세요"],
+      signupNumberRules: [
+        v => !!v || "번호를 입력해주세요",
+        v => /^[0-9-]*$/.test(v) || "전화번호는 번호만 가능합니다."
+      ],
+      signupIdRules: [],
+      signupIdRulesTemp: [
+        v => !!v || "이메일을 입력해주세요",
+        v => /[a-zA-Z1-9]+@[a-zA-Z1-9]+/.test(v) || "이메일 형식이 아닙니다."
+      ],
       signupPwRules: [v => !!v || "비밀번호를 입력해주세요"],
       signupPwCheckRules: [
         v => !!v || "비밀번호를 체크해주세요",
@@ -254,7 +269,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLogin", "loginErr", "loginErrMsg"])
+    ...mapState(["isLogin", "loginErr", "loginErrMsg", "isMobile"])
   },
   props: ["signInDialog"],
   watch: {
@@ -264,10 +279,49 @@ export default {
     },
     async signupId() {
       //이메일 유무 검증
+      console.log(this.signupIdRulesTemp);
+      var mailRules = this.signupIdRulesTemp.valueOf();
+      if (mailRules.length > 3) {
+        mailRules.pop();
+      }
+      {
+        mailRules.push(false || "검증 중 입니다.");
+      }
       this.verify_email_status = "loading";
+      this.$set(this.$data, "signupIdRules", mailRules);
       await this.timeout(2000);
-      console.log("test!!");
-      this.verify_email_status = "check";
+      if (this.signupId.length != 0) {
+        axios
+          .get("//phone.megatalking.com/origin/api/signup.php", {
+            params: {
+              action: "validateEmail",
+              id: this.signupId
+            }
+          })
+          .then(rs => {
+            if (rs.data.result) {
+              console.log(mailRules);
+              mailRules.pop();
+              this.$set(this.$data, "signupIdRules", mailRules);
+              this.verify_email_status = "check";
+            } else {
+              mailRules.pop().push(false || "이미 존재하는 아이디 입니다.");
+              this.$set(this.$data, "signupIdRules", mailRules);
+              this.verify_email_status = "close";
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            mailRules
+              .pop()
+              .push(false || "검증을 할수없습니다. 고객센터에 문의하세요.");
+            this.$set(this.$data, "signupIdRules", mailRules);
+            this.verify_email_status = "close";
+          })
+          .then(() => {});
+      } else {
+        this.verify_email_status = "close";
+      }
     },
     signupNumber(val) {
       this.signupNumber = val

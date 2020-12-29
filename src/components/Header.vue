@@ -43,6 +43,9 @@
           color="#00000000"
           style="color: #a3a3a3"
         >
+          <div class="mr-8 subheading">
+            {{ isLogin ? "Hi sir" : "" }}
+          </div>
           <div class="mr-8 subheading" @click="attachedLink('account')">
             회원정보
           </div>
@@ -84,6 +87,11 @@
                 @click="attachedLink(route.link)"
                 v-show="route.show"
                 >{{ route.text }}</v-list-item
+              >
+              <v-divider></v-divider>
+              <v-list-item
+                @click="isLogin ? logoutDialogToggle() : sighDialogToggle()"
+                >{{ isLogin ? "로그아웃" : "로그인" }}</v-list-item
               >
             </v-list>
           </v-card>

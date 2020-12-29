@@ -70,7 +70,11 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
+  scrollBehavior() {
+    // 원하는 위치로 돌아가기
+    return { x: 0, y: 0 };
+  }
 });
 
 router.beforeEach((to, from, next) => {

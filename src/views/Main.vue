@@ -26,7 +26,12 @@
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat color="#00000000">
               <div class="mb-5 font-weight-bold">플립러닝 PUSH</div>
-              <v-img class="mx-auto" src="../assets/11.png" width="200"></v-img>
+              <v-img
+                eager
+                class="mx-auto"
+                src="../assets/11.png"
+                width="200"
+              ></v-img>
               <div class="caption-text grey--text">
                 <v-icon color="#00aff0" class="mr-2">fab fa-skype</v-icon
                 >화상영어 서비스
@@ -36,7 +41,12 @@
           <v-col cols="12" sm="4">
             <v-card class="pt-10" flat color="#00000000">
               <div class="mb-5 font-weight-bold">수업 녹음파일 전송</div>
-              <v-img src="../assets/22.png" width="200" class="mx-auto"></v-img>
+              <v-img
+                eager
+                src="../assets/22.png"
+                width="200"
+                class="mx-auto"
+              ></v-img>
               <div class="caption-text grey--text">
                 수업 피드백 및 복습 자료
               </div>
@@ -75,6 +85,7 @@
         >
           <v-card color="#e9c5b1" flat class="mb-5">
             <v-img
+              eager
               class="ml-auto"
               src="../assets/girl2-mobile.png"
               width="80%"
@@ -102,9 +113,10 @@
           flat
           class="mt-10 mx-auto"
           max-width="700"
-          style="position: relative; margin-bottom: 100px"
+          style="position: relative; margin-bottom: 100px;"
           v-if="!isMobile"
           data-aos="fade-right"
+          color="#00000000"
         >
           <v-card
             class="pt-10 pl-10 text-left pb-5 rounded-xl"
@@ -134,6 +146,7 @@
             flat
           >
             <v-img
+              eager
               src="../assets/girl2.png"
               width="1000"
               style="transform: scale(1.3); position: absolute; bottom: 33px"
@@ -151,7 +164,12 @@
           data-aos="fade-left"
         >
           <v-card class="mb-5" flat color="#00000000">
-            <v-img width="100%" position="50%" src="../assets/girl.png"></v-img>
+            <v-img
+              eager
+              width="100%"
+              position="50%"
+              src="../assets/girl.png"
+            ></v-img>
           </v-card>
           <div style="color: #b7b7b7; max-width: 250px" class="text-left ml-10">
             <div class="h4 font-weight-bold mb-7" style="color: #000">
@@ -165,7 +183,7 @@
               class="title font-weight-bold font-italic"
               style="color: #b34013"
             >
-              레벨테스트 하러가기 >
+              <span>레벨테스트 하러가기 ></span>
             </div>
           </div>
         </v-card>
@@ -177,6 +195,7 @@
           style="position: relative; margin-bottom: 100px"
           v-if="!isMobile"
           data-aos="fade-left"
+          color="#00000000"
         >
           <v-card
             flat
@@ -186,6 +205,7 @@
             style="border-radius: 24px 24px 24px 0"
           >
             <v-img
+              eager
               style="border-radius: 24px 24px 24px 0"
               width="350"
               position="50%"
@@ -202,12 +222,14 @@
                 직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
                 레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
               </div>
-              <div
-                class="title font-weight-bold font-italic"
-                style="color: #b34013"
-              >
-                레벨테스트 하러가기 >
-              </div>
+              <router-link to="/level-test" style="text-decoration: none;">
+                <div
+                  class="title font-weight-bold font-italic"
+                  style="color: #b34013"
+                >
+                  레벨테스트 하러가기 >
+                </div>
+              </router-link>
             </div>
           </v-card>
         </v-card>
@@ -220,6 +242,7 @@
           max-width="700"
           style="position: relative; margin-bottom: 100px"
           data-aos="fade-right"
+          color="#00000000"
         >
           <v-card flat class="text-left rounded-xl" color="#f1f1f1">
             <v-container class="px-0 py-0">
@@ -238,12 +261,17 @@
                         프리토킹, 비지니스, 면접영어, 여행, 영자신문 등
                         35,000개의 콘텐츠로 즐겨요.
                       </div>
-                      <div
-                        class="title font-weight-bold font-italic"
-                        style="color: #b34013"
+                      <router-link
+                        to="/curriculum"
+                        style="text-decoration: none;"
                       >
-                        커리큘럼 자세히보기 >
-                      </div>
+                        <div
+                          class="title font-weight-bold font-italic"
+                          style="color: #b34013"
+                        >
+                          커리큘럼 자세히보기 >
+                        </div>
+                      </router-link>
                     </div>
                   </div>
                 </v-col>
@@ -272,6 +300,7 @@
                             :key="i"
                           >
                             <v-img
+                              eager
                               :src="image"
                               width="200"
                               height="100"
@@ -287,6 +316,7 @@
                             :key="i"
                           >
                             <v-img
+                              eager
                               :src="image"
                               width="200"
                               height="100"
@@ -302,6 +332,7 @@
                             :key="i"
                           >
                             <v-img
+                              eager
                               :src="image"
                               width="200"
                               height="100"
@@ -317,6 +348,7 @@
                             :key="i"
                           >
                             <v-img
+                              eager
                               :src="image"
                               width="200"
                               height="100"
@@ -332,6 +364,7 @@
                             :key="i"
                           >
                             <v-img
+                              eager
                               :src="image"
                               width="200"
                               height="100"
@@ -357,7 +390,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/emma_watson.jpg">
+                <v-img eager src="../assets/emma_watson.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
@@ -374,7 +407,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/ted_mainpage.jpg">
+                <v-img eager src="../assets/ted_mainpage.jpg">
                   <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
@@ -391,7 +424,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/movie.jpg">
+                <v-img eager src="../assets/movie.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container style="positon: relative">
                       <div
@@ -412,6 +445,7 @@
                         <v-btn
                           class="pa-7 rounded-xl white--text mx-auto"
                           style="background-color: #e3e3e344"
+                          to="/curriculum"
                         >
                           <span class="h6"> 콘텐츠 바로가기 </span>
                         </v-btn>
@@ -425,7 +459,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/vogue.jpg">
+                <v-img eager src="../assets/vogue.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
@@ -443,6 +477,7 @@
                       <v-btn
                         class="pa-7 rounded-xl white--text mx-auto"
                         style="background-color: #0066ff44"
+                        to="/curriculum"
                       >
                         <span class="h6"> 콘텐츠 바로가기 </span>
                       </v-btn>
@@ -457,7 +492,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/maroon5_mainpage.png">
+                <v-img eager src="../assets/maroon5_mainpage.png">
                   <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
@@ -474,7 +509,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/camera.jpg">
+                <v-img eager src="../assets/camera.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container class="white--text text-left h6 nanum">
                       <div
@@ -490,6 +525,7 @@
                         <v-btn
                           class="pa-7 rounded-xl white--text"
                           style="background-color: #0066ff44"
+                          to="/curriculum"
                         >
                           <span class="h6"> 콘텐츠 바로가기 </span>
                         </v-btn>
@@ -503,7 +539,7 @@
                 class="rounded-xl"
                 data-aos="fade-up"
               >
-                <v-img src="../assets/singer.jpg">
+                <v-img eager src="../assets/singer.jpg">
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
@@ -521,6 +557,7 @@
                       <v-btn
                         class="pa-7 rounded-xl white--text mx-auto"
                         style="background-color: #e3e3e344"
+                        to="/curriculum"
                       >
                         <span class="h6"> 콘텐츠 바로가기 </span>
                       </v-btn>
@@ -553,7 +590,7 @@
               left: 50%;
               transform: translateX(-50%);
             "
-            class="pa-2 text-center rounded-xl"
+            class="pa-4 text-center rounded-xl"
             flat
           >
             <div class="title font-weight-bold">플립러닝 PUSH</div>
@@ -568,6 +605,7 @@
               class="rounded-lg caption-text white--text"
               color="#6089d4"
               depressed
+              to="/enrollment"
             >
               수강신청 바로가기
             </v-btn>
@@ -611,6 +649,7 @@
           flat
         >
           <v-img
+            eager
             class="rounded-xl"
             width="100%"
             height="250"
@@ -625,7 +664,7 @@
               left: 50%;
               transform: translateX(-50%);
             "
-            class="pa-2 text-center rounded-xl"
+            class="pa-4 text-center rounded-xl"
           >
             <div class="font-weight-black subheading mb-3 mt-1">
               생생한 수강후기
@@ -638,6 +677,7 @@
               class="rounded-lg caption-text white--text"
               color="#6089d4"
               depressed
+              to="/curriculum"
             >
               게시판 바로가기
             </v-btn>
@@ -698,6 +738,7 @@
           flat
         >
           <v-img
+            eager
             class="rounded-xl"
             width="100%"
             height="250"
@@ -712,7 +753,7 @@
               left: 50%;
               transform: translateX(-50%);
             "
-            class="pa-2 text-center rounded-xl"
+            class="pa-4 text-center rounded-xl"
           >
             <div class="font-weight-bold title mb-3">영작 UPGRADE</div>
             <div class="caption-text mb-5" style="color: #b7b7b7">
@@ -723,6 +764,7 @@
               class="rounded-lg caption-text white--text"
               color="#6089d4"
               depressed
+              to="/mypage"
             >
               강의실 바로가기
             </v-btn>
