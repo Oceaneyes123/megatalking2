@@ -27,7 +27,9 @@ export default new Vuex.Store({
     showNav: true,
     screenWidth: "",
     isMobile: false,
-    holdOverlay: false
+    holdOverlay: false,
+    signupErr: false,
+    signupErrMsg: ""
   },
   mutations: {
     loadBg(state, payload) {
@@ -65,6 +67,11 @@ export default new Vuex.Store({
       state.isLogin = false;
       state.userInfo = {};
       localStorage.removeItem("access-token");
+    },
+    signupErr(state) {
+      state.signupErr = true;
+      state.signupErrMsg =
+        "회원 가입 실패하였습니다. 이미 회원가입이된 아이디입니다.";
     }
   },
   actions: {
@@ -109,7 +116,7 @@ export default new Vuex.Store({
       commit("logoutProcess");
       router.push("/");
     },
-    async signup(context, payload) {
+    async signup({ commit }, payload) {
       //console.log(commit, payload);
       axios
         .post("//phone.megatalking.com/origin/api/signup.php", {
@@ -117,6 +124,14 @@ export default new Vuex.Store({
         })
         .then(rs => {
           console.log(rs);
+          if (rs.data.result) {
+            //로그인 성공시
+            commit("loginProcess", { token: rs.data.token });
+            bus.$emit("openAuth", false);
+          } else {
+            //로그인 실패시
+            commit("signupErr");
+          }
         })
         .catch(err => {
           console.log(err);
