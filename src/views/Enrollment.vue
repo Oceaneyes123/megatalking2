@@ -822,14 +822,12 @@ export default {
           course: "정규 회화과정",
           series: [
             {
-
               text: "Interactive English Series",
               level: "",
               type: "",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf",
-            },
-          ],
+              link: "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf"
+            }
+          ]
         },
         {
           course: "프리토킹 토론",
@@ -866,11 +864,9 @@ export default {
               level: "",
 
               type: "book",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf",
-            },
-          ],
-
+              link: "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf"
+            }
+          ]
         },
         {
           course: "비즈니스 과정",
@@ -879,46 +875,39 @@ export default {
               text: "Business English (Situational Dialogues)",
               level: "",
               type: "pdf",
-              link:
-
-                "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf",
-
+              link: "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf"
             },
             {
               text: "E-mail",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf"
             },
             {
               text: "Meeting",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf"
             },
             {
               text: "Negotiation",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf"
             },
             {
               text: "Presentation",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf"
             },
             {
               text: "비지니스 회화과정",
               level: "",
               type: "book",
-              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf",
-            },
-          ],
+              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf"
+            }
+          ]
         },
         {
           course: "문법/패턴",
@@ -959,31 +948,27 @@ export default {
               text: "Hotel Dialogues",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=55",
-
+              link: "http://ols.jkn.co.kr/html/books.php?code=55"
             },
             {
               text: "Cabin Crew",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf"
             },
             {
               text: "IELTS",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=40",
+              link: "http://ols.jkn.co.kr/html/books.php?code=40"
             },
             {
               text: "Medical English",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf",
-            },
-          ],
-
+              link: "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf"
+            }
+          ]
         },
         {
           course: "초/중급 회화과정",
@@ -993,17 +978,16 @@ export default {
               level: "",
               type: "pdf",
 
-              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf",
-
+              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf"
             },
             {
               text: "First Step In Conversation",
               level: "",
               type: "pdf",
               link:
-                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf",
-            },
-          ],
+                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf"
+            }
+          ]
         },
         {
           course: "입문과정",
@@ -1012,9 +996,7 @@ export default {
               text: "Phonics ",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf",
-
+              link: "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf"
             },
             // {
             //   text: "Advanced Phonics ",
@@ -1027,19 +1009,16 @@ export default {
               text: "P-course Junior",
               level: "",
               type: "pdf",
-              link:
-                "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf",
+              link: "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf"
             },
             {
               text: "C-course Junior",
               level: "",
               type: "pdf",
-              link:
-
-                "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf",
-            },
-          ],
-        },
+              link: "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf"
+            }
+          ]
+        }
       ],
       bookList10: [
         {
