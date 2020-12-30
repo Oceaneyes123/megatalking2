@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "@fortawesome/fontawesome-free/css/all.css";
+export const bus = new Vue();
 
 Vue.config.productionTip = false;
 
