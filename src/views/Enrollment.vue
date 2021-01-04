@@ -24,7 +24,7 @@
               <v-row no-gutters>
                 <v-col cols="12" md="8">
                   <v-card
-                    class="pl-md-10 px-5 pt-10 pr-md-8 rounded-xl"
+                    class="pl-md-10 px-5 pt-10 pb-15 pr-md-8 rounded-xl"
                     flat
                     color="#fafafa"
                   >
@@ -33,20 +33,27 @@
                       <v-row no-gutters class="mb-5">
                         <v-col cols="6" class="text-left">
                           <div
-                            class="h6 font-weight-bold"
+                            class="h6 font-weight-bold "
                             @click="(isPhone = true), (classType = 'Phone')"
                             :style="
-                              isPhone
-                                ? 'color:#4242a3; font-size: x-large'
-                                : 'color:#000'
+                              isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
                             style="cursor:pointer"
                           >
                             전화로 할래요
                           </div>
-                          <div class="subheading">
+                          <div
+                            class="subheading"
+                            @click="(isPhone = true), (classType = 'Phone')"
+                            style="cursor:pointer"
+                            :style="
+                              isPhone ? 'color:#4242a3;' : 'color:#808080'
+                            "
+                          >
                             <v-icon
-                              color="#5a55a1"
+                              :style="
+                                isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              "
                               class="mr-2"
                               style="font-size:20px"
                               >fas fa-phone-square-alt</v-icon
@@ -58,21 +65,28 @@
                             class="h6 font-weight-bold"
                             @click="(isPhone = false), (classType = 'Video')"
                             :style="
-                              !isPhone
-                                ? 'color:#4242a3; font-size: x-large'
-                                : 'color:#000'
+                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
                             style="cursor:pointer"
                           >
                             화상으로 할래요.
                           </div>
-                          <div class="subheading">
+                          <div
+                            class="subheading"
+                            @click="(isPhone = false), (classType = 'Video')"
+                            style="cursor:pointer"
+                            :style="
+                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                            "
+                          >
                             <v-icon
-                              color="#5a55a1"
+                              :style="
+                                !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              "
                               class="mr-2"
                               style="font-size:19px"
                               >fas fa-video</v-icon
-                            >스카이프 서비스 제공
+                            >Skype 서비스 제공
                           </div>
                         </v-col>
                       </v-row>
@@ -92,13 +106,18 @@
                         active-class="active white--text"
                         v-for="(duration, i) in durations"
                         :key="i"
-                        :style="
+                        :style="[
+                          hiddenDurations.includes(duration)
+                            ? {
+                                display: 'none'
+                              }
+                            : '',
                           !isMobile
-                            ? hiddenDurations.includes(duration)
-                              ? 'border-radius: 30px 0 0 30px; display: none; '
-                              : 'border-radius: 30px 0 0 30px;'
+                            ? {
+                                'border-radius': '30px 0 0 30px'
+                              }
                             : ''
-                        "
+                        ]"
                         @click="minuteSelected = duration"
                         >{{ duration }}</v-tab
                       >
@@ -106,19 +125,27 @@
                         <v-card flat color="#f5f4f6">
                           <v-container class="pa-5 pa-sm-10">
                             <!-- frequency row-->
-                            <v-row no-gutters justify="center" class="mb-3">
+                            <div class="caption" style="color:#bdbdbd">
+                              수업 횟수
+                            </div>
+                            <v-row
+                              no-gutters
+                              justify="center"
+                              class="mt-3 mb-5"
+                            >
                               <v-col
-                                cols="12"
-                                sm="4"
+                                cols="4"
                                 v-for="(frequency, i) in frequncies"
                                 :key="i"
                                 class="px-2 mb-2 mb-md-0"
                                 active-class="font-weight-bold"
                               >
                                 <v-btn
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
                                   block
-                                  depressed
+                                  outlined
+                                  style="border: 2px solid;"
+                                  x-large
                                   @click="
                                     (frequencySelected = frequency),
                                       (frequencySummary = frequency)
@@ -126,69 +153,23 @@
                                   :color="
                                     frequencySelected == frequency
                                       ? 'primary'
-                                      : '#FFFFFF'
+                                      : 'grey'
                                   "
-                                  :outlined="
-                                    frequencySelected == frequency
-                                      ? true
-                                      : false
+                                  :elevation="
+                                    frequencySelected == frequency ? 3 : 0
                                   "
                                   >{{ frequency }}</v-btn
                                 >
                               </v-col>
                             </v-row>
-                            <div
-                              class="caption"
-                              style="color:#bdbdbd"
-                              v-show="seeDays"
-                            >
-                              수업 횟수
-                            </div>
-                            <!-- days row-->
-                            <v-row
-                              no-gutters
-                              justify="center"
-                              class="mt-10"
-                              v-show="seeDays"
-                            >
-                              <v-col
-                                cols="6"
-                                sm="4"
-                                v-for="(day, i) in days"
-                                :key="i"
-                                class="px-2 mb-3"
-                              >
-                                <v-btn
-                                  class="rounded-lg"
-                                  block
-                                  depressed
-                                  :style="[
-                                    !allowedDays.includes(i)
-                                      ? {
-                                          pointerEvents: 'none',
-                                          textDecoration: 'line-through'
-                                        }
-                                      : ''
-                                  ]"
-                                  @click="
-                                    (daySelected = day), (daySummary = day)
-                                  "
-                                  :color="
-                                    daySelected == day ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="daySelected == day ? true : false"
-                                  >{{ day }}</v-btn
-                                >
-                              </v-col>
-                            </v-row>
-                            <div class="caption" style="color:#bdbdbd">
-                              수업 날짜
-                            </div>
                             <!-- period row-->
+                            <div class="caption" style="color:#bdbdbd">
+                              수강기간
+                            </div>
                             <v-row
                               no-gutters
                               justify="center"
-                              class="mb-3 mt-10"
+                              class="mb-5 mt-3"
                             >
                               <v-col
                                 cols="6"
@@ -198,9 +179,10 @@
                                 class="px-2 mb-2 mb-md-0"
                               >
                                 <v-btn
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
+                                  style="border: 2px solid"
                                   block
-                                  depressed
+                                  x-large
                                   @click="
                                     (durationSelected = period),
                                       (periodSummary = period)
@@ -208,89 +190,21 @@
                                   :color="
                                     durationSelected == period
                                       ? 'primary'
-                                      : '#FFFFFF'
+                                      : 'grey'
                                   "
-                                  :outlined="
-                                    durationSelected == period ? true : false
+                                  outlined
+                                  :elevation="
+                                    durationSelected == period ? 3 : 0
                                   "
                                   >{{ period }}</v-btn
                                 >
                               </v-col>
                             </v-row>
+
                             <div class="caption" style="color:#bdbdbd">
-                              수강기간
+                              수업 유형
                             </div>
-                            <!-- book row-->
-                            <!-- <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
-                              <v-col
-                                cols="6"
-                                sm="3"
-                                v-for="(book, i) in bookList10"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i, bookSummary = book.text"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>
-                            <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 1">
-                              <v-col
-                                cols="12"
-                                sm="3"
-                                v-for="(book, i) in bookList20"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>
-                            <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 2">
-                              <v-col
-                                cols="12"
-                                sm="3"
-                                v-for="(book, i) in bookList30"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>-->
-                            <v-row justify="start" class="mb-3 mt-10">
+                            <v-row justify="start" class="mb-3 mt-3">
                               <v-col
                                 cols="6"
                                 sm="4"
@@ -301,21 +215,18 @@
                                 <v-btn
                                   width="100%"
                                   height="50"
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
+                                  style="border: 2px solid"
                                   block
-                                  depressed
                                   @click="
                                     (materialSelected = i),
                                       (materialSummary = material.course)
                                   "
                                   :color="
-                                    materialSelected == i
-                                      ? 'primary'
-                                      : '#FFFFFF'
+                                    materialSelected == i ? 'primary' : 'grey'
                                   "
-                                  :outlined="
-                                    materialSelected == i ? true : false
-                                  "
+                                  outlined
+                                  :elevation="materialSelected == i ? 3 : 0"
                                   >{{ material.course }}</v-btn
                                 >
                               </v-col>
@@ -334,9 +245,8 @@
                                   <v-btn
                                     width="100%"
                                     height="50"
-                                    class="rounded-lg"
+                                    class="rounded-lg font-weight-bold"
                                     block
-                                    depressed
                                     @click="
                                       (seriesSelected = item),
                                         (seriesSummary = item.text)
@@ -344,20 +254,63 @@
                                     :color="
                                       seriesSelected === item
                                         ? 'primary'
-                                        : '#FFFFFF'
+                                        : 'grey'
                                     "
-                                    :outlined="
-                                      seriesSelected === item ? true : false
-                                    "
-                                    style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                    outlined
+                                    :elevation="seriesSelected === item ? 3 : 0"
+                                    style="display: unset; white-space: unset;line-break: strict;word-break: keep-all; border: 2px solid"
                                     >{{ item.text }}</v-btn
                                   >
                                 </v-col>
                               </v-row>
                             </v-container>
-                            <div class="caption" style="color:#bdbdbd">
-                              수업 유형
+
+                            <!-- days row-->
+                            <div
+                              class="caption mt-5"
+                              style="color:#bdbdbd"
+                              v-show="seeDays"
+                            >
+                              수업 날짜
                             </div>
+                            <v-row
+                              no-gutters
+                              justify="center"
+                              class="mt-3"
+                              v-show="seeDays"
+                            >
+                              <v-col
+                                cols="6"
+                                sm="4"
+                                v-for="(day, i) in days"
+                                :key="i"
+                                class="px-2 mb-3"
+                              >
+                                <v-btn
+                                  class="rounded-lg font-weight-bold"
+                                  block
+                                  x-large
+                                  style="border: 2px solid"
+                                  :style="[
+                                    !allowedDays.includes(i)
+                                      ? {
+                                          pointerEvents: 'none',
+                                          textDecoration: 'line-through'
+                                        }
+                                      : ''
+                                  ]"
+                                  @click="
+                                    (daySelected = day), (daySummary = day)
+                                  "
+                                  :color="
+                                    daySelected == day ? 'primary' : 'grey'
+                                  "
+                                  outlined
+                                  :elevation="daySelected == day ? 3 : 0"
+                                  >{{ day }}</v-btn
+                                >
+                              </v-col>
+                            </v-row>
                           </v-container>
                         </v-card>
                       </v-tab-item>
@@ -407,13 +360,14 @@
                         class="mt-0"
                         style="background-color: #222dc05F"
                       ></v-divider>
-                      <v-card flat color="#f5f4f6" class="mb-5">
+                      <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
                           grow
                           v-if="seeMore && currentZone == 0"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 4"
@@ -428,6 +382,7 @@
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 7"
@@ -442,6 +397,7 @@
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 7"
@@ -497,11 +453,13 @@
                                 depressed
                                 @click="timeSelected = time"
                                 :color="
-                                  timeSelected == time ? 'primary' : '#FFFFFF'
+                                  timeSelected == time ? 'primary' : 'grey'
                                 "
-                                :outlined="timeSelected == time ? true : false"
-                                class="rounded-lg"
+                                style="border: 2px solid;"
+                                outlined
+                                class="rounded-lg font-weight-bold"
                                 v-show="time !== undefined"
+                                :elevation="timeSelected == time ? 3 : 0"
                                 >{{ time }}</v-btn
                               >
                             </v-col>
@@ -528,11 +486,16 @@
                         :key="i"
                       >
                         <v-btn
-                          color="#5a55a1"
+                          :color="
+                            methodSelected == method.text ? 'primary' : 'grey'
+                          "
                           block
                           outlined
                           x-large
-                          class="rounded-lg"
+                          class="rounded-lg font-weight-bold"
+                          style="border: 2px solid;"
+                          @click="methodSelected = method.text"
+                          :elevation="methodSelected == method.text ? 3 : 0"
                           >{{ method.text }}</v-btn
                         >
                       </v-col>
@@ -544,7 +507,7 @@
                     <div class="h6 font-weight-black">수강선택 요약</div>
                     <v-container class="mt-3 px-7 text-left">
                       <v-row no-gutters class="px-2">
-                        <v-col cols="4">수강코스</v-col>
+                        <v-col cols="3">수강코스</v-col>
                         <v-spacer></v-spacer>
                         <v-col class="font-weight-bold">{{
                           materials[materialSelected]["course"]
@@ -619,7 +582,6 @@
                       class="rounded-lg white--text font-weight-bold mb-15"
                       style="margin-top:150px"
                       large
-                      block
                       @click="enroll_check_data()"
                       >수업 신청하기</v-btn
                     >
@@ -713,11 +675,40 @@
         </div>
       </v-card>
     </v-dialog>
+    <div class="stickyButton" v-show="isMobile" style="z-index:20001;">
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header expand-icon="mdi-menu-up">
+            선택한 과정 정보
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-card tile elevation="0">
+              하이
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <v-btn
+        color="#5a55a1"
+        x-large
+        class="white--text font-weight-bold"
+        large
+        block
+        @click="enroll_check_data()"
+        >수업 신청하기</v-btn
+      >
+    </div>
   </v-app>
 </template>
 <style scoped>
 .active {
   background-color: #2564cb;
+}
+.stickyButton {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
 }
 </style>
 <script>
@@ -731,13 +722,13 @@ export default {
       confirmDialog: false,
       requiredField: false,
       tab: 1,
-      isPhone: false,
-      classType: "Video",
+      isPhone: true,
+      classType: "Phone",
       overlay: false,
       durations: ["하루 10분", "하루 20분", "하루 30분", "하루 40분"],
-      frequncies: ["주2회 화,목", "주3회 월,수,금", "주5회 월~금"],
+      frequncies: ["주2회", "주3회", "주5회"],
       days: [],
-      periods: ["4주", "12주", "6개월", "1년"],
+      periods: ["1개월", "3개월", "6개월", "1년"],
       dateTime: new Date(),
       timeList: [],
       seeMore: false,
@@ -778,6 +769,7 @@ export default {
       durationSelected: -1,
       bookSelected: -1,
       timeSelected: -1,
+      methodSelected: -1,
       materialSelected: 0,
       seriesSelected: -1,
       materialIndex: 0,

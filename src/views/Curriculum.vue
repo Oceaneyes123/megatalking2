@@ -9,7 +9,7 @@
           커리큘럼
         </div>
         <div class="h4 nanum font-weight-bold" style="color: #bfd384">
-          “Anytime, Anywhere, Home Learn English.”
+          “Learn English. Anytime, Anywhere.”
         </div>
         <div class="mt-5 h5 nanum white--text">
           메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
