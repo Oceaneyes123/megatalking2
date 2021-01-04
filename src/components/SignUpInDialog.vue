@@ -79,6 +79,9 @@
               </v-col>
               <v-col cols="12" md="5" class="mx-auto">
                 <h2 class="mb-2" v-show="isMobile">회원가입</h2>
+                <v-alert dense border="left" type="warning" v-if="signupErr">
+                  {{ signupErrMsg }}
+                </v-alert>
                 <v-form ref="signupform" v-model="signupValid">
                   <v-row>
                     <v-col cols="12" md="6" class="py-0">
@@ -115,6 +118,7 @@
                         v-model="signupId"
                         :rules="signupIdRules"
                         required
+                        ref="signupIdTest"
                       >
                         <template
                           slot="append"
@@ -242,7 +246,7 @@ export default {
         v => !!v || "번호를 입력해주세요",
         v => /^[0-9-]*$/.test(v) || "전화번호는 번호만 가능합니다."
       ],
-      signupIdRules: [],
+      signupIdRules: [v => !!v || "이메일을 입력해주세요"],
       signupIdRulesTemp: [
         v => !!v || "이메일을 입력해주세요",
         v => /[a-zA-Z1-9]+@[a-zA-Z1-9]+/.test(v) || "이메일 형식이 아닙니다."
@@ -269,7 +273,14 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLogin", "loginErr", "loginErrMsg", "isMobile"])
+    ...mapState([
+      "isLogin",
+      "loginErr",
+      "loginErrMsg",
+      "signupErr",
+      "signupErrMsg",
+      "isMobile"
+    ])
   },
   props: ["signInDialog"],
   watch: {
@@ -279,19 +290,13 @@ export default {
     },
     async signupId() {
       //이메일 유무 검증
-      console.log(this.signupIdRulesTemp);
-      var mailRules = this.signupIdRulesTemp.valueOf();
-      if (mailRules.length > 3) {
-        mailRules.pop();
-      }
-      {
-        mailRules.push(false || "검증 중 입니다.");
-      }
+      var mailRules = this.signupIdRulesTemp.slice();
+      mailRules.push(false || "검증 중 입니다.");
       this.verify_email_status = "loading";
       this.$set(this.$data, "signupIdRules", mailRules);
       await this.timeout(2000);
       if (this.signupId.length != 0) {
-        axios
+        await axios
           .get("//phone.megatalking.com/origin/api/signup.php", {
             params: {
               action: "validateEmail",
@@ -300,25 +305,29 @@ export default {
           })
           .then(rs => {
             if (rs.data.result) {
-              console.log(mailRules);
-              mailRules.pop();
+              mailRules = this.signupIdRulesTemp.slice();
               this.$set(this.$data, "signupIdRules", mailRules);
               this.verify_email_status = "check";
             } else {
-              mailRules.pop().push(false || "이미 존재하는 아이디 입니다.");
+              mailRules = this.signupIdRulesTemp.slice();
+              mailRules.push(false || "이미 존재하는 아이디 입니다.");
               this.$set(this.$data, "signupIdRules", mailRules);
               this.verify_email_status = "close";
             }
           })
           .catch(err => {
             console.log(err);
-            mailRules
-              .pop()
-              .push(false || "검증을 할수없습니다. 고객센터에 문의하세요.");
+            mailRules = this.signupIdRulesTemp.slice();
+            mailRules.push(
+              false || "검증을 할수없습니다. 고객센터에 문의하세요."
+            );
             this.$set(this.$data, "signupIdRules", mailRules);
             this.verify_email_status = "close";
           })
-          .then(() => {});
+          .then(() => {
+            if (!this.$refs.signupIdTest.valid)
+              this.verify_email_status = "close";
+          });
       } else {
         this.verify_email_status = "close";
       }
@@ -334,6 +343,9 @@ export default {
     }
   },
   methods: {
+    test() {
+      console.log("hi");
+    },
     timeout(ms) {
       return new Promise(res => {
         if (!this.timeoutId) {
