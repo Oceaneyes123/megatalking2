@@ -11,7 +11,7 @@
                   (평일 오전 9시~18시)
                 </div>
               </v-row>
-              <v-row :style="isMobile ? '':'margin-top: 150px'">
+              <v-row :style="isMobile ? '':'margin-top: 150px'" class="mt-5 mt-md-0">
                 <v-card color="#00000000" flat>
                   <v-img
                     @click="$router.push('/')"
@@ -107,6 +107,34 @@
 <script>
 export default {
   name: "Footer",
+
+  data() {
+    return {
+      screenWidth: "",
+      isMobile: false,
+    };
+  },
+
+  created() {
+    window.addEventListener("resize", this.onWindowResize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.onWindowResize);
+  },
+
+  mounted() {
+    this.screenWidth = screen.width;
+    this.isMobile = this.screenWidth <= 960 ? true : false;
+    this.onWindowResize();
+  },
+
+  methods: {
+    onWindowResize() {
+      this.screenWidth = screen.width;
+      this.isMobile = this.screenWidth <= 960 ? true : false;
+      console.log("resize");
+    },
+  },
 };
 </script>
 
