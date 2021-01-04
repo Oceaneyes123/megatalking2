@@ -11,7 +11,7 @@
                   (평일 오전 9시~18시)
                 </div>
               </v-row>
-              <v-row style="margin-top: 150px">
+              <v-row :style="isMobile ? '':'margin-top: 150px'">
                 <v-card color="#00000000" flat>
                   <v-img
                     @click="$router.push('/')"
@@ -106,7 +106,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>
 
