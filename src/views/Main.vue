@@ -1265,30 +1265,12 @@ export default {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
     this.onWindowResize();
-
-    console.log(this.detectBrowser());
   },
 
   methods: {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    },
-
-    detectBrowser() {
-      const toMatch = [
-        /Android/i,
-        /webOS/i,
-        /iPhone/i,
-        /iPad/i,
-        /iPod/i,
-        /BlackBerry/i,
-        /Windows Phone/i,
-      ];
-
-      return toMatch.some((toMatchItem) => {
-        return navigator.userAgent.match(toMatchItem);
-      });
     },
   },
 };
