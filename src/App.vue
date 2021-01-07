@@ -52,8 +52,8 @@ export default {
 
 <style>
 #app {
-  /* font-family: "Nanum Gothic", sans-serif; */
-  font-family: "NanumSquare", sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
+  /* font-family: "NanumSquare", sans-serif; */
 }
 /* #app {
   font-family: "NanumSquare";
