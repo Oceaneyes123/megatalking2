@@ -67,7 +67,7 @@
                   ></v-img>
                   <div class="mt-3 caption-text">신청서 작성</div>
                 </div>
-                <div class="mx-2 mt-3">
+                <div class="mx-2 mt-3" v-if="!isMobile">
                   <v-icon style="font-size:40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
@@ -80,7 +80,7 @@
                   ></v-img>
                   <div class="mt-3 caption-text">예약 완료</div>
                 </div>
-                <div class="mx-2 mt-3">
+                <div class="mx-2 mt-3" v-if="!isMobile">
                   <v-icon style="font-size:40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
@@ -96,7 +96,7 @@
                     <br />(예약 확인, 테스트 안내 )
                   </div>
                 </div>
-                <div class="mx-2 mt-3">
+                <div class="mx-2 mt-3" v-if="!isMobile">
                   <v-icon style="font-size:40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
@@ -112,7 +112,7 @@
                     <br />(간단 자기소개 등)
                   </div>
                 </div>
-                <div class="mx-2 mt-3">
+                <div class="mx-2 mt-3" v-if="!isMobile">
                   <v-icon style="font-size:40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
@@ -125,7 +125,7 @@
                   ></v-img>
                   <div class="mt-3 caption-text">테스트 결과 받기</div>
                 </div>
-                <div class="mx-2 mt-3">
+                <div class="mx-2 mt-3" v-if="!isMobile">
                   <v-icon style="font-size:40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
@@ -434,10 +434,10 @@
         <v-card flat color="#A9A7F3" class="tile">
           <v-container class="py-0">
             <v-row>
-              <v-col cols="6" class="white--text">
-                <span class="ml-5 h5 nanum">Evaluation Search</span>
+              <v-col cols="10" class="white--text">
+                <span class="ml-5 h5 nanum">평가서 조회하기</span>
               </v-col>
-              <v-col cols="6" class="d-flex justify-end">
+              <v-col cols="2" class="d-flex justify-end">
                 <v-icon
                   color="white"
                   large
@@ -453,7 +453,7 @@
             <v-text-field
               color="primary"
               v-model="searchNumber"
-              label="Phone number"
+              label="전화번호를 입력하세요."
               dense
               outlined
               maxlength="13"
@@ -468,13 +468,13 @@
                 class="ma-2"
                 @click="searchEvaluation()"
                 style="color:#5C5C5C"
-                >Submit</v-btn
+                >조회</v-btn
               >
               <v-btn
                 class="ma-2"
                 @click="searchEvaluationDialog = false"
                 style="color:#5C5C5C"
-                >Close</v-btn
+                >취소</v-btn
               >
             </v-row>
           </v-container>
