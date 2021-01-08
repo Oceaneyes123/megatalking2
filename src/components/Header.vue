@@ -13,7 +13,7 @@
           <v-img
             @click="$router.push('/')"
             contain
-            src="@/assets/logo.jpg"
+            src="@/assets/mega_blue.png"
             width="100"
             class="subheading"
           ></v-img>

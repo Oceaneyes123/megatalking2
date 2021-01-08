@@ -24,7 +24,7 @@
               <v-row no-gutters>
                 <v-col cols="12" md="8">
                   <v-card
-                    class="pl-md-10 px-5 pt-10 pr-md-8 rounded-xl"
+                    class="pl-md-10 px-5 pt-10 pb-15 pr-md-8 rounded-xl"
                     flat
                     color="#fafafa"
                   >
@@ -33,20 +33,27 @@
                       <v-row no-gutters class="mb-5">
                         <v-col cols="6" class="text-left">
                           <div
-                            class="h6 font-weight-bold"
+                            class="h6 font-weight-bold "
                             @click="(isPhone = true), (classType = 'Phone')"
                             :style="
-                              isPhone
-                                ? 'color:#4242a3; font-size: x-large'
-                                : 'color:#000'
+                              isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
                             style="cursor:pointer"
                           >
                             전화로 할래요
                           </div>
-                          <div class="subheading">
+                          <div
+                            class="subheading"
+                            @click="(isPhone = true), (classType = 'Phone')"
+                            style="cursor:pointer"
+                            :style="
+                              isPhone ? 'color:#4242a3;' : 'color:#808080'
+                            "
+                          >
                             <v-icon
-                              color="#5a55a1"
+                              :style="
+                                isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              "
                               class="mr-2"
                               style="font-size:20px"
                               >fas fa-phone-square-alt</v-icon
@@ -58,27 +65,37 @@
                             class="h6 font-weight-bold"
                             @click="(isPhone = false), (classType = 'Video')"
                             :style="
-                              !isPhone
-                                ? 'color:#4242a3; font-size: x-large'
-                                : 'color:#000'
+                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
                             style="cursor:pointer"
                           >
                             화상으로 할래요.
                           </div>
-                          <div class="subheading">
+                          <div
+                            class="subheading"
+                            @click="(isPhone = false), (classType = 'Video')"
+                            style="cursor:pointer"
+                            :style="
+                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                            "
+                          >
                             <v-icon
-                              color="#5a55a1"
+                              :style="
+                                !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              "
                               class="mr-2"
                               style="font-size:19px"
                               >fas fa-video</v-icon
-                            >스카이프 서비스 제공
+                            >Skype 서비스 제공
                           </div>
                         </v-col>
                       </v-row>
                     </v-container>
                     <v-divider class="mr-10"></v-divider>
-                    <div class="h6 font-weight-black text-left mt-10 mb-10">
+                    <div
+                      class="h6 font-weight-black text-left mt-10 mb-10"
+                      v-if="!isMobile"
+                    >
                       수업 선택
                     </div>
                     <v-tabs
@@ -92,13 +109,18 @@
                         active-class="active white--text"
                         v-for="(duration, i) in durations"
                         :key="i"
-                        :style="
+                        :style="[
+                          hiddenDurations.includes(duration)
+                            ? {
+                                display: 'none'
+                              }
+                            : '',
                           !isMobile
-                            ? hiddenDurations.includes(duration)
-                              ? 'border-radius: 30px 0 0 30px; display: none; '
-                              : 'border-radius: 30px 0 0 30px;'
+                            ? {
+                                'border-radius': '30px 0 0 30px'
+                              }
                             : ''
-                        "
+                        ]"
                         @click="minuteSelected = duration"
                         >{{ duration }}</v-tab
                       >
@@ -106,19 +128,31 @@
                         <v-card flat color="#f5f4f6">
                           <v-container class="pa-5 pa-sm-10">
                             <!-- frequency row-->
-                            <v-row no-gutters justify="center" class="mb-3">
+                            <div class="h6 font-weight-black text-left">
+                              수업 횟수
+                            </div>
+                            <v-row
+                              no-gutters
+                              justify="center"
+                              class="mt-3 mb-5"
+                            >
                               <v-col
-                                cols="12"
-                                sm="4"
+                                cols="4"
                                 v-for="(frequency, i) in frequncies"
                                 :key="i"
                                 class="px-2 mb-2 mb-md-0"
                                 active-class="font-weight-bold"
                               >
                                 <v-btn
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
                                   block
-                                  depressed
+                                  outlined
+                                  :style="
+                                    frequencySelected == frequency
+                                      ? 'border: 2px solid;background:white'
+                                      : ''
+                                  "
+                                  x-large
                                   @click="
                                     (frequencySelected = frequency),
                                       (frequencySummary = frequency)
@@ -126,69 +160,23 @@
                                   :color="
                                     frequencySelected == frequency
                                       ? 'primary'
-                                      : '#FFFFFF'
+                                      : 'grey'
                                   "
-                                  :outlined="
-                                    frequencySelected == frequency
-                                      ? true
-                                      : false
+                                  :elevation="
+                                    frequencySelected == frequency ? 3 : 0
                                   "
                                   >{{ frequency }}</v-btn
                                 >
                               </v-col>
                             </v-row>
-                            <div
-                              class="caption"
-                              style="color:#bdbdbd"
-                              v-show="seeDays"
-                            >
-                              수업 횟수
-                            </div>
-                            <!-- days row-->
-                            <v-row
-                              no-gutters
-                              justify="center"
-                              class="mt-10"
-                              v-show="seeDays"
-                            >
-                              <v-col
-                                cols="6"
-                                sm="4"
-                                v-for="(day, i) in days"
-                                :key="i"
-                                class="px-2 mb-3"
-                              >
-                                <v-btn
-                                  class="rounded-lg"
-                                  block
-                                  depressed
-                                  :style="[
-                                    !allowedDays.includes(i)
-                                      ? {
-                                          pointerEvents: 'none',
-                                          textDecoration: 'line-through'
-                                        }
-                                      : ''
-                                  ]"
-                                  @click="
-                                    (daySelected = day), (daySummary = day)
-                                  "
-                                  :color="
-                                    daySelected == day ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="daySelected == day ? true : false"
-                                  >{{ day }}</v-btn
-                                >
-                              </v-col>
-                            </v-row>
-                            <div class="caption" style="color:#bdbdbd">
-                              수업 날짜
-                            </div>
                             <!-- period row-->
+                            <div class="h6 font-weight-black text-left">
+                              수강 기간
+                            </div>
                             <v-row
                               no-gutters
                               justify="center"
-                              class="mb-3 mt-10"
+                              class="mb-5 mt-3"
                             >
                               <v-col
                                 cols="6"
@@ -198,9 +186,14 @@
                                 class="px-2 mb-2 mb-md-0"
                               >
                                 <v-btn
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
+                                  :style="
+                                    durationSelected == period
+                                      ? 'border: 2px solid;background:white'
+                                      : ''
+                                  "
                                   block
-                                  depressed
+                                  x-large
                                   @click="
                                     (durationSelected = period),
                                       (periodSummary = period)
@@ -208,89 +201,21 @@
                                   :color="
                                     durationSelected == period
                                       ? 'primary'
-                                      : '#FFFFFF'
+                                      : 'grey'
                                   "
-                                  :outlined="
-                                    durationSelected == period ? true : false
+                                  outlined
+                                  :elevation="
+                                    durationSelected == period ? 3 : 0
                                   "
                                   >{{ period }}</v-btn
                                 >
                               </v-col>
                             </v-row>
-                            <div class="caption" style="color:#bdbdbd">
-                              수강기간
+
+                            <div class="h6 font-weight-black text-left">
+                              수업 유형
                             </div>
-                            <!-- book row-->
-                            <!-- <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 0">
-                              <v-col
-                                cols="6"
-                                sm="3"
-                                v-for="(book, i) in bookList10"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i, bookSummary = book.text"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>
-                            <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 1">
-                              <v-col
-                                cols="12"
-                                sm="3"
-                                v-for="(book, i) in bookList20"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>
-                            <v-row no-gutters justify="center" class="mb-3 mt-10" v-if="tab == 2">
-                              <v-col
-                                cols="12"
-                                sm="3"
-                                v-for="(book, i) in bookList30"
-                                :key="i"
-                                class="px-2 mb-2"
-                              >
-                                <v-btn
-                                  height="100"
-                                  class="rounded-lg px-0"
-                                  block
-                                  depressed
-                                  @click="bookSelected = i"
-                                  :color="
-                                    bookSelected == i ? 'primary' : '#FFFFFF'
-                                  "
-                                  :outlined="bookSelected == i ? true : false"
-                                  :disabled="book.status == 'disabled'"
-                                  style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
-                                >{{ book.text }}</v-btn>
-                              </v-col>
-                            </v-row>-->
-                            <v-row justify="start" class="mb-3 mt-10">
+                            <v-row justify="start" class="mb-3 mt-3">
                               <v-col
                                 cols="6"
                                 sm="4"
@@ -301,21 +226,22 @@
                                 <v-btn
                                   width="100%"
                                   height="50"
-                                  class="rounded-lg"
+                                  class="rounded-lg font-weight-bold"
+                                  :style="
+                                    materialSelected == i
+                                      ? 'border: 2px solid; background:white'
+                                      : ''
+                                  "
                                   block
-                                  depressed
                                   @click="
                                     (materialSelected = i),
                                       (materialSummary = material.course)
                                   "
                                   :color="
-                                    materialSelected == i
-                                      ? 'primary'
-                                      : '#FFFFFF'
+                                    materialSelected == i ? 'primary' : 'grey'
                                   "
-                                  :outlined="
-                                    materialSelected == i ? true : false
-                                  "
+                                  outlined
+                                  :elevation="materialSelected == i ? 3 : 0"
                                   >{{ material.course }}</v-btn
                                 >
                               </v-col>
@@ -334,9 +260,8 @@
                                   <v-btn
                                     width="100%"
                                     height="50"
-                                    class="rounded-lg"
+                                    class="rounded-lg font-weight-bold"
                                     block
-                                    depressed
                                     @click="
                                       (seriesSelected = item),
                                         (seriesSummary = item.text)
@@ -344,26 +269,75 @@
                                     :color="
                                       seriesSelected === item
                                         ? 'primary'
-                                        : '#FFFFFF'
+                                        : 'grey'
                                     "
-                                    :outlined="
-                                      seriesSelected === item ? true : false
-                                    "
+                                    outlined
+                                    :elevation="seriesSelected === item ? 3 : 0"
                                     style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                    :style="
+                                      seriesSelected === item
+                                        ? 'border: 2px solid; background:white'
+                                        : ''
+                                    "
                                     >{{ item.text }}</v-btn
                                   >
                                 </v-col>
                               </v-row>
                             </v-container>
-                            <div class="caption" style="color:#bdbdbd">
-                              수업 유형
+
+                            <!-- days row-->
+                            <div class="h6 font-weight-black text-left mt-10">
+                              수업 날짜
                             </div>
+                            <v-row
+                              no-gutters
+                              justify="center"
+                              class="mt-3"
+                              v-show="seeDays"
+                            >
+                              <v-col
+                                cols="6"
+                                sm="4"
+                                v-for="(day, i) in days"
+                                :key="i"
+                                class="px-2 mb-3"
+                              >
+                                <v-btn
+                                  class="rounded-lg font-weight-bold"
+                                  block
+                                  x-large
+                                  :style="[
+                                    !allowedDays.includes(i)
+                                      ? {
+                                          pointerEvents: 'none',
+                                          textDecoration: 'line-through'
+                                        }
+                                      : '',
+                                    daySelected == day
+                                      ? {
+                                          border: '2px solid',
+                                          background: 'white'
+                                        }
+                                      : ''
+                                  ]"
+                                  @click="
+                                    (daySelected = day), (daySummary = day)
+                                  "
+                                  :color="
+                                    daySelected == day ? 'primary' : 'grey'
+                                  "
+                                  outlined
+                                  :elevation="daySelected == day ? 3 : 0"
+                                  >{{ day }}</v-btn
+                                >
+                              </v-col>
+                            </v-row>
                           </v-container>
                         </v-card>
                       </v-tab-item>
                     </v-tabs>
                     <template v-if="seeSchedules === true">
-                      <div class="h6 font-weight-black text-left mt-10 mb-10">
+                      <div class="h6 font-weight-black text-left mt-10">
                         수업 시간
                       </div>
                       <v-container class="pb-1">
@@ -372,6 +346,9 @@
                             <span
                               style="cursor:pointer;color:#5a55a1"
                               @click="(currentZone = 0), setTime(6)"
+                              :class="
+                                currentZone == 0 ? 'font-weight-bold' : ''
+                              "
                               >프라임</span
                             >
                             <br />
@@ -383,6 +360,9 @@
                             <span
                               style="cursor:pointer;color:#5a55a1"
                               @click="(currentZone = 1), setTime(10)"
+                              :class="
+                                currentZone == 1 ? 'font-weight-bold' : ''
+                              "
                               >이코노미</span
                             >
                             <br />
@@ -394,6 +374,9 @@
                             <span
                               style="cursor:pointer;color:#5a55a1"
                               @click="(currentZone = 2), setTime(17)"
+                              :class="
+                                currentZone == 2 ? 'font-weight-bold' : ''
+                              "
                               >프라임</span
                             >
                             <br />
@@ -407,13 +390,14 @@
                         class="mt-0"
                         style="background-color: #222dc05F"
                       ></v-divider>
-                      <v-card flat color="#f5f4f6" class="mb-5">
+                      <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
                           grow
                           v-if="seeMore && currentZone == 0"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 4"
@@ -428,6 +412,7 @@
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 7"
@@ -442,6 +427,7 @@
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_schedule_hour"
+                          class="mb-5"
                         >
                           <v-tab
                             v-for="n in 7"
@@ -487,9 +473,9 @@
                                 style="pointer-events: none;"
                                 @click="timeSelected = time"
                                 :color="
-                                  timeSelected == time ? 'primary' : '#FFFFFF'
+                                  timeSelected == time ? 'primary' : 'grey'
                                 "
-                                :outlined="timeSelected == time ? true : false"
+                                outlined
                                 class="rounded-lg"
                                 >...</v-btn
                               >
@@ -497,11 +483,17 @@
                                 depressed
                                 @click="timeSelected = time"
                                 :color="
-                                  timeSelected == time ? 'primary' : '#FFFFFF'
+                                  timeSelected == time ? 'primary' : 'grey'
                                 "
-                                :outlined="timeSelected == time ? true : false"
-                                class="rounded-lg"
+                                :style="
+                                  timeSelected == time
+                                    ? 'border: 2px solid;background:white'
+                                    : ''
+                                "
+                                outlined
+                                class="rounded-lg font-weight-bold"
                                 v-show="time !== undefined"
+                                :elevation="timeSelected == time ? 3 : 0"
                                 >{{ time }}</v-btn
                               >
                             </v-col>
@@ -517,7 +509,7 @@
                         시간표 전체보기 >
                       </div>
                     </template>
-                    <div class="h6 font-weight-black text-left mt-10 mb-10">
+                    <div class="h6 font-weight-black text-left mt-10">
                       결제 방식
                     </div>
                     <v-row>
@@ -528,98 +520,174 @@
                         :key="i"
                       >
                         <v-btn
-                          color="#5a55a1"
+                          :color="
+                            methodSelected == method.text ? 'primary' : 'grey'
+                          "
                           block
                           outlined
                           x-large
-                          class="rounded-lg"
-                          >{{ method.text }}</v-btn
+                          class="rounded-lg font-weight-bold"
+                          :style="
+                            methodSelected == method.text
+                              ? 'border: 2px solid;background:white'
+                              : ''
+                          "
+                          @click="methodSelected = method.text"
+                          :elevation="methodSelected == method.text ? 3 : 0"
                         >
+                          <v-icon left>
+                            {{ method.icon }}
+                          </v-icon>
+                          {{ method.text }}
+                        </v-btn>
                       </v-col>
                     </v-row>
                   </v-card>
                 </v-col>
-                <v-col cols="12" md="4">
-                  <v-card flat class="pt-10 rounded-xl">
+                <v-col cols="12" md="4" ref="summaryCardArea">
+                  <v-card
+                    flat
+                    class="pt-10 rounded-xl"
+                    ref="summaryCard"
+                    :style="{ top: stickySummeryTop + 'px' }"
+                    :class="{ stickySummery: !isMobile }"
+                  >
                     <div class="h6 font-weight-black">수강선택 요약</div>
                     <v-container class="mt-3 px-7 text-left">
                       <v-row no-gutters class="px-2">
-                        <v-col cols="4">수강코스</v-col>
-                        <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">{{
-                          materials[materialSelected]["course"]
-                        }}</v-col>
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >수강 유형:</span
+                          >
+                          <span class="subtitle-2">{{
+                            materials[materialSelected]["course"]
+                          }}</span>
+                        </v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
-                        <v-col>수강과정</v-col>
-                        <v-spacer></v-spacer>
                         <v-col
-                          class="font-weight-bold"
-                          v-if="
-                            frequencySelected !== -1 && durationSelected !== -1
-                          "
-                          >{{ frequencySelected }} /
-                          {{ durationSelected }}</v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >수강 코스:</span
+                          >
+                          <span class="subtitle-2">{{ getCourse }}</span>
+                        </v-col>
+                      </v-row>
+                      <v-divider class="mx-3 mb-4"></v-divider>
+                      <v-row no-gutters class="px-2">
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >수강 종류:</span
+                          >
+                          <span class="subtitle-2">{{ getType }}</span></v-col
                         >
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
-                        <v-col>시작일</v-col>
-                        <v-spacer></v-spacer>
                         <v-col
-                          class="font-weight-bold"
-                          v-if="daySelected !== -1"
-                          >{{ daySelected }}</v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >수강기간:</span
+                          >
+                          <span class="subtitle-2"
+                            >{{ getFrequency }} / {{ getPeriod }}</span
+                          ></v-col
                         >
+                      </v-row>
+                      <v-divider class="mx-3 mb-4"></v-divider>
+                      <v-row no-gutters class="px-2">
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >시작일:</span
+                          >
+                          <span class="subtitle-2">{{
+                            daySelected !== -1 ? daySelected : ""
+                          }}</span>
+                          <span class="subtitle-2" v-html="getStartTime"></span>
+                        </v-col>
                       </v-row>
                       <v-divider class="mx-3"></v-divider>
                     </v-container>
-                    <v-divider
-                      style="margin-top:100px; margin-bottom:100px"
-                      class="mx-7"
-                    ></v-divider>
-                    <div class="h6 font-weight-black mb-5">결제 예정금액</div>
+                    <div class="h6 font-weight-black mb-5 mt-5">
+                      결제 예정금액
+                    </div>
                     <v-container class="mt-3 px-7 text-left">
                       <v-row no-gutters class="px-2">
-                        <v-col>결제금액</v-col>
-                        <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold" v-if="offerSummary">{{
-                          offerSummary["price"]
-                        }}</v-col>
-                        <v-col class="font-weight-bold" v-else>0</v-col>
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >결제방법:</span
+                          >
+                          <span
+                            class="subtitle-2 float-right"
+                            v-html="getPayType"
+                          ></span
+                        ></v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
-                        <v-col>할인금액</v-col>
-                        <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold" v-if="offerSummary">{{
-                          offerSummary["discount"]
-                        }}</v-col>
-                        <v-col class="font-weight-bold" v-else>0</v-col>
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >수강금액:</span
+                          >
+                          <span class="subtitle-2 float-right"
+                            >{{
+                              (
+                                getAmount.value + getAmount.dcn
+                              ).toLocaleString()
+                            }}원</span
+                          ></v-col
+                        >
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
-                        <v-col>교재비</v-col>
-                        <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold">0</v-col>
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >교재비:</span
+                          >
+                          <span class="subtitle-2 float-right">0원</span></v-col
+                        >
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
-                        <v-col>총 할인금액</v-col>
-                        <v-spacer></v-spacer>
-                        <v-col class="font-weight-bold" v-if="offerSummary">{{
-                          get_total_price()
-                        }}</v-col>
-                        <v-col class="font-weight-bold" v-else>0</v-col>
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >할인금액:</span
+                          >
+                          <span class="subtitle-2 red--text float-right"
+                            >{{
+                              getAmount.dcn
+                                ? "-" + getAmount.dcn.toLocaleString()
+                                : getAmount.dcn
+                            }}원</span
+                          ></v-col
+                        >
+                      </v-row>
+                      <v-divider class="mx-3 mb-4"></v-divider>
+                      <v-row no-gutters class="px-2">
+                        <v-col
+                          ><span class="subtitle-2 font-weight-bold"
+                            >결제금액:</span
+                          >
+                          <span class="subtitle-2 float-right"
+                            >{{ getAmount.value.toLocaleString() }}원
+                            {{
+                              getAmount.dcp ? `(${getAmount.dcp}% 할인)` : ""
+                            }}</span
+                          ></v-col
+                        >
+                      </v-row>
+                      <v-row no-gutters class="px-2">
+                        <v-col
+                          ><span class="h6 float-right font-weight-medium"
+                            >월{{ getAmount4Month.toLocaleString() }}원</span
+                          ></v-col
+                        >
                       </v-row>
                     </v-container>
                     <v-btn
                       color="#5a55a1"
                       class="rounded-lg white--text font-weight-bold mb-15"
-                      style="margin-top:150px"
+                      style="margin-top:50px"
                       large
-                      block
                       @click="enroll_check_data()"
                       >수업 신청하기</v-btn
                     >
@@ -631,14 +699,14 @@
         </v-container>
       </v-card>
     </v-container>
-    <v-dialog v-model="requiredField" width="200" height="">
+    <v-dialog v-model="requiredField" width="320" height="">
       <v-card>
         <v-container>
           <v-row class="text-center justify-center">
             <v-col cols="12" class="pb-0 mb-0">
-              <p style="">Please fill all the required fields. Thank you.</p>
+              <p style="">수업설정에 필요한 필수값을 입력해주세요.</p>
             </v-col>
-            <v-btn @click="requiredField = false">Close</v-btn>
+            <v-btn @click="requiredField = false">닫기</v-btn>
           </v-row>
         </v-container>
       </v-card>
@@ -713,31 +781,66 @@
         </div>
       </v-card>
     </v-dialog>
+    <div class="stickyButton" v-show="isMobile" style="z-index:20001;">
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header expand-icon="mdi-menu-up">
+            선택한 과정 정보
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-card tile elevation="0">
+              하이
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <v-btn
+        color="#4242a3"
+        x-large
+        class="white--text font-weight-bold"
+        large
+        block
+        @click="enroll_check_data()"
+        >수업 신청하기</v-btn
+      >
+    </div>
   </v-app>
 </template>
 <style scoped>
 .active {
   background-color: #2564cb;
 }
+.stickyButton {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+.stickySummery {
+  transition: all 1s ease 0s;
+}
 </style>
 <script>
 import moment from "moment";
 import { bus } from "@/main";
 import axios from "axios";
+import price from "@/utils/price.js";
+
 export default {
   data() {
     return {
+      stickySummeryTop: 0,
       hiddenDurations: [],
       confirmDialog: false,
       requiredField: false,
       tab: 1,
-      isPhone: false,
-      classType: "Video",
+      isPhone: true,
+      classType: "Phone",
       overlay: false,
       durations: ["하루 10분", "하루 20분", "하루 30분", "하루 40분"],
-      frequncies: ["주2회 화,목", "주3회 월,수,금", "주5회 월~금"],
+      frequncies: ["주2회", "주3회", "주5회"],
       days: [],
-      periods: ["4주", "12주", "6개월", "1년"],
+      periods: ["1개월", "3개월", "6개월", "1년"],
       dateTime: new Date(),
       timeList: [],
       seeMore: false,
@@ -746,7 +849,7 @@ export default {
       offerSummary: [],
       bookSummary: "",
       frequencySummary: "",
-      periodSummary: "",
+      periodSummary: "1년",
       daySummary: "",
       materialSummary: "",
       seriesSummary: "",
@@ -756,15 +859,18 @@ export default {
       paymentMethods: [
         {
           text: "무통장 입금",
-          color: ""
+          color: "",
+          icon: "mdi-credit-card"
         },
         {
-          text: "카드 결제 ",
-          color: ""
+          text: "카드 결제",
+          color: "",
+          icon: "mdi-credit-card-check"
         },
         {
-          text: "정기 결제 ",
-          color: ""
+          text: "정기 결제",
+          color: "",
+          icon: "mdi-credit-card-clock"
         }
       ],
       selectedHour: 6,
@@ -772,16 +878,18 @@ export default {
       schedule_available_hours: {},
       selected_hour_available_times: [],
       onRequest: false,
-      frequencySelected: -1,
-      minuteSelected: -1,
+      frequencySelected: "주3회",
+      minuteSelected: "하루 20분",
       daySelected: -1,
-      durationSelected: -1,
+      durationSelected: "1년",
       bookSelected: -1,
       timeSelected: -1,
-      materialSelected: 0,
+      methodSelected: -1,
+      materialSelected: 2,
       seriesSelected: -1,
       materialIndex: 0,
       isMobile: false,
+      isSticky: false,
       materials: [
         {
           course: "유튜브 회화과정",
@@ -833,6 +941,13 @@ export default {
           course: "프리토킹 토론",
           series: [
             {
+              text: "프리토킹(교재X)",
+              level: "",
+              type: "book",
+              link:
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+            },
+            {
               text: "묻고 답하기",
               level: "",
               type: "book",
@@ -872,7 +987,7 @@ export default {
           course: "비즈니스 과정",
           series: [
             {
-              text: "Business English (Situational Dialogues)",
+              text: "Business English",
               level: "",
               type: "pdf",
               link: "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf"
@@ -1250,10 +1365,17 @@ export default {
     this.get_offers();
     this.setOffer();
   },
+  beforeMount() {
+    window.addEventListener("scroll", this.move);
+  },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
   },
   watch: {
+    materialSelected() {
+      // this.seriesSelected = -1;
+      this.seriesSelected = this.materials[this.materialSelected].series[0];
+    },
     tab: function() {
       this.hiddenDurations = [];
       // this.frequencySelected = -1;
@@ -1346,58 +1468,7 @@ export default {
       this.setOffer();
     },
     frequencySelected() {
-      const twice = [2, 4];
-      const thrice = [1, 3, 5];
-      const five = [1, 2, 3, 4, 5];
-      let minuteSelected, frequencySelected, durationSelected;
-      if (this.minuteSelected != -1) {
-        minuteSelected = parseInt(this.minuteSelected.replace(/\D/g, ""));
-      }
-      if (this.frequencySelected != -1) {
-        frequencySelected = parseInt(this.frequencySelected.replace(/\D/g, ""));
-      }
-      if (this.durationSelected != -1) {
-        durationSelected = parseInt(this.durationSelected.replace(/\D/g, ""));
-      }
-      let daySelected = this.daySelected;
-      let weekdays =
-        frequencySelected === 2
-          ? twice
-          : frequencySelected === 3
-          ? thrice
-          : frequencySelected === 5
-          ? five
-          : "";
-      let allowedDays = [];
-      this.days.forEach((item, i) => {
-        let split = item.split("/");
-        let month = split[0] - 1;
-        let day = split[1];
-        let date_format = moment({
-          month: month,
-          day: day
-        }).weekday();
-        if (weekdays.includes(date_format)) {
-          allowedDays.push(i);
-        }
-      });
-      this.allowedDays = allowedDays;
-      let dayIndex = this.days.findIndex(data => data === daySelected);
-      if (this.allowedDays.includes(dayIndex)) {
-        this.daySelected = this.days[dayIndex];
-      } else {
-        this.daySelected = this.days[this.allowedDays[0]];
-      }
-      if (minuteSelected && frequencySelected && durationSelected) {
-        this.seeDays = true;
-      }
-      if (this.seeSchedules) {
-        if (this.currentIndex > 0) {
-          this.selectedHour = this.selectedHour - this.currentIndex;
-        }
-        this.getHour(this.selectedHour, this.currentIndex);
-      }
-      this.setOffer();
+      this.setAllowedDays();
     },
     durationSelected() {
       const twice = [2, 4];
@@ -1479,15 +1550,272 @@ export default {
     this.timeList = [];
     this.setTime(6);
     this.minuteSelected = this.durations[1];
-    this.materialSelected = 0;
+    this.seriesSelected = this.materials[this.materialSelected].series[0];
     if (this.classType === "Video") {
       this.hiddenDurations.push(this.durations[0]);
       this.hiddenDurations.push(this.durations[2]);
     } else {
       this.hiddenDurations.push(this.durations[3]);
     }
+    this.setAllowedDays();
+  },
+  computed: {
+    getPayType() {
+      let type = "";
+      console.log(this.methodSelected);
+      switch (this.methodSelected) {
+        case "무통장 입금":
+          type = this.methodSelected;
+          break;
+        case "카드 결제":
+          type = this.methodSelected;
+          break;
+        case "정기 결제":
+          type = this.methodSelected;
+          break;
+        default:
+          type = "<span class='red--text'>선택해주세요</span>";
+      }
+      return type;
+    },
+    getAmount4Month() {
+      let monthAmount, period;
+      monthAmount = 0;
+
+      switch (this.durationSelected) {
+        case "1개월":
+          period = 1;
+          break;
+        case "3개월":
+          period = 3;
+          break;
+        case "6개월":
+          period = 6;
+          break;
+        case "1년":
+          period = 12;
+          break;
+        default:
+          period = 0;
+      }
+
+      if (this.getAmount.value != 0) {
+        monthAmount = Math.round(this.getAmount.value / period);
+      }
+      return monthAmount;
+    },
+    getAmount() {
+      let type, level, time, days, period, ts;
+      type = this.isPhone === true ? "phone" : "video";
+
+      switch (this.currentZone) {
+        case 0:
+          level = "prime";
+          break;
+        case 1:
+          level = "economy";
+          break;
+        case 2:
+          level = "prime";
+          break;
+        default:
+          level = "";
+      }
+
+      switch (this.minuteSelected) {
+        case "하루 10분":
+          time = 10;
+          break;
+        case "하루 20분":
+          time = 20;
+          break;
+        case "하루 30분":
+          time = 30;
+          break;
+        case "하루 40분":
+          time = 40;
+          break;
+        default:
+          time = "";
+      }
+
+      switch (this.frequencySelected) {
+        case "주2회":
+          days = 2;
+          break;
+        case "주3회":
+          days = 3;
+          break;
+        case "주5회":
+          days = 5;
+          break;
+        default:
+          days = "";
+      }
+
+      switch (this.durationSelected) {
+        case "1개월":
+          period = 1;
+          break;
+        case "3개월":
+          period = 3;
+          break;
+        case "6개월":
+          period = 6;
+          break;
+        case "1년":
+          period = 12;
+          break;
+        default:
+          period = "";
+      }
+      ts = this.timeSelected;
+      console.log(ts);
+      console.log(price(type, level, time, days, period, ts));
+      return price(type, level, time, days, period, ts);
+    },
+    getCourse() {
+      return this.seriesSelected.text;
+    },
+    getType() {
+      let minText = this.minuteSelected.split(" ")[1];
+      return (this.isPhone === true ? "전화영어" : "화상영어") + `(${minText})`;
+    },
+    getStartTime() {
+      let option = "";
+      switch (this.currentZone) {
+        case 0:
+          option = "프라임";
+          break;
+        case 1:
+          option = "이코노미";
+          break;
+        case 2:
+          option = "프라임";
+          break;
+        default:
+          option = "";
+      }
+      // console.log('amount',this.getAmount);
+      return (
+        option +
+        " " +
+        (this.timeSelected != -1
+          ? this.timeSelected
+          : '<span class="red--text">시간미정</span>')
+      );
+    },
+    getFrequency() {
+      let days = "";
+      switch (this.frequencySelected) {
+        case "주2회":
+          days = "화,목";
+          break;
+        case "주3회":
+          days = "월,수,금";
+          break;
+        case "주5회":
+          days = "월-금";
+          break;
+        default:
+      }
+      return this.frequencySelected + `(${days})`;
+    },
+    getPeriod() {
+      let week = "";
+      switch (this.durationSelected) {
+        case "1개월":
+          week = "4주";
+          break;
+        case "3개월":
+          week = "12주";
+          break;
+        case "6개월":
+          week = "24주";
+          break;
+        case "1년":
+          week = "48주";
+          break;
+        default:
+      }
+      return this.durationSelected + `(${week})`;
+    }
   },
   methods: {
+    setAllowedDays() {
+      const twice = [2, 4];
+      const thrice = [1, 3, 5];
+      const five = [1, 2, 3, 4, 5];
+      let minuteSelected, frequencySelected, durationSelected;
+      if (this.minuteSelected != -1) {
+        minuteSelected = parseInt(this.minuteSelected.replace(/\D/g, ""));
+      }
+      if (this.frequencySelected != -1) {
+        frequencySelected = parseInt(this.frequencySelected.replace(/\D/g, ""));
+      }
+      if (this.durationSelected != -1) {
+        durationSelected = parseInt(this.durationSelected.replace(/\D/g, ""));
+      }
+      let daySelected = this.daySelected;
+      let weekdays =
+        frequencySelected === 2
+          ? twice
+          : frequencySelected === 3
+          ? thrice
+          : frequencySelected === 5
+          ? five
+          : "";
+      let allowedDays = [];
+      this.days.forEach((item, i) => {
+        let split = item.split("/");
+        let month = split[0] - 1;
+        let day = split[1];
+        let date_format = moment({
+          month: month,
+          day: day
+        }).weekday();
+        if (weekdays.includes(date_format)) {
+          allowedDays.push(i);
+        }
+      });
+
+      this.allowedDays = allowedDays;
+      let dayIndex = this.days.findIndex(data => data === daySelected);
+      if (this.allowedDays.includes(dayIndex)) {
+        this.daySelected = this.days[dayIndex];
+      } else {
+        this.daySelected = this.days[this.allowedDays[0]];
+      }
+      if (minuteSelected && frequencySelected && durationSelected) {
+        this.seeDays = true;
+      }
+      if (this.seeSchedules) {
+        if (this.currentIndex > 0) {
+          this.selectedHour = this.selectedHour - this.currentIndex;
+        }
+        this.getHour(this.selectedHour, this.currentIndex);
+      }
+      this.setOffer();
+    },
+    move() {
+      var cardTop = this.$refs.summaryCard.$el.scrollHeight;
+      var scrollTop = document.documentElement.scrollTop;
+      var limitHeight = this.$refs.summaryCardArea.offsetHeight;
+      var scrollLimit = 900 - (limitHeight - (scrollTop - cardTop));
+      // console.log((scrollTop-cardTop)+210,limitHeight-cardTop);
+      // console.log((scrollTop-cardTop)+200,(scrollTop-cardTop));
+      if (!this.isMobile) {
+        if (scrollTop - cardTop + 200 > 0 && scrollLimit < 0) {
+          this.stickySummeryTop = scrollTop - cardTop + 210;
+        } else if (scrollTop - cardTop > 0) {
+          this.stickySummeryTop = limitHeight - cardTop;
+        } else if (scrollTop - cardTop < 0) {
+          this.stickySummeryTop = 0;
+        }
+      } else {
+        this.stickySummeryTop = 0;
+      }
+    },
     get_total_price() {
       if (this.offerSummary["total_price"]) {
         return this.offerSummary["total_price"].replace(
@@ -1507,12 +1835,15 @@ export default {
         });
     },
     formatDate(date) {
+      var week = ["일", "월", "화", "수", "목", "금", "토"];
       var d = new Date(date),
         month = "" + (d.getMonth() + 1),
-        day = "" + d.getDate();
+        day = "" + d.getDate(),
+        dayOfWeek = week[new Date(date).getDay()];
+
       //year = d.getFullYear();
       if (day.length < 2) day = +day;
-      return [month, day].join("/");
+      return [month, day].join("/") + ` (${dayOfWeek})`;
     },
     setTime(timeText) {
       this.timeList = [];
@@ -1531,8 +1862,10 @@ export default {
       }
     },
     onWindowResize() {
+      // console.log(screen.width,window.innerWidth);
       this.screenWidth = screen.width;
-      this.isMobile = this.screenWidth <= 960 ? true : false;
+      // this.isMobile = this.screenWidth <= 960 ? true : false;
+      this.isMobile = window.innerWidth <= 960 ? true : false;
     },
     getHour(increment, index) {
       this.currentIndex = index;
@@ -1571,6 +1904,7 @@ export default {
             form
           )
           .then(res => {
+            console.log(res);
             if (res.data.available_schedules) {
               const data = res.data.available_schedules;
               let schedules = [];
