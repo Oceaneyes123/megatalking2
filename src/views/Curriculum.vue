@@ -959,7 +959,7 @@
             </v-row>
 
             <v-container v-else>
-              <v-row>
+              <v-row justify="center">
                 <v-timeline align-top :dense="$vuetify.breakpoint.smAndDown">
                   <v-timeline-item color="#6cb7de" fill-dot small>
                     <v-card color="#6cb7de" dark>
