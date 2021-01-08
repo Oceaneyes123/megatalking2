@@ -4,24 +4,22 @@
       <v-container>
         <v-row no-gutters class="d-flex flex-column-reverse flex-md-row">
           <v-col cols="12" md="3">
-            <v-container>
+            <v-container fill-height>
               <v-row>
                 <div class="mb-4">고객센터 1688-5705</div>
                 <div class="caption text--secondary">
                   (평일 오전 9시~18시)
                 </div>
               </v-row>
-              <v-row
-                :style="isMobile ? '' : 'margin-top: 150px'"
-                class="mt-5 mt-md-0"
-              >
-                <v-card color="#00000000" flat>
+
+              <v-row  class="d-flex fill-height mt-5 mt-md-0">
+                <v-card color="#00000000" flat class="d-flex flex-column justify-end">
                   <v-img
                     @click="$router.push('/')"
                     contain
                     src="@/assets/mega_blue.png"
                     width="150"
-                    class="subheading"
+                    class="subheading mt-auto"
                   ></v-img>
                 </v-card>
               </v-row>
