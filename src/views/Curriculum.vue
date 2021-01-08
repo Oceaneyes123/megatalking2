@@ -964,7 +964,7 @@
                   <v-timeline-item color="#6cb7de" fill-dot small>
                     <v-card color="#6cb7de" dark>
                       <v-card-title class="title"> Level 1 - 3 </v-card-title>
-                      <v-card-text class="white text--primary">
+                      <v-card-text class="white text--primary korean-text">
                         <div class="korean-text text-center pt-3">
                           <p
                             style="background-color: #5dc5fc40"
@@ -1022,56 +1022,196 @@
                   <v-timeline-item color="#55a1cd" fill-dot small>
                     <v-card color="#55a1cd" dark>
                       <v-card-title class="title"> Level 4 - 5 </v-card-title>
-                      <v-card-text class="white text--primary">
-                        <p>
-                          Lorem ipsum dolor sit amet, no nam oblique veritus.
-                          Commune scaevola imperdiet nec ut, sed euismod
-                          convenire principes at. Est et nobis iisque percipit,
-                          an vim zril disputando voluptatibus, vix an salutandi
-                          sententiae.
-                        </p>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            <br />잉글리쉬 문법
+                          </p>
+                          <p>중급회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            정규 <br />회화과정
+                          </p>
+                          <p>중급 토론과정</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            토론/ <br />프리토킹
+                          </p>
+                          <p class="mb-1">심화토론 과정고급</p>
+                          <p>주니어 조선 초급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">주니어 조선 초급</p>
+                          <p>주니어 조선 중급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스
+                            <br />과정
+                          </p>
+                          <p>비즈니스 회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            다락원 <br />교재 과정
+                          </p>
+                          <p class="mb-1">
+                            동사연습편2 상황별연습2 비즈니스전화
+                          </p>
+                          <p>동사연습편3 상황별연습3 비즈니스회의</p>
+                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
                   <v-timeline-item color="#4591c1" fill-dot small>
                     <v-card color="#4591c1" dark>
                       <v-card-title class="title"> Level 6 - 7 </v-card-title>
-                      <v-card-text class="white text--primary">
-                        <p>
-                          Lorem ipsum dolor sit amet, no nam oblique veritus.
-                          Commune scaevola imperdiet nec ut, sed euismod
-                          convenire principes at. Est et nobis iisque percipit,
-                          an vim zril disputando voluptatibus, vix an salutandi
-                          sententiae.
-                        </p>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3 korean-text">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            뉴욕라이브 <br />잉글리쉬
+                          </p>
+                          <p>뉴욕라이브 잉글리쉬</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            문법 <br />패턴과정
+                          </p>
+                          <p>문법 패턴회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            토론/
+                            <br />프리토킹
+                          </p>
+                          <p>시사 토론과정</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">주니어 조선 고급</p>
+                          <p>전문조선 초급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스
+                            <br />과정
+                          </p>
+                          <p>비즈니스 맞춤</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            다락원 <br />교재 과정
+                          </p>
+                          <p class="mb-1">비즈니스 이메일</p>
+                          <p>비즈니스 프리젠테이션</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/
+                            <br />취업준비과정
+                          </p>
+                          <p class="mb-1">취업 인터뷰</p>
+                          <p>호텔영어 승무원영어</p>
+                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
                   <v-timeline-item color="#3783b7" fill-dot small>
                     <v-card color="#3783b7" dark>
                       <v-card-title class="title"> Level 8 - 9 </v-card-title>
-                      <v-card-text class="white text--primary">
-                        <p>
-                          Lorem ipsum dolor sit amet, no nam oblique veritus.
-                          Commune scaevola imperdiet nec ut, sed euismod
-                          convenire principes at. Est et nobis iisque percipit,
-                          an vim zril disputando voluptatibus, vix an salutandi
-                          sententiae.
-                        </p>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">전문조선 고급</p>
+                          <p>전문조선 고급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스 <br />과정
+                          </p>
+                          <p>비즈니스 토론</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/ <br />취업준비과정
+                          </p>
+                          <p class="mb-1">IELTS 오픽</p>
+                          <p>토익스피킹 심화토익스피킹</p>
+                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
                   <v-timeline-item color="#2370a8" fill-dot small>
                     <v-card color="#2370a8" dark>
                       <v-card-title class="title"> Level 10 </v-card-title>
-                      <v-card-text class="white text--primary">
-                        <p>
-                          Lorem ipsum dolor sit amet, no nam oblique veritus.
-                          Commune scaevola imperdiet nec ut, sed euismod
-                          convenire principes at. Est et nobis iisque percipit,
-                          an vim zril disputando voluptatibus, vix an salutandi
-                          sententiae.
-                        </p>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/
+                            <br />취업준비과정
+                          </p>
+                          <p>의학영어</p>
+                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
@@ -1509,7 +1649,7 @@ export default {
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
-              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~",
+              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~",
           },
           {
             tab: require("../assets/tab/vid4.png"),
