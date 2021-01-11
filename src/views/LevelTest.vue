@@ -1,10 +1,10 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f700" flat class="text-center pa-1">
         <div
           class="h3 font-weight-bold white--text mb-5 gmarket"
-          style="margin-top:200px"
+          style="margin-top: 200px"
         >
           레벨테스트
         </div>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <v-container
-          style="max-width:1000px;margin-top:90px"
+          style="max-width: 1000px; margin-top: 90px"
           class="mx-auto px-0"
         >
           <v-card class="rounded-xl shadow" width="100%" color="#fafafa">
@@ -33,7 +33,7 @@
               <v-row
                 no-gutters
                 class="px-10 mt-5 d-flex align-center"
-                style="margin-bottom:50px"
+                style="margin-bottom: 50px"
               >
                 <v-col
                   cols="12"
@@ -58,86 +58,105 @@
                 <span class="font-weight-black">나에게 맞춘 날짜와 시간</span>에
                 언제든지 진행 가능합니다.
               </div>
-              <v-row class="px-10 my-10 d-flex justify-center">
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon1.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">신청서 작성</div>
-                </div>
-                <div class="mx-2 mt-3" v-if="!isMobile">
-                  <v-icon style="font-size:40px" color="#dee0e2"
-                    >fas fa-angle-right</v-icon
-                  >
-                </div>
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon2.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">예약 완료</div>
-                </div>
-                <div class="mx-2 mt-3" v-if="!isMobile">
-                  <v-icon style="font-size:40px" color="#dee0e2"
-                    >fas fa-angle-right</v-icon
-                  >
-                </div>
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon3.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">
-                    문자메시지 발송
-                    <br />(예약 확인, 테스트 안내 )
+              <v-row
+                no-gutters
+                class="px-10 my-10 d-flex justify-space-between"
+              >
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon1.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">신청서 작성</div>
                   </div>
-                </div>
+                </v-col>
                 <div class="mx-2 mt-3" v-if="!isMobile">
-                  <v-icon style="font-size:40px" color="#dee0e2"
+                  <v-icon style="font-size: 40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
                 </div>
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon4.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">
-                    강사님과 1:1수업
-                    <br />(간단 자기소개 등)
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon2.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">예약 완료</div>
                   </div>
-                </div>
+                </v-col>
                 <div class="mx-2 mt-3" v-if="!isMobile">
-                  <v-icon style="font-size:40px" color="#dee0e2"
+                  <v-icon style="font-size: 40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
                 </div>
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon5.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">테스트 결과 받기</div>
-                </div>
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon3.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">
+                      문자메시지 발송
+                      <br />(예약 확인, 테스트 안내 )
+                    </div>
+                  </div>
+                </v-col>
                 <div class="mx-2 mt-3" v-if="!isMobile">
-                  <v-icon style="font-size:40px" color="#dee0e2"
+                  <v-icon style="font-size: 40px" color="#dee0e2"
                     >fas fa-angle-right</v-icon
                   >
                 </div>
-                <div class="mx-2">
-                  <v-img
-                    class="mx-auto"
-                    src="../assets/icon6.png"
-                    width="70"
-                  ></v-img>
-                  <div class="mt-3 caption-text">개별 맞춤 상담</div>
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon4.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">
+                      강사님과 1:1수업
+                      <br />(간단 자기소개 등)
+                    </div>
+                  </div>
+                </v-col>
+                <div class="mx-2 mt-3" v-if="!isMobile">
+                  <v-icon style="font-size: 40px" color="#dee0e2"
+                    >fas fa-angle-right</v-icon
+                  >
                 </div>
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon5.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">
+                      테스트 결과 받기
+                    </div>
+                  </div>
+                </v-col>
+                <div class="mx-2 mt-3" v-if="!isMobile">
+                  <v-icon style="font-size: 40px" color="#dee0e2"
+                    >fas fa-angle-right</v-icon
+                  >
+                </div>
+                <v-col>
+                  <div class="mx-2">
+                    <v-img
+                      class="mx-auto"
+                      src="../assets/icon6.png"
+                      width="70"
+                    ></v-img>
+                    <div class="mt-3 caption-text korean-text">
+                      개별 맞춤 상담
+                    </div>
+                  </div>
+                </v-col>
               </v-row>
 
               <div class="px-5 px-md-10 h6 font-weight-black text-left mb-5">
@@ -168,7 +187,7 @@
                     ref="number"
                     :rules="[
                       () => !!number || '필수 입력값입니다.',
-                      v => v.length <= 13 || '연락처는 13자리 입니다.'
+                      (v) => v.length <= 13 || '연락처는 13자리 입니다.',
                     ]"
                     required
                   ></v-text-field>
@@ -224,7 +243,7 @@
                 <v-card
                   flat
                   max-height="230"
-                  style="overflowY: scroll"
+                  style="overflowy: scroll"
                   width="100%"
                 >
                   <v-container class="px-0 py-0">
@@ -241,10 +260,10 @@
                       >
                         <span
                           class="regular"
-                          style="cursor:pointer"
+                          style="cursor: pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              unit.time == selectedTime[0]
+                              unit.time == selectedTime[0],
                           }"
                         >
                           <strike v-if="!unit.status">
@@ -264,7 +283,7 @@
                 <v-card
                   flat
                   max-height="230"
-                  style="overflowY: scroll"
+                  style="overflowy: scroll"
                   width="100%"
                 >
                   <v-container class="px-0 py-0">
@@ -281,10 +300,10 @@
                       >
                         <span
                           class="regular"
-                          style="cursor:pointer"
+                          style="cursor: pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              unit.time == selectedTime[1]
+                              unit.time == selectedTime[1],
                           }"
                         >
                           <strike v-if="!unit.status">
@@ -332,7 +351,7 @@
                     label="개인정보 수집 및 이용에 동의합니다."
                     v-model="ppCheck"
                     ref="ppCheck"
-                    :rules="[v => !!v || '필수 입력값입니다.']"
+                    :rules="[(v) => !!v || '필수 입력값입니다.']"
                     required
                   ></v-checkbox>
                 </v-col>
@@ -360,7 +379,9 @@
               <v-row>
                 <v-col>
                   <v-btn
-                    style="background: linear-gradient(to right, #a0b4ff, #4285ec)"
+                    style="
+                      background: linear-gradient(to right, #a0b4ff, #4285ec);
+                    "
                     class="rounded-pill white--text h5 nanum"
                     depressed
                     large
@@ -376,26 +397,26 @@
     </v-container>
 
     <v-dialog v-model="confirmDialog" max-width="500">
-      <v-card max-width="500" class=" pb-5 rounded-xl">
-        <div class="h4 text-center pa-3 mb-5" style="background-color:#85c9e8">
+      <v-card max-width="500" class="pb-5 rounded-xl">
+        <div class="h4 text-center pa-3 mb-5" style="background-color: #85c9e8">
           요약
         </div>
         <div class="px-5">
-          <div class="h5 gmarket" style="color:#85c9e8">과목 선택</div>
+          <div class="h5 gmarket" style="color: #85c9e8">과목 선택</div>
           <div class="px-3 mb-5 h6">
             <div>메가토킹 전화영어</div>
             <div>이름: {{ this.name }}</div>
             <div>연락처: {{ this.number }}</div>
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color:#85c9e8">
+          <div class="h5 gmarket mt-5" style="color: #85c9e8">
             수업 진행속도
           </div>
           <div class="px-3 mb-5 h6">
             {{ this.class_speeds[this.selectedSpeed] }}
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color:#85c9e8">예약 일시</div>
+          <div class="h5 gmarket mt-5" style="color: #85c9e8">예약 일시</div>
           <div class="px-3 h6 mb-10">
             <div>{{ this.days[this.daySelected] }}</div>
             <div>
@@ -408,7 +429,7 @@
           </div>
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3  h6" @click="confirmDialog = false">취소</span>
+              <span class="pa-3 h6" @click="confirmDialog = false">취소</span>
             </v-btn>
             <v-btn
               color="#2572a8"
@@ -416,7 +437,7 @@
               depressed
               @click="confirm()"
             >
-              <span class="pa-3 white--text h6 ">확인</span>
+              <span class="pa-3 white--text h6">확인</span>
             </v-btn>
           </div>
         </div>
@@ -426,7 +447,7 @@
     <v-dialog
       v-model="searchEvaluationDialog"
       max-width="750"
-      style="border-radius: 25px 25px 25px 25px !important;overflow-x:hidden"
+      style="border-radius: 25px 25px 25px 25px !important; overflow-x: hidden"
       height="700"
       class="border-xl"
     >
@@ -463,17 +484,17 @@
             ></v-text-field>
 
             <p v-if="evaluationErr.length">{{ evaluationErr }}</p>
-            <v-row class="align-center justify-end  fill-height">
+            <v-row class="align-center justify-end fill-height">
               <v-btn
                 class="ma-2"
                 @click="searchEvaluation()"
-                style="color:#5C5C5C"
+                style="color: #5c5c5c"
                 >조회</v-btn
               >
               <v-btn
                 class="ma-2"
                 @click="searchEvaluationDialog = false"
-                style="color:#5C5C5C"
+                style="color: #5c5c5c"
                 >취소</v-btn
               >
             </v-row>
@@ -541,7 +562,7 @@ export default {
   components: {
     EventAgreementDialog,
     PrivacyPolicyDialog,
-    LevelTestEvaluation
+    LevelTestEvaluation,
   },
   data() {
     return {
@@ -568,10 +589,10 @@ export default {
       class_speeds: [
         "천천히 발음해주세요.",
         "보통 속도로 말해주세요.",
-        "빨리 말하셔도 괜찮아요."
+        "빨리 말하셔도 괜찮아요.",
       ],
       classEvaluation: [],
-      evaluationErr: {}
+      evaluationErr: {},
     };
   },
   computed: {
@@ -584,23 +605,23 @@ export default {
         date: this.days[this.daySelected],
         time: this.selectedTime[this.daySelected],
         ppCheck: this.ppCheck,
-        eaCheck: this.eaCheck
+        eaCheck: this.eaCheck,
       };
-    }
+    },
   },
   created() {
     let headers = {
-      Authorization: this.loginToken
+      Authorization: this.loginToken,
     };
     //날짜 검색 기능
     axios
       .get("//phone.megatalking.com/origin/api/leveltest.php", {
         params: {
-          action: "getTimes"
+          action: "getTimes",
         },
-        headers
+        headers,
       })
-      .then(rs => {
+      .then((rs) => {
         this.dateTimes = rs.data.dates;
         this.days = Object.keys(this.dateTimes);
         //회원이라면 이름초기화
@@ -611,7 +632,7 @@ export default {
           this.number = `${member.aHp}-${member.bHp}-${member.cHp}`;
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("error", err);
       });
   },
@@ -641,7 +662,7 @@ export default {
           "$1-$2-$3"
         )
         .replace("--", "-");
-    }
+    },
   },
   methods: {
     selectTime(event, index) {
@@ -651,7 +672,7 @@ export default {
     resetForm() {},
     submit() {
       let noValidate = ["speed", "date", "time", "eaCheck"];
-      Object.keys(this.form).forEach(f => {
+      Object.keys(this.form).forEach((f) => {
         if ("time" == f && this.form[f].length == 0) this.snackbar = true;
 
         if (noValidate.indexOf(f) !== -1) return;
@@ -664,7 +685,7 @@ export default {
     },
     confirm() {
       const config = {
-        headers: { Authorization: this.loginToken }
+        headers: { Authorization: this.loginToken },
       };
       axios
         .post(
@@ -672,7 +693,7 @@ export default {
           this.form,
           config
         )
-        .then(rs => {
+        .then((rs) => {
           console.log(rs);
           if (rs.data.result) {
             //code
@@ -682,7 +703,7 @@ export default {
               content_name: "무료 레벨 테스트 등록",
               currency: "KRW",
               status: "",
-              value: ""
+              value: "",
             });
           } else {
             //code
@@ -690,7 +711,7 @@ export default {
             this.errorSnackbar = true;
           }
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
@@ -703,10 +724,10 @@ export default {
           .get("//phone.megatalking.com/origin/api/leveltest.php", {
             params: {
               action: "getEval",
-              searchNumber: this.searchNumber
-            }
+              searchNumber: this.searchNumber,
+            },
           })
-          .then(res => {
+          .then((res) => {
             if (res.data) {
               const evaluation = res.data;
               this.$set(this.$data, "classEvaluation", evaluation);
@@ -720,13 +741,13 @@ export default {
                 "평가서를 찾을 수 없습니다. 전화번호를 다시 입력해주세요.";
             }
           })
-          .catch(err => {
+          .catch((err) => {
             this.evaluationErr =
               "평가서를 가져올수 없습니다. 관리자에게 문의하세요.";
             console.log(err);
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
