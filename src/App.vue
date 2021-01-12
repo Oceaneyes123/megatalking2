@@ -7,9 +7,12 @@
         width="showNav"
         class="text-center"
         v-if="showNav"
+        style="overflow-y: hidden !important"
       >
-        <router-view></router-view>
-        <Footer></Footer>
+        <div class="d-flex flex-column">
+          <router-view class="mb-auto" style="overflow-y: hidden"></router-view>
+          <Footer class="mt-auto"></Footer>
+        </div>
       </v-img>
       <router-view v-else></router-view>
     </v-app>
@@ -25,13 +28,13 @@ import Footer from "@/components/Footer.vue";
 export default {
   components: {
     Header,
-    Footer
+    Footer,
   },
   data() {
     return {};
   },
   computed: {
-    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"])
+    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"]),
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
@@ -45,8 +48,8 @@ export default {
   methods: {
     onWindowResize() {
       this.$store.commit("onWindowResize", screen.width);
-    }
-  }
+    },
+  },
 };
 </script>
 

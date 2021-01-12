@@ -101,7 +101,8 @@
                     ></v-img>
                     <div class="mt-3 caption-text korean-text">
                       문자메시지 발송
-                      <br />(예약 확인, 테스트 안내 )
+                      <br />
+                      <span v-if="!isMobile">(예약 안내)</span>
                     </div>
                   </div>
                 </v-col>
@@ -119,7 +120,8 @@
                     ></v-img>
                     <div class="mt-3 caption-text korean-text">
                       강사님과 1:1수업
-                      <br />(간단 자기소개 등)
+                      <br />
+                      <span v-if="!isMobile">(자기소개 등)</span>
                     </div>
                   </div>
                 </v-col>
@@ -243,7 +245,7 @@
                 <v-card
                   flat
                   max-height="230"
-                  style="overflowy: scroll"
+                  style="overflow-y: scroll"
                   width="100%"
                 >
                   <v-container class="px-0 py-0">
@@ -283,7 +285,7 @@
                 <v-card
                   flat
                   max-height="230"
-                  style="overflowy: scroll"
+                  style="overflow-y: scroll"
                   width="100%"
                 >
                   <v-container class="px-0 py-0">
