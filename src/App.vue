@@ -9,8 +9,9 @@
         v-if="showNav"
         style="overflow-y: hidden !important"
       >
-        <div class="d-flex flex-column">
-          <router-view class="mb-auto" style="overflow-y: hidden"></router-view>
+        <div class="d-flex flex-column" style="height: 100% !important">
+          <router-view></router-view>
+
           <Footer class="mt-auto"></Footer>
         </div>
       </v-img>
