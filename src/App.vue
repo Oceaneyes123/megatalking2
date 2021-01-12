@@ -8,10 +8,10 @@
         class="text-center"
         v-if="showNav"
         style="overflow-y: hidden !important"
+        id="imageContainer"
       >
         <div class="d-flex flex-column" style="height: 100% !important">
           <router-view></router-view>
-
           <Footer class="mt-auto"></Footer>
         </div>
       </v-img>
@@ -20,7 +20,11 @@
   </div>
 </template>
 
-<style scoped></style>
+<style>
+#imageContainer > .v-responsive__content {
+  overflow-y: hidden;
+}
+</style>
 
 <script>
 import { mapState } from "vuex";
