@@ -945,7 +945,7 @@
               </v-tabs>
             </v-row> -->
 
-            <v-row>
+            <v-row v-if="!isMobile">
               <v-card flat color="#00000000">
                 <v-img
                   src="../assets/level-diagram.png"
@@ -954,6 +954,267 @@
                 ></v-img>
               </v-card>
             </v-row>
+
+            <v-container v-else>
+              <v-row>
+                <v-timeline align-top :dense="$vuetify.breakpoint.smAndDown">
+                  <v-timeline-item color="#6cb7de" fill-dot small>
+                    <v-card color="#6cb7de" dark>
+                      <v-card-title class="title"> Level 1 - 3 </v-card-title>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="korean-text text-center pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            입문과정
+                          </p>
+                          <p class="mb-1">기초 발음교정</p>
+                          <p class="mb-1">기초 문장연습</p>
+                          <p>기초 회화연습</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            초/ 중급 <br />회화과정
+                          </p>
+                          <p>초급회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            문법 <br />패턴과정
+                          </p>
+                          <p>기초 패턴회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            토론/ <br />프리토킹
+                          </p>
+                          <p>초급 토론과정</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            다락원 <br />교재 과정
+                          </p>
+                          <p class="mb-1">패턴 연습편1</p>
+                          <p class="mb-1">패턴 연습편2</p>
+                          <p class="mb-1">
+                            패턴연습편3 동사연습편1 상황별연습1
+                          </p>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-timeline-item>
+                  <v-timeline-item color="#55a1cd" fill-dot small>
+                    <v-card color="#55a1cd" dark>
+                      <v-card-title class="title"> Level 4 - 5 </v-card-title>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            <br />잉글리쉬 문법
+                          </p>
+                          <p>중급회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            정규 <br />회화과정
+                          </p>
+                          <p>중급 토론과정</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            토론/ <br />프리토킹
+                          </p>
+                          <p class="mb-1">심화토론 과정고급</p>
+                          <p>주니어 조선 초급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">주니어 조선 초급</p>
+                          <p>주니어 조선 중급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스
+                            <br />과정
+                          </p>
+                          <p>비즈니스 회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            다락원 <br />교재 과정
+                          </p>
+                          <p class="mb-1">
+                            동사연습편2 상황별연습2 비즈니스전화
+                          </p>
+                          <p>동사연습편3 상황별연습3 비즈니스회의</p>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-timeline-item>
+                  <v-timeline-item color="#4591c1" fill-dot small>
+                    <v-card color="#4591c1" dark>
+                      <v-card-title class="title"> Level 6 - 7 </v-card-title>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3 korean-text">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            뉴욕라이브 <br />잉글리쉬
+                          </p>
+                          <p>뉴욕라이브 잉글리쉬</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            문법 <br />패턴과정
+                          </p>
+                          <p>문법 패턴회화</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            토론/
+                            <br />프리토킹
+                          </p>
+                          <p>시사 토론과정</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">주니어 조선 고급</p>
+                          <p>전문조선 초급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스
+                            <br />과정
+                          </p>
+                          <p>비즈니스 맞춤</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            다락원 <br />교재 과정
+                          </p>
+                          <p class="mb-1">비즈니스 이메일</p>
+                          <p>비즈니스 프리젠테이션</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/
+                            <br />취업준비과정
+                          </p>
+                          <p class="mb-1">취업 인터뷰</p>
+                          <p>호텔영어 승무원영어</p>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-timeline-item>
+                  <v-timeline-item color="#3783b7" fill-dot small>
+                    <v-card color="#3783b7" dark>
+                      <v-card-title class="title"> Level 8 - 9 </v-card-title>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            영자신문 <br />과정
+                          </p>
+                          <p class="mb-1">전문조선 고급</p>
+                          <p>전문조선 고급</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            비즈니스 <br />과정
+                          </p>
+                          <p>비즈니스 토론</p>
+                        </div>
+                        <div>
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/ <br />취업준비과정
+                          </p>
+                          <p class="mb-1">IELTS 오픽</p>
+                          <p>토익스피킹 심화토익스피킹</p>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-timeline-item>
+                  <v-timeline-item color="#2370a8" fill-dot small>
+                    <v-card color="#2370a8" dark>
+                      <v-card-title class="title"> Level 10 </v-card-title>
+                      <v-card-text class="white text--primary korean-text">
+                        <div class="pt-3">
+                          <p
+                            style="background-color: #5dc5fc40"
+                            class="font-weight-bold h6 py-2"
+                          >
+                            특별전문/
+                            <br />취업준비과정
+                          </p>
+                          <p>의학영어</p>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-timeline-item>
+                </v-timeline>
+              </v-row>
+            </v-container>
             <!--
             <v-row justify="center" class="my-10" v-if="!isMobile">
               <v-card flat class="rounded-xl" style="width:1000px !important">
@@ -989,6 +1250,7 @@
                         </td>
                         <td colspan="7"></td>
                       </tr>
+                      -------------
                       <tr>
                         <td>
                           초/ 중급
@@ -1028,6 +1290,7 @@
                         </td>
                         <td colspan="4"></td>
                       </tr>
+                      --------
                       <tr>
                         <td>
                           문법
@@ -1041,6 +1304,7 @@
                         <td>문법 패턴회화</td>
                         <td colspan="4"></td>
                       </tr>
+                      ----------
                       <tr>
                         <td>
                           토론/
@@ -1063,6 +1327,7 @@
                         </td>
                         <td colspan="4"></td>
                       </tr>
+                      -----------------
                       <tr>
                         <td>
                           영자신문
@@ -1097,6 +1362,7 @@
                         </td>
                         <td colspan="1"></td>
                       </tr>
+                      ----------------
                       <tr>
                         <td>
                           비즈니스
@@ -1121,6 +1387,7 @@
                         </td>
                         <td colspan="2"></td>
                       </tr>
+                      -----------------
                       <tr>
                         <td>
                           다락원
@@ -1159,6 +1426,7 @@
                         </td>
                         <td colspan="3"></td>
                       </tr>
+                      --------------
                       <tr>
                         <td>
                           특별전문/
@@ -1379,7 +1647,7 @@ export default {
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
-              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
+              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
           },
           {
             tab: require("../assets/tab/vid4.png"),
@@ -1439,6 +1707,7 @@ export default {
             details: "일상에 자주 거론되는 이슈에 대한 나의 의견 영어로 말하기"
           },
           {
+            mobile: require("../assets/mobile/newspaper_article.png"),
             image: require("../assets/curriculum/news.jpg"),
             title: "프리토킹 영자신문",
             details: "최신 뉴스기사를 영어로 접하면서 대화하기"
@@ -1471,13 +1740,15 @@ export default {
             image: require("../assets/curriculum/email.jpg"),
             title: "E-mail",
             details:
-              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다."
+              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
+            mobile: require("../assets/mobile/email.png")
           },
           {
             image: require("../assets/curriculum/meeting.jpg"),
             title: "Meeting",
             details:
-              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다."
+              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
+            mobile: require("../assets/mobile/meeting.png")
           },
           {
             mobile: require("../assets/mobile/negotiations.png"),
@@ -1490,7 +1761,8 @@ export default {
             image: require("../assets/curriculum/presentation.jpg"),
             title: "Presentation",
             details:
-              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다."
+              "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
+            mobile: require("../assets/mobile/presentation.png")
           },
           {
             image: require("../assets/curriculum/be_sd.jpg"),
@@ -1532,6 +1804,7 @@ export default {
               "영어면접에서 면접관의 질문을 정확히 이해하고 나를 충분히 어필하는 연습하기"
           },
           {
+            mobile: require("../assets/mobile/hotel_dialogues.png"),
             image: require("../assets/curriculum/hotel.jpg"),
             title: "Hotel Dialogues",
             details:
@@ -1545,6 +1818,7 @@ export default {
               "승무원의 역사, 의상, 기내상식과 기내방송등 승무원의 모든 스피킹을 담았습니다. 승무원을 준비하시는 수강생분들, 승무원영어과정으로 알차게 준비해보세요!"
           },
           {
+            mobile: require("../assets/mobile/ielts.png"),
             image: require("../assets/curriculum/ielts.jpg"),
             title: "IELTS",
             details:
