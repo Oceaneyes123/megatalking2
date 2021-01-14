@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       screenWidth: "",
-      isMobile: false
+      isMobile: false,
     };
   },
 
@@ -133,9 +133,8 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-      console.log("resize");
-    }
-  }
+    },
+  },
 };
 </script>
 

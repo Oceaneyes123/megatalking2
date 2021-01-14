@@ -1,11 +1,11 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
     <v-container fluid class="py-0 px-0">
       <v-card tile color="#8bb6f700" flat class="text-center pa-1">
-        <div class="h3 font-weight-bold white--text" style="margin-top:200px">
+        <div class="h3 font-weight-bold white--text" style="margin-top: 200px">
           수강 신청
         </div>
         <div class="h6 nanum white--text">
@@ -16,7 +16,7 @@
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
         <v-container
-          style="max-width:1000px;margin-top:90px"
+          style="max-width: 1000px; margin-top: 90px"
           class="px-0 mx-auto"
         >
           <v-card class="rounded-xl shadow" width="100%">
@@ -33,19 +33,19 @@
                       <v-row no-gutters class="mb-5">
                         <v-col cols="6" class="text-left">
                           <div
-                            class="h6 font-weight-bold "
+                            class="h6 font-weight-bold"
                             @click="(isPhone = true), (classType = 'Phone')"
                             :style="
                               isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                           >
                             전화로 할래요
                           </div>
                           <div
                             class="subheading"
                             @click="(isPhone = true), (classType = 'Phone')"
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                             :style="
                               isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
@@ -55,7 +55,7 @@
                                 isPhone ? 'color:#4242a3;' : 'color:#808080'
                               "
                               class="mr-2"
-                              style="font-size:20px"
+                              style="font-size: 20px"
                               >fas fa-phone-square-alt</v-icon
                             >전화 서비스 제공
                           </div>
@@ -67,14 +67,14 @@
                             :style="
                               !isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                           >
                             화상으로 할래요.
                           </div>
                           <div
                             class="subheading"
                             @click="(isPhone = false), (classType = 'Video')"
-                            style="cursor:pointer"
+                            style="cursor: pointer"
                             :style="
                               !isPhone ? 'color:#4242a3;' : 'color:#808080'
                             "
@@ -84,7 +84,7 @@
                                 !isPhone ? 'color:#4242a3;' : 'color:#808080'
                               "
                               class="mr-2"
-                              style="font-size:19px"
+                              style="font-size: 19px"
                               >fas fa-video</v-icon
                             >Skype 서비스 제공
                           </div>
@@ -112,14 +112,14 @@
                         :style="[
                           hiddenDurations.includes(duration)
                             ? {
-                                display: 'none'
+                                display: 'none',
                               }
                             : '',
                           !isMobile
                             ? {
-                                'border-radius': '30px 0 0 30px'
+                                'border-radius': '30px 0 0 30px',
                               }
-                            : ''
+                            : '',
                         ]"
                         @click="minuteSelected = duration"
                         >{{ duration }}</v-tab
@@ -246,7 +246,7 @@
                                 >
                               </v-col>
                             </v-row>
-                            <v-container style="background-color:#ececec">
+                            <v-container style="background-color: #ececec">
                               <v-row justify="start" class="mb-3 mt-5">
                                 <v-col
                                   cols="6"
@@ -273,7 +273,12 @@
                                     "
                                     outlined
                                     :elevation="seriesSelected === item ? 3 : 0"
-                                    style="display: unset; white-space: unset;line-break: strict;word-break: keep-all;"
+                                    style="
+                                      display: unset;
+                                      white-space: unset;
+                                      line-break: strict;
+                                      word-break: keep-all;
+                                    "
                                     :style="
                                       seriesSelected === item
                                         ? 'border: 2px solid; background:white'
@@ -310,15 +315,15 @@
                                     !allowedDays.includes(i)
                                       ? {
                                           pointerEvents: 'none',
-                                          textDecoration: 'line-through'
+                                          textDecoration: 'line-through',
                                         }
                                       : '',
                                     daySelected == day
                                       ? {
                                           border: '2px solid',
-                                          background: 'white'
+                                          background: 'white',
                                         }
-                                      : ''
+                                      : '',
                                   ]"
                                   @click="
                                     (daySelected = day), (daySummary = day)
@@ -342,9 +347,9 @@
                       </div>
                       <v-container class="pb-1">
                         <v-row no-gutters>
-                          <v-col class="text-left" style="cursor:pointer;">
+                          <v-col class="text-left" style="cursor: pointer">
                             <span
-                              style="cursor:pointer;color:#5a55a1"
+                              style="cursor: pointer; color: #5a55a1"
                               @click="(currentZone = 0), setTime(6)"
                               :class="
                                 currentZone == 0 ? 'font-weight-bold' : ''
@@ -356,9 +361,9 @@
                               >6:00 - 9:50</span
                             >
                           </v-col>
-                          <v-col class="text-left" style="cursor:pointer;">
+                          <v-col class="text-left" style="cursor: pointer">
                             <span
-                              style="cursor:pointer;color:#5a55a1"
+                              style="cursor: pointer; color: #5a55a1"
                               @click="(currentZone = 1), setTime(10)"
                               :class="
                                 currentZone == 1 ? 'font-weight-bold' : ''
@@ -370,9 +375,9 @@
                               >10:00 - 16:50</span
                             >
                           </v-col>
-                          <v-col class="text-left" style="cursor:pointer;">
+                          <v-col class="text-left" style="cursor: pointer">
                             <span
-                              style="cursor:pointer;color:#5a55a1"
+                              style="cursor: pointer; color: #5a55a1"
                               @click="(currentZone = 2), setTime(17)"
                               :class="
                                 currentZone == 2 ? 'font-weight-bold' : ''
@@ -388,9 +393,9 @@
                       </v-container>
                       <v-divider
                         class="mt-0"
-                        style="background-color: #222dc05F"
+                        style="background-color: #222dc05f"
                       ></v-divider>
-                      <v-card flat color="#f5f4f6" class="mb-5 pa-5">
+                      <!-- <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
                           grow
                           v-if="seeMore && currentZone == 0"
@@ -435,8 +440,8 @@
                             @click="setTime(n + 16), getHour(16, n)"
                             >{{ n + 16 }}</v-tab
                           >
-                        </v-tabs>
-                        <template v-if="onRequest">
+                        </v-tabs> -->
+                      <!-- <template v-if="onRequest">
                           <v-row no-gutters>
                             <v-col
                               cols="4"
@@ -457,6 +462,94 @@
                               >
                             </v-col>
                           </v-row>
+                        </template> -->
+                      <!-- this is temporary -->
+                      <v-card flat color="#f5f4f6" class="mb-5 pa-5">
+                        <v-tabs
+                          grow
+                          v-if="seeMore && currentZone == 0"
+                          show-arrows
+                          slider-color="#5a55a1"
+                          v-model="selected_hour"
+                          class="mb-5"
+                        >
+                          <v-tab
+                            v-for="n in 4"
+                            :key="n"
+                            @click="setTime(n + 5)"
+                            >{{ n + 5 }}</v-tab
+                          >
+                        </v-tabs>
+                        <v-tabs
+                          grow
+                          v-if="seeMore && currentZone == 1"
+                          show-arrows
+                          slider-color="#5a55a1"
+                          v-model="selected_hour"
+                          class="mb-5"
+                        >
+                          <v-tab
+                            v-for="n in 7"
+                            :key="n"
+                            @click="setTime(n + 9)"
+                            >{{ n + 9 }}</v-tab
+                          >
+                        </v-tabs>
+                        <v-tabs
+                          grow
+                          v-if="seeMore && currentZone == 2"
+                          show-arrows
+                          slider-color="#5a55a1"
+                          v-model="selected_hour"
+                          class="mb-5"
+                        >
+                          <v-tab
+                            v-for="n in 7"
+                            :key="n"
+                            @click="setTime(n + 16)"
+                            >{{ n + 16 }}</v-tab
+                          >
+                        </v-tabs>
+                        <template>
+                          <v-row no-gutters>
+                            <v-col
+                              cols="4"
+                              sm="2"
+                              class="mb-2 mb-md-0"
+                              v-for="(time, i) in 6"
+                              :key="i"
+                            >
+                              <v-btn
+                                v-show="time === undefined"
+                                depressed
+                                style="pointer-events: none"
+                                @click="timeSelected = time"
+                                :color="
+                                  timeSelected == time ? 'primary' : 'grey'
+                                "
+                                outlined
+                                class="rounded-lg"
+                                >...</v-btn
+                              >
+                              <v-btn
+                                depressed
+                                @click="timeSelected = time"
+                                :color="
+                                  timeSelected == time ? 'primary' : 'grey'
+                                "
+                                :style="
+                                  timeSelected == time
+                                    ? 'border: 2px solid;background:white'
+                                    : ''
+                                "
+                                outlined
+                                class="rounded-lg font-weight-bold"
+                                v-show="time !== undefined"
+                                :elevation="timeSelected == time ? 3 : 0"
+                                >{{ time_hour }} : {{ time - 1 }}0</v-btn
+                              >
+                            </v-col>
+                          </v-row>
                         </template>
                         <template v-if="selected_hour_available_times">
                           <v-row no-gutters>
@@ -470,7 +563,7 @@
                               <v-btn
                                 v-show="time === undefined"
                                 depressed
-                                style="pointer-events: none;"
+                                style="pointer-events: none"
                                 @click="timeSelected = time"
                                 :color="
                                   timeSelected == time ? 'primary' : 'grey'
@@ -500,11 +593,12 @@
                           </v-row>
                         </template>
                       </v-card>
+                      <!-- this is temporary -->
                       <div
                         v-if="!seeMore"
                         @click="seeMore = true"
                         class="caption mb-5"
-                        style="color:#bdbdbd"
+                        style="color: #bdbdbd"
                       >
                         시간표 전체보기 >
                       </div>
@@ -686,7 +780,7 @@
                     <v-btn
                       color="#5a55a1"
                       class="rounded-lg white--text font-weight-bold mb-15"
-                      style="margin-top:50px"
+                      style="margin-top: 50px"
                       large
                       @click="enroll_check_data()"
                       >수업 신청하기</v-btn
@@ -715,12 +809,12 @@
       <v-overlay :value="overlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-overlay>
-      <v-card max-width="500" class=" pb-5 rounded-xl">
-        <div class="h4 text-center pa-3 mb-5" style="background-color:#85c9e8">
+      <v-card max-width="500" class="pb-5 rounded-xl">
+        <div class="h4 text-center pa-3 mb-5" style="background-color: #85c9e8">
           요약
         </div>
         <div class="px-5">
-          <div class="h5 gmarket" style="color:#85c9e8">수강선택 요약</div>
+          <div class="h5 gmarket" style="color: #85c9e8">수강선택 요약</div>
           <div class="px-3 mb-5 h6">
             <v-container>
               <v-row no-gutters>
@@ -741,7 +835,7 @@
             </v-container>
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color:#85c9e8">
+          <div class="h5 gmarket mt-5" style="color: #85c9e8">
             결제 예정금액
           </div>
           <v-container>
@@ -767,7 +861,7 @@
           </v-container>
           <div class="d-flex">
             <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3  h6" @click="confirmDialog = false">취소</span>
+              <span class="pa-3 h6" @click="confirmDialog = false">취소</span>
             </v-btn>
             <v-btn
               color="#2572a8"
@@ -775,22 +869,20 @@
               depressed
               @click="enroll()"
             >
-              <span class="pa-3 white--text h6 ">확인</span>
+              <span class="pa-3 white--text h6">확인</span>
             </v-btn>
           </div>
         </div>
       </v-card>
     </v-dialog>
-    <div class="stickyButton" v-show="isMobile" style="z-index:20001;">
+    <div class="stickyButton" v-show="isMobile" style="z-index: 20001">
       <v-expansion-panels>
         <v-expansion-panel>
           <v-expansion-panel-header expand-icon="mdi-menu-up">
             선택한 과정 정보
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <v-card tile elevation="0">
-              하이
-            </v-card>
+            <v-card tile elevation="0"> 하이 </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -846,6 +938,9 @@ export default {
       seeMore: false,
       currentZone: 0,
       selected_schedule_hour: "",
+      //this is temporary
+      time_hour: 6,
+      //
       offerSummary: [],
       bookSummary: "",
       frequencySummary: "",
@@ -860,18 +955,18 @@ export default {
         {
           text: "무통장 입금",
           color: "",
-          icon: "mdi-credit-card"
+          icon: "mdi-credit-card",
         },
         {
           text: "카드 결제",
           color: "",
-          icon: "mdi-credit-card-check"
+          icon: "mdi-credit-card-check",
         },
         {
           text: "정기 결제",
           color: "",
-          icon: "mdi-credit-card-clock"
-        }
+          icon: "mdi-credit-card-clock",
+        },
       ],
       selectedHour: 6,
       currentIndex: 0,
@@ -898,33 +993,33 @@ export default {
               text: "셀럽 토크쇼",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "TED Ed",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Movie",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "셀럽과의 대화",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Pop Song",
               level: "",
               type: "video",
-              link: ""
-            }
-          ]
+              link: "",
+            },
+          ],
         },
         {
           course: "정규 회화과정",
@@ -933,9 +1028,10 @@ export default {
               text: "Interactive English Series",
               level: "",
               type: "",
-              link: "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf",
+            },
+          ],
         },
         {
           course: "프리토킹 토론",
@@ -945,43 +1041,44 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1",
             },
             {
               text: "묻고 답하기",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1",
             },
             {
               text: "의견말하기",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1"
+                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1",
             },
             {
               text: "사진묘사",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/Freetalking-Description/Freetalking-Description-Level1/chapter1"
+                "http://178.128.213.14/book#/Freetalking-Description/Freetalking-Description-Level1/chapter1",
             },
             {
               text: "영자신문",
               level: "",
               type: "book",
-              link: ""
+              link: "",
             },
             {
               text: "Debate",
               level: "",
 
               type: "book",
-              link: "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf",
+            },
+          ],
         },
         {
           course: "비즈니스 과정",
@@ -990,39 +1087,44 @@ export default {
               text: "Business English",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf",
             },
             {
               text: "E-mail",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf",
             },
             {
               text: "Meeting",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf",
             },
             {
               text: "Negotiation",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf",
             },
             {
               text: "Presentation",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf",
             },
             {
               text: "비지니스 회화과정",
               level: "",
               type: "book",
-              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf"
-            }
-          ]
+              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf",
+            },
+          ],
         },
         {
           course: "문법/패턴",
@@ -1032,22 +1134,22 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1",
             },
             {
               text: "Grammar in Pattern 과정",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1",
             },
             {
               text: "일상 Dialogue 과정",
               level: "",
               type: "book",
-              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1"
-            }
-          ]
+              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1",
+            },
+          ],
         },
         {
           course: "취업준비/특별 과정",
@@ -1057,33 +1159,35 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/Interview-English/Interview-EnglishStep1/chapter1"
+                "http://178.128.213.14/book#/Interview-English/Interview-EnglishStep1/chapter1",
             },
             {
               text: "Hotel Dialogues",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=55"
+              link: "http://ols.jkn.co.kr/html/books.php?code=55",
             },
             {
               text: "Cabin Crew",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf",
             },
             {
               text: "IELTS",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=40"
+              link: "http://ols.jkn.co.kr/html/books.php?code=40",
             },
             {
               text: "Medical English",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf",
+            },
+          ],
         },
         {
           course: "초/중급 회화과정",
@@ -1093,16 +1197,16 @@ export default {
               level: "",
               type: "pdf",
 
-              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf"
+              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf",
             },
             {
               text: "First Step In Conversation",
               level: "",
               type: "pdf",
               link:
-                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf"
-            }
-          ]
+                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf",
+            },
+          ],
         },
         {
           course: "입문과정",
@@ -1111,7 +1215,8 @@ export default {
               text: "Phonics ",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf",
             },
             // {
             //   text: "Advanced Phonics ",
@@ -1124,240 +1229,242 @@ export default {
               text: "P-course Junior",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf",
             },
             {
               text: "C-course Junior",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf"
-            }
-          ]
-        }
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf",
+            },
+          ],
+        },
       ],
       bookList10: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "disabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
       bookList20: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
       bookList30: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
-      Offers: []
+      Offers: [],
     };
   },
   created() {
@@ -1376,7 +1483,7 @@ export default {
       // this.seriesSelected = -1;
       this.seriesSelected = this.materials[this.materialSelected].series[0];
     },
-    tab: function() {
+    tab: function () {
       this.hiddenDurations = [];
       // this.frequencySelected = -1;
       // this.daySelected = -1;
@@ -1494,7 +1601,7 @@ export default {
         let day = split[1];
         let date_format = moment({
           month: month,
-          day: day
+          day: day,
         }).weekday();
         if (weekdays.includes(date_format)) {
           allowedDays.push(i);
@@ -1519,17 +1626,17 @@ export default {
     currentZone(newval) {
       if (newval === 0) {
         this.selected_schedule_hour = 6;
-        this.getHour(6, 0);
+        //  this.getHour(6, 0);
       }
       if (newval === 1) {
         this.selected_schedule_hour = 10;
-        this.getHour(10, 0);
+        //  this.getHour(10, 0);
       }
       if (newval === 2) {
         this.selected_schedule_hour = 17;
-        this.getHour(17, 0);
+        //   this.getHour(17, 0);
       }
-    }
+    },
   },
   mounted() {
     localStorage.removeItem("enrollment_payload");
@@ -1739,7 +1846,7 @@ export default {
         default:
       }
       return this.durationSelected + `(${week})`;
-    }
+    },
   },
   methods: {
     setAllowedDays() {
@@ -1772,7 +1879,7 @@ export default {
         let day = split[1];
         let date_format = moment({
           month: month,
-          day: day
+          day: day,
         }).weekday();
         if (weekdays.includes(date_format)) {
           allowedDays.push(i);
@@ -1780,7 +1887,7 @@ export default {
       });
 
       this.allowedDays = allowedDays;
-      let dayIndex = this.days.findIndex(data => data === daySelected);
+      let dayIndex = this.days.findIndex((data) => data === daySelected);
       if (this.allowedDays.includes(dayIndex)) {
         this.daySelected = this.days[dayIndex];
       } else {
@@ -1827,10 +1934,10 @@ export default {
     async get_offers() {
       axios
         .get("https://megatalking.co.kr/lms/Price/get_all_offers")
-        .then(res => {
+        .then((res) => {
           this.$set(this.$data, "Offers", res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
@@ -1846,20 +1953,23 @@ export default {
       return [month, day].join("/") + ` (${dayOfWeek})`;
     },
     setTime(timeText) {
-      this.timeList = [];
-      this.dateTime.setHours(timeText);
-      this.dateTime.setMinutes(0);
-      for (var i = 0; i < 6; i++) {
-        var nextTime = new Date(this.dateTime);
-        nextTime.setMinutes(this.dateTime.getMinutes() + 10 * i);
-        this.timeList.push(
-          nextTime.getHours() +
-            ":" +
-            (nextTime.getMinutes() == 0
-              ? nextTime.getMinutes() + "0"
-              : nextTime.getMinutes())
-        );
-      }
+      // this.timeList = [];
+      // this.dateTime.setHours(timeText);
+      // this.dateTime.setMinutes(0);
+      // for (var i = 0; i < 6; i++) {
+      //   var nextTime = new Date(this.dateTime);
+      //   nextTime.setMinutes(this.dateTime.getMinutes() + 10 * i);
+      //   this.timeList.push(
+      //     nextTime.getHours() +
+      //       ":" +
+      //       (nextTime.getMinutes() == 0
+      //         ? nextTime.getMinutes() + "0"
+      //         : nextTime.getMinutes())
+      //   );
+      // }
+      console.log(timeText);
+      this.time_hour = timeText;
+      console.log(this.time_hour);
     },
     onWindowResize() {
       // console.log(screen.width,window.innerWidth);
@@ -1879,7 +1989,7 @@ export default {
         let splitDay = this.daySelected.split("/");
         let start_class_format = moment({
           day: splitDay[1],
-          month: splitDay[0] - 1
+          month: splitDay[0] - 1,
         }).format("YYYY-MM-DD");
         const start_class = moment(start_class_format).unix();
         const minute = "00";
@@ -1903,7 +2013,7 @@ export default {
             "https://megatalking.co.kr/lms/Uedu/get_availabe_time_schedule",
             form
           )
-          .then(res => {
+          .then((res) => {
             console.log(res);
             if (res.data.available_schedules) {
               const data = res.data.available_schedules;
@@ -1911,14 +2021,14 @@ export default {
               for (var i = 0; i < 6; i++) {
                 schedules.push(undefined);
               }
-              Object.keys(data).forEach(function(i) {
+              Object.keys(data).forEach(function (i) {
                 let split = parseInt(data[i].split(":")[1]) / 10;
                 let dateTime = data[i].split(":");
                 let hour = parseInt(dateTime[0]);
                 let minute = parseInt(dateTime[1]);
                 const time = moment({
                   hour: hour,
-                  minute: minute
+                  minute: minute,
                 }).format("H:mm");
                 schedules[split] = time;
               });
@@ -1929,7 +2039,7 @@ export default {
               // this.schedule_available_hours[hour] = schedules
             }
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       }
@@ -1985,7 +2095,7 @@ export default {
             : 6;
         let start_class_format = moment({
           day: parseInt(splitDay[1]) + 1,
-          month: splitDay[0] - 1
+          month: splitDay[0] - 1,
         }).format("YYYY-MM-DD");
         let end_class_format = moment(start_class_format, "YYYY-MM-DD")
           .add(parseInt(months), "months")
@@ -2022,7 +2132,7 @@ export default {
           title: title,
           type: type,
           class_type: typeSelected,
-          total_price: this.offerSummary["total_price"]
+          total_price: this.offerSummary["total_price"],
         };
         localStorage.setItem(
           "enrollment_payload",
@@ -2085,7 +2195,7 @@ export default {
         seriesSelected !== -1 &&
         timeSelected !== -1
       ) {
-        this.Offers.forEach(data => {
+        this.Offers.forEach((data) => {
           if (
             data.duration === this.minuteSelected &&
             data.days === this.frequencySelected &&
@@ -2107,8 +2217,8 @@ export default {
         const token = localStorage.getItem("access-token");
         const config = {
           headers: {
-            Authorization: token
-          }
+            Authorization: token,
+          },
         };
         // const form = new FormData()
         // form.append('payload', JSON.stringify(payload))
@@ -2117,7 +2227,7 @@ export default {
         payload = JSON.parse(payload);
         axios
           .post("//mega02.cafe24.com/origin/api/erollment.php", payload, config)
-          .then(res => {
+          .then((res) => {
             console.log(res);
             this.overlay = false;
             if (res.data.result === true) {
@@ -2130,12 +2240,12 @@ export default {
               this.$router.push("account");
             }
           })
-          .catch(err => {
+          .catch((err) => {
             this.overlay = false;
             console.log(err);
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
