@@ -204,10 +204,7 @@
                 style="color: #ada8a8; word-break: keep-all; line-break: strict"
                 max-width="500"
               >
-                입문과정에서는 영어를 아주 처음 시작하는 왕초보와, 초심을 가지고
-                발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다. 1~2개월
-                완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐
-                수 있습니다.
+                {{ curriculumInfo[this.slide] }}
               </v-card>
             </div>
 
@@ -1508,30 +1505,31 @@ export default {
       bookSlide5: 0,
       bookSlide6: 0,
       bookSlide7: 0,
-      category: "입문과정",
+      category: "유튜브 회화과정",
       screenWidth: "",
       isMobile: false,
       title: "",
-
-      items: [
-        {
-          color: "red lighten-2",
-          icon: "mdi-star",
-        },
-        {
-          color: "purple darken-1",
-          icon: "mdi-book-variant",
-        },
-        {
-          color: "green lighten-1",
-          icon: "mdi-airballoon",
-        },
-        {
-          color: "indigo",
-          icon: "mdi-buffer",
-        },
+      curriculumInfo: [
+        `유튜브 컨텐츠에서는 다양한 주제의 동영상 강좌의 내용 토대로 수업을 진행하실수있습니다.`,
+        `정규회화과정에서는 일상생활의 다양한 주제들과 관련한 회화 표현과 함께 수준별 회화학습이 준비되어 있습니다.
+         일반적으로 회화학습을 시작하기 원하는 대부분의 수강생분들이 이 과정부터 시작하실 수 있습니다.`,
+        `스피킹 실력향상을 위해서는 다양한 주제를 가지고 본인의 의견을 직접 말해보는 경험을 쌓는것이 중요합니다.
+         토론/프리토킹과정에서는 자유로운 스피킹을 위한 다양한 토론주제로 말하기실력을 향상시킵니다.`,
+        `직장인 수강생이 딱 필요로 하는 실무 비즈니스 과정들을 고루 담았습니다.
+         상황과 필요에 맞춰서 각 과정을 선택하여 수강하실 수 있으며, 직장생활을 준비하려는 목적으로 수강하기에도 훌륭한 대비과정이 될 것입니다. `,
+        `회화학습을 시작 하기 전에, 기본적인 문장 구성이나 많이 쓰이는 회화 패턴들을 학습하기 위한 과정입니다.
+         기초패턴회화의 경우, 알고 있는 단어를 회화로 이끌어 내기 위해, 기본적인 회화 패턴들을 집중적으로 훈련합니다.
+         문법패턴회화의 경우, 기본적인 문법의 개념들을 정리하고, 이를 회화에 직접 응용해보는 과정입니다.`,
+        `각 분야별 특별전문과정입니다. 취업준비, 실무준비에 있어서 맞춤식 교재가 준비되어 있습니다.
+          전문과정과 시험과정들이기 때문에 실용적인 연습이 중요하며, 어휘와 주제, 전략포인트는 미리 예습 후, 전화영어에서는 응용하는 과정으로
+          활용하시면 좋습니다.`,
+        `초/중급 회화과정에서는, 일상생활에서 접하기 쉬운 주제들을 가지고 초급과정과 중급과정으로 나누어 회화학습이 진행됩니다.
+        초급 단어들과 표현들부터 시작하여 쉽게 회화학습을 시작하기 원하는 수강생분들이 학습하실 수 있습니다.`,
+        `입문과정에서는 영어를 아주 처음 시작하는 왕초보와, 초심을 가지고
+        발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다. 1~2개월
+        완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐
+        수 있습니다.`
       ],
-
       booksInLevels: [
         {
           level: "1 - 3",
@@ -1649,7 +1647,7 @@ export default {
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
-              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~",
+              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
           },
           {
             tab: require("../assets/tab/vid4.png"),
@@ -1743,14 +1741,14 @@ export default {
             title: "E-mail",
             details:
               "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
-            mobile: require("../assets/mobile/email.png"),
+            mobile: require("../assets/mobile/email.png")
           },
           {
             image: require("../assets/curriculum/meeting.jpg"),
             title: "Meeting",
             details:
               "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
-            mobile: require("../assets/mobile/meeting.png"),
+            mobile: require("../assets/mobile/meeting.png")
           },
           {
             mobile: require("../assets/mobile/negotiations.png"),
@@ -1764,7 +1762,7 @@ export default {
             title: "Presentation",
             details:
               "E-mail, Meeting, Negotiation, Presentaion 각 4가지의 집중 과정으로, 학습자의 실무적 우선순위를 두고 학습할 수 있는 과정입니다. 각 4가지의 교재를 골라서 맞춤식 학습을 할 수 있습니다.",
-            mobile: require("../assets/mobile/presentation.png"),
+            mobile: require("../assets/mobile/presentation.png")
           },
           {
             image: require("../assets/curriculum/be_sd.jpg"),
@@ -1902,6 +1900,7 @@ export default {
     selectCategory(event, current) {
       this.slide = current;
       this.category = event.target.innerText;
+      console.log(this.slide);
     },
 
     changeCarousel(books, event) {

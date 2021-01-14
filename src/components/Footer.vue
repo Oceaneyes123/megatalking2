@@ -12,8 +12,12 @@
                 </div>
               </v-row>
 
-              <v-row  class="d-flex fill-height mt-5 mt-md-0">
-                <v-card color="#00000000" flat class="d-flex flex-column justify-end">
+              <v-row class="d-flex fill-height mt-5 mt-md-0">
+                <v-card
+                  color="#00000000"
+                  flat
+                  class="d-flex flex-column justify-end"
+                >
                   <v-img
                     @click="$router.push('/')"
                     contain
