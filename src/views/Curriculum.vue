@@ -1617,16 +1617,16 @@ export default {
           {
             tab: require("../assets/tab/vidtab2.png"),
             image: require("../assets/tab/video2.jpg"),
-            title: "TED Ed",
+            title: "TED",
             details:
-              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요.",
+              "TED의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요.",
           },
           {
             tab: require("../assets/tab/vid2.png"),
             image: require("../assets/tab/video2.jpg"),
-            title: "TED Ed",
+            title: "TED",
             details:
-              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요.",
+              "TED의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요.",
           },
           {
             tab: require("../assets/tab/vidtab3.png"),
@@ -1647,7 +1647,7 @@ export default {
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
-              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~",
+              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~",
           },
           {
             tab: require("../assets/tab/vid4.png"),
@@ -1681,19 +1681,7 @@ export default {
           // },
           {
             image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (Beginner)",
-            details:
-              "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
-          },
-          {
-            image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (Intermediate)",
-            details:
-              "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
-          },
-          {
-            image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (Advance)",
+            title: "Interactive English Series (BeginnerAdvance)",
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
           },
@@ -1789,7 +1777,7 @@ export default {
           {
             mobile: require("../assets/mobile/speaking-patten-100.png"),
             image: require("../assets/curriculum/sp_1.jpg"),
-            title: "스피킹 패턴과정",
+            title: "Speaking Pattern 과정",
             details: "자주 나오는 중요한 패턴 100개 연습하기",
           },
           {
