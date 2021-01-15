@@ -873,7 +873,7 @@
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
             >
-              “짜임새 있는, 기초부터 탄탄한영어를 만듭니다.”
+              “짜임새 있고 기초부터 탄탄한영어를 만듭니다.”
             </div>
             <div class="text--secondary mt-3 subheading font-weight-bold">
               메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
@@ -888,7 +888,7 @@
                 ></v-img>
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
                   레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수
@@ -904,7 +904,7 @@
                 ></v-img>
                 <div class="h5 font-weight-black">비즈니스 맞춤형</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
                   비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.
@@ -919,10 +919,10 @@
                 ></v-img>
                 <div class="h5 font-weight-black">폰에서 보는 교재</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
-                  택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
+                  별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
                 </div>
               </v-col>
             </v-row>
@@ -1617,16 +1617,16 @@ export default {
           {
             tab: require("../assets/tab/vidtab2.png"),
             image: require("../assets/tab/video2.jpg"),
-            title: "TED Ed",
+            title: "TED",
             details:
-              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
+              "TED의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
           },
           {
             tab: require("../assets/tab/vid2.png"),
             image: require("../assets/tab/video2.jpg"),
-            title: "TED Ed",
+            title: "TED",
             details:
-              "TED Ed의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
+              "TED의 교육영상을 통해 다양한 분야의 지식과 함께 유용한 영어표현들을 공부해 보세요. 흥미로운 지식과 함께 영어공부에도 많은 도움이 되실 거예요."
           },
           {
             tab: require("../assets/tab/vidtab3.png"),
@@ -1647,7 +1647,7 @@ export default {
             image: require("../assets/tab/video4.jpg"),
             title: "셀럽과의 대화",
             details:
-              "셀럽의 가방속에는 ���가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
+              "셀럽의 가방속에는 뭐가 있을까요? 테일러 스위프트와 함께하는 73개의 질문들, 제시카 알바 - 홈 셀프케어 뷰티루틴, 샤니나 샤이크의 60분 쇼핑 챌린지등 셀럽과의 흥미로운 대화와 함께 다채로운 표현을 연습하세요~"
           },
           {
             tab: require("../assets/tab/vid4.png"),
@@ -1777,7 +1777,7 @@ export default {
           {
             mobile: require("../assets/mobile/speaking-patten-100.png"),
             image: require("../assets/curriculum/sp_1.jpg"),
-            title: "스피킹 패턴과정",
+            title: "Speaking Pattern 과정",
             details: "자주 나오는 중요한 패턴 100개 연습하기"
           },
           {
