@@ -427,17 +427,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 275000,
-              dcn: 0,
+              dcn: 31000,
               dcp: 10
             },
             6: {
               value: 520000,
-              dcn: 0,
+              dcn: 92000,
               dcp: 15
             },
             12: {
               value: 979000,
-              dcn: 0,
+              dcn: 245000,
               dcp: 20
             }
           },
@@ -449,17 +449,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 373000,
-              dcn: 0,
+              dcn: 41000,
               dcp: 10
             },
             6: {
               value: 704000,
-              dcn: 0,
+              dcn: 124000,
               dcp: 15
             },
             12: {
               value: 1325000,
-              dcn: 0,
+              dcn: 331000,
               dcp: 20
             }
           },
@@ -471,17 +471,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 470000,
-              dcn: 0,
+              dcn: 52000,
               dcp: 10
             },
             6: {
               value: 887000,
-              dcn: 0,
+              dcn: 157000,
               dcp: 15
             },
             12: {
               value: 1670000,
-              dcn: 0,
+              dcn: 418000,
               dcp: 20
             }
           }
@@ -495,17 +495,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 550000,
-              dcn: 0,
+              dcn: 62000,
               dcp: 10
             },
             6: {
               value: 1040000,
-              dcn: 0,
+              dcn: 184000,
               dcp: 15
             },
             12: {
               value: 1958000,
-              dcn: 0,
+              dcn: 490000,
               dcp: 20
             }
           },
@@ -517,17 +517,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 746000,
-              dcn: 0,
+              dcn: 82000,
               dcp: 10
             },
             6: {
               value: 1408000,
-              dcn: 0,
+              dcn: 248000,
               dcp: 15
             },
             12: {
               value: 2650000,
-              dcn: 0,
+              dcn: 662000,
               dcp: 20
             }
           },
@@ -539,17 +539,17 @@ export default function(type, level, time, days, period, ts) {
             },
             3: {
               value: 940000,
-              dcn: 0,
+              dcn: 104000,
               dcp: 10
             },
             6: {
               value: 1774000,
-              dcn: 0,
+              dcn: 314000,
               dcp: 15
             },
             12: {
               value: 3340000,
-              dcn: 0,
+              dcn: 836000,
               dcp: 20
             }
           }
@@ -560,66 +560,66 @@ export default function(type, level, time, days, period, ts) {
           2: {
             1: {
               value: 92000,
-              dcn: 0,
+              dcn: 10000,
               dcp: 10
             },
             3: {
               value: 245000,
-              dcn: 0,
+              dcn: 61000,
               dcp: 20
             },
             6: {
               value: 459000,
-              dcn: 0,
+              dcn: 153000,
               dcp: 25
             },
             12: {
               value: 857000,
-              dcn: 0,
+              dcn: 367000,
               dcp: 30
             }
           },
           3: {
             1: {
               value: 124000,
-              dcn: 0,
+              dcn: 14000,
               dcp: 10
             },
             3: {
               value: 331000,
-              dcn: 0,
+              dcn: 83000,
               dcp: 20
             },
             6: {
               value: 621000,
-              dcn: 0,
+              dcn: 207000,
               dcp: 25
             },
             12: {
               value: 1159000,
-              dcn: 0,
+              dcn: 497000,
               dcp: 30
             }
           },
           5: {
             1: {
               value: 157000,
-              dcn: 0,
+              dcn: 17000,
               dcp: 10
             },
             3: {
               value: 418000,
-              dcn: 0,
+              dcn: 104000,
               dcp: 20
             },
             6: {
               value: 783000,
-              dcn: 0,
+              dcn: 261000,
               dcp: 25
             },
             12: {
               value: 1462000,
-              dcn: 0,
+              dcn: 626000,
               dcp: 30
             }
           }
@@ -628,67 +628,67 @@ export default function(type, level, time, days, period, ts) {
           2: {
             1: {
               value: 166000,
-              dcn: 0,
-              dcp: 0
+              dcn: 38000,
+              dcp: 19
             },
             3: {
               value: 441000,
-              dcn: 0,
-              dcp: 0
+              dcn: 171000,
+              dcp: 28
             },
             6: {
               value: 826000,
-              dcn: 0,
-              dcp: 0
+              dcn: 398000,
+              dcp: 33
             },
             12: {
               value: 1543000,
-              dcn: 0,
-              dcp: 0
+              dcn: 905000,
+              dcp: 37
             }
           },
           3: {
             1: {
               value: 223000,
-              dcn: 0,
-              dcp: 0
+              dcn: 53000,
+              dcp: 19
             },
             3: {
               value: 596000,
-              dcn: 0,
-              dcp: 0
+              dcn: 232000,
+              dcp: 28
             },
             6: {
               value: 1118000,
-              dcn: 0,
-              dcp: 0
+              dcn: 538000,
+              dcp: 32
             },
             12: {
               value: 2086000,
-              dcn: 0,
-              dcp: 0
+              dcn: 1226000,
+              dcp: 37
             }
           },
           5: {
             1: {
               value: 283000,
-              dcn: 0,
-              dcp: 0
+              dcn: 65000,
+              dcp: 19
             },
             3: {
               value: 752000,
-              dcn: 0,
-              dcp: 0
+              dcn: 292000,
+              dcp: 28
             },
             6: {
               value: 1409000,
-              dcn: 0,
-              dcp: 0
+              dcn: 679000,
+              dcp: 33
             },
             12: {
               value: 2632000,
-              dcn: 0,
-              dcp: 0
+              dcn: 1544000,
+              dcp: 37
             }
           }
         }

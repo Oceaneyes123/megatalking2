@@ -36,7 +36,7 @@ export default new Vuex.Store({
       state.showNav = true;
       if (!payload) {
         state.currentImage = state.images.main;
-      } else if (payload == "level-test") {
+      } else if (payload == "level-test" || payload == "payment-success") {
         state.currentImage = state.images.leveltest;
       } else if (payload == "material") {
         state.showNav = false;

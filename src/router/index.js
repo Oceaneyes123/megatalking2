@@ -65,6 +65,21 @@ const routes = [
     path: "/event",
     name: "Event",
     component: require("../views/Event.vue").default
+  },
+  {
+    path: "/payment-success",
+    name: "PaymentSuccess",
+    component: require("../views/PaymentSuccess.vue").default
+  },
+  {
+    path: "/payment-fail",
+    name: "PaymentFail",
+    component: require("../views/PaymentFail.vue").default
+  },
+  {
+    path: "*",
+    name: "Not Found",
+    component: require("../views/NotFound.vue").default
   }
 ];
 
