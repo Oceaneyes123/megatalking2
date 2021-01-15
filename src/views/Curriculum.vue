@@ -1681,7 +1681,25 @@ export default {
           // },
           {
             image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (BeginnerAdvance)",
+            title: "Interactive English Series (Beginner)",
+            details:
+              "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
+          },
+          {
+            image: require("../assets/curriculum/interactive.jpg"),
+            title: "Interactive English Series (Intermediate)",
+            details:
+              "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
+          },
+          {
+            image: require("../assets/curriculum/interactive.jpg"),
+            title: "Interactive English Series (Upper Intermediate)",
+            details:
+              "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
+          },
+          {
+            image: require("../assets/curriculum/interactive.jpg"),
+            title: "Interactive English Series (Advance)",
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
           },
