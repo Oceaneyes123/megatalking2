@@ -71,6 +71,21 @@
                     width="97"
                     min-height="80"
                     :class="{ 'blue--text': active }"
+                    :color="active ? 'primary' : 'white'"
+                    :outlined="active"
+                  >
+                    리딩 & 스피킹
+                  </v-btn>
+                </v-slide-item>
+
+                <v-slide-item class="mx-1" v-slot:default="{ active }">
+                  <v-btn
+                    @click="selectCategory($event, 3)"
+                    depressed
+                    class="py-2 rounded-xl"
+                    width="97"
+                    min-height="80"
+                    :class="{ 'blue--text': active }"
                     :outlined="active"
                     :color="active ? 'primary' : 'white'"
                   >
@@ -81,7 +96,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="selectCategory($event, 3)"
+                    @click="selectCategory($event, 4)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -97,7 +112,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="selectCategory($event, 4)"
+                    @click="selectCategory($event, 5)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -113,7 +128,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="selectCategory($event, 5)"
+                    @click="selectCategory($event, 6)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -129,7 +144,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="selectCategory($event, 6)"
+                    @click="selectCategory($event, 7)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -145,7 +160,7 @@
 
                 <v-slide-item class="mx-1" v-slot:default="{ active }">
                   <v-btn
-                    @click="selectCategory($event, 7)"
+                    @click="selectCategory($event, 8)"
                     depressed
                     class="py-2 rounded-xl"
                     width="97"
@@ -600,7 +615,7 @@
                   color="#dee3ee"
                 >
                   <v-row>
-                    <v-col class="py-0" cols="12" md="5">
+                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
                         color="#fafafa"
@@ -702,6 +717,108 @@
                   color="#dee3ee"
                 >
                   <v-row>
+                    <v-col class="py-0" cols="12" md="5">
+                      <v-card
+                        flat
+                        color="#fafafa"
+                        class="rounded-xl"
+                        :height="isMobile ? '' : '100%'"
+                        style="border: 1px solid #325fc4"
+                        max-width="300"
+                      >
+                        <v-img
+                          :src="book.image"
+                          max-width="300"
+                          height="200"
+                          class="mx-auto"
+                          eager
+                        ></v-img>
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                          >{{ book.title }}</v-card
+                        >
+                        <v-card
+                          flat
+                          color="#fafafa"
+                          width="80%"
+                          max-width="300"
+                          class="mx-auto mt-5 text-left caption-text mb-5"
+                          style="color: #325fc4"
+                          >{{ book.details }}</v-card
+                        >
+                      </v-card>
+                    </v-col>
+                    <v-col cols="12" md="7">
+                      <v-container fluid>
+                        <v-row class="h6 font-weight-bold" justify="center">
+                          <div class="text-center text-black">학습교재</div>
+                        </v-row>
+                        <v-row>
+                          <v-col cols="6">
+                            <v-img
+                              v-if="book.mobile"
+                              :src="book.mobile"
+                              width="250"
+                              height="300"
+                              contain
+                              eager
+                            ></v-img>
+                          </v-col>
+                          <v-col cols="6" class="d-flex align-end">
+                            <div class="d-flex flex-column align-start">
+                              <v-btn
+                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                style="
+                                  background: linear-gradient(
+                                    to right,
+                                    #8fa1fe,
+                                    #4d94e9
+                                  );
+                                "
+                                @click="$router.push('/enrollment')"
+                                >수강신청</v-btn
+                              >
+                              <div
+                                class="h5 nanum text-black text-left"
+                                style="line-break: strict; word-break: keep-all"
+                              >
+                                {{ title }}
+                              </div>
+                            </div>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-carousel-item>
+            </v-carousel>
+
+            <v-carousel
+              cycle
+              height="100%"
+              v-if="slide == 6"
+              hide-delimiter-background
+              show-arrows-on-hover
+              hide-delimiters
+              @change="changeCarousel(allBooks.books_7, $event)"
+            >
+              <v-carousel-item
+                eager
+                height="750"
+                v-for="(book, i) in allBooks.books_7"
+                :key="i"
+              >
+                <v-card
+                  class="mx-auto rounded-xl"
+                  flat
+                  max-width="700"
+                  color="#dee3ee"
+                >
+                  <v-row>
                     <v-col class="py-0 d-flex justify-center" cols="12" md="5">
                       <v-card
                         flat
@@ -784,12 +901,12 @@
 
             <v-slide-group
               v-model="bookSlide6"
-              v-if="slide == 6"
+              v-if="slide == 7"
               :show-arrows="!isMobile"
               class="mb-3"
             >
               <v-slide-item
-                v-for="(book, i) in allBooks.books_7"
+                v-for="(book, i) in allBooks.books_8"
                 :key="i"
                 :class="i == 1 ? 'mr-auto' : 'ml-auto'"
               >
@@ -830,11 +947,11 @@
 
             <v-slide-group
               v-model="bookSlide7"
-              v-if="slide == 7"
+              v-if="slide == 8"
               :show-arrows="!isMobile"
               class="mb-3"
             >
-              <v-slide-item v-for="(book, i) in allBooks.books_8" :key="i">
+              <v-slide-item v-for="(book, i) in allBooks.books_9" :key="i">
                 <v-card
                   flat
                   color="#fafafa"
@@ -873,7 +990,7 @@
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
             >
-              “짜임새 있는, 기초부터 탄탄한영어를 만듭니다.”
+              “짜임새 있고 기초부터 탄탄한영어를 만듭니다.”
             </div>
             <div class="text--secondary mt-3 subheading font-weight-bold">
               메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
@@ -888,7 +1005,7 @@
                 ></v-img>
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
                   레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수
@@ -904,7 +1021,7 @@
                 ></v-img>
                 <div class="h5 font-weight-black">비즈니스 맞춤형</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
                   비즈니즈 과정을 통해 회화를 보다 빠르게 배울 수 있습니다.
@@ -919,10 +1036,10 @@
                 ></v-img>
                 <div class="h5 font-weight-black">폰에서 보는 교재</div>
                 <div
-                  class="h6 text--secondary mt-3"
+                  class="h7 text--secondary mt-3"
                   style="letter-spacing: -1px !important"
                 >
-                  택배 or 별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
+                  별도의 출력 없이 교재를 다운로드 하실 수 있습니다.
                 </div>
               </v-col>
             </v-row>
@@ -1686,19 +1803,19 @@ export default {
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
           },
           {
-            image: require("../assets/curriculum/interactive.jpg"),
+            image: require("../assets/curriculum/interactive2.jpg"),
             title: "Interactive English Series (Intermediate)",
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
           },
           {
-            image: require("../assets/curriculum/interactive.jpg"),
-            title: "Interactive English Series (Upper Intermediate)",
+            image: require("../assets/curriculum/interactive3.jpg"),
+            title: `Interactive English Series \n (Upper Intermediate)`,
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
           },
           {
-            image: require("../assets/curriculum/interactive.jpg"),
+            image: require("../assets/curriculum/interactive4.jpg"),
             title: "Interactive English Series (Advance)",
             details:
               "4단계 레벨로 나누어져 있으며, 동영상컨텐츠가 함께 준비되어 있어, 듣기연습과 말하기 연습, 복습과 예습에 다양하게 활용하실 수 있습니다. 간단한 회화 주제들부터 시작하여 일상생활에서 사용하는 고급스러운 표현과 심오한 주제까지 고루 학습할 수 있습니다.",
@@ -1706,6 +1823,19 @@ export default {
         ],
 
         books_3: [
+          {
+            mobile: require("../assets/mobile/free-Q&A.png"),
+            image: require("../assets/curriculum/ft_q_a1.webp"),
+            title: "리딩&스피킹 퍼펙트리딩",
+            details: `영어지문을 정확하게 이해하는 독해력을 기르면서 중요표현
+                    연습하고 대화하기.일상생활과 사회생활에서 접할수있는 다
+                    양한 상식이나 시사적인 부분을 독해하면서 서로 의견을 주고
+                    받을수 있습니다.
+                    `,
+          },
+        ],
+
+        books_4: [
           {
             mobile: require("../assets/mobile/free-Q&A.png"),
             image: require("../assets/curriculum/ft_q_a1.webp"),
@@ -1739,7 +1869,7 @@ export default {
           },
         ],
 
-        books_4: [
+        books_5: [
           {
             mobile: require("../assets/mobile/be_situational_dialogues.png"),
             image: require("../assets/curriculum/bd_1.webp"),
@@ -1791,7 +1921,7 @@ export default {
           },
         ],
 
-        books_5: [
+        books_6: [
           {
             mobile: require("../assets/mobile/speaking-patten-100.png"),
             image: require("../assets/curriculum/sp_1.jpg"),
@@ -1813,7 +1943,7 @@ export default {
           },
         ],
 
-        books_6: [
+        books_7: [
           {
             mobile: require("../assets/mobile/interview-english.png"),
             image: require("../assets/curriculum/int_1.webp"),
@@ -1851,7 +1981,7 @@ export default {
           },
         ],
 
-        books_7: [
+        books_8: [
           {
             image: require("../assets/curriculum/milestones.jpg"),
             title: "Milestones",
@@ -1866,7 +1996,7 @@ export default {
           },
         ],
 
-        books_8: [
+        books_9: [
           {
             image: require("../assets/curriculum/phonics.jpg"),
             title: "Phonics 1~6",
