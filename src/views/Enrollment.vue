@@ -112,14 +112,14 @@
                         :style="[
                           hiddenDurations.includes(duration)
                             ? {
-                                display: 'none'
+                                display: 'none',
                               }
                             : '',
                           !isMobile
                             ? {
-                                'border-radius': '30px 0 0 30px'
+                                'border-radius': '30px 0 0 30px',
                               }
-                            : ''
+                            : '',
                         ]"
                         @click="minuteSelected = duration"
                         >{{ duration }}</v-tab
@@ -315,15 +315,15 @@
                                     !allowedDays.includes(i)
                                       ? {
                                           pointerEvents: 'none',
-                                          textDecoration: 'line-through'
+                                          textDecoration: 'line-through',
                                         }
                                       : '',
                                     daySelected == day
                                       ? {
                                           border: '2px solid',
-                                          background: 'white'
+                                          background: 'white',
                                         }
-                                      : ''
+                                      : '',
                                   ]"
                                   @click="
                                     (daySelected = day), (daySummary = day)
@@ -988,18 +988,18 @@ export default {
         {
           text: "무통장 입금",
           color: "",
-          icon: "mdi-credit-card"
+          icon: "mdi-credit-card",
         },
         {
           text: "카드 결제",
           color: "",
-          icon: "mdi-credit-card-check"
+          icon: "mdi-credit-card-check",
         },
         {
           text: "정기 결제",
           color: "",
-          icon: "mdi-credit-card-clock"
-        }
+          icon: "mdi-credit-card-clock",
+        },
       ],
       selectedHour: 6,
       currentIndex: 0,
@@ -1026,33 +1026,33 @@ export default {
               text: "셀럽 토크쇼",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "TED Ed",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Movie",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "셀럽과의 대화",
               level: "",
               type: "video",
-              link: ""
+              link: "",
             },
             {
               text: "Pop Song",
               level: "",
               type: "video",
-              link: ""
-            }
-          ]
+              link: "",
+            },
+          ],
         },
         {
           course: "정규 회화과정",
@@ -1061,9 +1061,10 @@ export default {
               text: "Interactive English Series",
               level: "",
               type: "",
-              link: "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1334592028414914.pdf",
+            },
+          ],
         },
         {
           course: "프리토킹 토론",
@@ -1073,43 +1074,44 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1",
             },
             {
               text: "묻고 답하기",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1"
+                "http://178.128.213.14/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter1",
             },
             {
               text: "의견말하기",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1"
+                "http://178.128.213.14/book#/FreeTalkingOpinion/FreeTalkingOpinion1/chapter1",
             },
             {
               text: "사진묘사",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/Freetalking-Description/Freetalking-Description-Level1/chapter1"
+                "http://178.128.213.14/book#/Freetalking-Description/Freetalking-Description-Level1/chapter1",
             },
             {
               text: "영자신문",
               level: "",
               type: "book",
-              link: ""
+              link: "",
             },
             {
               text: "Debate",
               level: "",
 
               type: "book",
-              link: "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1371462343559352.pdf",
+            },
+          ],
         },
         {
           course: "비즈니스 과정",
@@ -1118,39 +1120,44 @@ export default {
               text: "Business English",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1371692800821642.pdf",
             },
             {
               text: "E-mail",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380088515234745.pdf",
             },
             {
               text: "Meeting",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380089522639995.pdf",
             },
             {
               text: "Negotiation",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380089818138373.pdf",
             },
             {
               text: "Presentation",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1380090464254968.pdf",
             },
             {
               text: "비지니스 회화과정",
               level: "",
               type: "book",
-              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf"
-            }
-          ]
+              link: "http://onlinebookcenter.co.kr/files/a_13613380182233.pdf",
+            },
+          ],
         },
         {
           course: "문법/패턴",
@@ -1160,22 +1167,22 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1",
             },
             {
               text: "Grammar in Pattern 과정",
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1"
+                "http://178.128.213.14/book#/pattern-course/grammar-in-pattern-basic/chapter1",
             },
             {
               text: "일상 Dialogue 과정",
               level: "",
               type: "book",
-              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1"
-            }
-          ]
+              link: "http://178.128.213.14/book#/freetalking/beginner/chapter1",
+            },
+          ],
         },
         {
           course: "취업준비/특별 과정",
@@ -1185,33 +1192,35 @@ export default {
               level: "",
               type: "book",
               link:
-                "http://178.128.213.14/book#/Interview-English/Interview-EnglishStep1/chapter1"
+                "http://178.128.213.14/book#/Interview-English/Interview-EnglishStep1/chapter1",
             },
             {
               text: "Hotel Dialogues",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=55"
+              link: "http://ols.jkn.co.kr/html/books.php?code=55",
             },
             {
               text: "Cabin Crew",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1364950846617721.pdf",
             },
             {
               text: "IELTS",
               level: "",
               type: "",
-              link: "http://ols.jkn.co.kr/html/books.php?code=40"
+              link: "http://ols.jkn.co.kr/html/books.php?code=40",
             },
             {
               text: "Medical English",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf"
-            }
-          ]
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1369806108750352.pdf",
+            },
+          ],
         },
         {
           course: "초/중급 회화과정",
@@ -1221,16 +1230,16 @@ export default {
               level: "",
               type: "pdf",
 
-              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf"
+              link: "http://onlinebookcenter.co.kr/files/MILESTONE1.pdf",
             },
             {
               text: "First Step In Conversation",
               level: "",
               type: "pdf",
               link:
-                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf"
-            }
-          ]
+                "http://onlinebookcenter.co.kr/files/First_Step_in_Conversation1_step1.pdf",
+            },
+          ],
         },
         {
           course: "입문과정",
@@ -1239,7 +1248,8 @@ export default {
               text: "Phonics ",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1394519176740293.pdf",
             },
             // {
             //   text: "Advanced Phonics ",
@@ -1252,241 +1262,243 @@ export default {
               text: "P-course Junior",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf"
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1324796317325065.pdf",
             },
             {
               text: "C-course Junior",
               level: "",
               type: "pdf",
-              link: "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf"
-            }
-          ]
-        }
+              link:
+                "http://onlinebookcenter.co.kr/files/a_1329292220709465.pdf",
+            },
+          ],
+        },
       ],
       bookList10: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "disabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "disabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
       bookList20: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "disabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
       bookList30: [
         {
           status: "enabled",
           text: "프리토킹 묻고 답하기",
           curriculum: "프리토킹",
-          material: "묻고 답하기"
+          material: "묻고 답하기",
         },
         {
           status: "enabled",
           text: "프리토킹 \n 의견말하기",
           curriculum: "프리토킹",
-          material: "의견말하기"
+          material: "의견말하기",
         },
         {
           status: "enabled",
           text: "프리토킹\n 사진묘사",
           curriculum: "프리토킹",
-          material: "사진묘사"
+          material: "사진묘사",
         },
         {
           status: "enabled",
           text: "프리토킹\n 영자신문 (준비중)",
           curriculum: "프리토킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 스피킹패턴",
           curriculum: "일상&패턴",
-          material: "스피킹패턴"
+          material: "스피킹패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 문법패턴",
           curriculum: "일상&패턴",
-          material: "문법패턴"
+          material: "문법패턴",
         },
         {
           status: "enabled",
           text: "일상&패턴\n 일상대화",
           curriculum: "일상&패턴",
-          material: "일상대화"
+          material: "일상대화",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 퍼펙트리딩",
           curriculum: "리딩&스피킹",
-          material: "퍼펙트리딩"
+          material: "퍼펙트리딩",
         },
         {
           status: "enabled",
           text: "리딩&스피킹\n 영자신문 (준비중)",
           curriculum: "리딩&스피킹",
-          material: "영자신문"
+          material: "영자신문",
         },
         {
           status: "enabled",
           text: "비지니스\n 인터뷰과정",
           curriculum: "비지니스",
-          material: "인터뷰과정"
+          material: "인터뷰과정",
         },
         {
           status: "enabled",
           text: "비지니스\n 비지니스회화",
           curriculum: "비지니스",
-          material: "비지니스회화"
+          material: "비지니스회화",
         },
         {
           status: "enabled",
           text: "여행영어",
           curriculum: "여행영어",
-          material: "여행영어"
-        }
+          material: "여행영어",
+        },
       ],
       Offers: [],
-      tossPayments: null
+      tossPayments: null,
     };
   },
   created() {
@@ -1500,14 +1512,13 @@ export default {
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
     window.removeEventListener("scroll", this.move);
-    console.log("destroy");
   },
   watch: {
     materialSelected() {
       // this.seriesSelected = -1;
       this.seriesSelected = this.materials[this.materialSelected].series[0];
     },
-    tab: function() {
+    tab: function () {
       this.hiddenDurations = [];
       // this.frequencySelected = -1;
       // this.daySelected = -1;
@@ -1625,7 +1636,7 @@ export default {
         let day = split[1];
         let date_format = moment({
           month: month,
-          day: day
+          day: day,
         }).weekday();
         if (weekdays.includes(date_format)) {
           allowedDays.push(i);
@@ -1660,7 +1671,7 @@ export default {
         this.selected_schedule_hour = 17;
         //   this.getHour(17, 0);
       }
-    }
+    },
   },
   mounted() {
     localStorage.removeItem("enrollment_payload");
@@ -1702,7 +1713,7 @@ export default {
         startDay: this.daySelected,
         startTime: this.time_hour + ":" + (this.timeSelected - 1) + "0",
         payMethod: this.methodSelected,
-        timeZone: this.currentZone
+        timeZone: this.currentZone,
       };
     },
     getPayType() {
@@ -1883,7 +1894,7 @@ export default {
         default:
       }
       return this.durationSelected + `(${week})`;
-    }
+    },
   },
   methods: {
     setAllowedDays() {
@@ -1916,7 +1927,7 @@ export default {
         let day = split[1];
         let date_format = moment({
           month: month,
-          day: day
+          day: day,
         }).weekday();
         if (weekdays.includes(date_format)) {
           allowedDays.push(i);
@@ -1924,7 +1935,7 @@ export default {
       });
 
       this.allowedDays = allowedDays;
-      let dayIndex = this.days.findIndex(data => data === daySelected);
+      let dayIndex = this.days.findIndex((data) => data === daySelected);
       if (this.allowedDays.includes(dayIndex)) {
         this.daySelected = this.days[dayIndex];
       } else {
@@ -1971,10 +1982,10 @@ export default {
     async get_offers() {
       axios
         .get("https://megatalking.co.kr/lms/Price/get_all_offers")
-        .then(res => {
+        .then((res) => {
           this.$set(this.$data, "Offers", res.data);
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
     },
@@ -2027,7 +2038,7 @@ export default {
         let splitDay = this.daySelected.split("/");
         let start_class_format = moment({
           day: splitDay[1],
-          month: splitDay[0] - 1
+          month: splitDay[0] - 1,
         }).format("YYYY-MM-DD");
         const start_class = moment(start_class_format).unix();
         const minute = "00";
@@ -2051,7 +2062,7 @@ export default {
             "https://megatalking.co.kr/lms/Uedu/get_availabe_time_schedule",
             form
           )
-          .then(res => {
+          .then((res) => {
             console.log(res);
             if (res.data.available_schedules) {
               const data = res.data.available_schedules;
@@ -2059,14 +2070,14 @@ export default {
               for (var i = 0; i < 6; i++) {
                 schedules.push(undefined);
               }
-              Object.keys(data).forEach(function(i) {
+              Object.keys(data).forEach(function (i) {
                 let split = parseInt(data[i].split(":")[1]) / 10;
                 let dateTime = data[i].split(":");
                 let hour = parseInt(dateTime[0]);
                 let minute = parseInt(dateTime[1]);
                 const time = moment({
                   hour: hour,
-                  minute: minute
+                  minute: minute,
                 }).format("H:mm");
                 schedules[split] = time;
               });
@@ -2077,7 +2088,7 @@ export default {
               // this.schedule_available_hours[hour] = schedules
             }
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       }
@@ -2101,7 +2112,7 @@ export default {
     enroll() {
       const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
       // Promise를 사용하는 경우
-      loadTossPayments(clientKey).then(tossPayments => {
+      loadTossPayments(clientKey).then((tossPayments) => {
         // tossPayments.requestPayment('카드', {
         //   amount: 1000,
         //   orderId: new Date().getTime(),
@@ -2114,7 +2125,7 @@ export default {
         tossPayments.requestBillingAuth("카드", {
           customerKey: "IUb-mOQLBidj80jh71a60",
           successUrl: window.location.origin + "/payment-success",
-          failUrl: window.location.origin + "/payment-fail"
+          failUrl: window.location.origin + "/payment-fail",
         });
       });
 
@@ -2152,7 +2163,7 @@ export default {
             : 6;
         let start_class_format = moment({
           day: parseInt(splitDay[1]) + 1,
-          month: splitDay[0] - 1
+          month: splitDay[0] - 1,
         }).format("YYYY-MM-DD");
         let end_class_format = moment(start_class_format, "YYYY-MM-DD")
           .add(parseInt(months), "months")
@@ -2189,7 +2200,7 @@ export default {
           title: title,
           type: type,
           class_type: typeSelected,
-          total_price: this.offerSummary["total_price"]
+          total_price: this.offerSummary["total_price"],
         };
         localStorage.setItem(
           "enrollment_payload",
@@ -2257,7 +2268,7 @@ export default {
         seriesSelected !== -1 &&
         timeSelected !== -1
       ) {
-        this.Offers.forEach(data => {
+        this.Offers.forEach((data) => {
           if (
             data.duration === this.minuteSelected &&
             data.days === this.frequencySelected &&
@@ -2279,8 +2290,8 @@ export default {
         const token = localStorage.getItem("access-token");
         const config = {
           headers: {
-            Authorization: token
-          }
+            Authorization: token,
+          },
         };
         // const form = new FormData()
         // form.append('payload', JSON.stringify(payload))
@@ -2289,7 +2300,7 @@ export default {
         payload = JSON.parse(payload);
         axios
           .post("//mega02.cafe24.com/origin/api/erollment.php", payload, config)
-          .then(res => {
+          .then((res) => {
             console.log(res);
             this.overlay = false;
             if (res.data.result === true) {
@@ -2302,12 +2313,12 @@ export default {
               this.$router.push("account");
             }
           })
-          .catch(err => {
+          .catch((err) => {
             this.overlay = false;
             console.log(err);
           });
       }
-    }
-  }
+    },
+  },
 };
 </script>
