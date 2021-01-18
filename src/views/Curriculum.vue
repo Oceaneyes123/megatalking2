@@ -479,7 +479,7 @@
                                 class="h5 nanum text-black text-left"
                                 style="line-break: strict; word-break: keep-all"
                               >
-                                {{ title }}
+                                {{ book.title }}
                               </div>
                             </div>
                           </v-col>

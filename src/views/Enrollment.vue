@@ -1477,6 +1477,8 @@ export default {
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
+    window.removeEventListener("scroll", this.move);
+    console.log("destroy");
   },
   watch: {
     materialSelected() {
