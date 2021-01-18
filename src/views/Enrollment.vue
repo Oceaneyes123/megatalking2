@@ -35,9 +35,7 @@
                           <div
                             class="h6 font-weight-bold"
                             @click="(isPhone = true), (classType = 'Phone')"
-                            :style="
-                              isPhone ? 'color:#4242a3;' : 'color:#808080'
-                            "
+                            :style="isPhone ? 'color:#2564cb' : 'color:#808080'"
                             style="cursor: pointer"
                           >
                             전화로 할래요
@@ -46,13 +44,11 @@
                             class="subheading"
                             @click="(isPhone = true), (classType = 'Phone')"
                             style="cursor: pointer"
-                            :style="
-                              isPhone ? 'color:#4242a3;' : 'color:#808080'
-                            "
+                            :style="isPhone ? 'color:#2564cb' : 'color:#808080'"
                           >
                             <v-icon
                               :style="
-                                isPhone ? 'color:#4242a3;' : 'color:#808080'
+                                isPhone ? 'color:#2564cb' : 'color:#808080'
                               "
                               class="mr-2"
                               style="font-size: 20px"
@@ -65,7 +61,7 @@
                             class="h6 font-weight-bold"
                             @click="(isPhone = false), (classType = 'Video')"
                             :style="
-                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              !isPhone ? 'color:#2564cb' : 'color:#808080'
                             "
                             style="cursor: pointer"
                           >
@@ -76,12 +72,12 @@
                             @click="(isPhone = false), (classType = 'Video')"
                             style="cursor: pointer"
                             :style="
-                              !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                              !isPhone ? 'color:#2564cb' : 'color:#808080'
                             "
                           >
                             <v-icon
                               :style="
-                                !isPhone ? 'color:#4242a3;' : 'color:#808080'
+                                !isPhone ? 'color:#2564c;' : 'color:#808080'
                               "
                               class="mr-2"
                               style="font-size: 19px"
@@ -345,11 +341,11 @@
                       <div class="h6 font-weight-black text-left mt-10">
                         수업 시간
                       </div>
-                      <v-container class="pb-1">
+                      <v-container class="pb-1" id="timeTable">
                         <v-row no-gutters>
-                          <v-col class="text-left" style="cursor: pointer">
+                          <v-col class="text-center" style="cursor: pointer">
                             <span
-                              style="cursor: pointer; color: #5a55a1"
+                              style="cursor: pointer; color: #2564cb"
                               @click="(currentZone = 0), setTime(6)"
                               :class="
                                 currentZone == 0 ? 'font-weight-bold' : ''
@@ -361,9 +357,9 @@
                               >6:00 - 9:50</span
                             >
                           </v-col>
-                          <v-col class="text-left" style="cursor: pointer">
+                          <v-col class="text-center" style="cursor: pointer">
                             <span
-                              style="cursor: pointer; color: #5a55a1"
+                              style="cursor: pointer; color: #2564cb"
                               @click="(currentZone = 1), setTime(10)"
                               :class="
                                 currentZone == 1 ? 'font-weight-bold' : ''
@@ -375,9 +371,9 @@
                               >10:00 - 16:50</span
                             >
                           </v-col>
-                          <v-col class="text-left" style="cursor: pointer">
+                          <v-col class="text-center" style="cursor: pointer">
                             <span
-                              style="cursor: pointer; color: #5a55a1"
+                              style="cursor: pointer; color: #2564cb"
                               @click="(currentZone = 2), setTime(17)"
                               :class="
                                 currentZone == 2 ? 'font-weight-bold' : ''
@@ -393,7 +389,7 @@
                       </v-container>
                       <v-divider
                         class="mt-0"
-                        style="background-color: #222dc05f"
+                        style="background-color: #2564cb"
                       ></v-divider>
                       <!-- <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
@@ -603,7 +599,10 @@
                         시간표 전체보기 >
                       </div>
                     </template>
-                    <div class="h6 font-weight-black text-left mt-10">
+                    <div
+                      class="h6 font-weight-black text-left mt-10"
+                      id="payTable"
+                    >
                       결제 방식
                     </div>
                     <v-row>
@@ -648,13 +647,16 @@
                     :class="{ stickySummery: !isMobile }"
                   >
                     <div class="h6 font-weight-black">수강선택 요약</div>
-                    <v-container class="mt-3 px-7 text-left">
+                    <v-container
+                      class="mt-3 px-7 text-left"
+                      style="color:#696d73"
+                    >
                       <v-row no-gutters class="px-2">
                         <v-col
                           ><span class="subtitle-2 font-weight-bold"
-                            >수강 유형:</span
+                            >수강유형:</span
                           >
-                          <span class="subtitle-2">{{
+                          <span class="subtitle-2 float-right">{{
                             materials[materialSelected]["course"]
                           }}</span>
                         </v-col>
@@ -663,18 +665,22 @@
                       <v-row no-gutters class="px-2">
                         <v-col
                           ><span class="subtitle-2 font-weight-bold"
-                            >수강 코스:</span
+                            >수강코스:</span
                           >
-                          <span class="subtitle-2">{{ getCourse }}</span>
+                          <span class="subtitle-2 float-right">{{
+                            getCourse
+                          }}</span>
                         </v-col>
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
                       <v-row no-gutters class="px-2">
                         <v-col
                           ><span class="subtitle-2 font-weight-bold"
-                            >수강 종류:</span
+                            >수강종류:</span
                           >
-                          <span class="subtitle-2">{{ getType }}</span></v-col
+                          <span class="subtitle-2 float-right">{{
+                            getType
+                          }}</span></v-col
                         >
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
@@ -683,8 +689,8 @@
                           ><span class="subtitle-2 font-weight-bold"
                             >수강기간:</span
                           >
-                          <span class="subtitle-2"
-                            >{{ getFrequency }} / {{ getPeriod }}</span
+                          <span class="subtitle-2 float-right"
+                            >{{ getPeriod }} / {{ getFrequency }}</span
                           ></v-col
                         >
                       </v-row>
@@ -694,10 +700,16 @@
                           ><span class="subtitle-2 font-weight-bold"
                             >시작일:</span
                           >
-                          <span class="subtitle-2">{{
-                            daySelected !== -1 ? daySelected : ""
-                          }}</span>
-                          <span class="subtitle-2" v-html="getStartTime"></span>
+                          <span class="float-right">
+                            <span class="subtitle-2">{{
+                              daySelected !== -1 ? daySelected : ""
+                            }}</span>
+                            &nbsp; / &nbsp;
+                            <span
+                              class="subtitle-2"
+                              v-html="getStartTime"
+                            ></span>
+                          </span>
                         </v-col>
                       </v-row>
                       <v-divider class="mx-3"></v-divider>
@@ -705,7 +717,10 @@
                     <div class="h6 font-weight-black mb-5 mt-5">
                       결제 예정금액
                     </div>
-                    <v-container class="mt-3 px-7 text-left">
+                    <v-container
+                      class="mt-3 px-7 text-left"
+                      style="color:#696d73"
+                    >
                       <v-row no-gutters class="px-2">
                         <v-col
                           ><span class="subtitle-2 font-weight-bold"
@@ -730,15 +745,6 @@
                               ).toLocaleString()
                             }}원</span
                           ></v-col
-                        >
-                      </v-row>
-                      <v-divider class="mx-3 mb-4"></v-divider>
-                      <v-row no-gutters class="px-2">
-                        <v-col
-                          ><span class="subtitle-2 font-weight-bold"
-                            >교재비:</span
-                          >
-                          <span class="subtitle-2 float-right">0원</span></v-col
                         >
                       </v-row>
                       <v-divider class="mx-3 mb-4"></v-divider>
@@ -772,14 +778,14 @@
                       </v-row>
                       <v-row no-gutters class="px-2">
                         <v-col
-                          ><span class="h6 float-right font-weight-medium"
-                            >월{{ getAmount4Month.toLocaleString() }}원</span
+                          ><span class="h6 float-right font-weight-bold"
+                            >월 {{ getAmount4Month.toLocaleString() }}원</span
                           ></v-col
                         >
                       </v-row>
                     </v-container>
                     <v-btn
-                      color="#5a55a1"
+                      color="#2564cb"
                       class="rounded-lg white--text font-weight-bold mb-15"
                       style="margin-top: 50px"
                       large
@@ -800,6 +806,7 @@
           <v-row class="text-center justify-center">
             <v-col cols="12" class="pb-0 mb-0">
               <p style="">수업설정에 필요한 필수값을 입력해주세요.</p>
+              <p>(필수입력 정보: 수업시간, 결제방법)</p>
             </v-col>
             <v-btn @click="requiredField = false">닫기</v-btn>
           </v-row>
@@ -811,73 +818,119 @@
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-overlay>
       <v-card max-width="500" class="pb-5 rounded-xl">
-        <div class="h4 text-center pa-3 mb-5" style="background-color: #85c9e8">
+        <div
+          class="h5 text-center pa-3 mb-5 white--text"
+          style="background-color: #2564cb"
+        >
           요약
         </div>
-        <div class="px-5">
-          <div class="h5 gmarket" style="color: #85c9e8">수강선택 요약</div>
-          <div class="px-3 mb-5 h6">
+        <div class="px-5 mx-md-8">
+          <div class="h5 gmarket" style="color: #2564cb">수강선택</div>
+          <div>
             <v-container>
               <v-row no-gutters>
-                <v-col>수강코스</v-col>
-                <v-col>{{ materials[materialSelected]["course"] }}</v-col>
-              </v-row>
-              <v-row no-gutters>
-                <v-col>수강과정</v-col>
-                <v-col
-                  v-if="frequencySelected !== -1 && durationSelected !== -1"
-                  >{{ frequencySelected }} / {{ durationSelected }}</v-col
+                <v-col class="font-weight-bold" cols="3">수강종류</v-col>
+                <v-col class="text-right subtitle-2"
+                  >{{
+                    enrollmentData.type == phone ? "전화영어" : "화상영어"
+                  }}
+                  ({{ enrollmentData.duration }})</v-col
                 >
               </v-row>
               <v-row no-gutters>
-                <v-col>시작일</v-col>
-                <v-col v-if="daySelected !== -1">{{ daySelected }}</v-col>
+                <v-col class="font-weight-bold" cols="3">수강과정</v-col>
+                <v-col class="text-right subtitle-2">{{
+                  enrollmentData.course
+                }}</v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col class="font-weight-bold" cols="3">수강기간</v-col>
+                <v-col class="text-right subtitle-2"
+                  >{{ enrollmentData.period }} / {{ getFrequency }}</v-col
+                >
+              </v-row>
+              <v-row no-gutters>
+                <v-col class="font-weight-bold" cols="3">시작일시</v-col>
+                <v-col class="text-right subtitle-2"
+                  >{{ enrollmentData.startDay }} /
+                  <span v-html="getStartTime"></span
+                ></v-col>
               </v-row>
             </v-container>
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color: #85c9e8">
+          <div class="h5 gmarket mt-5" style="color: #2564cb">
             결제 예정금액
           </div>
           <v-container>
             <v-row no-gutters>
-              <v-col>결제금액</v-col>
-              <v-col v-if="offerSummary">{{ offerSummary["price"] }}</v-col>
-              <v-col v-else>0</v-col>
+              <v-col cols="3" class="font-weight-bold">결제방법</v-col>
+              <v-col>
+                <span class="subtitle-2 float-right" v-html="getPayType"></span
+              ></v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col>할인금액</v-col>
-              <v-col v-if="offerSummary">{{ offerSummary["discount"] }}</v-col>
-              <v-col v-else>0</v-col>
+              <v-col cols="3" class="font-weight-bold">수강금액</v-col>
+              <v-col>
+                <span class="body-2 float-right"
+                  >{{ (getAmount.value + getAmount.dcn).toLocaleString() }}원
+                </span>
+              </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col>교재비</v-col>
-              <v-col>0</v-col>
+              <v-col cols="3" class="font-weight-bold">할인금액</v-col>
+              <v-col>
+                <span class="subtitle-1 red--text float-right"
+                  >{{
+                    getAmount.dcn
+                      ? "-" + getAmount.dcn.toLocaleString()
+                      : getAmount.dcn
+                  }}원</span
+                >
+              </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col>총 할인금액</v-col>
-              <v-col v-if="offerSummary">{{ get_total_price() }}</v-col>
-              <v-col v-else>0</v-col>
+              <v-col cols="3" class="font-weight-bold">결제금액</v-col>
+              <v-col>
+                <span class="subtitle-1 float-right font-weight-bold">
+                  월 {{ getAmount4Month.toLocaleString() }}원
+                  {{ getAmount.dcp ? `(${getAmount.dcp}% 할인)` : "" }}
+                </span>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="3"></v-col>
+              <v-col>
+                <span class="body-2 float-right">
+                  총 {{ getAmount.value.toLocaleString() }}원
+                </span>
+              </v-col>
             </v-row>
           </v-container>
-          <div class="d-flex">
-            <v-btn class="mx-auto rounded-xl" depressed>
-              <span class="pa-3 h6" @click="confirmDialog = false">취소</span>
+          <div class="d-flex mt-5">
+            <v-btn
+              class="mx-auto rounded-xl font-weight-bold"
+              depressed
+              large
+              @click="confirmDialog = false"
+            >
+              취소
             </v-btn>
             <v-btn
-              color="#2572a8"
-              class="mx-auto rounded-xl"
+              color="#2564cb"
+              class="mx-auto rounded-xl white--text font-weight-bold"
               depressed
+              large
               @click="enroll()"
             >
-              <span class="pa-3 white--text h6">확인</span>
+              결제
             </v-btn>
           </div>
         </div>
       </v-card>
     </v-dialog>
     <div class="stickyButton" v-show="isMobile" style="z-index: 20001">
-      <v-expansion-panels>
+      <!-- <v-expansion-panels>
         <v-expansion-panel>
           <v-expansion-panel-header expand-icon="mdi-menu-up">
             선택한 과정 정보
@@ -887,42 +940,51 @@
               <v-list dense class="text-start">
                 <v-list-item>
                   <v-list-item-content>
-                    <v-list-item-title
-                      >내 수강: {{ enrollmentData.course }}
-                      {{ enrollmentData.bookName }}</v-list-item-title
-                    >
+                    <v-list-item-title><span class="subtitle-2">수업 종류:</span>
+                      {{ enrollmentData.type == phone ? '전화영어':'화상영어' }} ({{ enrollmentData.duration }})
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-content>
-                    <v-list-item-title>수강 기간:</v-list-item-title>
+                    <v-list-item-title><span class="subtitle-2">선택 과정:</span>
+                      {{ enrollmentData.course }}
+                      {{ enrollmentData.bookName }}
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-content>
-                    <v-list-item-title>수강 시작일:</v-list-item-title>
+                    <v-list-item-title><span class="subtitle-2">수업 기간:</span> {{ getFrequency }} / {{ enrollmentData.period }}</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-content>
-                    <v-list-item-title>결제 방법:</v-list-item-title>
+                    <v-list-item-title><span class="subtitle-2">수업 일시:</span> {{ enrollmentData.startDay }} / <span v-html="getStartTime"></span> </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-content>
-                    <v-list-item-title>결제 금액:</v-list-item-title>
+                    <v-list-item-title><span class="subtitle-2">결제 방법:</span> <span class="" v-html="getPayType"></span></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title><span class="subtitle-2">결제 금액:</span>
+                      <span class="subtitle-2"> 월 {{ getAmount4Month.toLocaleString() }}원 {{getAmount.dcp ? `(${getAmount.dcp}% 할인)` : "" }} </span> /
+                      <span class="caption">총 {{ getAmount.value.toLocaleString() }}원</span>
+                    </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
             </v-card>
           </v-expansion-panel-content>
         </v-expansion-panel>
-      </v-expansion-panels>
+      </v-expansion-panels> -->
       <v-btn
-        color="#4242a3"
+        color="#2564cb"
         x-large
-        class="white--text font-weight-bold"
-        large
+        class="white--text font-weight-bold py-8"
         block
         @click="enroll_check_data()"
         >수업 신청하기</v-btn
@@ -1702,6 +1764,20 @@ export default {
     this.setAllowedDays();
   },
   computed: {
+    target() {
+      //const value = this[this.type]
+      // const value = "#timeTable";
+      const value = "#payTable";
+      if (!isNaN(value)) return Number(value);
+      else return value;
+    },
+    options() {
+      return {
+        duration: 1000,
+        offset: 500,
+        easing: "easeInOutCubic"
+      };
+    },
     enrollmentData() {
       return {
         type: this.isPhone ? "phone" : "video",
@@ -2127,6 +2203,12 @@ export default {
           successUrl: window.location.origin + "/payment-success",
           failUrl: window.location.origin + "/payment-fail",
         });
+
+        // tossPayments.requestBillingAuth("카드", {
+        //   customerKey: "IUb-mOQLBidj80jh71a60",
+        //   successUrl: window.location.origin + "/payment-success",
+        //   failUrl: window.location.origin + "/payment-fail"
+        // });
       });
 
       const minuteSelected = this.minuteSelected;
@@ -2216,7 +2298,7 @@ export default {
         }
         this.enrollStudent();
       } else {
-        this.requiredField = true;
+        // this.requiredField = true;
       }
     },
     enroll_check_data() {
@@ -2246,6 +2328,7 @@ export default {
         this.confirmDialog = true;
       } else {
         this.requiredField = true;
+        this.$vuetify.goTo(this.target, this.options);
       }
     },
     setOffer() {
