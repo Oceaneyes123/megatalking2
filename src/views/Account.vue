@@ -732,7 +732,8 @@ export default {
         v => !!v || "이메일을 입력해주세요.",
         v => /.+@.+/.test(v) || "이메일 형식이 아닙니다."
       ],
-      token: localStorage.getItem("access-token")
+      // token: localStorage.getItem("access-token")
+      token: this.$cookie.delete("access-token")
     };
   },
 

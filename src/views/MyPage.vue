@@ -697,7 +697,8 @@ export default {
   destroyed() {},
   mounted() {
     this.today = this.formatDate(this.date);
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+    // axios.defaults.headers.common["Authorization"] = localStorage.getItem("access-token");
+    axios.defaults.headers.common["Authorization"] = this.$cookie.get(
       "access-token"
     );
     bus.$on("HoldSnackbar", ({ text, state }) => {
