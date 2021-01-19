@@ -3,12 +3,14 @@ import Vuex from "vuex";
 import axios from "axios";
 import router from "@/router";
 import { bus } from "@/main";
+import VueCookie from "vue-cookie";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    loginToken: localStorage.getItem("access-token"),
+    // loginToken: localStorage.getItem("access-token"),
+    loginToken: VueCookie.get("access-token"),
     loginErr: false,
     loginErrMsg: "",
     isLogin: false,
@@ -49,7 +51,8 @@ export default new Vuex.Store({
       state.isMobile = width <= 960 ? true : false;
     },
     loginProcess(state, { token }) {
-      localStorage.setItem("access-token", token);
+      VueCookie.set("access-token", token, 1);
+      // localStorage.setItem("access-token", token);
       state.isLogin = true;
       state.loginErr = false;
     },
@@ -66,7 +69,8 @@ export default new Vuex.Store({
     logoutProcess(state) {
       state.isLogin = false;
       state.userInfo = {};
-      localStorage.removeItem("access-token");
+      VueCookie.delete("access-token");
+      // localStorage.removeItem("access-token");
     },
     signupErr(state) {
       state.signupErr = true;
@@ -101,7 +105,9 @@ export default new Vuex.Store({
     },
     async isLogin({ state }) {
       //토큰 가져오기
-      let token = localStorage.getItem("access-token");
+      // let token = localStorage.getItem("access-token");
+      let token = VueCookie.get("access-token");
+
       //토큰이 있다면 아래 로스 실행
       if (token) {
         //console.log(token, commit, state);

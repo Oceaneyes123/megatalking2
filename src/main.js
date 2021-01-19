@@ -5,8 +5,11 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "@fortawesome/fontawesome-free/css/all.css";
+import VueCookie from "vue-cookie";
+
 export const bus = new Vue();
 
+Vue.use(VueCookie);
 Vue.config.productionTip = false;
 
 new Vue({
