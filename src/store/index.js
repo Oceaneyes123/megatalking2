@@ -113,6 +113,22 @@ export default new Vuex.Store({
         //console.log(token, commit, state);
         state.isLogin = true;
         state.loginErr = false;
+        axios.defaults.headers.common["Authorization"] = VueCookie.get(
+          "access-token"
+        );
+        await axios
+          .get("//phone.megatalking.com/origin/api/member.php")
+          .then(rs => {
+            console.log(rs);
+            if (rs.status === 200) {
+              //code
+            }
+          })
+          .catch(err => {
+            if (err.response) {
+              //code
+            }
+          });
       } else {
         state.isLogin = false;
         state.loginErr = false;
