@@ -132,7 +132,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-card class="mx-auto">
@@ -238,7 +238,7 @@
                   color="#fafafa"
                   class="rounded-xl mx-2"
                   :height="isMobile ? '' : '100%'"
-                  style="border: 1px solid #325fc4"
+                  style="border: 1px solid #dee3ee"
                 >
                   <v-img
                     :src="book.image"
@@ -296,7 +296,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-img
@@ -398,7 +398,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-img
@@ -500,7 +500,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-img
@@ -602,7 +602,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-img
@@ -704,7 +704,7 @@
                         color="#fafafa"
                         class="rounded-xl"
                         :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #325fc4"
+                        style="border: 1px solid #dee3ee"
                         max-width="300"
                       >
                         <v-img
@@ -794,7 +794,7 @@
                   color="#fafafa"
                   class="rounded-xl mx-2"
                   max-height="500"
-                  style="border: 1px solid #325fc4"
+                  style="border: 1px solid #dee3ee"
                 >
                   <v-img
                     :src="book.image"
@@ -836,7 +836,7 @@
                   color="#fafafa"
                   class="rounded-xl mx-2"
                   max-height="500"
-                  style="border: 1px solid #325fc4"
+                  style="border: 1px solid #dee3ee"
                 >
                   <v-img
                     :src="book.image"
