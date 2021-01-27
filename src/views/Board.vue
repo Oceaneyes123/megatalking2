@@ -1,8 +1,8 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <div
       class="h3 font-weight-bold white--text gmarket"
-      style="margin-top:200px"
+      style="margin-top: 200px"
     >
       수강후기
     </div>
@@ -15,7 +15,7 @@
         class="rounded-xl mx-auto"
         elevation="7"
         width="100%"
-        style="margin-top:100px;margin-bottom:500px"
+        style="margin-top: 100px; margin-bottom: 500px"
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">
@@ -41,64 +41,74 @@
           </v-row>
           <v-row>
             <v-data-table
-              style="width:100%"
+              style="width: 100%"
               :headers="header"
               :items="content"
+              @click:row="rowClicked"
             ></v-data-table>
           </v-row>
         </v-container>
       </v-card>
     </v-container>
+    <BoardDialog ref="boardDialog"></BoardDialog>
   </v-app>
 </template>
 
 <script>
+import BoardDialog from "@/components/BoardDialog.vue";
 export default {
+  components: {
+    BoardDialog,
+  },
   data() {
     return {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
+      boardDialog: false,
+
+      selected_row: [],
+
       defaultSelected: {
         key: "new",
-        text: "최신순"
+        text: "최신순",
       },
       items: [
         {
           key: "new",
-          text: "최신순"
+          text: "최신순",
         },
         {
           key: "name",
-          text: "이름순"
-        }
+          text: "이름순",
+        },
       ],
 
       header: [
         {
           text: "No.",
-          value: "no"
+          value: "no",
         },
         {
           text: "날짜",
-          value: "date"
+          value: "date",
         },
         {
           text: "수강종류",
-          value: "course"
+          value: "course",
         },
         {
           text: "제목",
-          value: "title"
+          value: "title",
         },
         {
           text: "회원명",
-          value: "name"
+          value: "name",
         },
         {
           text: "조회수",
-          value: "views"
-        }
+          value: "views",
+        },
       ],
 
       content: [
@@ -108,7 +118,7 @@ export default {
           course: "입문과정",
           title: "작품 활동을 위해 수강했습니다.",
           name: "강동원",
-          views: "2"
+          views: "2",
         },
         {
           no: "1",
@@ -116,9 +126,9 @@ export default {
           course: "승무원영어",
           title: "리얼해서 활용도 높은",
           name: "이유리",
-          views: "28"
-        }
-      ]
+          views: "28",
+        },
+      ],
     };
   },
 
@@ -138,7 +148,11 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    }
-  }
+    },
+
+    rowClicked(row) {
+      this.$refs.boardDialog.open(row);
+    },
+  },
 };
 </script>

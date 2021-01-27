@@ -1,8 +1,8 @@
 <template>
-  <v-app style="background-color:#00000000">
+  <v-app style="background-color: #00000000">
     <div
       class="h3 font-weight-bold white--text gmarket"
-      style="margin-top:200px"
+      style="margin-top: 200px"
     >
       이벤트
     </div>
@@ -15,7 +15,7 @@
         class="rounded-xl mx-auto"
         elevation="7"
         width="100%"
-        style="margin-top:100px;margin-bottom:500px"
+        style="margin-top: 100px; margin-bottom: 500px"
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">
@@ -48,6 +48,7 @@
                   min-height="200"
                   width="100%"
                   height="100%"
+                  @click="$refs.eventDialog.open()"
                 ></v-card>
                 <div class="mt-3 h6 font-weight-black text-left">
                   친구추가 이벤트!
@@ -63,32 +64,39 @@
             </v-col>
           </v-row>
         </v-container>
+        <EventDialog ref="eventDialog"></EventDialog>
       </v-card>
     </v-container>
   </v-app>
 </template>
 
 <script>
+import EventDialog from "@/components/EventDialog.vue";
 export default {
+  components: {
+    EventDialog,
+  },
   data() {
     return {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
+      eventDialog: false,
+
       defaultSelected: {
         key: "progress",
-        text: "진행중인 이벤트"
+        text: "진행중인 이벤트",
       },
       items: [
         {
           key: "progress",
-          text: "진행중인 이벤트"
+          text: "진행중인 이벤트",
         },
         {
           key: "end",
-          text: "종료된 이벤트"
-        }
-      ]
+          text: "종료된 이벤트",
+        },
+      ],
     };
   },
 
@@ -108,7 +116,7 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    }
-  }
+    },
+  },
 };
 </script>
