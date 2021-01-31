@@ -1488,7 +1488,7 @@ td:nth-child(n + 2) {
 <script>
 import AOS from "aos";
 import "aos/dist/aos.css";
-import getBookList from "@/static-database/curriculum.js";
+import { getBookList, getTabs } from "@/static-database/curriculum.js";
 export default {
   data() {
     return {
@@ -1507,17 +1507,7 @@ export default {
       screenWidth: "",
       isMobile: false,
       title: "",
-      sliderTabs: [
-        `유튜브 <br />회화과정`,
-        `정규 <br />회화과정`,
-        `리딩 & 스피킹`,
-        `프리토킹 <br />토론`,
-        `비즈니스 <br />과정`,
-        `문법/ <br />패턴`,
-        `취업준비/ <br />특별 과정`,
-        `초/중급 <br />회화과정`,
-        `입문과정`
-      ],
+      sliderTabs: "",
 
       curriculumInfo: [
         `유튜브 컨텐츠에서는 다양한 주제의 동영상 강좌의 내용 토대로 수업을 진행하실수있습니다.`,
@@ -1539,64 +1529,6 @@ export default {
         발음부터 차근차근 시작하실 수강생분들을 위한 과정입니다. 1~2개월
         완성 과정으로써, 기초적인 발음규칙과 함께 기초적인 단어를 익힐
         수 있습니다.`
-      ],
-      booksInLevels: [
-        {
-          level: "1 - 3",
-          books: [
-            "기초 발음교정",
-            "기초 문장연습",
-            "기초 회화연습",
-            "초급회화",
-            "기초 패턴회화",
-            "초급 토론과정",
-            "패턴 연습편1",
-            "패턴 연습편2",
-            "패턴연습편3  동사연습편1  상황별연습1"
-          ]
-        },
-        {
-          level: "4 - 5",
-          books: [
-            "중급회화",
-            "중급  토론과정",
-            "심화토론 과정고급",
-            "주니어 조선 초급",
-            "주니어 조선 중급",
-            "비즈니스 회화",
-            "동사연습편2 상황별연습2 비즈니스전화",
-            "동사연습편3 상황별연습3 비즈니스회의"
-          ]
-        },
-        {
-          level: "6 - 7",
-          books: [
-            "뉴욕라이브 잉글리쉬",
-            "문법 패턴회화",
-            "시사 토론과정",
-            "주니어 조선 고급",
-            "전문조선 초급",
-            "비즈니스 맞춤",
-            "비즈니스 이메일",
-            "비즈니스 프리젠테이션",
-            "취업 인터뷰",
-            "호텔영어 승무원영어"
-          ]
-        },
-        {
-          level: "8 - 9",
-          books: [
-            "전문조선 고급",
-            "전문조선 고급",
-            "비즈니스 토론",
-            "IELTS 오픽",
-            "토익스피킹 심화토익스피킹"
-          ]
-        },
-        {
-          level: "10",
-          books: ["의학영어"]
-        }
       ]
     };
   },
@@ -1613,6 +1545,7 @@ export default {
     this.isMobile = this.screenWidth <= 960 ? true : false;
     AOS.init();
     this.book_list = getBookList();
+    this.sliderTabs = getTabs().sliderTabs;
     console.log(this.book_list);
     console.log(getBookList());
   },

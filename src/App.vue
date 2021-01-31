@@ -33,13 +33,13 @@ import Footer from "@/components/Footer.vue";
 export default {
   components: {
     Header,
-    Footer,
+    Footer
   },
   data() {
     return {};
   },
   computed: {
-    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"]),
+    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"])
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
@@ -53,8 +53,8 @@ export default {
   methods: {
     onWindowResize() {
       this.$store.commit("onWindowResize", screen.width);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -106,7 +106,7 @@ export default {
   font-family: "GmarketSansBold", sans-serif;
   font-weight: 400;
   font-size: 2.125rem;
-  letter-spacing: -0.015625remm;
+  letter-spacing: -0.015625rem;
 }
 .h5 {
   font-family: "GmarketSansBold", sans-serif;
