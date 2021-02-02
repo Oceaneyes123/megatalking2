@@ -13,8 +13,15 @@
         </p>
         <v-container>
           <v-row>
-            <v-col cols="12"> {{ course }} </v-col>
-            <v-col cols="12"> {{ member_name }} </v-col>
+            <v-col cols="6" class="d-flex justify-center">
+              <v-icon color="#000" style="font-size:150px"
+                >fas fa-chalkboard-teacher</v-icon
+              >
+            </v-col>
+            <v-col cols="6">
+              <div class="h4 nanum mb-5">{{ course }}</div>
+              <div class="h6 " style="color:#A9A7F3">{{ member_name }}</div>
+            </v-col>
           </v-row>
         </v-container>
         <v-container>
@@ -37,7 +44,7 @@ export default {
       course: "",
       member_name: "",
       title: "",
-      boardDialog: false,
+      boardDialog: false
     };
   },
   methods: {
@@ -47,8 +54,8 @@ export default {
       this.course = row.course;
       this.member_name = row.name;
       this.title = row.title;
-    },
-  },
+    }
+  }
 };
 </script>
 
