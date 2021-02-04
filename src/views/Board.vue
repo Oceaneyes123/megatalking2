@@ -45,6 +45,7 @@
               :headers="header"
               :items="content"
               @click:row="rowClicked"
+              :item-class="tableRow"
             ></v-data-table>
           </v-row>
         </v-container>
@@ -54,11 +55,17 @@
   </v-app>
 </template>
 
+<style>
+.table-row {
+  cursor: pointer;
+}
+</style>
+
 <script>
 import BoardDialog from "@/components/BoardDialog.vue";
 export default {
   components: {
-    BoardDialog,
+    BoardDialog
   },
   data() {
     return {
@@ -71,44 +78,44 @@ export default {
 
       defaultSelected: {
         key: "new",
-        text: "최신순",
+        text: "최신순"
       },
       items: [
         {
           key: "new",
-          text: "최신순",
+          text: "최신순"
         },
         {
           key: "name",
-          text: "이름순",
-        },
+          text: "이름순"
+        }
       ],
 
       header: [
         {
           text: "No.",
-          value: "no",
+          value: "no"
         },
         {
           text: "날짜",
-          value: "date",
+          value: "date"
         },
         {
           text: "수강종류",
-          value: "course",
+          value: "course"
         },
         {
           text: "제목",
-          value: "title",
+          value: "title"
         },
         {
           text: "회원명",
-          value: "name",
+          value: "name"
         },
         {
           text: "조회수",
-          value: "views",
-        },
+          value: "views"
+        }
       ],
 
       content: [
@@ -118,7 +125,7 @@ export default {
           course: "입문과정",
           title: "작품 활동을 위해 수강했습니다.",
           name: "강동원",
-          views: "2",
+          views: "2"
         },
         {
           no: "1",
@@ -126,9 +133,9 @@ export default {
           course: "승무원영어",
           title: "리얼해서 활용도 높은",
           name: "이유리",
-          views: "28",
-        },
-      ],
+          views: "28"
+        }
+      ]
     };
   },
 
@@ -145,6 +152,9 @@ export default {
   },
 
   methods: {
+    tableRow: function() {
+      return "table-row";
+    },
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
@@ -152,7 +162,7 @@ export default {
 
     rowClicked(row) {
       this.$refs.boardDialog.open(row);
-    },
-  },
+    }
+  }
 };
 </script>
