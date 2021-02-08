@@ -63,6 +63,7 @@
 
 <script>
 import BoardDialog from "@/components/BoardDialog.vue";
+import axios from "axios";
 export default {
   components: {
     BoardDialog
@@ -149,6 +150,8 @@ export default {
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+
+    this.getBoards();
   },
 
   methods: {
@@ -162,6 +165,30 @@ export default {
 
     rowClicked(row) {
       this.$refs.boardDialog.open(row);
+    },
+
+    getBoards() {
+      const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
+      const board = "review";
+
+      let formData = new FormData();
+      formData.append("token", token);
+      formData.append("board", board);
+
+      axios
+        .post(
+          "/http://phone.megatalking.com/origin/api/get_board_json.php",
+          formData,
+          {}
+        )
+        .then(
+          res => {
+            console.log(res);
+          },
+          error => {
+            console.log(error);
+          }
+        );
     }
   }
 };

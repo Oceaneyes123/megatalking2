@@ -12,7 +12,7 @@
             <div class="text-right">{{ date }}</div>
           </div>
         </div>
-        <div class="h6 " style="color:#A9A7F3">{{ member_name }}</div>
+        <div class="text-right" style="color:#A9A7F3">{{ member_name }}</div>
         <v-container fluid class="px-0 my-5">
           <div>
             Lorem ipsum dolor sit amet, sit liber deleniti maluisset te. Te

@@ -1546,8 +1546,6 @@ export default {
     AOS.init();
     this.book_list = getBookList();
     this.sliderTabs = getTabs().sliderTabs;
-    console.log(this.book_list);
-    console.log(getBookList());
   },
 
   methods: {

@@ -11,7 +11,7 @@
       <v-container class="d-flex flex-row">
         <v-card flat tile color="#00000000">
           <v-img
-            @click="$router.push('/')"
+            @click="$router.push('/'), (activeMenu = -1)"
             contain
             src="@/assets/mega_blue.png"
             width="100"
@@ -30,10 +30,12 @@
             class="mr-6 subheading"
             v-for="(route, i) in routes"
             :key="i"
-            @click="attachedLink(route.link)"
+            @click="attachedLink(route.link), (activeMenu = i)"
             v-show="route.show"
           >
-            {{ route.text }}
+            <span :style="activeMenu == i ? 'color:#1976d2' : ''">
+              {{ route.text }}
+            </span>
           </div>
         </v-card>
         <v-card
@@ -124,6 +126,7 @@ export default {
     return {
       signInDialog: false,
       logoutDialog: false,
+      activeMenu: -1,
       routes: [
         {
           text: "커리큘럼",
@@ -158,6 +161,8 @@ export default {
       ]
     };
   },
+  watch: {},
+
   computed: {
     ...mapState(["showNav", "screenWidth", "isMobile", "isLogin"])
   },
@@ -165,6 +170,11 @@ export default {
     bus.$on("openAuth", data => {
       this.signInDialog = data;
     });
+    for (var i = 0; i < this.routes.length; i++) {
+      if (this.$route.path == "/" + this.routes[i].link) {
+        this.activeMenu = i;
+      }
+    }
   },
   methods: {
     sighDialogToggle() {
