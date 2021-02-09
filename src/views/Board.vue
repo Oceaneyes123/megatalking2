@@ -161,17 +161,17 @@ export default {
       this.$refs.boardDialog.open(row);
     },
 
-    async getBoards() {
+    getBoards() {
       const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
       const board = "review";
       // const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = "https://phone.megatalking.com/origin/api/get_board_json.php";
+      const url = "//phone.megatalking.com/origin/api/get_board_json.php";
 
       const form = new FormData();
       form.append("token", token);
       form.append("board", board);
 
-      await axios.post(url, form).then(
+      axios.post(url, form).then(
         res => {
           if (res.data.STATUS == "TRUE") {
             this.boards = res.data;
