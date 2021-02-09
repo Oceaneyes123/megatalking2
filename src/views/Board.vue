@@ -104,20 +104,12 @@ export default {
           value: "date"
         },
         {
-          text: "수강종류",
-          value: "course"
-        },
-        {
           text: "제목",
           value: "title"
         },
         {
           text: "회원명",
           value: "name"
-        },
-        {
-          text: "조회수",
-          value: "views"
         }
       ],
 
@@ -172,8 +164,8 @@ export default {
     async getBoards() {
       const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
       const board = "review";
-      //  const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = "http://phone.megatalking.com/origin/api/get_board_json.php";
+      // const proxy = "https://cors-anywhere.herokuapp.com/";
+      const url = "https://phone.megatalking.com/origin/api/get_board_json.php";
 
       const form = new FormData();
       form.append("token", token);

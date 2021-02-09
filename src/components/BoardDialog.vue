@@ -14,13 +14,7 @@
         </div>
         <div class="text-right" style="color:#A9A7F3">{{ member_name }}</div>
         <v-container fluid class="px-0 my-5">
-          <div>
-            Lorem ipsum dolor sit amet, sit liber deleniti maluisset te. Te
-            apeirian facilisi insolens cum, mea an alienum incorrupte. Nec id
-            decore delectus evertitur, postea feugiat eam ne, vulputate
-            constituam ea sea. An malis hendrerit expetendis mel, ei quod ipsum
-            suavitate sea, id quodsi eruditi delenit vix.
-          </div>
+          <div v-html="content"></div>
         </v-container>
         <v-container>
           <v-row class="justify-end">
@@ -42,6 +36,7 @@ export default {
       course: "",
       member_name: "",
       title: "",
+      content: "",
       boardDialog: false
     };
   },
@@ -52,6 +47,7 @@ export default {
       this.course = row.course;
       this.member_name = row.name;
       this.title = row.title;
+      this.content = row.content;
     }
   }
 };
