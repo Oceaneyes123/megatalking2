@@ -43,7 +43,7 @@
             <v-data-table
               style="width: 100%"
               :headers="header"
-              :items="content"
+              :items="boards.REVIEW"
               @click:row="rowClicked"
               :item-class="tableRow"
             ></v-data-table>
@@ -77,6 +77,8 @@ export default {
 
       selected_row: [],
 
+      boards: [],
+
       defaultSelected: {
         key: "new",
         text: "최신순"
@@ -95,7 +97,7 @@ export default {
       header: [
         {
           text: "No.",
-          value: "no"
+          value: "board_id"
         },
         {
           text: "날짜",
@@ -167,28 +169,27 @@ export default {
       this.$refs.boardDialog.open(row);
     },
 
-    getBoards() {
+    async getBoards() {
       const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
       const board = "review";
+      const proxy = "https://cors-anywhere.herokuapp.com/";
+      const url = "http://phone.megatalking.com/origin/api/get_board_json.php";
 
-      let formData = new FormData();
-      formData.append("token", token);
-      formData.append("board", board);
+      const form = new FormData();
+      form.append("token", token);
+      form.append("board", board);
 
-      axios
-        .post(
-          "/http://phone.megatalking.com/origin/api/get_board_json.php",
-          formData,
-          {}
-        )
-        .then(
-          res => {
-            console.log(res);
-          },
-          error => {
-            console.log(error);
+      await axios.post(proxy + url, form).then(
+        res => {
+          if (res.data.STATUS == "TRUE") {
+            this.boards = res.data;
+            console.log(this.boards.REVIEW);
           }
-        );
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   }
 };
