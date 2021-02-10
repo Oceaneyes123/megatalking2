@@ -1,5 +1,8 @@
 <template>
   <v-app style="background-color: #00000000">
+    <v-overlay :value="overlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
     <div
       class="h3 font-weight-bold white--text gmarket"
       style="margin-top: 200px"
@@ -40,18 +43,17 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="6" sm="4" v-for="i in 6" :key="i">
-              <v-card flat>
+            <v-col cols="6" sm="4" v-for="(event, i) in events" :key="i">
+              <v-card flat @click="$refs.eventDialog.open(event)">
                 <v-card
                   color="#f99d59"
                   min-width="100"
                   min-height="200"
                   width="100%"
                   height="100%"
-                  @click="$refs.eventDialog.open()"
                 ></v-card>
                 <div class="mt-3 h6 font-weight-black text-left">
-                  친구추가 이벤트!
+                  {{ event.title }}
                 </div>
                 <div class="grey--text text-left">2020-09-31까지</div>
                 <div class="d-flex align-center mt-5">
@@ -72,31 +74,35 @@
 
 <script>
 import EventDialog from "@/components/EventDialog.vue";
+import axios from "axios";
 export default {
   components: {
-    EventDialog,
+    EventDialog
   },
   data() {
     return {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
+      events: [],
       eventDialog: false,
+      // loading: true,
+      overlay: true,
 
       defaultSelected: {
         key: "progress",
-        text: "진행중인 이벤트",
+        text: "진행중인 이벤트"
       },
       items: [
         {
           key: "progress",
-          text: "진행중인 이벤트",
+          text: "진행중인 이벤트"
         },
         {
           key: "end",
-          text: "종료된 이벤트",
-        },
-      ],
+          text: "종료된 이벤트"
+        }
+      ]
     };
   },
 
@@ -110,6 +116,8 @@ export default {
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+
+    this.getEvents();
   },
 
   methods: {
@@ -117,6 +125,29 @@ export default {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
     },
-  },
+
+    getEvents() {
+      const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
+      const board = "event";
+      const url = "http://phone.megatalking.com/origin/api/get_board_json.php";
+
+      const form = new FormData();
+      form.append("token", token);
+      form.append("board", board);
+
+      axios.post(url, form).then(
+        res => {
+          if (res.data.STATUS == "TRUE") {
+            this.events = res.data.EVENT;
+            this.overlay = false;
+            console.log(this.events);
+          }
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
 };
 </script>

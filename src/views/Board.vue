@@ -164,8 +164,7 @@ export default {
     getBoards() {
       const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
       const board = "review";
-      // const proxy = "https://cors-anywhere.herokuapp.com/";
-      const url = "//phone.megatalking.com/origin/api/get_board_json.php";
+      const url = "http://phone.megatalking.com/origin/api/get_board_json.php";
 
       const form = new FormData();
       form.append("token", token);
