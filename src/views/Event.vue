@@ -45,13 +45,18 @@
           <v-row>
             <v-col cols="6" sm="4" v-for="(event, i) in events" :key="i">
               <v-card flat @click="$refs.eventDialog.open(event)">
-                <v-card
+                <!-- <v-card
                   color="#f99d59"
                   min-width="100"
                   min-height="200"
                   width="100%"
                   height="100%"
-                ></v-card>
+                ></v-card> -->
+                <v-img
+                  :src="getImage(event.image)"
+                  width="100%"
+                  height="200"
+                ></v-img>
                 <div class="mt-3 h6 font-weight-black text-left">
                   {{ event.title }}
                 </div>
@@ -129,7 +134,7 @@ export default {
     getEvents() {
       const token = "c3VwZXJfaGVyb191ZWR1Y2F0aW9u";
       const board = "event";
-      const url = "http://phone.megatalking.com/origin/api/get_board_json.php";
+      const url = "//phone.megatalking.com/origin/api/get_board_json.php";
 
       const form = new FormData();
       form.append("token", token);
@@ -147,6 +152,10 @@ export default {
           console.log(error);
         }
       );
+    },
+
+    getImage(image) {
+      return "//phone.megatalking.com/files/" + image;
     }
   }
 };

@@ -8,9 +8,9 @@
         <p class="h5 font-weight-bold nanum pt-5" style="color: #6a6a6a">
           {{ event.explanation }}
         </p>
-        <v-card color="#f99d59" width="100%" height="300" class="mb-5">
-          <!-- <v-img></v-img> -->
-        </v-card>
+        <!-- <v-card color="#f99d59" width="100%" height="300" class="mb-5"> -->
+        <v-img :src="getImage(event.image)"></v-img>
+        <!-- </v-card> -->
         <p v-html="event.content"></p>
         <v-container>
           <v-row class="justify-end">
@@ -36,6 +36,10 @@ export default {
     open(event) {
       this.eventDialog = true;
       this.event = event;
+    },
+
+    getImage(image) {
+      return "//phone.megatalking.com/files/" + image;
     }
   }
 };
