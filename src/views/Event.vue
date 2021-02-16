@@ -33,17 +33,57 @@
                 v-model="defaultSelected"
               ></v-select>
             </v-col>
-            <v-spacer></v-spacer>
-            <v-col cols="5" md="3">
-              <v-text-field label="제목+내용">
-                <template v-slot:append>
-                  <v-icon color="orange">arrow_forward</v-icon>
-                </template>
-              </v-text-field>
+          </v-row>
+          <v-row
+            v-if="
+              defaultSelected == 'progress' || defaultSelected.key == 'progress'
+            "
+          >
+            <v-container v-if="progressEvents.length == 0">
+              <v-row>
+                <v-col v-for="i in 3" :key="i">
+                  <v-skeleton-loader
+                    class="mx-auto"
+                    max-width="300"
+                    type="card"
+                  ></v-skeleton-loader>
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-col
+              cols="12"
+              sm="4"
+              v-for="(event, i) in progressEvents"
+              :key="i"
+            >
+              <v-card flat @click="$refs.eventDialog.open(event)">
+                <!-- <v-card
+                  color="#f99d59"
+                  min-width="100"
+                  min-height="200"
+                  width="100%"
+                  height="100%"
+                ></v-card> -->
+                <v-img
+                  :src="getImage(event.image)"
+                  width="100%"
+                  height="200"
+                ></v-img>
+                <div class="mt-3 h6 font-weight-black text-left">
+                  {{ event.title }}
+                </div>
+                <div class="grey--text text-left">2020-09-31까지</div>
+                <div class="d-flex align-center mt-5">
+                  <v-icon color="grey">favorite_border</v-icon>
+                  <div class="mr-5 ml-2">07</div>
+                  <v-icon color="orange">far fa-comment</v-icon>
+                  <div class="ml-2">12</div>
+                </div>
+              </v-card>
             </v-col>
           </v-row>
-          <v-row>
-            <v-col cols="6" sm="4" v-for="(event, i) in events" :key="i">
+          <v-row v-if="defaultSelected == 'end'">
+            <v-col cols="12" sm="4" v-for="(event, i) in endEvents" :key="i">
               <v-card flat @click="$refs.eventDialog.open(event)">
                 <!-- <v-card
                   color="#f99d59"
@@ -89,7 +129,8 @@ export default {
       rating: 4.8,
       screenWidth: "",
       isMobile: false,
-      events: [],
+      progressEvents: [],
+      endEvents: [],
       eventDialog: false,
       // loading: true,
       overlay: true,
@@ -125,6 +166,12 @@ export default {
     this.getEvents();
   },
 
+  watch: {
+    defaultSelected: function() {
+      console.log(this.defaultSelected);
+    }
+  },
+
   methods: {
     onWindowResize() {
       this.screenWidth = screen.width;
@@ -143,9 +190,16 @@ export default {
       axios.post(url, form).then(
         res => {
           if (res.data.STATUS == "TRUE") {
-            this.events = res.data.EVENT;
+            for (var i = 0; i < res.data.EVENT.length; i++) {
+              if (res.data.EVENT[i].status == "yes") {
+                this.progressEvents.push(res.data.EVENT[i]);
+              } else {
+                this.endEvents.push(res.data.EVENT[i]);
+              }
+            }
             this.overlay = false;
-            console.log(this.events);
+            console.log(this.progressEvents);
+            console.log(this.endEvents);
           }
         },
         error => {

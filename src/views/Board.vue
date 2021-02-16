@@ -1,5 +1,8 @@
 <template>
   <v-app style="background-color: #00000000">
+    <v-overlay :value="overlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
     <div
       class="h3 font-weight-bold white--text gmarket"
       style="margin-top: 200px"
@@ -19,26 +22,6 @@
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">
-          <v-row>
-            <v-col cols="5" md="3">
-              <v-select
-                :items="items"
-                item-text="text"
-                item-value="key"
-                v-model="defaultSelected"
-                outlined
-                dense
-              ></v-select>
-            </v-col>
-            <v-spacer></v-spacer>
-            <v-col cols="5" md="3">
-              <v-text-field label="제목+내용">
-                <template v-slot:append>
-                  <v-icon color="orange">arrow_forward</v-icon>
-                </template>
-              </v-text-field>
-            </v-col>
-          </v-row>
           <v-row>
             <v-data-table
               style="width: 100%"
@@ -74,6 +57,7 @@ export default {
       screenWidth: "",
       isMobile: false,
       boardDialog: false,
+      overlay: true,
 
       selected_row: [],
 
@@ -174,6 +158,7 @@ export default {
         res => {
           if (res.data.STATUS == "TRUE") {
             this.boards = res.data;
+            this.overlay = false;
             console.log(this.boards.REVIEW);
           }
         },
