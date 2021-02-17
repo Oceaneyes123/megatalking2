@@ -17,7 +17,7 @@
         >
         <v-tab-item>
           <v-container style="max-width: 1000px; margin-top: 90px">
-            <v-card
+            <!-- <v-card
               depressed
               class="mx-auto rounded-xl"
               style="border: solid 1px #6a9af2"
@@ -122,7 +122,81 @@
                   </tbody>
                 </template>
               </v-simple-table>
-            </v-card>
+            </v-card> -->
+
+            <v-list>
+              <v-list-group
+                v-for="(item, i) in tab1Item"
+                :key="i"
+                v-model="item.active"
+                no-action
+                subheader
+              >
+                <template v-slot:activator>
+                  <v-list-item-content>
+                    <v-list-item-title class="d-flex justify-space-between">
+                      <span class="font-weight-bold">
+                        {{ item.course }}
+                      </span>
+                      <span
+                        class="font-weight-bold blue--text"
+                        :class="isMobile ? '' : 'h6'"
+                      >
+                        {{ item.price }}</span
+                      >
+                    </v-list-item-title>
+                    <v-list-item-subtitle
+                      v-text="item.date"
+                      class="text-left"
+                    ></v-list-item-subtitle>
+                  </v-list-item-content>
+                </template>
+
+                <v-container>
+                  <v-row>
+                    <v-col cols="4">
+                      <v-btn
+                        color="blue"
+                        block
+                        outlined
+                        class="rounded-pill"
+                        @click="receiptDialogOpen(item)"
+                      >
+                        영수증
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="4">
+                      <v-btn
+                        color="blue"
+                        block
+                        outlined
+                        class="rounded-pill"
+                        @click="courseDialogOpen(item)"
+                      >
+                        수강증
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="4">
+                      <v-btn
+                        color="blue"
+                        block
+                        outlined
+                        class="rounded-pill"
+                        @click="courseDialogOpen(item)"
+                      >
+                        출석증명서
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+
+                <!-- <v-list-item v-for="i in 3" :key="i">
+                  <v-list-item-content>
+                    <v-list-item-title v-text="child.title"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item> -->
+              </v-list-group>
+            </v-list>
 
             <AccountReceiptDialog ref="receiptDialog"></AccountReceiptDialog>
             <AccountCourseDialog ref="courseDialog"></AccountCourseDialog>
@@ -596,6 +670,7 @@ export default {
               });
             });
             this.$set(this.$data, "tab1Item", temArr);
+            console.log(this.tab1Item);
           }
           // console.log(rs);
         })
