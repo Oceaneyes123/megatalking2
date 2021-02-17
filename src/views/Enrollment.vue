@@ -353,7 +353,9 @@
                               >프라임</span
                             >
                             <br />
-                            <span class="caption" @click="currentZone = 0"
+                            <span
+                              class="caption"
+                              @click="(currentZone = 0), setTime(6)"
                               >6:00 - 9:50</span
                             >
                           </v-col>
@@ -367,7 +369,9 @@
                               >이코노미</span
                             >
                             <br />
-                            <span class="caption" @click="currentZone = 1"
+                            <span
+                              class="caption"
+                              @click="(currentZone = 1), setTime(10)"
                               >10:00 - 16:50</span
                             >
                           </v-col>
@@ -381,7 +385,9 @@
                               >프라임</span
                             >
                             <br />
-                            <span class="caption" @click="currentZone = 2"
+                            <span
+                              class="caption"
+                              @click="(currentZone = 2), setTime(17)"
                               >17:00 - 23:50</span
                             >
                           </v-col>
