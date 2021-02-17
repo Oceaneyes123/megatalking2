@@ -15,19 +15,19 @@
         </v-row>
         <v-row no-gutters class="mb-2">
           <v-col cols="3" class="font-weight-bold">Course</v-col>
-          <v-col cols="9">[Course]</v-col>
+          <v-col cols="9">{{ receiptData.course }}</v-col>
         </v-row>
         <v-row no-gutters class="mb-2">
           <v-col cols="3" class="font-weight-bold">Contract</v-col>
-          <v-col cols="9">[Contract]</v-col>
+          <v-col cols="9">{{ receiptData.week }}</v-col>
         </v-row>
         <v-row no-gutters class="mb-2">
           <v-col cols="3" class="font-weight-bold">Period</v-col>
-          <v-col cols="9">[Period]</v-col>
+          <v-col cols="9">{{ receiptData.times }}</v-col>
         </v-row>
         <v-row no-gutters class="mb-2">
           <v-col cols="3" class="font-weight-bold">Start Date</v-col>
-          <v-col cols="9">[Start Date]</v-col>
+          <v-col cols="9">{{ receiptData.date }}</v-col>
         </v-row>
         <v-row no-gutters class="mb-2">
           <v-col cols="3" class="font-weight-bold">Instructor</v-col>
@@ -35,7 +35,7 @@
         </v-row>
         <v-row no-gutters class="mb-5">
           <v-col cols="3" class="font-weight-bold">Tuition</v-col>
-          <v-col cols="9">[Tuition]</v-col>
+          <v-col cols="9">{{ receiptData.price }}</v-col>
         </v-row>
 
         <v-row no-gutters>
@@ -71,12 +71,15 @@
 export default {
   data() {
     return {
-      receiptDialog: false
+      receiptDialog: false,
+      receiptData: []
     };
   },
   methods: {
-    open() {
+    open(item) {
+      this.receiptData = item;
       this.receiptDialog = true;
+      console.log(item);
     }
   }
 };

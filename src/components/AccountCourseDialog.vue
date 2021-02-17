@@ -93,12 +93,15 @@
 export default {
   data() {
     return {
-      courseDialog: false
+      courseDialog: false,
+      courseData: []
     };
   },
   methods: {
-    open() {
+    open(item) {
+      this.courseData = item;
       this.courseDialog = true;
+      console.log(item);
     }
   }
 };

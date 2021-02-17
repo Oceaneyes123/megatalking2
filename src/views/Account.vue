@@ -57,7 +57,7 @@
                             "
                             color="blue"
                             tile
-                            @click="receiptDialogOpen()"
+                            @click="receiptDialogOpen(item)"
                           >
                             영수증
                           </v-btn>
@@ -73,7 +73,7 @@
                             "
                             color="blue"
                             tile
-                            @click="courseDialogOpen()"
+                            @click="courseDialogOpen(item)"
                           >
                             수강증
                           </v-btn>
@@ -89,7 +89,7 @@
                             "
                             color="blue"
                             tile
-                            @click="certificateDialogOpen()"
+                            @click="certificateDialogOpen(item)"
                           >
                             출석증명서
                           </v-btn>
@@ -105,8 +105,12 @@
                           class="white--text rounded-xl mb-5"
                           depressed
                           style="
-                            background: linear-gradient(to right, #8fa1fe, #4d94e9) !important;
-                            "
+                            background: linear-gradient(
+                              to right,
+                              #8fa1fe,
+                              #4d94e9
+                            ) !important;
+                          "
                           color="blue"
                           tile
                           @click="courseDialog = true"
@@ -199,7 +203,11 @@
                           text
                           class="rounded-pill white--text"
                           style="
-                            background: linear-gradient(to right, #8fa1fe, #4d94e9);
+                            background: linear-gradient(
+                              to right,
+                              #8fa1fe,
+                              #4d94e9
+                            );
                           "
                           >{{ item.status }}</v-btn
                         >
@@ -244,7 +252,7 @@
                         class="rounded-lg"
                         dense
                         type="password"
-                        style="font-family: auto;"
+                        style="font-family: auto"
                         :rules="passwordRules"
                       ></v-text-field>
                     </v-col>
@@ -256,7 +264,7 @@
                         class="rounded-lg"
                         type="password"
                         dense
-                        style="font-family: auto;"
+                        style="font-family: auto"
                         :rules="passwordCheckRules"
                       ></v-text-field>
                     </v-col>
@@ -537,16 +545,16 @@ export default {
       this.screenWidth = screen.width;
     },
 
-    receiptDialogOpen() {
-      this.$refs.receiptDialog.open();
+    receiptDialogOpen(item) {
+      this.$refs.receiptDialog.open(item);
     },
 
-    courseDialogOpen() {
-      this.$refs.courseDialog.open();
+    courseDialogOpen(item) {
+      this.$refs.courseDialog.open(item);
     },
 
-    certificateDialogOpen() {
-      this.$refs.certificateDialog.open();
+    certificateDialogOpen(item) {
+      this.$refs.certificateDialog.open(item);
     },
 
     loadData(tab) {
