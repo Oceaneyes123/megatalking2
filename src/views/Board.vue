@@ -26,7 +26,7 @@
             <v-data-table
               style="width: 100%"
               :mobile-breakpoint="0"
-              :headers="header"
+              :headers="getHeader"
               :items="boards.REVIEW"
               @click:row="rowClicked"
               :item-class="tableRow"
