@@ -25,6 +25,7 @@
           <v-row>
             <v-data-table
               style="width: 100%"
+              :mobile-breakpoint="0"
               :headers="header"
               :items="boards.REVIEW"
               @click:row="rowClicked"
@@ -116,6 +117,17 @@ export default {
         }
       ]
     };
+  },
+
+  computed: {
+    getHeader() {
+      var breakpoint = this.$vuetify.breakpoint.name;
+      if (breakpoint == "xs" || breakpoint == "sm") {
+        return this.header.slice(2, this.header.length);
+      } else {
+        return this.header;
+      }
+    }
   },
 
   created() {
