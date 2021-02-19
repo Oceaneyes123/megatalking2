@@ -2169,30 +2169,33 @@ export default {
       }
     },
     enroll() {
-      const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
-      // Promise를 사용하는 경우
-      loadTossPayments(clientKey).then(tossPayments => {
-        tossPayments.requestPayment("카드", {
-          amount: 1000,
-          orderId: new Date().getTime(),
-          orderName: "토스 티셔츠 외 2건",
-          customerName: "박토스",
-          successUrl: window.location.origin + "/payment-success",
-          failUrl: window.location.origin + "/payment-fail"
+      if (this.methodSelected == "카드 결제") {
+        const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
+        // Promise를 사용하는 경우
+        loadTossPayments(clientKey).then(tossPayments => {
+          tossPayments.requestPayment("카드", {
+            amount: 1000,
+            orderId: new Date().getTime(),
+            orderName: "토스 티셔츠 외 2건",
+            customerName: "박토스",
+            successUrl: window.location.origin + "/payment-success",
+            failUrl: window.location.origin + "/payment-fail"
+          });
+          // tossPayments.requestBillingAuth("카드", {
+          //   customerKey: "IUb-mOQLBidj80jh71a60",
+          //   successUrl: window.location.origin + "/payment-success",
+          //   failUrl: window.location.origin + "/payment-fail",
+          // });
+
+          // tossPayments.requestBillingAuth("카드", {
+          //   customerKey: "IUb-mOQLBidj80jh71a60",
+          //   successUrl: window.location.origin + "/payment-success",
+          //   failUrl: window.location.origin + "/payment-fail"
+          // });
         });
-
-        // tossPayments.requestBillingAuth("카드", {
-        //   customerKey: "IUb-mOQLBidj80jh71a60",
-        //   successUrl: window.location.origin + "/payment-success",
-        //   failUrl: window.location.origin + "/payment-fail",
-        // });
-
-        // tossPayments.requestBillingAuth("카드", {
-        //   customerKey: "IUb-mOQLBidj80jh71a60",
-        //   successUrl: window.location.origin + "/payment-success",
-        //   failUrl: window.location.origin + "/payment-fail"
-        // });
-      });
+      } else if (this.methodSelected == "무통장 입금") {
+        console.log("hi");
+      }
 
       const minuteSelected = this.minuteSelected;
       const frequencySelected = this.frequencySelected;
