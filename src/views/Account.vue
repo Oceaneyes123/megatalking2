@@ -215,6 +215,7 @@
               depressed
               class="mx-auto rounded-xl"
               style="border: solid 1px #6a9af2"
+              v-if="!isMobile"
             >
               <v-simple-table>
                 <template v-slot:default>
@@ -248,6 +249,45 @@
                 </template>
               </v-simple-table>
             </v-card>
+            <v-card class="rounded-xl" v-else>
+              <v-list>
+                <v-list-group
+                  v-for="(item, i) in 3"
+                  :key="i"
+                  v-model="item.active"
+                  no-action
+                  subheader
+                >
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title class="d-flex justify-space-between">
+                        <span class="font-weight-bold">
+                          TEST
+                        </span>
+                        <span
+                          class="font-weight-bold blue--text"
+                          :class="isMobile ? '' : 'h6'"
+                        >
+                          0</span
+                        >
+                      </v-list-item-title>
+                      <v-list-item-subtitle
+                        v-text="item.date"
+                        class="text-left"
+                      ></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </template>
+
+                  <v-container>
+                    <v-row>
+                      <v-col cols="4">
+                        Coming Soon
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-list-group>
+              </v-list>
+            </v-card>
           </v-container>
         </v-tab-item>
         <v-tab-item>
@@ -257,6 +297,7 @@
               depressed
               class="mx-auto rounded-xl"
               style="border: solid 1px #6a9af2"
+              v-if="!isMobile"
             >
               <v-simple-table>
                 <template v-slot:default>
@@ -303,6 +344,45 @@
                   </tbody>
                 </template>
               </v-simple-table>
+            </v-card>
+            <v-card class="rounded-xl" v-else>
+              <v-list>
+                <v-list-group
+                  v-for="(item, i) in 3"
+                  :key="i"
+                  v-model="item.active"
+                  no-action
+                  subheader
+                >
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title class="d-flex justify-space-between">
+                        <span class="font-weight-bold">
+                          TEST
+                        </span>
+                        <span
+                          class="font-weight-bold blue--text"
+                          :class="isMobile ? '' : 'h6'"
+                        >
+                          0</span
+                        >
+                      </v-list-item-title>
+                      <v-list-item-subtitle
+                        v-text="item.date"
+                        class="text-left"
+                      ></v-list-item-subtitle>
+                    </v-list-item-content>
+                  </template>
+
+                  <v-container>
+                    <v-row>
+                      <v-col cols="4">
+                        Coming Soon
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-list-group>
+              </v-list>
             </v-card>
           </v-container>
         </v-tab-item>
