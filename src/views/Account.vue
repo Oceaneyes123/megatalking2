@@ -16,7 +16,8 @@
           >{{ tab }}</v-tab
         >
         <v-tab-item>
-          <v-container fluid style="max-width: 1000px; margin-top: 90px">
+          <v-container fluid style="max-width: 1000px;">
+            <div class="my-5 font-weight-bold h5 nanum">수강내역</div>
             <v-card
               depressed
               class="mx-auto rounded-xl"
@@ -208,7 +209,8 @@
           </v-container>
         </v-tab-item>
         <v-tab-item>
-          <v-container style="max-width: 1000px; margin-top: 90px">
+          <v-container style="max-width: 1000px">
+            <div class="my-5 font-weight-bold h5 nanum">적립금</div>
             <v-card
               depressed
               class="mx-auto rounded-xl"
@@ -249,7 +251,8 @@
           </v-container>
         </v-tab-item>
         <v-tab-item>
-          <v-container style="max-width: 1000px; margin-top: 90px">
+          <v-container style="max-width: 1000px">
+            <div class="my-5 font-weight-bold h5 nanum">할인쿠폰</div>
             <v-card
               depressed
               class="mx-auto rounded-xl"
@@ -304,7 +307,7 @@
           </v-container>
         </v-tab-item>
         <v-tab-item>
-          <v-container style="max-width: 1000px; margin-top: 90px">
+          <v-container style="max-width: 1000px" class="pt-10">
             <v-form ref="modifyForm">
               <v-card
                 depressed
