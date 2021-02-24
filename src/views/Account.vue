@@ -16,7 +16,7 @@
           >{{ tab }}</v-tab
         >
         <v-tab-item>
-          <v-container fluid style="max-width: 1000px;">
+          <v-container fluid class="px-0" style="max-width: 1000px;">
             <div class="my-5 font-weight-bold h5 nanum">수강내역</div>
             <v-card
               depressed
@@ -155,8 +155,8 @@
                   </template>
 
                   <v-container>
-                    <v-row>
-                      <v-col cols="4">
+                    <v-row justify="center">
+                      <v-col cols="3">
                         <v-btn
                           color="blue"
                           block
@@ -167,7 +167,7 @@
                           영수증
                         </v-btn>
                       </v-col>
-                      <v-col cols="4">
+                      <v-col cols="3">
                         <v-btn
                           color="blue"
                           block
