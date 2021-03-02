@@ -105,9 +105,11 @@ export default new Vuex.Store({
     },
     async isLogin({ state }) {
       //토큰 가져오기
-      // let token = localStorage.getItem("access-token");
       let token = VueCookie.get("access-token");
-
+      if (typeof token == undefined) {
+        VueCookie.delete("access-token");
+        token = null;
+      }
       //토큰이 있다면 아래 로스 실행
       if (token) {
         //console.log(token, commit, state);
@@ -119,7 +121,7 @@ export default new Vuex.Store({
         await axios
           .get("//phone.megatalking.com/origin/api/member.php")
           .then(rs => {
-            console.log(rs);
+            // console.log(rs);
             if (rs.status === 200) {
               //code
             }
