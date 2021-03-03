@@ -2324,7 +2324,7 @@ export default {
       console.log(this.enrollmentData);
       console.log(this.enrollmentDataForApi);
       this.overlay = true;
-      const token = this.$store.state.loginToken;
+      const token = this.$cookie.get("access-token");
       axios.defaults.headers.common["Authorization"] = token;
       await axios
         .post(

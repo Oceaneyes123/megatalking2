@@ -253,7 +253,7 @@
             <v-container fluid class="px-0 pb-15 mb-15 mt-2">
               <!-- Book -->
               <v-img
-                @click="$router.push('/material')"
+                @click="openClassBook()"
                 class="rounded-xl"
                 data-aos="fade-up"
                 :src="selectedClassImg"
@@ -711,6 +711,14 @@ export default {
     });
   },
   methods: {
+    openClassBook() {
+      if (this.showClass.length !== 0) {
+        let bookLink = this.showClass.book_link;
+        window.open(bookLink, "_blank");
+      } else {
+        this.$router.push("/material");
+      }
+    },
     openRecoding(classObj) {
       let tel = classObj.aTel + classObj.bTel + classObj.cTel;
       let hp = classObj.aHp + classObj.bHp + classObj.cHp;
