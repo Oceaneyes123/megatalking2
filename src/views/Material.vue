@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid class="py-0 px-0">
+    <v-container fluid class="py-0 px-0 mt-md-2">
       <v-card
         class="rounded-xl mx-auto"
         elevation="7"

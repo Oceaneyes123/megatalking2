@@ -53,6 +53,7 @@ export default new Vuex.Store({
     loginProcess(state, { token }) {
       VueCookie.set("access-token", token, 1);
       // localStorage.setItem("access-token", token);
+      state.loginProcess = token;
       state.isLogin = true;
       state.loginErr = false;
     },
@@ -67,6 +68,7 @@ export default new Vuex.Store({
       }
     },
     logoutProcess(state) {
+      state.loginToken = null;
       state.isLogin = false;
       state.userInfo = {};
       VueCookie.delete("access-token");
@@ -105,9 +107,11 @@ export default new Vuex.Store({
     },
     async isLogin({ state }) {
       //토큰 가져오기
-      // let token = localStorage.getItem("access-token");
       let token = VueCookie.get("access-token");
-
+      if (typeof token == undefined) {
+        VueCookie.delete("access-token");
+        token = null;
+      }
       //토큰이 있다면 아래 로스 실행
       if (token) {
         //console.log(token, commit, state);
@@ -119,17 +123,22 @@ export default new Vuex.Store({
         await axios
           .get("//phone.megatalking.com/origin/api/member.php")
           .then(rs => {
-            console.log(rs);
+            // console.log(rs);
             if (rs.status === 200) {
               //code
+              console.log("hi", rs);
             }
           })
           .catch(err => {
-            if (err.response) {
-              //code
+            if (err.response.status) {
+              state.loginToken = null;
+              state.isLogin = false;
+              state.loginErr = false;
+              VueCookie.delete("access-token");
             }
           });
       } else {
+        state.loginToken = null;
         state.isLogin = false;
         state.loginErr = false;
       }

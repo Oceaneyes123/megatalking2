@@ -292,10 +292,10 @@ export default {
       //이메일 유무 검증
       var mailRules = this.signupIdRulesTemp.slice();
       mailRules.push(false || "검증 중 입니다.");
-      this.verify_email_status = "loading";
       this.$set(this.$data, "signupIdRules", mailRules);
-      await this.timeout(2000);
       if (this.signupId.length != 0) {
+        this.verify_email_status = "loading";
+        await this.timeout(2000);
         await axios
           .get("//phone.megatalking.com/origin/api/signup.php", {
             params: {
@@ -389,6 +389,8 @@ export default {
           eventAgreement: this.signupEa
         };
         this.$store.dispatch("signup", params);
+        this.verify_email_status = false;
+        this.$refs.signupform.reset();
       }
     }
   }

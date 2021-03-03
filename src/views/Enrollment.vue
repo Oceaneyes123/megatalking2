@@ -1,4 +1,4 @@
-<template>
+////this.setOffer()<template>
   <v-app style="background-color: #00000000">
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="64"></v-progress-circular>
@@ -77,7 +77,7 @@
                           >
                             <v-icon
                               :style="
-                                !isPhone ? 'color:#2564c;' : 'color:#808080'
+                                !isPhone ? 'color:#2564cb;' : 'color:#808080'
                               "
                               class="mr-2"
                               style="font-size: 19px"
@@ -838,7 +838,7 @@
                 <v-col class="font-weight-bold" cols="3">수강종류</v-col>
                 <v-col class="text-right subtitle-2"
                   >{{
-                    enrollmentData.type == "phone" ? "전화영어" : "화상영어"
+                    enrollmentData.type == "Phone" ? "전화영어" : "화상영어"
                   }}
                   ({{ enrollmentData.duration }})</v-col
                 >
@@ -1026,7 +1026,7 @@ export default {
       hiddenDurations: [],
       confirmDialog: false,
       requiredField: false,
-      tab: 1,
+      tab: 0,
       isPhone: true,
       classType: "Phone",
       overlay: false,
@@ -1041,7 +1041,7 @@ export default {
       selected_schedule_hour: "",
       //this is temporary
       time_hour: 6,
-      //
+      orderId: null,
       offerSummary: [],
       bookSummary: "",
       frequencySummary: "",
@@ -1074,8 +1074,8 @@ export default {
       schedule_available_hours: {},
       selected_hour_available_times: [],
       onRequest: false,
-      frequencySelected: "주3회",
-      minuteSelected: "하루 20분",
+      frequencySelected: "주2회",
+      minuteSelected: "하루 10분",
       daySelected: -1,
       durationSelected: "1년",
       bookSelected: -1,
@@ -1559,7 +1559,7 @@ export default {
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
-    this.setOffer();
+    //this.setOffer();
   },
   beforeMount() {
     window.addEventListener("scroll", this.move);
@@ -1608,7 +1608,7 @@ export default {
       }
     },
     timeSelected() {
-      this.setOffer();
+      //this.setOffer();
     },
     classType() {
       this.hiddenDurations = [];
@@ -1640,7 +1640,7 @@ export default {
           }, 1);
         }
       }
-      this.setOffer();
+      //this.setOffer();
     },
     minuteSelected() {
       let minuteSelected, frequencySelected, durationSelected;
@@ -1662,7 +1662,7 @@ export default {
         }
         this.getHour(this.selectedHour, this.currentIndex);
       }
-      this.setOffer();
+      //this.setOffer();
     },
     frequencySelected() {
       this.setAllowedDays();
@@ -1702,7 +1702,7 @@ export default {
       if (minuteSelected && frequencySelected && durationSelected) {
         this.seeDays = true;
       }
-      this.setOffer();
+      //this.setOffer();
     },
     daySelected() {
       this.seeSchedules = true;
@@ -1711,7 +1711,7 @@ export default {
       }
       this.getHour(this.selectedHour, this.currentIndex);
       this.initializeSchedule = true;
-      this.setOffer();
+      //this.setOffer();
     },
     currentZone(newval) {
       if (newval === 0) {
@@ -1746,7 +1746,7 @@ export default {
     }
     this.timeList = [];
     this.setTime(6);
-    this.minuteSelected = this.durations[1];
+    this.minuteSelected = this.durations[0];
     this.seriesSelected = this.materials[this.materialSelected].series[0];
     if (this.classType === "Video") {
       this.hiddenDurations.push(this.durations[0]);
@@ -1773,7 +1773,7 @@ export default {
     },
     enrollmentData() {
       return {
-        type: this.isPhone ? "phone" : "video",
+        type: this.isPhone ? "Phone" : "Video",
         duration: this.minuteSelected,
         daysOfWeek: this.frequencySelected,
         period: this.durationSelected,
@@ -1783,6 +1783,64 @@ export default {
         startTime: this.time_hour + ":" + (this.timeSelected - 1) + "0",
         payMethod: this.methodSelected,
         timeZone: this.currentZone
+      };
+    },
+    enrollmentDataForApi() {
+      let period; //기간 가져오기위한 변수
+      let arrHm = this.enrollmentData.startTime.split(":"); //시간 분 나누기
+      switch (this.durationSelected) {
+        case "1개월":
+          period = 1;
+          break;
+        case "3개월":
+          period = 3;
+          break;
+        case "6개월":
+          period = 6;
+          break;
+        case "1년":
+          period = 12;
+          break;
+        default:
+          period = 0;
+      }
+
+      let nDate, nowY, nowM, tempY, tempM, tempD, arrMd, startDay;
+      //오늘이 12월이라면 1월달 수업때 시작 Year 올리기
+      nDate = new Date();
+      nowY = nDate.getFullYear();
+      nowM = nDate.getMonth() + 1;
+
+      //선택한 월/일 가져오기
+      arrMd = this.enrollmentData.startDay.split("/");
+      arrMd[1] = arrMd[1].replace(/[^0-9]/g, ""); //숫자만 가져오기
+
+      if (nowM == 12 && arrMd[0] == 1) {
+        //현재가 12월인데 만약 1월을 선택했다면 다음년도로 설정
+        tempY = nowY + 1;
+        tempM = arrMd[0] < 10 ? "0" + arrMd[0] : arrMd[0];
+        tempD = arrMd[1] < 10 ? "0" + arrMd[1] : arrMd[1];
+        startDay = `${tempY}-${tempM}-${tempD}`;
+      } else {
+        tempY = nowY;
+        tempM = arrMd[0] < 10 ? "0" + arrMd[0] : arrMd[0];
+        tempD = arrMd[1] < 10 ? "0" + arrMd[1] : arrMd[1];
+        startDay = `${nowY}-${tempM}-${tempD}`;
+      }
+
+      return {
+        type: this.enrollmentData.type,
+        course: this.enrollmentData.course,
+        bookName: this.enrollmentData.bookName,
+        duration: this.minuteSelected.replace(/[^0-9]/g, ""),
+        period: period,
+        startDay: startDay,
+        daysOfWeek: this.enrollmentData.daysOfWeek.replace(/[^0-9]/g, ""),
+        hour: arrHm[0],
+        minute: arrHm[1],
+        timeZone: this.enrollmentData.currentZone == 1 ? "이코노미" : "프라임",
+        amount: `월:${this.getAmount4Month} / 할인금액:${this.getAmount.dcn} / 할인률:${this.getAmount.dcp} /총:${this.getAmount.value}`,
+        payMethod: this.methodSelected.replace(" ", "")
       };
     },
     getPayType() {
@@ -2168,120 +2226,36 @@ export default {
         this.getHour(17, 0);
       }
     },
-    enroll() {
-      const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
-      // Promise를 사용하는 경우
-      loadTossPayments(clientKey).then(tossPayments => {
-        tossPayments.requestPayment("카드", {
-          amount: 1000,
-          orderId: new Date().getTime(),
-          orderName: "토스 티셔츠 외 2건",
-          customerName: "박토스",
-          successUrl: window.location.origin + "/payment-success",
-          failUrl: window.location.origin + "/payment-fail"
+    async enroll() {
+      this.$store.dispatch("isLogin");
+      let isLogin = this.$store.state.isLogin;
+      console.log(isLogin, "hi");
+      if (!isLogin) {
+        console.log(bus);
+        bus.$emit("openAuth", true);
+      } else if (this.methodSelected == "카드 결제") {
+        await this.enrollStudent();
+        // Promise를 사용하는 경우
+        const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
+        console.log(loadTossPayments, clientKey);
+        console.log(this.orderId);
+        loadTossPayments(clientKey).then(tossPayments => {
+          tossPayments.requestPayment("카드", {
+            amount: 1000,
+            orderId: this.orderId,
+            orderName: "전화영어 주3회 10분 1개월",
+            customerName: "박토스",
+            successUrl: window.location.origin + "/payment-success",
+            failUrl: window.location.origin + "/payment-fail"
+          });
+          // tossPayments.requestBillingAuth("카드", {
+          //   customerKey: "IUb-mOQLBidj80jh71a60",
+          //   successUrl: window.location.origin + "/payment-success",
+          //   failUrl: window.location.origin + "/payment-fail",
+          // });
         });
-
-        // tossPayments.requestBillingAuth("카드", {
-        //   customerKey: "IUb-mOQLBidj80jh71a60",
-        //   successUrl: window.location.origin + "/payment-success",
-        //   failUrl: window.location.origin + "/payment-fail",
-        // });
-
-        // tossPayments.requestBillingAuth("카드", {
-        //   customerKey: "IUb-mOQLBidj80jh71a60",
-        //   successUrl: window.location.origin + "/payment-success",
-        //   failUrl: window.location.origin + "/payment-fail"
-        // });
-      });
-
-      const minuteSelected = this.minuteSelected;
-      const frequencySelected = this.frequencySelected;
-      const daySelected = this.daySelected;
-      const durationSelected = this.durationSelected;
-      const courseSelected = this.materials[this.materialSelected].course;
-      const seriesSelected = this.seriesSelected;
-      const timeSelected = this.timeSelected;
-      const typeSelected = this.classType;
-      if (
-        typeSelected &&
-        minuteSelected !== -1 &&
-        frequencySelected !== -1 &&
-        daySelected !== -1 &&
-        durationSelected !== -1 &&
-        courseSelected &&
-        seriesSelected !== -1 &&
-        timeSelected !== -1 &&
-        this.offerSummary["total_price"]
-      ) {
-        // const duration = parseInt(minuteSelected.replace(/\D/g,''))
-        // const applicable_days = parseInt(frequencySelected.replace(/\D/g,'')) === 2 ? '["","T","","TH",""]' : parseInt(this.frequencySelected.replace(/\D/g,'')) === 3 ? '["M","","W","","F"]' : parseInt(this.frequencySelected.replace(/\D/g,'')) === 5 ? '["M","T","W","TH","F"]' : ''
-        // const days = parseInt(this.frequencySelected.replace(/\D/g,''))
-        let splitTime = this.timeSelected.split(":");
-        let splitDay = this.daySelected.split("/");
-        let months =
-          parseInt(this.durationSelected) === 4
-            ? 1
-            : parseInt(this.durationSelected) === 12
-            ? 3
-            : parseInt(this.durationSelected) === 1
-            ? 12
-            : 6;
-        let start_class_format = moment({
-          day: parseInt(splitDay[1]) + 1,
-          month: splitDay[0] - 1
-        }).format("YYYY-MM-DD");
-        let end_class_format = moment(start_class_format, "YYYY-MM-DD")
-          .add(parseInt(months), "months")
-          .format("YYYY-MM-DD");
-        const start_class = moment(start_class_format).unix();
-        const end_class = moment(end_class_format).unix();
-        const hour = splitTime[0];
-        const minute = splitTime[1];
-        const duration = parseInt(this.minuteSelected.replace(/\D/g, ""));
-        const applicable_days =
-          parseInt(this.frequencySelected.replace(/\D/g, "")) === 2
-            ? '["","T","","TH",""]'
-            : parseInt(this.frequencySelected.replace(/\D/g, "")) === 3
-            ? '["M","","W","","F"]'
-            : parseInt(this.frequencySelected.replace(/\D/g, "")) === 5
-            ? '["M","T","W","TH","F"]'
-            : "";
-        const period = months;
-        const days = parseInt(this.frequencySelected.replace(/\D/g, ""));
-        const link = seriesSelected.link;
-        const title = seriesSelected.text;
-        const type = seriesSelected.type;
-        const enrollment_payload = {
-          start_class: start_class,
-          end_class: end_class,
-          hour: hour,
-          minute: minute,
-          duration: duration,
-          applicable_days: applicable_days,
-          period: period,
-          days: days,
-          course: courseSelected,
-          link: link,
-          title: title,
-          type: type,
-          class_type: typeSelected,
-          total_price: this.offerSummary["total_price"]
-        };
-        localStorage.setItem(
-          "enrollment_payload",
-          JSON.stringify(enrollment_payload)
-        );
-        if (!localStorage.getItem("access-token")) {
-          if (localStorage.getItem("socialAuth")) {
-            bus.$emit("open_auth_sign_up", true);
-            return;
-          }
-          bus.$emit("openAuth", true);
-          return;
-        }
+      } else if (this.methodSelected == "무통장 입금") {
         this.enrollStudent();
-      } else {
-        // this.requiredField = true;
       }
     },
     enroll_check_data() {
@@ -2346,48 +2320,32 @@ export default {
         });
       }
     },
-    enrollStudent() {
-      if (
-        localStorage.getItem("enrollment_payload") &&
-        localStorage.getItem("access-token")
-      ) {
-        this.overlay = true;
-        let payload = localStorage.getItem("enrollment_payload");
-        const token = localStorage.getItem("access-token");
-        const config = {
-          headers: {
-            Authorization: token
-          }
-        };
-        // const form = new FormData()
-        // form.append('payload', JSON.stringify(payload))
-        // form.append('token', token)
-        // axios.post('https://megatalking.co.kr/lms/Student/enrollStudent', form).then(res => {
-        payload = JSON.parse(payload);
-        axios
-          .post(
-            "//phone.megatalking.com/origin/api/enrollment.php",
-            payload,
-            config
-          )
-          .then(res => {
-            console.log(res);
+    async enrollStudent() {
+      console.log(this.enrollmentData);
+      console.log(this.enrollmentDataForApi);
+      this.overlay = true;
+      const token = this.$cookie.get("access-token");
+      axios.defaults.headers.common["Authorization"] = token;
+      await axios
+        .post(
+          "//phone.megatalking.com/origin/api/enrollment.php",
+          this.enrollmentDataForApi
+        )
+        .then(rs => {
+          console.log(rs);
+          this.overlay = false;
+          if (rs.data.result === true) {
             this.overlay = false;
-            if (res.data.result === true) {
-              localStorage.removeItem("enrollment_payload");
-              localStorage.setItem(
-                "enrollment_success_text",
-                `Congratulations you successfully enrolled for a class, please wait while we choose the best tutor for you.`
-              );
-              this.overlay = false;
+            this.orderId = rs.data.s_id + "_" + new Date().getTime();
+            if (this.enrollmentDataForApi.payMethod == "무통장입금") {
               this.$router.push("account");
             }
-          })
-          .catch(err => {
-            this.overlay = false;
-            console.log(err);
-          });
-      }
+          }
+        })
+        .catch(err => {
+          this.overlay = false;
+          console.log(err);
+        });
     }
   }
 };

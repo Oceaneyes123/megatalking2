@@ -46,7 +46,7 @@
           style="color: #a3a3a3"
         >
           <div class="mr-8 subheading">
-            {{ isLogin ? "Hi sir" : "" }}
+            {{ isLogin ? "Hi friend!" : "" }}
           </div>
           <div class="mr-8 subheading" @click="attachedLink('account')">
             회원정보
@@ -151,12 +151,12 @@ export default {
         {
           text: "수강후기",
           link: "board",
-          show: false
+          show: true
         },
         {
           text: "이벤트",
           link: "event",
-          show: false
+          show: true
         }
       ]
     };
