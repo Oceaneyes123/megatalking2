@@ -40,7 +40,7 @@ export default new Vuex.Store({
         state.currentImage = state.images.main;
       } else if (payload == "level-test" || payload == "payment-success") {
         state.currentImage = state.images.leveltest;
-      } else if (payload == "material") {
+      } else if (payload == "material" || payload == "material2") {
         state.showNav = false;
       } else {
         state.currentImage = state.images[payload];
@@ -53,7 +53,7 @@ export default new Vuex.Store({
     loginProcess(state, { token }) {
       VueCookie.set("access-token", token, 1);
       // localStorage.setItem("access-token", token);
-      state.loginProcess = token;
+      state.loginToken = token;
       state.isLogin = true;
       state.loginErr = false;
     },
