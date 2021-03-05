@@ -75,7 +75,8 @@ export default {
         },
         {
           key: "name",
-          text: "이름순"
+          text: "이름순",
+          align: "right"
         }
       ],
 

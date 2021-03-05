@@ -22,9 +22,7 @@
           <v-container class="px-md-10 pt-4 pt-md-10 text-left">
             <v-row>
               <v-col>
-                <div class="ml-3 mb-3 h5">
-                  나의 스케줄
-                </div>
+                <div class="ml-3 mb-3 h5">나의 스케줄</div>
                 <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
                     v-model="date2"
@@ -93,7 +91,7 @@
                               <v-btn
                                 text
                                 class="white--text pa-0 my-0"
-                                style="font-size:16px"
+                                style="font-size: 16px"
                                 small
                                 block
                                 @click="openHoldDialog(classes)"
@@ -104,7 +102,7 @@
                               <v-btn
                                 text
                                 class="white--text pa-0 my-0"
-                                style="font-size:16px"
+                                style="font-size: 16px"
                                 small
                                 block
                                 v-else-if="
@@ -117,7 +115,7 @@
                               <v-btn
                                 text
                                 class="white--text pa-0 my-0"
-                                style="font-size:16px"
+                                style="font-size: 16px"
                                 small
                                 block
                                 v-else
@@ -130,7 +128,7 @@
                             <div>
                               <v-btn
                                 class="white--text pa-0 my-0"
-                                style="font-size:16px"
+                                style="font-size: 16px"
                                 text
                                 small
                                 block
@@ -141,7 +139,7 @@
                               </v-btn>
                               <v-btn
                                 class="white--text pa-0 my-0"
-                                style="font-size:16px"
+                                style="font-size: 16px"
                                 text
                                 small
                                 block
@@ -220,7 +218,7 @@
                           <v-btn
                             text
                             class="white--text"
-                            style="font-size:16px"
+                            style="font-size: 16px"
                             block
                           >
                             수강 신청 하기
@@ -233,7 +231,7 @@
               </v-col>
             </v-row>
 
-            <v-row no-gutters>
+            <!-- <v-row no-gutters>
               <v-col cols="12" md="5">
                 <div class="h5 gmarket ml-3" data-aos="fade-right">
                   수강 종류
@@ -248,10 +246,69 @@
                   <div>{{ selectedClassInfo }}</div>
                 </v-card>
               </v-col>
+            </v-row> -->
+
+            <v-row no-gutters>
+              <v-col cols="12" md="5">
+                <div class="h5 gmarket ml-3" data-aos="fade-right">
+                  수강 종류
+                </div>
+              </v-col>
             </v-row>
 
             <v-container fluid class="px-0 pb-15 mb-15 mt-2">
+              <v-row v-if="isBook">
+                <v-col cols="12" sm="6">
+                  <v-card
+                    class="pa-5 rounded-xl"
+                    height="100%"
+                    dark
+                    color="#df7a30"
+                  >
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12" sm="6">2021.02.23</v-col>
+                        <v-col cols="12" sm="6">6:00+10</v-col>
+                        <v-col cols="12" sm="6">dave</v-col>
+                        <v-col cols="12" sm="6">Phone Class</v-col>
+                        <v-col class="text-center h5 nanum font-weight-bold">
+                          {{ selectedClassTitle }}</v-col
+                        >
+                      </v-row>
+                    </v-container>
+                  </v-card>
+                </v-col>
+                <v-col cols="12" sm="6">
+                  <v-img
+                    @click="$router.push('/material')"
+                    class="rounded-xl"
+                    data-aos="fade-up"
+                    :src="selectedClassImg"
+                    width="100%"
+                    height="auto"
+                    v-if="isBook"
+                  >
+                    <v-card height="100%" color="#000000AD">
+                      <v-container>
+                        <div
+                          :class="isMobile ? '' : 'h4'"
+                          class="font-weight-black text-right white--text gmarket mr-5"
+                          style="
+                            position: absolute;
+                            bottom: 20px;
+                            right: 20px;
+                            cursor: pointer;
+                          "
+                        >
+                          Next >
+                        </div>
+                      </v-container>
+                    </v-card>
+                  </v-img>
+                </v-col>
+              </v-row>
               <!-- Book -->
+
               <v-img
                 @click="openClassBook()"
                 class="rounded-xl"
@@ -279,6 +336,7 @@
                   </v-container>
                 </v-card>
               </v-img>
+              -->
 
               <!-- Video -->
               <v-card
@@ -669,6 +727,7 @@ export default {
         cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
         deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
       }
+      console.log(deVal);
       return deVal;
     },
     selectedClassTitle() {
@@ -765,6 +824,7 @@ export default {
       classObj.day = day;
       this.$set(this.$data, "showClass", classObj);
       this.selectedClassImg = randomItem;
+      console.log(this.showClass);
     },
     getClassColor(classObj) {
       //console.log(classObj);

@@ -228,11 +228,11 @@
 
             <v-slide-group
               v-model="bookSlide1"
-              v-if="slide == 1"
+              v-if="slide == 1 || slide == 7 || slide == 8"
               :show-arrows="!isMobile"
               class="mb-3"
             >
-              <v-slide-item v-for="(book, i) in book_list.books_2" :key="i">
+              <v-slide-item v-for="(book, i) in currentBook" :key="i">
                 <v-card
                   flat
                   color="#fafafa"
@@ -271,7 +271,13 @@
             <v-carousel
               cycle
               height="100%"
-              v-if="slide == 2"
+              v-if="
+                slide == 2 ||
+                  slide == 3 ||
+                  slide == 4 ||
+                  slide == 5 ||
+                  slide == 6
+              "
               hide-delimiter-background
               show-arrows-on-hover
               hide-delimiters
@@ -280,7 +286,7 @@
               <v-carousel-item
                 eager
                 height="750"
-                v-for="(book, i) in book_list.books_3"
+                v-for="(book, i) in currentBook"
                 :key="i"
               >
                 <v-card
@@ -370,7 +376,7 @@
               </v-carousel-item>
             </v-carousel>
 
-            <v-carousel
+            <!--    <v-carousel
               cycle
               height="100%"
               v-if="slide == 3"
@@ -864,7 +870,7 @@
                   >
                 </v-card>
               </v-slide-item>
-            </v-slide-group>
+            </v-slide-group> -->
 
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
@@ -1503,6 +1509,8 @@ export default {
       bookSlide6: 0,
       bookSlide7: 0,
       book_list: [],
+
+      currentBook: "",
       category: "유튜브 회화과정",
       screenWidth: "",
       isMobile: false,
@@ -1546,6 +1554,7 @@ export default {
     AOS.init();
     this.book_list = getBookList();
     this.sliderTabs = getTabs().sliderTabs;
+    this.currentBook = this.book_list["books_1"];
   },
 
   methods: {
@@ -1557,7 +1566,15 @@ export default {
     selectCategory(event, current) {
       this.slide = current;
       this.category = event.target.innerText;
-      console.log(this.slide);
+
+      console.log(this.book_list.length);
+
+      for (var i = 0; i < 9; i++) {
+        if (i == this.slide) {
+          this.currentBook = this.book_list[`books_${i + 1}`];
+          console.log(typeof this.currentBook);
+        }
+      }
     },
 
     changeCarousel(books, event) {
