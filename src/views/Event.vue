@@ -46,6 +46,7 @@
                     class="mx-auto"
                     max-width="300"
                     type="card"
+                    boilerplate
                   ></v-skeleton-loader>
                 </v-col>
               </v-row>
