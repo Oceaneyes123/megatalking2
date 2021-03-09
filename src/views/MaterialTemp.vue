@@ -2,27 +2,14 @@
   <v-app>
     <v-container fluid class="py-0 px-0 mt-md-2">
       <v-card
-        class="rounded-xl mx-auto d-flex flex-column"
+        class="mx-auto d-flex flex-column"
         elevation="7"
         width="100%"
         max-width="700px"
-        min-height="700px"
+        min-height="800px"
       >
         <v-container class="px-0 py-0">
-          <v-card
-            v-if="true"
-            class="d-flex justify-center"
-            style="background:#438fff"
-            min-height="700px"
-          >
-            <div class="white--text h3 my-auto">
-              <p class="text-center">Megatalking</p>
-              <p class="text-center">Material</p>
-              <p class="text-center">
-                <v-btn color="warning" x-large>Open</v-btn>
-              </p>
-            </div>
-          </v-card>
+          <ContentCover v-if="step" @openBook="openBook()" />
           <Tabs v-else />
         </v-container>
         <FooterMenuBar class="mt-auto" />
@@ -36,6 +23,7 @@
 <script>
 import axios from "axios";
 import Tabs from "@/components/material/Tabs";
+import ContentCover from "@/components/material/ContentCover";
 import FooterMenuBar from "@/components/material/FooterMenuBar";
 export default {
   data() {
@@ -46,12 +34,14 @@ export default {
       window1: 0,
       window3: 0,
       window4: 0,
-      connection: null
+      connection: null,
+      step: true
     };
   },
   components: {
     Tabs,
-    FooterMenuBar
+    FooterMenuBar,
+    ContentCover
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
@@ -84,6 +74,9 @@ export default {
   },
 
   methods: {
+    openBook() {
+      this.step = !this.step;
+    },
     proceed() {
       console.log(this.status, "test");
       this.tabs = 1;

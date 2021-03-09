@@ -1,42 +1,32 @@
 <template lang="html">
-  <v-card color="#DCDCDC" tile>
-    <v-container>
-      <v-row justify="space-between" class="px-5">
-        <div class="d-flex flex-column mx-auto">
-          <v-icon color="white" x-large @click="$router.push('/mypage')"
-            >far fa-user</v-icon
-          >
-          <div class="mt-3 text-center">마이페이지</div>
-        </div>
-        <v-divider vertical></v-divider>
-        <div class="d-flex flex-column mx-auto">
-          <v-icon color="white" x-large @click="$router.push('/board')"
-            >far fa-bell</v-icon
-          >
-          <div class="mt-3 text-center nanum">알림</div>
-        </div>
+  <v-bottom-navigation grow background-color="" :app="isMobile">
+    <v-btn @click="$router.push('/mypage')">
+      <span>마이페이지</span>
 
-        <v-divider vertical></v-divider>
-        <div class="d-flex flex-column mx-auto">
-          <v-icon color="white" x-large @click="$router.push('/material')"
-            >fas fa-book-open</v-icon
-          >
-          <div class="mt-3 text-center">교재</div>
-        </div>
-        <v-divider vertical></v-divider>
-        <div class="d-flex flex-column mx-auto">
-          <v-icon color="white" x-large @click="$router.push('/account')"
-            >fas fa-ticket-alt</v-icon
-          >
-          <div class="mt-3 text-center">수강권 내역</div>
-        </div>
-      </v-row>
-    </v-container>
-  </v-card>
+      <v-icon>mdi-calendar-clock</v-icon>
+    </v-btn>
+
+    <v-btn @click="$router.push('/event')">
+      <span>이벤트</span>
+
+      <v-icon>mdi-bulletin-board</v-icon>
+    </v-btn>
+
+    <v-btn @click="$router.push('/account')">
+      <span>수강내역</span>
+
+      <v-icon>mdi-history</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  computed: {
+    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"])
+  }
+};
 </script>
 
 <style lang="css" scoped></style>
