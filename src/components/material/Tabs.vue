@@ -47,11 +47,7 @@
                   depressed
                   class="rounded-pill white--text"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8fa1fe,
-                      #4993e8
-                    );
+                    background: linear-gradient( to right,  #8fa1fe, #4993e8 );
                   "
                   color="#667fe3"
                   >KR</v-btn
@@ -112,11 +108,7 @@
                     <v-btn
                       @click="window1 = window1 + 1"
                       style="
-                        background: linear-gradient(
-                          to right,
-                          #8fa1fe,
-                          #4993e8
-                        );
+                      background: linear-gradient( to right,  #8fa1fe, #4993e8 );
                       "
                       color="#667fe3"
                       class="rounded-lg white--text mb-5 rounded-pill"
@@ -198,11 +190,7 @@
                     <v-btn
                       @click="window1 = window1 + 1"
                       style="
-                        background: linear-gradient(
-                          to right,
-                          #8fa1fe,
-                          #4993e8
-                        );
+                        background: linear-gradient(to right,#8fa1fe,#4993e8);
                       "
                       color="#667fe3"
                       class="rounded-lg white--text mb-5 rounded-pill"
@@ -270,11 +258,7 @@
                 <v-btn
                   @click="window3 = 1"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8fa1fe,
-                      #4993e8
-                    );
+                    background: linear-gradient(to right,#8fa1fe,#4993e8);
                   "
                   class="mx-auto rounded-lg white--text mb-5"
                   >Next</v-btn
@@ -317,11 +301,7 @@
                   <v-btn
                     @click="window3 = window3 - 1"
                     style="
-                      background: linear-gradient(
-                        to right,
-                        #8fa1fe,
-                        #4993e8
-                      );
+                      background: linear-gradient(to right,#8fa1fe,#4993e8);
                     "
                     class="mr-3 rounded-lg white--text mb-5"
                     >Previous</v-btn
@@ -330,11 +310,7 @@
                   <v-btn
                     @click="window3 = window3 + 1"
                     style="
-                      background: linear-gradient(
-                        to right,
-                        #8fa1fe,
-                        #4993e8
-                      );
+                      background: linear-gradient(to right,#8fa1fe,#4993e8);
                     "
                     class="rounded-lg white--text mb-5"
                     >Next</v-btn
@@ -365,11 +341,7 @@
                   <v-btn
                     @click="window3 = window3 - 1"
                     style="
-                      background: linear-gradient(
-                        to right,
-                        #8fa1fe,
-                        #4993e8
-                      );
+                      background: linear-gradient(to right,#8fa1fe,#4993e8);
                     "
                     class="mr-3 rounded-lg white--text mb-5"
                     >Previous</v-btn
@@ -378,11 +350,7 @@
                   <v-btn
                     @click="tabs = 3"
                     style="
-                      background: linear-gradient(
-                        to right,
-                        #8fa1fe,
-                        #4993e8
-                      );
+                      background: linear-gradient(to right,#8fa1fe,#4993e8);
                     "
                     class="rounded-lg white--text mb-5"
                     >Next</v-btn
@@ -450,11 +418,7 @@
               <v-btn
                 @click="window4 = window4 + 1"
                 style="
-                  background: linear-gradient(
-                    to right,
-                    #8fa1fe,
-                    #4993e8
-                  );
+                  background: linear-gradient(to right,#8fa1fe,#4993e8);
                 "
                 class="mx-auto rounded-lg white--text mb-5"
                 >Next</v-btn
@@ -557,11 +521,7 @@
                 <v-btn
                   @click="tabs = 4"
                   style="
-                    background: linear-gradient(
-                      to right,
-                      #8fa1fe,
-                      #4993e8
-                    );
+                    background: linear-gradient(to right,#8fa1fe,#4993e8);
                   "
                   class="mx-auto rounded-lg white--text mb-5"
                   >Next</v-btn

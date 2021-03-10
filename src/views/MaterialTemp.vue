@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid class="py-0 px-0 mt-md-2">
+    <v-container fluid class="py-0 px-0 py-md-5" style="background:#f2f2f2">
       <v-card
         class="mx-auto d-flex flex-column"
         elevation="7"
@@ -9,7 +9,8 @@
         min-height="800px"
       >
         <v-container class="px-0 py-0">
-          <ContentCover v-if="step" @openBook="openBook()" />
+          <ContentCover v-if="step == 0" @nextBook="nextBook(1)" />
+          <ContentList v-else-if="step == 1" @nextBook="nextBook(2)" />
           <Tabs v-else />
         </v-container>
         <FooterMenuBar class="mt-auto" />
@@ -24,6 +25,7 @@
 import axios from "axios";
 import Tabs from "@/components/material/Tabs";
 import ContentCover from "@/components/material/ContentCover";
+import ContentList from "@/components/material/ContentList";
 import FooterMenuBar from "@/components/material/FooterMenuBar";
 export default {
   data() {
@@ -35,13 +37,14 @@ export default {
       window3: 0,
       window4: 0,
       connection: null,
-      step: true
+      step: 0
     };
   },
   components: {
     Tabs,
     FooterMenuBar,
-    ContentCover
+    ContentCover,
+    ContentList
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
@@ -74,8 +77,8 @@ export default {
   },
 
   methods: {
-    openBook() {
-      this.step = !this.step;
+    nextBook(step) {
+      this.step = step;
     },
     proceed() {
       console.log(this.status, "test");

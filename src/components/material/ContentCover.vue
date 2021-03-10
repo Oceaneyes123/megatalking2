@@ -8,13 +8,7 @@
       <p class="text-center">Megatalking</p>
       <p class="text-center">Material</p>
       <p class="text-center">
-        <v-btn
-          color="success"
-          class="white--text"
-          x-large
-          rounded
-          @click="openBook()"
-        >
+        <v-btn x-large rounded @click="nextBook()">
           Open
           <v-icon right dark>
             mdi-book-open-outline
@@ -28,8 +22,8 @@
 <script>
 export default {
   methods: {
-    openBook() {
-      this.$emit("openBook");
+    nextBook() {
+      this.$emit("nextBook");
     }
   }
 };

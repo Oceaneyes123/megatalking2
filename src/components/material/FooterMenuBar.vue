@@ -2,19 +2,21 @@
   <v-bottom-navigation grow background-color="" :app="isMobile">
     <v-btn @click="$router.push('/mypage')">
       <span>마이페이지</span>
-
       <v-icon>mdi-calendar-clock</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <span>교재목차</span>
+      <v-icon>mdi-format-list-bulleted</v-icon>
     </v-btn>
 
     <v-btn @click="$router.push('/event')">
       <span>이벤트</span>
-
       <v-icon>mdi-bulletin-board</v-icon>
     </v-btn>
 
     <v-btn @click="$router.push('/account')">
       <span>수강내역</span>
-
       <v-icon>mdi-history</v-icon>
     </v-btn>
   </v-bottom-navigation>
