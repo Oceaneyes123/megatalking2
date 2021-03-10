@@ -1365,6 +1365,7 @@ import "aos/dist/aos.css";
 import { getBookList, getTabs } from "@/static-database/curriculum.js";
 import CurriculumCarousel from "@/components/CurriculumCarousel.vue";
 import CurriculumSliderGroup from "@/components/CurriculumSliderGroup.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -1416,11 +1417,8 @@ export default {
     };
   },
 
-  created() {
-    window.addEventListener("resize", this.onWindowResize);
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.onWindowResize);
+  computed: {
+    ...mapState(["screenWidth", "isMobile"])
   },
 
   mounted() {
@@ -1433,11 +1431,6 @@ export default {
   },
 
   methods: {
-    onWindowResize() {
-      this.screenWidth = screen.width;
-      this.isMobile = this.screenWidth <= 960 ? true : false;
-    },
-
     selectCategory(event, current) {
       this.slide = current;
       this.category = event.target.innerText;

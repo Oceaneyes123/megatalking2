@@ -164,37 +164,9 @@
               <div class="px-5 px-md-10 h6 font-weight-black text-left mb-5">
                 학생 정보
               </div>
-              <v-row class="align-center mx-4 mx-sm-10 mx-4 mb-10">
-                <v-col cols="12" sm="6" class="pb-0 pb-sm-3">
-                  <v-text-field
-                    color="primary"
-                    label="이름"
-                    dense
-                    outlined
-                    ref="name"
-                    v-model="name"
-                    :rules="[() => !!name || '필수 입력값입니다.']"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" class="pt-0 pt-sm-3">
-                  <v-text-field
-                    color="primary"
-                    label="연락처"
-                    dense
-                    outlined
-                    counter="13"
-                    maxlength="13"
-                    v-model="number"
-                    ref="number"
-                    :rules="[
-                      () => !!number || '필수 입력값입니다.',
-                      (v) => v.length <= 13 || '연락처는 13자리 입니다.',
-                    ]"
-                    required
-                  ></v-text-field>
-                </v-col>
-              </v-row>
+
+              <!-- STUDENT INFO -->
+              <LevelTestInfo ref="levelTestInfo"></LevelTestInfo>
 
               <div class="mx-10 mb-5 font-weight-black h6 text-left">
                 수업 진행속도
@@ -265,7 +237,7 @@
                           style="cursor: pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              unit.time == selectedTime[0],
+                              unit.time == selectedTime[0]
                           }"
                         >
                           <strike v-if="!unit.status">
@@ -305,7 +277,7 @@
                           style="cursor: pointer"
                           :class="{
                             'blue--text text--darken-3 font-weight-black':
-                              unit.time == selectedTime[1],
+                              unit.time == selectedTime[1]
                           }"
                         >
                           <strike v-if="!unit.status">
@@ -353,7 +325,7 @@
                     label="개인정보 수집 및 이용에 동의합니다."
                     v-model="ppCheck"
                     ref="ppCheck"
-                    :rules="[(v) => !!v || '필수 입력값입니다.']"
+                    :rules="[v => !!v || '필수 입력값입니다.']"
                     required
                   ></v-checkbox>
                 </v-col>
@@ -558,6 +530,7 @@ import { mapState } from "vuex";
 import EventAgreementDialog from "@/components/EventAgreementDialog";
 import PrivacyPolicyDialog from "@/components/PrivacyPolicyDialog";
 import LevelTestEvaluation from "@/components/LevelTestEvaluation";
+import LevelTestInfo from "@/components/LevelTestInfo";
 import axios from "axios";
 
 export default {
@@ -565,6 +538,7 @@ export default {
     EventAgreementDialog,
     PrivacyPolicyDialog,
     LevelTestEvaluation,
+    LevelTestInfo
   },
   data() {
     return {
@@ -591,39 +565,39 @@ export default {
       class_speeds: [
         "천천히 발음해주세요.",
         "보통 속도로 말해주세요.",
-        "빨리 말하셔도 괜찮아요.",
+        "빨리 말하셔도 괜찮아요."
       ],
       classEvaluation: [],
-      evaluationErr: {},
+      evaluationErr: {}
     };
   },
   computed: {
     ...mapState(["screenWidth", "isMobile", "loginToken"]),
     form() {
       return {
-        name: this.name,
-        number: this.number,
+        name: this.$refs.levelTestInfo.name,
+        number: this.$refs.levelTestInfo.number,
         speed: this.selectedSpeed,
         date: this.days[this.daySelected],
         time: this.selectedTime[this.daySelected],
         ppCheck: this.ppCheck,
-        eaCheck: this.eaCheck,
+        eaCheck: this.eaCheck
       };
-    },
+    }
   },
   created() {
     let headers = {
-      Authorization: this.loginToken,
+      Authorization: this.loginToken
     };
     //날짜 검색 기능
     axios
       .get("//phone.megatalking.com/origin/api/leveltest.php", {
         params: {
-          action: "getTimes",
+          action: "getTimes"
         },
-        headers,
+        headers
       })
-      .then((rs) => {
+      .then(rs => {
         this.dateTimes = rs.data.dates;
         this.days = Object.keys(this.dateTimes);
         //회원이라면 이름초기화
@@ -634,7 +608,7 @@ export default {
           this.number = `${member.aHp}-${member.bHp}-${member.cHp}`;
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log("error", err);
       });
   },
@@ -647,15 +621,6 @@ export default {
       this.ppCheck = this.allCheck;
       this.eaCheck = this.allCheck;
     },
-    number(val) {
-      this.number = val
-        .replace(/[^0-9]/g, "")
-        .replace(
-          /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
-          "$1-$2-$3"
-        )
-        .replace("--", "-");
-    },
     searchNumber(val) {
       this.searchNumber = val
         .replace(/[^0-9]/g, "")
@@ -664,7 +629,7 @@ export default {
           "$1-$2-$3"
         )
         .replace("--", "-");
-    },
+    }
   },
   methods: {
     selectTime(event, index) {
@@ -674,7 +639,7 @@ export default {
     resetForm() {},
     submit() {
       let noValidate = ["speed", "date", "time", "eaCheck"];
-      Object.keys(this.form).forEach((f) => {
+      Object.keys(this.form).forEach(f => {
         if ("time" == f && this.form[f].length == 0) this.snackbar = true;
 
         if (noValidate.indexOf(f) !== -1) return;
@@ -687,7 +652,7 @@ export default {
     },
     confirm() {
       const config = {
-        headers: { Authorization: this.loginToken },
+        headers: { Authorization: this.loginToken }
       };
       axios
         .post(
@@ -695,7 +660,7 @@ export default {
           this.form,
           config
         )
-        .then((rs) => {
+        .then(rs => {
           console.log(rs);
           if (rs.data.result) {
             //code
@@ -705,7 +670,7 @@ export default {
               content_name: "무료 레벨 테스트 등록",
               currency: "KRW",
               status: "",
-              value: "",
+              value: ""
             });
           } else {
             //code
@@ -713,7 +678,7 @@ export default {
             this.errorSnackbar = true;
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     },
@@ -726,10 +691,10 @@ export default {
           .get("//phone.megatalking.com/origin/api/leveltest.php", {
             params: {
               action: "getEval",
-              searchNumber: this.searchNumber,
-            },
+              searchNumber: this.searchNumber
+            }
           })
-          .then((res) => {
+          .then(res => {
             if (res.data) {
               const evaluation = res.data;
               this.$set(this.$data, "classEvaluation", evaluation);
@@ -743,13 +708,13 @@ export default {
                 "평가서를 찾을 수 없습니다. 전화번호를 다시 입력해주세요.";
             }
           })
-          .catch((err) => {
+          .catch(err => {
             this.evaluationErr =
               "평가서를 가져올수 없습니다. 관리자에게 문의하세요.";
             console.log(err);
           });
       }
-    },
-  },
+    }
+  }
 };
 </script>
