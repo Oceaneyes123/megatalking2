@@ -13,6 +13,16 @@
           <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
         </div>
       </v-card>
+      <v-card shaped max-width="400" class="mx-auto mt-5" color="white">
+        <v-card-title class="nanum">[전화영어] 주3회 20분 6개월</v-card-title>
+        <v-card-text>test</v-card-text>
+        <v-card-actions>
+          <v-btn color="deep-purple lighten-2" text class="ml-auto"
+            >hello</v-btn
+          >
+          <v-btn color="deep-purple lighten-2" text class="">world</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-container>
   </v-app>
 </template>

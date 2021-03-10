@@ -335,7 +335,8 @@
                     </div>
                   </v-container>
                 </v-card>
-              </v-img> -->
+              </v-img>
+              -->
 
               <!-- Video -->
               <v-card
