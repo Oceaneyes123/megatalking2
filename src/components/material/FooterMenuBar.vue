@@ -5,7 +5,7 @@
       <v-icon>mdi-calendar-clock</v-icon>
     </v-btn>
 
-    <v-btn>
+    <v-btn @click="openList()">
       <span>교재목차</span>
       <v-icon>mdi-format-list-bulleted</v-icon>
     </v-btn>
@@ -27,6 +27,11 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"])
+  },
+  methods: {
+    openList() {
+      this.$emit("openList");
+    }
   }
 };
 </script>

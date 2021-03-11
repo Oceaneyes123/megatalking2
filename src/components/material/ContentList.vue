@@ -1,15 +1,27 @@
 <template lang="html">
-  <v-card min-height="800px">
+  <v-card min-height="800px" class="pb-15 pb-md-5">
     <v-app-bar flat class="nanum">교재목차</v-app-bar>
+
+    <v-overlay :value="bookUnits.length == 0" absolute>
+      <v-progress-circular
+        indeterminate
+        color="purple"
+        size="64"
+      ></v-progress-circular>
+    </v-overlay>
     <v-list dense>
       <v-subheader>{{ bookTitle }}</v-subheader>
       <v-list-item-group v-model="selectedItem" color="primary">
-        <v-list-item v-for="(book, i) in books" :key="i" @click="nextBook()">
+        <v-list-item
+          v-for="(unit, i) in bookUnits"
+          :key="i"
+          @click="nextBook(unit.id)"
+        >
           <v-list-item-icon>
             <v-icon>mdi-file-document-outline</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="book.title"></v-list-item-title>
+            <v-list-item-title v-text="unit.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -19,15 +31,17 @@
 
 <script>
 import axios from "axios";
+import { bus } from "@/main";
 export default {
   data() {
     return {
       bookTitle: "",
-      books: []
+      bookUnits: []
     };
   },
   methods: {
-    nextBook() {
+    nextBook(unitId) {
+      bus.$emit("setUnitId", unitId);
       this.$emit("nextBook");
     }
   },
@@ -38,7 +52,7 @@ export default {
       )
       .then(rs => {
         this.bookTitle = rs.data[0].title;
-        this.books = rs.data[0].list_units;
+        this.bookUnits = rs.data[0].list_units;
         console.log(rs);
       })
       .catch(err => {

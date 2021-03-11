@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-container fluid class="py-0 px-0 py-md-5" style="background:#f2f2f2">
+  <v-app style="background:#f2f2f2">
+    <v-container fluid class="py-0 px-0 py-md-5">
       <v-card
         class="mx-auto d-flex flex-column"
         elevation="7"
@@ -11,9 +11,9 @@
         <v-container class="px-0 py-0">
           <ContentCover v-if="step == 0" @nextBook="nextBook(1)" />
           <ContentList v-else-if="step == 1" @nextBook="nextBook(2)" />
-          <Tabs v-else />
+          <Tabs v-else :unitId="unitId" />
         </v-container>
-        <FooterMenuBar class="mt-auto" />
+        <FooterMenuBar class="mt-auto" @openList="nextBook(1)" />
       </v-card>
     </v-container>
   </v-app>
@@ -22,20 +22,19 @@
 <style></style>
 
 <script>
-import axios from "axios";
 import Tabs from "@/components/material/Tabs";
 import ContentCover from "@/components/material/ContentCover";
 import ContentList from "@/components/material/ContentList";
 import FooterMenuBar from "@/components/material/FooterMenuBar";
+import { bus } from "@/main";
+
 export default {
   data() {
     return {
+      unitId: 1,
       screenWidth: "",
       isMobile: false,
       status: false,
-      window1: 0,
-      window3: 0,
-      window4: 0,
       connection: null,
       step: 0
     };
@@ -48,12 +47,6 @@ export default {
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
-    let url =
-      "http://178.128.213.14/content-utilities/api/students/videoandcontents/1";
-    axios
-      .get(url)
-      .then(response => console.log(response.data))
-      .catch(err => console.log(err));
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
@@ -62,6 +55,10 @@ export default {
   mounted() {
     this.screenWidth = screen.width;
     this.isMobile = this.screenWidth <= 960 ? true : false;
+
+    bus.$on("setUnitId", unitId => {
+      this.unitId = unitId;
+    });
 
     window.addEventListener("message", receiveMessage, false);
 
