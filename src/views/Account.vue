@@ -16,7 +16,7 @@
           >{{ tab }}</v-tab
         >
         <v-tab-item>
-          <v-container fluid class="px-0" style="max-width: 1000px;">
+          <v-container fluid class="px-0" style="max-width: 1000px">
             <div class="my-5 font-weight-bold h5 nanum">수강내역</div>
             <v-card
               depressed
@@ -261,9 +261,7 @@
                   <template v-slot:activator>
                     <v-list-item-content>
                       <v-list-item-title class="d-flex justify-space-between">
-                        <span class="font-weight-bold">
-                          TEST
-                        </span>
+                        <span class="font-weight-bold"> TEST </span>
                         <span
                           class="font-weight-bold blue--text"
                           :class="isMobile ? '' : 'h6'"
@@ -280,9 +278,7 @@
 
                   <v-container>
                     <v-row>
-                      <v-col cols="4">
-                        Coming Soon
-                      </v-col>
+                      <v-col cols="4"> Coming Soon </v-col>
                     </v-row>
                   </v-container>
                 </v-list-group>
@@ -357,9 +353,7 @@
                   <template v-slot:activator>
                     <v-list-item-content>
                       <v-list-item-title class="d-flex justify-space-between">
-                        <span class="font-weight-bold">
-                          TEST
-                        </span>
+                        <span class="font-weight-bold"> TEST </span>
                         <span
                           class="font-weight-bold blue--text"
                           :class="isMobile ? '' : 'h6'"
@@ -376,9 +370,7 @@
 
                   <v-container>
                     <v-row>
-                      <v-col cols="4">
-                        Coming Soon
-                      </v-col>
+                      <v-col cols="4"> Coming Soon </v-col>
                     </v-row>
                   </v-container>
                 </v-list-group>
@@ -544,9 +536,9 @@
 
 <script>
 import axios from "axios";
-import AccountReceiptDialog from "@/components/AccountReceiptDialog.vue";
-import AccountCourseDialog from "@/components/AccountCourseDialog.vue";
-import AccountCertificateDialog from "@/components/AccountCertificateDialog.vue";
+import AccountReceiptDialog from "@/components/account/AccountReceiptDialog.vue";
+import AccountCourseDialog from "@/components/account/AccountCourseDialog.vue";
+import AccountCertificateDialog from "@/components/account/AccountCertificateDialog.vue";
 export default {
   components: {
     AccountReceiptDialog,

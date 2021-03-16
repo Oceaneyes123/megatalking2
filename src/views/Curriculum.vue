@@ -1363,8 +1363,8 @@ td:nth-child(n + 2) {
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { getBookList, getTabs } from "@/static-database/curriculum.js";
-import CurriculumCarousel from "@/components/CurriculumCarousel.vue";
-import CurriculumSliderGroup from "@/components/CurriculumSliderGroup.vue";
+import CurriculumCarousel from "@/components/curriculum/CurriculumCarousel.vue";
+import CurriculumSliderGroup from "@/components/curriculum/CurriculumSliderGroup.vue";
 import { mapState } from "vuex";
 
 export default {

@@ -166,7 +166,37 @@
               </div>
 
               <!-- STUDENT INFO -->
-              <LevelTestInfo ref="levelTestInfo"></LevelTestInfo>
+              <v-row class="align-center mx-4 mx-sm-10 mx-4 mb-10">
+                <v-col cols="12" sm="6" class="pb-0 pb-sm-3">
+                  <v-text-field
+                    color="primary"
+                    label="이름"
+                    dense
+                    outlined
+                    ref="name"
+                    v-model="name"
+                    :rules="[() => !!name || '필수 입력값입니다.']"
+                    required
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="6" class="pt-0 pt-sm-3">
+                  <v-text-field
+                    color="primary"
+                    label="연락처"
+                    dense
+                    outlined
+                    counter="13"
+                    maxlength="13"
+                    v-model="number"
+                    ref="number"
+                    :rules="[
+                      () => !!number || '필수 입력값입니다.',
+                      v => v.length <= 13 || '연락처는 13자리 입니다.'
+                    ]"
+                    required
+                  ></v-text-field>
+                </v-col>
+              </v-row>
 
               <div class="mx-10 mb-5 font-weight-black h6 text-left">
                 수업 진행속도
@@ -527,18 +557,16 @@
 
 <script>
 import { mapState } from "vuex";
-import EventAgreementDialog from "@/components/EventAgreementDialog";
-import PrivacyPolicyDialog from "@/components/PrivacyPolicyDialog";
-import LevelTestEvaluation from "@/components/LevelTestEvaluation";
-import LevelTestInfo from "@/components/LevelTestInfo";
+import EventAgreementDialog from "@/components/level-test/EventAgreementDialog";
+import PrivacyPolicyDialog from "@/components/level-test/PrivacyPolicyDialog";
+import LevelTestEvaluation from "@/components/level-test/LevelTestEvaluation";
 import axios from "axios";
 
 export default {
   components: {
     EventAgreementDialog,
     PrivacyPolicyDialog,
-    LevelTestEvaluation,
-    LevelTestInfo
+    LevelTestEvaluation
   },
   data() {
     return {
@@ -575,8 +603,8 @@ export default {
     ...mapState(["screenWidth", "isMobile", "loginToken"]),
     form() {
       return {
-        name: this.$refs.levelTestInfo.name,
-        number: this.$refs.levelTestInfo.number,
+        name: this.name,
+        number: this.number,
         speed: this.selectedSpeed,
         date: this.days[this.daySelected],
         time: this.selectedTime[this.daySelected],
@@ -629,6 +657,15 @@ export default {
           "$1-$2-$3"
         )
         .replace("--", "-");
+    },
+    number(val) {
+      this.number = val
+        .replace(/[^0-9]/g, "")
+        .replace(
+          /(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+          "$1-$2-$3"
+        )
+        .replace("--", "-");
     }
   },
   methods: {
@@ -640,10 +677,11 @@ export default {
     submit() {
       let noValidate = ["speed", "date", "time", "eaCheck"];
       Object.keys(this.form).forEach(f => {
+        console.log(f);
         if ("time" == f && this.form[f].length == 0) this.snackbar = true;
-
         if (noValidate.indexOf(f) !== -1) return;
         if (!this.form[f]) this.snackbar = true;
+        console.log(this.$refs[f]);
         if (!this.$refs[f].validate(true)) this.snackbar = true;
       });
       if (!this.snackbar) {

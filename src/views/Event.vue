@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import EventDialog from "@/components/EventDialog.vue";
+import EventDialog from "@/components/event/EventDialog.vue";
 import axios from "axios";
 export default {
   components: {

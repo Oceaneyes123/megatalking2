@@ -46,7 +46,7 @@
         </v-row>
         <v-row>
           <v-col>
-            <v-img src="../assets/mega_logo.png" max-width="60%"></v-img>
+            <v-img src="@/assets/mega_logo.png" max-width="60%"></v-img>
           </v-col>
         </v-row>
         <v-row>

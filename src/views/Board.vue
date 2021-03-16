@@ -46,7 +46,7 @@
 </style>
 
 <script>
-import BoardDialog from "@/components/BoardDialog.vue";
+import BoardDialog from "@/components/board/BoardDialog.vue";
 import axios from "axios";
 export default {
   components: {
