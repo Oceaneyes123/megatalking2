@@ -13,7 +13,7 @@
           <ContentList v-else-if="step == 1" @nextBook="nextBook(2)" />
           <Tabs v-else :unitId="unitId" />
         </v-container>
-        <FooterMenuBar class="mt-auto" @openList="nextBook(1)" />
+        <FooterMenuBar class="mt-auto" @openList="nextBook" />
       </v-card>
     </v-container>
   </v-app>
@@ -26,11 +26,13 @@ import Tabs from "@/components/material/Tabs";
 import ContentCover from "@/components/material/ContentCover";
 import ContentList from "@/components/material/ContentList";
 import FooterMenuBar from "@/components/material/FooterMenuBar";
+import { mapState } from "vuex";
 import { bus } from "@/main";
 
 export default {
   data() {
     return {
+      courseName: "",
       unitId: 1,
       screenWidth: "",
       isMobile: false,
@@ -45,8 +47,13 @@ export default {
     ContentCover,
     ContentList
   },
+  computed: {
+    ...mapState(["currentCourseName"])
+  },
   created() {
     window.addEventListener("resize", this.onWindowResize);
+    this.courseName = this.currentCourseName;
+    console.log(this.courseName);
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);

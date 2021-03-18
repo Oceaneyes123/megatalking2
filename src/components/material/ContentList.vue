@@ -32,6 +32,8 @@
 <script>
 import axios from "axios";
 import { bus } from "@/main";
+import { mapState } from "vuex";
+
 export default {
   data() {
     return {
@@ -45,15 +47,25 @@ export default {
       this.$emit("nextBook");
     }
   },
+  computed: {
+    ...mapState(["currentCourseName"])
+  },
   created() {
+    console.log(this.currentCourseName);
     axios
       .get(
         "http://178.128.213.14/content-utilities/api/cms/miscs/get_materials_for_list"
       )
       .then(rs => {
-        this.bookTitle = rs.data[0].title;
-        this.bookUnits = rs.data[0].list_units;
-        console.log(rs);
+        if (this.currentCourseName.length != 0) {
+          let currentCourseName = this.currentCourseName.split(":")[1];
+          let bookDto = rs.data.find(
+            course => course.title == currentCourseName
+          );
+          this.bookTitle = bookDto.title;
+          this.bookUnits = bookDto.list_units;
+          console.log(rs);
+        }
       })
       .catch(err => {
         console.log(err);
