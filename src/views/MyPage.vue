@@ -293,7 +293,6 @@
                   </v-container>
                 </v-card>
               </v-img>
-              -->
 
               <!-- Video -->
               <VideoCover v-if="isVideo"></VideoCover>
@@ -648,7 +647,7 @@ export default {
         cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
         deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
       }
-      console.log(deVal);
+      //console.log(deVal);
       return deVal;
     },
     selectedClassTitle() {
@@ -672,6 +671,8 @@ export default {
     }
   },
   created() {
+    this.$store.commit("setCurrentCourseName", { courseName: "" });
+    this.$store.commit("setCurrentCourseLink", { link: "" });
     AOS.init();
   },
   destroyed() {},
@@ -693,11 +694,11 @@ export default {
   methods: {
     openClassBook() {
       if (this.showClass.length !== 0) {
-        let bookLink = this.showClass.book_link;
-        window.open(bookLink, "_blank");
+        // window.open(bookLink, "_blank");
       } else {
-        this.$router.push("/material");
+        // this.$router.push("/material");
       }
+      this.$router.push("/material2");
     },
     openRecoding(classObj) {
       let tel = classObj.aTel + classObj.bTel + classObj.cTel;
@@ -745,7 +746,16 @@ export default {
       classObj.day = day;
       this.$set(this.$data, "showClass", classObj);
       this.selectedClassImg = randomItem;
-      console.log(this.showClass);
+
+      let courseName = this.showClass.book_name;
+      let bookLink = this.showClass.book_link;
+
+      this.$store.commit("setCurrentCourseName", { courseName });
+      if (courseName.indexOf("Video") != 0)
+        //비디오 아닌 교재만 링크넣기
+        this.$store.commit("setCurrentCourseLink", { link: bookLink });
+      //비디오 교재면 링크없애기
+      else this.$store.commit("setCurrentCourseLink", { link: "" });
     },
     getClassColor(classObj) {
       //console.log(classObj);

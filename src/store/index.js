@@ -31,7 +31,9 @@ export default new Vuex.Store({
     isMobile: false,
     holdOverlay: false,
     signupErr: false,
-    signupErrMsg: ""
+    signupErrMsg: "",
+    currentCourseName: "",
+    currentCourseLink: ""
   },
   mutations: {
     loadBg(state, payload) {
@@ -78,6 +80,12 @@ export default new Vuex.Store({
       state.signupErr = true;
       state.signupErrMsg =
         "회원 가입 실패하였습니다. 이미 회원가입이된 아이디입니다.";
+    },
+    setCurrentCourseName(state, { courseName }) {
+      state.currentCourseName = courseName;
+    },
+    setCurrentCourseLink(state, { link }) {
+      state.currentCourseLink = link;
     }
   },
   actions: {
