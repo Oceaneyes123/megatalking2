@@ -257,79 +257,8 @@
             </v-row>
 
             <v-container fluid class="px-0 pb-15 mb-15 mt-2">
-              <v-row v-if="isBook">
-                <v-col cols="12" sm="6">
-                  <v-card class="rounded-xl" height="100%" dark color="#859ec9">
-                    <v-container>
-                      <v-img
-                        @click="$router.push('/material')"
-                        class="rounded-xl"
-                        data-aos="fade-up"
-                        :src="selectedClassImg"
-                        width="100%"
-                        height="auto"
-                        v-if="isBook"
-                      >
-                        <v-card height="100%" color="#000000AD">
-                          <v-container>
-                            <div
-                              :class="isMobile ? '' : 'h4'"
-                              class="font-weight-black text-right white--text gmarket mr-5"
-                              style="
-                                position: absolute;
-                                bottom: 20px;
-                                right: 20px;
-                                cursor: pointer;
-                              "
-                            >
-                              Next >
-                            </div>
-                          </v-container>
-                        </v-card>
-                      </v-img>
-                      <v-row>
-                        <v-col class="text-center h5 nanum font-weight-bold">
-                          {{ selectedClassTitle }}</v-col
-                        >
-                      </v-row>
-                      <v-row>
-                        <v-col cols="12" sm="6">2021.02.23</v-col>
-                        <v-col cols="12" sm="6">6:00+10</v-col>
-                        <v-col cols="12" sm="6">dave</v-col>
-                        <v-col cols="12" sm="6">Phone Class</v-col>
-                      </v-row>
-                    </v-container>
-                  </v-card>
-                </v-col>
-                <!-- <v-col cols="12" sm="6">
-                  <v-img
-                    @click="$router.push('/material')"
-                    class="rounded-xl"
-                    data-aos="fade-up"
-                    :src="selectedClassImg"
-                    width="100%"
-                    height="auto"
-                    v-if="isBook"
-                  >
-                    <v-card height="100%" color="#000000AD">
-                      <v-container>
-                        <div
-                          :class="isMobile ? '' : 'h4'"
-                          class="font-weight-black text-right white--text gmarket mr-5"
-                          style="
-                            position: absolute;
-                            bottom: 20px;
-                            right: 20px;
-                            cursor: pointer;
-                          "
-                        >
-                          Next >
-                        </div>
-                      </v-container>
-                    </v-card>
-                  </v-img>
-                </v-col> -->
-              </v-row>
+              <BookCover v-if="isBook" :data="{ selectedClassImg }"></BookCover>
+
               <!-- Book -->
 
               <v-img
@@ -367,50 +296,8 @@
               -->
 
               <!-- Video -->
-              <v-card
-                class="rounded-xl"
-                style="border: 1px solid #5e75cf"
-                v-if="isVideo"
-                @click="$router.push('/material')"
-                flat
-              >
-                <v-img src="@/assets/tab/video4.jpg"></v-img>
-                <div :class="isMobile ? 'h5 nanum' : 'h3'" class="text-center">
-                  유튜브 미디어과정:: 셀럽과의 대화
-                </div>
-                <v-divider></v-divider>
-                <div
-                  :class="isMobile ? 'h5 nanum' : 'h3'"
-                  class="text-center"
-                  style="
-                    color: #5e75cf;
-                    line-break: strict;
-                    word-break: keep-all;
-                  "
-                >
-                  오늘의 강의
-                </div>
-              </v-card>
-
-              <v-card class="rounded-xl pa-5" color="#fafafa" v-if="isPDF" flat>
-                <v-card color="#333333" class="pa-10 rounded-xl" flat>
-                  <div class="text-center white--text">Image Here</div>
-                </v-card>
-                <div class="d-flex mx-auto justify-center">
-                  <v-btn
-                    class="white--text rounded-pill mt-5 pa-7"
-                    style="
-                      background: linear-gradient(to right, #ff9351, #f96a70);
-                    "
-                  >
-                    <span class="h5 nanum">PDF 교재 다운로드</span>
-                  </v-btn>
-                </div>
-
-                <div class="mt-5 grey--text caption">
-                  * 다운로드 버튼을 통해 교재를 확인해주세요.
-                </div>
-              </v-card>
+              <VideoCover v-if="isVideo"></VideoCover>
+              <PDFCover v-if="isPDF"></PDFCover>
 
               <!-- <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
                 <v-carousel-item class="px-md-16 px-5">
@@ -693,12 +580,18 @@ import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import HoldSnackbar from "@/components/Snackbar";
+import BookCover from "@/components/mypage/BookCover";
+import VideoCover from "@/components/mypage/VideoCover";
+import PDFCover from "@/components/mypage/PDFCover";
 import { bus } from "@/main";
 
 export default {
   components: {
     HoldDialog,
-    HoldSnackbar
+    HoldSnackbar,
+    BookCover,
+    VideoCover,
+    PDFCover
   },
   data() {
     return {
