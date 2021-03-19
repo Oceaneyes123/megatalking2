@@ -33,7 +33,8 @@ export default new Vuex.Store({
     signupErr: false,
     signupErrMsg: "",
     currentCourseName: "",
-    currentCourseLink: ""
+    currentCourseLink: "",
+    currentClassInfo: {}
   },
   mutations: {
     loadBg(state, payload) {
@@ -86,6 +87,9 @@ export default new Vuex.Store({
     },
     setCurrentCourseLink(state, { link }) {
       state.currentCourseLink = link;
+    },
+    setClassInfo(state, payload) {
+      state.currentClassInfo = payload;
     }
   },
   actions: {

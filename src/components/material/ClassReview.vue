@@ -41,7 +41,12 @@
         >
       </v-col>
       <v-col class="mx-auto" cols="12" sm="7">
-        <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
+        <v-textarea
+          outlined
+          class="rounded-xl"
+          height="20vh"
+          v-model="opinion"
+        ></v-textarea>
       </v-col>
     </v-row>
     <v-row justify="center">
@@ -57,10 +62,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      rating: 4.8,
+      rating: 4.5,
+      opinion: "",
       step4Suggestions: [
         "조금 천천히 말해주세요.",
         "활기찬 분위기를 원해요.",
@@ -70,6 +77,24 @@ export default {
       ],
       selectedSuggestion: []
     };
+  },
+  computed: {
+    ...mapState(["currentClassInfo"]),
+    form() {
+      let selected = [];
+      this.selectedSuggestion.forEach((item, i) => {
+        selected.push({ key: i, text: this.step4Suggestions[item] });
+      });
+
+      return {
+        timestamp: this.currentClassInfo.todate,
+        score: this.rating,
+        selected: selected,
+        text: this.opinion,
+        s_id: this.currentClassInfo.s_id,
+        type: "RC"
+      };
+    }
   },
   methods: {
     selectSuggestion(index) {

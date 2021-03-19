@@ -750,6 +750,7 @@ export default {
     }
   },
   created() {
+    this.$store.commit("setClassInfo", {});
     this.$store.commit("setCurrentCourseName", { courseName: "" });
     this.$store.commit("setCurrentCourseLink", { link: "" });
     AOS.init();
@@ -828,6 +829,8 @@ export default {
 
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
+
+      this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
       if (courseName.indexOf("Video") != 0)
