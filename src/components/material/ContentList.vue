@@ -11,7 +11,7 @@
     </v-overlay>
     <v-list dense>
       <v-subheader>{{ bookTitle }}</v-subheader>
-      <v-list-item-group v-model="selectedItem" color="primary">
+      <v-list-item-group color="primary">
         <v-list-item
           v-for="(unit, i) in bookUnits"
           :key="i"

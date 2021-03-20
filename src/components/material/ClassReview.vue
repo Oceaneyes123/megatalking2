@@ -3,7 +3,9 @@
     <v-row class="align-md-center">
       <v-col cols="12">
         <div class="text-center mb-2">
-          Annie 강사님 수업은 어떠셨나요?
+          {{ currentClassInfo.year }}년 {{ currentClassInfo.month }}월
+          {{ currentClassInfo.day }}일 <br />{{ currentClassInfo.lec_name }}
+          강사님 수업은 어떠셨나요?
         </div>
         <div class="text-center">
           <v-rating
@@ -16,6 +18,7 @@
             full-icon="fas fa-star"
             empty-icon="far fa-star"
             half-icon="fas fa-star-half-alt"
+            :readonly="false"
           ></v-rating>
         </div>
       </v-col>
@@ -46,6 +49,7 @@
           class="rounded-xl"
           height="20vh"
           v-model="opinion"
+          label="오늘 수업 즐거우셨나요?"
         ></v-textarea>
       </v-col>
     </v-row>
@@ -55,6 +59,8 @@
           background: linear-gradient(to right,#8fa1fe,#4993e8);
         "
         class="mx-auto rounded-lg white--text mb-5"
+        @click="sendClassReview()"
+        :loading="btnLoading"
         >Next</v-btn
       >
     </v-row>
@@ -63,6 +69,7 @@
 
 <script>
 import { mapState } from "vuex";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -75,9 +82,11 @@ export default {
         "틀린 부분을 바로바로 고쳐주세요.",
         "많이 말하도록 유도해주세요."
       ],
-      selectedSuggestion: []
+      selectedSuggestion: [],
+      btnLoading: false
     };
   },
+  created() {},
   computed: {
     ...mapState(["currentClassInfo"]),
     form() {
@@ -92,11 +101,32 @@ export default {
         selected: selected,
         text: this.opinion,
         s_id: this.currentClassInfo.s_id,
+        tutor_id: this.currentClassInfo.lec_id,
+        student_id: this.currentClassInfo.id,
         type: "RC"
       };
     }
   },
   methods: {
+    sendClassReview() {
+      this.btnLoading = true;
+      let token = this.$cookie.get("access-token");
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = this.$cookie.get(
+          "access-token"
+        );
+
+        // axios
+        //   .post("//phone.megatalking.com/origin/api/class_review.php", this.form )
+        //   .then( rs => {
+        //     console.log(rs);
+        //   })
+        //   .catch( err => {
+        //     console.log(err);
+        //   });
+      }
+    },
+    getReviewData() {},
     selectSuggestion(index) {
       if (this.selectedSuggestion.includes(index)) {
         const num = this.selectedSuggestion.indexOf(index);
