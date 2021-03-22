@@ -11,7 +11,7 @@
     </v-overlay>
     <v-list dense>
       <v-subheader>{{ bookTitle }}</v-subheader>
-      <v-list-item-group v-model="selectedItem" color="primary">
+      <v-list-item-group color="primary">
         <v-list-item
           v-for="(unit, i) in bookUnits"
           :key="i"
@@ -52,10 +52,10 @@ export default {
   },
   created() {
     console.log(this.currentCourseName);
+    // let url = "http://178.128.213.14/content-utilities/api/cms/miscs/get_materials_for_list";
+    let url = "https://megatalking.co.kr/api/get_materials_for_list.php";
     axios
-      .get(
-        "http://178.128.213.14/content-utilities/api/cms/miscs/get_materials_for_list"
-      )
+      .get(url)
       .then(rs => {
         if (this.currentCourseName.length != 0) {
           let currentCourseName = this.currentCourseName.split(":")[1];
