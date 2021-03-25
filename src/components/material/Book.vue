@@ -10,7 +10,7 @@ export default {
   props: ["unitId"],
   computed: {
     link() {
-      return `http://178.128.213.14/students-material/#/step3?unitid=${this.unitId}`;
+      return `https://megatalking.co.kr/students-material/#/step3?unitid=${this.unitId}`;
     }
   }
 };

@@ -77,11 +77,6 @@ const routes = [
     component: require("../views/PaymentFail.vue").default
   },
   {
-    path: "/material2",
-    name: "MaterialTemp",
-    component: require("../views/MaterialTemp.vue").default
-  },
-  {
     path: "*",
     name: "Not Found",
     component: require("../views/NotFound.vue").default
