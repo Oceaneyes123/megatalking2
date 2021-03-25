@@ -1018,6 +1018,7 @@ import { bus } from "@/main";
 import axios from "axios";
 import price from "@/utils/price.js";
 import { loadTossPayments } from "@tosspayments/sdk";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -1757,6 +1758,7 @@ export default {
     this.setAllowedDays();
   },
   computed: {
+    ...mapState(["userInfo"]),
     target() {
       //const value = this[this.type]
       // const value = "#timeTable";
@@ -1783,6 +1785,22 @@ export default {
         startTime: this.time_hour + ":" + (this.timeSelected - 1) + "0",
         payMethod: this.methodSelected,
         timeZone: this.currentZone
+      };
+    },
+    paymentData() {
+      let prodName = [];
+      prodName.push(
+        this.enrollmentData.type == "Phone" ? "전화영어" : "화상영어"
+      );
+      prodName.push(this.getFrequency.split("(")[0]);
+      prodName.push(this.minuteSelected.replace("하루 ", ""));
+      prodName.push(this.durationSelected);
+      prodName = prodName.join(" ");
+
+      return {
+        amount: this.getAmount.value,
+        orderName: prodName,
+        customerName: this.userInfo.name
       };
     },
     enrollmentDataForApi() {
@@ -2236,15 +2254,15 @@ export default {
       } else if (this.methodSelected == "카드 결제") {
         await this.enrollStudent();
         // Promise를 사용하는 경우
-        const clientKey = "test_ck_N5OWRapdA8dvl2bklA9Vo1zEqZKL";
+        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb";
         console.log(loadTossPayments, clientKey);
         console.log(this.orderId);
         loadTossPayments(clientKey).then(tossPayments => {
           tossPayments.requestPayment("카드", {
-            amount: 1000,
+            amount: this.paymentData.amount,
             orderId: this.orderId,
-            orderName: "전화영어 주3회 10분 1개월",
-            customerName: "박토스",
+            orderName: this.paymentData.orderName,
+            customerName: this.paymentData.customerName,
             successUrl: window.location.origin + "/payment-success",
             failUrl: window.location.origin + "/payment-fail"
           });

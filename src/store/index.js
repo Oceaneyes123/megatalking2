@@ -90,25 +90,31 @@ export default new Vuex.Store({
     },
     setClassInfo(state, payload) {
       state.currentClassInfo = payload;
+    },
+    setUserInfo(state, payload) {
+      state.userInfo = payload;
     }
   },
   actions: {
-    async login({ commit }, { id, pw }) {
+    async login({ commit, dispatch }, { id, pw }) {
       await axios
         .post("//phone.megatalking.com/origin/api/signin.php", { id, pw })
         .then(rs => {
-          console.log(rs);
           if (rs.status === 200) {
             if (rs.data.result === true) {
               commit("loginProcess", { token: rs.data.token });
+              dispatch("isLogin"); //로그인후 회원정보 가져오기.
             } else {
-              console.log("check", rs);
+              // console.log("check", rs);
             }
           }
         })
         .catch(err => {
           if (err.response) {
             switch (err.response.status) {
+              case 404:
+                console.log("token?");
+                break;
               case 405:
                 commit("loginErr", { type: 1 });
                 break;
@@ -117,7 +123,7 @@ export default new Vuex.Store({
           }
         });
     },
-    async isLogin({ state }) {
+    async isLogin({ state, commit }) {
       //토큰 가져오기
       let token = VueCookie.get("access-token");
       if (typeof token == undefined) {
@@ -137,8 +143,7 @@ export default new Vuex.Store({
           .then(rs => {
             // console.log(rs);
             if (rs.status === 200) {
-              //code
-              console.log("hi", rs);
+              commit("setUserInfo", rs.data); //회원이라면 정보 저장
             }
           })
           .catch(err => {
@@ -166,7 +171,6 @@ export default new Vuex.Store({
           ...payload
         })
         .then(rs => {
-          console.log(rs);
           if (rs.data.result) {
             //로그인 성공시
             commit("loginProcess", { token: rs.data.token });
