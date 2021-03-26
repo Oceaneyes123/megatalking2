@@ -61,13 +61,6 @@
               :key="i"
             >
               <v-card flat @click="$refs.eventDialog.open(event)">
-                <!-- <v-card
-                  color="#f99d59"
-                  min-width="100"
-                  min-height="200"
-                  width="100%"
-                  height="100%"
-                ></v-card> -->
                 <v-img
                   :src="getImage(event.image)"
                   width="100%"
@@ -89,13 +82,6 @@
           <v-row v-if="defaultSelected == 'end'">
             <v-col cols="12" sm="4" v-for="(event, i) in endEvents" :key="i">
               <v-card flat @click="$refs.eventDialog.open(event)">
-                <!-- <v-card
-                  color="#f99d59"
-                  min-width="100"
-                  min-height="200"
-                  width="100%"
-                  height="100%"
-                ></v-card> -->
                 <v-img
                   :src="getImage(event.image)"
                   width="100%"

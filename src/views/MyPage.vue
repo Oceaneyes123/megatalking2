@@ -132,7 +132,7 @@
                                 text
                                 small
                                 block
-                                @click="openRecoding(classes)"
+                                @click="openRecording(classes)"
                                 v-if="classes.attend == 'atten'"
                               >
                                 녹취 듣기
@@ -465,7 +465,7 @@ export default {
       }
       this.$router.push("/material");
     },
-    openRecoding(classObj) {
+    openRecording(classObj) {
       let tel = classObj.aTel + classObj.bTel + classObj.cTel;
       let hp = classObj.aHp + classObj.bHp + classObj.cHp;
       let path = `http://phone.megatalking.com/my_phone1.htm?call_date=${classObj.Ymd}&tel001=${tel}&tel002=${hp}&company_code=ueducation`;
