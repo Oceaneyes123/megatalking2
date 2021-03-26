@@ -83,16 +83,6 @@ export default {
         "내역 인쇄"
       ],
       tab1Item: [],
-      // tab1Item: [
-      //   {
-      //     no: "1",
-      //     date: "2020-05-25",
-      //     course: "정규회화과정 주2회 10분",
-      //     amount: "51,980원",
-      //     method: "네이버페이",
-      //     status: "입금완료",
-      //   },
-      // ],
       tab2Header: [
         "No.",
         "날짜",
@@ -101,35 +91,8 @@ export default {
         "잔여 적립금"
       ],
       tab2Item: [],
-      // tab2Item: [
-      //   {
-      //     no: "10",
-      //     date: "2020-08-25",
-      //     explain: "재적립",
-      //     point: "+3000",
-      //     residualPoint: "8000원",
-      //   },
-      // ],
       tab3Header: ["No.", "상품명 ", "사용가능기간 ", "사용일 ", "상태"],
       tab3Item: [],
-      // tab3Item: [
-      //   {
-      //     no: "5",
-      //     couponName: "Coupon Name",
-      //     expirationDate: "2020-05-25",
-      //     dateUsed: "-",
-      //     status: "수강신청",
-      //   },
-      //   {
-      //     no: "4",
-      //     couponName: "Coupon Name",
-      //     expirationDate: "2020-05-25",
-      //     dateUsed: "-",
-      //     status: "기간만료",
-      //   },
-      // ],
-
-      // token: localStorage.getItem("access-token")
       token: this.$cookie.get("access-token")
     };
   },

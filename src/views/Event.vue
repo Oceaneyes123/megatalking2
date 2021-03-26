@@ -40,8 +40,11 @@
             "
           >
             <v-container v-if="progressEvents.length == 0">
+              <v-row justify="center">
+                <div class="h6 nanum">No ongoing events</div>
+              </v-row>
               <v-row>
-                <v-col v-for="i in 3" :key="i">
+                <v-col v-for="i in card" :key="i">
                   <v-skeleton-loader
                     class="mx-auto"
                     max-width="300"
@@ -135,6 +138,7 @@ export default {
       eventDialog: false,
       // loading: true,
       overlay: true,
+      card: 3,
 
       defaultSelected: {
         key: "progress",
@@ -177,6 +181,7 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
+      this.card = this.isMobile ? 1 : 3;
     },
 
     getEvents() {

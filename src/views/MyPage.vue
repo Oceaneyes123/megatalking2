@@ -156,36 +156,6 @@
                         </v-card>
                       </v-card>
                     </v-slide-item>
-                    <!--
-                    <v-slide-item class="mx-3">
-                      <v-card
-                        style="border: 3px solid #bbbbbb"
-                        width="300"
-                        class="rounded-xl py-3 px-5"
-                      >
-                        <div class="caption" style="color: #5e75cf">
-                          보강 쿠폰현황
-                        </div>
-                        <div class="h6 nanum">보강 설정하기</div>
-                        <div class="d-flex">
-                          <v-icon
-                            color="bbbbbb"
-                            class="text-center mx-auto"
-                            x-large
-                            >add</v-icon
-                          >
-                        </div>
-                        <v-card
-                          color="#bbbbbb"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
-                          >
-                          <v-btn text class="white--text"  style="font-size:16px" block>
-                            보강 시간 설정
-                          </v-btn>
-                        </v-card>
-                      </v-card>
-                    </v-slide-item>
-                    -->
                   </v-slide-group>
                   <v-slide-group v-else>
                     <v-slide-item class="mx-3">
@@ -230,24 +200,6 @@
                 </v-sheet>
               </v-col>
             </v-row>
-
-            <!-- <v-row no-gutters>
-              <v-col cols="12" md="5">
-                <div class="h5 gmarket ml-3" data-aos="fade-right">
-                  수강 종류
-                </div>
-              </v-col>
-              <v-col cols="12" md="7">
-                <v-card
-                  color="#df7a30"
-                  class="h6 font-weight-black white--text pa-3 text-center"
-                  data-aos="fade-left"
-                >
-                  <div>{{ selectedClassInfo }}</div>
-                </v-card>
-              </v-col>
-            </v-row> -->
-
             <v-row no-gutters>
               <v-col cols="12" md="5">
                 <div class="h5 gmarket ml-3" data-aos="fade-right">
@@ -255,12 +207,7 @@
                 </div>
               </v-col>
             </v-row>
-
             <v-container fluid class="px-0 pb-15 mb-15 mt-2">
-              <BookCover v-if="isBook" :data="{ selectedClassImg }"></BookCover>
-
-              <!-- Book -->
-
               <v-img
                 @click="openClassBook()"
                 class="rounded-xl"
@@ -293,189 +240,6 @@
                   </v-container>
                 </v-card>
               </v-img>
-
-              <!-- Video -->
-              <VideoCover v-if="isVideo"></VideoCover>
-              <PDFCover v-if="isPDF"></PDFCover>
-
-              <!-- <v-carousel hide-delimiters touch light :show-arrows="!isMobile">
-                <v-carousel-item class="px-md-16 px-5">
-                  <v-row>
-                    <v-col cols="12" md="6">
-                      <div class="text-blue mb-5">영어 본문</div>
-                      <div
-                        class="text-grey mb-2"
-                        v-for="(text, i) in step3EnglishText"
-                        :key="i"
-                      >{{text}}</div>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <div class="text-blue mb-5">영어 본문</div>
-                      <div
-                        class="text-dark-blue mb-2"
-                        v-for="(text, i) in step3KoreanText"
-                        :key="i"
-                      >{{text}}</div>
-                    </v-col>
-                  </v-row>
-                </v-carousel-item>
-                <v-carousel-item class="px-md-16 px-5">
-                  <div class="h5 nanum">Today's Expression</div>
-                  <v-row>
-                    <v-col cols="12" v-for="(expression, i) in step3TodayExpression" :key="i">
-                      <v-container>
-                        <v-row>
-                          <v-col cols="12" md="6">
-                            <div class="mb-2 text-blue">{{expression.expression}}</div>
-                            <div class="text-grey" v-html="expression.definition"></div>
-                          </v-col>
-                          <v-col cols="12" md="6">
-                            <div class="mb-2" v-html="expression.question1"></div>
-                            <div class="mb-2" v-html="expression.question2"></div>
-                            <div class="text-blue" v-html="expression.question3"></div>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-col>
-                    <v-btn
-                      style="background: linear-gradient(to right, #8FA1FE, #4993E8)"
-                      class="mx-auto rounded-lg white--text mb-5"
-                    >Next</v-btn>
-                  </v-row>
-                </v-carousel-item>
-                <v-carousel-item class="px-md-16 px-5">
-                  <div class="h5 nanum text-blue mb-10">Today's Expression</div>
-                  <v-row>
-                    <v-col
-                      cols="12"
-                      md="6"
-                      v-for="(answer, i) in step3TodayExpressionAnswer"
-                      :key="i"
-                      :class="(i + 1) % 2 == 0 && isMobile ? 'mb-10' : 'mb-0'"
-                    >
-                      <div class="h6 nanum">{{answer.question}}</div>
-                      <div class="mb-2">{{answer.choice}}</div>
-                      <div class="text-grey">{{answer.answer}}</div>
-                    </v-col>
-                  </v-row>
-                </v-carousel-item>
-                <v-carousel-item class="px-md-16 px-5">
-                  <v-container>
-                    <v-row class="align-md-center">
-                      <v-col cols="12">
-                        <div class="text-center mb-2">Annie 강사님 수업은 어떠셨나요?</div>
-                        <div class="text-center">
-                          <v-rating
-                            v-model="rating"
-                            half-increments
-                            color="yellow darken-2"
-                            hover
-                            x-large
-                            background-color="yellow darken-2"
-                            full-icon="fas fa-star"
-                            empty-icon="far fa-star"
-                            half-icon="fas fa-star-half-alt"
-                          ></v-rating>
-                        </div>
-                      </v-col>
-                      <v-col
-                        class="mx-auto"
-                        cols="12"
-                        sm="7"
-                        align-self="center"
-                        v-for="(suggestion, i) in step4Suggestions"
-                        :key="i"
-                      >
-                        <v-btn
-                          large
-                          outlined
-                          block
-                          @click="selectSuggestion(i)"
-                          :class=" selectedSuggestion.includes(i) ? 'primary--text': 'text-grey'"
-                        >{{suggestion}}</v-btn>
-                      </v-col>
-                      <v-col class="mx-auto" cols="12" sm="7">
-                        <v-textarea outlined class="rounded-xl" height="20vh"></v-textarea>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-carousel-item>
-                <v-carousel-item>
-                  <v-container class="pl-md-16">
-                    <v-row>
-                      <v-col cols="12" md="6">
-                        <v-card
-                          class="d-flex align-center rounded-pill pa-3 mb-4"
-                          color="#dfdfdf"
-                          max-width="300"
-                          flat
-                        >
-                          <v-icon color="#5a55a1" x-large>far fa-play-circle</v-icon>
-                          <v-progress-linear
-                            v-model="progress"
-                            value="60"
-                            color="#5a55a1"
-                            class="mx-5"
-                          ></v-progress-linear>
-                          <div class="text--secondary">0:40</div>
-                        </v-card>
-                        <v-card
-                          flat
-                          class="d-flex rounded-lg white--text py-3 px-2"
-                          color="#5D6687"
-                          max-width="300"
-                        >
-                          <span>녹음파일 전체듣기</span>
-                          <span class="mx-auto">|</span>
-                          <span>음원 다운로드</span>
-                        </v-card>
-                        <div class="mt-15 mb-5 h6">다음 발음을 연습해주세요.</div>
-                        <div
-                          class="mt-1"
-                          v-for="(pronunciation, i) in step4PracticePronunciation"
-                          :key="i"
-                        >{{i + 1}}. {{pronunciation}}</div>
-                      </v-col>
-                      <v-col cols="12" md="6">
-                        <div class="h6 mb-5">더 나은 표현을 알려드릴게요.</div>
-                        <div class="mb-2" v-for="(expression, i) in step4BetterExpression" :key="i">
-                          <div>{{i + 1}}. {{expression.original}}</div>
-                          <div class="text-blue">=> {{expression.better}}</div>
-                        </div>
-                      </v-col>
-                      <v-col cols="12">
-                        <div class="h6">강사님 코멘트</div>
-                        <v-col cols="12" md="10" class="mx-auto">
-                          <v-textarea class="rounded-xl" outlined color="#667fe3"></v-textarea>
-                        </v-col>
-                      </v-col>
-                      <v-col cols="12">
-                        <div class="text-center mb-4">오늘 수업을 한마디로 표현한다면,</div>
-                        <div class="d-flex justify-center">
-                          <v-icon
-                            class="mx-3"
-                            v-for="(icon, i) in step4Icons"
-                            :key="i"
-                            x-large
-                          >{{icon}}</v-icon>
-                        </div>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-carousel-item>
-              </v-carousel>-->
-
-              <!-- <v-row>
-                  <v-col cols="12" md="4">
-                    <v-card flat class="rounded-xl">
-                      <v-img src="../assets/mypage1.png" width="auto" height="auto"></v-img>
-                    </v-card>
-                  </v-col>
-                  <v-spacer></v-spacer>
-                  <v-col cols="12" md="8">
-                    <v-card flat class="rounded-xl" color="#b9b9b9" width="100%" height="100%"></v-card>
-                  </v-col>
-              </v-row>-->
             </v-container>
             <v-container fluid v-if="false">
               <v-row class="mt-5 mx-1 mb-10" justify="center">
@@ -579,18 +343,18 @@ import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import HoldSnackbar from "@/components/Snackbar";
-import BookCover from "@/components/mypage/BookCover";
-import VideoCover from "@/components/mypage/VideoCover";
-import PDFCover from "@/components/mypage/PDFCover";
+// import BookCover from "@/components/mypage/BookCover";
+// import VideoCover from "@/components/mypage/VideoCover";
+// import PDFCover from "@/components/mypage/PDFCover";
 import { bus } from "@/main";
 
 export default {
   components: {
     HoldDialog,
-    HoldSnackbar,
-    BookCover,
-    VideoCover,
-    PDFCover
+    HoldSnackbar
+    // BookCover,
+    // VideoCover,
+    // PDFCover,
   },
   data() {
     return {
