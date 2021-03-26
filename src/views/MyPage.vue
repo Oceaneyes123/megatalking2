@@ -463,7 +463,7 @@ export default {
       } else {
         // this.$router.push("/material");
       }
-      this.$router.push("/material2");
+      this.$router.push("/material");
     },
     openRecoding(classObj) {
       let tel = classObj.aTel + classObj.bTel + classObj.cTel;
