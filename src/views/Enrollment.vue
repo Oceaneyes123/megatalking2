@@ -1,4 +1,4 @@
-////this.setOffer()<template>
+<template>
   <v-app style="background-color: #00000000">
     <v-overlay :value="overlay">
       <v-progress-circular indeterminate size="64"></v-progress-circular>

@@ -21,7 +21,10 @@
             <v-icon>mdi-file-document-outline</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="unit.title"></v-list-item-title>
+            <v-list-item-title
+              >{{ unit.title }} -
+              {{ unit.list_video.video_title }}</v-list-item-title
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
@@ -53,7 +56,10 @@ export default {
   created() {
     console.log(this.currentCourseName);
     // let url = "http://178.128.213.14/content-utilities/api/cms/miscs/get_materials_for_list";
-    let url = "https://megatalking.co.kr/api/get_materials_for_list.php";
+    // let url = "https://megatalking.co.kr/api/get_materials_for_list.php";
+    let url =
+      "https://megatalking.co.kr/content-utilities/public/api/cms/miscs/get_materials_for_list";
+
     axios
       .get(url)
       .then(rs => {
