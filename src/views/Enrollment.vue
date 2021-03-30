@@ -602,7 +602,9 @@
                         class="caption mb-5"
                         style="color: #bdbdbd"
                       >
-                        시간표 전체보기 >
+                        <v-btn outlined color="grey" class="rounded-lg">
+                          시간표 전체보기
+                        </v-btn>
                       </div>
                     </template>
                     <div
@@ -655,7 +657,7 @@
                     <div class="h6 font-weight-black">수강선택 요약</div>
                     <v-container
                       class="mt-3 px-7 text-left"
-                      style="color:#696d73"
+                      style="color: #696d73"
                     >
                       <v-row no-gutters class="px-2">
                         <v-col
@@ -725,7 +727,7 @@
                     </div>
                     <v-container
                       class="mt-3 px-7 text-left"
-                      style="color:#696d73"
+                      style="color: #696d73"
                     >
                       <v-row no-gutters class="px-2">
                         <v-col
