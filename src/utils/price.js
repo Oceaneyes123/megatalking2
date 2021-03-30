@@ -51,7 +51,7 @@ export default function(type, level, time, days, period, ts) {
           },
           5: {
             1: {
-              value: 98000,
+              value: 109000,
               dcn: 0,
               dcp: 0
             },
