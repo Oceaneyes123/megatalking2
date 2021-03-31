@@ -209,76 +209,94 @@
                 :src="selectedClassImg"
               >
                 <v-overlay absolute opacity=".8">
-                  <div v-if="!isMobile" class="d-flex flex-row">
-                    <v-col cols="4" class="ml-15 pl-15">
-                      <v-card class="ml-15" style="border-radius: 20px">
-                        <v-img :src="selectedClassImg" height="400"></v-img>
-                      </v-card>
-                    </v-col>
-                    <v-col cols="6">
-                      <div
-                        class="d-flex justify-center pt-1"
-                        style="
-                          background: white;
-                          width: 25%;
-                          border-radius: 10px;
-                        "
-                      >
-                        <span class="h5 gmarket" style="color: #e37b39">
-                          입문과정
-                        </span>
-                      </div>
-                      <div
-                        class="h3 font-weight-black text-left white--text gmarket my-10"
-                      >
-                        {{ selectedClassTitle }}
-                      </div>
-                      <div>
-                        <v-row align="center" class="pt-15">
-                          <v-col>
-                            <div class="nanum white--text d-flex align-center">
-                              <v-icon class="white--text mr-2">schedule</v-icon>
-                              {{ selectedClassInfo.hour }} :
-                              {{ selectedClassInfo.min }} +
-                              {{ selectedClassInfo.duration }}
-                            </div>
-                            <div
-                              class="nanum white--text d-flex align-center mt-1"
-                            >
-                              <v-icon class="white--text mr-2"
-                                >account_circle</v-icon
-                              >
-                              {{ showClass.lec_name }}
-                            </div>
-                          </v-col>
-                          <v-col>
-                            <div class="nanum white--text d-flex align-center">
-                              <v-icon class="white--text mr-2">event</v-icon>
-                              TTh
-                            </div>
-                            <div
-                              class="nanum white--text d-flex align-center mt-1"
-                            >
-                              <v-icon class="white--text mr-2">phone</v-icon>
-                              {{ selectedClassInfo.cate_name }}
-                            </div>
-                          </v-col>
-                          <v-col>
-                            <v-btn
-                              large
-                              class="gmarket font-weight-bold pt-1"
-                              style="
-                                background: rgba(255, 255, 255, 0.25);
-                                font-size: 24px;
-                              "
-                              @click="openClassBook()"
-                            >
-                              START
-                            </v-btn>
-                          </v-col>
-                        </v-row>
-                      </div>
-                    </v-col>
+                  <div v-if="!isMobile">
+                    <v-container>
+                      <v-row>
+                        <v-col cols="5">
+                          <v-card class="ml-15" style="border-radius: 20px">
+                            <v-img
+                              :src="selectedClassImg"
+                              height="400"
+                              width="350"
+                            ></v-img>
+                          </v-card>
+                        </v-col>
+                        <v-col cols="6">
+                          <div
+                            class="d-flex justify-center pt-1"
+                            style="
+                              background: white;
+                              width: 25%;
+                              border-radius: 10px;
+                            "
+                          >
+                            <span class="h5 gmarket" style="color: #e37b39">
+                              입문과정
+                            </span>
+                          </div>
+                          <div
+                            class="h3 font-weight-black text-left white--text gmarket my-10"
+                          >
+                            {{ selectedClassTitle }}
+                          </div>
+                          <div>
+                            <v-row align="center" class="pt-15">
+                              <v-col>
+                                <div
+                                  class="nanum white--text d-flex align-center"
+                                >
+                                  <v-icon class="white--text mr-2"
+                                    >schedule</v-icon
+                                  >
+                                  {{ selectedClassInfo.hour }} :
+                                  {{ selectedClassInfo.min }} +
+                                  {{ selectedClassInfo.duration }}
+                                </div>
+                                <div
+                                  class="nanum white--text d-flex align-center mt-1"
+                                >
+                                  <v-icon class="white--text mr-2"
+                                    >account_circle</v-icon
+                                  >
+                                  {{ showClass.lec_name }}
+                                </div>
+                              </v-col>
+                              <v-col>
+                                <div
+                                  class="nanum white--text d-flex align-center"
+                                >
+                                  <v-icon class="white--text mr-2"
+                                    >event</v-icon
+                                  >
+                                  TTh
+                                </div>
+                                <div
+                                  class="nanum white--text d-flex align-center mt-1"
+                                >
+                                  <v-icon class="white--text mr-2"
+                                    >phone</v-icon
+                                  >
+                                  {{ selectedClassInfo.cate_name }}
+                                </div>
+                              </v-col>
+                              <v-col>
+                                <v-btn
+                                  large
+                                  class="gmarket font-weight-bold pt-1"
+                                  style="
+                                    background: rgba(255, 255, 255, 0.25);
+                                    font-size: 24px;
+                                  "
+                                  @click="openClassBook()"
+                                >
+                                  START
+                                </v-btn>
+                              </v-col>
+                            </v-row>
+                          </div>
+                        </v-col>
+                      </v-row>
+                    </v-container>
                   </div>
                   <v-container v-else>
                     <div class="d-flex flex-column align-center text-left">
@@ -375,7 +393,7 @@
                           <v-img src="../assets/vector1.png"></v-img>
                         </div>
                       </v-col>
-                      <v-col>
+                      <v-col class="d-flex flex-column">
                         <div class="nanum text-blue">
                           Your contract will end on
                           <span
@@ -385,7 +403,7 @@
                             2022.02.17
                           </span>
                         </div>
-                        <div class="nanum text-blue">
+                        <div class="nanum text-blue mb-2">
                           You have
                           <span
                             class="font-weight-bold"
@@ -395,14 +413,16 @@
                           </span>
                           lessons left!
                         </div>
-                        <v-btn
-                          depressed
-                          class="gmarket white--text pt-1 mt-2"
-                          color="#E37B39"
-                          style="font-size: 24px"
-                        >
-                          수강신청
-                        </v-btn>
+                        <div class="mt-auto">
+                          <v-btn
+                            depressed
+                            class="gmarket white--text pt-1"
+                            color="#E37B39"
+                            style="font-size: 24px"
+                          >
+                            수강신청
+                          </v-btn>
+                        </div>
                       </v-col>
                     </v-row>
                   </v-card>
@@ -415,7 +435,7 @@
                           <v-img src="../assets/vector2.png"></v-img>
                         </div>
                       </v-col>
-                      <v-col>
+                      <v-col class="d-flex flex-column">
                         <div class="nanum text-blue">
                           We appreciate your
                           <span
@@ -425,7 +445,7 @@
                             feedback
                           </span>
                         </div>
-                        <div class="nanum text-blue">
+                        <div class="nanum text-blue mb-2">
                           Send us a
                           <span
                             class="font-weight-bold"
@@ -435,14 +455,16 @@
                           </span>
                           of the course!
                         </div>
-                        <v-btn
-                          depressed
-                          class="gmarket white--text pt-1 mt-2"
-                          color="#E37B39"
-                          style="font-size: 24px"
-                        >
-                          수강후기
-                        </v-btn>
+                        <div class="mt-auto">
+                          <v-btn
+                            depressed
+                            class="gmarket white--text pt-1"
+                            color="#E37B39"
+                            style="font-size: 24px"
+                          >
+                            수강후기
+                          </v-btn>
+                        </div>
                       </v-col>
                     </v-row>
                   </v-card>
