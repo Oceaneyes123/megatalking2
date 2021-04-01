@@ -200,7 +200,11 @@
                 </v-sheet>
               </v-col>
             </v-row>
-            <v-container fluid class="px-0 mt-2">
+            <v-container
+              fluid
+              class="px-0 mt-2"
+              v-if="isClass && isClassSelected"
+            >
               <v-img
                 class="rounded-xl"
                 data-aos="fade-up"
@@ -383,6 +387,24 @@
                 </v-overlay>
               </v-img>
             </v-container>
+
+            <v-container
+              fluid
+              class="px-0 mt-2"
+              v-if="isClass && pickDateClasses.length > 1 && !isClassSelected"
+            >
+              <v-card
+                class="rounded-xl d-flex justify-center align-center"
+                height="400"
+                flat
+                color="#a6a6a6"
+              >
+                <div class="text-center h6 nanum" style="color: #e37b39">
+                  Please select class
+                </div>
+              </v-card>
+            </v-container>
+
             <v-layout class="pb-15">
               <v-row>
                 <v-col>
@@ -651,6 +673,8 @@ export default {
       isBook: true,
       isVideo: false,
       isPDF: false,
+      isClass: false,
+      isClassSelected: false,
       selectedSuggestion: [],
       pickerDate: null,
       tests: [
@@ -726,10 +750,15 @@ export default {
       this.$refs.HoldSnackbar.show(text, state);
     });
     bus.$on("refreshSchedule", () => {
-      // console.log(this.date2);
+      //console.log(this.date2);
       let [year, month, day] = this.date2.split("-");
       this.getSchedule(year, month, day);
     });
+
+    let vm = this;
+    setTimeout(function() {
+      vm.pickDate(vm.date2);
+    }, 1000);
   },
   methods: {
     openClassBook() {
@@ -798,6 +827,7 @@ export default {
         this.$store.commit("setCurrentCourseLink", { link: bookLink });
       //비디오 교재면 링크없애기
       else this.$store.commit("setCurrentCourseLink", { link: "" });
+      this.isClassSelected = true;
     },
     getClassColor(classObj) {
       //console.log(classObj);
@@ -862,6 +892,10 @@ export default {
       let pickDateClasses = [];
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
+        this.isClass = true;
+        this.isClassSelected = pickDateClasses.length == 1 ? true : false;
+      } else {
+        this.isClass = false;
       }
       this.$set(this.$data, "pickDateClasses", pickDateClasses);
     },
