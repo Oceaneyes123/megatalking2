@@ -599,12 +599,10 @@
                       <div
                         v-if="!seeMore"
                         @click="seeMore = true"
-                        class="caption mb-5"
+                        class="caption mb-5 grey--text"
                         style="color: #bdbdbd"
                       >
-                        <v-btn outlined color="grey" class="rounded-lg">
-                          시간표 전체보기
-                        </v-btn>
+                        <span style="cursor: pointer">시간표 전체보기 ></span>
                       </div>
                     </template>
                     <div
