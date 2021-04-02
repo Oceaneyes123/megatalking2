@@ -40,8 +40,11 @@
             "
           >
             <v-container v-if="progressEvents.length == 0">
+              <v-row justify="center">
+                <div class="h6 nanum">No ongoing events</div>
+              </v-row>
               <v-row>
-                <v-col v-for="i in 3" :key="i">
+                <v-col v-for="i in card" :key="i">
                   <v-skeleton-loader
                     class="mx-auto"
                     max-width="300"
@@ -58,13 +61,6 @@
               :key="i"
             >
               <v-card flat @click="$refs.eventDialog.open(event)">
-                <!-- <v-card
-                  color="#f99d59"
-                  min-width="100"
-                  min-height="200"
-                  width="100%"
-                  height="100%"
-                ></v-card> -->
                 <v-img
                   :src="getImage(event.image)"
                   width="100%"
@@ -86,13 +82,6 @@
           <v-row v-if="defaultSelected == 'end'">
             <v-col cols="12" sm="4" v-for="(event, i) in endEvents" :key="i">
               <v-card flat @click="$refs.eventDialog.open(event)">
-                <!-- <v-card
-                  color="#f99d59"
-                  min-width="100"
-                  min-height="200"
-                  width="100%"
-                  height="100%"
-                ></v-card> -->
                 <v-img
                   :src="getImage(event.image)"
                   width="100%"
@@ -135,6 +124,7 @@ export default {
       eventDialog: false,
       // loading: true,
       overlay: true,
+      card: 3,
 
       defaultSelected: {
         key: "progress",
@@ -177,6 +167,7 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
+      this.card = this.isMobile ? 1 : 3;
     },
 
     getEvents() {

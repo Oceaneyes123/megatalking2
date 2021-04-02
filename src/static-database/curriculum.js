@@ -108,7 +108,7 @@ export function getBookList() {
 
     books_3: [
       {
-        mobile: require("../assets/mobile/free-Q&A.png"),
+        mobile: require("../assets/mobile/perfect-reading&talking.png"),
         image: require("../assets/curriculum/ft_q_a1.webp"),
         title: "리딩&스피킹 퍼펙트리딩",
         details: `영어지문을 정확하게 이해하는 독해력을 기르면서 중요표현

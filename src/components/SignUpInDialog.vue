@@ -149,7 +149,7 @@
                             class="mb-1 ml-1 white--text"
                             x-small
                             fab
-                            style="pointer-events:none;"
+                            style="pointer-events: none"
                           >
                             <v-icon dark>close</v-icon>
                           </v-btn>
@@ -164,7 +164,7 @@
                             class="mb-1 ml-1 white--text"
                             x-small
                             fab
-                            style="pointer-events:none;"
+                            style="pointer-events: none"
                           >
                             <v-icon dark>check</v-icon>
                           </v-btn>
@@ -249,7 +249,7 @@ export default {
       signupIdRules: [v => !!v || "이메일을 입력해주세요"],
       signupIdRulesTemp: [
         v => !!v || "이메일을 입력해주세요",
-        v => /[a-zA-Z1-9]+@[a-zA-Z1-9]+/.test(v) || "이메일 형식이 아닙니다."
+        v => /[a-zA-Z0-9]+@[a-zA-Z0-9]+/.test(v) || "이메일 형식이 아닙니다."
       ],
       signupPwRules: [v => !!v || "비밀번호를 입력해주세요"],
       signupPwCheckRules: [
