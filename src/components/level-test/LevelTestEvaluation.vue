@@ -51,16 +51,7 @@ export default {
       this.showEvaluationDialog = true;
     },
     setLid(l_id) {
-      this.iframe.loaded = false;
-      if (this.iframe.src == "") {
-        this.iframe.src =
-          "https://megatalking.co.kr/lv/#/evaluation-new/" + l_id;
-        this.iframe.loaded = true;
-      } else {
-        this.iframe.src =
-          "https://megatalking.co.kr/lv/#/evaluation-new/" + l_id;
-        this.iframe.loaded = true;
-      }
+      this.iframe.src = "https://megatalking.co.kr/lv/#/evaluation-new/" + l_id;
     },
     load() {
       this.iframe.loaded = true;
