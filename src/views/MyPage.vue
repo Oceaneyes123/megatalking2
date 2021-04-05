@@ -217,11 +217,18 @@
                     <v-container>
                       <v-row>
                         <v-col cols="5">
-                          <v-card class="ml-15" style="border-radius: 20px">
+                          <v-card
+                            class="d-flex align-center justify-end"
+                            style="border-radius: 20px"
+                            width="100%"
+                            height="100%"
+                            color="#00000000"
+                            flat
+                          >
                             <v-img
                               :src="selectedClassImg"
                               height="400"
-                              width="350"
+                              max-width="300"
                             ></v-img>
                           </v-card>
                         </v-col>
@@ -240,63 +247,72 @@
                           </div>
                           <div
                             class="h3 font-weight-black text-left white--text gmarket my-10"
+                            style="word-break: keep-all"
                           >
                             {{ selectedClassTitle }}
                           </div>
                           <div>
-                            <v-row align="center" class="pt-15">
-                              <v-col>
-                                <div
-                                  class="nanum white--text d-flex align-center"
-                                >
-                                  <v-icon class="white--text mr-2"
-                                    >schedule</v-icon
+                            <v-container fluid class="px-0 py-0">
+                              <v-row>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="nanum white--text d-flex align-center"
                                   >
-                                  {{ selectedClassInfo.hour }} :
-                                  {{ selectedClassInfo.min }} +
-                                  {{ selectedClassInfo.duration }}
-                                </div>
-                                <div
-                                  class="nanum white--text d-flex align-center mt-1"
-                                >
-                                  <v-icon class="white--text mr-2"
-                                    >account_circle</v-icon
+                                    <v-icon class="white--text mr-2"
+                                      >schedule</v-icon
+                                    >
+                                    {{ selectedClassInfo.hour }} :
+                                    {{ selectedClassInfo.min }} +
+                                    {{ selectedClassInfo.duration }}
+                                  </div>
+                                </v-col>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="nanum white--text d-flex align-center"
                                   >
-                                  {{ showClass.lec_name }}
-                                </div>
-                              </v-col>
-                              <v-col>
-                                <div
-                                  class="nanum white--text d-flex align-center"
-                                >
-                                  <v-icon class="white--text mr-2"
-                                    >event</v-icon
+                                    <v-icon class="white--text mr-2"
+                                      >event</v-icon
+                                    >
+                                    TTh
+                                  </div>
+                                </v-col>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="nanum white--text d-flex align-center mt-1"
                                   >
-                                  TTh
-                                </div>
-                                <div
-                                  class="nanum white--text d-flex align-center mt-1"
-                                >
-                                  <v-icon class="white--text mr-2"
-                                    >phone</v-icon
+                                    <v-icon class="white--text mr-2"
+                                      >account_circle</v-icon
+                                    >
+                                    {{ showClass.lec_name }}
+                                  </div>
+                                </v-col>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="nanum white--text d-flex align-center mt-1"
                                   >
-                                  {{ selectedClassInfo.cate_name }}
-                                </div>
-                              </v-col>
-                              <v-col>
-                                <v-btn
-                                  large
-                                  class="gmarket font-weight-bold pt-1"
-                                  style="
-                                    background: rgba(255, 255, 255, 0.25);
-                                    font-size: 24px;
-                                  "
-                                  @click="openClassBook()"
-                                >
-                                  START
-                                </v-btn>
-                              </v-col>
-                            </v-row>
+                                    <v-icon class="white--text mr-2"
+                                      >phone</v-icon
+                                    >
+                                    {{ selectedClassInfo.cate_name }}
+                                  </div>
+                                </v-col>
+                              </v-row>
+                              <v-row align="center" class="mt-5">
+                                <v-col>
+                                  <v-btn
+                                    large
+                                    class="gmarket font-weight-bold pt-1"
+                                    style="
+                                      background: rgba(255, 255, 255, 0.25);
+                                      font-size: 24px;
+                                    "
+                                    @click="openClassBook()"
+                                  >
+                                    START
+                                  </v-btn>
+                                </v-col>
+                              </v-row>
+                            </v-container>
                           </div>
                         </v-col>
                       </v-row>
@@ -397,9 +413,12 @@
                 class="rounded-xl d-flex justify-center align-center"
                 height="400"
                 flat
-                color="#a6a6a6"
+                color="#d4d4d4"
               >
-                <div class="text-center h6 nanum" style="color: #e37b39">
+                <div
+                  class="text-center h6 nanum font-weight-bold"
+                  style="color: #e37b39"
+                >
                   Please select class
                 </div>
               </v-card>
@@ -441,6 +460,7 @@
                             class="gmarket white--text pt-1"
                             color="#E37B39"
                             style="font-size: 24px"
+                            @click="$router.push('/enrollment')"
                           >
                             수강신청
                           </v-btn>
@@ -483,6 +503,7 @@
                             class="gmarket white--text pt-1"
                             color="#E37B39"
                             style="font-size: 24px"
+                            @click="$router.push('/board')"
                           >
                             수강후기
                           </v-btn>
@@ -754,11 +775,6 @@ export default {
       let [year, month, day] = this.date2.split("-");
       this.getSchedule(year, month, day);
     });
-
-    let vm = this;
-    setTimeout(function() {
-      vm.pickDate(vm.date2);
-    }, 1000);
   },
   methods: {
     openClassBook() {
@@ -788,6 +804,7 @@ export default {
     },
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
+      console.log(classObj);
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
         require("@/assets/curriculum/adv_phonics.jpg"),
@@ -893,7 +910,12 @@ export default {
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
         this.isClass = true;
-        this.isClassSelected = pickDateClasses.length == 1 ? true : false;
+        if (pickDateClasses.length == 1) {
+          this.isClassSelected = true;
+          this.selectClass(pickDateClasses[0]);
+        } else {
+          this.isClassSelected = false;
+        }
       } else {
         this.isClass = false;
       }
@@ -921,7 +943,8 @@ export default {
             this.memberName = rs.data.memberInfo.data.name;
             this.$set(this.$data, "schedule", schedule);
             this.$set(this.$data, "holdDatas", holdDatas);
-            if (this.pickDateClasses.length === 0) this.pickDate(this.today);
+            // if (this.pickDateClasses.length === 0) this.pickDate(this.today);
+            this.pickDate(this.date2);
           }
         })
         .catch(err => {
