@@ -342,12 +342,6 @@
                         >
                           {{ selectedClassTitle }}
                         </div>
-                        <div
-                          class="font-weight-black text-left white--text gmarket"
-                          :class="isMobile ? 'h4' : 'h4'"
-                        >
-                          Junior Basic
-                        </div>
                         <div class="py-5">
                           <v-row align="center">
                             <v-col>
