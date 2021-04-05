@@ -633,7 +633,6 @@
                           "
                           @click="methodSelected = method.text"
                           :elevation="methodSelected == method.text ? 3 : 0"
-                          :disabled="method.text === '정기 결제'"
                         >
                           <v-icon left>
                             {{ method.icon }}
@@ -1009,7 +1008,7 @@
   left: 0;
 }
 .stickySummery {
-  transition: all 1s ease 0s;
+  transition: all 1.5s ease 0s;
 }
 </style>
 <script>
@@ -1065,9 +1064,9 @@ export default {
           icon: "mdi-credit-card-check"
         },
         {
-          text: "정기 결제",
+          text: "핸드폰 결제",
           color: "",
-          icon: "mdi-credit-card-clock"
+          icon: "mdi-cellphone"
         }
       ],
       selectedHour: 6,
@@ -1081,13 +1080,24 @@ export default {
       durationSelected: "1년",
       bookSelected: -1,
       timeSelected: -1,
-      methodSelected: -1,
-      materialSelected: 2,
+      methodSelected: "카드 결제",
+      materialSelected: 0,
       seriesSelected: -1,
       materialIndex: 0,
       isMobile: false,
       isSticky: false,
       materials: [
+        {
+          course: "추천과정",
+          series: [
+            {
+              text: "전담 매니저 추천과정",
+              level: "",
+              type: "book",
+              link: ""
+            }
+          ]
+        },
         {
           course: "유튜브 회화과정",
           series: [
@@ -1871,7 +1881,7 @@ export default {
         case "카드 결제":
           type = this.methodSelected;
           break;
-        case "정기 결제":
+        case "핸드폰 결제":
           type = this.methodSelected;
           break;
         default:

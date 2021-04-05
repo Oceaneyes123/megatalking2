@@ -20,7 +20,7 @@
         <iframe
           width="100%"
           ref="myframe"
-          style="height:90vh"
+          style="height:90vh;background:black"
           :src="iframe.src"
           @load="load"
           v-show="iframe.loaded"
@@ -55,6 +55,15 @@ export default {
     },
     load() {
       this.iframe.loaded = true;
+      console.log("hi??");
+    }
+  },
+  watch: {
+    showEvaluationDialog(val) {
+      if (val === false) {
+        this.iframe.loaded = false;
+        this.iframe.src = "";
+      }
     }
   }
 };
