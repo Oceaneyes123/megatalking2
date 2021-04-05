@@ -246,8 +246,8 @@
                             </span>
                           </div>
                           <div
-                            class="h3 font-weight-black text-left white--text gmarket my-10"
-                            style="word-break: keep-all"
+                            class="h4 font-weight-black text-left white--text gmarket my-10 korean-text"
+                            style="word-break: keep-all; line-break: strict"
                           >
                             {{ selectedClassTitle }}
                           </div>
