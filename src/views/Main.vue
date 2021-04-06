@@ -186,9 +186,11 @@
               직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
               레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
             </div>
-            <div class="title font-weight-bold" style="color: #3889ff">
-              <span>레벨테스트 하러가기 ></span>
-            </div>
+            <router-link to="/level-test" style="text-decoration: none">
+              <div class="title font-weight-bold" style="color: #3889ff">
+                <span>레벨테스트 하러가기 ></span>
+              </div>
+            </router-link>
           </div>
         </v-card>
 

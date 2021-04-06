@@ -418,7 +418,7 @@
               </v-card>
             </v-container>
 
-            <v-layout class="pb-15">
+            <v-layout class="pb-15" v-if="isClass && isClassSelected">
               <v-row>
                 <v-col>
                   <v-card flat color="#ECF0FB" class="py-5 px-10">
@@ -435,7 +435,7 @@
                             class="font-weight-bold"
                             style="font-size: 18px"
                           >
-                            2022.02.17
+                            {{ getEndDay(showClass).substr(8) }}
                           </span>
                         </div>
                         <div class="nanum text-blue mb-2">
@@ -691,6 +691,7 @@ export default {
       isClass: false,
       isClassSelected: false,
       selectedSuggestion: [],
+      selectedEndDay: "",
       pickerDate: null,
       tests: [
         {
@@ -769,6 +770,7 @@ export default {
       let [year, month, day] = this.date2.split("-");
       this.getSchedule(year, month, day);
     });
+    console.log(this.showClass);
   },
   methods: {
     openClassBook() {
@@ -798,7 +800,7 @@ export default {
     },
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
-      console.log(classObj);
+
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
         require("@/assets/curriculum/adv_phonics.jpg"),
@@ -826,6 +828,7 @@ export default {
       classObj.day = day;
       this.$set(this.$data, "showClass", classObj);
       this.selectedClassImg = randomItem;
+      this.selectedEndDay = classObj.end_day;
 
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
