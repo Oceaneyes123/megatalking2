@@ -824,13 +824,15 @@
       </v-overlay>
       <v-card max-width="500" class="pb-5 rounded-xl">
         <div
-          class="h5 text-center pa-3 mb-5 white--text"
+          class="h5 text-center pa-3 mb-5 white--text nanum font-weight-bold"
           style="background-color: #2564cb"
         >
           요약
         </div>
         <div class="px-5 mx-md-8">
-          <div class="h5 gmarket" style="color: #2564cb">수강선택</div>
+          <div class="h5 nanum font-weight-bold" style="color: #2564cb">
+            수강선택
+          </div>
           <div>
             <v-container>
               <v-row no-gutters>
@@ -864,7 +866,7 @@
             </v-container>
           </div>
           <v-divider></v-divider>
-          <div class="h5 gmarket mt-5" style="color: #2564cb">
+          <div class="h5 nanum mt-5 font-weight-bold" style="color: #2564cb">
             결제 예정금액
           </div>
           <v-container>
@@ -1064,7 +1066,7 @@ export default {
           icon: "mdi-credit-card-check"
         },
         {
-          text: "핸드폰 결제",
+          text: "휴대폰 결제",
           color: "",
           icon: "mdi-cellphone"
         }
@@ -1881,7 +1883,7 @@ export default {
         case "카드 결제":
           type = this.methodSelected;
           break;
-        case "핸드폰 결제":
+        case "휴대폰 결제":
           type = this.methodSelected;
           break;
         default:
@@ -2269,6 +2271,27 @@ export default {
         console.log(this.orderId);
         loadTossPayments(clientKey).then(tossPayments => {
           tossPayments.requestPayment("카드", {
+            amount: this.paymentData.amount,
+            orderId: this.orderId,
+            orderName: this.paymentData.orderName,
+            customerName: this.paymentData.customerName,
+            successUrl: window.location.origin + "/payment-success",
+            failUrl: window.location.origin + "/payment-fail"
+          });
+          // tossPayments.requestBillingAuth("카드", {
+          //   customerKey: "IUb-mOQLBidj80jh71a60",
+          //   successUrl: window.location.origin + "/payment-success",
+          //   failUrl: window.location.origin + "/payment-fail",
+          // });
+        });
+      } else if (this.methodSelected == "휴대폰 결제") {
+        await this.enrollStudent();
+        // Promise를 사용하는 경우
+        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb";
+        console.log(loadTossPayments, clientKey);
+        console.log(this.orderId);
+        loadTossPayments(clientKey).then(tossPayments => {
+          tossPayments.requestPayment("휴대폰", {
             amount: this.paymentData.amount,
             orderId: this.orderId,
             orderName: this.paymentData.orderName,

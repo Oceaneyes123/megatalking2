@@ -16,6 +16,22 @@
         </div>
       </v-img>
       <router-view v-else></router-view>
+
+      <v-container fluid class="px-0 py-0">
+        <v-btn
+          elevation="3"
+          fab
+          icon
+          fixed
+          bottom
+          class="yellow black--text"
+          style="height: 56px; width: 56px;"
+          :style="chatBtnPostion"
+          href="http://pf.kakao.com/_xdKxhul/chat"
+          target="_blank"
+          ><v-icon large>mdi-chat</v-icon></v-btn
+        >
+      </v-container>
     </v-app>
   </div>
 </template>
@@ -39,7 +55,19 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"])
+    ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"]),
+    chatBtnPostion() {
+      let postion;
+      if (this.isMobile) {
+        postion =
+          this.$route.name == "Enrollment"
+            ? "right:20px; bottom:80px"
+            : "right:20px; bottom:20px";
+      } else {
+        postion = "right:50px; bottom:50px";
+      }
+      return postion;
+    }
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
