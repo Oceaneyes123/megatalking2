@@ -90,7 +90,7 @@
                     ></v-img>
                   </a>
                   <a
-                    href="https://www.instagram.com/megatalking_english/"
+                    href="https://www.instagram.com/megatalking_official/"
                     target="_blank"
                   >
                     <v-img
@@ -116,7 +116,7 @@ export default {
   data() {
     return {
       screenWidth: "",
-      isMobile: false,
+      isMobile: false
     };
   },
 
@@ -137,8 +137,8 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
-    },
-  },
+    }
+  }
 };
 </script>
 

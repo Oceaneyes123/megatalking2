@@ -680,7 +680,7 @@
               class="rounded-lg caption-text white--text"
               color="#6089d4"
               depressed
-              to="/curriculum"
+              to="/board"
             >
               게시판 바로가기
             </v-btn>
@@ -872,7 +872,7 @@
               class="rounded-lg caption-text white--text"
               color="#6089d4"
               depressed
-              to="/mypage"
+              to="/enrollment"
             >
               강의실 바로가기
             </v-btn>
