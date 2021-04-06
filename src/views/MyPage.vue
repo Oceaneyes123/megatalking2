@@ -38,7 +38,7 @@
               </v-col>
             </v-row>
             <!--`-->
-            <v-row class="my-10">
+            <v-row class="my-10" id="detailContainer">
               <v-col cols="12">
                 <v-sheet>
                   <v-slide-group
@@ -583,6 +583,7 @@
         </v-card>
       </v-card>
     </v-container>
+    <Dialog ref="ModalDialog"></Dialog>
     <HoldDialog ref="HoldDialog"></HoldDialog>
     <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
   </v-app>
@@ -636,6 +637,7 @@ import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import HoldSnackbar from "@/components/Snackbar";
+import Dialog from "@/components/mypage/Dialog";
 // import BookCover from "@/components/mypage/BookCover";
 // import VideoCover from "@/components/mypage/VideoCover";
 // import PDFCover from "@/components/mypage/PDFCover";
@@ -644,7 +646,8 @@ import { bus } from "@/main";
 export default {
   components: {
     HoldDialog,
-    HoldSnackbar
+    HoldSnackbar,
+    Dialog
     // BookCover,
     // VideoCover,
     // PDFCover,
@@ -770,14 +773,24 @@ export default {
       this.$router.push("/material");
     },
     openRecording(classObj) {
-      let tel = classObj.aTel + classObj.bTel + classObj.cTel;
-      let hp = classObj.aHp + classObj.bHp + classObj.cHp;
-      let path = `http://phone.megatalking.com/my_phone1.htm?call_date=${classObj.Ymd}&tel001=${tel}&tel002=${hp}&company_code=ueducation`;
-      window.open(path, "PopupWin", "width=380,height=350");
+      let obj = {
+        call_date: classObj.Ymd,
+        tel: classObj.aTel + classObj.bTel + classObj.cTel,
+        hp: classObj.aHp + classObj.bHp + classObj.cHp
+      };
+      this.$refs.ModalDialog.setOpts(2, obj);
+      this.$refs.ModalDialog.open();
+      // let path = `https://phone.megatalking.com/my_phone1.htm?call_date=${classObj.Ymd}&tel001=${tel}&tel002=${hp}&company_code=ueducation`;
+      // window.open(path, "PopupWin", "width=380,height=350");
     },
     openEval(classObj) {
-      let path = `http://phone.megatalking.com/firmsugang_view.htm?s_id=${classObj.s_id}&todate=${classObj.todate}`;
-      window.open(path, "PopupWin", "width=700,height=600");
+      let obj = {
+        link: `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`
+      };
+      this.$refs.ModalDialog.setOpts(1, obj);
+      this.$refs.ModalDialog.open();
+      // let path = `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`;
+      // window.open(path, "PopupWin", "width=700,height=600");
     },
     async openHoldDialog(classObj) {
       let date = this.date2;
@@ -828,6 +841,12 @@ export default {
       //비디오 교재면 링크없애기
       else this.$store.commit("setCurrentCourseLink", { link: "" });
       this.isClassSelected = true;
+
+      this.$vuetify.goTo("#detailContainer", {
+        duration: 300,
+        offset: 0,
+        easing: "easeInOutCubic"
+      });
     },
     getClassColor(classObj) {
       //console.log(classObj);
