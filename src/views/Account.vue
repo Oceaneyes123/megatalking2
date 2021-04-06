@@ -104,6 +104,8 @@ export default {
     window.removeEventListener("resize", this.onWindowResize);
   },
 
+  watch: {},
+
   computed: {
     isMobile() {
       switch (this.$vuetify.breakpoint.name) {
@@ -127,6 +129,8 @@ export default {
     this.isMobile = this.screenWidth <= 960 ? true : false;
     axios.defaults.headers.common["Authorization"] = this.token;
     this.getHistory();
+
+    this.$cookie.set("isNext", false);
   },
 
   methods: {
@@ -173,7 +177,7 @@ export default {
               });
             });
             this.$set(this.$data, "tab1Item", temArr);
-            console.log(this.tab1Item);
+            // console.log(this.tab1Item);
           }
           // console.log(rs);
         })
