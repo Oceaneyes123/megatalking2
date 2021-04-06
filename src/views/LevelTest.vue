@@ -44,7 +44,7 @@
                 <v-spacer></v-spacer>
                 <v-col cols="12" sm="6" class="mt-5 mt-sm-0 d-flex">
                   <v-btn
-                    color="#5a55a1"
+                    color="primary"
                     large
                     class="white--text rounded-lg ml-auto"
                     :block="isMobile"
@@ -456,7 +456,7 @@
       class="border-xl"
     >
       <v-card flat class="tile">
-        <v-card flat color="#A9A7F3" class="tile">
+        <v-card flat color="primary" class="tile">
           <v-container class="py-0">
             <v-row>
               <v-col cols="10" class="white--text">
@@ -475,19 +475,37 @@
         </v-card>
         <v-card>
           <v-container>
-            <v-text-field
-              color="primary"
-              v-model="searchNumber"
-              label="전화번호를 입력하세요."
-              dense
-              outlined
-              maxlength="13"
-              onkeypress="return event.key === 'Enter'
-              || Number(event.key) >= 0
-              && Number(event.key) <= 9"
-            ></v-text-field>
-
-            <p v-if="evaluationErr.length">{{ evaluationErr }}</p>
+            <v-form ref="searchForm" v-model="valid" lazy-validation>
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    color="primary"
+                    v-model="searchName"
+                    label="이름를 입력하세요."
+                    dense
+                    outlined
+                    :rules="[() => !!searchName || '이름을 입력하세요']"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    color="primary"
+                    v-model="searchNumber"
+                    label="전화번호를 입력하세요."
+                    dense
+                    outlined
+                    maxlength="13"
+                    onkeypress="return event.key === 'Enter'
+                    || Number(event.key) >= 0
+                    && Number(event.key) <= 9"
+                    :rules="[() => !!searchNumber || '전화번호를 입력하세요']"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+            </v-form>
+            <p v-if="evaluationErr.length" class="caption red--text">
+              {{ evaluationErr }}
+            </p>
             <v-row class="align-center justify-end fill-height">
               <v-btn
                 class="ma-2"
@@ -571,6 +589,7 @@ export default {
   data() {
     return {
       showEvaluationDialog: false,
+      searchName: "",
       searchEvaluationDialog: false,
       snackbar: false,
       successSnackbar: false,
@@ -699,7 +718,7 @@ export default {
           config
         )
         .then(rs => {
-          console.log(rs);
+          // console.log(rs);
           if (rs.data.result) {
             //code
             this.confirmDialog = false;
@@ -724,11 +743,12 @@ export default {
       this.evaluationErr = {};
       this.classEvaluation = [];
       //확인해봐야할것
-      if (this.searchNumber) {
+      if (this.$refs.searchForm.validate()) {
         axios
           .get("//phone.megatalking.com/origin/api/leveltest.php", {
             params: {
               action: "getEval",
+              searchName: this.searchName,
               searchNumber: this.searchNumber
             }
           })
@@ -739,11 +759,12 @@ export default {
               if (this.classEvaluation) {
                 this.searchEvaluationDialog = false;
                 this.showEvaluationDialog = true;
+                this.$refs.evDialog.setLid(res.data.l_id);
                 this.$refs.evDialog.open();
               }
             } else {
               this.evaluationErr =
-                "평가서를 찾을 수 없습니다. 전화번호를 다시 입력해주세요.";
+                "평가서를 찾을 수 없습니다. 이름/전화번호를 확인해주세요.";
             }
           })
           .catch(err => {

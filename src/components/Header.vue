@@ -72,8 +72,8 @@
           transition="slide-y-transition"
           tile
         >
-          <template v-slot:activator="{ on: menu }">
-            <v-icon v-on="menu" x-large>menu</v-icon>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon v-on="on" v-bind="attrs" x-large>menu</v-icon>
           </template>
           <v-card
             style="color: #a3a3a3"
@@ -84,10 +84,17 @@
           >
             <v-list>
               <v-list-item
+                class="font-weight-bold text-center"
+                @click="attachedLink('enrollment')"
+              >
+                수강 신청
+              </v-list-item>
+              <v-divider></v-divider>
+              <v-list-item
                 v-for="(route, i) in routes"
                 :key="i"
                 @click="attachedLink(route.link)"
-                v-show="route.show"
+                v-show="route.show && route.text != '수강신청'"
                 >{{ route.text }}</v-list-item
               >
               <v-divider></v-divider>
