@@ -17,7 +17,7 @@
       </v-img>
       <router-view v-else></router-view>
 
-      <v-container fluid class="px-0 py-0">
+      <v-container fluid class="px-0 py-0" v-show="chatShow">
         <v-btn
           elevation="3"
           fab
@@ -67,6 +67,13 @@ export default {
         postion = "right:50px; bottom:50px";
       }
       return postion;
+    },
+    chatShow() {
+      let show = true;
+      if (this.isMobile && this.$route.name == "Material") {
+        show = false;
+      }
+      return show;
     }
   },
   created() {
