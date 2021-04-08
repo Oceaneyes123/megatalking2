@@ -131,12 +131,21 @@ export default {
     this.getHistory();
 
     this.$cookie.set("isNext", false);
+
+    // window.setInterval(this.clickFrame, 100);
   },
 
   methods: {
     onWindowResize() {
       this.screenWidth = screen.width;
     },
+
+    // clickFrame() {
+    //   var i = 0;
+    //   if (document.activeElement == document.getElementById("ifr")) {
+    //     window.focus();
+    //   }
+    // },
 
     loadData(tab) {
       if (tab == "수강내역") {

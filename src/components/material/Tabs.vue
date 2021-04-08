@@ -16,7 +16,7 @@
       >{{ step.title }}</v-tab
     >
     <v-tab-item style="height: 80vh" v-show="steps[0].show">
-      <VideoContent :unitId="unitId" />
+      <VideoContent :unitId="unitId" id="videoContent" />
     </v-tab-item>
     <v-tab-item style="height: 80vh" v-show="steps[1].show">
       <Book :unitId="unitId" />
@@ -73,7 +73,18 @@ export default {
     ...mapState(["currentCourseName"])
   },
   props: ["unitId"],
+  mounted() {
+    window.setInterval(this.clickFrame, 100);
+  },
   methods: {
+    clickFrame() {
+      if (document.activeElement == document.getElementById("videoContent")) {
+        console.log("test");
+        console.log(this.$cookie.get("isNext"));
+        window.focus();
+      }
+    },
+
     isEmpty(value) {
       if (
         value == "" ||
