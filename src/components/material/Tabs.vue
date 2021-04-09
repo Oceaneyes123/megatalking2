@@ -69,6 +69,30 @@ export default {
       ]
     };
   },
+
+  created() {
+    var vm = this;
+    window.addEventListener(
+      "message",
+      event => {
+        console.log(event);
+        if (event.data.isNext) {
+          vm.tabs++;
+        }
+      },
+      false
+    );
+
+    if (
+      this.isEmpty(this.currentCourseName) ||
+      this.currentCourseName.indexOf("Video") != 0
+    ) {
+      this.steps[0].show = false;
+      this.steps[1].show = false;
+      this.tabs = 2;
+    }
+  },
+
   computed: {
     ...mapState(["currentCourseName"])
   },
@@ -79,8 +103,9 @@ export default {
   methods: {
     clickFrame() {
       if (document.activeElement == document.getElementById("videoContent")) {
-        console.log("test");
-        console.log(this.$cookie.get("isNext"));
+        if (this.$cookie.get("isNext")) {
+          this.tab++;
+        }
         window.focus();
       }
     },
@@ -98,16 +123,6 @@ export default {
       } else {
         return false;
       }
-    }
-  },
-  created() {
-    if (
-      this.isEmpty(this.currentCourseName) ||
-      this.currentCourseName.indexOf("Video") != 0
-    ) {
-      this.steps[0].show = false;
-      this.steps[1].show = false;
-      this.tabs = 2;
     }
   }
 };

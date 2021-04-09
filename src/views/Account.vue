@@ -1,5 +1,25 @@
 <template>
   <v-app style="background-color: #00000000">
+    <!--  ----------- -->
+
+    <v-container style="margin-top: 200px">
+      <v-tabs v-model="testTab">
+        <v-tab>1</v-tab>
+        <v-tab>2</v-tab>
+        <v-tab-item>
+          <iframe
+            src="http://localhost:8081"
+            frameborder="0"
+            height="500"
+            id="ifr"
+          ></iframe>
+        </v-tab-item>
+        <v-tab-item>Hello to 2nd tab</v-tab-item>
+      </v-tabs>
+    </v-container>
+
+    <!--  ----------- -->
+
     <v-container fluid class="py-0 px-0">
       <v-tabs
         class="h5 nanum"
@@ -93,7 +113,9 @@ export default {
       tab2Item: [],
       tab3Header: ["No.", "상품명 ", "사용가능기간 ", "사용일 ", "상태"],
       tab3Item: [],
-      token: this.$cookie.get("access-token")
+      token: this.$cookie.get("access-token"),
+
+      testTab: 0
     };
   },
 
@@ -130,9 +152,7 @@ export default {
     axios.defaults.headers.common["Authorization"] = this.token;
     this.getHistory();
 
-    this.$cookie.set("isNext", false);
-
-    // window.setInterval(this.clickFrame, 100);
+    //  window.setInterval(this.clickFrame, 100);
   },
 
   methods: {
@@ -141,9 +161,19 @@ export default {
     },
 
     // clickFrame() {
-    //   var i = 0;
+    //    var iframe = document.getElementById("ifr");
+
     //   if (document.activeElement == document.getElementById("ifr")) {
+    //     console.log("test");
+    //     console.log(this.$cookie.get("isNext"));
+    //     if (this.$cookie.get("isNext")) {
+    //       this.testTab = 1;
+    //       document.cookie = "isNext=false";
+    //     }
     //     window.focus();
+
+    //     var button = iframe.contentWindow.document.getElementById("nextButton");
+    //     console.log(button.textContent);
     //   }
     // },
 
