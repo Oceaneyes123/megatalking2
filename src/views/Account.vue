@@ -1,25 +1,5 @@
 <template>
   <v-app style="background-color: #00000000">
-    <!--  ----------- -->
-
-    <v-container style="margin-top: 200px">
-      <v-tabs v-model="testTab">
-        <v-tab>1</v-tab>
-        <v-tab>2</v-tab>
-        <v-tab-item>
-          <iframe
-            src="http://localhost:8081"
-            frameborder="0"
-            height="500"
-            id="ifr"
-          ></iframe>
-        </v-tab-item>
-        <v-tab-item>Hello to 2nd tab</v-tab-item>
-      </v-tabs>
-    </v-container>
-
-    <!--  ----------- -->
-
     <v-container fluid class="py-0 px-0">
       <v-tabs
         class="h5 nanum"
