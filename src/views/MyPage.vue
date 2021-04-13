@@ -319,80 +319,92 @@
                     </v-container>
                   </div>
                   <v-container v-else>
-                    <div class="d-flex flex-column align-center text-left">
-                      <v-card style="width: 50%; border-radius: 20px">
-                        <v-img :src="selectedClassImg"></v-img>
-                      </v-card>
-                      <div style="width: 50%" class="py-5">
-                        <div
-                          class="d-flex justify-center pt-1 mb-5"
-                          style="
-                            background: white;
-                            width: 50%;
-                            border-radius: 10px;
-                          "
-                        >
-                          <span class="h5 gmarket" style="color: #e37b39">
-                            입문과정
-                          </span>
+                    <v-row justify="center">
+                      <v-col class="d-flex justify-center">
+                        <v-card class="rounded-xl" max-width="400">
+                          <v-img :src="selectedClassImg"></v-img>
+                        </v-card>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col>
+                        <div class="d-flex flex-column align-center text-left">
+                          <div style="width: 50%" class="py-5">
+                            <div
+                              class="d-flex justify-center pt-1 mb-5"
+                              style="
+                                background: white;
+                                width: 50%;
+                                border-radius: 10px;
+                              "
+                            >
+                              <span class="h5 gmarket" style="color: #e37b39">
+                                입문과정
+                              </span>
+                            </div>
+                            <div
+                              class="font-weight-black text-left white--text gmarket korean-text"
+                              :class="isMobile ? 'h4' : 'h4'"
+                            >
+                              {{ selectedClassTitle }}
+                            </div>
+                            <div class="py-5">
+                              <v-row align="center">
+                                <v-col>
+                                  <div
+                                    class="nanum white--text d-flex align-center"
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >schedule</v-icon
+                                    >
+                                    {{ selectedClassInfo.hour }} :
+                                    {{ selectedClassInfo.min }} +
+                                    {{ selectedClassInfo.duration }}
+                                  </div>
+                                  <div
+                                    class="nanum white--text d-flex align-center mt-1"
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >account_circle</v-icon
+                                    >
+                                    {{ showClass.lec_name }}
+                                  </div>
+                                </v-col>
+                                <v-col>
+                                  <div
+                                    class="nanum white--text d-flex align-center"
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >event</v-icon
+                                    >
+                                    TTh
+                                  </div>
+                                  <div
+                                    class="nanum white--text d-flex align-center mt-1"
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >phone</v-icon
+                                    >
+                                    {{ selectedClassInfo.cate_name }}
+                                  </div>
+                                </v-col>
+                              </v-row>
+                            </div>
+                            <v-btn
+                              class="gmarket font-weight-bold pt-6 pb-5"
+                              style="
+                                background: rgba(255, 255, 255, 0.25);
+                                font-size: 24px;
+                                width: 100%;
+                              "
+                              @click="openClassBook()"
+                            >
+                              START
+                            </v-btn>
+                          </div>
                         </div>
-                        <div
-                          class="font-weight-black text-left white--text gmarket"
-                          :class="isMobile ? 'h4' : 'h4'"
-                        >
-                          {{ selectedClassTitle }}
-                        </div>
-                        <div class="py-5">
-                          <v-row align="center">
-                            <v-col>
-                              <div
-                                class="nanum white--text d-flex align-center"
-                              >
-                                <v-icon class="white--text mr-2"
-                                  >schedule</v-icon
-                                >
-                                {{ selectedClassInfo.hour }} :
-                                {{ selectedClassInfo.min }} +
-                                {{ selectedClassInfo.duration }}
-                              </div>
-                              <div
-                                class="nanum white--text d-flex align-center mt-1"
-                              >
-                                <v-icon class="white--text mr-2"
-                                  >account_circle</v-icon
-                                >
-                                {{ showClass.lec_name }}
-                              </div>
-                            </v-col>
-                            <v-col>
-                              <div
-                                class="nanum white--text d-flex align-center"
-                              >
-                                <v-icon class="white--text mr-2">event</v-icon>
-                                TTh
-                              </div>
-                              <div
-                                class="nanum white--text d-flex align-center mt-1"
-                              >
-                                <v-icon class="white--text mr-2">phone</v-icon>
-                                {{ selectedClassInfo.cate_name }}
-                              </div>
-                            </v-col>
-                          </v-row>
-                        </div>
-                        <v-btn
-                          class="gmarket font-weight-bold pt-6 pb-5"
-                          style="
-                            background: rgba(255, 255, 255, 0.25);
-                            font-size: 24px;
-                            width: 100%;
-                          "
-                          @click="openClassBook()"
-                        >
-                          START
-                        </v-btn>
-                      </div>
-                    </div>
+                      </v-col>
+                    </v-row>
                   </v-container>
                 </v-overlay>
               </v-img>
@@ -813,6 +825,8 @@ export default {
     },
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
+
+      console.log(classObj);
 
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
