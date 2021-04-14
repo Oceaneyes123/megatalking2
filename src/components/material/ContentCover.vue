@@ -52,11 +52,12 @@ export default {
       if (this.currentCourseLink.length != 0) {
         // window.open(this.currentCourseLink, "_blank");
         var bookWindow = window.open(
-          "http://localhost:8000/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter2"
+          "http://localhost:8000/book#/FreeTalking-QnA/FreeTalking-STEP1/chapter2",
+          "bookWindow"
         );
         var data = { materialStartTime: new Date(Date.now()) };
-        console.log(window.opener);
-        bookWindow.postMessage(data, "*");
+        console.log(bookWindow);
+        bookWindow.window.postMessage(data, "*");
 
         // if(localStorage.getItem("book_start_time") != null){
         //   console.log(moment((localStorage.getItem("book_start_time"))).add(1,'hours').format('h:mm'))
