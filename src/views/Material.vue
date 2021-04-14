@@ -53,7 +53,6 @@ export default {
   created() {
     window.addEventListener("resize", this.onWindowResize);
     this.courseName = this.currentCourseName;
-    console.log(this.courseName);
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);

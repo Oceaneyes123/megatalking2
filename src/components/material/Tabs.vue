@@ -101,14 +101,14 @@ export default {
     window.setInterval(this.clickFrame, 100);
   },
   methods: {
-    clickFrame() {
-      if (document.activeElement == document.getElementById("videoContent")) {
-        if (this.$cookie.get("isNext")) {
-          this.tab++;
-        }
-        window.focus();
-      }
-    },
+    // clickFrame() {
+    //   if (document.activeElement == document.getElementById("videoContent")) {
+    //     if (this.$cookie.get("isNext")) {
+    //       this.tab++;
+    //     }
+    //     window.focus();
+    //   }
+    // },
 
     isEmpty(value) {
       if (

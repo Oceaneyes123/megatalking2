@@ -321,7 +321,7 @@
                   <v-container v-else>
                     <v-row justify="center">
                       <v-col class="d-flex justify-center">
-                        <v-card class="rounded-xl" max-width="400">
+                        <v-card class="rounded-xl" width="50%">
                           <v-img :src="selectedClassImg"></v-img>
                         </v-card>
                       </v-col>
@@ -834,7 +834,6 @@ export default {
         require("@/assets/curriculum/be_sd.jpg"),
         require("@/assets/curriculum/cabin_crew.jpg"),
         require("@/assets/curriculum/conv.jpg"),
-        require("@/assets/curriculum/dd_1.jpg"),
         require("@/assets/curriculum/debate.jpg"),
         require("@/assets/curriculum/email.jpg"),
         require("@/assets/curriculum/hotel.jpg"),
