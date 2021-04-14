@@ -21,5 +21,13 @@ new Vue({
   beforeCreate() {
     this.$store.dispatch("isLogin");
   },
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to) {
+        document.title = to.meta.title || "Megatalking";
+      }
+    }
+  },
   render: h => h(App)
 }).$mount("#app");
