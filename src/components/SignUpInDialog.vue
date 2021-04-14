@@ -59,7 +59,23 @@
                         :rules="loginPwRules"
                         v-model="loginPw"
                       ></v-text-field>
-                      <v-checkbox label="로그인 상태 유지"></v-checkbox>
+                      <v-row>
+                        <v-col cols="12" md="6">
+                          <v-checkbox
+                            label="로그인 상태 유지"
+                            class="mt-0 pt-0"
+                          ></v-checkbox>
+                        </v-col>
+                        <v-col cols="12" md="6" class="d-none d-sm-flex">
+                          <a
+                            href="http://pf.kakao.com/_xdKxhul/chat"
+                            target="_blank"
+                            class="body-1 nanum text-decoration-none"
+                            style="color:rgba(0, 0, 0, 0.6)"
+                            >아이디/비밀번호 찾기</a
+                          >
+                        </v-col>
+                      </v-row>
                       <v-btn
                         style="background-image: linear-gradient(to right, #add5f5, #9ebbef);"
                         block
@@ -70,6 +86,17 @@
                         @click="login()"
                         >로그인</v-btn
                       >
+                      <v-row class="pt-3 d-none d-flex d-sm-flex d-md-none">
+                        <v-col class="pb-0 text-center">
+                          <a
+                            href="http://pf.kakao.com/_xdKxhul/chat"
+                            target="_blank"
+                            class="body-1 nanum text-decoration-none"
+                            style="color:rgba(0, 0, 0, 0.6)"
+                            >아이디/비밀번호 찾기</a
+                          >
+                        </v-col>
+                      </v-row>
                     </v-col>
                   </v-row>
                 </v-form>
