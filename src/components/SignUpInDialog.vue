@@ -77,7 +77,7 @@
                         </v-col>
                       </v-row>
                       <v-btn
-                        style="background-image: linear-gradient(to right, #add5f5, #9ebbef);"
+                        style="background-image: linear-gradient(to right, #72bffc, #6ec5ff);"
                         block
                         depressed
                         class="white--text h5 nanum rounded-xl"
@@ -399,6 +399,7 @@ export default {
           .then(() => {
             if (this.isLogin) {
               this.$refs.loginform.reset();
+              this.$router.push("/mypage");
               this.close();
             }
             this.btnLoading = false;

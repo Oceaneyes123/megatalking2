@@ -88,6 +88,12 @@ const routes = [
     meta: { title: "결제실패" }
   },
   {
+    path: "/payment-summary",
+    name: "PaymentSummary",
+    component: require("../views/PaymentSummary.vue").default,
+    meta: { title: "결제실패" }
+  },
+  {
     path: "*",
     name: "Not Found",
     component: require("../views/NotFound.vue").default,

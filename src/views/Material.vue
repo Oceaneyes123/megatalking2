@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background:#f2f2f2">
+  <v-app style="background: #f2f2f2">
     <v-container fluid class="py-0 px-0 py-md-5">
       <v-card
         class="mx-auto d-flex flex-column"
@@ -38,7 +38,8 @@ export default {
       isMobile: false,
       status: false,
       connection: null,
-      step: 0
+      step: 0,
+      classInfo: []
     };
   },
   components: {
@@ -48,11 +49,12 @@ export default {
     ContentList
   },
   computed: {
-    ...mapState(["currentCourseName"])
+    ...mapState(["currentCourseName", "currentClassInfo"])
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
     this.courseName = this.currentCourseName;
+    this.classInfo = this.currentClassInfo;
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
