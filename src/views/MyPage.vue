@@ -456,9 +456,9 @@
                             class="font-weight-bold"
                             style="font-size: 18px"
                           >
-                            24
+                            {{ showClass.leftDays ? showClass.leftDays : 0 }}
                           </span>
-                          lessons left!
+                          days left!
                         </div>
                         <div class="mt-auto">
                           <v-btn
