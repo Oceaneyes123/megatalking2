@@ -16,7 +16,7 @@
         <FooterMenuBar class="mt-auto" @openList="nextBook" />
       </v-card>
       <iframe
-        src="//178.128.213.14/"
+        src="http://178.128.213.14/"
         frameborder="0"
         width="500"
         height="700"
