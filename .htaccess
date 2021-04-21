@@ -1,9 +1,0 @@
-<IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteCond %{HTTPS} !=on [NC]
-#this line may be different on other servers
-RewriteCond %{REQUEST_URI} !/material #add your excluded page here
-RewriteCond %{HTTP_HOST} ^megatalking.vercel.app [OR]
-RewriteCond %{HTTP_HOST} ^www.megatalking.vercel.app
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%/$1 [R=301,L]
-</IfModule>
