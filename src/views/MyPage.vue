@@ -243,7 +243,7 @@
                             "
                           >
                             <span class="h5 gmarket" style="color: #e37b39">
-                              입문과정
+                              과정명
                             </span>
                           </div>
                           <div
@@ -938,6 +938,11 @@ export default {
       let pickDateClasses = [];
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
+        if (pickDateClasses[0].state == "no") {
+          var temp = pickDateClasses.shift();
+          pickDateClasses[pickDateClasses.length] = temp;
+          console.log(pickDateClasses);
+        }
         this.isClass = true;
         if (pickDateClasses.length == 1) {
           this.isClassSelected = true;
