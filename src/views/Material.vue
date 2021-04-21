@@ -20,7 +20,8 @@
         Error: Embedded data could not be displayed.
       </object>
       <iframe
-        src="http://178.128.213.14/"
+        id="frame"
+        src=""
         frameborder="0"
         width="500"
         height="700"
@@ -77,6 +78,8 @@ export default {
     bus.$on("setUnitId", unitId => {
       this.unitId = unitId;
     });
+
+    document.getElementById("frame").src = "http://178.128.213.14/";
 
     window.addEventListener("message", receiveMessage, false);
 
