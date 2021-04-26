@@ -469,7 +469,7 @@
                       <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 0"
+                          v-if="currentZone == 0"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -484,7 +484,7 @@
                         </v-tabs>
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 1"
+                          v-if="currentZone == 1"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -499,7 +499,7 @@
                         </v-tabs>
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 2"
+                          v-if="currentZone == 2"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -596,14 +596,14 @@
                         </template>
                       </v-card>
                       <!-- this is temporary -->
-                      <div
+                      <!-- <div
                         v-if="!seeMore"
                         @click="seeMore = true"
                         class="caption mb-5 grey--text"
                         style="color: #bdbdbd"
                       >
                         <span style="cursor: pointer">시간표 전체보기 ></span>
-                      </div>
+                      </div> -->
                     </template>
                     <div
                       class="h6 font-weight-black text-left mt-10"

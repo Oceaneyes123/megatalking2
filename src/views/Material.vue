@@ -15,17 +15,6 @@
         </v-container>
         <FooterMenuBar class="mt-auto" @openList="nextBook" />
       </v-card>
-      <object data="http://178.128.213.14/" width="600" height="400">
-        <embed src="http://178.128.213.14/" width="600" height="400" />
-        Error: Embedded data could not be displayed.
-      </object>
-      <iframe
-        id="frame"
-        src=""
-        frameborder="0"
-        width="500"
-        height="700"
-      ></iframe>
     </v-container>
   </v-app>
 </template>
