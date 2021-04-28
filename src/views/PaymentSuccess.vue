@@ -1,18 +1,6 @@
 <template lang="html">
   <v-app style="background-color: #00000000">
-    <v-container fluid class="py-0 px-0">
-      <v-card tile color="#8bb6f700" flat class="text-center pa-1">
-        <div class="h3 font-weight-bold white--text" style="margin-top: 200px">
-          수강 결제 완료
-        </div>
-        <div class="h6 nanum white--text">
-          <div class="my-10">
-            왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.
-          </div>
-          <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
-          <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
-        </div>
-      </v-card>
+    <v-container fluid class="py-0 px-0" style="height:100%">
       <!-- <v-card shaped max-width="400" class="mx-auto mt-5" color="white">
         <v-card-title class="nanum">[전화영어] 주3회 20분 6개월</v-card-title>
         <v-card-text>test</v-card-text>
@@ -23,7 +11,11 @@
           <v-btn color="deep-purple lighten-2" text class="">world</v-btn>
         </v-card-actions>
       </v-card> -->
-      <v-container fluid class="d-flex justify-center">
+      <v-container
+        fluid
+        class="d-flex justify-center align-center"
+        style="height:100%"
+      >
         <v-card
           color="#54BD7E"
           style="border-radius: 20px"

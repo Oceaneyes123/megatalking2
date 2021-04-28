@@ -41,9 +41,13 @@ export default new Vuex.Store({
       state.showNav = true;
       if (!payload) {
         state.currentImage = state.images.main;
-      } else if (payload == "level-test" || payload == "payment-success") {
+      } else if (payload == "level-test") {
         state.currentImage = state.images.leveltest;
-      } else if (payload == "payment-fail" || payload == "payment-summary") {
+      } else if (
+        payload == "payment-fail" ||
+        payload == "payment-summary" ||
+        payload == "payment-success"
+      ) {
         state.currentImage = state.images.event;
       } else if (payload == "material" || payload == "material2") {
         state.showNav = false;

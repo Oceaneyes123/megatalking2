@@ -1,6 +1,86 @@
 <template>
   <v-dialog max-width="700" v-model="courseDialog" class="rounded-xl">
-    <v-card max-width="700" class="rounded-xl">
+    <v-card color="#6991C7" style="border-radius: 20px">
+      <v-container class="h5 nanum white--text text-left">
+        <v-row :class="$vuetify.breakpoint.smAndUp ? 'px-5' : undefined">
+          <v-col>
+            <div>수강증</div>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-card
+        :class="
+          $vuetify.breakpoint.xsOnly
+            ? 'text-left card-bg'
+            : 'text-left card-bg px-5'
+        "
+        style="border-radius: 20px"
+      >
+        <v-container style="font-size: 14px">
+          <v-row>
+            <v-col class="font-weight-bold" sm="6" cols="6">
+              <div>Company</div>
+              <div>Address</div>
+              <div>Registration #</div>
+              <div>Nature of Business</div>
+              <div>Representative</div>
+              <div>Type</div>
+            </v-col>
+            <v-col sm="6" cols="6">
+              <div>MegaTalking</div>
+              <div>[address]</div>
+              <div>[reg#]</div>
+              <div>Education</div>
+              <div>[name_of_owner]</div>
+              <div>[type]</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <div>수강선택</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="font-weight-bold" sm="6" cols="6">
+              <div>Name</div>
+              <div>수강종류</div>
+              <div>수강과정</div>
+              <div>수강기간</div>
+              <div>시작일시</div>
+            </v-col>
+            <v-col sm="6" cols="6">
+              <div>[student_name]</div>
+              <div>전화영어 (하루 10분)</div>
+              <div>추천과정</div>
+              <div>1년 / 주2회(화,목)</div>
+              <div>4/15 (목) / 프라임 6:30</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <div class="nanum" style="font-size: 9px">
+                This certification is a proof that the student studied in this
+                academy.
+              </div>
+              <div class="nanum" style="font-size: 9px">[today_date]</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="text-center">
+              <v-btn
+                depressed
+                rounded
+                class="blue-text font-weight-bold"
+                color="#E5E5E5"
+              >
+                취소
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card>
+    </v-card>
+    <!-- <v-card max-width="700" class="rounded-xl">
       <v-card
         color="#6a9af2"
         class="pa-3 white--text font-weight-bold h6 rounded-tr-xl rounded-tl-xl"
@@ -85,7 +165,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-card>
+    </v-card> -->
   </v-dialog>
 </template>
 
@@ -107,4 +187,14 @@ export default {
 };
 </script>
 
-<style lang="css" scoped></style>
+<style scoped>
+.blue-text {
+  color: #2564cb;
+}
+.card-bg {
+  background-image: url("../../assets/android-chrome-512x512 2.png"),
+    linear-gradient(to right, #fff, #fff);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+</style>
