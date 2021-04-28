@@ -79,7 +79,10 @@
               </v-row>
               <v-row>
                 <v-card class="d-flex flex-row mt-5" color="#00000000" flat>
-                  <a href="fb://megatalking" target="_blank">
+                  <a
+                    href="https://www.facebook.com/megatalking"
+                    target="_blank"
+                  >
                     <v-img
                       src="@/assets/fa.png"
                       width="50"
