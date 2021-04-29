@@ -8,7 +8,7 @@ export default {
   computed: {
     link() {
       // return `https://megatalking.co.kr/students-material/#/player?unitid=${this.unitId}`;
-      return `https://ueducms.org/students-material/#/player?unitid=${this.unitId}`;
+      return `https://ueducms.org/students-material/dist/#/player?unitid=${this.unitId}`;
     }
   }
 };
