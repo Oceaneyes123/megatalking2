@@ -242,7 +242,7 @@
                             "
                           >
                             <span class="h5 gmarket" style="color: #e37b39">
-                              입문과정
+                              과정명
                             </span>
                           </div>
                           <div
