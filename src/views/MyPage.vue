@@ -190,6 +190,7 @@
                             class="white--text"
                             style="font-size: 16px"
                             block
+                            @click="$router.push('/enrollment')"
                           >
                             수강 신청 하기
                           </v-btn>
@@ -707,6 +708,7 @@ export default {
       isClassSelected: false,
       selectedSuggestion: [],
       selectedEndDay: "",
+      selectedClass: [],
       pickerDate: null,
       tests: [
         {
@@ -826,8 +828,6 @@ export default {
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
 
-      console.log(classObj);
-
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
         require("@/assets/curriculum/adv_phonics.jpg"),
@@ -938,6 +938,11 @@ export default {
       let pickDateClasses = [];
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
+        if (pickDateClasses[0].state == "no") {
+          var temp = pickDateClasses.shift();
+          pickDateClasses[pickDateClasses.length] = temp;
+          console.log(pickDateClasses);
+        }
         this.isClass = true;
         if (pickDateClasses.length == 1) {
           this.isClassSelected = true;

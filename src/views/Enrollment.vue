@@ -469,7 +469,7 @@
                       <v-card flat color="#f5f4f6" class="mb-5 pa-5">
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 0"
+                          v-if="currentZone == 0"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -484,7 +484,7 @@
                         </v-tabs>
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 1"
+                          v-if="currentZone == 1"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -499,7 +499,7 @@
                         </v-tabs>
                         <v-tabs
                           grow
-                          v-if="seeMore && currentZone == 2"
+                          v-if="currentZone == 2"
                           show-arrows
                           slider-color="#5a55a1"
                           v-model="selected_hour"
@@ -596,14 +596,14 @@
                         </template>
                       </v-card>
                       <!-- this is temporary -->
-                      <div
+                      <!-- <div
                         v-if="!seeMore"
                         @click="seeMore = true"
                         class="caption mb-5 grey--text"
                         style="color: #bdbdbd"
                       >
                         <span style="cursor: pointer">시간표 전체보기 ></span>
-                      </div>
+                      </div> -->
                     </template>
                     <div
                       class="h6 font-weight-black text-left mt-10"
@@ -818,7 +818,107 @@
         </v-container>
       </v-card>
     </v-dialog>
+
     <v-dialog v-model="confirmDialog" max-width="500">
+      <v-overlay :value="overlay">
+        <v-progress-circular indeterminate size="64"></v-progress-circular>
+      </v-overlay>
+      <v-card color="#6991C7" style="border-radius: 20px">
+        <div class="h6 nanum white--text pt-10 text-center">
+          월
+          <span class="h4 font-weight-bold gmarket">{{
+            getAmount4Month.toLocaleString()
+          }}</span>
+          원
+          <span style="color: #ffe092">
+            <span class="h4 font-weight-bold gmarket">
+              {{ getAmount.dcp ? `${getAmount.dcp}%` : "" }}</span
+            >
+            할인
+          </span>
+        </div>
+        <div class="h6 nanum white--text pb-5 text-center">
+          총 {{ getAmount.value.toLocaleString()
+          }}<span class="caption-text">원</span>
+        </div>
+        <v-card class="text-left px-5" style="border-radius: 20px">
+          <v-container>
+            <v-row>
+              <v-col class="blue-text font-weight-bold">
+                <div>수강선택</div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col class="font-weight-bold">
+                <div>수강종류</div>
+                <div>수강과정</div>
+                <div>수강기간</div>
+                <div>시작일시</div>
+              </v-col>
+              <v-col sm="6" cols="8">
+                <div>
+                  {{ enrollmentData.type == "Phone" ? "전화영어" : "화상영어" }}
+                  ({{ enrollmentData.duration }})
+                </div>
+                <div>
+                  {{ enrollmentData.course }}
+                </div>
+                <div>{{ enrollmentData.period }} / {{ getFrequency }}</div>
+                <div>
+                  {{ enrollmentData.startDay }} /
+                  <span v-html="getStartTime"></span>
+                </div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col class="blue-text font-weight-bold">
+                <div>결제 예정금액</div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col class="font-weight-bold">
+                <div>결제방법</div>
+                <div>수강금액</div>
+                <div>할인금액</div>
+              </v-col>
+              <v-col sm="6" cols="8">
+                <div>
+                  {{ getPayType }}
+                </div>
+                <div>
+                  {{ (getAmount.value + getAmount.dcn).toLocaleString() }}원
+                </div>
+                <div class="font-weight-bold" style="color: #cb5413">
+                  {{
+                    getAmount.dcn
+                      ? "-" + getAmount.dcn.toLocaleString()
+                      : getAmount.dcn
+                  }}원
+                </div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col class="text-right">
+                <v-btn
+                  depressed
+                  rounded
+                  class="blue-text"
+                  @click="confirmDialog = false"
+                  >취소</v-btn
+                >
+              </v-col>
+              <v-col>
+                <v-btn depressed rounded dark color="#2564cb" @click="enroll()"
+                  >결제</v-btn
+                >
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
+      </v-card>
+    </v-dialog>
+
+    <!-- <v-dialog v-model="confirmDialog" max-width="500">
       <v-overlay :value="overlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-overlay>
@@ -935,7 +1035,8 @@
           </div>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <div class="stickyButton" v-show="isMobile" style="z-index: 20001">
       <!-- <v-expansion-panels>
         <v-expansion-panel>

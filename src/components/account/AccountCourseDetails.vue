@@ -206,6 +206,10 @@ export default {
     return {};
   },
 
+  mounted() {
+    console.log(this.data);
+  },
+
   methods: {
     receiptDialogOpen(item) {
       this.$refs.receiptDialog.open(item);
