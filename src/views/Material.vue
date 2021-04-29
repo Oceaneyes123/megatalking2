@@ -10,7 +10,11 @@
       >
         <v-container class="px-0 py-0">
           <ContentCover v-if="step == 0" @nextBook="nextBook(1)" />
-          <ContentList v-else-if="step == 1" @nextBook="nextBook(2)" />
+          <ContentList
+            v-else-if="step == 1 && currentCourseLink == ''"
+            @nextBook="nextBook(2)"
+          />
+          <Webbook v-else-if="step == 1"></Webbook>
           <Tabs v-else :unitId="unitId" />
         </v-container>
         <FooterMenuBar class="mt-auto" @openList="nextBook" />
@@ -25,6 +29,9 @@
 import Tabs from "@/components/material/Tabs";
 import ContentCover from "@/components/material/ContentCover";
 import ContentList from "@/components/material/ContentList";
+
+import Webbook from "@/components/material/Webbook";
+
 import FooterMenuBar from "@/components/material/FooterMenuBar";
 import { mapState } from "vuex";
 import { bus } from "@/main";
@@ -46,10 +53,11 @@ export default {
     Tabs,
     FooterMenuBar,
     ContentCover,
-    ContentList
+    ContentList,
+    Webbook
   },
   computed: {
-    ...mapState(["currentCourseName", "currentClassInfo"])
+    ...mapState(["currentCourseName", "currentClassInfo", "currentCourseLink"])
   },
   created() {
     window.addEventListener("resize", this.onWindowResize);
@@ -67,6 +75,12 @@ export default {
     bus.$on("setUnitId", unitId => {
       this.unitId = unitId;
     });
+
+    if (this.currentCourseLink == "") {
+      console.log("hello1");
+    } else {
+      console.log("hello2");
+    }
 
     document.getElementById("frame").src = "http://178.128.213.14/";
 

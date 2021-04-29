@@ -8,6 +8,9 @@ export default {
     return {};
   },
   props: ["unitId"],
+  mounted() {
+    console.log("weebbook");
+  },
   computed: {
     link() {
       // return `https://megatalking.co.kr/students-material/#/step3?unitid=${this.unitId}`;
