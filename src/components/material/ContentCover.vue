@@ -53,9 +53,10 @@ export default {
   },
   methods: {
     nextBook() {
-      if (this.currentCourseLink.length != 0) {
-        window.open(this.currentCourseLink, "_blank");
-      } else this.$emit("nextBook");
+      // if (this.currentCourseLink.length != 0) {
+      //   window.open(this.currentCourseLink, "_blank");
+      // } else
+      this.$emit("nextBook");
     }
   }
 };
