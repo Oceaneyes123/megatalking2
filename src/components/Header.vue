@@ -164,6 +164,11 @@ export default {
           text: "이벤트",
           link: "event",
           show: true
+        },
+        {
+          text: "회원정보",
+          link: "account",
+          show: true
         }
       ]
     };
