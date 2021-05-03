@@ -95,6 +95,7 @@ export default {
 
   methods: {
     nextBook(step) {
+      console.log(step);
       this.step = step;
     },
     proceed() {
