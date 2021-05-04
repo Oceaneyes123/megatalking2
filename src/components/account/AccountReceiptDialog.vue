@@ -22,7 +22,10 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <v-col
+                class="blue-text font-weight-bold py-1"
+                style="font-size: 18px"
+              >
                 <div>수강선택</div>
               </v-col>
             </v-row>
@@ -41,7 +44,10 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <v-col
+                class="blue-text font-weight-bold py-1"
+                style="font-size: 18px"
+              >
                 <div>결제 예정금액</div>
               </v-col>
             </v-row>
