@@ -970,6 +970,7 @@ export default {
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
+      console.log(courseName);
       if (courseName.indexOf("Video") != 0)
         //비디오 아닌 교재만 링크넣기
         this.$store.commit("setCurrentCourseLink", { link: bookLink });
@@ -1046,13 +1047,16 @@ export default {
       let pickDateClasses = [];
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
-        if (pickDateClasses[0].state == "no") {
+
+        if (pickDateClasses[0].state == "no" && pickDateClasses.length > 1) {
           var temp = pickDateClasses.shift();
           pickDateClasses[pickDateClasses.length] = temp;
           console.log(pickDateClasses);
         }
+
         this.isClass = true;
-        if (pickDateClasses.length == 1) {
+
+        if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
           this.isClassSelected = true;
           this.selectClass(pickDateClasses[0]);
         } else {
