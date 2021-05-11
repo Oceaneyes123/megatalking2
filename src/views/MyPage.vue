@@ -1048,7 +1048,7 @@ export default {
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
 
-        if (pickDateClasses[0].state == "no" && pickDateClasses.length > 1) {
+        if (pickDateClasses[0].state == "no") {
           var temp = pickDateClasses.shift();
           pickDateClasses[pickDateClasses.length] = temp;
           console.log(pickDateClasses);
