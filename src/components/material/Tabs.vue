@@ -86,6 +86,8 @@ export default {
         console.log(event);
         if (event.data.isNext) {
           vm.tabs++;
+        } else if (event.data.isBack) {
+          vm.tabs--;
         }
       },
       false
