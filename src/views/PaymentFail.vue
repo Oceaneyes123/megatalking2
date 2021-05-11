@@ -114,7 +114,7 @@
           >
         </div>
         <div class="h5 nanum white--text pb-5">
-          -
+          {{ errMsg }}
         </div>
         <v-card class="text-left px-5" style="border-radius: 20px;">
           <v-container>
@@ -181,7 +181,10 @@ import { mapState } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      err: "ready",
+      errMsg: "-"
+    };
   },
   beforeCreate() {
     const query = this.$route.query;
@@ -198,7 +201,13 @@ export default {
       })
       .then(rs => {
         this.$store.commit("setPaymentInfo", rs.data.paymentInfo);
-        console.log(rs);
+        if (rs.data.code !== undefined) {
+          this.err = "wrong-access";
+          this.errMsg = rs.data.message;
+        } else {
+          this.err = "";
+          console.log("suc", rs);
+        }
       })
       .catch(err => {
         console.log(err);

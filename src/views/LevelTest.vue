@@ -759,7 +759,7 @@ export default {
               if (this.classEvaluation) {
                 this.searchEvaluationDialog = false;
                 this.showEvaluationDialog = true;
-                this.$refs.evDialog.setLid(res.data.l_id);
+                this.$refs.evDialog.setLid(res.data.l_id, res.data.type);
                 this.$refs.evDialog.open();
               }
             } else {

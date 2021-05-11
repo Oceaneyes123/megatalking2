@@ -27,8 +27,8 @@
               >잘못된 경로입니다</span
             >
           </div>
-          <div class="h6 nanum white--text pb-5">
-            -
+          <div class="h7 nanum white--text pb-5">
+            {{ errMsg }}
           </div>
           <v-card class="text-left px-5" style="border-radius: 20px;">
             <v-container>
@@ -168,7 +168,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      err: "ready"
+      err: "ready",
+      errMsg: "-"
     };
   },
   beforeCreate() {
@@ -188,8 +189,9 @@ export default {
       })
       .then(rs => {
         this.$store.commit("setPaymentInfo", rs.data.paymentInfo);
-        if (rs.data.code == "INVALID_REQUEST") {
+        if (rs.data.code !== undefined) {
           this.err = "wrong-access";
+          this.errMsg = rs.data.message;
         } else {
           this.err = "";
           console.log("suc", rs);
