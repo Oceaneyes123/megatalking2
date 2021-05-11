@@ -14,7 +14,7 @@
             v-else-if="step == 1 && currentCourseLink == ''"
             @nextBook="nextBook(2)"
           />
-          <Webbook v-else-if="step == 1"></Webbook>
+
           <Tabs v-else :unitId="unitId" />
         </v-container>
         <FooterMenuBar class="mt-auto" @openList="nextBook" />
@@ -29,9 +29,6 @@
 import Tabs from "@/components/material/Tabs";
 import ContentCover from "@/components/material/ContentCover";
 import ContentList from "@/components/material/ContentList";
-
-import Webbook from "@/components/material/Webbook";
-
 import FooterMenuBar from "@/components/material/FooterMenuBar";
 import { mapState } from "vuex";
 import { bus } from "@/main";
@@ -53,8 +50,7 @@ export default {
     Tabs,
     FooterMenuBar,
     ContentCover,
-    ContentList,
-    Webbook
+    ContentList
   },
   computed: {
     ...mapState(["currentCourseName", "currentClassInfo", "currentCourseLink"])
@@ -99,6 +95,7 @@ export default {
 
   methods: {
     nextBook(step) {
+      console.log(step);
       this.step = step;
     },
     proceed() {

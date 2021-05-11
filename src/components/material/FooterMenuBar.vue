@@ -10,7 +10,7 @@
       <v-icon>mdi-format-list-bulleted</v-icon>
     </v-btn>
 
-    <v-btn @click="openList(0)" v-if="!showListBtn">
+    <v-btn @click="openList(1)" v-if="!showListBtn">
       <span>교재열기</span>
       <v-icon>mdi-book-open-variant</v-icon>
     </v-btn>

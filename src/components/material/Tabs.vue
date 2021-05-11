@@ -16,7 +16,12 @@
       >{{ step.title }}</v-tab
     >
     <v-tab-item style="height: 80vh" v-show="steps[0].show">
-      <VideoContent :unitId="unitId" id="videoContent" />
+      <VideoContent
+        :unitId="unitId"
+        v-if="this.currentCourseLink == ''"
+        id="videoContent"
+      />
+      <Webbook :url="this.currentCourseLink" id="webbook" />
     </v-tab-item>
     <v-tab-item style="height: 80vh" v-show="steps[1].show">
       <Book :unitId="unitId" />
@@ -36,6 +41,7 @@ import VideoContent from "@/components/material/VideoContent";
 import ClassReview from "@/components/material/ClassReview";
 import Writing from "@/components/material/Writing";
 import Book from "@/components/material/Book";
+import Webbook from "@/components/material/Webbook";
 //import Evaluation from "@/components/material/Evaluation";
 
 export default {
@@ -43,9 +49,11 @@ export default {
     VideoContent,
     ClassReview,
     Writing,
-    Book
+    Book,
+    Webbook
     //Evaluation
   },
+
   data() {
     return {
       tabs: 0,
@@ -78,6 +86,8 @@ export default {
         console.log(event);
         if (event.data.isNext) {
           vm.tabs++;
+        } else if (event.data.isBack) {
+          vm.tabs--;
         }
       },
       false
@@ -87,14 +97,14 @@ export default {
       this.isEmpty(this.currentCourseName) ||
       this.currentCourseName.indexOf("Video") != 0
     ) {
-      this.steps[0].show = false;
+      //  this.steps[0].show = false;
       this.steps[1].show = false;
-      this.tabs = 2;
+      this.tabs = 0;
     }
   },
 
   computed: {
-    ...mapState(["currentCourseName"])
+    ...mapState(["currentCourseName", "currentCourseLink"])
   },
   props: ["unitId"],
   mounted() {

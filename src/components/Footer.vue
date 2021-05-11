@@ -79,16 +79,17 @@
               </v-row>
               <v-row>
                 <v-card class="d-flex flex-row mt-5" color="#00000000" flat>
-                  <a
+                  <!-- <a
                     href="https://www.facebook.com/megatalking"
                     target="_blank"
-                  >
-                    <v-img
-                      src="@/assets/fa.png"
-                      width="50"
-                      class="mr-5"
-                    ></v-img>
-                  </a>
+                  > -->
+                  <v-img
+                    src="@/assets/fa.png"
+                    width="50"
+                    class="mr-5"
+                    @click="openFacebook()"
+                  ></v-img>
+                  <!-- </a> -->
                   <a
                     href="https://www.instagram.com/megatalking_official/"
                     target="_blank"
@@ -137,6 +138,16 @@ export default {
     onWindowResize() {
       this.screenWidth = screen.width;
       this.isMobile = this.screenWidth <= 960 ? true : false;
+    },
+
+    openFacebook() {
+      if (navigator.userAgent.match(/Android/i)) {
+        window.open("fb://page/1942141679345576");
+      } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        window.open("fb://page/1942141679345576");
+      } else {
+        window.open("https://www.facebook.com/megatalking");
+      }
     }
   }
 };

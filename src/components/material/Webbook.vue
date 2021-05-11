@@ -7,14 +7,14 @@ export default {
   data() {
     return {};
   },
-  props: ["unitId"],
+  props: ["url"],
   mounted() {
     console.log("weebbook");
   },
   computed: {
     link() {
       // return `https://megatalking.co.kr/students-material/#/step3?unitid=${this.unitId}`;
-      return `http://ueducms.org/book_list`;
+      return this.url;
     }
   }
 };

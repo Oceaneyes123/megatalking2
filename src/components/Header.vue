@@ -20,7 +20,7 @@
         </v-card>
 
         <v-card
-          v-if="screenWidth >= 960"
+          v-if="$vuetify.breakpoint.mdAndUp"
           flat
           class="d-flex align-center mx-auto"
           color="#00000000"
@@ -39,7 +39,7 @@
           </div>
         </v-card>
         <v-card
-          v-if="screenWidth > 960"
+          v-if="$vuetify.breakpoint.mdAndUp"
           flat
           class="d-flex align-center mr-5"
           color="#00000000"
@@ -59,10 +59,10 @@
           </div>
         </v-card>
 
-        <v-spacer v-if="screenWidth <= 960"></v-spacer>
+        <v-spacer v-if="$vuetify.breakpoint.smAndDown"></v-spacer>
 
         <v-menu
-          v-if="screenWidth <= 960"
+          v-if="$vuetify.breakpoint.smAndDown"
           close-on-click
           min-width="100%"
           nudge-bottom="12"
@@ -163,6 +163,11 @@ export default {
         {
           text: "이벤트",
           link: "event",
+          show: true
+        },
+        {
+          text: "회원정보",
+          link: "account",
           show: true
         }
       ]

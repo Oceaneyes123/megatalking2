@@ -319,17 +319,125 @@
                       </v-row>
                     </v-container>
                   </div>
-                  <v-container v-else>
+                  <v-container
+                    v-else
+                    :style="
+                      $vuetify.breakpoint.xsOnly ? 'width: 45%' : 'width: 60%'
+                    "
+                  >
                     <v-row justify="center">
                       <v-col class="d-flex justify-center">
-                        <v-card class="rounded-xl" width="50%">
+                        <v-card class="rounded-xl">
                           <v-img :src="selectedClassImg"></v-img>
                         </v-card>
                       </v-col>
                     </v-row>
                     <v-row>
                       <v-col>
-                        <div class="d-flex flex-column align-center text-left">
+                        <v-container>
+                          <v-row>
+                            <v-col>
+                              <div
+                                class="d-flex justify-center pt-1 mb-5"
+                                style="
+                                  background: white;
+                                  width: 50%;
+                                  border-radius: 10px;
+                                "
+                              >
+                                <span class="h5 gmarket" style="color: #e37b39">
+                                  입문과정
+                                </span>
+                              </div>
+
+                              <div
+                                class="font-weight-black text-left white--text gmarket korean-text"
+                                :class="
+                                  $vuetify.breakpoint.xsOnly ? 'h5' : 'h4'
+                                "
+                              >
+                                {{ selectedClassTitle }}
+                              </div>
+
+                              <div class="py-5">
+                                <v-row align="center">
+                                  <v-col>
+                                    <div
+                                      class="nanum white--text d-flex align-center korean-text"
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >schedule</v-icon
+                                      >
+                                      {{ selectedClassInfo.hour }} :
+                                      {{ selectedClassInfo.min }} +
+                                      {{ selectedClassInfo.duration }}
+                                    </div>
+                                    <div
+                                      class="nanum white--text d-flex align-center mt-1"
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >account_circle</v-icon
+                                      >
+                                      {{ showClass.lec_name }}
+                                    </div>
+                                  </v-col>
+                                  <v-col>
+                                    <div
+                                      class="nanum white--text d-flex align-center"
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >event</v-icon
+                                      >
+                                      TTh
+                                    </div>
+                                    <div
+                                      class="nanum white--text d-flex align-center mt-1"
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >phone</v-icon
+                                      >
+                                      {{ selectedClassInfo.cate_name }}
+                                    </div>
+                                  </v-col>
+                                  <v-col cols="12">
+                                    <v-btn
+                                      class="gmarket font-weight-bold pt-6 pb-5"
+                                      style="
+                                        background: rgba(255, 255, 255, 0.25);
+                                        font-size: 24px;
+                                        width: 100%;
+                                      "
+                                      @click="openClassBook()"
+                                    >
+                                      START
+                                    </v-btn>
+                                  </v-col>
+                                </v-row>
+                              </div>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                        <!-- <div class="d-flex flex-column align-center text-left">
                           <div style="width: 50%" class="py-5">
                             <div
                               class="d-flex justify-center pt-1 mb-5"
@@ -403,7 +511,7 @@
                               START
                             </v-btn>
                           </div>
-                        </div>
+                        </div> -->
                       </v-col>
                     </v-row>
                   </v-container>
@@ -431,10 +539,10 @@
               </v-card>
             </v-container>
 
-            <v-layout class="pb-15" v-if="isClass && isClassSelected">
+            <v-container class="pb-15" v-if="isClass && isClassSelected">
               <v-row>
                 <v-col>
-                  <v-card flat color="#ECF0FB" class="py-5 px-10">
+                  <v-card flat color="#ECF0FB" class="py-5 px-10" height="100%">
                     <v-row>
                       <v-col cols="4" class="d-flex justify-center">
                         <div class="px-5">
@@ -520,7 +628,7 @@
                   </v-card>
                 </v-col>
               </v-row>
-            </v-layout>
+            </v-container>
             <!-- <v-row no-gutters>
               <v-col cols="12" md="5">
                 <div class="h5 gmarket ml-3" data-aos="fade-right">
@@ -862,6 +970,7 @@ export default {
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
+      console.log(courseName);
       if (courseName.indexOf("Video") != 0)
         //비디오 아닌 교재만 링크넣기
         this.$store.commit("setCurrentCourseLink", { link: bookLink });
@@ -938,13 +1047,16 @@ export default {
       let pickDateClasses = [];
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
+
         if (pickDateClasses[0].state == "no") {
           var temp = pickDateClasses.shift();
           pickDateClasses[pickDateClasses.length] = temp;
           console.log(pickDateClasses);
         }
+
         this.isClass = true;
-        if (pickDateClasses.length == 1) {
+
+        if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
           this.isClassSelected = true;
           this.selectClass(pickDateClasses[0]);
         } else {

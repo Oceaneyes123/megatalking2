@@ -11,7 +11,6 @@ export default {
   computed: {
     link() {
       // return `https://megatalking.co.kr/students-material/#/step3?unitid=${this.unitId}`;
-      // return `https://ueducms.org/students-material/dist/#/player?unitid=${this.unitId}`;
       return `https://ueducms.org/students-material/dist/#/step3?unitid=${this.unitId}`;
     }
   }
