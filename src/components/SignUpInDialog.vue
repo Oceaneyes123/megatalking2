@@ -369,9 +369,10 @@ export default {
         .replace("--", "-");
     }
   },
+  created() {},
   methods: {
     test() {
-      console.log("hi");
+      console.log(this.$route);
     },
     timeout(ms) {
       return new Promise(res => {
@@ -399,7 +400,9 @@ export default {
           .then(() => {
             if (this.isLogin) {
               this.$refs.loginform.reset();
-              this.$router.push("/mypage");
+              if (this.$route.name != "Enrollment") {
+                this.$router.push("/mypage");
+              }
               this.close();
             }
             this.btnLoading = false;

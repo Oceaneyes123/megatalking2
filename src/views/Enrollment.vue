@@ -1728,7 +1728,7 @@ export default {
       this.hiddenDurations = [];
       if (this.minuteSelected && this.classType === "Phone") {
         this.hiddenDurations.push(this.durations[3]);
-        console.log(this.hiddenDurations, "dur");
+        // console.log(this.hiddenDurations, "dur");
         let minuteSelected = parseInt(this.minuteSelected.replace(/\D/g, ""));
         if (minuteSelected >= 40) {
           this.minuteSelected = this.minuteSelected.replace("40", "30");
@@ -1871,7 +1871,7 @@ export default {
     this.setAllowedDays();
   },
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState(["userInfo", "paymentInfo"]),
     target() {
       //const value = this[this.type]
       // const value = "#timeTable";
@@ -2360,16 +2360,17 @@ export default {
     async enroll() {
       this.$store.dispatch("isLogin");
       let isLogin = this.$store.state.isLogin;
-      console.log(isLogin, "hi");
+      // console.log(isLogin, "hi");
       if (!isLogin) {
         console.log(bus);
         bus.$emit("openAuth", true);
       } else if (this.methodSelected == "카드 결제") {
         await this.enrollStudent();
         // Promise를 사용하는 경우
-        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb";
-        console.log(loadTossPayments, clientKey);
-        console.log(this.orderId);
+        // const clientKey = "test_ck_Wd46qopOB89nERaxBg53ZmM75y0v";//test key
+        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb"; //live key/
+        // console.log(loadTossPayments, clientKey);
+        // console.log(this.orderId);
         loadTossPayments(clientKey).then(tossPayments => {
           tossPayments.requestPayment("카드", {
             amount: this.paymentData.amount,
@@ -2388,9 +2389,10 @@ export default {
       } else if (this.methodSelected == "휴대폰 결제") {
         await this.enrollStudent();
         // Promise를 사용하는 경우
-        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb";
-        console.log(loadTossPayments, clientKey);
-        console.log(this.orderId);
+        // const clientKey = "test_ck_Wd46qopOB89nERaxBg53ZmM75y0v";//test key
+        const clientKey = "live_ck_lpP2YxJ4K87n6YP21N2rRGZwXLOb"; //live key
+        // console.log(loadTossPayments, clientKey);
+        // console.log(this.orderId);
         loadTossPayments(clientKey).then(tossPayments => {
           tossPayments.requestPayment("휴대폰", {
             amount: this.paymentData.amount,
@@ -2411,7 +2413,7 @@ export default {
       }
     },
     enroll_check_data() {
-      console.log(this.enrollmentData);
+      // console.log(this.enrollmentData);
       const minuteSelected = this.minuteSelected;
       const frequencySelected = this.frequencySelected;
       const daySelected = this.daySelected;
@@ -2421,7 +2423,7 @@ export default {
       const timeSelected = this.timeSelected;
       const typeSelected = this.classType;
       const methodSelected = this.methodSelected;
-      console.log(this.methodSelected);
+      // console.log(this.methodSelected);
 
       if (
         typeSelected &&
@@ -2434,8 +2436,15 @@ export default {
         timeSelected !== -1 &&
         methodSelected !== -1
       ) {
+        this.$store.commit("setPaymentInfo", {
+          convertedStartTime: this.getStartTime,
+          ...this.enrollmentData,
+          ...this.getAmount
+        });
+        // this.$store.commit('setPaymentInfo',this.paymentData);
         this.confirmDialog = true;
       } else {
+        this.$store.commit("setPaymentInfo", {});
         this.requiredField = true;
         this.$vuetify.goTo(this.target, this.options);
       }
@@ -2473,18 +2482,18 @@ export default {
       }
     },
     async enrollStudent() {
-      console.log(this.enrollmentData);
-      console.log(this.enrollmentDataForApi);
+      // console.log(this.enrollmentData);
+      // console.log(this.enrollmentDataForApi);
       this.overlay = true;
       const token = this.$cookie.get("access-token");
       axios.defaults.headers.common["Authorization"] = token;
       await axios
-        .post(
-          "//phone.megatalking.com/origin/api/enrollment.php",
-          this.enrollmentDataForApi
-        )
+        .post("//phone.megatalking.com/origin/api/enrollment.php", {
+          ...this.enrollmentDataForApi,
+          paymentInfo: this.paymentInfo
+        })
         .then(rs => {
-          console.log(rs);
+          // console.log('hello',rs);
           this.overlay = false;
           if (rs.data.result === true) {
             this.overlay = false;

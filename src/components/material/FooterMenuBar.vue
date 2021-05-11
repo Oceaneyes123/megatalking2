@@ -1,8 +1,8 @@
 <template lang="html">
   <v-bottom-navigation grow background-color="" :app="isMobile">
     <v-btn @click="$router.push('/mypage')">
-      <span>뒤로가기</span>
-      <v-icon>mdi-chevron-left</v-icon>
+      <span>마이페이지</span>
+      <v-icon>mdi-calendar-clock</v-icon>
     </v-btn>
 
     <v-btn @click="openList(1)" v-if="showListBtn">

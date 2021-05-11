@@ -50,8 +50,14 @@ export default {
     open() {
       this.showEvaluationDialog = true;
     },
-    setLid(l_id) {
-      this.iframe.src = "https://megatalking.co.kr/lv/#/evaluation-new/" + l_id;
+    setLid(l_id, type) {
+      if (type == "new") {
+        this.iframe.src =
+          "https://megatalking.co.kr/lv/#/evaluation-new/" + l_id;
+      } else if (type == "old") {
+        this.iframe.src =
+          "https://phone.megatalking.com/firmlevel_view.htm?l_id=69713" + l_id;
+      }
     },
     load() {
       this.iframe.loaded = true;

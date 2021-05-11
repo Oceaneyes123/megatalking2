@@ -17,11 +17,95 @@
         style="height:100%"
       >
         <v-card
+          color="#FA7676"
+          style="border-radius: 20px"
+          :style="$vuetify.breakpoint.xsOnly ? 'width: 100%' : 'width: 30%'"
+          v-if="err == 'wrong-access'"
+        >
+          <div class="pt-10">
+            <span class="h5 font-weight-bold  white--text nanum"
+              >잘못된 경로입니다</span
+            >
+          </div>
+          <div class="h7 nanum white--text pb-5">
+            {{ errMsg }}
+          </div>
+          <v-card class="text-left px-5" style="border-radius: 20px;">
+            <v-container>
+              <v-row>
+                <v-col class="blue-text font-weight-bold">
+                  <div>수강선택</div>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col class="font-weight-bold">
+                  <div>수강종류</div>
+                  <div>수강과정</div>
+                  <div>수강기간</div>
+                  <div>시작일시</div>
+                </v-col>
+                <v-col sm="6" cols="8">
+                  <div>-</div>
+                  <div>-</div>
+                  <div>-</div>
+                  <div>-</div>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col class="text-center">
+                  <v-btn
+                    depressed
+                    rounded
+                    class="blue-text font-weight-bold"
+                    style="text-transform: none"
+                    @click="$router.push('/')"
+                  >
+                    홈으로
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-card>
+        <v-card
           color="#54BD7E"
           style="border-radius: 20px"
           :style="$vuetify.breakpoint.xsOnly ? 'width: 100%' : 'width: 30%'"
+          v-else-if="err == 'ready'"
         >
-          <div class="h4 gmarket white--text pt-10">
+          <div class="pt-10">
+            <span class="h5 font-weight-bold  white--text nanum">
+              <v-progress-circular
+                indeterminate
+                color="blue-grey"
+              ></v-progress-circular>
+            </span>
+          </div>
+          <div class="h6 nanum white--text pb-5">
+            <v-progress-circular
+              indeterminate
+              color="blue-grey"
+              size="20"
+            ></v-progress-circular>
+          </div>
+          <v-sheet class="pa-3">
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="300"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-card>
+        <v-card
+          color="#54BD7E"
+          style="border-radius: 20px"
+          :style="$vuetify.breakpoint.xsOnly ? 'width: 100%' : 'width: 30%'"
+          v-else-if="paymentInfo.type"
+        >
+          <div class="h5 nanum white--text pt-10">
+            결제가 성공했습니다!
+          </div>
+          <div class="h4 gmarket white--text pb-5">
             Payment Successful!
           </div>
           <div class="h6 nanum white--text pb-5">
@@ -42,10 +126,18 @@
                   <div>시작일시</div>
                 </v-col>
                 <v-col sm="6" cols="8">
-                  <div>전화영어 (하루 10분)</div>
-                  <div>추천과정</div>
-                  <div>1년 / 주2회(화,목)</div>
-                  <div>4/15 (목) / 프라임 6:30</div>
+                  <div>
+                    {{ paymentInfo.type == "Phone" ? "전화영어" : "화상영어" }}
+                    ({{ paymentInfo.duration }})
+                  </div>
+                  <div>{{ paymentInfo.course }}</div>
+                  <div>
+                    {{ paymentInfo.period }} / {{ paymentInfo.daysOfWeek }}
+                  </div>
+                  <div>
+                    {{ paymentInfo.startDay }} /
+                    {{ paymentInfo.convertedStartTime }}
+                  </div>
                 </v-col>
               </v-row>
               <v-row>
@@ -55,8 +147,9 @@
                     rounded
                     class="blue-text font-weight-bold"
                     style="text-transform: none"
+                    @click="$router.push('/mypage')"
                   >
-                    Close
+                    마이페이지
                   </v-btn>
                 </v-col>
               </v-row>
@@ -70,10 +163,14 @@
 
 <script>
 import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+      err: "ready",
+      errMsg: "-"
+    };
   },
   beforeCreate() {
     const query = this.$route.query;
@@ -84,23 +181,30 @@ export default {
     console.log(orderId, paymentKey, amount);
 
     axios
-      .post("http://phone.megatalking.com/origin/api/payment.php", {
+      .post("//phone.megatalking.com/origin/api/payment.php", {
         type,
         orderId,
         paymentKey,
         amount
       })
       .then(rs => {
-        console.log(rs);
+        this.$store.commit("setPaymentInfo", rs.data.paymentInfo);
+        if (rs.data.code !== undefined) {
+          this.err = "wrong-access";
+          this.errMsg = rs.data.message;
+        } else {
+          this.err = "";
+          console.log("suc", rs);
+        }
       })
       .catch(err => {
-        console.log(err);
+        console.log("err", err);
       });
   },
   created() {},
   beforeMount() {},
   mounted() {},
-  computed: {}
+  computed: { ...mapState(["paymentInfo"]) }
 };
 </script>
 
