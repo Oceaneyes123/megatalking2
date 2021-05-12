@@ -327,7 +327,7 @@
                   >
                     <v-row justify="center">
                       <v-col class="d-flex justify-center">
-                        <v-card class="rounded-xl">
+                        <v-card class="rounded-xl" id="classImage">
                           <v-img :src="selectedClassImg"></v-img>
                         </v-card>
                       </v-col>
@@ -978,11 +978,19 @@ export default {
       else this.$store.commit("setCurrentCourseLink", { link: "" });
       this.isClassSelected = true;
 
-      this.$vuetify.goTo("#detailContainer", {
-        duration: 300,
-        offset: 0,
-        easing: "easeInOutCubic"
-      });
+      if (this.$vuetify.breakpoint.mdAndUp) {
+        this.$vuetify.goTo("#detailContainer", {
+          duration: 300,
+          offset: 0,
+          easing: "easeInOutCubic"
+        });
+      } else {
+        this.$vuetify.goTo("#detailContainer", {
+          duration: 300,
+          offset: -325,
+          easing: "easeInOutCubic"
+        });
+      }
     },
     getClassColor(classObj) {
       //console.log(classObj);

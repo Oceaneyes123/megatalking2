@@ -22,6 +22,16 @@
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">
+          <v-row class="mb-7" v-if="$store.state.isLogin">
+            <v-col cols="7" class="h6 gmarket text-left">
+              소중한 의견을 주셔서 감사합니다.
+            </v-col>
+            <v-col cols="5" class="d-flex justify-end">
+              <v-btn class="rounded-lg" color="primary" @click="openReview()">
+                Write a review
+              </v-btn>
+            </v-col>
+          </v-row>
           <v-row>
             <v-data-table
               style="width: 100%"
@@ -36,6 +46,7 @@
       </v-card>
     </v-container>
     <BoardDialog ref="boardDialog"></BoardDialog>
+    <CourseReviewDialog ref="courseReviewDialog"></CourseReviewDialog>
   </v-app>
 </template>
 
@@ -47,10 +58,12 @@
 
 <script>
 import BoardDialog from "@/components/board/BoardDialog.vue";
+import CourseReviewDialog from "@/components/board/CourseReview.vue";
 import axios from "axios";
 export default {
   components: {
-    BoardDialog
+    BoardDialog,
+    CourseReviewDialog
   },
   data() {
     return {
@@ -156,6 +169,10 @@ export default {
 
     rowClicked(row) {
       this.$refs.boardDialog.open(row);
+    },
+
+    openReview() {
+      this.$refs.courseReviewDialog.open();
     },
 
     getBoards() {
