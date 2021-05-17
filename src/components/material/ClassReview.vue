@@ -70,7 +70,7 @@
         ></v-textarea>
       </v-col>
     </v-row>
-    <v-row justify="center">
+    <v-row justify="center" class="mb-10 mb-md-0">
       <v-btn
         style="
           background: linear-gradient(to right,#8fa1fe,#4993e8);
