@@ -74,6 +74,33 @@ export function getBookList() {
     ],
 
     books_2: [
+      {
+        image: require("../assets/curriculum/phonics.jpg"),
+        title: "Phonics 1~6",
+        details:
+          "기본 알파벳과 기본 단어부터 차근차근 배우고자 하시는 분, 부담없이 시작 할 수 있는 왕기초 발음교정 과정입니다. 1권부터 6권까지 3개월완성! (빠른 진도시 한달만에도 완성가능)"
+      },
+      {
+        image: require("../assets/curriculum/adv_phonics.jpg"),
+        title: "Advanced Phonics 1~6",
+        details:
+          "각 Phonics의 발음들을 보다 심층적으로, 빠르게 배울 수 있는 퀵Phonics 커리큘럼입니다. Phonics를 전체적으로 복습하고자 하시는 분, 빠르게 Phonics를 익히고자 하시는분께 적합합니다."
+      },
+      {
+        image: require("../assets/curriculum/p_course_jr.jpg"),
+        title: "P-course Junior Basic~Advanced",
+        details:
+          "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
+      },
+      {
+        image: require("../assets/curriculum//c-course_jr.jpg"),
+        title: "C-course Junior Basic~Advanced",
+        details:
+          "주위에서 흔히 볼 수 있는 사물들과 환경들로, 친숙한 회화표현들을 익혀보는 과정입니다. 그림과 함께 쉽게 회화를 익혀볼 수 있습니다."
+      }
+    ],
+
+    books_3: [
       // {
       //   image: require("../assets/curriculum/conv.jpg"),
       //   title: "Regular Conversation Step 1~3",
@@ -106,7 +133,22 @@ export function getBookList() {
       }
     ],
 
-    books_3: [
+    books_4: [
+      {
+        image: require("../assets/curriculum/milestones.jpg"),
+        title: "Milestones",
+        details:
+          "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
+      },
+      {
+        image: require("../assets/curriculum/1st_step.jpg"),
+        title: "First Step In Conversation Level 1~3",
+        details:
+          "다양한 상황과 단어들을 이용한 중급 회화 입니다. 그림과 함께한 중급용 회화교재입니다. 배운 숙어를 활용하여 응용연습을 함으로, 회화실력을 다져나갈 수 있습니다."
+      }
+    ],
+
+    books_5: [
       {
         mobile: require("../assets/mobile/perfect-reading&talking.png"),
         image: require("../assets/curriculum/ft_q_a1.webp"),
@@ -119,7 +161,7 @@ export function getBookList() {
       }
     ],
 
-    books_4: [
+    books_6: [
       {
         mobile: require("../assets/mobile/free-Q&A.png"),
         image: require("../assets/curriculum/ft_q_a1.webp"),
@@ -153,7 +195,7 @@ export function getBookList() {
       }
     ],
 
-    books_5: [
+    books_7: [
       {
         mobile: require("../assets/mobile/be_situational_dialogues.png"),
         image: require("../assets/curriculum/bd_1.webp"),
@@ -205,7 +247,7 @@ export function getBookList() {
       }
     ],
 
-    books_6: [
+    books_8: [
       {
         mobile: require("../assets/mobile/speaking-patten-100.png"),
         image: require("../assets/curriculum/sp_1.jpg"),
@@ -227,7 +269,7 @@ export function getBookList() {
       }
     ],
 
-    books_7: [
+    books_9: [
       {
         mobile: require("../assets/mobile/interview-english.png"),
         image: require("../assets/curriculum/int_1.webp"),
@@ -262,48 +304,6 @@ export function getBookList() {
         title: "Medical English",
         details:
           "검진, 예약, 차트작성, 응급상황 시 대처방법 등 실무에 필요한 의학영어들을 담았습니다. 의학용어들이 등장하여 어휘에 난이도가 있긴 하지만 몇몇 난이도 있는 용어를 제외하면, 다양한 상황에서의 의학회화들을 실용적으로 학습해나갈 수 있는 과정입니다."
-      }
-    ],
-
-    books_8: [
-      {
-        image: require("../assets/curriculum/milestones.jpg"),
-        title: "Milestones",
-        details:
-          "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
-      },
-      {
-        image: require("../assets/curriculum/1st_step.jpg"),
-        title: "First Step In Conversation Level 1~3",
-        details:
-          "다양한 상황과 단어들을 이용한 중급 회화 입니다. 그림과 함께한 중급용 회화교재입니다. 배운 숙어를 활용하여 응용연습을 함으로, 회화실력을 다져나갈 수 있습니다."
-      }
-    ],
-
-    books_9: [
-      {
-        image: require("../assets/curriculum/phonics.jpg"),
-        title: "Phonics 1~6",
-        details:
-          "기본 알파벳과 기본 단어부터 차근차근 배우고자 하시는 분, 부담없이 시작 할 수 있는 왕기초 발음교정 과정입니다. 1권부터 6권까지 3개월완성! (빠른 진도시 한달만에도 완성가능)"
-      },
-      {
-        image: require("../assets/curriculum/adv_phonics.jpg"),
-        title: "Advanced Phonics 1~6",
-        details:
-          "각 Phonics의 발음들을 보다 심층적으로, 빠르게 배울 수 있는 퀵Phonics 커리큘럼입니다. Phonics를 전체적으로 복습하고자 하시는 분, 빠르게 Phonics를 익히고자 하시는분께 적합합니다."
-      },
-      {
-        image: require("../assets/curriculum/p_course_jr.jpg"),
-        title: "P-course Junior Basic~Advanced",
-        details:
-          "기초적인 단어들을 사용하여, 간단한 문장들을 만들어보는 과정입니다. 그림과 함께 단어들을 학습할 수 있기 때문에, 보다 쉽고 편안한 단어암기가 가능합니다."
-      },
-      {
-        image: require("../assets/curriculum//c-course_jr.jpg"),
-        title: "C-course Junior Basic~Advanced",
-        details:
-          "주위에서 흔히 볼 수 있는 사물들과 환경들로, 친숙한 회화표현들을 익혀보는 과정입니다. 그림과 함께 쉽게 회화를 익혀볼 수 있습니다."
       }
     ]
   };
@@ -378,14 +378,14 @@ export function getTabs() {
   return {
     sliderTabs: [
       `유튜브 <br />회화과정`,
+      `입문과정`,
       `정규 <br />회화과정`,
+      `초/중급 <br />회화과정`,
       `리딩 & 스피킹`,
       `프리토킹 <br />토론`,
       `비즈니스 <br />과정`,
       `문법/ <br />패턴`,
-      `취업준비/ <br />특별 과정`,
-      `초/중급 <br />회화과정`,
-      `입문과정`
+      `취업준비/ <br />특별 과정`
     ]
   };
 }

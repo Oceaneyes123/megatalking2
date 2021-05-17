@@ -227,19 +227,13 @@
             </v-carousel>
 
             <CurriculumSliderGroup
-              v-if="slide == 1 || slide == 7 || slide == 8"
+              v-else-if="slide == 1 || slide == 2 || slide == 3 || slide == 8"
               :current-book="currentBook"
               :mobile="isMobile"
             ></CurriculumSliderGroup>
 
             <CurriculumCarousel
-              v-if="
-                slide == 2 ||
-                  slide == 3 ||
-                  slide == 4 ||
-                  slide == 5 ||
-                  slide == 6
-              "
+              v-else
               :current-book="currentBook"
               :mobile="isMobile"
             ></CurriculumCarousel>
