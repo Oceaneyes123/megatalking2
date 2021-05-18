@@ -72,6 +72,7 @@
                 rounded
                 class="blue-text font-weight-bold"
                 color="#E5E5E5"
+                @click="certificateDialog = false"
               >
                 취소
               </v-btn>
