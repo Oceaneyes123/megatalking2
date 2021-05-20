@@ -34,7 +34,8 @@ export default {
       this.link.indexOf("1204") != -1 ||
       this.link.indexOf("1205") != -1 ||
       this.link.indexOf("1206") != -1 ||
-      this.link.indexOf("1207") != -1
+      this.link.indexOf("1207") != -1 ||
+      this.link.indexOf("jkols") != -1
     ) {
       this.isTimeScore = true;
     }

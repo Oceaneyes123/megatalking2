@@ -64,7 +64,8 @@ export default {
         link.indexOf("1204") != -1 ||
         link.indexOf("1205") != -1 ||
         link.indexOf("1206") != -1 ||
-        link.indexOf("1207") != -1
+        link.indexOf("1207") != -1 ||
+        link.indexOf("jkols") != -1
       ) {
         window.open(this.currentCourseLink, "_blank");
         this.$emit("nextBook");
