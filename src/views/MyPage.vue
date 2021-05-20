@@ -807,7 +807,7 @@ export default {
       nextSunday: "",
       preveSaturday: "",
       prevSunday: "",
-      date2: new Date().toISOString().substr(0, 10),
+      date2: new Date(),
       arrayEvents: null,
       isBook: true,
       isVideo: false,
@@ -882,7 +882,7 @@ export default {
   },
   destroyed() {},
   mounted() {
-    this.today = this.formatDate(this.date);
+    this.date2 = this.formatDate(this.date2);
     // axios.defaults.headers.common["Authorization"] = localStorage.getItem("access-token");
     axios.defaults.headers.common["Authorization"] = this.$cookie.get(
       "access-token"
@@ -891,13 +891,26 @@ export default {
       this.$refs.HoldSnackbar.show(text, state);
     });
     bus.$on("refreshSchedule", () => {
-      //console.log(this.date2);
+      // console.log(this.date2);
       let [year, month, day] = this.date2.split("-");
       this.getSchedule(year, month, day);
     });
     console.log(this.showClass);
+
+    console.log(this.date2);
   },
   methods: {
+    // formatDate(date) {
+    //   var d = new Date(date),
+    //     month = "" + (d.getMonth() + 1),
+    //     day = "" + d.getDate(),
+    //     year = d.getFullYear();
+
+    //   if (month.length < 2) month = "0" + month;
+    //   if (day.length < 2) day = "0" + day;
+
+    //   return [year, month, day].join("-");
+    // },
     openClassBook() {
       if (this.showClass.length !== 0) {
         // window.open(bookLink, "_blank");

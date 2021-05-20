@@ -56,7 +56,22 @@ export default {
       // if (this.currentCourseLink.length != 0) {
       //   window.open(this.currentCourseLink, "_blank");
       // } else
-      this.$emit("nextBook");
+
+      let link = this.currentCourseLink;
+
+      if (
+        link.indexOf("1203") != -1 ||
+        link.indexOf("1204") != -1 ||
+        link.indexOf("1205") != -1 ||
+        link.indexOf("1206") != -1 ||
+        link.indexOf("1207") != -1 ||
+        link.indexOf("jkols") != -1
+      ) {
+        window.open(this.currentCourseLink, "_blank");
+        this.$emit("nextBook");
+      } else {
+        this.$emit("nextBook");
+      }
     }
   }
 };
