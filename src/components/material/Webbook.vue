@@ -27,7 +27,7 @@ export default {
   },
   props: ["url"],
   mounted() {
-    console.log("weebbook");
+    console.log(this.link);
 
     if (
       this.link.indexOf("1203") != -1 ||
@@ -35,7 +35,8 @@ export default {
       this.link.indexOf("1205") != -1 ||
       this.link.indexOf("1206") != -1 ||
       this.link.indexOf("1207") != -1 ||
-      this.link.indexOf("jkols") != -1
+      this.link.indexOf("jkols") != -1 ||
+      this.link.indexOf("http:") != -1
     ) {
       this.isTimeScore = true;
     }
