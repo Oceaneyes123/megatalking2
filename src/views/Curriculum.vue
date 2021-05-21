@@ -103,140 +103,147 @@
             </div>
 
             <!-- Carousel -->
-
-            <v-carousel
-              cycle
-              height="100%"
-              v-if="slide == 0"
-              hide-delimiter-background
-              show-arrows-on-hover
-              hide-delimiters
-              @change="changeCarousel(book_list.books_1, $event)"
-            >
-              <v-carousel-item
-                eager
-                height="750"
-                v-for="(book, i) in book_list.books_1"
-                :key="i"
+            <v-hover v-slot:default="{ hover }">
+              <v-carousel
+                :cycle="!hover"
+                height="100%"
+                v-if="slide == 0"
+                hide-delimiter-background
+                show-arrows-on-hover
+                hide-delimiters
+                :interval="isMobile ? `1500` : `6000`"
+                @change="changeCarousel(book_list.books_1, $event)"
               >
-                <v-card
-                  class="mx-auto rounded-xl"
-                  flat
-                  max-width="700"
-                  color="#dee3ee"
+                <v-carousel-item
+                  eager
+                  height="750"
+                  v-for="(book, i) in book_list.books_1"
+                  :key="i"
                 >
-                  <v-row>
-                    <v-col class="py-0 d-flex justify-center" cols="12" md="5">
-                      <v-card
-                        flat
-                        color="#fafafa"
-                        class="rounded-xl"
-                        :height="isMobile ? '' : '100%'"
-                        style="border: 1px solid #dee3ee"
-                        max-width="300"
+                  <v-card
+                    class="mx-auto rounded-xl"
+                    flat
+                    max-width="700"
+                    color="#dee3ee"
+                    :class="isMobile ? 'pt-10' : ''"
+                  >
+                    <v-row>
+                      <v-col
+                        class="py-0 d-flex justify-center"
+                        cols="12"
+                        md="5"
                       >
-                        <v-card class="mx-auto">
-                          <v-img
-                            :src="book.image"
-                            max-width="300"
-                            height="200"
-                            class="mx-auto"
-                            eager
-                          ></v-img>
-                        </v-card>
-
                         <v-card
                           flat
                           color="#fafafa"
-                          width="80%"
-                          class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
-                          >{{ book.title }}</v-card
-                        >
-                        <v-card
-                          flat
-                          color="#fafafa"
-                          width="80%"
+                          class="rounded-xl"
+                          :height="isMobile ? '' : '100%'"
+                          style="border: 1px solid #dee3ee"
                           max-width="300"
-                          class="mx-auto mt-5 text-left caption-text mb-5"
-                          style="color: #325fc4"
-                          >{{ book.details }}</v-card
                         >
-                      </v-card>
-                    </v-col>
-                    <v-col cols="12" md="7">
-                      <v-container fluid>
-                        <v-row class="h6 font-weight-bold" justify="center">
-                          <div class="text-center text-black">학습교재</div>
-                        </v-row>
-                        <v-row>
-                          <v-col cols="12">
+                          <v-card class="mx-auto">
                             <v-img
-                              style="transform: rotate(90deg)"
-                              v-if="book.tab && i % 2 != 1"
-                              :src="book.tab"
-                              width="250"
-                              height="300"
+                              :src="book.image"
+                              max-width="300"
+                              height="200"
                               class="mx-auto"
-                              contain
                               eager
                             ></v-img>
-                            <v-img
-                              v-if="book.tab && i % 2 == 1"
-                              :src="book.tab"
-                              width="250"
-                              height="300"
-                              class="mx-auto"
-                              contain
-                              eager
-                            ></v-img>
-                          </v-col>
-                        </v-row>
-                        <v-row>
-                          <v-col cols="12" class="d-flex align-end">
-                            <div class="d-flex flex-row align-start mx-auto">
-                              <div
-                                class="h5 nanum text-black text-left mr-5 font-weight-bold"
-                                style="
-                                  line-break: strict;
-                                  word-break: keep-all;
-                                  color: #325fc4;
-                                "
-                              >
-                                {{ title }}
+                          </v-card>
+
+                          <v-card
+                            flat
+                            color="#fafafa"
+                            width="80%"
+                            class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                            >{{ book.title }}</v-card
+                          >
+                          <v-card
+                            flat
+                            color="#fafafa"
+                            width="80%"
+                            max-width="300"
+                            class="mx-auto mt-5 text-left caption-text mb-5"
+                            style="color: #325fc4"
+                            >{{ book.details }}</v-card
+                          >
+                        </v-card>
+                      </v-col>
+                      <v-col cols="12" md="7">
+                        <v-container fluid>
+                          <v-row class="h6 font-weight-bold" justify="center">
+                            <div class="text-center text-black">학습교재</div>
+                          </v-row>
+                          <v-row>
+                            <v-col cols="12">
+                              <v-img
+                                style="transform: rotate(90deg)"
+                                v-if="book.tab && i % 2 != 1"
+                                :src="book.tab"
+                                width="250"
+                                height="300"
+                                class="mx-auto"
+                                contain
+                                eager
+                              ></v-img>
+                              <v-img
+                                v-if="book.tab && i % 2 == 1"
+                                :src="book.tab"
+                                width="250"
+                                height="300"
+                                class="mx-auto"
+                                contain
+                                eager
+                              ></v-img>
+                            </v-col>
+                          </v-row>
+                          <v-row>
+                            <v-col cols="12" class="d-flex align-end">
+                              <div class="d-flex flex-row align-start mx-auto">
+                                <div
+                                  class="h5 nanum text-black text-left mr-5 font-weight-bold"
+                                  style="
+                                    line-break: strict;
+                                    word-break: keep-all;
+                                    color: #325fc4;
+                                  "
+                                >
+                                  {{ title }}
+                                </div>
+                                <v-btn
+                                  class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                  style="
+                                    background: linear-gradient(
+                                      to right,
+                                      #8fa1fe,
+                                      #4d94e9
+                                    );
+                                  "
+                                  @click="$router.push('/enrollment')"
+                                  >수강신청</v-btn
+                                >
                               </div>
-                              <v-btn
-                                class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
-                                style="
-                                  background: linear-gradient(
-                                    to right,
-                                    #8fa1fe,
-                                    #4d94e9
-                                  );
-                                "
-                                @click="$router.push('/enrollment')"
-                                >수강신청</v-btn
-                              >
-                            </div>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </v-carousel-item>
-            </v-carousel>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-carousel-item>
+              </v-carousel>
 
-            <CurriculumSliderGroup
-              v-else-if="slide == 1 || slide == 2 || slide == 3 || slide == 8"
-              :current-book="currentBook"
-              :mobile="isMobile"
-            ></CurriculumSliderGroup>
+              <CurriculumSliderGroup
+                v-else-if="slide == 1 || slide == 2 || slide == 3 || slide == 8"
+                :current-book="currentBook"
+                :mobile="isMobile"
+              ></CurriculumSliderGroup>
 
-            <CurriculumCarousel
-              v-else
-              :current-book="currentBook"
-              :mobile="isMobile"
-            ></CurriculumCarousel>
+              <CurriculumCarousel
+                v-else
+                :current-book="currentBook"
+                :mobile="isMobile"
+              ></CurriculumCarousel>
+            </v-hover>
 
             <!--    <v-carousel
               cycle
@@ -864,19 +871,6 @@
                           </p>
                           <p>초급 토론과정</p>
                         </div>
-                        <div>
-                          <p
-                            style="background-color: #5dc5fc40"
-                            class="font-weight-bold h6 py-2"
-                          >
-                            다락원 <br />교재 과정
-                          </p>
-                          <p class="mb-1">패턴 연습편1</p>
-                          <p class="mb-1">패턴 연습편2</p>
-                          <p class="mb-1">
-                            패턴연습편3 동사연습편1 상황별연습1
-                          </p>
-                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
@@ -932,18 +926,6 @@
                           </p>
                           <p>비즈니스 회화</p>
                         </div>
-                        <div>
-                          <p
-                            style="background-color: #5dc5fc40"
-                            class="font-weight-bold h6 py-2"
-                          >
-                            다락원 <br />교재 과정
-                          </p>
-                          <p class="mb-1">
-                            동사연습편2 상황별연습2 비즈니스전화
-                          </p>
-                          <p>동사연습편3 상황별연습3 비즈니스회의</p>
-                        </div>
                       </v-card-text>
                     </v-card>
                   </v-timeline-item>
@@ -998,16 +980,6 @@
                             <br />과정
                           </p>
                           <p>비즈니스 맞춤</p>
-                        </div>
-                        <div>
-                          <p
-                            style="background-color: #5dc5fc40"
-                            class="font-weight-bold h6 py-2"
-                          >
-                            다락원 <br />교재 과정
-                          </p>
-                          <p class="mb-1">비즈니스 이메일</p>
-                          <p>비즈니스 프리젠테이션</p>
                         </div>
                         <div>
                           <p
