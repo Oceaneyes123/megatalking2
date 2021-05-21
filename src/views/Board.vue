@@ -40,13 +40,17 @@
               :items="boards.REVIEW"
               @click:row="rowClicked"
               :item-class="tableRow"
+              :key="boardTable"
             ></v-data-table>
           </v-row>
         </v-container>
       </v-card>
     </v-container>
     <BoardDialog ref="boardDialog"></BoardDialog>
-    <CourseReviewDialog ref="courseReviewDialog"></CourseReviewDialog>
+    <CourseReviewDialog
+      ref="courseReviewDialog"
+      @reviewCompleted="refreshBoards()"
+    ></CourseReviewDialog>
   </v-app>
 </template>
 
@@ -72,6 +76,7 @@ export default {
       isMobile: false,
       boardDialog: false,
       overlay: true,
+      boardTable: 0,
 
       selected_row: [],
 
@@ -173,6 +178,10 @@ export default {
 
     openReview() {
       this.$refs.courseReviewDialog.open();
+    },
+
+    refreshBoards() {
+      location.reload();
     },
 
     getBoards() {

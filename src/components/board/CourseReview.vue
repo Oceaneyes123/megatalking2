@@ -24,7 +24,21 @@
             </v-col>
           </v-row>
           <v-row class="px-3">
-            <v-textarea outlined no-resize rows="10"></v-textarea>
+            <v-text-field
+              single-line
+              placeholder="Title"
+              v-model="title"
+              outlined
+            ></v-text-field>
+          </v-row>
+          <v-row class="px-3">
+            <v-textarea
+              v-model="content"
+              placeholder="Content"
+              outlined
+              no-resize
+              rows="10"
+            ></v-textarea>
           </v-row>
           <v-row>
             <v-col class="text-right">
@@ -46,6 +60,7 @@
                 class="nanum font-weight-bold"
                 color="#2564CB"
                 width="40%"
+                @click="writeReview()"
               >
                 보내기
               </v-btn>
@@ -58,10 +73,13 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "CourseReview",
   data() {
     return {
+      title: "",
+      content: "",
       courseReviewDialog: false
     };
   },
@@ -69,6 +87,29 @@ export default {
   methods: {
     open() {
       this.courseReviewDialog = true;
+    },
+    writeReview() {
+      console.log(this.title);
+      console.log(this.content);
+
+      // const form = new FormData();
+      // form.append("title", this.title);
+      // form.append("content", this.content);
+
+      var form = { title: this.title, content: this.content };
+
+      axios.post("//phone.megatalking.com/origin/api/review.php", form).then(
+        res => {
+          console.log(res.data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
+      this.$emit("reviewCompleted");
+
+      this.courseReviewDialog = false;
     }
   }
 };
