@@ -92,11 +92,11 @@ export default {
       console.log(this.title);
       console.log(this.content);
 
-      // const form = new FormData();
-      // form.append("title", this.title);
-      // form.append("content", this.content);
+      const form = new FormData();
+      form.append("title", this.title);
+      form.append("content", this.content);
 
-      var form = { title: this.title, content: this.content };
+      //var form = { title: this.title, content: this.content };
 
       axios.post("//phone.megatalking.com/origin/api/review.php", form).then(
         res => {

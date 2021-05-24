@@ -17,8 +17,8 @@
                 <div>Instructor</div>
               </v-col>
               <v-col sm="6" cols="8">
-                <div>[student_name]</div>
-                <div>[instructor_name]</div>
+                <div>{{ receiptData.name }}</div>
+                <div>{{ receiptData.lec_name }}</div>
               </v-col>
             </v-row>
             <v-row>
@@ -37,10 +37,19 @@
                 <div>시작일시</div>
               </v-col>
               <v-col sm="6" cols="8">
-                <div>전화영어 (하루 10분)</div>
-                <div>추천과정</div>
-                <div>1년 / 주2회(화,목)</div>
-                <div>4/15 (목) / 프라임 6:30</div>
+                <div>
+                  {{ receiptData.pay_progress.paymentInfo.type }} (
+                  {{ receiptData.pay_progress.paymentInfo.duration }} )
+                </div>
+                <div>{{ receiptData.pay_progress.paymentInfo.course }}</div>
+                <div>
+                  {{ receiptData.pay_progress.paymentInfo.period }} /
+                  {{ receiptData.pay_progress.paymentInfo.daysOfWeek }}
+                </div>
+                <div>
+                  {{ receiptData.pay_progress.paymentInfo.startDay }} /
+                  {{ receiptData.pay_progress.paymentInfo.startTime }}
+                </div>
               </v-col>
             </v-row>
             <v-row>
@@ -59,13 +68,22 @@
                 <div>결제금액</div>
               </v-col>
               <v-col sm="6" cols="8">
-                <div>무통장 입금</div>
-                <div>768,000원</div>
-                <div class="font-weight-bold" style="color: #cb5413">
-                  -154,000원
+                <div>{{ receiptData.method }}</div>
+                <div>
+                  {{
+                    receiptData.pay_progress.paymentInfo.value +
+                      receiptData.pay_progress.paymentInfo.dcn
+                  }}원
                 </div>
-                <div class="font-weight-bold">월 51,167원 (20% 할인)</div>
-                <div>총 614,000원</div>
+                <div class="font-weight-bold" style="color: #cb5413">
+                  -{{ receiptData.pay_progress.paymentInfo.dcn }}원
+                </div>
+                <div class="font-weight-bold">
+                  월 {{ receiptData.pay_progress.paymentInfo.value / 4 }}원 ({{
+                    receiptData.pay_progress.paymentInfo.dcp
+                  }}% 할인)
+                </div>
+                <div>총{{ receiptData.pay_progress.paymentInfo.value }}원</div>
               </v-col>
             </v-row>
             <v-row>

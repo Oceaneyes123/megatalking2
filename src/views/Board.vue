@@ -22,7 +22,7 @@
         max-width="1000px"
       >
         <v-container class="px-5 px-md-10 py-10">
-          <v-row class="mb-7" v-if="$store.state.isLogin">
+          <!-- <v-row class="mb-7" v-if="$store.state.isLogin">
             <v-col cols="7" class="h6 gmarket text-left">
               소중한 의견을 주셔서 감사합니다.
             </v-col>
@@ -31,7 +31,7 @@
                 Write a review
               </v-btn>
             </v-col>
-          </v-row>
+          </v-row> -->
           <v-row>
             <v-data-table
               style="width: 100%"
