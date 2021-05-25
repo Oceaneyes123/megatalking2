@@ -49,11 +49,21 @@
               <div>시작일시</div>
             </v-col>
             <v-col sm="6" cols="6">
-              <div>[student_name]</div>
-              <div>전화영어 (하루 10분)</div>
-              <div>추천과정</div>
-              <div>1년 / 주2회(화,목)</div>
-              <div>4/15 (목) / 프라임 6:30</div>
+              <div>{{ certificateData.name }}</div>
+              <div>
+                {{ certificateData.pay_progress.paymentInfo.type }} ({{
+                  certificateData.pay_progress.paymentInfo.duration
+                }})
+              </div>
+              <div>{{ certificateData.pay_progress.paymentInfo.course }}</div>
+              <div>
+                {{ certificateData.pay_progress.paymentInfo.period }} /
+                {{ certificateData.pay_progress.paymentInfo.daysOfWeek }}
+              </div>
+              <div>
+                {{ certificateData.pay_progress.paymentInfo.startDay }} /
+                {{ certificateData.pay_progress.paymentInfo.startTime }}
+              </div>
             </v-col>
           </v-row>
           <v-row>
@@ -62,7 +72,9 @@
                 This certification is a proof that the student studied in this
                 academy.
               </div>
-              <div class="nanum" style="font-size: 9px">[today_date]</div>
+              <div class="nanum" style="font-size: 9px">
+                {{ formatDate(date) }}
+              </div>
             </v-col>
           </v-row>
           <v-row>
@@ -176,12 +188,26 @@
 export default {
   data() {
     return {
-      certificateDialog: false
+      certificateDialog: false,
+      certificateData: [],
+      date: new Date()
     };
   },
   methods: {
-    open() {
+    open(item) {
       this.certificateDialog = true;
+      this.certificateData = item;
+    },
+    formatDate(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+
+      return [year, month, day].join("-");
     }
   }
 };

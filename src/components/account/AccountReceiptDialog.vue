@@ -128,7 +128,6 @@ export default {
     open(item) {
       this.receiptData = item;
       this.receiptDialog = true;
-      console.log(item);
     }
   }
 };
