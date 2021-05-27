@@ -221,6 +221,66 @@ export default new Vuex.Store({
           console.log(err);
           state.holdOverlay = false;
         });
+    },
+    async cancelHold({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/mypage.php", payload)
+        .then(rs => {
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "수업 복원이 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          console.log(err);
+          state.holdOverlay = false;
+        });
+    },
+    async addMakeupClass({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/makeup.php", payload)
+        .then(rs => {
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "보강설정이 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          bus.$emit("HoldSnackbar", {
+            text: "보강설정이 실패하였습니다.",
+            state: "error"
+          });
+          console.log(err);
+          state.holdOverlay = false;
+        });
     }
   },
   modules: {}

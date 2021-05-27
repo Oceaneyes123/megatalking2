@@ -37,8 +37,15 @@
                 </v-card>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col cols="12" class="pb-0">
+                <div class="nanum h7 pl-16 ">
+                  사용가능 쿠폰: 0개
+                </div>
+              </v-col>
+            </v-row>
             <!--`-->
-            <v-row class="my-10" id="detailContainer">
+            <v-row class="my-0" id="detailContainer">
               <v-col cols="12">
                 <v-sheet>
                   <v-slide-group
@@ -151,13 +158,91 @@
                             </div>
                           </div>
                           <div class="d-flex justify-center white--text" v-else>
-                            <div>수업 홀드 완료</div>
+                            <v-btn
+                              text
+                              class="white--text pa-0 my-0"
+                              style="font-size: 16px"
+                              small
+                              block
+                              @click="openCancelHoldDialog(classes)"
+                              v-if="classes.attend == 'ready'"
+                            >
+                              수업 복구
+                            </v-btn>
                           </div>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #859ec9"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption" style="color: #5e75cf">
+                          <br />
+                        </div>
+                        <div class="h6 nanum">보강 쿠폰 0장</div>
+                        <div class="d-flex" style="height:35%">
+                          <v-icon
+                            color="#859ec9"
+                            class="text-center mx-auto"
+                            x-large
+                            >mdi-plus</v-icon
+                          >
+                        </div>
+                        <v-card
+                          color="#859ec9"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                        >
+                          <v-btn
+                            text
+                            class="white--text"
+                            style="font-size: 16px"
+                            block
+                            @click="openMakeUpClassDialog()"
+                          >
+                            쿠폰 사용하기
+                          </v-btn>
                         </v-card>
                       </v-card>
                     </v-slide-item>
                   </v-slide-group>
                   <v-slide-group v-else>
+                    <v-slide-item class="mx-3">
+                      <v-card
+                        style="border: 3px solid #859ec9"
+                        width="300"
+                        class="rounded-xl py-3 px-5"
+                      >
+                        <div class="caption" style="color: #5e75cf">
+                          <br />
+                        </div>
+                        <div class="h6 nanum">보강 쿠폰 0장</div>
+                        <div class="d-flex">
+                          <v-icon
+                            color="#859ec9"
+                            class="text-center mx-auto"
+                            x-large
+                            >mdi-plus</v-icon
+                          >
+                        </div>
+                        <v-card
+                          color="#859ec9"
+                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                        >
+                          <v-btn
+                            text
+                            class="white--text"
+                            style="font-size: 16px"
+                            block
+                            @click="openMakeUpClassDialog()"
+                          >
+                            쿠폰 사용하기
+                          </v-btn>
+                        </v-card>
+                      </v-card>
+                    </v-slide-item>
                     <v-slide-item class="mx-3">
                       <v-card
                         style="border: 3px solid #bbbbbb"
@@ -721,7 +806,9 @@
     </v-container>
     <Dialog ref="ModalDialog"></Dialog>
     <HoldDialog ref="HoldDialog"></HoldDialog>
+    <CancelHoldDialog ref="CancelHoldDialog"></CancelHoldDialog>
     <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
+    <MakeUpClassDiaLog ref="MakeUpClassDialog"></MakeUpClassDiaLog>
   </v-app>
 </template>
 
@@ -772,8 +859,10 @@ import axios from "axios";
 import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
+import CancelHoldDialog from "@/components/CancelHoldDialog";
 import HoldSnackbar from "@/components/Snackbar";
 import Dialog from "@/components/mypage/Dialog";
+import MakeUpClassDiaLog from "@/components/mypage/MakeUpClassDiaLog";
 // import BookCover from "@/components/mypage/BookCover";
 // import VideoCover from "@/components/mypage/VideoCover";
 // import PDFCover from "@/components/mypage/PDFCover";
@@ -782,8 +871,10 @@ import { bus } from "@/main";
 export default {
   components: {
     HoldDialog,
+    CancelHoldDialog,
     HoldSnackbar,
-    Dialog
+    Dialog,
+    MakeUpClassDiaLog
     // BookCover,
     // VideoCover,
     // PDFCover,
@@ -942,6 +1033,14 @@ export default {
     async openHoldDialog(classObj) {
       let date = this.date2;
       await this.$refs.HoldDialog.open(date, classObj);
+    },
+    async openCancelHoldDialog(classObj) {
+      let date = this.date2;
+      await this.$refs.CancelHoldDialog.open(date, classObj);
+    },
+    async openMakeUpClassDialog() {
+      //let date = this.date2;
+      this.$refs.MakeUpClassDialog.open();
     },
     getBookName(obj) {
       return obj.book_name;
