@@ -4,13 +4,13 @@
     max-width="1000"
     style="
       overflow-x: hidden;
-      lborder-radius: 25px 25px 25px 25px !important;
+      border-radius: 25px 25px 25px 25px !important;
     "
     @click:outside="close()"
   >
     <v-card flat class="rounded-xl" max-width="1000">
       <v-card flat color="#8aace9" class="rounded-xl">
-        <v-container class="py-0">
+        <v-container>
           <v-row>
             <v-col cols="6" class="white--text">
               <span class="ml-5 h5 nanum">{{

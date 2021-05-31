@@ -14,7 +14,7 @@
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-card-title>
-
+        <!-- onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;" -->
         <v-card-text>
           <iframe
             width="100%"

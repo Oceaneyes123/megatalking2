@@ -7,7 +7,7 @@
     <div class="white--text h3 my-auto">
       <p class="text-center">Megatalking</p>
       <p class="text-center">Material</p>
-      <p class="text-center overline">{{ currentCourseName }}</p>
+      <p class="text-center overline">{{ courseName }}</p>
       <p class="text-center">
         <v-btn x-large rounded @click="nextBook()" :disabled="!showOpenBtn">
           Open
@@ -30,13 +30,19 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      showOpenBtn: false
+      showOpenBtn: false,
+      courseName: "",
+      courseLink: ""
     };
   },
   created() {
+    console.log(this.currentCourseName.length);
     if (this.currentCourseName == "프리토킹") {
       this.showOpenBtn = false;
     } else if (this.currentCourseName.length != 0) {
+      this.courseName = this.currentCourseName;
+      localStorage.setItem("currentCourseName", this.currentCourseName);
+      localStorage.setItem("currentCourseLink", this.currentCourseLink);
       this.showOpenBtn = true;
     }
 
@@ -46,7 +52,16 @@ export default {
   },
 
   mounted() {
-    console.log(this.currentCourseLink);
+    if (this.currentCourseName == "") {
+      this.courseName = localStorage.getItem("currentCourseName");
+      this.showOpenBtn = true;
+    }
+
+    if (this.currentCourseLink == "") {
+      this.courseLink = localStorage.getItem("currentCourseLink");
+    }
+
+    console.log(this.courseName, this.courseLink);
   },
   computed: {
     ...mapState(["currentCourseName", "currentCourseLink", "currentClassInfo"])
@@ -57,9 +72,9 @@ export default {
       //   window.open(this.currentCourseLink, "_blank");
       // } else
 
-      let link = this.currentCourseLink;
+      let link = this.courseLink;
 
-      console.log(this.currentCourseLink);
+      console.log(this.courseLink);
 
       if (
         link.indexOf("1203") != -1 ||
@@ -69,7 +84,7 @@ export default {
         link.indexOf("1207") != -1 ||
         link.indexOf("http:") != -1
       ) {
-        window.open(this.currentCourseLink, "_blank");
+        window.open(this.courseLink, "_blank");
         this.$emit("nextBook");
       } else {
         this.$emit("nextBook");

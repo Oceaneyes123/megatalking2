@@ -11,7 +11,7 @@
         <v-container class="px-0 py-0">
           <ContentCover v-if="step == 0" @nextBook="nextBook(1)" />
           <ContentList
-            v-else-if="step == 1 && currentCourseLink == ''"
+            v-else-if="step == 1 && courseLink == ''"
             @nextBook="nextBook(2)"
           />
 
@@ -37,6 +37,7 @@ export default {
   data() {
     return {
       courseName: "",
+      courseLink: "",
       unitId: 1,
       screenWidth: "",
       isMobile: false,
@@ -72,15 +73,11 @@ export default {
       this.unitId = unitId;
     });
 
-    if (this.currentCourseLink == "") {
-      console.log("hello1");
-    } else {
-      console.log("hello2");
-    }
-
     document.getElementById("frame").src = "http://178.128.213.14/";
 
     window.addEventListener("message", receiveMessage, false);
+
+    this.courseLink = this.currentCourseLink;
 
     var vm = this;
     function receiveMessage(evt) {
@@ -95,7 +92,9 @@ export default {
 
   methods: {
     nextBook(step) {
-      console.log(step);
+      if (step == 1) {
+        this.courseLink = localStorage.getItem("currentCourseLink");
+      }
       this.step = step;
     },
     proceed() {
