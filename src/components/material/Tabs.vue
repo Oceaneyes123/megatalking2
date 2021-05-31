@@ -18,10 +18,10 @@
     <v-tab-item style="height: 80vh" v-show="steps[0].show">
       <VideoContent
         :unitId="unitId"
-        v-if="this.currentCourseLink == ''"
+        v-if="this.courseLink == ''"
         id="videoContent"
       />
-      <Webbook :url="this.currentCourseLink" id="webbook" />
+      <Webbook :url="this.courseLink" id="webbook" />
     </v-tab-item>
     <v-tab-item style="height: 80vh" v-show="steps[1].show">
       <Book :unitId="unitId" />
@@ -57,6 +57,7 @@ export default {
   data() {
     return {
       tabs: 0,
+      courseLink: "",
       steps: [
         {
           title: "예습",
@@ -95,7 +96,8 @@ export default {
 
     if (
       this.isEmpty(this.currentCourseName) ||
-      this.currentCourseName.indexOf("Video") != 0
+      this.currentCourseName.indexOf("Video") != 0 ||
+      localStorage.getItem("currentCourseName").indexOf("Video") != 0
     ) {
       //  this.steps[0].show = false;
       this.steps[1].show = false;
@@ -109,6 +111,7 @@ export default {
   props: ["unitId"],
   mounted() {
     window.setInterval(this.clickFrame, 100);
+    this.courseLink = localStorage.getItem("currentCourseLink");
   },
   methods: {
     // clickFrame() {

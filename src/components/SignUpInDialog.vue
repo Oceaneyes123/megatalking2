@@ -4,7 +4,7 @@
     max-width="1000"
     style="
       overflow-x: hidden;
-      lborder-radius: 25px 25px 25px 25px !important;
+      border-radius: 25px 25px 25px 25px !important;
     "
     @click:outside="close()"
   >

@@ -39,9 +39,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" class="pb-0">
-                <div class="nanum h7 pl-16 ">
-                  사용가능 쿠폰: 0개
-                </div>
+                <div class="nanum h7 pl-16">사용가능 쿠폰: 0개</div>
               </v-col>
             </v-row>
             <!--`-->
@@ -183,7 +181,7 @@
                           <br />
                         </div>
                         <div class="h6 nanum">보강 쿠폰 0장</div>
-                        <div class="d-flex" style="height:35%">
+                        <div class="d-flex" style="height: 35%">
                           <v-icon
                             color="#859ec9"
                             class="text-center mx-auto"
@@ -1025,6 +1023,8 @@ export default {
       let obj = {
         link: `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`
       };
+
+      console.log(obj);
       this.$refs.ModalDialog.setOpts(1, obj);
       this.$refs.ModalDialog.open();
       // let path = `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`;
@@ -1082,7 +1082,7 @@ export default {
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
-      console.log(courseName);
+
       if (courseName.indexOf("Video") != 0)
         //비디오 아닌 교재만 링크넣기
         this.$store.commit("setCurrentCourseLink", { link: bookLink });

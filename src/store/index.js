@@ -4,10 +4,12 @@ import axios from "axios";
 import router from "@/router";
 import { bus } from "@/main";
 import VueCookie from "vue-cookie";
+// import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  // plugins: [createPersistedState()],
   state: {
     // loginToken: localStorage.getItem("access-token"),
     loginToken: VueCookie.get("access-token"),
