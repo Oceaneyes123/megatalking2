@@ -132,6 +132,7 @@ export default {
     return {
       dialog: false,
       date: "",
+      isNoAble: false,
       tutorList: [],
       tutorType: "",
       s_id: "",
@@ -153,6 +154,10 @@ export default {
         {
           icon: "mdi-clock-check-outline",
           text: "보강 시간을 선택해주세요."
+        },
+        {
+          icon: "mdi-clock-alert-outline",
+          text: "수업 가능한 시간이 없습니다 ㅠㅠ"
         }
       ],
       attrs: {
@@ -173,7 +178,8 @@ export default {
       else if (
         this.tutorType != "" &&
         this.s_id != "" &&
-        this.ableTimeList.length == 0
+        this.ableTimeList.length == 0 &&
+        !this.isNoAble
       )
         step = 2;
       else if (
@@ -182,12 +188,21 @@ export default {
         this.ableTimeList.length != 0
       )
         step = 3;
+      else if (
+        this.tutorType != "" &&
+        this.s_id != "" &&
+        this.ableTimeList.length == 0 &&
+        this.isNoAble
+      )
+        step = 4;
+
       return step;
     },
     progressObj() {
       var obj = { text: "-", value: 0 };
-      if (this.stepProgress == 1) obj = { text: 50, value: 50 };
+      if (this.stepProgress == 1) obj = { text: "", value: 0 };
       else if (this.stepProgress == 2) obj = { text: "검색중", value: 0 };
+      else if (this.stepProgress == 4) obj = { text: "시간없음", value: 0 };
       return obj;
     },
     btnBlockRc() {
@@ -299,6 +314,9 @@ export default {
         .then(rs => {
           if (rs.data.result == true) {
             this.$set(this.$data, "tutorList", rs.data.list);
+            if (this.tutorList.length) {
+              this.s_id = this.tutorList[0].value;
+            }
           } else {
             this.$set(this.$data, "tutorList", []);
           }
@@ -318,8 +336,10 @@ export default {
         .then(rs => {
           // console.log(rs);
           if (rs.data.result == true) {
+            this.isNoAble = false;
             this.$set(this.$data, "ableTimeList", rs.data.list);
           } else {
+            this.isNoAble = true;
             this.$set(this.$data, "ableTimeList", []);
           }
         })
@@ -334,15 +354,18 @@ export default {
       if (!val) {
         this.s_id = "";
         this.tutorType = "";
+        this.$set(this.$data, "ableTimeList", []);
       }
     },
     s_id() {
       this.tutorType = "";
+      this.$set(this.$data, "ableTimeList", []);
+      this.isNoAble = false;
     },
     tutorType() {
       this.getAbleTimes();
       this.$set(this.$data, "ableTimeList", []);
-      this.selectedDateTime = "";
+      this.isNoAble = false;
     }
   }
 };

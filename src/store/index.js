@@ -281,6 +281,35 @@ export default new Vuex.Store({
           console.log(err);
           state.holdOverlay = false;
         });
+    },
+    async cancelClass({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/mypage.php", payload)
+        .then(rs => {
+          // console.log(rs);
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "수업 취소가 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          console.log(err);
+          state.holdOverlay = false;
+        });
     }
   },
   modules: {}
