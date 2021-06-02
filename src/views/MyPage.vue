@@ -8,7 +8,7 @@
         >
           마이 페이지
         </div>
-        <div class="h6 nanum white--text">
+        <div class="h6 nanum white--text korean-text">
           <div class="my-1">재미있는 영어수다! 친구처럼 편한 영어!</div>
           <div class="my-2">매일 매일 영어습관, 메가토킹.</div>
         </div>
@@ -444,7 +444,7 @@
 
                               <div class="py-5">
                                 <v-row align="center">
-                                  <v-col>
+                                  <v-col cols="7" sm="6">
                                     <div
                                       class="nanum white--text d-flex align-center korean-text"
                                       :class="
@@ -474,7 +474,7 @@
                                       {{ showClass.lec_name }}
                                     </div>
                                   </v-col>
-                                  <v-col>
+                                  <v-col cols="5" sm="6">
                                     <div
                                       class="nanum white--text d-flex align-center"
                                       :class="

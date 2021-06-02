@@ -9,14 +9,14 @@
       top
       v-model="snackbar"
     >
-      <div class="text-center">
+      <div class="text-center korean-text">
         강사평가서가 성공적으로 보내졌습니다.
       </div>
     </v-snackbar>
 
     <v-row class="align-md-center">
       <v-col cols="12">
-        <div class="text-center mb-2">
+        <div class="text-center mb-2 korean-text">
           {{ currentClassInfo.year }}년 {{ currentClassInfo.month }}월
           {{ currentClassInfo.day }}일 <br />{{ currentClassInfo.lec_name }}
           강사님 수업은 어떠셨나요?
