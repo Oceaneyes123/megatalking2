@@ -38,8 +38,10 @@
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" class="pb-0">
-                <div class="nanum h7 pl-16">사용가능 쿠폰: 0개</div>
+              <v-col cols="12" class="pb-5">
+                <div class="nanum h7 pl-5 ">
+                  사용가능 쿠폰: {{ couponNum }}개
+                </div>
               </v-col>
             </v-row>
             <!--`-->
@@ -100,9 +102,24 @@
                                 small
                                 block
                                 @click="openHoldDialog(classes)"
-                                v-if="classes.attend == 'ready'"
+                                v-if="
+                                  classes.attend == 'ready' && classes.jong == 1
+                                "
                               >
                                 수업 홀드
+                              </v-btn>
+                              <v-btn
+                                text
+                                class="white--text pa-0 my-0"
+                                style="font-size: 16px"
+                                small
+                                block
+                                @click="openCancelClassDialog(classes)"
+                                v-else-if="
+                                  classes.attend == 'ready' && classes.jong == 2
+                                "
+                              >
+                                수업 취소
                               </v-btn>
                               <v-btn
                                 text
@@ -176,12 +193,13 @@
                         style="border: 3px solid #859ec9"
                         width="300"
                         class="rounded-xl py-3 px-5"
+                        v-if="this.couponNum > 0"
                       >
                         <div class="caption" style="color: #5e75cf">
                           <br />
                         </div>
-                        <div class="h6 nanum">보강 쿠폰 0장</div>
-                        <div class="d-flex" style="height: 35%">
+                        <div class="h6 nanum">보강 쿠폰 {{ couponNum }}장</div>
+                        <div class="d-flex" style="height:35%">
                           <v-icon
                             color="#859ec9"
                             class="text-center mx-auto"
@@ -212,11 +230,12 @@
                         style="border: 3px solid #859ec9"
                         width="300"
                         class="rounded-xl py-3 px-5"
+                        v-if="this.couponNum > 0"
                       >
                         <div class="caption" style="color: #5e75cf">
                           <br />
                         </div>
-                        <div class="h6 nanum">보강 쿠폰 0장</div>
+                        <div class="h6 nanum">보강 쿠폰 {{ couponNum }}장</div>
                         <div class="d-flex">
                           <v-icon
                             color="#859ec9"
@@ -246,6 +265,7 @@
                         style="border: 3px solid #bbbbbb"
                         width="300"
                         class="rounded-xl py-3 px-5"
+                        v-if="this.couponNum == 0"
                       >
                         <div class="caption" style="color: #5e75cf">
                           {{
@@ -807,6 +827,7 @@
     <CancelHoldDialog ref="CancelHoldDialog"></CancelHoldDialog>
     <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
     <MakeUpClassDiaLog ref="MakeUpClassDialog"></MakeUpClassDiaLog>
+    <CancelClassDiaLog ref="CancelClassDiaLog"></CancelClassDiaLog>
   </v-app>
 </template>
 
@@ -858,9 +879,11 @@ import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import CancelHoldDialog from "@/components/CancelHoldDialog";
+import CancelClassDiaLog from "@/components/CancelClassDiaLog";
 import HoldSnackbar from "@/components/Snackbar";
 import Dialog from "@/components/mypage/Dialog";
 import MakeUpClassDiaLog from "@/components/mypage/MakeUpClassDiaLog";
+
 // import BookCover from "@/components/mypage/BookCover";
 // import VideoCover from "@/components/mypage/VideoCover";
 // import PDFCover from "@/components/mypage/PDFCover";
@@ -872,7 +895,8 @@ export default {
     CancelHoldDialog,
     HoldSnackbar,
     Dialog,
-    MakeUpClassDiaLog
+    MakeUpClassDiaLog,
+    CancelClassDiaLog
     // BookCover,
     // VideoCover,
     // PDFCover,
@@ -907,6 +931,7 @@ export default {
       selectedEndDay: "",
       selectedClass: [],
       pickerDate: null,
+      couponNum: 0,
       tests: [
         {
           test: "test",
@@ -984,9 +1009,9 @@ export default {
       let [year, month, day] = this.date2.split("-");
       this.getSchedule(year, month, day);
     });
-    console.log(this.showClass);
+    // console.log(this.showClass);
 
-    console.log(this.date2);
+    // console.log(this.date2);
   },
   methods: {
     // formatDate(date) {
@@ -1040,7 +1065,13 @@ export default {
     },
     async openMakeUpClassDialog() {
       //let date = this.date2;
-      this.$refs.MakeUpClassDialog.open();
+      if (this.couponNum) {
+        this.$refs.MakeUpClassDialog.open();
+      }
+    },
+    async openCancelClassDialog(classObj) {
+      let date = this.date2;
+      this.$refs.CancelClassDiaLog.open(date, classObj);
     },
     getBookName(obj) {
       return obj.book_name;
@@ -1082,7 +1113,7 @@ export default {
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
-
+      // console.log(courseName);
       if (courseName.indexOf("Video") != 0)
         //비디오 아닌 교재만 링크넣기
         this.$store.commit("setCurrentCourseLink", { link: bookLink });
@@ -1171,7 +1202,7 @@ export default {
         if (pickDateClasses[0].state == "no") {
           var temp = pickDateClasses.shift();
           pickDateClasses[pickDateClasses.length] = temp;
-          console.log(pickDateClasses);
+          // console.log(pickDateClasses);
         }
 
         this.isClass = true;
@@ -1199,7 +1230,6 @@ export default {
       await axios
         .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
-          //console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {
@@ -1207,6 +1237,7 @@ export default {
               cancel: rs.data.cancel
             };
             this.memberName = rs.data.memberInfo.data.name;
+            this.couponNum = rs.data.couponNum;
             this.$set(this.$data, "schedule", schedule);
             this.$set(this.$data, "holdDatas", holdDatas);
             // if (this.pickDateClasses.length === 0) this.pickDate(this.today);
