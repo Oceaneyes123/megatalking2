@@ -457,7 +457,7 @@
     >
       <v-card flat class="tile">
         <v-card flat color="primary" class="tile">
-          <v-container class="py-0">
+          <v-container>
             <v-row>
               <v-col cols="10" class="white--text">
                 <span class="ml-5 h5 nanum">평가서 조회하기</span>

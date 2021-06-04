@@ -82,13 +82,22 @@
         >보내기</v-btn
       >
     </v-row>
+
+    <StudentRatingConfirmation
+      :data="{}"
+      ref="ratingDialog"
+    ></StudentRatingConfirmation>
   </v-container>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import axios from "axios";
+
+import StudentRatingConfirmation from "@/components/material/StudentRatingConfirmation.vue";
+
 export default {
+  components: { StudentRatingConfirmation },
   data() {
     return {
       snackbar: false,
@@ -111,6 +120,7 @@ export default {
     this.filterValideDate();
     this.getReviewData();
   },
+
   computed: {
     ...mapState(["currentClassInfo"]),
     form() {
@@ -146,6 +156,7 @@ export default {
         this.rating = 4.5;
       }
     },
+
     sendClassReview() {
       if (this.disabled) return;
       this.btnLoading = true;
@@ -154,6 +165,11 @@ export default {
         axios.defaults.headers.common["Authorization"] = this.$cookie.get(
           "access-token"
         );
+
+        var confirmationData = {
+          lec_name: this.currentClassInfo.lec_name,
+          rating: this.rating
+        };
 
         axios
           .post(
@@ -165,6 +181,7 @@ export default {
               this.btnLoading = false;
               this.snackbar = true;
               this.getReviewData();
+              this.$refs.ratingDialog.open(confirmationData);
             }
           })
           .catch(err => {

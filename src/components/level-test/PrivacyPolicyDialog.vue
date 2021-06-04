@@ -8,7 +8,7 @@
   >
     <v-card flat class="rounded-xl" max-width="1000">
       <v-card flat color="#8aace9" class="rounded-tr-xl rounded-tl-xl">
-        <v-container class="py-0">
+        <v-container>
           <v-row>
             <v-col cols="6" class="white--text">
               <span class="ml-5 h5 nanum">개인정보 수집 및 이용 안내!</span>

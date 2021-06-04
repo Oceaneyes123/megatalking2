@@ -809,11 +809,11 @@
       <v-card>
         <v-container>
           <v-row class="text-center justify-center">
-            <v-col cols="12" class="pb-0 mb-0">
+            <v-col cols="12">
               <p style="">수업설정에 필요한 필수값을 입력해주세요.</p>
               <p>(필수입력 정보: 수업시간, 결제방법)</p>
             </v-col>
-            <v-btn @click="requiredField = false">닫기</v-btn>
+            <v-btn @click="requiredField = false" class="mb-3">닫기</v-btn>
           </v-row>
         </v-container>
       </v-card>
