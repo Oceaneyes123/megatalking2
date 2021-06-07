@@ -236,6 +236,7 @@ export default new Vuex.Store({
               state: "success"
             });
           } else {
+            console.log(rs);
             bus.$emit("HoldSnackbar", {
               text: rs.data.msg,
               state: "error"
@@ -289,7 +290,7 @@ export default new Vuex.Store({
       axios
         .post("//phone.megatalking.com/origin/api/mypage.php", payload)
         .then(rs => {
-          // console.log(rs);
+          // console.log('hi',rs);
           if (rs.data.result == true) {
             bus.$emit("refreshSchedule");
             bus.$emit("HoldSnackbar", {
@@ -297,6 +298,35 @@ export default new Vuex.Store({
               state: "success"
             });
           } else {
+            bus.$emit("HoldSnackbar", {
+              text: rs.data.msg,
+              state: "error"
+            });
+            // bus.$emit('HoldSnackbar',{
+            //   text:'처리할 수 없습니다. 관리자에게 문의하세요.',
+            //   state:'error'
+            // });
+          }
+          state.holdOverlay = false;
+        })
+        .catch(err => {
+          console.log(err);
+          state.holdOverlay = false;
+        });
+    },
+    async revertClass({ state }, payload) {
+      state.holdOverlay = true;
+      axios
+        .post("//phone.megatalking.com/origin/api/mypage.php", payload)
+        .then(rs => {
+          if (rs.data.result == true) {
+            bus.$emit("refreshSchedule");
+            bus.$emit("HoldSnackbar", {
+              text: "수업 복원이 완료되었습니다.",
+              state: "success"
+            });
+          } else {
+            console.log(rs);
             bus.$emit("HoldSnackbar", {
               text: rs.data.msg,
               state: "error"

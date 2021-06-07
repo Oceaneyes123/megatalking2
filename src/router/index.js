@@ -111,6 +111,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  store.dispatch("isLogin");
   let pageName = to.path.slice(1, to.path.length);
   if (pageName == "mypage" || pageName == "account") {
     if (store.state.isLogin === false) {

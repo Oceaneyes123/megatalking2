@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" max-width="360">
       <v-card>
         <v-card-title class="headline">
-          수업을 복원하시겠습니까?
+          수업을 복원하시겠습니까?!
         </v-card-title>
 
         <v-card-text>
@@ -20,7 +20,7 @@
           </v-btn>
 
           <v-btn color="green darken-1" text @click="submit()">
-            복원
+            수업복원
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -38,7 +38,8 @@ export default {
     return {
       dialog: false,
       date: "",
-      s_id: ""
+      s_id: "",
+      ableGetCoupon: false
     };
   },
   computed: {
@@ -48,16 +49,17 @@ export default {
     open(date, classObj) {
       this.date = date;
       this.s_id = classObj.s_id;
+      this.ableGetCoupon = classObj.ableGetCoupon;
       this.dialog = true;
       // console.log(date, classObj);
     },
     submit() {
       let playload = {
-        action: "cancelHold",
+        action: "revertClass",
         date: this.date,
         s_id: this.s_id
       };
-      this.$store.dispatch("cancelHold", playload);
+      this.$store.dispatch("revertClass", playload);
       this.dialog = false;
     }
   }

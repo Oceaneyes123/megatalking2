@@ -37,7 +37,7 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="couponNum != 0">
               <v-col cols="12" class="pb-5">
                 <div class="nanum h7 pl-5">
                   사용가능 쿠폰: {{ couponNum }}개
@@ -95,6 +95,7 @@
                             v-if="!classes.no_class"
                           >
                             <div>
+                              <!--
                               <v-btn
                                 text
                                 class="white--text pa-0 my-0"
@@ -108,6 +109,7 @@
                               >
                                 수업 홀드
                               </v-btn>
+                            -->
                               <v-btn
                                 text
                                 class="white--text pa-0 my-0"
@@ -115,9 +117,7 @@
                                 small
                                 block
                                 @click="openCancelClassDialog(classes)"
-                                v-else-if="
-                                  classes.attend == 'ready' && classes.jong == 2
-                                "
+                                v-if="classes.attend == 'ready'"
                               >
                                 수업 취소
                               </v-btn>
@@ -179,10 +179,21 @@
                               style="font-size: 16px"
                               small
                               block
-                              @click="openCancelHoldDialog(classes)"
+                              @click="openRevertClassDialog(classes)"
                               v-if="classes.attend == 'ready'"
                             >
                               수업 복구
+                            </v-btn>
+                            <v-btn
+                              text
+                              class="white--text pa-0 my-0"
+                              style="font-size: 16px"
+                              small
+                              block
+                              depressed
+                              v-else
+                            >
+                              지난수업입니다
                             </v-btn>
                           </div>
                         </v-card>
@@ -449,7 +460,7 @@
                                 "
                               >
                                 <span class="h5 gmarket" style="color: #e37b39">
-                                  입문과정
+                                  과정명
                                 </span>
                               </div>
 
@@ -540,81 +551,6 @@
                             </v-col>
                           </v-row>
                         </v-container>
-                        <!-- <div class="d-flex flex-column align-center text-left">
-                          <div style="width: 50%" class="py-5">
-                            <div
-                              class="d-flex justify-center pt-1 mb-5"
-                              style="
-                                background: white;
-                                width: 50%;
-                                border-radius: 10px;
-                              "
-                            >
-                              <span class="h5 gmarket" style="color: #e37b39">
-                                입문과정
-                              </span>
-                            </div>
-                            <div
-                              class="font-weight-black text-left white--text gmarket korean-text"
-                              :class="isMobile ? 'h4' : 'h4'"
-                            >
-                              {{ selectedClassTitle }}
-                            </div>
-                            <div class="py-5">
-                              <v-row align="center">
-                                <v-col>
-                                  <div
-                                    class="nanum white--text d-flex align-center"
-                                  >
-                                    <v-icon class="white--text mr-2"
-                                      >schedule</v-icon
-                                    >
-                                    {{ selectedClassInfo.hour }} :
-                                    {{ selectedClassInfo.min }} +
-                                    {{ selectedClassInfo.duration }}
-                                  </div>
-                                  <div
-                                    class="nanum white--text d-flex align-center mt-1"
-                                  >
-                                    <v-icon class="white--text mr-2"
-                                      >account_circle</v-icon
-                                    >
-                                    {{ showClass.lec_name }}
-                                  </div>
-                                </v-col>
-                                <v-col>
-                                  <div
-                                    class="nanum white--text d-flex align-center"
-                                  >
-                                    <v-icon class="white--text mr-2"
-                                      >event</v-icon
-                                    >
-                                    TTh
-                                  </div>
-                                  <div
-                                    class="nanum white--text d-flex align-center mt-1"
-                                  >
-                                    <v-icon class="white--text mr-2"
-                                      >phone</v-icon
-                                    >
-                                    {{ selectedClassInfo.cate_name }}
-                                  </div>
-                                </v-col>
-                              </v-row>
-                            </div>
-                            <v-btn
-                              class="gmarket font-weight-bold pt-6 pb-5"
-                              style="
-                                background: rgba(255, 255, 255, 0.25);
-                                font-size: 24px;
-                                width: 100%;
-                              "
-                              @click="openClassBook()"
-                            >
-                              START
-                            </v-btn>
-                          </div>
-                        </div> -->
                       </v-col>
                     </v-row>
                   </v-container>
@@ -828,6 +764,7 @@
     <HoldSnackbar ref="HoldSnackbar"></HoldSnackbar>
     <MakeUpClassDiaLog ref="MakeUpClassDialog"></MakeUpClassDiaLog>
     <CancelClassDiaLog ref="CancelClassDiaLog"></CancelClassDiaLog>
+    <RevertClassDialog ref="RevertClassDialog"></RevertClassDialog>
   </v-app>
 </template>
 
@@ -880,6 +817,7 @@ import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import CancelHoldDialog from "@/components/CancelHoldDialog";
 import CancelClassDiaLog from "@/components/CancelClassDiaLog";
+import RevertClassDialog from "@/components/RevertClassDialog";
 import HoldSnackbar from "@/components/Snackbar";
 import Dialog from "@/components/mypage/Dialog";
 import MakeUpClassDiaLog from "@/components/mypage/MakeUpClassDiaLog";
@@ -896,7 +834,8 @@ export default {
     HoldSnackbar,
     Dialog,
     MakeUpClassDiaLog,
-    CancelClassDiaLog
+    CancelClassDiaLog,
+    RevertClassDialog
     // BookCover,
     // VideoCover,
     // PDFCover,
@@ -908,6 +847,7 @@ export default {
       showClass: [],
       schedule: [],
       holdDatas: [],
+      cancelDatas: [],
       pickDateClasses: [],
       pickDay: "",
       selectItems: ["수업 회차순"],
@@ -1062,6 +1002,10 @@ export default {
     async openCancelHoldDialog(classObj) {
       let date = this.date2;
       await this.$refs.CancelHoldDialog.open(date, classObj);
+    },
+    async openRevertClassDialog(classObj) {
+      let date = this.date2;
+      await this.$refs.RevertClassDialog.open(date, classObj);
     },
     async openMakeUpClassDialog() {
       //let date = this.date2;
@@ -1230,6 +1174,7 @@ export default {
       await axios
         .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
+          console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {
