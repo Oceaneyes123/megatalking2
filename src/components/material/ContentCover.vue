@@ -36,7 +36,7 @@ export default {
     };
   },
   created() {
-    console.log(this.currentCourseName.length);
+    // console.log(this.currentCourseName.length);
     if (this.currentCourseName == "프리토킹") {
       this.showOpenBtn = false;
     } else if (this.currentCourseName.length != 0) {
@@ -61,7 +61,7 @@ export default {
       this.courseLink = localStorage.getItem("currentCourseLink");
     }
 
-    console.log(this.courseName, this.courseLink);
+    // console.log(this.courseName, this.courseLink);
   },
   computed: {
     ...mapState(["currentCourseName", "currentCourseLink", "currentClassInfo"])
@@ -72,9 +72,8 @@ export default {
       //   window.open(this.currentCourseLink, "_blank");
       // } else
 
-      let link = this.courseLink;
-
-      console.log(this.courseLink);
+      // let link = this.courseLink;
+      let link = this.currentCourseLink;
 
       if (
         link.indexOf("1203") != -1 ||
@@ -82,9 +81,11 @@ export default {
         link.indexOf("1205") != -1 ||
         link.indexOf("1206") != -1 ||
         link.indexOf("1207") != -1 ||
+        link.indexOf("jkols") != -1 ||
+        link.indexOf("textbook.php") != -1 ||
         link.indexOf("http:") != -1
       ) {
-        window.open(this.courseLink, "_blank");
+        window.open(this.currentCourseLink, "_blank");
         this.$emit("nextBook");
       } else {
         this.$emit("nextBook");

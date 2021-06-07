@@ -3,10 +3,16 @@
     v-if="isTimeScore"
     height="100%"
     width="100%"
-    class="d-flex justify-center align-center"
+    class="d-flex flex-column justify-center align-center"
   >
+    <div class="mb-10">
+      <v-btn :href="link" target="_blank">교재보기</v-btn>
+    </div>
+    <div class="">
+      오늘의 수업평가를 위해 "평가" 탭을 클릭해주세요.
+    </div>
     <div>
-      Please go to next Tab
+      Please go to next Tab for evaluating today class
     </div>
   </v-card>
   <iframe
@@ -21,27 +27,26 @@
 <script>
 export default {
   data() {
-    return {
-      isTimeScore: false
-    };
+    return {};
   },
   props: ["url"],
-  mounted() {
-    console.log(this.link);
-
-    if (
-      this.link.indexOf("1203") != -1 ||
-      this.link.indexOf("1204") != -1 ||
-      this.link.indexOf("1205") != -1 ||
-      this.link.indexOf("1206") != -1 ||
-      this.link.indexOf("1207") != -1 ||
-      this.link.indexOf("jkols") != -1 ||
-      this.link.indexOf("http:") != -1
-    ) {
-      this.isTimeScore = true;
-    }
-  },
+  mounted() {},
   computed: {
+    isTimeScore() {
+      if (
+        this.link.indexOf("1203") != -1 ||
+        this.link.indexOf("1204") != -1 ||
+        this.link.indexOf("1205") != -1 ||
+        this.link.indexOf("1206") != -1 ||
+        this.link.indexOf("1207") != -1 ||
+        this.link.indexOf("jkols") != -1 ||
+        this.link.indexOf("textbook.php") != -1 ||
+        this.link.indexOf("http:") != -1
+      ) {
+        return true;
+      }
+      return false;
+    },
     link() {
       // return `https://megatalking.co.kr/students-material/#/step3?unitid=${this.unitId}`;
       return this.url;

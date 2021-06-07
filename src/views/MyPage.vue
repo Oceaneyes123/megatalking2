@@ -191,7 +191,7 @@
                               small
                               block
                               depressed
-                              v-else-if="classes.attend == 'absent'"
+                              v-else
                             >
                               지난수업입니다
                             </v-btn>
@@ -1174,6 +1174,7 @@ export default {
       await axios
         .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
+          console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {
