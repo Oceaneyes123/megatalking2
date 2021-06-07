@@ -19,7 +19,7 @@
           </v-btn>
 
           <v-btn color="green darken-1" text @click="submit()">
-            쿠폰복원
+            수업취소
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -37,7 +37,8 @@ export default {
     return {
       dialog: false,
       date: "",
-      s_id: ""
+      s_id: "",
+      ableGetCoupon: false
     };
   },
   computed: {
@@ -47,13 +48,16 @@ export default {
     open(date, classObj) {
       this.date = date;
       this.s_id = classObj.s_id;
+      this.ableGetCoupon = classObj.ableGetCoupon;
       this.dialog = true;
+      // console.log(date, classObj);
     },
     submit() {
       let playload = {
         action: "cancelClass",
         date: this.date,
-        s_id: this.s_id
+        s_id: this.s_id,
+        ableGetCoupon: this.ableGetCoupon
       };
       this.$store.dispatch("cancelClass", playload);
       this.dialog = false;

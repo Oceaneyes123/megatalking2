@@ -84,7 +84,7 @@ export default {
     window.addEventListener(
       "message",
       event => {
-        console.log(event);
+        // console.log(event);
         if (event.data.isNext) {
           vm.tabs++;
         } else if (event.data.isBack) {
