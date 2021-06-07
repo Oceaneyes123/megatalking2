@@ -39,7 +39,7 @@
             </v-row>
             <v-row>
               <v-col cols="12" class="pb-5">
-                <div class="nanum h7 pl-5 ">
+                <div class="nanum h7 pl-5">
                   사용가능 쿠폰: {{ couponNum }}개
                 </div>
               </v-col>
@@ -199,7 +199,7 @@
                           <br />
                         </div>
                         <div class="h6 nanum">보강 쿠폰 {{ couponNum }}장</div>
-                        <div class="d-flex" style="height:35%">
+                        <div class="d-flex" style="height: 35%">
                           <v-icon
                             color="#859ec9"
                             class="text-center mx-auto"
@@ -993,10 +993,10 @@ export default {
     this.$store.commit("setCurrentCourseName", { courseName: "" });
     this.$store.commit("setCurrentCourseLink", { link: "" });
     AOS.init();
+    this.date2 = this.formatDate(this.date2);
   },
   destroyed() {},
   mounted() {
-    this.date2 = this.formatDate(this.date2);
     // axios.defaults.headers.common["Authorization"] = localStorage.getItem("access-token");
     axios.defaults.headers.common["Authorization"] = this.$cookie.get(
       "access-token"
