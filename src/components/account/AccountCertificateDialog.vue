@@ -18,75 +18,82 @@
       >
         <v-container style="font-size: 14px">
           <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="6">
-              <div>Company</div>
-              <div>Address</div>
-              <div>Registration #</div>
-              <div>Nature of Business</div>
-              <div>Representative</div>
-              <div>Type</div>
+            <v-col class="font-weight-bold" sm="5" cols="5">
+              <div>서비스명</div>
+              <br v-show="$vuetify.breakpoint.xsOnly" />
+              <div>사업자 등록번호</div>
+              <div>업 태</div>
+              <div>업 종</div>
             </v-col>
-            <v-col sm="6" cols="6">
-              <div>MegaTalking</div>
-              <div>[address]</div>
-              <div>[reg#]</div>
-              <div>Education</div>
-              <div>[name_of_owner]</div>
-              <div>[type]</div>
+            <v-col sm="7" cols="7">
+              <div>메가토킹(1:1 영어회화 교육 서비스)</div>
+              <div>124-87-33297</div>
+              <div>서비스</div>
+              <div>온라인 교육 서비스</div>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
-              <div>수강선택</div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="6">
-              <div>Name</div>
-              <div>수강종류</div>
-              <div>수강과정</div>
+            <v-col class="font-weight-bold" sm="5" cols="5">
+              <div>수 강 자</div>
+              <div>아 이 디</div>
+              <div>수강정보</div>
               <div>수강기간</div>
-              <div>시작일시</div>
+              <div>출 석 률</div>
             </v-col>
-            <v-col sm="6" cols="6">
-              <div>{{ certificateData.name }}</div>
-              <div>
-                {{ certificateData.pay_progress.paymentInfo.type }} ({{
-                  certificateData.pay_progress.paymentInfo.duration
-                }})
-              </div>
-              <div>{{ certificateData.pay_progress.paymentInfo.course }}</div>
-              <div>
-                {{ certificateData.pay_progress.paymentInfo.period }} /
-                {{ certificateData.pay_progress.paymentInfo.daysOfWeek }}
-              </div>
-              <div>
-                {{ certificateData.pay_progress.paymentInfo.startDay }} /
-                {{ certificateData.pay_progress.paymentInfo.startTime }}
-              </div>
+            <v-col sm="7" cols="7">
+              <div>홍길동</div>
+              <div>[student_id]</div>
+              <div>1개월 2회 20분</div>
+              <div>2020-06-23~2020-07-23</div>
+              <div>83% (참여 수업 10회 / 발행 수업 12회)</div>
             </v-col>
           </v-row>
           <v-row>
             <v-col>
-              <div class="nanum" style="font-size: 9px">
-                This certification is a proof that the student studied in this
-                academy.
+              <div class="text-center nanum">
+                상기 내용이 사실임을 확인합니다. <br />
+                2020년 06월 23일
               </div>
-              <div class="nanum" style="font-size: 9px">
-                {{ formatDate(date) }}
+            </v-col>
+          </v-row>
+          <v-row align="end">
+            <v-col class="d-flex flex-row justify-center align-end">
+              <div
+                class="nanum text-center font-weight-bold"
+                style="font-size: 18px"
+              >
+                주식회사 유에듀케이션
+              </div>
+              <div>
+                <v-img
+                  style="width: 50px !important"
+                  src="../../assets/uedu_stamp 1.png"
+                ></v-img>
               </div>
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="text-center">
+            <v-col class="text-right">
               <v-btn
                 depressed
                 rounded
-                class="blue-text font-weight-bold"
+                class="blue-text font-weight-bold py-5"
                 color="#E5E5E5"
-                @click="certificateDialog = false"
+                width="40%"
               >
                 취소
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                dark
+                depressed
+                rounded
+                class="nanum font-weight-bold py-5"
+                color="#2564CB"
+                width="40%"
+              >
+                인쇄
               </v-btn>
             </v-col>
           </v-row>

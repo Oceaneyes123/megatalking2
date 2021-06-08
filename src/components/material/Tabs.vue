@@ -54,6 +54,8 @@ export default {
     //Evaluation
   },
 
+  props: ["unitId", "setTab"],
+
   data() {
     return {
       tabs: 0,
@@ -108,10 +110,12 @@ export default {
   computed: {
     ...mapState(["currentCourseName", "currentCourseLink"])
   },
-  props: ["unitId"],
+
   mounted() {
     window.setInterval(this.clickFrame, 100);
     this.courseLink = localStorage.getItem("currentCourseLink");
+
+    console.log(this.setTab);
   },
   methods: {
     // clickFrame() {
@@ -122,6 +126,10 @@ export default {
     //     window.focus();
     //   }
     // },
+
+    newTab(tab) {
+      this.tabs = tab;
+    },
 
     isEmpty(value) {
       if (

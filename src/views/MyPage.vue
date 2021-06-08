@@ -220,7 +220,15 @@
                         </div>
                         <v-card
                           color="#859ec9"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                          class="
+                            d-flex
+                            white--text
+                            rounded-xl
+                            mt-3
+                            px-5
+                            py-0
+                            justify-center
+                          "
                         >
                           <v-btn
                             text
@@ -257,7 +265,15 @@
                         </div>
                         <v-card
                           color="#859ec9"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                          class="
+                            d-flex
+                            white--text
+                            rounded-xl
+                            mt-3
+                            px-5
+                            py-0
+                            justify-center
+                          "
                         >
                           <v-btn
                             text
@@ -297,7 +313,15 @@
                         </div>
                         <v-card
                           color="#bbbbbb"
-                          class="d-flex white--text rounded-xl mt-3 px-5 py-0 justify-center"
+                          class="
+                            d-flex
+                            white--text
+                            rounded-xl
+                            mt-3
+                            px-5
+                            py-0
+                            justify-center
+                          "
                         >
                           <v-btn
                             text
@@ -361,7 +385,15 @@
                             </span>
                           </div>
                           <div
-                            class="h4 font-weight-black text-left white--text gmarket my-10 korean-text"
+                            class="
+                              h4
+                              font-weight-black
+                              text-left
+                              white--text
+                              gmarket
+                              my-10
+                              korean-text
+                            "
                             style="word-break: keep-all; line-break: strict"
                           >
                             {{ selectedClassTitle }}
@@ -371,7 +403,12 @@
                               <v-row>
                                 <v-col cols="6" class="py-0">
                                   <div
-                                    class="nanum white--text d-flex align-center"
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                    "
                                   >
                                     <v-icon class="white--text mr-2"
                                       >schedule</v-icon
@@ -383,7 +420,12 @@
                                 </v-col>
                                 <v-col cols="6" class="py-0">
                                   <div
-                                    class="nanum white--text d-flex align-center"
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                    "
                                   >
                                     <v-icon class="white--text mr-2"
                                       >event</v-icon
@@ -393,7 +435,13 @@
                                 </v-col>
                                 <v-col cols="6" class="py-0">
                                   <div
-                                    class="nanum white--text d-flex align-center mt-1"
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                      mt-1
+                                    "
                                   >
                                     <v-icon class="white--text mr-2"
                                       >account_circle</v-icon
@@ -403,7 +451,13 @@
                                 </v-col>
                                 <v-col cols="6" class="py-0">
                                   <div
-                                    class="nanum white--text d-flex align-center mt-1"
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                      mt-1
+                                    "
                                   >
                                     <v-icon class="white--text mr-2"
                                       >phone</v-icon
@@ -465,7 +519,13 @@
                               </div>
 
                               <div
-                                class="font-weight-black text-left white--text gmarket korean-text"
+                                class="
+                                  font-weight-black
+                                  text-left
+                                  white--text
+                                  gmarket
+                                  korean-text
+                                "
                                 :class="
                                   $vuetify.breakpoint.xsOnly ? 'h5' : 'h4'
                                 "
@@ -477,7 +537,13 @@
                                 <v-row align="center">
                                   <v-col cols="7" sm="6">
                                     <div
-                                      class="nanum white--text d-flex align-center korean-text"
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                        korean-text
+                                      "
                                       :class="
                                         $vuetify.breakpoint.xsOnly
                                           ? 'caption-text'
@@ -492,7 +558,13 @@
                                       {{ selectedClassInfo.duration }}
                                     </div>
                                     <div
-                                      class="nanum white--text d-flex align-center mt-1"
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                        mt-1
+                                      "
                                       :class="
                                         $vuetify.breakpoint.xsOnly
                                           ? 'caption-text'
@@ -507,7 +579,12 @@
                                   </v-col>
                                   <v-col cols="5" sm="6">
                                     <div
-                                      class="nanum white--text d-flex align-center"
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                      "
                                       :class="
                                         $vuetify.breakpoint.xsOnly
                                           ? 'caption-text'
@@ -520,7 +597,13 @@
                                       TTh
                                     </div>
                                     <div
-                                      class="nanum white--text d-flex align-center mt-1"
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                        mt-1
+                                      "
                                       :class="
                                         $vuetify.breakpoint.xsOnly
                                           ? 'caption-text'
@@ -558,7 +641,7 @@
               </v-img>
             </v-container>
 
-            <v-container
+            <!-- <v-container
               fluid
               class="px-0 mt-2"
               v-if="isClass && pickDateClasses.length > 1 && !isClassSelected"
@@ -576,7 +659,7 @@
                   Please select class
                 </div>
               </v-card>
-            </v-container>
+            </v-container> -->
 
             <v-container class="pb-15" v-if="isClass && isClassSelected">
               <v-row>
@@ -1146,17 +1229,18 @@ export default {
         if (pickDateClasses[0].state == "no") {
           var temp = pickDateClasses.shift();
           pickDateClasses[pickDateClasses.length] = temp;
-          // console.log(pickDateClasses);
         }
 
         this.isClass = true;
+        this.isClassSelected = true;
+        this.selectClass(pickDateClasses[0]);
 
-        if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
-          this.isClassSelected = true;
-          this.selectClass(pickDateClasses[0]);
-        } else {
-          this.isClassSelected = false;
-        }
+        // if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
+        //   this.isClassSelected = true;
+        //   this.selectClass(pickDateClasses[0]);
+        // } else {
+        //   this.isClassSelected = false;
+        // }
       } else {
         this.isClass = false;
       }
@@ -1186,6 +1270,7 @@ export default {
             this.$set(this.$data, "schedule", schedule);
             this.$set(this.$data, "holdDatas", holdDatas);
             // if (this.pickDateClasses.length === 0) this.pickDate(this.today);
+
             this.pickDate(this.date2);
           }
         })
@@ -1232,8 +1317,9 @@ export default {
         year = d.getFullYear();
 
       month = month.length == 1 ? "0" + month : month;
+      day = day.length == 1 ? "0" + day : day;
 
-      if (day.length < 2) day = +day;
+      // if (day.length < 2) day = +day;
 
       return [year, month, day].join("-");
     },

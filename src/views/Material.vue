@@ -15,7 +15,7 @@
             @nextBook="nextBook(2)"
           />
 
-          <Tabs v-else :unitId="unitId" />
+          <Tabs v-else :unitId="unitId" :setTab="setTab" ref="tabHeader" />
         </v-container>
         <FooterMenuBar class="mt-auto" @openList="nextBook" />
       </v-card>
@@ -44,7 +44,8 @@ export default {
       status: false,
       connection: null,
       step: 0,
-      classInfo: []
+      classInfo: [],
+      setTab: 0
     };
   },
   components: {
@@ -92,10 +93,15 @@ export default {
 
   methods: {
     nextBook(step) {
+      console.log(step);
       if (step == 1) {
         this.courseLink = localStorage.getItem("currentCourseLink");
       }
+
       this.step = step;
+      if (step == 3) {
+        this.$refs.tabHeader.newTab(2);
+      }
     },
     proceed() {
       console.log(this.status, "test");

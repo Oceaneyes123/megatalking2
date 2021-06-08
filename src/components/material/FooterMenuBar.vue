@@ -15,7 +15,7 @@
       <v-icon>mdi-book-open-variant</v-icon>
     </v-btn>
 
-    <v-btn @click="openList(2)" v-if="!showListBtn && isRC">
+    <v-btn @click="openList(3)" v-if="!showListBtn && isRC">
       <span>강사평가</span>
       <v-icon>mdi-clipboard-edit-outline</v-icon>
     </v-btn>
