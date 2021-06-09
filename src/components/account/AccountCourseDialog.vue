@@ -18,21 +18,37 @@
       >
         <v-container style="font-size: 14px">
           <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="6">
-              <div>Company</div>
-              <div>Address</div>
-              <div>Registration #</div>
-              <div>Nature of Business</div>
-              <div>Representative</div>
-              <div>Type</div>
+            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <div>공급자</div>
             </v-col>
-            <v-col sm="6" cols="6">
-              <div>MegaTalking</div>
-              <div>[address]</div>
-              <div>[reg#]</div>
-              <div>Education</div>
-              <div>[name_of_owner]</div>
-              <div>[type]</div>
+          </v-row>
+          <v-row>
+            <v-col class="font-weight-bold" sm="6" cols="5">
+              <div>상호</div>
+              <div>사업장소재지</div>
+              <br v-show="$vuetify.breakpoint.xsOnly" />
+              <div>사업자등록번호</div>
+              <div>업태</div>
+              <div>대표자</div>
+              <div>종목</div>
+            </v-col>
+            <v-col sm="6" cols="7">
+              <div>(주)유에듀케이션</div>
+              <div>수원시 팔달구 권광로 122, 두오빌딩 4층</div>
+              <div>124-87-33297</div>
+              <v-row no-gutters>
+                <v-col style="width: max-content">
+                  <div>서비스</div>
+                  <div>정원석</div>
+                  <div>온라인 교육</div>
+                </v-col>
+                <v-col>
+                  <v-img
+                    width="75px"
+                    src="../../assets/boss_stamp 1.png"
+                  ></v-img>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
           <v-row>
@@ -41,52 +57,65 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="6">
-              <div>Name</div>
-              <div>수강종류</div>
+            <v-col class="font-weight-bold" sm="6" cols="4">
+              <div>발급일자</div>
               <div>수강과정</div>
-              <div>수강기간</div>
-              <div>시작일시</div>
+              <div>학습기간</div>
+              <br />
+              <div>결제 금액</div>
+              <div>결제방법</div>
+              <div>결제일자</div>
+              <div>수강자</div>
             </v-col>
-            <v-col sm="6" cols="6">
-              <div>{{ courseData.name }}</div>
-              <div>
-                {{ courseData.pay_progress.paymentInfo.type }} ({{
-                  courseData.pay_progress.paymentInfo.duration
-                }})
+            <v-col sm="6" cols="8">
+              <div>2020년 06월 23일</div>
+              <div>영자신문 1개월 20분 전화영어</div>
+              <div>2020-06-23~2020-07-21</div>
+              <br />
+              <div>105,000원</div>
+              <div>신용카드</div>
+              <div>2020년 06월 23일</div>
+              <div>홍길동</div>
+            </v-col>
+          </v-row>
+          <v-row align="end">
+            <v-col class="d-flex flex-row justify-center align-end">
+              <div
+                class="nanum text-center font-weight-bold"
+                style="font-size: 18px"
+              >
+                주식회사 유에듀케이션
               </div>
-              <div>{{ courseData.pay_progress.paymentInfo.course }}</div>
               <div>
-                {{ courseData.pay_progress.paymentInfo.period }} /
-                {{ courseData.pay_progress.paymentInfo.daysOfWeek }}
-              </div>
-              <div>
-                {{ courseData.pay_progress.paymentInfo.startDay }} /
-                {{ courseData.pay_progress.paymentInfo.startTime }}
+                <v-img
+                  style="width: 50px !important"
+                  src="../../assets/uedu_stamp 1.png"
+                ></v-img>
               </div>
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
-              <div class="nanum" style="font-size: 9px">
-                This certification is a proof that the student studied in this
-                academy.
-              </div>
-              <div class="nanum" style="font-size: 9px">
-                {{ formatDate(date) }}
-              </div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="text-center">
+            <v-col class="text-right">
               <v-btn
                 depressed
                 rounded
-                class="blue-text font-weight-bold"
+                class="blue-text font-weight-bold py-5"
                 color="#E5E5E5"
-                @click="courseDialog = false"
+                width="40%"
               >
                 취소
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                dark
+                depressed
+                rounded
+                class="nanum font-weight-bold py-5"
+                color="#2564CB"
+                width="40%"
+              >
+                보내기
               </v-btn>
             </v-col>
           </v-row>

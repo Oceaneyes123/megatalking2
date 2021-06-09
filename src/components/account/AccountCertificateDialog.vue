@@ -41,11 +41,26 @@
               <div>출 석 률</div>
             </v-col>
             <v-col sm="7" cols="7">
-              <div>홍길동</div>
-              <div>[student_id]</div>
-              <div>1개월 2회 20분</div>
-              <div>2020-06-23~2020-07-23</div>
-              <div>83% (참여 수업 10회 / 발행 수업 12회)</div>
+              <div>
+                {{ certificateData.name }}
+              </div>
+              <div>
+                {{ certificateData.s_id }}
+              </div>
+              <div>
+                {{ certificateData.course }}
+              </div>
+              <div>
+                {{ certificateData.s_day }} ~ {{ certificateData.e_day }}
+              </div>
+              <div>
+                {{
+                  Math.floor(
+                    (certificateData.attned_num / certificateData.t_no) * 100
+                  )
+                }}% (참여 수업 {{ certificateData.attned_num }}회 / 발행 수업
+                {{ certificateData.t_no }}회)
+              </div>
             </v-col>
           </v-row>
           <v-row>
