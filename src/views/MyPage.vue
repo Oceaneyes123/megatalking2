@@ -1072,7 +1072,7 @@ export default {
         link: `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`
       };
 
-      console.log(obj);
+      //console.log(obj);
       this.$refs.ModalDialog.setOpts(1, obj);
       this.$refs.ModalDialog.open();
       // let path = `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`;

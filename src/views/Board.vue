@@ -198,7 +198,7 @@ export default {
           if (res.data.STATUS == "TRUE") {
             this.boards = res.data;
             this.overlay = false;
-            console.log(this.boards.REVIEW);
+            //console.log(this.boards.REVIEW);
           }
         },
         error => {
