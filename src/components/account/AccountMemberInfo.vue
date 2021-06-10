@@ -234,7 +234,7 @@ export default {
       axios
         .get("//phone.megatalking.com/origin/api/account.php", config)
         .then(rs => {
-          console.log(rs.data);
+          //console.log(rs.data);
           if (rs.data.result) {
             this.memberId = rs.data.data.id;
             this.mail = rs.data.data.mail;
