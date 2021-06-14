@@ -68,14 +68,17 @@
               <div>수강자</div>
             </v-col>
             <v-col sm="6" cols="8">
-              <div>2020년 06월 23일</div>
-              <div>영자신문 1개월 20분 전화영어</div>
-              <div>2020-06-23~2020-07-21</div>
+              <div>{{ courseData.date }}</div>
+              <div>
+                {{ courseData.pay_progress.paymentInfo.bookName }}
+                {{ courseData.course }}
+              </div>
+              <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
               <br />
-              <div>105,000원</div>
-              <div>신용카드</div>
-              <div>2020년 06월 23일</div>
-              <div>홍길동</div>
+              <div>{{ courseData.pay_progress.paymentInfo.value }}원</div>
+              <div>{{ courseData.method }}</div>
+              <div>{{ courseData.date }}</div>
+              <div>{{ courseData.name }}</div>
             </v-col>
           </v-row>
           <v-row align="end">

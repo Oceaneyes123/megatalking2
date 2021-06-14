@@ -1158,7 +1158,7 @@ export default {
       } else {
         this.$vuetify.goTo("#detailContainer", {
           duration: 300,
-          offset: -325,
+          offset: -275,
           easing: "easeInOutCubic"
         });
       }
