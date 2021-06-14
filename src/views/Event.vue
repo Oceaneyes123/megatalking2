@@ -159,7 +159,7 @@ export default {
 
   watch: {
     defaultSelected: function() {
-      console.log(this.defaultSelected);
+      //console.log(this.defaultSelected);
     }
   },
 
@@ -190,8 +190,8 @@ export default {
               }
             }
             this.overlay = false;
-            console.log(this.progressEvents);
-            console.log(this.endEvents);
+            // console.log(this.progressEvents);
+            // console.log(this.endEvents);
           }
         },
         error => {

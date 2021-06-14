@@ -6,7 +6,7 @@
       :fullscreen="isMobile"
       transition="dialog-bottom-transition"
     >
-      <v-card>
+      <v-card :dark="evalType == 'new'">
         <v-card-title class="primary lighten-1 white--text nanum">
           {{ title }}
           <v-spacer></v-spacer>
@@ -55,7 +55,8 @@ export default {
       link: "",
       call_date: "",
       tel: "",
-      hp: ""
+      hp: "",
+      evalType: ""
     };
   },
   computed: {
@@ -70,12 +71,14 @@ export default {
         this.type = type;
         this.title = "평가서 보기";
         this.link = obj.link;
+        this.evalType = obj.evalType;
       } else if (type == 2) {
         this.type = type;
         this.title = "녹취 듣기";
         this.call_date = obj.call_date;
         this.tel = obj.tel;
         this.hp = obj.hp;
+        this.evalType = "origin";
       }
     },
     open() {
