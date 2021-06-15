@@ -43,7 +43,7 @@ export default new Vuex.Store({
     loadBg(state, payload) {
       state.showNav = true;
       if (!payload) {
-        state.currentImage = state.images.main;
+        state.currentImage = state.images.board;
       } else if (payload == "level-test") {
         state.currentImage = state.images.leveltest;
       } else if (
