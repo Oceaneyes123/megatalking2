@@ -124,6 +124,7 @@ export default {
               this.btnLoading = false;
               this.snackbar = true;
               this.getReviewData();
+              this.ratingDialog = false;
             }
           })
           .catch(err => {
