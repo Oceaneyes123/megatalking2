@@ -84,6 +84,10 @@ export default {
   },
   mounted() {
     this.$store.commit("onWindowResize", screen.width);
+
+    if (!this.$store.state.isLogin && this.$route.path == "/") {
+      this.$router.push("/main");
+    }
   },
   methods: {
     onWindowResize() {

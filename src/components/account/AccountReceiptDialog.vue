@@ -36,7 +36,7 @@
                 <div>수강기간</div>
                 <div>시작일시</div>
               </v-col>
-              <v-col sm="6" cols="8">
+              <v-col sm="6" cols="8" v-if="receiptData.pay_progress != null">
                 <div>
                   {{ receiptData.pay_progress.paymentInfo.type }} (
                   {{ receiptData.pay_progress.paymentInfo.duration }} )
@@ -50,6 +50,9 @@
                   {{ receiptData.pay_progress.paymentInfo.startDay }} /
                   {{ receiptData.pay_progress.paymentInfo.startTime }}
                 </div>
+              </v-col>
+              <v-col sm="6" cols="8" v-else>
+                <div v-for="i in 4" :key="i">NA</div>
               </v-col>
             </v-row>
             <v-row>
@@ -69,21 +72,34 @@
               </v-col>
               <v-col sm="6" cols="8">
                 <div>{{ receiptData.method }}</div>
-                <div>
+                <div v-if="receiptData.pay_progress != null">
                   {{
                     receiptData.pay_progress.paymentInfo.value +
                       receiptData.pay_progress.paymentInfo.dcn
                   }}원
                 </div>
-                <div class="font-weight-bold" style="color: #cb5413">
+                <div v-else>NA</div>
+                <div
+                  class="font-weight-bold"
+                  style="color: #cb5413"
+                  v-if="receiptData.pay_progress != null"
+                >
                   -{{ receiptData.pay_progress.paymentInfo.dcn }}원
                 </div>
-                <div class="font-weight-bold">
+                <div v-else>NA</div>
+                <div
+                  class="font-weight-bold"
+                  v-if="receiptData.pay_progress != null"
+                >
                   월 {{ receiptData.pay_progress.paymentInfo.value / 4 }}원 ({{
                     receiptData.pay_progress.paymentInfo.dcp
                   }}% 할인)
                 </div>
-                <div>총{{ receiptData.pay_progress.paymentInfo.value }}원</div>
+                <div v-else>NA</div>
+                <div v-if="receiptData.pay_progress != null">
+                  총{{ receiptData.pay_progress.paymentInfo.value }}원
+                </div>
+                <div v-else>NA</div>
               </v-col>
             </v-row>
             <v-row>
