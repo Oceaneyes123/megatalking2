@@ -401,9 +401,9 @@ export default {
             if (this.isLogin) {
               this.$refs.loginform.reset();
               if (this.$route.name != "Enrollment") {
-                this.$router.push("/mypage");
+                this.$router.push("/");
               }
-              this.$router.push("/mypage");
+              this.$router.push("/");
               this.close();
             }
             this.btnLoading = false;

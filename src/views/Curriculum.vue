@@ -156,7 +156,14 @@
                               flat
                               color="#fafafa"
                               width="80%"
-                              class="subtitle-text-1 text-black mx-auto text-center font-weight-black mt-3"
+                              class="
+                                subtitle-text-1
+                                text-black
+                                mx-auto
+                                text-center
+                                font-weight-black
+                                mt-3
+                              "
                               >{{ book.title }}</v-card
                             >
                             <v-card
@@ -204,7 +211,13 @@
                                   class="d-flex flex-row align-start mx-auto"
                                 >
                                   <div
-                                    class="h5 nanum text-black text-left mr-5 font-weight-bold"
+                                    class="
+                                      h5
+                                      nanum
+                                      text-black text-left
+                                      mr-5
+                                      font-weight-bold
+                                    "
                                     style="
                                       line-break: strict;
                                       word-break: keep-all;
@@ -214,7 +227,14 @@
                                     {{ title }}
                                   </div>
                                   <v-btn
-                                    class="rounded-xl white--text font-weight-bold h5 nanum mb-5"
+                                    class="
+                                      rounded-xl
+                                      white--text
+                                      font-weight-bold
+                                      h5
+                                      nanum
+                                      mb-5
+                                    "
                                     style="
                                       background: linear-gradient(
                                         to right,
@@ -829,6 +849,282 @@
                 ></v-img>
               </v-card>
             </v-row>
+
+            <!-- <v-container v-if="!isMobile">
+              <v-row justify="center" class="my-10">
+                <v-card
+                  flat
+                  class="rounded-xl"
+                  style="width: 1000px !important"
+                >
+                  <v-simple-table>
+                    <template v-slot:default>
+                      <thead class="rounded-xl">
+                        <tr
+                          class="rounded-xl"
+                          style="
+                            background: linear-gradient(
+                              to right,
+                              #83b7d3,
+                              #725ce0
+                            );
+                            border-radius: 25px;
+                          "
+                        >
+                          <th style="background: #bed6e94f"></th>
+                          <th
+                            colspan="3"
+                            class="text-center white--text"
+                            style="background: #725ce0"
+                          >
+                            Level 1 ~ 3
+                          </th>
+                          <th
+                            colspan="2"
+                            class="text-center white--text"
+                            style="background: #725ce0"
+                          >
+                            Level 4 ~ 5
+                          </th>
+                          <th
+                            colspan="2"
+                            class="text-center white--text"
+                            style="background: #725ce0"
+                          >
+                            Level 6 ~ 7
+                          </th>
+                          <th
+                            colspan="2"
+                            class="text-center white--text"
+                            style="background: #725ce0"
+                          >
+                            Level 8 ~ 9
+                          </th>
+                          <th
+                            class="text-center white--text"
+                            style="background: #725ce0"
+                          >
+                            Level 10
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-center">
+                        <tr>
+                          <td>입문과정</td>
+                          <td>
+                            기초
+                            <br />발음교정
+                          </td>
+                          <td>
+                            기초
+                            <br />문장연습
+                          </td>
+                          <td>
+                            기초
+                            <br />회화연습
+                          </td>
+                          <td colspan="7"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            초/ 중급
+                            <br />회화과정
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td>초급회화</td>
+                          <td>중급회화</td>
+                          <td colspan="6"></td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            정규
+                            <br />회화과정
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>정규회화</td>
+                          <td colspan="5"></td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            뉴욕라이브
+                            <br />잉글리쉬
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            뉴욕라이브
+                            <br />잉글리쉬
+                          </td>
+                          <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            문법
+                            <br />패턴과정
+                          </td>
+                          <td>기초 패턴회화</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>문법 패턴회화</td>
+                          <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            토론/
+                            <br />프리토킹
+                          </td>
+                          <td>초급 토론과정</td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            중급
+                            <br />토론과정
+                          </td>
+                          <td>
+                            심화토론
+                            <br />과정고급
+                          </td>
+                          <td>
+                            시사
+                            <br />토론과정
+                          </td>
+                          <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            영자신문
+                            <br />과정
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            주니어
+                            <br />조선 초급
+                          </td>
+                          <td>
+                            주니어
+                            <br />조선 중급
+                          </td>
+                          <td>
+                            주니어
+                            <br />조선 고급
+                          </td>
+                          <td>
+                            전문조선
+                            <br />초급
+                          </td>
+                          <td>
+                            전문조선
+                            <br />고급
+                          </td>
+                          <td>
+                            전문조선
+                            <br />고급
+                          </td>
+                          <td colspan="1"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            비즈니스
+                            <br />과정
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>
+                            비즈니스
+                            <br />회화
+                          </td>
+                          <td>
+                            비즈니스
+                            <br />맞춤
+                          </td>
+                          <td></td>
+                          <td>
+                            비즈니스
+                            <br />토론
+                          </td>
+                          <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            다락원
+                            <br />교재 과정
+                          </td>
+                          <td>
+                            패턴
+                            <br />연습편1
+                          </td>
+                          <td>
+                            패턴
+                            <br />연습편2
+                          </td>
+                          <td>
+                            패턴연습편3
+                            <br />동사연습편1 <br />상황별연습1
+                          </td>
+                          <td>
+                            동사연습편2
+                            <br />상황별연습2 <br />비즈니스전화
+                          </td>
+                          <td>
+                            동사연습편3
+                            <br />상황별연습3 <br />비즈니스회의
+                          </td>
+                          <td>
+                            비즈니스
+                            <br />이메일
+                          </td>
+                          <td>
+                            비즈니스
+                            <br />프리젠테이션
+                          </td>
+                          <td colspan="3"></td>
+                        </tr>
+                        <tr>
+                          <td>
+                            특별전문/
+                            <br />취업준비과정
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>취업 인터뷰</td>
+                          <td>
+                            호텔영어
+                            <br />승무원영어
+                          </td>
+                          <td>
+                            IELTS
+                            <br />오픽
+                          </td>
+                          <td>
+                            토익스피킹
+                            <br />심화토익스피킹
+                          </td>
+                          <td>의학영어</td>
+                        </tr>
+                      </tbody>
+                    </template>
+                  </v-simple-table>
+                </v-card>
+              </v-row>
+            </v-container> -->
 
             <v-container v-else>
               <v-row justify="center">
