@@ -52,7 +52,7 @@
                 </div>
               </v-col>
               <v-col sm="6" cols="8" v-else>
-                <div v-for="i in 4" :key="i">NA</div>
+                <div v-for="i in 4" :key="i">-</div>
               </v-col>
             </v-row>
             <v-row>
@@ -78,7 +78,7 @@
                       receiptData.pay_progress.paymentInfo.dcn
                   }}원
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
                 <div
                   class="font-weight-bold"
                   style="color: #cb5413"
@@ -86,7 +86,7 @@
                 >
                   -{{ receiptData.pay_progress.paymentInfo.dcn }}원
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
                 <div
                   class="font-weight-bold"
                   v-if="receiptData.pay_progress != null"
@@ -95,11 +95,11 @@
                     receiptData.pay_progress.paymentInfo.dcp
                   }}% 할인)
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
                 <div v-if="receiptData.pay_progress != null">
                   총{{ receiptData.pay_progress.paymentInfo.value }}원
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
               </v-col>
             </v-row>
             <v-row>

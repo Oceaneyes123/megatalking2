@@ -74,7 +74,7 @@
                   {{ courseData.pay_progress.paymentInfo.bookName }}
                   {{ courseData.course }}
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
               </div>
               <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
               <br />
@@ -82,7 +82,7 @@
                 <div v-if="courseData.pay_progress != null">
                   {{ courseData.pay_progress.paymentInfo.value }}원
                 </div>
-                <div v-else>NA</div>
+                <div v-else>-</div>
               </div>
               <div>{{ courseData.method }}</div>
               <div>{{ courseData.date }}</div>

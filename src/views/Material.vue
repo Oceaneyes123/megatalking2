@@ -99,10 +99,15 @@ export default {
       }
 
       this.step = step;
-      if (step == 3) {
+      setTimeout(this.openClassReview, 50);
+    },
+
+    openClassReview() {
+      if (this.step == 3) {
         this.$refs.tabHeader.newTab(2);
       }
     },
+
     proceed() {
       console.log(this.status, "test");
       this.tabs = 1;

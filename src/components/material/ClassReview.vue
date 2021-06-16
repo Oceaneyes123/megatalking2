@@ -92,10 +92,8 @@
 
 <script>
 import { mapState } from "vuex";
-//import axios from "axios";
-
+import axios from "axios";
 import StudentRatingConfirmation from "@/components/material/StudentRatingConfirmation.vue";
-
 export default {
   components: { StudentRatingConfirmation },
   data() {
@@ -120,7 +118,6 @@ export default {
     this.filterValideDate();
     this.getReviewData();
   },
-
   computed: {
     ...mapState(["currentClassInfo"]),
     form() {
@@ -128,7 +125,6 @@ export default {
       this.selectedSuggestion.forEach(item => {
         selected.push({ key: item, text: this.step4Suggestions[item] });
       });
-
       return {
         timestamp: this.currentClassInfo.todate,
         score: this.rating,
@@ -156,89 +152,77 @@ export default {
         this.rating = 4.5;
       }
     },
-
     sendClassReview() {
       if (this.disabled) return;
-      var confirmationData = {
-        lec_name: this.currentClassInfo.lec_name,
-        rating: this.rating
-      };
-      this.$refs.ratingDialog.open(confirmationData, this.form);
+      this.btnLoading = true;
+      let token = this.$cookie.get("access-token");
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = this.$cookie.get(
+          "access-token"
+        );
+        var confirmationData = {
+          lec_name: this.currentClassInfo.lec_name,
+          rating: this.rating
+        };
+        axios
+          .post(
+            "//phone.megatalking.com/origin/api/class_review.php",
+            this.form
+          )
+          .then(rs => {
+            if (rs.data.result == true) {
+              this.btnLoading = false;
+              this.snackbar = true;
+              this.getReviewData();
+              this.$refs.ratingDialog.open(confirmationData);
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    },
+    getReviewData() {
+      let token = this.$cookie.get("access-token");
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = this.$cookie.get(
+          "access-token"
+        );
+        axios
+          .get("//phone.megatalking.com/origin/api/class_review.php", {
+            params: {
+              s_id: this.currentClassInfo.s_id,
+              timestamp: this.currentClassInfo.todate
+            }
+          })
+          .then(rs => {
+            let existData = Object.keys(rs.data).length;
+            if (existData) {
+              //수업이 있다면
+              this.disabled = true;
+              this.rating = rs.data.score / 2;
+              this.opinion = rs.data.text;
+              let selected = JSON.parse(rs.data.selected);
+              this.selectedSuggestion = [];
+              selected.forEach(item => {
+                this.selectedSuggestion.push(item.key);
+              });
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    },
+    selectSuggestion(index) {
+      if (this.disabled) return;
+      if (this.selectedSuggestion.includes(index)) {
+        const num = this.selectedSuggestion.indexOf(index);
+        this.selectedSuggestion.splice(num, 1);
+      } else {
+        this.selectedSuggestion.push(index);
+      }
     }
-
-    // sendClassReview() {
-    //   if (this.disabled) return;
-    //   this.btnLoading = true;
-    //   let token = this.$cookie.get("access-token");
-    //   if (token) {
-    //     axios.defaults.headers.common["Authorization"] = this.$cookie.get(
-    //       "access-token"
-    //     );
-
-    //     var confirmationData = {
-    //       lec_name: this.currentClassInfo.lec_name,
-    //       rating: this.rating
-    //     };
-
-    //     axios
-    //       .post(
-    //         "//phone.megatalking.com/origin/api/class_review.php",
-    //         this.form
-    //       )
-    //       .then(rs => {
-    //         if (rs.data.result == true) {
-    //           this.btnLoading = false;
-    //           this.snackbar = true;
-    //           this.getReviewData();
-    //           this.$refs.ratingDialog.open(confirmationData);
-    //         }
-    //       })
-    //       .catch(err => {
-    //         console.log(err);
-    //       });
-    //   }
-    // },
-    // getReviewData() {
-    //   let token = this.$cookie.get("access-token");
-    //   if (token) {
-    //     axios.defaults.headers.common["Authorization"] = this.$cookie.get(
-    //       "access-token"
-    //     );
-    //     axios
-    //       .get("//phone.megatalking.com/origin/api/class_review.php", {
-    //         params: {
-    //           s_id: this.currentClassInfo.s_id,
-    //           timestamp: this.currentClassInfo.todate
-    //         }
-    //       })
-    //       .then(rs => {
-    //         let existData = Object.keys(rs.data).length;
-    //         if (existData) {
-    //           //수업이 있다면
-    //           this.disabled = true;
-    //           this.rating = rs.data.score / 2;
-    //           this.opinion = rs.data.text;
-    //           let selected = JSON.parse(rs.data.selected);
-    //           this.selectedSuggestion = [];
-    //           selected.forEach(item => {
-    //             this.selectedSuggestion.push(item.key);
-    //           });
-    //         }
-    //       })
-    //       .catch(err => {
-    //         console.log(err);
-    //       });
-    //   }
-    // },
-    // selectSuggestion(index) {
-    //   if (this.disabled) return;
-    //   if (this.selectedSuggestion.includes(index)) {
-    //     const num = this.selectedSuggestion.indexOf(index);
-    //     this.selectedSuggestion.splice(num, 1);
-    //   } else {
-    //     this.selectedSuggestion.push(index);
-    //   }
-    // }
   }
 };
 </script>
