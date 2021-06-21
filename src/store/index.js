@@ -108,9 +108,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async login({ commit, dispatch }, { id, pw }) {
+    async login({ commit, dispatch }, { id, pw, rememberme }) {
       await axios
-        .post("//phone.megatalking.com/origin/api/signin.php", { id, pw })
+        .post("//phone.megatalking.com/origin/api/signin.php", {
+          id,
+          pw,
+          rememberme
+        })
         .then(rs => {
           if (rs.status === 200) {
             if (rs.data.result === true) {

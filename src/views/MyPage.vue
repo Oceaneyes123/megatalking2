@@ -507,6 +507,22 @@
                                     {{ selectedClassInfo.cate_name }}
                                   </div>
                                 </v-col>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                      mt-1
+                                    "
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >event_busy</v-icon
+                                    >
+                                    {{ selectedClassInfo.endDay }}
+                                  </div>
+                                </v-col>
                               </v-row>
                               <v-row align="center" class="mt-5">
                                 <v-col>
@@ -617,6 +633,25 @@
                                         >account_circle</v-icon
                                       >
                                       {{ showClass.lec_name }}
+                                    </div>
+                                    <div
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                        mt-1
+                                      "
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >event_busy</v-icon
+                                      >
+                                      {{ selectedClassInfo.endDay }}
                                     </div>
                                   </v-col>
                                   <v-col cols="5" sm="6">
@@ -1021,16 +1056,23 @@ export default {
       //let deVal = `안녕하세요. ${this.memberName} 회원님:)`;
       let deVal = {};
       if (this.showClass.length !== 0) {
-        let hour, min, duration, cate_name;
+        let hour, min, duration, cate_name, endDay;
+        endDay = this.formatDate(new Date(this.showClass.end_day * 1000));
         hour = this.showClass.s_hour;
         min = this.showClass.s_min * 10 - 10;
         min = min === 0 ? "0" + min : min;
         duration = this.showClass.duration;
         cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
         // deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
-        deVal = { hour, min, duration, cate_name };
+        deVal = { hour, min, duration, cate_name, endDay };
       } else {
-        return (deVal = { hour: "-", min: "-", duration: "-", cate_name: "-" });
+        return (deVal = {
+          hour: "-",
+          min: "-",
+          duration: "-",
+          cate_name: "-",
+          endDay: "-"
+        });
       }
 
       return deVal;
@@ -1180,6 +1222,8 @@ export default {
 
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
+
+      console.log(this.showClass);
 
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
