@@ -397,7 +397,14 @@
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                        "
                       >
                         Emma Watson
                       </div>
@@ -414,7 +421,14 @@
                   <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                        "
                       >
                         TED
                       </div>
@@ -431,7 +445,14 @@
                   <v-card height="100%" color="#0000006D">
                     <v-container style="positon: relative">
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                        "
                       >
                         Movie
                       </div>
@@ -466,7 +487,15 @@
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket mb-3"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                          mb-3
+                        "
                       >
                         Vogue
                       </div>
@@ -499,7 +528,14 @@
                   <v-card height="100%" color="#00000000">
                     <v-container>
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                        "
                       >
                         Maroon 5
                       </div>
@@ -516,7 +552,14 @@
                   <v-card height="100%" color="#0000006D">
                     <v-container class="white--text text-left h6 nanum">
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                        "
                       >
                         셀럽인터뷰
                       </div>
@@ -546,7 +589,15 @@
                   <v-card height="100%" color="#0000006D">
                     <v-container>
                       <div
-                        class="font-weight-black h2 text-left mx-3 white--text gmarket mb-2"
+                        class="
+                          font-weight-black
+                          h2
+                          text-left
+                          mx-3
+                          white--text
+                          gmarket
+                          mb-2
+                        "
                       >
                         Pop Song
                       </div>

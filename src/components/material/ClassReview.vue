@@ -93,9 +93,7 @@
 <script>
 import { mapState } from "vuex";
 import axios from "axios";
-
 import StudentRatingConfirmation from "@/components/material/StudentRatingConfirmation.vue";
-
 export default {
   components: { StudentRatingConfirmation },
   data() {
@@ -120,7 +118,6 @@ export default {
     this.filterValideDate();
     this.getReviewData();
   },
-
   computed: {
     ...mapState(["currentClassInfo"]),
     form() {
@@ -128,7 +125,6 @@ export default {
       this.selectedSuggestion.forEach(item => {
         selected.push({ key: item, text: this.step4Suggestions[item] });
       });
-
       return {
         timestamp: this.currentClassInfo.todate,
         score: this.rating,
@@ -156,7 +152,6 @@ export default {
         this.rating = 4.5;
       }
     },
-
     sendClassReview() {
       if (this.disabled) return;
       this.btnLoading = true;
@@ -165,12 +160,10 @@ export default {
         axios.defaults.headers.common["Authorization"] = this.$cookie.get(
           "access-token"
         );
-
         var confirmationData = {
           lec_name: this.currentClassInfo.lec_name,
           rating: this.rating
         };
-
         axios
           .post(
             "//phone.megatalking.com/origin/api/class_review.php",

@@ -62,6 +62,7 @@
                 class="nanum font-weight-bold py-5"
                 color="#2564CB"
                 width="40%"
+                @click="ratingDialog = false"
               >
                 보내기
               </v-btn>
@@ -83,7 +84,8 @@ export default {
     return {
       ratingDialog: false,
       confirmationData: {},
-      rating: 0
+      rating: 0,
+      btnLoading: false
     };
   },
 

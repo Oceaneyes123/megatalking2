@@ -22,7 +22,18 @@
           <v-container class="px-md-10 pt-4 pt-md-10 text-left">
             <v-row>
               <v-col>
-                <div class="ml-3 mb-3 h5">나의 스케줄</div>
+                <div class="d-flex justify-space-between mb-3">
+                  <span class="ml-3 mb-3 h5">나의 스케줄</span>
+                  <v-icon
+                    v-ripple
+                    color="#859ec9"
+                    x-large
+                    style="cursor: pointer"
+                    @click="$refs.videoHelp.open()"
+                    >help</v-icon
+                  >
+                </div>
+                <VideoHelp ref="videoHelp"></VideoHelp>
                 <v-card class="rounded-xl fadeInUp" elevation="1">
                   <v-date-picker
                     v-model="date2"
@@ -59,7 +70,7 @@
                     >
                       <v-card
                         :style="
-                          `border: 3px solid ${getClassColor(classes)}; ${
+                          `border: 3px solid ${getClassColor(classes).color}; ${
                             classes.no_class ? 'background:#f6e5e5' : ''
                           }`
                         "
@@ -68,14 +79,45 @@
                       >
                         <div
                           class="caption mb-3"
-                          :style="`color: ${getClassColor(classes)}`"
+                          :style="`color: ${getClassColor(classes).color}`"
                         >
-                          {{ getClassDate() }} {{ getTitle(classes) }} <br />
-                          {{ getBookName(classes) }}
+                          <v-container fluid class="px-0 py-0">
+                            <v-row no-gutters>
+                              <v-col cols="8">
+                                <div>
+                                  {{ getClassDate() }}
+                                </div>
+                                <div>
+                                  {{ getTitle(classes) }}
+                                </div>
+                                <div>
+                                  {{ getBookName(classes) }}
+                                </div>
+                              </v-col>
+                              <v-col cols="4" class="d-flex justify-end">
+                                <v-card
+                                  :color="`${getClassColor(classes).color}`"
+                                  class="
+                                    rounded-circle
+                                    text-center
+                                    d-flex
+                                    justify-center
+                                    align-center
+                                  "
+                                  width="40"
+                                  height="40"
+                                >
+                                  <span style="color: #fff">{{
+                                    getClassColor(classes).typeText
+                                  }}</span>
+                                </v-card>
+                              </v-col>
+                            </v-row>
+                          </v-container>
                         </div>
                         <div
                           class="h6 nanum"
-                          :style="`color: ${getClassColor(classes)}`"
+                          :style="`color: ${getClassColor(classes).color}`"
                         >
                           {{ getTimes(classes) }}
                           <span class="subtitle-text-1">
@@ -86,7 +128,7 @@
                           {{ getEndDay(classes) }}
                         </div>
                         <v-card
-                          :color="getClassColor(classes)"
+                          :color="getClassColor(classes).color"
                           class="rounded-xl mt-3 px-5 py-2"
                           :elevation="classes.no_class == 1 ? '0' : '2'"
                         >
@@ -465,6 +507,22 @@
                                     {{ selectedClassInfo.cate_name }}
                                   </div>
                                 </v-col>
+                                <v-col cols="6" class="py-0">
+                                  <div
+                                    class="
+                                      nanum
+                                      white--text
+                                      d-flex
+                                      align-center
+                                      mt-1
+                                    "
+                                  >
+                                    <v-icon class="white--text mr-2"
+                                      >event_busy</v-icon
+                                    >
+                                    {{ selectedClassInfo.endDay }}
+                                  </div>
+                                </v-col>
                               </v-row>
                               <v-row align="center" class="mt-5">
                                 <v-col>
@@ -575,6 +633,25 @@
                                         >account_circle</v-icon
                                       >
                                       {{ showClass.lec_name }}
+                                    </div>
+                                    <div
+                                      class="
+                                        nanum
+                                        white--text
+                                        d-flex
+                                        align-center
+                                        mt-1
+                                      "
+                                      :class="
+                                        $vuetify.breakpoint.xsOnly
+                                          ? 'caption-text'
+                                          : ''
+                                      "
+                                    >
+                                      <v-icon class="white--text mr-2"
+                                        >event_busy</v-icon
+                                      >
+                                      {{ selectedClassInfo.endDay }}
                                     </div>
                                   </v-col>
                                   <v-col cols="5" sm="6">
@@ -904,6 +981,7 @@ import RevertClassDialog from "@/components/RevertClassDialog";
 import HoldSnackbar from "@/components/Snackbar";
 import Dialog from "@/components/mypage/Dialog";
 import MakeUpClassDiaLog from "@/components/mypage/MakeUpClassDiaLog";
+import VideoHelp from "@/components/mypage/VideoHelp";
 
 // import BookCover from "@/components/mypage/BookCover";
 // import VideoCover from "@/components/mypage/VideoCover";
@@ -918,7 +996,8 @@ export default {
     Dialog,
     MakeUpClassDiaLog,
     CancelClassDiaLog,
-    RevertClassDialog
+    RevertClassDialog,
+    VideoHelp
     // BookCover,
     // VideoCover,
     // PDFCover,
@@ -977,16 +1056,23 @@ export default {
       //let deVal = `안녕하세요. ${this.memberName} 회원님:)`;
       let deVal = {};
       if (this.showClass.length !== 0) {
-        let hour, min, duration, cate_name;
+        let hour, min, duration, cate_name, endDay;
+        endDay = this.formatDate(new Date(this.showClass.end_day * 1000));
         hour = this.showClass.s_hour;
         min = this.showClass.s_min * 10 - 10;
         min = min === 0 ? "0" + min : min;
         duration = this.showClass.duration;
         cate_name = this.showClass.cate_id == 1 ? "전화영어" : "화상영어";
         // deVal = `${this.showClass.year}.${this.showClass.month}.${this.showClass.day} ${hour}:${min}+${duration} ${this.showClass.lec_name} (${cate_name})`;
-        deVal = { hour, min, duration, cate_name };
+        deVal = { hour, min, duration, cate_name, endDay };
       } else {
-        return (deVal = { hour: "-", min: "-", duration: "-", cate_name: "-" });
+        return (deVal = {
+          hour: "-",
+          min: "-",
+          duration: "-",
+          cate_name: "-",
+          endDay: "-"
+        });
       }
 
       return deVal;
@@ -1138,6 +1224,8 @@ export default {
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
 
+      console.log(this.showClass);
+
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
@@ -1165,10 +1253,16 @@ export default {
     },
     getClassColor(classObj) {
       //console.log(classObj);
+      //type 1-RC 2-MC 3-
       let color = "";
+      let type = classObj.jong;
+      let typeText = 0;
       let jong = ["", "#df7a30", "#5e75cf"];
+
+      typeText = classObj.jong == 1 ? "정규" : "보강";
       if (classObj.no_class) {
         color = "grey";
+        typeText = "취소";
       } else if (classObj.attend == "atten") {
         color = "#4caf50";
       } else if (classObj.attend == "passed" || classObj.attend == "absent") {
@@ -1176,7 +1270,7 @@ export default {
       } else {
         color = jong[classObj.jong];
       }
-      return color;
+      return { color, type, typeText };
     },
     getClassDate() {
       let [, month, day] = this.date2.split("-");

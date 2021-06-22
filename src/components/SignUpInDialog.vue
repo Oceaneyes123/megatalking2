@@ -64,6 +64,7 @@
                           <v-checkbox
                             label="로그인 상태 유지"
                             class="mt-0 pt-0"
+                            v-model="rememberMe"
                           ></v-checkbox>
                         </v-col>
                         <v-col cols="12" md="6" class="d-none d-sm-flex">
@@ -296,7 +297,8 @@ export default {
       signupEa: false,
       btnLoading: false,
       verify_email_status: false,
-      timeoutId: ""
+      timeoutId: "",
+      rememberMe: true
     };
   },
   computed: {
@@ -395,15 +397,16 @@ export default {
         this.$store
           .dispatch("login", {
             id: this.loginId,
-            pw: this.loginPw
+            pw: this.loginPw,
+            rememberme: this.rememberMe
           })
           .then(() => {
             if (this.isLogin) {
               this.$refs.loginform.reset();
               if (this.$route.name != "Enrollment") {
-                this.$router.push("/mypage");
+                this.$router.push("/");
               }
-              this.$router.push("/mypage");
+              this.$router.push("/");
               this.close();
             }
             this.btnLoading = false;
