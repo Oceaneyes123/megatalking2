@@ -2,9 +2,21 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" max-width="360">
       <v-card>
-        <v-card-title class="headline">
-          수업을 취소하시겠습니까?
+        <v-card-title>
+          <span :class="$vuetify.breakpoint.xsOnly ? '' : 'headline'"
+            >수업을 취소하시겠습니까?</span
+          >
+          <v-spacer></v-spacer>
+          <v-icon
+            v-ripple
+            color="#859ec9"
+            style="cursor: pointer"
+            @click="$refs.videoHelp.open()"
+            >help</v-icon
+          >
         </v-card-title>
+
+        <VideoHelp ref="videoHelp"></VideoHelp>
 
         <v-card-text>
           수업을 취소하시겠습니까?<br />
@@ -32,7 +44,9 @@
 
 <script>
 import { mapState } from "vuex";
+import VideoHelp from "@/components/mypage/VideoHelp";
 export default {
+  components: { VideoHelp },
   data() {
     return {
       dialog: false,

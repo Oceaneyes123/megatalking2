@@ -976,7 +976,7 @@ import { mapState } from "vuex";
 import moment from "moment";
 import HoldDialog from "@/components/HoldDialog";
 import CancelHoldDialog from "@/components/CancelHoldDialog";
-import CancelClassDiaLog from "@/components/CancelClassDiaLog";
+import CancelClassDiaLog from "@/components/mypage/CancelClassDiaLog";
 import RevertClassDialog from "@/components/RevertClassDialog";
 import HoldSnackbar from "@/components/Snackbar";
 import Dialog from "@/components/mypage/Dialog";
