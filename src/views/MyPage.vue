@@ -1155,7 +1155,8 @@ export default {
     },
     openEval(classObj) {
       let obj = {
-        link: `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`
+        link: `https://phone.megatalking.com/firmsugang_view.htm?app=1&s_id=${classObj.s_id}&todate=${classObj.todate}`,
+        evalType: classObj.eval
       };
 
       //console.log(obj);

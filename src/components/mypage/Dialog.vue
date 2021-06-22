@@ -6,7 +6,7 @@
       :fullscreen="isMobile"
       transition="dialog-bottom-transition"
     >
-      <v-card>
+      <v-card :dark="evalType == 'new'">
         <v-card-title class="primary lighten-1 white--text nanum">
           {{ title }}
           <v-spacer></v-spacer>
@@ -14,8 +14,7 @@
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-card-title>
-        <!-- onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;" -->
-        <v-card-text>
+        <v-card-text class="pa-0">
           <iframe
             width="100%"
             :style="[{ height: getHeight }]"
@@ -55,7 +54,8 @@ export default {
       link: "",
       call_date: "",
       tel: "",
-      hp: ""
+      hp: "",
+      evalType: ""
     };
   },
   computed: {
@@ -70,12 +70,14 @@ export default {
         this.type = type;
         this.title = "평가서 보기";
         this.link = obj.link;
+        this.evalType = obj.evalType;
       } else if (type == 2) {
         this.type = type;
         this.title = "녹취 듣기";
         this.call_date = obj.call_date;
         this.tel = obj.tel;
         this.hp = obj.hp;
+        this.evalType = "origin";
       }
     },
     open() {

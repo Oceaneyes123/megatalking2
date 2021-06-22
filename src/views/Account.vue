@@ -196,7 +196,7 @@ export default {
               });
             });
             this.$set(this.$data, "tab1Item", temArr);
-            console.log(this.tab1Item);
+            //console.log(this.tab1Item);
           }
           // console.log(rs);
         })
