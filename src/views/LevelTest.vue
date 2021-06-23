@@ -56,6 +56,7 @@
               <v-divider class="mx-10 mb-10"></v-divider>
               <div class="px-10 text-dark-purple h6">
                 <span class="font-weight-black">나에게 맞춘 날짜와 시간</span>에
+                <br v-if="$vuetify.breakpoint.xsOnly" />
                 언제든지 진행 가능합니다.
               </div>
               <v-row

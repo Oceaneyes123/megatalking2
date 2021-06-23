@@ -9,7 +9,8 @@
           커리큘럼
         </div>
         <div class="h4 nanum font-weight-bold" style="color: #bfd384">
-          “Enjoy English. Enjoy Megatalking.”
+          “Enjoy English. <br v-if="$vuetify.breakpoint.xsOnly" />
+          Enjoy Megatalking.”
         </div>
         <div class="mt-5 h5 nanum white--text">
           메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
@@ -768,10 +769,22 @@
             <div
               class="text-purple headline font-weight-bold text-center mt-10"
             >
-              “짜임새 있고 기초부터 탄탄한영어를 만듭니다.”
+              “짜임새 있고 기초부터
+              <br v-if="$vuetify.breakpoint.xsOnly" />
+              탄탄한영어를 만듭니다.”
             </div>
-            <div class="text--secondary mt-3 subheading font-weight-bold">
-              메가토킹은 말이 되는 영어, 실전에 강한 영어 회화를 만들어갑니다.
+            <div
+              class="
+                text--secondary
+                mt-3
+                subheading
+                font-weight-bold
+                korean-text
+              "
+            >
+              메가토킹은 말이 되는 영어,
+              <br v-if="$vuetify.breakpoint.xsOnly" />
+              실전에 강한 영어 회화를 만들어갑니다.
             </div>
             <v-row class="mt-10" justify="center">
               <v-col cols="12" md="3" class="px-3">
@@ -783,11 +796,12 @@
                 ></v-img>
                 <div class="h5 font-weight-black">기초부터 탄탄하게</div>
                 <div
-                  class="h7 text--secondary mt-3"
+                  class="h7 text--secondary mt-3 korean-text"
                   style="letter-spacing: -1px !important"
                 >
-                  레벨테스트를 통해 나의 영어실력에 맞춘 수업을 선택하여 들을 수
-                  있습니다.
+                  레벨테스트를 통해 나의 영어실력에 맞춘 수업을
+                  <br v-if="$vuetify.breakpoint.xsOnly" />
+                  선택하여 들을 수 있습니다.
                 </div>
               </v-col>
               <v-col cols="12" md="3" class="px-3">

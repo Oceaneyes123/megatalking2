@@ -182,7 +182,7 @@
             <div class="h4 font-weight-bold mb-7" style="color: #000">
               맞춤형 시간표
             </div>
-            <div class="mb-5">
+            <div class="mb-5 korean-text">
               직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
               레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
             </div>
@@ -224,7 +224,7 @@
               <div class="h4 font-weight-bold mb-7" style="color: #000">
                 맞춤형 시간표
               </div>
-              <div class="mb-5">
+              <div class="mb-5 korean-text">
                 직접 방문하지 않아도 언제, 어디서나 전화통화로 진행되는
                 레벨테스트를 통해 맞춤형 영어를 배울 수 있습니다.
               </div>
@@ -260,7 +260,7 @@
                       <br />품격있는 컨텐츠
                     </div>
                     <div style="color: #b7b7b7; max-width: 250px">
-                      <div class="mb-5">
+                      <div class="mb-5 korean-text">
                         프리토킹, 비즈니스, 면접영어, 여행, 영자신문 등
                         35,000개의 콘텐츠로 즐겨요.
                       </div>
@@ -384,7 +384,11 @@
         </v-card>
 
         <!--list grid -->
-        <div class="h5">다양한 미디어 콘텐츠로 메가토킹을 즐기세요.</div>
+        <div class="h5">
+          다양한 미디어 콘텐츠로
+          <br v-if="$vuetify.breakpoint.xsOnly" />
+          메가토킹을 즐기세요.
+        </div>
         <v-container>
           <v-row justify="center">
             <v-col cols="12" md="5">

@@ -122,9 +122,12 @@ export default {
     ...mapState(["currentClassInfo"]),
     form() {
       let selected = [];
+      let type = "";
       this.selectedSuggestion.forEach(item => {
         selected.push({ key: item, text: this.step4Suggestions[item] });
       });
+      type = this.currentClassInfo.jong == 1 ? "RC" : "MC";
+      console.log(type);
       return {
         timestamp: this.currentClassInfo.todate,
         score: this.rating,
@@ -133,9 +136,13 @@ export default {
         s_id: this.currentClassInfo.s_id,
         tutor_id: this.currentClassInfo.lec_id,
         student_id: this.currentClassInfo.id,
-        type: "RC"
+        type: type
       };
     }
+  },
+
+  mounted() {
+    console.log(this.currentClassInfo);
   },
   methods: {
     filterValideDate() {

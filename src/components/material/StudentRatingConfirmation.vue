@@ -50,6 +50,7 @@
                 class="blue-text font-weight-bold py-5"
                 color="#E5E5E5"
                 width="40%"
+                @click="ratingDialog = false"
               >
                 취소
               </v-btn>
