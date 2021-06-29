@@ -85,7 +85,7 @@ export default {
     return {
       ratingDialog: false,
       confirmationData: {},
-      rating: 0,
+      rating: 0.5,
       btnLoading: false
     };
   },

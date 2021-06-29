@@ -25,7 +25,7 @@
           fixed
           bottom
           class="yellow black--text"
-          style="height: 56px; width: 56px;"
+          style="height: 56px; width: 56px"
           :style="chatBtnPostion"
           href="http://pf.kakao.com/_xdKxhul/chat"
           target="_blank"
@@ -76,6 +76,27 @@ export default {
       return show;
     }
   },
+
+  watch: {
+    $route(to, from) {
+      console.log(to);
+      if (from.path == "/" && this.$store.state.isLogin) {
+        this.$router.push("/mypage");
+      }
+    }
+  },
+
+  // beforeMount() {
+  //   console.log("beefore mount");
+  // },
+  // beforeUpdate() {
+  //   console.log(this.$route.name);
+  //   console.log("beefore updated");
+  // },
+  // updated() {
+  //   console.log("updated");
+  //   console.log(this.$router);
+  // },
   created() {
     window.addEventListener("resize", this.onWindowResize);
   },
@@ -85,9 +106,13 @@ export default {
   mounted() {
     this.$store.commit("onWindowResize", screen.width);
 
-    if (!this.$store.state.isLogin && this.$route.path == "/") {
+    if (this.$route.path == "/") {
       this.$router.push("/main");
     }
+
+    // if (!this.$store.state.isLogin && this.$route.path == "/mypage") {
+    //   this.$router.push("/main");
+    // }
   },
   methods: {
     onWindowResize() {

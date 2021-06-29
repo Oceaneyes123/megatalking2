@@ -406,7 +406,7 @@ export default {
               if (this.$route.name != "Enrollment") {
                 this.$router.push("/");
               }
-              this.$router.push("/");
+              this.$router.push("/mypage");
               this.close();
             }
             this.btnLoading = false;

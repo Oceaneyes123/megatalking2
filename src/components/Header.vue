@@ -152,7 +152,7 @@ export default {
         },
         {
           text: "마이페이지",
-          link: "",
+          link: "mypage",
           show: true
         },
         {

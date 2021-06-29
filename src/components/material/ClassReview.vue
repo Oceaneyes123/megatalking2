@@ -99,7 +99,7 @@ export default {
   data() {
     return {
       snackbar: false,
-      rating: 0,
+      rating: 0.5,
       opinion: "",
       step4Suggestions: [
         "조금 천천히 말해주세요.",

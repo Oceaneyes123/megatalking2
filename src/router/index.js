@@ -38,7 +38,7 @@ const routes = [
     meta: { title: "레벨테스트" }
   },
   {
-    path: "/",
+    path: "/mypage",
     name: "MyPage",
     component: require("../views/MyPage.vue").default,
     beforeEnter: onlyAuthUser,

@@ -1117,10 +1117,11 @@ export default {
           "오션스 8",
           "악마는 프라다를 입는다.",
           "라라랜드",
-          "엠메스톤의 이지",
+          "엠마스톤의 이지",
           "…"
         ]
       },
+
       koreanTextGrey: [
         {
           title: "재미없는 수업 그만!",
@@ -1311,6 +1312,7 @@ export default {
   },
 
   created() {
+    console.log("created");
     window.addEventListener("resize", this.onWindowResize);
     AOS.init();
   },
