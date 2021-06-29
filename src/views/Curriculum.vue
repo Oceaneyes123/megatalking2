@@ -45,7 +45,7 @@
                     width="97"
                     min-height="80"
                     :class="{ 'blue--text': active }"
-                    :color="active ? 'primary' : 'white'"
+                    :color="active ? 'primary' : '#e6f2ff'"
                     :outlined="active"
                   >
                     <div v-html="tab"></div>

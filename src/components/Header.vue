@@ -196,7 +196,7 @@ export default {
       this.logoutDialog = !this.logoutDialog;
     },
     attachedLink(link) {
-      if (link == "" || link == "account") {
+      if (link == "mypage" || link == "account") {
         //로그인
         if (this.$store.state.isLogin) {
           this.$router.push(`/${link}`);
