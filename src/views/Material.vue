@@ -96,6 +96,7 @@ export default {
       console.log(step);
       if (step == 1) {
         this.courseLink = localStorage.getItem("currentCourseLink");
+        this.$refs.tabHeader.newTab(0);
       }
 
       this.step = step;
