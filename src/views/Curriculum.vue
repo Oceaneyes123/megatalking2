@@ -854,7 +854,7 @@
               </v-tabs>
             </v-row> -->
 
-            <v-row v-if="!isMobile">
+            <v-row v-if="$vuetify.breakpoint.smAndUp">
               <v-card flat color="#00000000">
                 <v-img
                   src="../assets/level-diagram.png"
