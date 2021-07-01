@@ -1192,6 +1192,7 @@ export default {
     },
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
+      console.log(classObj);
 
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
@@ -1223,8 +1224,6 @@ export default {
 
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
-
-      console.log(this.showClass);
 
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
@@ -1318,6 +1317,7 @@ export default {
     pickDate(val) {
       let [, , day] = val.split("-");
       let pickDateClasses = [];
+
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
 
@@ -1328,7 +1328,6 @@ export default {
 
         this.isClass = true;
         this.isClassSelected = true;
-        this.selectClass(pickDateClasses[0]);
 
         // if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
         //   this.isClassSelected = true;
@@ -1339,7 +1338,9 @@ export default {
       } else {
         this.isClass = false;
       }
+
       this.$set(this.$data, "pickDateClasses", pickDateClasses);
+      this.selectClass(pickDateClasses[0]);
     },
     async getSchedule(year, month, day = "") {
       let config = {

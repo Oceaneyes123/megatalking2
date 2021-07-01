@@ -10,10 +10,17 @@
         </div>
         <div class="h6 nanum white--text">
           <div class="my-10">
-            왕초보라도, 영어1도 못해도, 메가토킹과 함께라면 어렵지 않아요.
+            왕초보라도, 영어1도 못해도,
+            <br v-if="$vuetify.breakpoint.xsOnly" />
+            메가토킹과 함께라면 어렵지 않아요.
           </div>
-          <div class="my-2">외국인과 말하기 두려워도, 영어가 서툴러도</div>
-          <div class="my-2">메가토킹 선생님이 친구처럼 도와드려요.</div>
+          <div class="my-2 korean-text">
+            외국인과 말하기 두려워도, <br v-if="$vuetify.breakpoint.xsOnly" />
+            영어가 서툴러도
+          </div>
+          <div class="my-2 korean-text">
+            메가토킹 선생님이 친구처럼 도와드려요.
+          </div>
         </div>
         <v-container
           style="max-width: 1000px; margin-top: 90px"

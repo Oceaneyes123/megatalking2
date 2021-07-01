@@ -236,13 +236,9 @@
                                       nanum
                                       mb-5
                                     "
-                                    style="
-                                      background: linear-gradient(
-                                        to right,
-                                        #8fa1fe,
-                                        #4d94e9
-                                      );
-                                    "
+                                    :style="{
+                                      background: `linear-gradient(90deg, ${gradient})`
+                                    }"
                                     @click="$router.push('/enrollment')"
                                     >수강신청</v-btn
                                   >
@@ -1423,6 +1419,8 @@ export default {
       bookSlide6: 0,
       bookSlide7: 0,
       book_list: [],
+
+      gradient: ["#8fa1fe", "#4d94e9"],
 
       currentBook: "",
       category: "유튜브 회화과정",
