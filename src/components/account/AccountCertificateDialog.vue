@@ -95,6 +95,7 @@
                 class="blue-text font-weight-bold py-5"
                 color="#E5E5E5"
                 width="40%"
+                @click="certificateDialog = false"
               >
                 취소
               </v-btn>
@@ -107,6 +108,7 @@
                 class="nanum font-weight-bold py-5"
                 color="#2564CB"
                 width="40%"
+                @click="certificateDialog = false"
               >
                 인쇄
               </v-btn>
