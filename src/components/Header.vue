@@ -11,7 +11,7 @@
       <v-container class="d-flex flex-row">
         <v-card flat tile color="#00000000">
           <v-img
-            @click="$router.push('/main'), (activeMenu = -1)"
+            @click="$router.push('/'), (activeMenu = -1)"
             contain
             src="@/assets/mega_blue.png"
             width="100"

@@ -52,7 +52,9 @@ export default {
     Footer
   },
   data() {
-    return {};
+    return {
+      from: ""
+    };
   },
   computed: {
     ...mapState(["currentImage", "showNav", "screenWidth", "isMobile"]),
@@ -79,9 +81,11 @@ export default {
 
   watch: {
     $route(to, from) {
-      console.log(to);
       if (from.path == "/" && this.$store.state.isLogin) {
         this.$router.push("/mypage");
+        if (to.path != "/mypage") {
+          this.$router.push(to.path);
+        }
       }
     }
   },
@@ -106,9 +110,13 @@ export default {
   mounted() {
     this.$store.commit("onWindowResize", screen.width);
 
-    if (this.$route.path == "/") {
-      this.$router.push("/main");
+    if (this.from == "") {
+      this.$router.push("/mypage");
     }
+
+    // if (this.$route.path == "/") {
+    //   this.$router.push("/main");
+    // }
 
     // if (!this.$store.state.isLogin && this.$route.path == "/mypage") {
     //   this.$router.push("/main");
