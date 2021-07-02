@@ -254,17 +254,16 @@ export default {
   },
 
   submitModify() {
-    console.log(this.password);
     if (!this.password) {
       this.passwordRules = [];
       this.passwordCheckRules = [];
     } else {
       this.passwordRules = [v => (v && v.length >= 4) || "4글자 입력해주세요"];
     }
-    if (this.$refs.modifyForm.validate()) {
-      // code...
-      console.log("test");
-    }
+    // if (this.$refs.modifyForm.validate()) {
+    //   // code...
+    //   console.log("test");
+    // }
   }
 };
 </script>
