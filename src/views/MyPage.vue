@@ -1192,7 +1192,6 @@ export default {
     },
     selectClass(classObj) {
       //let path = "@/assets/curriculum/";
-      console.log(classObj);
 
       let books = [
         require("@/assets/curriculum/1st_step.jpg"),
@@ -1354,7 +1353,6 @@ export default {
       await axios
         .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
-          console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {

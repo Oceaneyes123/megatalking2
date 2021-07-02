@@ -1312,7 +1312,6 @@ export default {
   },
 
   created() {
-    console.log("created");
     window.addEventListener("resize", this.onWindowResize);
     AOS.init();
   },

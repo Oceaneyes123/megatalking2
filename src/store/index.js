@@ -240,7 +240,6 @@ export default new Vuex.Store({
               state: "success"
             });
           } else {
-            console.log(rs);
             bus.$emit("HoldSnackbar", {
               text: rs.data.msg,
               state: "error"
@@ -294,7 +293,6 @@ export default new Vuex.Store({
       axios
         .post("//phone.megatalking.com/origin/api/mypage.php", payload)
         .then(rs => {
-          // console.log('hi',rs);
           if (rs.data.result == true) {
             bus.$emit("refreshSchedule");
             bus.$emit("HoldSnackbar", {

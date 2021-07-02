@@ -114,8 +114,6 @@ export default {
   mounted() {
     window.setInterval(this.clickFrame, 100);
     this.courseLink = localStorage.getItem("currentCourseLink");
-
-    console.log(this.setTab);
   },
   methods: {
     // clickFrame() {

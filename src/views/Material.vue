@@ -93,7 +93,6 @@ export default {
 
   methods: {
     nextBook(step) {
-      console.log(step);
       if (step == 1) {
         this.courseLink = localStorage.getItem("currentCourseLink");
         this.$refs.tabHeader.newTab(0);
@@ -110,11 +109,9 @@ export default {
     },
 
     proceed() {
-      console.log(this.status, "test");
       this.tabs = 1;
     },
     send(message) {
-      console.log("sending");
       this.connection.send(message);
     },
     onWindowResize() {

@@ -239,7 +239,6 @@ export default {
     open(item) {
       this.courseData = item;
       this.courseDialog = true;
-      console.log(item);
     },
 
     formatDate(date) {
