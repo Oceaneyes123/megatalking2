@@ -93,16 +93,17 @@ export default {
 
   methods: {
     nextBook(step) {
+      this.step = step;
       if (step == 1) {
         this.courseLink = localStorage.getItem("currentCourseLink");
-        this.$refs.tabHeader.newTab(0);
       }
-
-      this.step = step;
-      setTimeout(this.openClassReview, 50);
+      setTimeout(this.openClass, 50);
     },
 
-    openClassReview() {
+    openClass() {
+      if (this.step == 1) {
+        this.$refs.tabHeader.newTab(0);
+      }
       if (this.step == 3) {
         this.$refs.tabHeader.newTab(2);
       }
