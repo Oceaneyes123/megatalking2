@@ -1,140 +1,135 @@
 <template>
   <v-dialog max-width="700" v-model="courseDialog" class="rounded-xl">
-    <v-card color="#6991C7" style="border-radius: 20px">
-      <v-container class="h5 nanum white--text text-left">
-        <v-row :class="$vuetify.breakpoint.smAndUp ? 'px-5' : undefined">
+    <v-card
+      :class="
+        $vuetify.breakpoint.xsOnly
+          ? 'text-left card-bg'
+          : 'text-left card-bg px-5'
+      "
+      style="border-radius: 20px"
+    >
+      <v-container style="font-size: 14px">
+        <v-row>
+          <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+            <div>공급자</div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="font-weight-bold" sm="6" cols="4">
+            <div>상호</div>
+            <div>사업장소재지</div>
+            <br v-show="$vuetify.breakpoint.xsOnly" />
+            <div
+              :style="$vuetify.breakpoint.xsOnly ? { fontSize: 'smaller' } : {}"
+            >
+              사업자등록번호
+            </div>
+            <div>업태</div>
+            <div>대표자</div>
+            <div>종목</div>
+          </v-col>
+          <v-col sm="6" cols="8">
+            <div>(주)유에듀케이션</div>
+            <div class="korean-text">
+              수원시 팔달구 권광로 122, 두오빌딩 4층
+            </div>
+            <div>124-87-33297</div>
+            <v-row no-gutters>
+              <v-col style="width: max-content">
+                <div>서비스</div>
+                <div>정원석</div>
+                <div>온라인 교육</div>
+              </v-col>
+              <v-col>
+                <v-img width="75px" src="../../assets/boss_stamp 1.png"></v-img>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+            <div>수강선택</div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="font-weight-bold" sm="6" cols="4">
+            <div>발급일자</div>
+            <div>수강과정</div>
+            <div>학습기간</div>
+            <br />
+            <div>결제 금액</div>
+            <div>결제방법</div>
+            <div>결제일자</div>
+            <div>수강자</div>
+          </v-col>
+          <v-col sm="6" cols="8">
+            <div>{{ courseData.date }}</div>
+            <div>
+              <div v-if="courseData.pay_progress != null">
+                {{ courseData.pay_progress.paymentInfo.bookName }}
+                {{ courseData.course }}
+              </div>
+              <div v-else>-</div>
+            </div>
+            <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
+            <br />
+            <div>
+              <div v-if="courseData.pay_progress != null">
+                {{ courseData.pay_progress.paymentInfo.value }}원
+              </div>
+              <div v-else>-</div>
+            </div>
+            <div>{{ courseData.method }}</div>
+            <div>{{ courseData.date }}</div>
+            <div>{{ courseData.name }}</div>
+          </v-col>
+        </v-row>
+        <v-row align="end">
+          <v-col class="d-flex flex-row justify-center align-end">
+            <div
+              class="nanum text-center font-weight-bold"
+              style="font-size: 18px"
+            >
+              주식회사 유에듀케이션
+            </div>
+            <div>
+              <v-img
+                style="width: 50px !important"
+                src="../../assets/uedu_stamp 1.png"
+              ></v-img>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col class="text-right">
+            <v-btn
+              depressed
+              rounded
+              class="blue-text font-weight-bold py-5"
+              color="#E5E5E5"
+              width="40%"
+              @click="courseDialog = false"
+            >
+              취소
+            </v-btn>
+          </v-col>
           <v-col>
-            <div>수강증</div>
+            <v-btn
+              dark
+              depressed
+              rounded
+              class="nanum font-weight-bold py-5"
+              color="#2564CB"
+              width="40%"
+              @click="courseDialog = false"
+            >
+              보내기
+            </v-btn>
           </v-col>
         </v-row>
       </v-container>
-      <v-card
-        :class="
-          $vuetify.breakpoint.xsOnly
-            ? 'text-left card-bg'
-            : 'text-left card-bg px-5'
-        "
-        style="border-radius: 20px"
-      >
-        <v-container style="font-size: 14px">
-          <v-row>
-            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
-              <div>공급자</div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="5">
-              <div>상호</div>
-              <div>사업장소재지</div>
-              <br v-show="$vuetify.breakpoint.xsOnly" />
-              <div>사업자등록번호</div>
-              <div>업태</div>
-              <div>대표자</div>
-              <div>종목</div>
-            </v-col>
-            <v-col sm="6" cols="7">
-              <div>(주)유에듀케이션</div>
-              <div>수원시 팔달구 권광로 122, 두오빌딩 4층</div>
-              <div>124-87-33297</div>
-              <v-row no-gutters>
-                <v-col style="width: max-content">
-                  <div>서비스</div>
-                  <div>정원석</div>
-                  <div>온라인 교육</div>
-                </v-col>
-                <v-col>
-                  <v-img
-                    width="75px"
-                    src="../../assets/boss_stamp 1.png"
-                  ></v-img>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
-              <div>수강선택</div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="4">
-              <div>발급일자</div>
-              <div>수강과정</div>
-              <div>학습기간</div>
-              <br />
-              <div>결제 금액</div>
-              <div>결제방법</div>
-              <div>결제일자</div>
-              <div>수강자</div>
-            </v-col>
-            <v-col sm="6" cols="8">
-              <div>{{ courseData.date }}</div>
-              <div>
-                <div v-if="courseData.pay_progress != null">
-                  {{ courseData.pay_progress.paymentInfo.bookName }}
-                  {{ courseData.course }}
-                </div>
-                <div v-else>-</div>
-              </div>
-              <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
-              <br />
-              <div>
-                <div v-if="courseData.pay_progress != null">
-                  {{ courseData.pay_progress.paymentInfo.value }}원
-                </div>
-                <div v-else>-</div>
-              </div>
-              <div>{{ courseData.method }}</div>
-              <div>{{ courseData.date }}</div>
-              <div>{{ courseData.name }}</div>
-            </v-col>
-          </v-row>
-          <v-row align="end">
-            <v-col class="d-flex flex-row justify-center align-end">
-              <div
-                class="nanum text-center font-weight-bold"
-                style="font-size: 18px"
-              >
-                주식회사 유에듀케이션
-              </div>
-              <div>
-                <v-img
-                  style="width: 50px !important"
-                  src="../../assets/uedu_stamp 1.png"
-                ></v-img>
-              </div>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col class="text-right">
-              <v-btn
-                depressed
-                rounded
-                class="blue-text font-weight-bold py-5"
-                color="#E5E5E5"
-                width="40%"
-                @click="courseDialog = false"
-              >
-                취소
-              </v-btn>
-            </v-col>
-            <v-col>
-              <v-btn
-                dark
-                depressed
-                rounded
-                class="nanum font-weight-bold py-5"
-                color="#2564CB"
-                width="40%"
-                @click="courseDialog = false"
-              >
-                보내기
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
     </v-card>
+
     <!-- <v-card max-width="700" class="rounded-xl">
       <v-card
         color="#6a9af2"
