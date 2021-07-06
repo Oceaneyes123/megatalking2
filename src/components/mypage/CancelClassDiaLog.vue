@@ -64,7 +64,6 @@ export default {
       this.s_id = classObj.s_id;
       this.ableGetCoupon = classObj.ableGetCoupon;
       this.dialog = true;
-      // console.log(date, classObj);
     },
     submit() {
       let playload = {
