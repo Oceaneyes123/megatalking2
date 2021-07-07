@@ -8,7 +8,7 @@
       "
       style="border-radius: 20px"
     >
-      <v-container style="font-size: 14px">
+      <v-container style="font-size: 14px" id="capture">
         <v-row>
           <v-col class="blue-text font-weight-bold" style="font-size: 18px">
             <div>공급자</div>
@@ -30,9 +30,7 @@
           </v-col>
           <v-col sm="6" cols="8">
             <div>(주)유에듀케이션</div>
-            <div class="korean-text">
-              수원시 팔달구 권광로 122, 두오빌딩 4층
-            </div>
+            <div class="korean-text">수원시 권선구 세권로 219,3층</div>
             <div>124-87-33297</div>
             <v-row no-gutters>
               <v-col style="width: max-content">
@@ -100,6 +98,8 @@
             </div>
           </v-col>
         </v-row>
+      </v-container>
+      <v-container>
         <v-row>
           <v-col class="text-right">
             <v-btn
@@ -121,7 +121,7 @@
               class="nanum font-weight-bold py-5"
               color="#2564CB"
               width="40%"
-              @click="courseDialog = false"
+              @click="print()"
             >
               보내기
             </v-btn>
@@ -129,6 +129,10 @@
         </v-row>
       </v-container>
     </v-card>
+
+    <v-dialog v-model="jpeg">
+      <v-card id="canvas">test</v-card>
+    </v-dialog>
 
     <!-- <v-card max-width="700" class="rounded-xl">
       <v-card
@@ -220,17 +224,50 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas";
+
 export default {
   data() {
     return {
       courseDialog: false,
       courseData: [],
+      jpeg: false,
 
       date: new Date()
     };
   },
 
   methods: {
+    print() {
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        var link = document.createElement("a");
+        link.download = "MegaCertificate.png";
+        link.href = canvas.toDataURL();
+        link.click();
+
+        // setTimeout(function () {
+        //   if (document.getElementById("canvas").hasChildNodes()) {
+        //     var item = document.getElementById("canvas").childNodes[0];
+        //     item.document.getElementById("canvas").createElement(canvas);
+        //   } else {
+        //     console.log("horraaayyy");
+        //     setTimeout(function () {
+        //       document.getElementById("canvas").appendChild(canvas);
+        //     }, 2000);
+        //   }
+        // }, 1000);
+
+        // if(document.getElementById("canvas").firstElementChild){
+        //    document.getElementById("canvas").appendChild(canvas);
+        // }
+      });
+
+      // var link = document.createElement("a");
+      // link.download = "filename.png";
+      // link.href = document.getElementById("canvas").toDataURL();
+      // link.click();
+    },
+
     open(item) {
       this.courseData = item;
       this.courseDialog = true;

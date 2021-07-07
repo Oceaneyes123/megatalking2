@@ -585,7 +585,7 @@
                                   korean-text
                                 "
                                 :class="
-                                  $vuetify.breakpoint.xsOnly ? 'h5' : 'h4'
+                                  $vuetify.breakpoint.xsOnly ? 'h6' : 'h4'
                                 "
                               >
                                 {{ selectedClassTitle }}
