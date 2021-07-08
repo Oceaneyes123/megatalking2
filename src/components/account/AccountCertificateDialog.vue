@@ -16,7 +16,7 @@
         "
         style="border-radius: 20px"
       >
-        <v-container style="font-size: 14px">
+        <v-container style="font-size: 14px" id="capture">
           <v-row>
             <v-col class="font-weight-bold" sm="5" cols="5">
               <div>서비스명</div>
@@ -87,6 +87,8 @@
               </div>
             </v-col>
           </v-row>
+        </v-container>
+        <v-container>
           <v-row>
             <v-col class="text-right">
               <v-btn
@@ -108,7 +110,7 @@
                 class="nanum font-weight-bold py-5"
                 color="#2564CB"
                 width="40%"
-                @click="certificateDialog = false"
+                @click="print()"
               >
                 인쇄
               </v-btn>
@@ -209,6 +211,8 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas";
+
 export default {
   data() {
     return {
@@ -218,6 +222,14 @@ export default {
     };
   },
   methods: {
+    print() {
+      html2canvas(document.querySelector("#capture")).then(canvas => {
+        var link = document.createElement("a");
+        link.download = "MegaAttendance.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    },
     open(item) {
       this.certificateDialog = true;
       this.certificateData = item;
