@@ -229,7 +229,7 @@ export default {
   },
   methods: {
     print() {
-      console.log("test");
+      window.scrollTo(0, 0);
       html2canvas(document.querySelector("#capture")).then(canvas => {
         var link = document.createElement("a");
         link.download = "MegaAttendance.jpg";
