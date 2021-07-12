@@ -42,7 +42,6 @@ export default new Vuex.Store({
   mutations: {
     loadBg(state, payload) {
       state.showNav = true;
-      console.log(payload);
       if (!payload) {
         state.currentImage = state.images.main;
       } else if (payload == "level-test") {
