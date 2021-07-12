@@ -91,13 +91,9 @@
                             nanum
                             mb-5
                           "
-                          style="
-                            background: linear-gradient(
-                              to right,
-                              #8fa1fe,
-                              #4d94e9
-                            );
-                          "
+                          :style="{
+                            background: `linear-gradient(90deg, ${gradient})`
+                          }"
                           @click="$router.push('/enrollment')"
                           >수강신청</v-btn
                         >
@@ -125,7 +121,9 @@ import { mapState } from "vuex";
 export default {
   props: ["current-book", "mobile"],
   data() {
-    return {};
+    return {
+      gradient: ["#8fa1fe", "#4d94e9"]
+    };
   },
   computed: {
     ...mapState(["isMobile"])

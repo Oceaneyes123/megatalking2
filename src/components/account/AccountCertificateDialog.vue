@@ -119,7 +119,12 @@
         </v-container>
       </v-card>
     </v-card>
+
+    <v-dialog v-model="jpeg">
+      <v-card id="canvas"></v-card>
+    </v-dialog>
   </v-dialog>
+
   <!-- <v-dialog max-width="700" v-model="certificateDialog" class="rounded-xl">
     <v-card max-width="700" class="rounded-xl">
       <v-card
@@ -218,14 +223,16 @@ export default {
     return {
       certificateDialog: false,
       certificateData: [],
-      date: new Date()
+      date: new Date(),
+      jpeg: false
     };
   },
   methods: {
     print() {
+      console.log("test");
       html2canvas(document.querySelector("#capture")).then(canvas => {
         var link = document.createElement("a");
-        link.download = "MegaAttendance.png";
+        link.download = "MegaAttendance.jpg";
         link.href = canvas.toDataURL();
         link.click();
       });

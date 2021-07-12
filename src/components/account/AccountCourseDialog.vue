@@ -8,97 +8,104 @@
       "
       style="border-radius: 20px"
     >
-      <v-container style="font-size: 14px" id="capture">
-        <v-row>
-          <v-col class="blue-text font-weight-bold" style="font-size: 18px">
-            <div>공급자</div>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col class="font-weight-bold" sm="6" cols="4">
-            <div>상호</div>
-            <div>사업장소재지</div>
-            <br v-show="$vuetify.breakpoint.xsOnly" />
-            <div
-              :style="$vuetify.breakpoint.xsOnly ? { fontSize: 'smaller' } : {}"
-            >
-              사업자등록번호
-            </div>
-            <div>업태</div>
-            <div>대표자</div>
-            <div>종목</div>
-          </v-col>
-          <v-col sm="6" cols="8">
-            <div>(주)유에듀케이션</div>
-            <div class="korean-text">수원시 권선구 세권로 219,3층</div>
-            <div>124-87-33297</div>
-            <v-row no-gutters>
-              <v-col style="width: max-content">
-                <div>서비스</div>
-                <div>정원석</div>
-                <div>온라인 교육</div>
-              </v-col>
-              <v-col>
-                <v-img width="75px" src="../../assets/boss_stamp 1.png"></v-img>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col class="blue-text font-weight-bold" style="font-size: 18px">
-            <div>수강선택</div>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col class="font-weight-bold" sm="6" cols="4">
-            <div>발급일자</div>
-            <div>수강과정</div>
-            <div>학습기간</div>
-            <br />
-            <div>결제 금액</div>
-            <div>결제방법</div>
-            <div>결제일자</div>
-            <div>수강자</div>
-          </v-col>
-          <v-col sm="6" cols="8">
-            <div>{{ courseData.date }}</div>
-            <div>
-              <div v-if="courseData.pay_progress != null">
-                {{ courseData.pay_progress.paymentInfo.bookName }}
-                {{ courseData.course }}
+      <div id="capture">
+        <v-container style="font-size: 14px">
+          <v-row>
+            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <div>공급자</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="font-weight-bold" sm="6" cols="4">
+              <div>상호</div>
+              <div>사업장소재지</div>
+              <br v-show="$vuetify.breakpoint.xsOnly" />
+              <div
+                :style="
+                  $vuetify.breakpoint.xsOnly ? { fontSize: 'smaller' } : {}
+                "
+              >
+                사업자등록번호
               </div>
-              <div v-else>-</div>
-            </div>
-            <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
-            <br />
-            <div>
-              <div v-if="courseData.pay_progress != null">
-                {{ courseData.pay_progress.paymentInfo.value }}원
+              <div>업태</div>
+              <div>대표자</div>
+              <div>종목</div>
+            </v-col>
+            <v-col sm="6" cols="8">
+              <div>(주)유에듀케이션</div>
+              <div class="korean-text">수원시 권선구 세권로 219,3층</div>
+              <div>124-87-33297</div>
+              <v-row no-gutters>
+                <v-col style="width: max-content">
+                  <div>서비스</div>
+                  <div>정원석</div>
+                  <div>온라인 교육</div>
+                </v-col>
+                <v-col>
+                  <v-img
+                    width="75px"
+                    src="../../assets/boss_stamp 1.png"
+                  ></v-img>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="blue-text font-weight-bold" style="font-size: 18px">
+              <div>수강선택</div>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="font-weight-bold" sm="6" cols="4">
+              <div>발급일자</div>
+              <div>수강과정</div>
+              <div>학습기간</div>
+              <br />
+              <div>결제 금액</div>
+              <div>결제방법</div>
+              <div>결제일자</div>
+              <div>수강자</div>
+            </v-col>
+            <v-col sm="6" cols="8">
+              <div>{{ courseData.date }}</div>
+              <div>
+                <div v-if="courseData.pay_progress != null">
+                  {{ courseData.pay_progress.paymentInfo.bookName }}
+                  {{ courseData.course }}
+                </div>
+                <div v-else>-</div>
               </div>
-              <div v-else>-</div>
-            </div>
-            <div>{{ courseData.method }}</div>
-            <div>{{ courseData.date }}</div>
-            <div>{{ courseData.name }}</div>
-          </v-col>
-        </v-row>
-        <v-row align="end">
-          <v-col class="d-flex flex-row justify-center align-end">
-            <div
-              class="nanum text-center font-weight-bold"
-              style="font-size: 18px"
-            >
-              주식회사 유에듀케이션
-            </div>
-            <div>
-              <v-img
-                style="width: 50px !important"
-                src="../../assets/uedu_stamp 1.png"
-              ></v-img>
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
+              <div>{{ courseData.s_day }} ~ {{ courseData.e_day }}</div>
+              <br />
+              <div>
+                <div v-if="courseData.pay_progress != null">
+                  {{ courseData.pay_progress.paymentInfo.value }}원
+                </div>
+                <div v-else>-</div>
+              </div>
+              <div>{{ courseData.method }}</div>
+              <div>{{ courseData.date }}</div>
+              <div>{{ courseData.name }}</div>
+            </v-col>
+          </v-row>
+          <v-row align="end">
+            <v-col class="d-flex flex-row justify-center align-end">
+              <div
+                class="nanum text-center font-weight-bold"
+                style="font-size: 18px"
+              >
+                주식회사 유에듀케이션
+              </div>
+              <div>
+                <v-img
+                  style="width: 50px !important"
+                  src="../../assets/uedu_stamp 1.png"
+                ></v-img>
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
       <v-container>
         <v-row>
           <v-col class="text-right">
@@ -130,9 +137,9 @@
       </v-container>
     </v-card>
 
-    <v-dialog v-model="jpeg">
-      <v-card id="canvas">test</v-card>
-    </v-dialog>
+    <!-- <v-dialog v-model="jpeg">
+      <v-card id="canvas"></v-card>
+    </v-dialog> -->
 
     <!-- <v-card max-width="700" class="rounded-xl">
       <v-card
@@ -239,33 +246,33 @@ export default {
 
   methods: {
     print() {
+      window.scrollTo(0, 0);
       html2canvas(document.querySelector("#capture")).then(canvas => {
         var link = document.createElement("a");
-        link.download = "MegaCertificate.png";
+        link.download = "MegaCertificate.jpg";
         link.href = canvas.toDataURL();
         link.click();
+
+        // this.jpeg = true;
 
         // setTimeout(function () {
         //   if (document.getElementById("canvas").hasChildNodes()) {
         //     var item = document.getElementById("canvas").childNodes[0];
         //     item.document.getElementById("canvas").createElement(canvas);
         //   } else {
-        //     console.log("horraaayyy");
         //     setTimeout(function () {
         //       document.getElementById("canvas").appendChild(canvas);
         //     }, 2000);
         //   }
         // }, 1000);
-
-        // if(document.getElementById("canvas").firstElementChild){
-        //    document.getElementById("canvas").appendChild(canvas);
+        // if (document.getElementById("canvas").firstElementChild) {
+        //   document.getElementById("canvas").appendChild(canvas);
         // }
+        // var link = document.createElement("a");
+        // link.download = "filename.png";
+        // link.href = document.getElementById("canvas").toDataURL();
+        // link.click();
       });
-
-      // var link = document.createElement("a");
-      // link.download = "filename.png";
-      // link.href = document.getElementById("canvas").toDataURL();
-      // link.click();
     },
 
     open(item) {
