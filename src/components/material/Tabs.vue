@@ -21,7 +21,7 @@
         v-if="this.courseLink == ''"
         id="videoContent"
       />
-      <Webbook :url="this.courseLink" id="webbook" />
+      <Webbook :url="this.courseLink" id="webbook" :active="tabActive" />
     </v-tab-item>
     <v-tab-item style="height: 80vh" v-show="steps[1].show">
       <Book :unitId="unitId" />
@@ -77,7 +77,9 @@ export default {
           title: "영작",
           show: true
         }
-      ]
+      ],
+
+      tabActive: true
     };
   },
 
@@ -104,6 +106,14 @@ export default {
       //  this.steps[0].show = false;
       this.steps[1].show = false;
       this.tabs = 0;
+    }
+  },
+
+  watch: {
+    tabs: function(to) {
+      if (to != 0) {
+        this.tabActive = false;
+      } else this.tabActive = true;
     }
   },
 
