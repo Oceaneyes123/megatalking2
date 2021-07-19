@@ -5,9 +5,10 @@
         class="h3 font-weight-bold gmarket white--text mb-5 korean-text"
         style="margin-top: 200px"
       >
-        친구처럼 편한 영어
+        3개월에 <br />
+        영어가 된다
       </div>
-      <div class="white--text h6 mb-10">
+      <div class="white--text h6 mb-10 korean-text">
         외국인과 말하기 두려워도, 영어가 서툴러도,
         <br />메가토킹 선생님이 친구처럼 도와드려요.
       </div>
@@ -16,7 +17,7 @@
           class="rounded-xl py-8 px-16 title"
           color="primary"
           @click="$router.push('/level-test')"
-          >무료수업신청</v-btn
+          >지금 신청하기</v-btn
         >
       </v-row>
     </v-container>
@@ -1312,7 +1313,6 @@ export default {
   },
 
   created() {
-    console.log("created");
     window.addEventListener("resize", this.onWindowResize);
     AOS.init();
   },
