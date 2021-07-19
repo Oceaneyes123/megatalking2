@@ -61,7 +61,6 @@ export default {
     },
     load() {
       this.iframe.loaded = true;
-      console.log("hi??");
     }
   },
   watch: {

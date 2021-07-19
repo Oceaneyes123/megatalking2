@@ -585,7 +585,7 @@
                                   korean-text
                                 "
                                 :class="
-                                  $vuetify.breakpoint.xsOnly ? 'h5' : 'h4'
+                                  $vuetify.breakpoint.xsOnly ? 'h6' : 'h4'
                                 "
                               >
                                 {{ selectedClassTitle }}
@@ -1224,8 +1224,6 @@ export default {
       let courseName = this.showClass.book_name;
       let bookLink = this.showClass.book_link;
 
-      console.log(this.showClass);
-
       this.$store.commit("setClassInfo", this.showClass); //0319 평가서를 위해
 
       this.$store.commit("setCurrentCourseName", { courseName });
@@ -1318,6 +1316,7 @@ export default {
     pickDate(val) {
       let [, , day] = val.split("-");
       let pickDateClasses = [];
+
       if (Object.keys(this.schedule).includes(day)) {
         pickDateClasses = this.schedule[day].class;
 
@@ -1328,7 +1327,6 @@ export default {
 
         this.isClass = true;
         this.isClassSelected = true;
-        this.selectClass(pickDateClasses[0]);
 
         // if (pickDateClasses.length == 1 && pickDateClasses[0].state != "no") {
         //   this.isClassSelected = true;
@@ -1339,7 +1337,9 @@ export default {
       } else {
         this.isClass = false;
       }
+
       this.$set(this.$data, "pickDateClasses", pickDateClasses);
+      this.selectClass(pickDateClasses[0]);
     },
     async getSchedule(year, month, day = "") {
       let config = {
@@ -1353,7 +1353,6 @@ export default {
       await axios
         .get("//phone.megatalking.com/origin/api/mypage.php", config)
         .then(rs => {
-          console.log(rs);
           if (rs.data.result == true) {
             let schedule = rs.data.schedule;
             let holdDatas = {

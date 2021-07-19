@@ -127,7 +127,6 @@ export default {
         selected.push({ key: item, text: this.step4Suggestions[item] });
       });
       type = this.currentClassInfo.jong == 1 ? "RC" : "MC";
-      console.log(type);
       return {
         timestamp: this.currentClassInfo.todate,
         score: this.rating,
@@ -139,10 +138,6 @@ export default {
         type: type
       };
     }
-  },
-
-  mounted() {
-    console.log(this.currentClassInfo);
   },
   methods: {
     filterValideDate() {

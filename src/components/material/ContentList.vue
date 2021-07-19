@@ -54,7 +54,6 @@ export default {
     ...mapState(["currentCourseName"])
   },
   created() {
-    console.log(this.currentCourseName);
     // let url = "http://178.128.213.14/content-utilities/api/cms/miscs/get_materials_for_list";
     // let url = "https://megatalking.co.kr/api/get_materials_for_list.php";
     let url =
@@ -70,7 +69,6 @@ export default {
           );
           this.bookTitle = bookDto.title;
           this.bookUnits = bookDto.list_units;
-          console.log(rs);
         }
       })
       .catch(err => {

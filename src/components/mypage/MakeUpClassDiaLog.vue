@@ -32,9 +32,7 @@
                       @click="tutorType = 'regular'"
                       :disabled="s_id == '' || btnBlockRc"
                     >
-                      <v-icon dark left>
-                        mdi-account-outline
-                      </v-icon>
+                      <v-icon dark left> mdi-account-outline </v-icon>
                       내 강사 선택
                     </v-btn>
                   </v-col>
