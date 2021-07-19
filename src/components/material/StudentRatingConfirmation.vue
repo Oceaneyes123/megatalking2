@@ -9,9 +9,12 @@
         </v-row>
       </v-container>
       <v-card class="text-left px-5 card-bg" style="border-radius: 20px">
-        <v-container class="px-0">
+        <v-container>
           <v-row>
-            <v-col class="d-flex flex-column align-center">
+            <v-col
+              style="font-size: 18px"
+              class="d-flex flex-column align-center"
+            >
               <div class="nanum">
                 You gave {{ confirmationData.lec_name }} a rating of
               </div>
@@ -28,10 +31,12 @@
                 empty-icon="far fa-star"
                 half-icon="fas fa-star-half-alt"
                 readonly
-                :large="$vuetify.breakpoint.xsOnly"
               ></v-rating>
               <div class="nanum">Thank you for your feedback.</div>
-              <div class="blue-text font-weight-bold nanum pt-5 h6">
+              <div
+                class="blue-text font-weight-bold nanum pt-5"
+                style="font-size: 24px"
+              >
                 평가 감사드립니다. <br />
                 좋은 하루 되세요~^^
               </div>

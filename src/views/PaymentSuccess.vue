@@ -178,6 +178,7 @@ export default {
     const orderId = query.orderId;
     const paymentKey = query.paymentKey;
     const amount = query.amount;
+    console.log(orderId, paymentKey, amount);
 
     axios
       .post("//phone.megatalking.com/origin/api/payment.php", {
@@ -193,6 +194,7 @@ export default {
           this.errMsg = rs.data.message;
         } else {
           this.err = "";
+          console.log("suc", rs);
         }
       })
       .catch(err => {

@@ -21,7 +21,7 @@
         v-if="this.courseLink == ''"
         id="videoContent"
       />
-      <Webbook :url="this.courseLink" id="webbook" :active="tabActive" />
+      <Webbook :url="this.courseLink" id="webbook" />
     </v-tab-item>
     <v-tab-item style="height: 80vh" v-show="steps[1].show">
       <Book :unitId="unitId" />
@@ -77,9 +77,7 @@ export default {
           title: "영작",
           show: true
         }
-      ],
-
-      tabActive: true
+      ]
     };
   },
 
@@ -109,14 +107,6 @@ export default {
     }
   },
 
-  watch: {
-    tabs: function(to) {
-      if (to != 0) {
-        this.tabActive = false;
-      } else this.tabActive = true;
-    }
-  },
-
   computed: {
     ...mapState(["currentCourseName", "currentCourseLink"])
   },
@@ -124,6 +114,8 @@ export default {
   mounted() {
     window.setInterval(this.clickFrame, 100);
     this.courseLink = localStorage.getItem("currentCourseLink");
+
+    console.log(this.setTab);
   },
   methods: {
     // clickFrame() {

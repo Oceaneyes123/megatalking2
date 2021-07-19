@@ -93,26 +93,27 @@ export default {
 
   methods: {
     nextBook(step) {
-      this.step = step;
+      console.log(step);
       if (step == 1) {
         this.courseLink = localStorage.getItem("currentCourseLink");
       }
-      setTimeout(this.openClass, 50);
+
+      this.step = step;
+      setTimeout(this.openClassReview, 50);
     },
 
-    openClass() {
-      if (this.step == 1) {
-        this.$refs.tabHeader.newTab(0);
-      }
+    openClassReview() {
       if (this.step == 3) {
         this.$refs.tabHeader.newTab(2);
       }
     },
 
     proceed() {
+      console.log(this.status, "test");
       this.tabs = 1;
     },
     send(message) {
+      console.log("sending");
       this.connection.send(message);
     },
     onWindowResize() {

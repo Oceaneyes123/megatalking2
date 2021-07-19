@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background: #f2f2f2">
+  <v-app style="background:#f2f2f2">
     <v-container fluid class="py-0 px-0 py-md-5">
       <v-card
         class="mx-auto d-flex flex-column"
@@ -53,6 +53,7 @@ export default {
   created() {
     window.addEventListener("resize", this.onWindowResize);
     this.courseName = this.currentCourseName;
+    console.log(this.courseName);
   },
   destroyed() {
     window.removeEventListener("resize", this.onWindowResize);
@@ -84,9 +85,11 @@ export default {
       this.step = step;
     },
     proceed() {
+      console.log(this.status, "test");
       this.tabs = 1;
     },
     send(message) {
+      console.log("sending");
       this.connection.send(message);
     },
     onWindowResize() {

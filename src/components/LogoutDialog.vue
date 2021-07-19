@@ -39,7 +39,7 @@ export default {
     logout() {
       this.$store.dispatch("logout");
       this.close();
-      this.$router.push("/");
+      this.$router.push("/main");
     }
   }
 };

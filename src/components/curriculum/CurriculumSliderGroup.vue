@@ -42,7 +42,10 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
+  mounted() {
+    console.log(this.currentBook);
+    console.log(this.mobile);
+  },
 
   methods: {}
 };

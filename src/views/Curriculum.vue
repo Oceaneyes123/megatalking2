@@ -45,7 +45,7 @@
                     width="97"
                     min-height="80"
                     :class="{ 'blue--text': active }"
-                    :color="active ? 'primary' : '#e6f2ff'"
+                    :color="active ? 'primary' : 'white'"
                     :outlined="active"
                   >
                     <div v-html="tab"></div>
@@ -236,9 +236,13 @@
                                       nanum
                                       mb-5
                                     "
-                                    :style="{
-                                      background: `linear-gradient(90deg, ${gradient})`
-                                    }"
+                                    style="
+                                      background: linear-gradient(
+                                        to right,
+                                        #8fa1fe,
+                                        #4d94e9
+                                      );
+                                    "
                                     @click="$router.push('/enrollment')"
                                     >수강신청</v-btn
                                   >
@@ -850,7 +854,7 @@
               </v-tabs>
             </v-row> -->
 
-            <v-row v-if="$vuetify.breakpoint.smAndUp">
+            <v-row v-if="!isMobile">
               <v-card flat color="#00000000">
                 <v-img
                   src="../assets/level-diagram.png"
@@ -1419,8 +1423,6 @@ export default {
       bookSlide6: 0,
       bookSlide7: 0,
       book_list: [],
-
-      gradient: ["#8fa1fe", "#4d94e9"],
 
       currentBook: "",
       category: "유튜브 회화과정",

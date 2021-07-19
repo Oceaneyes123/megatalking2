@@ -373,6 +373,9 @@ export default {
   },
   created() {},
   methods: {
+    test() {
+      console.log(this.$route);
+    },
     timeout(ms) {
       return new Promise(res => {
         if (!this.timeoutId) {

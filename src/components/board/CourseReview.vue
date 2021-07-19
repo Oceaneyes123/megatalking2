@@ -89,6 +89,9 @@ export default {
       this.courseReviewDialog = true;
     },
     writeReview() {
+      console.log(this.title);
+      console.log(this.content);
+
       const form = new FormData();
       form.append("title", this.title);
       form.append("content", this.content);

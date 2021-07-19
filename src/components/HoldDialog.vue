@@ -2,7 +2,9 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" max-width="360">
       <v-card>
-        <v-card-title class="headline"> 홀드 하시겠습니까? </v-card-title>
+        <v-card-title class="headline">
+          홀드 하시겠습니까?
+        </v-card-title>
 
         <v-card-text>
           정말 홀드하시겠습니까?<br />
@@ -16,7 +18,9 @@
             취소
           </v-btn>
 
-          <v-btn color="green darken-1" text @click="submit()"> 홀드 </v-btn>
+          <v-btn color="green darken-1" text @click="submit()">
+            홀드
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -44,6 +48,7 @@ export default {
       this.date = date;
       this.s_id = classObj.s_id;
       this.dialog = true;
+      console.log(date, classObj);
     },
     submit() {
       let playload = {

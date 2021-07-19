@@ -697,10 +697,11 @@ export default {
     submit() {
       let noValidate = ["speed", "date", "time", "eaCheck"];
       Object.keys(this.form).forEach(f => {
+        console.log(f);
         if ("time" == f && this.form[f].length == 0) this.snackbar = true;
         if (noValidate.indexOf(f) !== -1) return;
         if (!this.form[f]) this.snackbar = true;
-
+        console.log(this.$refs[f]);
         if (!this.$refs[f].validate(true)) this.snackbar = true;
       });
       if (!this.snackbar) {

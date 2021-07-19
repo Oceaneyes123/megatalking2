@@ -20,7 +20,7 @@ const routes = [
   //   component: require("../views/Index.vue").default
   // },
   {
-    path: "/",
+    path: "/main",
     name: "Main",
     component: require("../views/Main.vue").default,
     meta: { title: "메가토킹 영어" }

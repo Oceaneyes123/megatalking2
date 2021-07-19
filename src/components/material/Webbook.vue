@@ -15,44 +15,22 @@
       Please go to next Tab for evaluating today class
     </div>
   </v-card>
-  <v-card height="100%" flat v-else>
-    <v-overlay v-model="overlay" absolute>
-      <v-progress-circular indeterminate color="primary"></v-progress-circular>
-    </v-overlay>
-    <iframe
-      id="frame"
-      width="100%"
-      height="100%"
-      :src="link"
-      frameborder="0"
-    ></iframe>
-  </v-card>
+  <iframe
+    v-else
+    width="100%"
+    height="100%"
+    :src="link"
+    frameborder="0"
+  ></iframe>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      overlay: true
-    };
+    return {};
   },
-  props: ["url", "active"],
-  mounted() {
-    setTimeout(() => {
-      this.overlay = false;
-    }, 2500);
-  },
-
-  watch: {
-    active: function() {
-      if (this.active) {
-        document.getElementById("frame").src = this.link;
-      } else {
-        var frame = document.getElementById("frame");
-        frame.src = "";
-      }
-    }
-  },
+  props: ["url"],
+  mounted() {},
   computed: {
     isTimeScore() {
       if (

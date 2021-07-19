@@ -11,7 +11,7 @@
       <v-container class="d-flex flex-row">
         <v-card flat tile color="#00000000">
           <v-img
-            @click="$router.push('/'), (activeMenu = -1)"
+            @click="$router.push('/main'), (activeMenu = -1)"
             contain
             src="@/assets/mega_blue.png"
             width="100"
@@ -196,7 +196,7 @@ export default {
       this.logoutDialog = !this.logoutDialog;
     },
     attachedLink(link) {
-      if (link == "mypage" || link == "account") {
+      if (link == "" || link == "account") {
         //로그인
         if (this.$store.state.isLogin) {
           this.$router.push(`/${link}`);

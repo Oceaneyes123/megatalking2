@@ -1,14 +1,21 @@
 <template>
   <v-dialog max-width="700" v-model="courseDialog" class="rounded-xl">
-    <v-card
-      :class="
-        $vuetify.breakpoint.xsOnly
-          ? 'text-left card-bg'
-          : 'text-left card-bg px-5'
-      "
-      style="border-radius: 20px"
-    >
-      <div id="capture">
+    <v-card color="#6991C7" style="border-radius: 20px">
+      <v-container class="h5 nanum white--text text-left">
+        <v-row :class="$vuetify.breakpoint.smAndUp ? 'px-5' : undefined">
+          <v-col>
+            <div>수강증</div>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-card
+        :class="
+          $vuetify.breakpoint.xsOnly
+            ? 'text-left card-bg'
+            : 'text-left card-bg px-5'
+        "
+        style="border-radius: 20px"
+      >
         <v-container style="font-size: 14px">
           <v-row>
             <v-col class="blue-text font-weight-bold" style="font-size: 18px">
@@ -16,24 +23,18 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col class="font-weight-bold" sm="6" cols="4">
+            <v-col class="font-weight-bold" sm="6" cols="5">
               <div>상호</div>
               <div>사업장소재지</div>
               <br v-show="$vuetify.breakpoint.xsOnly" />
-              <div
-                :style="
-                  $vuetify.breakpoint.xsOnly ? { fontSize: 'smaller' } : {}
-                "
-              >
-                사업자등록번호
-              </div>
+              <div>사업자등록번호</div>
               <div>업태</div>
               <div>대표자</div>
               <div>종목</div>
             </v-col>
-            <v-col sm="6" cols="8">
+            <v-col sm="6" cols="7">
               <div>(주)유에듀케이션</div>
-              <div class="korean-text">수원시 권선구 세권로 219,3층</div>
+              <div>수원시 팔달구 권광로 122, 두오빌딩 4층</div>
               <div>124-87-33297</div>
               <v-row no-gutters>
                 <v-col style="width: max-content">
@@ -104,43 +105,34 @@
               </div>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col class="text-right">
+              <v-btn
+                depressed
+                rounded
+                class="blue-text font-weight-bold py-5"
+                color="#E5E5E5"
+                width="40%"
+              >
+                취소
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                dark
+                depressed
+                rounded
+                class="nanum font-weight-bold py-5"
+                color="#2564CB"
+                width="40%"
+              >
+                보내기
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-container>
-      </div>
-      <v-container>
-        <v-row>
-          <v-col class="text-right">
-            <v-btn
-              depressed
-              rounded
-              class="blue-text font-weight-bold py-5"
-              color="#E5E5E5"
-              width="40%"
-              @click="courseDialog = false"
-            >
-              취소
-            </v-btn>
-          </v-col>
-          <v-col>
-            <v-btn
-              dark
-              depressed
-              rounded
-              class="nanum font-weight-bold py-5"
-              color="#2564CB"
-              width="40%"
-              @click="print()"
-            >
-              보내기
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
+      </v-card>
     </v-card>
-
-    <!-- <v-dialog v-model="jpeg">
-      <v-card id="canvas"></v-card>
-    </v-dialog> -->
-
     <!-- <v-card max-width="700" class="rounded-xl">
       <v-card
         color="#6a9af2"
@@ -231,53 +223,21 @@
 </template>
 
 <script>
-import html2canvas from "html2canvas";
-
 export default {
   data() {
     return {
       courseDialog: false,
       courseData: [],
-      jpeg: false,
 
       date: new Date()
     };
   },
 
   methods: {
-    print() {
-      window.scrollTo(0, 0);
-      html2canvas(document.querySelector("#capture")).then(canvas => {
-        var link = document.createElement("a");
-        link.download = "MegaCertificate.jpg";
-        link.href = canvas.toDataURL();
-        link.click();
-
-        // this.jpeg = true;
-
-        // setTimeout(function () {
-        //   if (document.getElementById("canvas").hasChildNodes()) {
-        //     var item = document.getElementById("canvas").childNodes[0];
-        //     item.document.getElementById("canvas").createElement(canvas);
-        //   } else {
-        //     setTimeout(function () {
-        //       document.getElementById("canvas").appendChild(canvas);
-        //     }, 2000);
-        //   }
-        // }, 1000);
-        // if (document.getElementById("canvas").firstElementChild) {
-        //   document.getElementById("canvas").appendChild(canvas);
-        // }
-        // var link = document.createElement("a");
-        // link.download = "filename.png";
-        // link.href = document.getElementById("canvas").toDataURL();
-        // link.click();
-      });
-    },
-
     open(item) {
       this.courseData = item;
       this.courseDialog = true;
+      console.log(item);
     },
 
     formatDate(date) {

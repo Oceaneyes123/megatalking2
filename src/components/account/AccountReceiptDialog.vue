@@ -73,7 +73,10 @@
               <v-col sm="6" cols="8">
                 <div>{{ receiptData.method }}</div>
                 <div v-if="receiptData.pay_progress != null">
-                  {{ formatInitialPrice }}원
+                  {{
+                    receiptData.pay_progress.paymentInfo.value +
+                      receiptData.pay_progress.paymentInfo.dcn
+                  }}원
                 </div>
                 <div v-else>-</div>
                 <div
@@ -81,19 +84,21 @@
                   style="color: #cb5413"
                   v-if="receiptData.pay_progress != null"
                 >
-                  -{{ formatDcn }}원
+                  -{{ receiptData.pay_progress.paymentInfo.dcn }}원
                 </div>
                 <div v-else>-</div>
                 <div
                   class="font-weight-bold"
                   v-if="receiptData.pay_progress != null"
                 >
-                  월 {{ formatMonthlyPayment }}원 ({{
+                  월 {{ receiptData.pay_progress.paymentInfo.value / 4 }}원 ({{
                     receiptData.pay_progress.paymentInfo.dcp
                   }}% 할인)
                 </div>
                 <div v-else>-</div>
-                <div v-if="receiptData.pay_progress != null">총{{}}원</div>
+                <div v-if="receiptData.pay_progress != null">
+                  총{{ receiptData.pay_progress.paymentInfo.value }}원
+                </div>
                 <div v-else>-</div>
               </v-col>
             </v-row>
@@ -135,33 +140,10 @@ export default {
       receiptData: []
     };
   },
-  computed: {
-    formatInitialPrice() {
-      return this.formatNum(
-        this.receiptData.pay_progress.paymentInfo.value +
-          this.receiptData.pay_progress.paymentInfo.dcn
-      );
-    },
-    formatDcn() {
-      return this.formatNum(this.receiptData.pay_progress.paymentInfo.dcn);
-    },
-    formatMonthlyPayment() {
-      return this.formatNum(
-        this.receiptData.pay_progress.paymentInfo.value / 4
-      );
-    },
-
-    formatFinalPrice() {
-      return this.formatNum(this.receiptData.pay_progress.paymentInfo.value);
-    }
-  },
   methods: {
     open(item) {
       this.receiptData = item;
       this.receiptDialog = true;
-    },
-    formatNum(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   }
 };

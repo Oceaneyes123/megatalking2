@@ -94,6 +94,7 @@ export default {
             }
           })
           .then(rs => {
+            console.log(rs);
             let existData = Object.keys(rs.data).length;
             if (existData) {
               this.contents = rs.data.writing.contents_view;
